@@ -1,5 +1,5 @@
 import { NextResponse } from 'next/server';
-const pdf = require('pdf-parse');
+import PDFParser from 'pdf2json';
 
 export async function POST(request: Request) {
     try {
@@ -13,16 +13,29 @@ export async function POST(request: Request) {
         const arrayBuffer = await file.arrayBuffer();
         const buffer = Buffer.from(arrayBuffer);
 
-        const data = await pdf(buffer);
+        const parsedText = await new Promise<string[]>((resolve, reject) => {
+            const pdfParser = new PDFParser(null, true); // true = enable text directly
 
-        // Split by new lines and filter empty or short strings
-        const lines = data.text.split(/\n+/).map((l: string) => l.trim()).filter((l: string) => l.length > 2);
+            pdfParser.on("pdfParser_dataError", (errData: any) => {
+                reject(errData.parserError);
+            });
 
-        // Basic cleanup: remove common headers if possible, but for MVP just return all lines
-        // Users can edit before confirming ideally, but request asked for automation.
-        // We'll return the list and let the frontend decide.
+            pdfParser.on("pdfParser_dataReady", () => {
+                // pdfParser has a method getRawTextContent() which returns the text
+                const raw = pdfParser.getRawTextContent();
+                // Split by logical lines
+                const lines = raw.split(/\r\n|\n|\r/).map(l => l.trim()).filter(l => l.length > 2);
+                resolve(lines);
+            });
 
-        return NextResponse.json({ names: lines });
+            pdfParser.parseBuffer(buffer);
+        });
+
+        // Basic clean up of artifacts if any (pdf2json sometimes leaves dashes or page breaks)
+        // For MVP, we pass the cleaned lines.
+        // decodeURIComponent might be needed if pdf2json returns encoded strings, but getRawTextContent usually is plain text.
+
+        return NextResponse.json({ names: parsedText });
     } catch (error) {
         console.error("PDF Parse Error:", error);
         return NextResponse.json({ error: "Failed to parse PDF" }, { status: 500 });
