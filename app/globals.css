@@ -1,26 +1,31 @@
 @import "tailwindcss";
 
 :root {
-  --background: #ffffff;
+  --background: #FDF2F2; /* Very light redish/snow white */
   --foreground: #171717;
+  --santa-red: #D42426;
+  --christmas-green: #165B33;
+  --gold: #F0A500;
+  --snow: #FFFFFF;
 }
 
 @theme inline {
+  --color-santa-red: var(--santa-red);
+  --color-christmas-green: var(--christmas-green);
+  --color-gold: var(--gold);
+  --color-snow: var(--snow);
   --color-background: var(--background);
   --color-foreground: var(--foreground);
+  
   --font-sans: var(--font-geist-sans);
   --font-mono: var(--font-geist-mono);
-}
-
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
 }
 
 body {
   background: var(--background);
   color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  font-family: var(--font-sans), sans-serif;
+  overflow-x: hidden;
 }
+
+/* Snowflake animation classes could go here later */
