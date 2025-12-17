@@ -103,7 +103,7 @@ export default function ResultPage() {
                 {!result && (
                     <div className="space-y-2 animate-fade-in">
                         <h1 className="text-3xl font-black text-gray-900 tracking-tight">
-                            Kimime Hediye Alacağım?
+                            Kime Hediye Alacağım?
                         </h1>
                         <p className="text-gray-500">
                             İsminizi seçin ve sonucu görün.
