@@ -27,6 +27,8 @@ export default function Home() {
     localStorage.setItem("participants_draft", JSON.stringify(participants));
   }, [participants]);
 
+  const [drawMode, setDrawMode] = useState<'secret' | 'pairs'>('secret');
+
   const addParticipant = () => {
     if (!name.trim()) return;
     if (participants.some(p => p.toLowerCase() === name.trim().toLowerCase())) {
@@ -85,14 +87,14 @@ export default function Home() {
         setParticipants(combined);
 
         // Auto Draw Trigger Check
-        if (combined.length >= 3) {
+        if (combined.length >= (drawMode === 'pairs' ? 2 : 3)) {
           setTimeout(() => {
             if (confirm(`${newNames.length} isim eklendi (Toplam: ${combined.length}). Çekilişi başlatmak istiyor musunuz?`)) {
               triggerDraw(combined);
             }
           }, 500);
         } else {
-          alert(`${newNames.length} isim eklendi, ancak çekiliş için en az 3 kişi gerekli.`);
+          alert(`${newNames.length} isim eklendi, ancak çekiliş için yeterli kişi yok.`);
         }
       } else {
         alert("Dosyadan isim okunamadı.");
@@ -109,43 +111,75 @@ export default function Home() {
   };
 
   const triggerDraw = (currentParticipants: string[]) => {
-    if (currentParticipants.length < 3) {
-      alert("Çekiliş için en az 3 kişi gerekli!");
-      return;
-    }
+    if (drawMode === 'secret') {
+      if (currentParticipants.length < 3) {
+        alert("Gizli Çekiliş için en az 3 kişi gerekli!");
+        return;
+      }
 
-    const shuffled = [...currentParticipants];
-    let isValid = false;
-    let attempts = 0;
+      const shuffled = [...currentParticipants];
+      let isValid = false;
+      let attempts = 0;
 
-    while (!isValid && attempts < 1000) {
+      while (!isValid && attempts < 1000) {
+        for (let i = shuffled.length - 1; i > 0; i--) {
+          const j = Math.floor(Math.random() * (i + 1));
+          [shuffled[i], shuffled[j]] = [shuffled[j], shuffled[i]];
+        }
+
+        isValid = true;
+        for (let i = 0; i < currentParticipants.length; i++) {
+          if (currentParticipants[i] === shuffled[i]) {
+            isValid = false;
+            break;
+          }
+        }
+        attempts++;
+      }
+
+      if (!isValid) {
+        alert("Bir hata oluştu, lütfen tekrar deneyin.");
+        return;
+      }
+
+      const assignments: Record<string, string> = {};
+      currentParticipants.forEach((p, i) => {
+        assignments[p] = shuffled[i];
+      });
+
+      localStorage.setItem("secret_santa_assignments", JSON.stringify(assignments));
+      localStorage.setItem("draw_mode", 'secret');
+      router.push("/result");
+
+    } else {
+      // Direct Pairs Logic
+      if (currentParticipants.length < 2) {
+        alert("Eşleştirme için en az 2 kişi gerekli!");
+        return;
+      }
+      if (currentParticipants.length % 2 !== 0) {
+        alert("Direk eşleştirme için kişi sayısı çift olmalıdır! Lütfen bir kişi ekleyin veya çıkarın.");
+        return;
+      }
+
+      const shuffled = [...currentParticipants];
+      // Shuffle Fisher-Yates
       for (let i = shuffled.length - 1; i > 0; i--) {
         const j = Math.floor(Math.random() * (i + 1));
         [shuffled[i], shuffled[j]] = [shuffled[j], shuffled[i]];
       }
 
-      isValid = true;
-      for (let i = 0; i < currentParticipants.length; i++) {
-        if (currentParticipants[i] === shuffled[i]) {
-          isValid = false;
-          break;
-        }
+      const assignments: Record<string, string> = {};
+      // Pair them up: 0-1, 2-3, ...
+      for (let i = 0; i < shuffled.length; i += 2) {
+        assignments[shuffled[i]] = shuffled[i + 1];
+        assignments[shuffled[i + 1]] = shuffled[i];
       }
-      attempts++;
+
+      localStorage.setItem("secret_santa_assignments", JSON.stringify(assignments));
+      localStorage.setItem("draw_mode", 'pairs');
+      router.push("/result");
     }
-
-    if (!isValid) {
-      alert("Bir hata oluştu, lütfen tekrar deneyin.");
-      return;
-    }
-
-    const assignments: Record<string, string> = {};
-    currentParticipants.forEach((p, i) => {
-      assignments[p] = shuffled[i];
-    });
-
-    localStorage.setItem("secret_santa_assignments", JSON.stringify(assignments));
-    router.push("/result");
   };
 
   const handleDraw = () => triggerDraw(participants);
@@ -170,6 +204,21 @@ export default function Home() {
         </div>
 
         <div className="bg-white/80 backdrop-blur-xl p-6 rounded-3xl shadow-xl border border-white/50 space-y-6">
+          {/* Mode Selector */}
+          <div className="flex p-1 bg-gray-100/50 rounded-xl">
+            <button
+              onClick={() => setDrawMode('secret')}
+              className={`flex-1 py-2.5 text-sm font-bold rounded-lg transition-all ${drawMode === 'secret' ? 'bg-white text-gray-900 shadow-sm ring-1 ring-black/5' : 'text-gray-500 hover:text-gray-700'}`}
+            >
+              Gizli Çekiliş 🤫
+            </button>
+            <button
+              onClick={() => setDrawMode('pairs')}
+              className={`flex-1 py-2.5 text-sm font-bold rounded-lg transition-all ${drawMode === 'pairs' ? 'bg-white text-santa-red shadow-sm ring-1 ring-black/5' : 'text-gray-500 hover:text-gray-700'}`}
+            >
+              Direk Eşleşme 🤝
+            </button>
+          </div>
           <div className="flex gap-2">
             <Input
               placeholder="İsim giriniz..."
@@ -243,14 +292,28 @@ export default function Home() {
           <div className="pt-4 border-t border-gray-100">
             <Button
               onClick={handleDraw}
-              className="w-full text-lg py-6 shadow-lg shadow-red-200/50 hover:shadow-xl hover:shadow-red-200/50 transition-all"
+              className={`w-full text-lg py-6 shadow-lg transition-all ${drawMode === 'pairs' ? 'shadow-green-200/50 hover:shadow-green-200/50 bg-christmas-green hover:bg-green-700' : 'shadow-red-200/50 hover:shadow-red-200/50'}`}
               variant="default"
-              disabled={participants.length < 3}
+              disabled={participants.length < (drawMode === 'pairs' ? 2 : 3)}
             >
-              <Sparkles className="w-5 h-5 mr-2" /> Çekilişi Yap
+              <Sparkles className="w-5 h-5 mr-2" /> {drawMode === 'pairs' ? 'Eşleştir' : 'Çekilişi Yap'}
             </Button>
-            {participants.length > 0 && participants.length < 3 && (
-              <p className="text-xs text-red-500 mt-3 font-medium bg-red-50 py-2 rounded-lg">En az 3 kişi eklemelisiniz</p>
+            {participants.length > 0 && (
+              <div className="mt-3 space-y-2">
+                {drawMode === 'secret' && participants.length < 3 && (
+                  <p className="text-xs text-red-500 font-medium bg-red-50 py-2 rounded-lg">En az 3 kişi eklemelisiniz</p>
+                )}
+                {drawMode === 'pairs' && (
+                  <>
+                    {participants.length < 2 && (
+                      <p className="text-xs text-red-500 font-medium bg-red-50 py-2 rounded-lg">En az 2 kişi eklemelisiniz</p>
+                    )}
+                    {participants.length >= 2 && participants.length % 2 !== 0 && (
+                      <p className="text-xs text-orange-500 font-medium bg-orange-50 py-2 rounded-lg">Kişi sayısı çift olmalıdır ({participants.length})</p>
+                    )}
+                  </>
+                )}
+              </div>
             )}
           </div>
         </div>
