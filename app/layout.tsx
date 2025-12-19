@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
 import { Analytics } from "@vercel/analytics/next";
+import Script from "next/script";
 import "./globals.css";
 import { ClientLayout } from "./ClientLayout";
 
@@ -15,6 +16,9 @@ const geistMono = Geist_Mono({
 });
 
 const SITE_URL = "https://yulasanta.com";
+
+// AdSense Publisher ID - Replace with your actual ID after AdSense approval
+const ADSENSE_CLIENT_ID = process.env.NEXT_PUBLIC_ADSENSE_CLIENT_ID || "ca-pub-XXXXXXXXXXXXXXXX";
 
 export const metadata: Metadata = {
   title: "YulaSanta - Online Secret Santa Draw | Yılbaşı Çekilişi",
@@ -77,6 +81,10 @@ export const metadata: Metadata = {
     title: "YulaSanta - Online Secret Santa Draw",
     description: "Create free Secret Santa draws with friends, family, or colleagues in seconds!",
   },
+  // Verification for AdSense
+  verification: {
+    google: "YOUR_GOOGLE_SITE_VERIFICATION_CODE", // Add your verification code here
+  },
 };
 
 export default function RootLayout({
@@ -101,11 +109,22 @@ export default function RootLayout({
         <link rel="alternate" hrefLang="ko" href={`${SITE_URL}?lang=ko`} />
         <link rel="alternate" hrefLang="zh" href={`${SITE_URL}?lang=zh`} />
         <link rel="alternate" hrefLang="x-default" href={SITE_URL} />
+
+        {/* Google AdSense Script */}
+        <Script
+          id="google-adsense"
+          async
+          src={`https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=${ADSENSE_CLIENT_ID}`}
+          crossOrigin="anonymous"
+          strategy="afterInteractive"
+        />
       </head>
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
+        suppressHydrationWarning
       >
         <ClientLayout>{children}</ClientLayout>
+        <Analytics />
       </body>
     </html>
   );
