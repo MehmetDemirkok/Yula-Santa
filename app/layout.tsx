@@ -17,8 +17,8 @@ const geistMono = Geist_Mono({
 
 const SITE_URL = "https://yulasanta.com";
 
-// AdSense Publisher ID - Replace with your actual ID after AdSense approval
-const ADSENSE_CLIENT_ID = process.env.NEXT_PUBLIC_ADSENSE_CLIENT_ID || "ca-pub-XXXXXXXXXXXXXXXX";
+// AdSense Publisher ID - Your actual AdSense ID
+const ADSENSE_CLIENT_ID = process.env.NEXT_PUBLIC_ADSENSE_CLIENT_ID || "ca-pub-1407870205867199";
 
 export const metadata: Metadata = {
   title: "YulaSanta - Online Secret Santa Draw | Yılbaşı Çekilişi",

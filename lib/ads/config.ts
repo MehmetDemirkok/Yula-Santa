@@ -39,4 +39,4 @@ export const AD_CONFIG = {
  * AdSense Publisher ID
  * Format: ca-pub-XXXXXXXXXXXXXXXX
  */
-export const ADSENSE_CLIENT_ID = process.env.NEXT_PUBLIC_ADSENSE_CLIENT_ID || 'ca-pub-XXXXXXXXXXXXXXXX';
+export const ADSENSE_CLIENT_ID = process.env.NEXT_PUBLIC_ADSENSE_CLIENT_ID || 'ca-pub-1407870205867199';
