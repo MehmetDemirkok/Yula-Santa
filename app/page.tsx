@@ -5,10 +5,12 @@ import { useRouter } from "next/navigation";
 import { Plus, Trash2, Gift, Sparkles, FileUp } from "lucide-react";
 import { Button } from "@/components/ui/Button";
 import { Input } from "@/components/ui/Input";
+import { useLanguage } from "@/lib/i18n/LanguageContext";
 import * as XLSX from "xlsx";
 
 export default function Home() {
   const router = useRouter();
+  const { t } = useLanguage();
   const [name, setName] = useState("");
   const [participants, setParticipants] = useState<string[]>([]);
   const [isUploading, setIsUploading] = useState(false);
@@ -32,7 +34,7 @@ export default function Home() {
   const addParticipant = () => {
     if (!name.trim()) return;
     if (participants.some(p => p.toLowerCase() === name.trim().toLowerCase())) {
-      alert("Bu isim zaten ekli!");
+      alert(t.home.nameExists);
       return;
     }
     setParticipants([...participants, name.trim()]);
@@ -74,7 +76,7 @@ export default function Home() {
         const data = await res.json();
         newNames = data.names || [];
       } else {
-        alert("Desteklenmeyen dosya formatı. Lütfen Excel (.xlsx) veya PDF kullanın.");
+        alert(t.home.unsupportedFormat);
         setIsUploading(false);
         return;
       }
@@ -89,19 +91,19 @@ export default function Home() {
         // Auto Draw Trigger Check
         if (combined.length >= (drawMode === 'pairs' ? 2 : 3)) {
           setTimeout(() => {
-            if (confirm(`${newNames.length} isim eklendi (Toplam: ${combined.length}). Çekilişi başlatmak istiyor musunuz?`)) {
+            if (confirm(`${newNames.length} ${t.home.namesAdded} (${t.home.totalCount}: ${combined.length}). ${t.home.startDrawConfirm}`)) {
               triggerDraw(combined);
             }
           }, 500);
         } else {
-          alert(`${newNames.length} isim eklendi, ancak çekiliş için yeterli kişi yok.`);
+          alert(`${newNames.length} ${t.home.namesAdded}, ${t.home.notEnoughPeople}`);
         }
       } else {
-        alert("Dosyadan isim okunamadı.");
+        alert(t.home.noNamesFound);
       }
     } catch (error) {
       console.error(error);
-      alert("Dosya yüklenirken bir hata oluştu.");
+      alert(t.home.uploadError);
     } finally {
       setIsUploading(false);
       if (fileInputRef.current) {
@@ -113,7 +115,7 @@ export default function Home() {
   const triggerDraw = (currentParticipants: string[]) => {
     if (drawMode === 'secret') {
       if (currentParticipants.length < 3) {
-        alert("Gizli Çekiliş için en az 3 kişi gerekli!");
+        alert(t.home.secretDrawMinError);
         return;
       }
 
@@ -138,7 +140,7 @@ export default function Home() {
       }
 
       if (!isValid) {
-        alert("Bir hata oluştu, lütfen tekrar deneyin.");
+        alert(t.home.drawError);
         return;
       }
 
@@ -154,11 +156,11 @@ export default function Home() {
     } else {
       // Direct Pairs Logic
       if (currentParticipants.length < 2) {
-        alert("Eşleştirme için en az 2 kişi gerekli!");
+        alert(t.home.directMatchMinError);
         return;
       }
       if (currentParticipants.length % 2 !== 0) {
-        alert("Direk eşleştirme için kişi sayısı çift olmalıdır! Lütfen bir kişi ekleyin veya çıkarın.");
+        alert(t.home.directMatchEvenError);
         return;
       }
 
@@ -199,7 +201,7 @@ export default function Home() {
             Yula<span className="text-santa-red">Santa</span>
           </h1>
           <p className="text-gray-500 text-lg">
-            Arkadaşlarını ekle, çekilişi başlat!
+            {t.home.subtitle}
           </p>
         </div>
 
@@ -210,18 +212,18 @@ export default function Home() {
               onClick={() => setDrawMode('secret')}
               className={`flex-1 py-2.5 text-sm font-bold rounded-lg transition-all ${drawMode === 'secret' ? 'bg-white text-gray-900 shadow-sm ring-1 ring-black/5' : 'text-gray-500 hover:text-gray-700'}`}
             >
-              Gizli Çekiliş 🤫
+              {t.home.secretDraw}
             </button>
             <button
               onClick={() => setDrawMode('pairs')}
               className={`flex-1 py-2.5 text-sm font-bold rounded-lg transition-all ${drawMode === 'pairs' ? 'bg-white text-santa-red shadow-sm ring-1 ring-black/5' : 'text-gray-500 hover:text-gray-700'}`}
             >
-              Direk Eşleşme 🤝
+              {t.home.directMatch}
             </button>
           </div>
           <div className="flex gap-2">
             <Input
-              placeholder="İsim giriniz..."
+              placeholder={t.home.inputPlaceholder}
               value={name}
               onChange={(e) => setName(e.target.value)}
               onKeyDown={(e) => e.key === "Enter" && addParticipant()}
@@ -236,7 +238,7 @@ export default function Home() {
             {participants.length === 0 && (
               <div className="text-center py-12 text-gray-400 border-2 border-dashed border-gray-200 rounded-2xl bg-gray-50/50">
                 <Sparkles className="w-8 h-8 mx-auto mb-2 opacity-50" />
-                <p>Henüz kimse eklenmedi</p>
+                <p>{t.home.noParticipants}</p>
               </div>
             )}
             {participants.map((p, i) => (
@@ -266,9 +268,9 @@ export default function Home() {
               variant="ghost"
               className="flex-1 border-2 border-dashed border-gray-200 text-gray-500 hover:bg-gray-50 hover:border-santa-red/50 hover:text-santa-red"
             >
-              {isUploading ? "Yükleniyor..." : (
+              {isUploading ? t.home.uploading : (
                 <>
-                  <FileUp className="w-4 h-4 mr-2" /> Toplu Liste Yükle (Excel/PDF)
+                  <FileUp className="w-4 h-4 mr-2" /> {t.home.uploadList}
                 </>
               )}
             </Button>
@@ -276,13 +278,13 @@ export default function Home() {
             {participants.length > 0 && (
               <Button
                 onClick={() => {
-                  if (confirm("Tüm listeyi silmek istediğinize emin misiniz?")) {
+                  if (confirm(t.common.clearConfirm)) {
                     setParticipants([]);
                   }
                 }}
                 variant="ghost"
                 className="aspect-square p-0 w-12 border-2 border-dashed border-red-200 text-red-400 hover:bg-red-50 hover:border-red-300 hover:text-red-500"
-                title="Listeyi Temizle"
+                title={t.home.clearList}
               >
                 <Trash2 className="w-5 h-5" />
               </Button>
@@ -296,20 +298,20 @@ export default function Home() {
               variant="default"
               disabled={participants.length < (drawMode === 'pairs' ? 2 : 3)}
             >
-              <Sparkles className="w-5 h-5 mr-2" /> {drawMode === 'pairs' ? 'Eşleştir' : 'Çekilişi Yap'}
+              <Sparkles className="w-5 h-5 mr-2" /> {drawMode === 'pairs' ? t.home.match : t.home.startDraw}
             </Button>
             {participants.length > 0 && (
               <div className="mt-3 space-y-2">
                 {drawMode === 'secret' && participants.length < 3 && (
-                  <p className="text-xs text-red-500 font-medium bg-red-50 py-2 rounded-lg">En az 3 kişi eklemelisiniz</p>
+                  <p className="text-xs text-red-500 font-medium bg-red-50 py-2 rounded-lg">{t.home.minPeople3}</p>
                 )}
                 {drawMode === 'pairs' && (
                   <>
                     {participants.length < 2 && (
-                      <p className="text-xs text-red-500 font-medium bg-red-50 py-2 rounded-lg">En az 2 kişi eklemelisiniz</p>
+                      <p className="text-xs text-red-500 font-medium bg-red-50 py-2 rounded-lg">{t.home.minPeople2}</p>
                     )}
                     {participants.length >= 2 && participants.length % 2 !== 0 && (
-                      <p className="text-xs text-orange-500 font-medium bg-orange-50 py-2 rounded-lg">Kişi sayısı çift olmalıdır ({participants.length})</p>
+                      <p className="text-xs text-orange-500 font-medium bg-orange-50 py-2 rounded-lg">{t.home.evenNumber} ({participants.length})</p>
                     )}
                   </>
                 )}
@@ -319,7 +321,7 @@ export default function Home() {
         </div>
 
         <p className="text-gray-400 text-sm font-medium">
-          🎄 Mutlu Yıllar!
+          {t.home.happyNewYear}
         </p>
       </div>
     </main>

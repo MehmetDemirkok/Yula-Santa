@@ -5,6 +5,7 @@ import { useRouter } from "next/navigation";
 import confetti from "canvas-confetti";
 import { Gift, ArrowRight, Sparkles, User, RefreshCw, ArrowLeftRight, Home } from "lucide-react";
 import { Button } from "@/components/ui/Button";
+import { useLanguage } from "@/lib/i18n/LanguageContext";
 
 interface Assignments {
     [giver: string]: string;
@@ -12,6 +13,7 @@ interface Assignments {
 
 export default function ResultPage() {
     const router = useRouter();
+    const { t } = useLanguage();
     const [assignments, setAssignments] = useState<Assignments>({});
     const [selectedUser, setSelectedUser] = useState<string>("");
     const [result, setResult] = useState<string | null>(null);
@@ -123,20 +125,20 @@ export default function ResultPage() {
                 {!result && drawMode === 'secret' && (
                     <div className="space-y-2 animate-fade-in">
                         <h1 className="text-3xl font-black text-gray-900 tracking-tight">
-                            Kime Hediye Alacağım?
+                            {t.result.whoGetsGift}
                         </h1>
                         <p className="text-gray-500">
-                            İsminizi seçin ve sonucu görün. 🎁
+                            {t.result.selectName}
                         </p>
                     </div>
                 )}
                 {drawMode === 'pairs' && (
                     <div className="space-y-2 animate-fade-in">
                         <h1 className="text-3xl font-black text-gray-900 tracking-tight">
-                            Eşleşme Listesi
+                            {t.result.matchList}
                         </h1>
                         <p className="text-gray-500">
-                            İşte yılbaşı eşleşmeleri! 🎄
+                            {t.result.christmasMatches}
                         </p>
                     </div>
                 )}
@@ -161,7 +163,7 @@ export default function ResultPage() {
                                             variant="ghost"
                                             onClick={() => activeSuggestion === p1 + p2 ? setActiveSuggestion(null) : fetchGiftSuggestions(p1 + p2)}
                                             className="text-christmas-green hover:text-green-700 hover:bg-green-50"
-                                            title="Hediye önerisi al"
+                                            title={t.result.seeGiftIdeas}
                                         >
                                             <Gift className="w-4 h-4" />
                                         </Button>
@@ -178,7 +180,7 @@ export default function ResultPage() {
                                             ) : (
                                                 <div className="space-y-2 text-sm">
                                                     <p className="text-xs font-bold text-gray-400 uppercase flex items-center gap-2">
-                                                        <Sparkles className="w-3 h-3 text-gold" /> AI Hediye Önerileri
+                                                        <Sparkles className="w-3 h-3 text-gold" /> {t.result.aiSuggestions}
                                                     </p>
                                                     {giftSuggestions.map((idea, i) => (
                                                         <div key={i} className="flex flex-col bg-gray-50 p-2 rounded-lg">
@@ -194,7 +196,7 @@ export default function ResultPage() {
                             ))}
                             <div className="pt-6">
                                 <Button onClick={() => router.push('/')} variant="outline" className="w-full">
-                                    Yeni Çekiliş Yap
+                                    {t.result.newDraw}
                                 </Button>
                             </div>
                         </div>
@@ -212,7 +214,7 @@ export default function ResultPage() {
                                             value={selectedUser}
                                             onChange={(e) => setSelectedUser(e.target.value)}
                                         >
-                                            <option value="">İsminizi seçin...</option>
+                                            <option value="">{t.result.selectYourName}</option>
                                             {Object.keys(assignments).sort().map(name => (
                                                 <option key={name} value={name}>{name}</option>
                                             ))}
@@ -227,7 +229,7 @@ export default function ResultPage() {
                                         disabled={!selectedUser}
                                         className="w-full py-4 text-lg"
                                     >
-                                        Sonucu Gör <ArrowRight className="w-5 h-5 ml-2" />
+                                        {t.result.seeResult} <ArrowRight className="w-5 h-5 ml-2" />
                                     </Button>
 
                                     <div className="pt-2">
@@ -236,7 +238,7 @@ export default function ResultPage() {
                                             variant="ghost"
                                             className="w-full text-gray-400 hover:text-gray-600 hover:bg-gray-50"
                                         >
-                                            <Home className="w-4 h-4 mr-2" /> Ana Ekrana Dön
+                                            <Home className="w-4 h-4 mr-2" /> {t.result.backToHome}
                                         </Button>
                                     </div>
                                 </div>
@@ -246,7 +248,7 @@ export default function ResultPage() {
                             {result && (
                                 <div className="space-y-8 animate-in zoom-in duration-500">
                                     <div>
-                                        <p className="text-gray-400 text-sm font-uppercase tracking-wider font-bold mb-2">HEDİYE ALACAĞIN KİŞİ</p>
+                                        <p className="text-gray-400 text-sm font-uppercase tracking-wider font-bold mb-2">{t.result.giftRecipient}</p>
                                         <div className="text-5xl font-black text-santa-red drop-shadow-sm p-4 bg-red-50 rounded-2xl border border-red-100 transform rotate-1">
                                             {result}
                                         </div>
@@ -254,7 +256,7 @@ export default function ResultPage() {
 
                                     <div className="p-4 bg-yellow-50 rounded-xl text-yellow-700 text-sm flex items-start gap-3 text-left border border-yellow-100">
                                         <Sparkles className="w-5 h-5 shrink-0 mt-1" />
-                                        <p>Bu bilgiyi sakın unutma! Kimseye söyleme, sürprizi bozma. 🤫</p>
+                                        <p>{t.result.keepSecret}</p>
                                     </div>
 
                                     {!showGiftIdeas ? (
@@ -263,13 +265,13 @@ export default function ResultPage() {
                                             variant="secondary"
                                             className="w-full shadow-lg shadow-red-200/50"
                                         >
-                                            <Gift className="w-5 h-5 mr-2" /> Hediye Fikirleri Gör
+                                            <Gift className="w-5 h-5 mr-2" /> {t.result.seeGiftIdeas}
                                         </Button>
                                     ) : (
                                         <div className="space-y-4 text-left">
                                             <h3 className="font-bold text-gray-900 flex items-center">
                                                 <Sparkles className="w-4 h-4 text-gold mr-2" />
-                                                AI Hediye Önerileri
+                                                {t.result.aiSuggestions}
                                             </h3>
 
                                             {loadingSuggestions ? (
@@ -287,7 +289,7 @@ export default function ResultPage() {
                                                         </div>
                                                     ))}
                                                     {giftSuggestions.length === 0 && (
-                                                        <p className="text-gray-500 text-sm">Öneri bulunamadı.</p>
+                                                        <p className="text-gray-500 text-sm">{t.result.noSuggestions}</p>
                                                     )}
                                                 </div>
                                             )}
@@ -301,7 +303,7 @@ export default function ResultPage() {
                                             size="sm"
                                             className="text-gray-400 hover:text-gray-600"
                                         >
-                                            <RefreshCw className="w-4 h-4 mr-2" /> Başka biri baksın
+                                            <RefreshCw className="w-4 h-4 mr-2" /> {t.result.someoneElse}
                                         </Button>
                                     </div>
                                 </div>
