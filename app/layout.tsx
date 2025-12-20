@@ -22,6 +22,10 @@ const ADSENSE_CLIENT_ID = process.env.NEXT_PUBLIC_ADSENSE_CLIENT_ID || "ca-pub-1
 
 export const metadata: Metadata = {
   title: "YulaSanta - Online Secret Santa Draw | Yılbaşı Çekilişi",
+  icons: {
+    icon: '/icon.png',
+    apple: '/icon.png',
+  },
   description: "Create free, ad-free online Secret Santa draws with friends, family, or colleagues in seconds! Arkadaşlarınızla ücretsiz yılbaşı çekilişi yapın!",
   keywords: [
     // Turkish

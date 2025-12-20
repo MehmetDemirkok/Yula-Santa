@@ -268,7 +268,7 @@ export const translations: Record<Locale, Translation> = {
     // Turkish
     tr: {
         meta: {
-            title: "YulaSanta - Online Yılbaşı Çekilişi Yap",
+            title: "YulaSanta - Online Çekiliş Yap",
             description: "Arkadaşlarınızla, ailenizle veya iş arkadaşlarınızla saniyeler içinde ücretsiz, reklamsız ve üyeliksiz online yılbaşı çekilişi yapın!",
             keywords: ["yılbaşı çekilişi", "secret santa", "hediye çekilişi", "online çekiliş", "yılbaşı hediyesi"]
         },
