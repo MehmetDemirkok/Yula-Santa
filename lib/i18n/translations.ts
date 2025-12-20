@@ -140,6 +140,16 @@ export interface Translation {
         parse: string;
         parsed: string;
     };
+    // Support
+    support: {
+        button: string;
+        title: string;
+        description: string;
+        subject: string;
+        message: string;
+        send: string;
+        contact: string;
+    };
     // Common
     common: {
         loading: string;
@@ -252,6 +262,15 @@ const enTranslation: Translation = {
         pasteComments: "Paste comments here (One per line)",
         parse: "Parse Comments",
         parsed: "{count} participants parsed"
+    },
+    support: {
+        button: "Support",
+        title: "Contact Support",
+        description: "Have feedback or need help? We are here.",
+        subject: "Subject",
+        message: "Message",
+        send: "Send Email",
+        contact: "Contact us at"
     },
     common: {
         loading: "Loading...",
@@ -366,6 +385,15 @@ export const translations: Record<Locale, Translation> = {
             pasteComments: "Yorumları buraya yapıştırın (Her satıra bir tane)",
             parse: "Yorumları Ayrıştır",
             parsed: "{count} kişi ayrıştırıldı"
+        },
+        support: {
+            button: "Destek",
+            title: "Destek & İletişim",
+            description: "Görüşleriniz için bize ulaşın.",
+            subject: "Konu",
+            message: "Mesaj",
+            send: "Gönder",
+            contact: "İletişim"
         },
         common: {
             loading: "Yükleniyor...",
@@ -483,6 +511,15 @@ export const translations: Record<Locale, Translation> = {
             parse: "Parse Comments",
             parsed: "{count} participants parsed"
         },
+        support: {
+            button: "Support",
+            title: "Kontakt",
+            description: "Haben Sie Fragen?",
+            subject: "Betreff",
+            message: "Nachricht",
+            send: "Senden",
+            contact: "Kontaktieren Sie uns"
+        },
         common: {
             loading: "Laden...",
             error: "Fehler",
@@ -595,6 +632,15 @@ export const translations: Record<Locale, Translation> = {
             pasteComments: "Paste comments here",
             parse: "Parse Comments",
             parsed: "{count} participants parsed"
+        },
+        support: {
+            button: "Support",
+            title: "Contact",
+            description: "Avez-vous des questions?",
+            subject: "Sujet",
+            message: "Message",
+            send: "Envoyer",
+            contact: "Contactez-nous"
         },
         common: {
             loading: "Chargement...",
