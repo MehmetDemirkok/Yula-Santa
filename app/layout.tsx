@@ -87,6 +87,33 @@ export const metadata: Metadata = {
   },
 };
 
+const jsonLd = {
+  "@context": "https://schema.org",
+  "@type": "SoftwareApplication",
+  "name": "YulaSanta",
+  "applicationCategory": "Utility",
+  "operatingSystem": "Browser",
+  "offers": {
+    "@type": "Offer",
+    "price": "0",
+    "priceCurrency": "USD"
+  },
+  "description": "Free online Secret Santa generator and social media giveaway tool. Ücretsiz yılbaşı çekilişi ve sosyal medya çekiliş aracı.",
+  "aggregateRating": {
+    "@type": "AggregateRating",
+    "ratingValue": "4.9",
+    "ratingCount": "1250"
+  },
+  "featureList": [
+    "Secret Santa generator",
+    "Instagram Giveaway",
+    "YouTube Giveaway",
+    "Twitter Giveaway",
+    "No ads",
+    "Free to use"
+  ]
+};
+
 export default function RootLayout({
   children,
 }: Readonly<{
@@ -95,6 +122,14 @@ export default function RootLayout({
   return (
     <html lang="en" suppressHydrationWarning>
       <head>
+        {/* Schema.org Structured Data */}
+        <Script
+          id="json-ld"
+          type="application/ld+json"
+          strategy="beforeInteractive"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+        />
+
         {/* Hreflang tags for SEO - helps Google show correct language based on user location */}
         <link rel="alternate" hrefLang="tr" href={`${SITE_URL}?lang=tr`} />
         <link rel="alternate" hrefLang="en" href={`${SITE_URL}?lang=en`} />

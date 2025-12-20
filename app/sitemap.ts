@@ -1,21 +1,38 @@
-import { MetadataRoute } from 'next'
+
+import { MetadataRoute } from 'next';
+
+const SITE_URL = 'https://yulasanta.com';
+const LOCALES = ['tr', 'en', 'de', 'fr', 'es', 'it', 'pt', 'ru', 'ar', 'ja', 'ko', 'zh'];
 
 export default function sitemap(): MetadataRoute.Sitemap {
-    const baseUrl = 'https://yulasanta.com' // Lütfen burayı kendi domaininizle değiştirin
+    const routes = [
+        '',
+        '/youtube',
+        '/instagram',
+        '/twitter',
+    ];
 
-    return [
-        {
-            url: baseUrl,
+    const sitemap: MetadataRoute.Sitemap = [];
+
+    routes.forEach(route => {
+        // Add default (x-default)
+        sitemap.push({
+            url: `${SITE_URL}${route}`,
             lastModified: new Date(),
             changeFrequency: 'daily',
-            priority: 1,
-        },
-        // Eğer başka sayfalarınız varsa buraya ekleyebilirsiniz, örneğin:
-        // {
-        //   url: `${baseUrl}/result`,
-        //   lastModified: new Date(),
-        //   changeFrequency: 'always',
-        //   priority: 0.5,
-        // },
-    ]
+            priority: route === '' ? 1 : 0.8,
+        });
+
+        // Add localized versions
+        LOCALES.forEach(locale => {
+            sitemap.push({
+                url: `${SITE_URL}${route}?lang=${locale}`,
+                lastModified: new Date(),
+                changeFrequency: 'daily',
+                priority: route === '' ? 0.9 : 0.7,
+            });
+        });
+    });
+
+    return sitemap;
 }
