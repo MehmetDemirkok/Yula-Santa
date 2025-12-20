@@ -1,35 +1,64 @@
+/**
+ * ═══════════════════════════════════════════════════════════════════════════
+ * Multi-Language Sitemap Generator
+ * ═══════════════════════════════════════════════════════════════════════════
+ * 
+ * Generates an SEO-optimized sitemap with:
+ * - Separate URLs for each locale (/tr, /en, /de, etc.)
+ * - Proper hreflang alternates
+ * - Correct priorities
+ * 
+ * HOW IT WORKS:
+ * - Each route gets a URL for every supported locale
+ * - Google sees /tr/youtube and /en/youtube as separate pages
+ * - No more query parameter issues (?lang=)
+ * 
+ * GOOGLE SEARCH CONSOLE:
+ * - Submit sitemap.xml to GSC
+ * - Google will index each language version separately
+ * 
+ * ═══════════════════════════════════════════════════════════════════════════
+ */
 
 import { MetadataRoute } from 'next';
+import { locales } from '@/i18n/config';
 
 const SITE_URL = 'https://yulasanta.com';
-const LOCALES = ['tr', 'en', 'de', 'fr', 'es', 'it', 'pt', 'ru', 'ar', 'ja', 'ko', 'zh'];
+
+// All routes in the app (without locale prefix)
+const routes = [
+    { path: '', priority: 1.0, changeFrequency: 'daily' as const },
+    { path: '/youtube', priority: 0.9, changeFrequency: 'weekly' as const },
+    { path: '/instagram', priority: 0.9, changeFrequency: 'weekly' as const },
+    { path: '/twitter', priority: 0.9, changeFrequency: 'weekly' as const },
+    { path: '/privacy', priority: 0.3, changeFrequency: 'monthly' as const },
+];
 
 export default function sitemap(): MetadataRoute.Sitemap {
-    const routes = [
-        '',
-        '/youtube',
-        '/instagram',
-        '/twitter',
-    ];
-
     const sitemap: MetadataRoute.Sitemap = [];
+    const now = new Date();
 
+    // Generate URLs for each route and locale
     routes.forEach(route => {
-        // Add default (x-default)
-        sitemap.push({
-            url: `${SITE_URL}${route}`,
-            lastModified: new Date(),
-            changeFrequency: 'daily',
-            priority: route === '' ? 1 : 0.8,
-        });
+        locales.forEach(locale => {
+            // Build alternates object for hreflang
+            const alternates: { languages: Record<string, string> } = {
+                languages: {}
+            };
 
-        // Add localized versions
-        LOCALES.forEach(locale => {
+            locales.forEach(altLocale => {
+                alternates.languages[altLocale] = `${SITE_URL}/${altLocale}${route.path}`;
+            });
+
+            // Add x-default (usually the default locale)
+            alternates.languages['x-default'] = `${SITE_URL}/tr${route.path}`;
+
             sitemap.push({
-                url: `${SITE_URL}${route}?lang=${locale}`,
-                lastModified: new Date(),
-                changeFrequency: 'daily',
-                priority: route === '' ? 0.9 : 0.7,
+                url: `${SITE_URL}/${locale}${route.path}`,
+                lastModified: now,
+                changeFrequency: route.changeFrequency,
+                priority: locale === 'tr' ? route.priority : route.priority * 0.9,
+                alternates,
             });
         });
     });

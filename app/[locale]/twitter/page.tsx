@@ -1,7 +1,7 @@
 "use client";
 
 import { useState } from "react";
-import { useRouter } from "next/navigation";
+import { useRouter, useParams } from "next/navigation";
 import confetti from "canvas-confetti";
 import {
     Twitter,
@@ -27,6 +27,8 @@ type DrawType = 'retweets' | 'likes' | 'replies' | 'followers';
 
 export default function TwitterGiveaway() {
     const router = useRouter();
+    const params = useParams();
+    const locale = params.locale as string;
     const { t } = useLanguage();
 
     // Tab state
@@ -475,7 +477,7 @@ export default function TwitterGiveaway() {
                 {/* Back to Home */}
                 <div className="text-center pb-8">
                     <Button
-                        onClick={() => router.push('/')}
+                        onClick={() => router.push(`/${locale}`)}
                         variant="ghost"
                         className="text-gray-400 hover:text-gray-600"
                     >

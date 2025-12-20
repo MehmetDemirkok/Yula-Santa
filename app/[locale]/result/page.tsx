@@ -1,7 +1,7 @@
 "use client";
 
 import { useState, useEffect } from "react";
-import { useRouter } from "next/navigation";
+import { useRouter, useParams } from "next/navigation";
 import confetti from "canvas-confetti";
 import { Gift, ArrowRight, Sparkles, User, RefreshCw, ArrowLeftRight, Home } from "lucide-react";
 import { Button } from "@/components/ui/Button";
@@ -13,6 +13,8 @@ interface Assignments {
 
 export default function ResultPage() {
     const router = useRouter();
+    const params = useParams();
+    const locale = params.locale as string;
     const { t } = useLanguage();
     const [assignments, setAssignments] = useState<Assignments>({});
     const [selectedUser, setSelectedUser] = useState<string>("");
@@ -32,7 +34,7 @@ export default function ResultPage() {
 
         const data = localStorage.getItem("secret_santa_assignments");
         if (!data) {
-            router.push("/");
+            router.push(`/${locale}`);
             return;
         }
         setAssignments(JSON.parse(data));
@@ -195,7 +197,7 @@ export default function ResultPage() {
                                 </div>
                             ))}
                             <div className="pt-6">
-                                <Button onClick={() => router.push('/')} variant="outline" className="w-full">
+                                <Button onClick={() => router.push(`/${locale}`)} variant="outline" className="w-full">
                                     {t.result.newDraw}
                                 </Button>
                             </div>
@@ -234,7 +236,7 @@ export default function ResultPage() {
 
                                     <div className="pt-2">
                                         <Button
-                                            onClick={() => router.push('/')}
+                                            onClick={() => router.push(`/${locale}`)}
                                             variant="ghost"
                                             className="w-full text-gray-400 hover:text-gray-600 hover:bg-gray-50"
                                         >
