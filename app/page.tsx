@@ -187,36 +187,36 @@ export default function Home() {
   const handleDraw = () => triggerDraw(participants);
 
   return (
-    <main className="min-h-screen flex flex-col items-center justify-center p-4 relative overflow-hidden bg-gradient-to-b from-[#FFF5F5] to-white">
-      {/* Decorative BG */}
-      <div className="absolute top-0 left-0 w-64 h-64 bg-red-200 rounded-full blur-[100px] opacity-30 -translate-x-1/2 -translate-y-1/2"></div>
-      <div className="absolute bottom-0 right-0 w-80 h-80 bg-green-200 rounded-full blur-[100px] opacity-30 translate-x-1/3 translate-y-1/3"></div>
+    <main className="min-h-screen min-h-dvh flex flex-col items-center justify-center p-3 sm:p-4 md:p-6 relative overflow-hidden bg-gradient-to-b from-[#FFF5F5] to-white safe-area-inset-bottom">
+      {/* Decorative BG - smaller on mobile */}
+      <div className="absolute top-0 left-0 w-32 sm:w-48 md:w-64 h-32 sm:h-48 md:h-64 bg-red-200 rounded-full blur-[60px] sm:blur-[80px] md:blur-[100px] opacity-30 -translate-x-1/2 -translate-y-1/2"></div>
+      <div className="absolute bottom-0 right-0 w-40 sm:w-60 md:w-80 h-40 sm:h-60 md:h-80 bg-green-200 rounded-full blur-[60px] sm:blur-[80px] md:blur-[100px] opacity-30 translate-x-1/3 translate-y-1/3"></div>
 
-      <div className="z-10 w-full max-w-md space-y-8 text-center">
+      <div className="z-10 w-full max-w-md space-y-4 sm:space-y-6 md:space-y-8 text-center px-1">
         <div className="space-y-2">
-          <div className="inline-flex items-center justify-center p-4 bg-white rounded-full mb-4 shadow-sm border border-red-50">
-            <Gift className="w-10 h-10 text-santa-red" strokeWidth={1.5} />
+          <div className="inline-flex items-center justify-center p-3 sm:p-4 bg-white rounded-full mb-2 sm:mb-4 shadow-sm border border-red-50">
+            <Gift className="w-8 h-8 sm:w-10 sm:h-10 text-santa-red" strokeWidth={1.5} />
           </div>
-          <h1 className="text-4xl font-black text-gray-900 tracking-tight">
+          <h1 className="text-3xl sm:text-4xl font-black text-gray-900 tracking-tight">
             Yula<span className="text-santa-red">Santa</span>
           </h1>
-          <p className="text-gray-500 text-lg">
+          <p className="text-gray-500 text-base sm:text-lg">
             {t.home.subtitle}
           </p>
         </div>
 
-        <div className="bg-white/80 backdrop-blur-xl p-6 rounded-3xl shadow-xl border border-white/50 space-y-6">
+        <div className="bg-white/80 backdrop-blur-xl p-4 sm:p-5 md:p-6 rounded-2xl sm:rounded-3xl shadow-xl border border-white/50 space-y-4 sm:space-y-5 md:space-y-6">
           {/* Mode Selector */}
-          <div className="flex p-1 bg-gray-100/50 rounded-xl">
+          <div className="flex p-1 bg-gray-100/50 rounded-lg sm:rounded-xl">
             <button
               onClick={() => setDrawMode('secret')}
-              className={`flex-1 py-2.5 text-sm font-bold rounded-lg transition-all ${drawMode === 'secret' ? 'bg-white text-gray-900 shadow-sm ring-1 ring-black/5' : 'text-gray-500 hover:text-gray-700'}`}
+              className={`flex-1 py-2 sm:py-2.5 text-xs sm:text-sm font-bold rounded-md sm:rounded-lg transition-all ${drawMode === 'secret' ? 'bg-white text-gray-900 shadow-sm ring-1 ring-black/5' : 'text-gray-500 hover:text-gray-700'}`}
             >
               {t.home.secretDraw}
             </button>
             <button
               onClick={() => setDrawMode('pairs')}
-              className={`flex-1 py-2.5 text-sm font-bold rounded-lg transition-all ${drawMode === 'pairs' ? 'bg-white text-santa-red shadow-sm ring-1 ring-black/5' : 'text-gray-500 hover:text-gray-700'}`}
+              className={`flex-1 py-2 sm:py-2.5 text-xs sm:text-sm font-bold rounded-md sm:rounded-lg transition-all ${drawMode === 'pairs' ? 'bg-white text-santa-red shadow-sm ring-1 ring-black/5' : 'text-gray-500 hover:text-gray-700'}`}
             >
               {t.home.directMatch}
             </button>
@@ -227,28 +227,28 @@ export default function Home() {
               value={name}
               onChange={(e) => setName(e.target.value)}
               onKeyDown={(e) => e.key === "Enter" && addParticipant()}
-              className="flex-1 bg-white/50"
+              className="flex-1 bg-white/50 text-base"
             />
-            <Button onClick={addParticipant} className="aspect-square p-0 w-12 rounded-2xl shrink-0">
-              <Plus className="w-6 h-6" />
+            <Button onClick={addParticipant} className="aspect-square p-0 w-11 sm:w-12 rounded-xl sm:rounded-2xl shrink-0">
+              <Plus className="w-5 h-5 sm:w-6 sm:h-6" />
             </Button>
           </div>
 
-          <div className="space-y-2 max-h-[40vh] overflow-y-auto pr-2 custom-scrollbar">
+          <div className="space-y-2 max-h-[35vh] sm:max-h-[40vh] overflow-y-auto pr-1 sm:pr-2 custom-scrollbar">
             {participants.length === 0 && (
-              <div className="text-center py-12 text-gray-400 border-2 border-dashed border-gray-200 rounded-2xl bg-gray-50/50">
-                <Sparkles className="w-8 h-8 mx-auto mb-2 opacity-50" />
-                <p>{t.home.noParticipants}</p>
+              <div className="text-center py-8 sm:py-12 text-gray-400 border-2 border-dashed border-gray-200 rounded-xl sm:rounded-2xl bg-gray-50/50">
+                <Sparkles className="w-6 h-6 sm:w-8 sm:h-8 mx-auto mb-2 opacity-50" />
+                <p className="text-sm sm:text-base">{t.home.noParticipants}</p>
               </div>
             )}
             {participants.map((p, i) => (
-              <div key={i} className="group flex items-center justify-between p-3 pl-4 bg-white rounded-xl shadow-sm hover:shadow-md transition-all border border-gray-100 hover:border-red-100">
-                <span className="font-medium text-gray-700">{p}</span>
+              <div key={i} className="group flex items-center justify-between p-2.5 sm:p-3 pl-3 sm:pl-4 bg-white rounded-lg sm:rounded-xl shadow-sm hover:shadow-md transition-all border border-gray-100 hover:border-red-100">
+                <span className="font-medium text-gray-700 text-sm sm:text-base truncate mr-2">{p}</span>
                 <button
                   onClick={() => removeParticipant(i)}
-                  className="p-2 text-gray-300 hover:text-red-500 rounded-lg transition-colors"
+                  className="p-1.5 sm:p-2 text-gray-300 hover:text-red-500 rounded-lg transition-colors flex-shrink-0"
                 >
-                  <Trash2 className="w-5 h-5" />
+                  <Trash2 className="w-4 h-4 sm:w-5 sm:h-5" />
                 </button>
               </div>
             ))}
@@ -266,11 +266,12 @@ export default function Home() {
             <Button
               onClick={() => fileInputRef.current?.click()}
               variant="ghost"
-              className="flex-1 border-2 border-dashed border-gray-200 text-gray-500 hover:bg-gray-50 hover:border-santa-red/50 hover:text-santa-red"
+              className="flex-1 border-2 border-dashed border-gray-200 text-gray-500 hover:bg-gray-50 hover:border-santa-red/50 hover:text-santa-red text-xs sm:text-sm py-2.5 sm:py-3"
             >
               {isUploading ? t.home.uploading : (
                 <>
-                  <FileUp className="w-4 h-4 mr-2" /> {t.home.uploadList}
+                  <FileUp className="w-3.5 h-3.5 sm:w-4 sm:h-4 mr-1.5 sm:mr-2" />
+                  <span className="truncate">{t.home.uploadList}</span>
                 </>
               )}
             </Button>
@@ -283,10 +284,10 @@ export default function Home() {
                   }
                 }}
                 variant="ghost"
-                className="aspect-square p-0 w-12 border-2 border-dashed border-red-200 text-red-400 hover:bg-red-50 hover:border-red-300 hover:text-red-500"
+                className="aspect-square p-0 w-10 sm:w-12 border-2 border-dashed border-red-200 text-red-400 hover:bg-red-50 hover:border-red-300 hover:text-red-500"
                 title={t.home.clearList}
               >
-                <Trash2 className="w-5 h-5" />
+                <Trash2 className="w-4 h-4 sm:w-5 sm:h-5" />
               </Button>
             )}
           </div>
@@ -321,40 +322,40 @@ export default function Home() {
         </div>
 
         {/* Social Media Giveaways Section */}
-        <div className="w-full space-y-4 mt-4">
-          <h2 className="text-lg font-bold text-gray-800 text-center">Sosyal Medya Çekilişleri</h2>
-          <div className="grid grid-cols-3 gap-3">
+        <div className="w-full space-y-3 sm:space-y-4 mt-3 sm:mt-4">
+          <h2 className="text-base sm:text-lg font-bold text-gray-800 text-center">Sosyal Medya Çekilişleri</h2>
+          <div className="grid grid-cols-3 gap-2 sm:gap-3">
             {/* Instagram */}
             <button
               onClick={() => router.push('/instagram')}
-              className="group flex flex-col items-center gap-2 p-4 bg-white rounded-2xl border border-gray-100 hover:border-pink-200 hover:shadow-lg hover:shadow-pink-100/50 transition-all"
+              className="group flex flex-col items-center gap-1.5 sm:gap-2 p-3 sm:p-4 bg-white rounded-xl sm:rounded-2xl border border-gray-100 hover:border-pink-200 hover:shadow-lg hover:shadow-pink-100/50 transition-all"
             >
-              <div className="p-3 bg-gradient-to-br from-purple-500 via-pink-500 to-orange-400 rounded-xl group-hover:scale-110 transition-transform">
-                <Instagram className="w-6 h-6 text-white" />
+              <div className="p-2 sm:p-3 bg-gradient-to-br from-purple-500 via-pink-500 to-orange-400 rounded-lg sm:rounded-xl group-hover:scale-110 transition-transform">
+                <Instagram className="w-5 h-5 sm:w-6 sm:h-6 text-white" />
               </div>
-              <span className="text-xs font-bold text-gray-600 group-hover:text-pink-600">Instagram</span>
+              <span className="text-[10px] sm:text-xs font-bold text-gray-600 group-hover:text-pink-600">Instagram</span>
             </button>
 
             {/* YouTube */}
             <button
               onClick={() => router.push('/youtube')}
-              className="group flex flex-col items-center gap-2 p-4 bg-white rounded-2xl border border-gray-100 hover:border-red-200 hover:shadow-lg hover:shadow-red-100/50 transition-all"
+              className="group flex flex-col items-center gap-1.5 sm:gap-2 p-3 sm:p-4 bg-white rounded-xl sm:rounded-2xl border border-gray-100 hover:border-red-200 hover:shadow-lg hover:shadow-red-100/50 transition-all"
             >
-              <div className="p-3 bg-red-600 rounded-xl group-hover:scale-110 transition-transform">
-                <Youtube className="w-6 h-6 text-white" />
+              <div className="p-2 sm:p-3 bg-red-600 rounded-lg sm:rounded-xl group-hover:scale-110 transition-transform">
+                <Youtube className="w-5 h-5 sm:w-6 sm:h-6 text-white" />
               </div>
-              <span className="text-xs font-bold text-gray-600 group-hover:text-red-600">YouTube</span>
+              <span className="text-[10px] sm:text-xs font-bold text-gray-600 group-hover:text-red-600">YouTube</span>
             </button>
 
             {/* Twitter/X */}
             <button
               onClick={() => router.push('/twitter')}
-              className="group flex flex-col items-center gap-2 p-4 bg-white rounded-2xl border border-gray-100 hover:border-sky-200 hover:shadow-lg hover:shadow-sky-100/50 transition-all"
+              className="group flex flex-col items-center gap-1.5 sm:gap-2 p-3 sm:p-4 bg-white rounded-xl sm:rounded-2xl border border-gray-100 hover:border-sky-200 hover:shadow-lg hover:shadow-sky-100/50 transition-all"
             >
-              <div className="p-3 bg-black rounded-xl group-hover:scale-110 transition-transform">
-                <Twitter className="w-6 h-6 text-white" />
+              <div className="p-2 sm:p-3 bg-black rounded-lg sm:rounded-xl group-hover:scale-110 transition-transform">
+                <Twitter className="w-5 h-5 sm:w-6 sm:h-6 text-white" />
               </div>
-              <span className="text-xs font-bold text-gray-600 group-hover:text-sky-600">Twitter/X</span>
+              <span className="text-[10px] sm:text-xs font-bold text-gray-600 group-hover:text-sky-600">Twitter/X</span>
             </button>
           </div>
         </div>

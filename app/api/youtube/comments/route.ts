@@ -2,21 +2,31 @@ import { NextResponse } from 'next/server';
 
 export async function POST(request: Request) {
     try {
-        const { videoId } = await request.json();
+        // Validation for API Key
+        if (!process.env.YOUTUBE_API_KEY) {
+            console.error('YOUTUBE_API_KEY is not defined in environment variables');
+            return NextResponse.json({ error: 'Server configuration error: YouTube API Key missing' }, { status: 500 });
+        }
+
+        let body;
+        try {
+            body = await request.json();
+        } catch (e) {
+            return NextResponse.json({ error: 'Invalid JSON body' }, { status: 400 });
+        }
+
+        const { videoId } = body;
 
         if (!videoId) {
             return NextResponse.json({ error: 'Video ID gerekli' }, { status: 400 });
         }
 
         const apiKey = process.env.YOUTUBE_API_KEY;
-        if (!apiKey) {
-            return NextResponse.json({ error: 'API anahtarı bulunamadı' }, { status: 500 });
-        }
 
         let allParticipants: string[] = [];
         let nextPageToken = '';
         let pageCount = 0;
-        const MAX_PAGES = 100; // ~10,000 top-level comments + their replies
+        const MAX_PAGES = 100; // Limit pages to avoid timeouts
 
         do {
             // Request 'snippet' for top-level and 'replies' for nested comments
@@ -26,32 +36,39 @@ export async function POST(request: Request) {
 
             if (!response.ok) {
                 const data = await response.json();
-                console.error('YouTube API Error:', data);
-                // If we have some comments, return them instead of failing completely, or throw?
-                // For now, if it fails on the first page, return error. If later, maybe break?
+                console.error('YouTube API Error:', JSON.stringify(data, null, 2));
+
+                // Detailed error message
+                const errorMessage = data.error?.message || 'YouTube API hatası';
+
+                // If it fails on the first page, return the error.
+                // If it fails on subsequent pages, we can either return partial results or error.
+                // Returning partial results is safer for UX.
                 if (pageCount === 0) {
-                    return NextResponse.json({ error: data.error?.message || 'YouTube API hatası' }, { status: response.status });
+                    return NextResponse.json({ error: errorMessage }, { status: response.status });
                 }
                 break;
             }
 
             const data = await response.json();
 
-            // Extract authors from top-level comments and their replies
+            // Extract authors
             const pageParticipants: string[] = [];
 
-            for (const item of data.items) {
-                // Top level comment
-                const topLevelSnippet = item.snippet.topLevelComment.snippet;
-                if (topLevelSnippet) {
-                    pageParticipants.push(topLevelSnippet.authorDisplayName);
-                }
+            if (data.items) {
+                for (const item of data.items) {
+                    // Top level comment
+                    const topLevelSnippet = item.snippet?.topLevelComment?.snippet;
+                    if (topLevelSnippet) {
+                        pageParticipants.push(topLevelSnippet.authorDisplayName);
+                    }
 
-                // Replies (if any)
-                if (item.replies && item.replies.comments) {
-                    for (const reply of item.replies.comments) {
-                        if (reply.snippet) {
-                            pageParticipants.push(reply.snippet.authorDisplayName);
+                    // Replies
+                    if (item.replies && item.replies.comments) {
+                        for (const reply of item.replies.comments) {
+                            if (reply.snippet) {
+                                pageParticipants.push(reply.snippet.authorDisplayName);
+                            }
                         }
                     }
                 }
@@ -72,7 +89,7 @@ export async function POST(request: Request) {
             totalFetched: allParticipants.length
         });
     } catch (error) {
-        console.error('Server Error:', error);
+        console.error('Server Error in YouTube route:', error);
         return NextResponse.json({ error: 'Sunucu hatası oluştu' }, { status: 500 });
     }
 }

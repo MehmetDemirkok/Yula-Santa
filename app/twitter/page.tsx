@@ -141,67 +141,67 @@ export default function TwitterGiveaway() {
     };
 
     return (
-        <main className="min-h-screen flex flex-col items-center p-4 relative overflow-hidden bg-gradient-to-b from-sky-50 via-blue-50 to-white">
+        <main className="min-h-screen min-h-dvh flex flex-col items-center p-3 sm:p-4 relative overflow-hidden bg-gradient-to-b from-sky-50 via-blue-50 to-white safe-area-inset-bottom">
             {/* Decorative BG */}
-            <div className="absolute top-0 left-0 w-96 h-96 bg-sky-200 rounded-full blur-[120px] opacity-40 -translate-x-1/2 -translate-y-1/2" />
-            <div className="absolute bottom-0 right-0 w-96 h-96 bg-blue-200 rounded-full blur-[120px] opacity-40 translate-x-1/3 translate-y-1/3" />
+            <div className="absolute top-0 left-0 w-48 sm:w-72 md:w-96 h-48 sm:h-72 md:h-96 bg-sky-200 rounded-full blur-[80px] sm:blur-[100px] md:blur-[120px] opacity-40 -translate-x-1/2 -translate-y-1/2" />
+            <div className="absolute bottom-0 right-0 w-48 sm:w-72 md:w-96 h-48 sm:h-72 md:h-96 bg-blue-200 rounded-full blur-[80px] sm:blur-[100px] md:blur-[120px] opacity-40 translate-x-1/3 translate-y-1/3" />
 
-            <div className="z-10 w-full max-w-2xl space-y-6">
+            <div className="z-10 w-full max-w-2xl space-y-4 sm:space-y-6">
                 {/* Header */}
-                <div className="text-center space-y-4 pt-8">
-                    <div className="inline-flex items-center justify-center p-4 bg-black rounded-2xl shadow-lg">
-                        <Twitter className="w-10 h-10 text-white" />
+                <div className="text-center space-y-3 sm:space-y-4 pt-4 sm:pt-8">
+                    <div className="inline-flex items-center justify-center p-3 sm:p-4 bg-black rounded-xl sm:rounded-2xl shadow-lg">
+                        <Twitter className="w-8 h-8 sm:w-10 sm:h-10 text-white" />
                     </div>
-                    <h1 className="text-3xl md:text-4xl font-black text-gray-900 tracking-tight">
+                    <h1 className="text-2xl sm:text-3xl md:text-4xl font-black text-gray-900 tracking-tight">
                         {t.giveaway.twitterTitle}
                     </h1>
-                    <p className="text-gray-500 max-w-lg mx-auto">
+                    <p className="text-gray-500 max-w-lg mx-auto text-sm sm:text-base px-2">
                         {t.giveaway.twitterDesc}
                     </p>
                 </div>
 
                 {/* Main Card */}
-                <div className="bg-white/90 backdrop-blur-xl rounded-3xl shadow-xl border border-white/50 overflow-hidden">
+                <div className="bg-white/90 backdrop-blur-xl rounded-2xl sm:rounded-3xl shadow-xl border border-white/50 overflow-hidden">
                     {/* Tab Navigation */}
                     <div className="flex border-b border-gray-100">
                         <button
                             onClick={() => setActiveTab('links')}
-                            className={`flex-1 py-4 px-6 font-bold text-sm flex items-center justify-center gap-2 transition-all border-b-2 ${activeTab === 'links'
+                            className={`flex-1 py-3 sm:py-4 px-2 sm:px-6 font-bold text-xs sm:text-sm flex items-center justify-center gap-1 sm:gap-2 transition-all border-b-2 ${activeTab === 'links'
                                 ? 'text-sky-600 border-sky-500 bg-sky-50/50'
                                 : 'text-gray-400 border-transparent hover:text-gray-600'
                                 }`}
                         >
-                            <Link2 className="w-4 h-4" />
-                            {t.giveaway.links}
+                            <Link2 className="w-3.5 h-3.5 sm:w-4 sm:h-4" />
+                            <span className="hidden xs:inline sm:inline">{t.giveaway.links}</span>
                         </button>
                         <button
                             onClick={() => setActiveTab('rules')}
-                            className={`flex-1 py-4 px-6 font-bold text-sm flex items-center justify-center gap-2 transition-all border-b-2 ${activeTab === 'rules'
+                            className={`flex-1 py-3 sm:py-4 px-2 sm:px-6 font-bold text-xs sm:text-sm flex items-center justify-center gap-1 sm:gap-2 transition-all border-b-2 ${activeTab === 'rules'
                                 ? 'text-sky-600 border-sky-500 bg-sky-50/50'
                                 : 'text-gray-400 border-transparent hover:text-gray-600'
                                 }`}
                         >
-                            <Settings className="w-4 h-4" />
-                            {t.giveaway.rules}
+                            <Settings className="w-3.5 h-3.5 sm:w-4 sm:h-4" />
+                            <span className="hidden xs:inline sm:inline">{t.giveaway.rules}</span>
                         </button>
                         <button
                             onClick={() => setActiveTab('participants')}
-                            className={`flex-1 py-4 px-6 font-bold text-sm flex items-center justify-center gap-2 transition-all border-b-2 ${activeTab === 'participants'
+                            className={`flex-1 py-3 sm:py-4 px-2 sm:px-6 font-bold text-xs sm:text-sm flex items-center justify-center gap-1 sm:gap-2 transition-all border-b-2 ${activeTab === 'participants'
                                 ? 'text-sky-600 border-sky-500 bg-sky-50/50'
                                 : 'text-gray-400 border-transparent hover:text-gray-600'
                                 }`}
                         >
-                            <Users className="w-4 h-4" />
-                            {t.giveaway.participants}
+                            <Users className="w-3.5 h-3.5 sm:w-4 sm:h-4" />
+                            <span className="hidden xs:inline sm:inline">{t.giveaway.participants}</span>
                             {participants.length > 0 && (
-                                <span className="ml-2 bg-sky-500 text-white text-xs px-2 py-0.5 rounded-full">
+                                <span className="ml-1 sm:ml-2 bg-sky-500 text-white text-[10px] sm:text-xs px-1.5 sm:px-2 py-0.5 rounded-full">
                                     {participants.length}
                                 </span>
                             )}
                         </button>
                     </div>
 
-                    <div className="p-6">
+                    <div className="p-4 sm:p-6">
                         {/* Links Tab */}
                         {activeTab === 'links' && !showResults && (
                             <div className="space-y-6">

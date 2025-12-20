@@ -115,35 +115,35 @@ export default function ResultPage() {
     if (!drawMode) return null;
 
     return (
-        <main className="min-h-screen flex flex-col items-center justify-center p-4 bg-gradient-to-b from-green-50 to-white relative overflow-x-hidden">
+        <main className="min-h-screen min-h-dvh flex flex-col items-center justify-center p-3 sm:p-4 bg-gradient-to-b from-green-50 to-white relative overflow-x-hidden safe-area-inset-bottom">
             {/* Decorative BG */}
-            <div className="absolute top-0 right-0 w-96 h-96 bg-red-100 rounded-full blur-[120px] opacity-40 translate-x-1/3 -translate-y-1/3"></div>
-            <div className="absolute bottom-0 left-0 w-96 h-96 bg-green-100 rounded-full blur-[120px] opacity-40 -translate-x-1/3 translate-y-1/3"></div>
+            <div className="absolute top-0 right-0 w-48 sm:w-72 md:w-96 h-48 sm:h-72 md:h-96 bg-red-100 rounded-full blur-[80px] sm:blur-[100px] md:blur-[120px] opacity-40 translate-x-1/3 -translate-y-1/3"></div>
+            <div className="absolute bottom-0 left-0 w-48 sm:w-72 md:w-96 h-48 sm:h-72 md:h-96 bg-green-100 rounded-full blur-[80px] sm:blur-[100px] md:blur-[120px] opacity-40 -translate-x-1/3 translate-y-1/3"></div>
 
-            <div className="z-10 w-full max-w-lg space-y-8 text-center">
+            <div className="z-10 w-full max-w-lg space-y-4 sm:space-y-6 md:space-y-8 text-center px-1">
                 {/* Header */}
                 {!result && drawMode === 'secret' && (
                     <div className="space-y-2 animate-fade-in">
-                        <h1 className="text-3xl font-black text-gray-900 tracking-tight">
+                        <h1 className="text-2xl sm:text-3xl font-black text-gray-900 tracking-tight">
                             {t.result.whoGetsGift}
                         </h1>
-                        <p className="text-gray-500">
+                        <p className="text-gray-500 text-sm sm:text-base">
                             {t.result.selectName}
                         </p>
                     </div>
                 )}
                 {drawMode === 'pairs' && (
                     <div className="space-y-2 animate-fade-in">
-                        <h1 className="text-3xl font-black text-gray-900 tracking-tight">
+                        <h1 className="text-2xl sm:text-3xl font-black text-gray-900 tracking-tight">
                             {t.result.matchList}
                         </h1>
-                        <p className="text-gray-500">
+                        <p className="text-gray-500 text-sm sm:text-base">
                             {t.result.christmasMatches}
                         </p>
                     </div>
                 )}
 
-                <div className="bg-white/90 backdrop-blur-xl p-8 rounded-3xl shadow-xl border border-white/50 relative overflow-hidden">
+                <div className="bg-white/90 backdrop-blur-xl p-4 sm:p-6 md:p-8 rounded-2xl sm:rounded-3xl shadow-xl border border-white/50 relative overflow-hidden">
 
                     {/* DIRECT PAIRS MODE - FULL LIST */}
                     {drawMode === 'pairs' && (
