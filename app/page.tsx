@@ -2,7 +2,7 @@
 
 import { useState, useEffect, useRef } from "react";
 import { useRouter } from "next/navigation";
-import { Plus, Trash2, Gift, Sparkles, FileUp } from "lucide-react";
+import { Plus, Trash2, Gift, Sparkles, FileUp, Instagram, Youtube, Twitter } from "lucide-react";
 import { Button } from "@/components/ui/Button";
 import { Input } from "@/components/ui/Input";
 import { useLanguage } from "@/lib/i18n/LanguageContext";
@@ -317,6 +317,45 @@ export default function Home() {
                 )}
               </div>
             )}
+          </div>
+        </div>
+
+        {/* Social Media Giveaways Section */}
+        <div className="w-full space-y-4 mt-4">
+          <h2 className="text-lg font-bold text-gray-800 text-center">Sosyal Medya Çekilişleri</h2>
+          <div className="grid grid-cols-3 gap-3">
+            {/* Instagram */}
+            <button
+              onClick={() => router.push('/instagram')}
+              className="group flex flex-col items-center gap-2 p-4 bg-white rounded-2xl border border-gray-100 hover:border-pink-200 hover:shadow-lg hover:shadow-pink-100/50 transition-all"
+            >
+              <div className="p-3 bg-gradient-to-br from-purple-500 via-pink-500 to-orange-400 rounded-xl group-hover:scale-110 transition-transform">
+                <Instagram className="w-6 h-6 text-white" />
+              </div>
+              <span className="text-xs font-bold text-gray-600 group-hover:text-pink-600">Instagram</span>
+            </button>
+
+            {/* YouTube */}
+            <button
+              onClick={() => router.push('/youtube')}
+              className="group flex flex-col items-center gap-2 p-4 bg-white rounded-2xl border border-gray-100 hover:border-red-200 hover:shadow-lg hover:shadow-red-100/50 transition-all"
+            >
+              <div className="p-3 bg-red-600 rounded-xl group-hover:scale-110 transition-transform">
+                <Youtube className="w-6 h-6 text-white" />
+              </div>
+              <span className="text-xs font-bold text-gray-600 group-hover:text-red-600">YouTube</span>
+            </button>
+
+            {/* Twitter/X */}
+            <button
+              onClick={() => router.push('/twitter')}
+              className="group flex flex-col items-center gap-2 p-4 bg-white rounded-2xl border border-gray-100 hover:border-sky-200 hover:shadow-lg hover:shadow-sky-100/50 transition-all"
+            >
+              <div className="p-3 bg-black rounded-xl group-hover:scale-110 transition-transform">
+                <Twitter className="w-6 h-6 text-white" />
+              </div>
+              <span className="text-xs font-bold text-gray-600 group-hover:text-sky-600">Twitter/X</span>
+            </button>
           </div>
         </div>
 

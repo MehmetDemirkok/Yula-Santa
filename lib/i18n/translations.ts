@@ -89,6 +89,57 @@ export interface Translation {
         selectYourName: string;
         backToHome: string;
     };
+    // Giveaway
+    giveaway: {
+        links: string;
+        rules: string;
+        participants: string;
+        giveawayName: string;
+        winnerCount: string;
+        backupCount: string;
+        startGiveaway: string;
+        newGiveaway: string;
+        copyResults: string;
+        copied: string;
+        comments: string;
+        likes: string;
+        subscribers: string;
+        retweets: string;
+        replies: string;
+        followers: string;
+        tags: string;
+        fetchComments: string;
+        fetching: string;
+        linkInputPlaceholder: string;
+        addParticipant: string;
+        bulkAdd: string;
+        clearAll: string;
+        results: string;
+        winners: string;
+        backups: string;
+        youtubeTitle: string;
+        instagramTitle: string;
+        twitterTitle: string;
+        youtubeDesc: string;
+        instagramDesc: string;
+        twitterDesc: string;
+        requireSubscription: string;
+        requireNotification: string;
+        requireFollow: string;
+        requireRetweet: string;
+        requireLike: string;
+        countUserOnce: string;
+        inputError: string;
+        fetchError: string;
+        apiLimitation: string;
+        manualMode: string;
+        autoMode: string;
+        manualDesc: string;
+        autoDesc: string;
+        pasteComments: string;
+        parse: string;
+        parsed: string;
+    };
     // Common
     common: {
         loading: string;
@@ -100,6 +151,118 @@ export interface Translation {
         clearConfirm: string;
     };
 }
+
+const enTranslation: Translation = {
+    meta: {
+        title: "YulaSanta - Online Secret Santa Draw",
+        description: "Create free, ad-free online Secret Santa draws with friends, family, or colleagues in seconds!",
+        keywords: ["secret santa", "gift exchange", "christmas draw", "online raffle", "holiday gift"]
+    },
+    home: {
+        title: "YulaSanta",
+        subtitle: "Add your friends, start the draw!",
+        secretDraw: "Secret Draw 🤫",
+        directMatch: "Direct Match 🤝",
+        inputPlaceholder: "Enter a name...",
+        noParticipants: "No one added yet",
+        uploadList: "Upload List (Excel/PDF)",
+        uploading: "Uploading...",
+        clearList: "Clear List",
+        startDraw: "Start Draw",
+        match: "Match",
+        happyNewYear: "🎄 Happy New Year!",
+        minPeople3: "Add at least 3 people",
+        minPeople2: "Add at least 2 people",
+        evenNumber: "Number of people must be even",
+        nameExists: "This name already exists!",
+        namesAdded: "names added",
+        totalCount: "Total",
+        startDrawConfirm: "Do you want to start the draw?",
+        notEnoughPeople: "Not enough people for the draw.",
+        noNamesFound: "Could not read names from file.",
+        uploadError: "An error occurred while uploading.",
+        unsupportedFormat: "Unsupported file format. Please use Excel (.xlsx) or PDF.",
+        secretDrawMinError: "Secret Draw requires at least 3 people!",
+        directMatchMinError: "Matching requires at least 2 people!",
+        directMatchEvenError: "Direct matching requires an even number of people! Please add or remove someone.",
+        drawError: "An error occurred, please try again."
+    },
+    result: {
+        whoGetsGift: "Who Do I Buy a Gift For?",
+        selectName: "Select your name and see the result. 🎁",
+        matchList: "Match List",
+        christmasMatches: "Here are the holiday matches! 🎄",
+        giftRecipient: "YOUR GIFT RECIPIENT",
+        keepSecret: "Don't forget this! Keep it secret, don't spoil the surprise. 🤫",
+        seeGiftIdeas: "See Gift Ideas",
+        aiSuggestions: "AI Gift Suggestions",
+        noSuggestions: "No suggestions found.",
+        someoneElse: "Let someone else check",
+        newDraw: "Start New Draw",
+        seeResult: "See Result",
+        selectYourName: "Select your name...",
+        backToHome: "Back to Home"
+    },
+    giveaway: {
+        links: "Links",
+        rules: "Rules",
+        participants: "Participants",
+        giveawayName: "Giveaway Name",
+        winnerCount: "Winner Count",
+        backupCount: "Backup Count",
+        startGiveaway: "Start Giveaway",
+        newGiveaway: "New Giveaway",
+        copyResults: "Copy Results",
+        copied: "Copied!",
+        comments: "Comments",
+        likes: "Likes",
+        subscribers: "Subscribers",
+        retweets: "Retweets",
+        replies: "Replies",
+        followers: "Followers",
+        tags: "Tags",
+        fetchComments: "Fetch Comments",
+        fetching: "Fetching...",
+        linkInputPlaceholder: "Paste Link",
+        addParticipant: "Add Participant",
+        bulkAdd: "Bulk Add",
+        clearAll: "Clear All",
+        results: "Results",
+        winners: "Winners",
+        backups: "Backups",
+        youtubeTitle: "Free YouTube Giveaway",
+        instagramTitle: "Instagram Giveaway Tool",
+        twitterTitle: "Free Twitter/X Giveaway",
+        youtubeDesc: "Easily draw from comments, likes, and subscribers on your YouTube videos.",
+        instagramDesc: "Easily draw from comments and likes on your Instagram posts.",
+        twitterDesc: "Easily draw from retweets, likes, and replies on Twitter/X.",
+        requireSubscription: "Require Subscription",
+        requireNotification: "Require Notification",
+        requireFollow: "Require Follow",
+        requireRetweet: "Require Retweet",
+        requireLike: "Require Like",
+        countUserOnce: "Count User Once",
+        inputError: "Please enter a valid link!",
+        fetchError: "Could not fetch data.",
+        apiLimitation: "Automatic fetching is currently unavailable due to platform limitations. Please use manual entry.",
+        manualMode: "Manual Entry (Free)",
+        autoMode: "Automatic Fetch (Apify)",
+        manualDesc: "Best for small giveaways (50-100 comments). Paste comments directly.",
+        autoDesc: "Best for large giveaways. Requires Apify set up.",
+        pasteComments: "Paste comments here (One per line)",
+        parse: "Parse Comments",
+        parsed: "{count} participants parsed"
+    },
+    common: {
+        loading: "Loading...",
+        error: "Error",
+        confirm: "Confirm",
+        cancel: "Cancel",
+        yes: "Yes",
+        no: "No",
+        clearConfirm: "Are you sure you want to clear the entire list?"
+    }
+};
 
 export const translations: Record<Locale, Translation> = {
     // Turkish
@@ -154,6 +317,56 @@ export const translations: Record<Locale, Translation> = {
             selectYourName: "İsminizi seçin...",
             backToHome: "Ana Ekrana Dön"
         },
+        giveaway: {
+            links: "Linkler",
+            rules: "Kurallar",
+            participants: "Katılımcılar",
+            giveawayName: "Çekiliş Adı",
+            winnerCount: "Kazanan Sayısı",
+            backupCount: "Yedek Sayısı",
+            startGiveaway: "Çekilişi Başlat",
+            newGiveaway: "Yeni Çekiliş",
+            copyResults: "Sonuçları Kopyala",
+            copied: "Kopyalandı!",
+            comments: "Yorumlar",
+            likes: "Beğeniler",
+            subscribers: "Aboneler",
+            retweets: "Retweetler",
+            replies: "Yanıtlar",
+            followers: "Takipçiler",
+            tags: "Etiketler",
+            fetchComments: "Yorumları Getir",
+            fetching: "Çekiliyor...",
+            linkInputPlaceholder: "Linki Yapıştırın",
+            addParticipant: "Katılımcı Ekle",
+            bulkAdd: "Toplu Ekle",
+            clearAll: "Tümünü Sil",
+            results: "Sonuçlar",
+            winners: "Kazananlar",
+            backups: "Yedekler",
+            youtubeTitle: "Ücretsiz YouTube Çekiliş Aracı",
+            instagramTitle: "Instagram Çekiliş Aracı",
+            twitterTitle: "Ücretsiz Twitter/X Çekiliş Aracı",
+            youtubeDesc: "YouTube videolarınızdaki yorumlar ve beğeniler arasından kolayca çekiliş yapın.",
+            instagramDesc: "Instagram gönderilerinizdeki yorumlar ve beğeniler arasından kolayca çekiliş yapın.",
+            twitterDesc: "Twitter/X'teki retweet ve beğeniler arasından kolayca çekiliş yapın.",
+            requireSubscription: "Abone Olma Şartı",
+            requireNotification: "Bildirim Şartı",
+            requireFollow: "Takip Şartı",
+            requireRetweet: "Retweet Şartı",
+            requireLike: "Beğeni Şartı",
+            countUserOnce: "Her Kullanıcıyı 1 Kere Say",
+            inputError: "Lütfen geçerli bir link giriniz!",
+            fetchError: "Veriler çekilemedi.",
+            apiLimitation: "Platform kısıtlamaları nedeniyle otomatik veri çekme şu anda kullanılamıyor. Lütfen manuel giriş yapınız.",
+            manualMode: "Manuel Giriş (Ücretsiz)",
+            autoMode: "Otomatik Çekim (Apify)",
+            manualDesc: "Küçük çekilişler (50-100 yorum) için ideal. Yorumları direkt yapıştırın.",
+            autoDesc: "Büyük çekilişler için ideal. Apify kurulumu gerektirir.",
+            pasteComments: "Yorumları buraya yapıştırın (Her satıra bir tane)",
+            parse: "Yorumları Ayrıştır",
+            parsed: "{count} kişi ayrıştırıldı"
+        },
         common: {
             loading: "Yükleniyor...",
             error: "Hata",
@@ -166,67 +379,7 @@ export const translations: Record<Locale, Translation> = {
     },
 
     // English
-    en: {
-        meta: {
-            title: "YulaSanta - Online Secret Santa Draw",
-            description: "Create free, ad-free online Secret Santa draws with friends, family, or colleagues in seconds!",
-            keywords: ["secret santa", "gift exchange", "christmas draw", "online raffle", "holiday gift"]
-        },
-        home: {
-            title: "YulaSanta",
-            subtitle: "Add your friends, start the draw!",
-            secretDraw: "Secret Draw 🤫",
-            directMatch: "Direct Match 🤝",
-            inputPlaceholder: "Enter a name...",
-            noParticipants: "No one added yet",
-            uploadList: "Upload List (Excel/PDF)",
-            uploading: "Uploading...",
-            clearList: "Clear List",
-            startDraw: "Start Draw",
-            match: "Match",
-            happyNewYear: "🎄 Happy New Year!",
-            minPeople3: "Add at least 3 people",
-            minPeople2: "Add at least 2 people",
-            evenNumber: "Number of people must be even",
-            nameExists: "This name already exists!",
-            namesAdded: "names added",
-            totalCount: "Total",
-            startDrawConfirm: "Do you want to start the draw?",
-            notEnoughPeople: "Not enough people for the draw.",
-            noNamesFound: "Could not read names from file.",
-            uploadError: "An error occurred while uploading.",
-            unsupportedFormat: "Unsupported file format. Please use Excel (.xlsx) or PDF.",
-            secretDrawMinError: "Secret Draw requires at least 3 people!",
-            directMatchMinError: "Matching requires at least 2 people!",
-            directMatchEvenError: "Direct matching requires an even number of people! Please add or remove someone.",
-            drawError: "An error occurred, please try again."
-        },
-        result: {
-            whoGetsGift: "Who Do I Buy a Gift For?",
-            selectName: "Select your name and see the result. 🎁",
-            matchList: "Match List",
-            christmasMatches: "Here are the holiday matches! 🎄",
-            giftRecipient: "YOUR GIFT RECIPIENT",
-            keepSecret: "Don't forget this! Keep it secret, don't spoil the surprise. 🤫",
-            seeGiftIdeas: "See Gift Ideas",
-            aiSuggestions: "AI Gift Suggestions",
-            noSuggestions: "No suggestions found.",
-            someoneElse: "Let someone else check",
-            newDraw: "Start New Draw",
-            seeResult: "See Result",
-            selectYourName: "Select your name...",
-            backToHome: "Back to Home"
-        },
-        common: {
-            loading: "Loading...",
-            error: "Error",
-            confirm: "Confirm",
-            cancel: "Cancel",
-            yes: "Yes",
-            no: "No",
-            clearConfirm: "Are you sure you want to clear the entire list?"
-        }
-    },
+    en: enTranslation,
 
     // German
     de: {
@@ -279,6 +432,56 @@ export const translations: Record<Locale, Translation> = {
             seeResult: "Ergebnis anzeigen",
             selectYourName: "Wähle deinen Namen...",
             backToHome: "Zurück zur Startseite"
+        },
+        giveaway: {
+            links: "Links",
+            rules: "Regeln",
+            participants: "Teilnehmer",
+            giveawayName: "Gewinnspiel Name",
+            winnerCount: "Anzahl Gewinner",
+            backupCount: "Anzahl Ersatz",
+            startGiveaway: "Gewinnspiel Starten",
+            newGiveaway: "Neues Gewinnspiel",
+            copyResults: "Ergebnisse Kopieren",
+            copied: "Kopiert!",
+            comments: "Kommentare",
+            likes: "Likes",
+            subscribers: "Abonnenten",
+            retweets: "Retweets",
+            replies: "Antworten",
+            followers: "Follower",
+            tags: "Tags",
+            fetchComments: "Kommentare Laden",
+            fetching: "Laden...",
+            linkInputPlaceholder: "Link Einfügen",
+            addParticipant: "Teilnehmer Hinzufügen",
+            bulkAdd: "Masseneingabe",
+            clearAll: "Alles Löschen",
+            results: "Ergebnisse",
+            winners: "Gewinner",
+            backups: "Ersatz",
+            youtubeTitle: "YouTube Gewinnspiel",
+            instagramTitle: "Instagram Gewinnspiel",
+            twitterTitle: "Twitter Gewinnspiel",
+            youtubeDesc: "Aus Kommentaren ziehen",
+            instagramDesc: "Aus Kommentaren ziehen",
+            twitterDesc: "Aus Retweets/Antworten ziehen",
+            requireSubscription: "Abo erforderlich",
+            requireNotification: "Benachrichtigung an",
+            requireFollow: "Follow erforderlich",
+            requireRetweet: "Retweet erforderlich",
+            requireLike: "Like erforderlich",
+            countUserOnce: "Benutzer einmal zählen",
+            inputError: "Bitte geben Sie einen gültigen Link ein!",
+            fetchError: "Daten konnten nicht abgerufen werden.",
+            apiLimitation: "Das automatische Abrufen ist aufgrund von Plattformbeschränkungen derzeit nicht verfügbar. Bitte verwenden Sie die manuelle Eingabe.",
+            manualMode: "Manuel Entry (Free)",
+            autoMode: "Auto Fetch (Apify)",
+            manualDesc: "Best for small giveaways. Paste comments.",
+            autoDesc: "Best for large giveaways. Requires Apify.",
+            pasteComments: "Paste comments here",
+            parse: "Parse Comments",
+            parsed: "{count} participants parsed"
         },
         common: {
             loading: "Laden...",
@@ -343,6 +546,56 @@ export const translations: Record<Locale, Translation> = {
             selectYourName: "Sélectionnez votre nom...",
             backToHome: "Retour à l'accueil"
         },
+        giveaway: {
+            links: "Liens",
+            rules: "Règles",
+            participants: "Participants",
+            giveawayName: "Nom du tirage",
+            winnerCount: "Nombre de gagnants",
+            backupCount: "Nombre de remplaçants",
+            startGiveaway: "Lancer le tirage",
+            newGiveaway: "Nouveau tirage",
+            copyResults: "Copier",
+            copied: "Copié!",
+            comments: "Commentaires",
+            likes: "J'aime",
+            subscribers: "Abonnés",
+            retweets: "Retweets",
+            replies: "Réponses",
+            followers: "Abonnés",
+            tags: "Tags",
+            fetchComments: "Récupérer",
+            fetching: "Chargement...",
+            linkInputPlaceholder: "Coller le lien",
+            addParticipant: "Ajouter participant",
+            bulkAdd: "Ajout groupé",
+            clearAll: "Tout effacer",
+            results: "Résultats",
+            winners: "Gagnants",
+            backups: "Remplaçants",
+            youtubeTitle: "Tirage YouTube",
+            instagramTitle: "Tirage Instagram",
+            twitterTitle: "Tirage Twitter",
+            youtubeDesc: "Tirage via commentaires YouTube",
+            instagramDesc: "Tirage via commentaires Instagram",
+            twitterDesc: "Tirage via Retweets/Réponses",
+            requireSubscription: "Abonnement requis",
+            requireNotification: "Notification requise",
+            requireFollow: "Suivi requis",
+            requireRetweet: "Retweet requis",
+            requireLike: "J'aime requis",
+            countUserOnce: "Compter utilisateur une fois",
+            inputError: "Veuillez entrer un lien valide!",
+            fetchError: "Impossible de récupérer les données.",
+            apiLimitation: "La récupération automatique est actuellement indisponible en raison des limitations de la plateforme. Veuillez utiliser la saisie manuelle.",
+            manualMode: "Manuel Entry (Free)",
+            autoMode: "Auto Fetch (Apify)",
+            manualDesc: "Best for small giveaways. Paste comments.",
+            autoDesc: "Best for large giveaways. Requires Apify.",
+            pasteComments: "Paste comments here",
+            parse: "Parse Comments",
+            parsed: "{count} participants parsed"
+        },
         common: {
             loading: "Chargement...",
             error: "Erreur",
@@ -354,509 +607,15 @@ export const translations: Record<Locale, Translation> = {
         }
     },
 
-    // Spanish
-    es: {
-        meta: {
-            title: "YulaSanta - Sorteo de Amigo Invisible Online",
-            description: "¡Crea sorteos de Amigo Invisible gratuitos, sin anuncios con amigos, familia o colegas en segundos!",
-            keywords: ["amigo invisible", "intercambio de regalos", "sorteo navideño", "sorteo online", "regalo de navidad"]
-        },
-        home: {
-            title: "YulaSanta",
-            subtitle: "¡Añade a tus amigos, inicia el sorteo!",
-            secretDraw: "Sorteo Secreto 🤫",
-            directMatch: "Emparejamiento Directo 🤝",
-            inputPlaceholder: "Introduce un nombre...",
-            noParticipants: "Nadie añadido todavía",
-            uploadList: "Subir lista (Excel/PDF)",
-            uploading: "Subiendo...",
-            clearList: "Limpiar lista",
-            startDraw: "Iniciar sorteo",
-            match: "Emparejar",
-            happyNewYear: "🎄 ¡Feliz Año Nuevo!",
-            minPeople3: "Añade al menos 3 personas",
-            minPeople2: "Añade al menos 2 personas",
-            evenNumber: "El número debe ser par",
-            nameExists: "¡Este nombre ya existe!",
-            namesAdded: "nombres añadidos",
-            totalCount: "Total",
-            startDrawConfirm: "¿Quieres iniciar el sorteo?",
-            notEnoughPeople: "No hay suficientes personas para el sorteo.",
-            noNamesFound: "No se pudieron leer nombres del archivo.",
-            uploadError: "Ocurrió un error al subir.",
-            unsupportedFormat: "Formato no soportado. Por favor usa Excel (.xlsx) o PDF.",
-            secretDrawMinError: "¡El sorteo secreto requiere al menos 3 personas!",
-            directMatchMinError: "¡El emparejamiento requiere al menos 2 personas!",
-            directMatchEvenError: "¡El emparejamiento directo requiere un número par! Por favor añade o quita a alguien.",
-            drawError: "Ocurrió un error, por favor intenta de nuevo."
-        },
-        result: {
-            whoGetsGift: "¿A quién le compro un regalo?",
-            selectName: "Selecciona tu nombre y ve el resultado. 🎁",
-            matchList: "Lista de emparejamientos",
-            christmasMatches: "¡Aquí están los emparejamientos navideños! 🎄",
-            giftRecipient: "TU DESTINATARIO",
-            keepSecret: "¡No lo olvides! Guarda el secreto, no arruines la sorpresa. 🤫",
-            seeGiftIdeas: "Ver ideas de regalos",
-            aiSuggestions: "Sugerencias IA de regalos",
-            noSuggestions: "No se encontraron sugerencias.",
-            someoneElse: "Deja que otro mire",
-            newDraw: "Nuevo sorteo",
-            seeResult: "Ver resultado",
-            selectYourName: "Selecciona tu nombre...",
-            backToHome: "Volver al inicio"
-        },
-        common: {
-            loading: "Cargando...",
-            error: "Error",
-            confirm: "Confirmar",
-            cancel: "Cancelar",
-            yes: "Sí",
-            no: "No",
-            clearConfirm: "¿Estás seguro de que quieres borrar toda la lista?"
-        }
-    },
-
-    // Italian
-    it: {
-        meta: {
-            title: "YulaSanta - Estrazione Babbo Natale Segreto Online",
-            description: "Crea estrazioni gratuite di Babbo Natale Segreto senza pubblicità con amici, famiglia o colleghi in pochi secondi!",
-            keywords: ["babbo natale segreto", "scambio regali", "estrazione natalizia", "estrazione online", "regalo di natale"]
-        },
-        home: {
-            title: "YulaSanta",
-            subtitle: "Aggiungi i tuoi amici, inizia l'estrazione!",
-            secretDraw: "Estrazione Segreta 🤫",
-            directMatch: "Abbinamento Diretto 🤝",
-            inputPlaceholder: "Inserisci un nome...",
-            noParticipants: "Nessuno ancora aggiunto",
-            uploadList: "Carica lista (Excel/PDF)",
-            uploading: "Caricamento...",
-            clearList: "Cancella lista",
-            startDraw: "Inizia estrazione",
-            match: "Abbina",
-            happyNewYear: "🎄 Buon Anno!",
-            minPeople3: "Aggiungi almeno 3 persone",
-            minPeople2: "Aggiungi almeno 2 persone",
-            evenNumber: "Il numero deve essere pari",
-            nameExists: "Questo nome esiste già!",
-            namesAdded: "nomi aggiunti",
-            totalCount: "Totale",
-            startDrawConfirm: "Vuoi iniziare l'estrazione?",
-            notEnoughPeople: "Non ci sono abbastanza persone per l'estrazione.",
-            noNamesFound: "Impossibile leggere i nomi dal file.",
-            uploadError: "Si è verificato un errore durante il caricamento.",
-            unsupportedFormat: "Formato non supportato. Per favore usa Excel (.xlsx) o PDF.",
-            secretDrawMinError: "L'estrazione segreta richiede almeno 3 persone!",
-            directMatchMinError: "L'abbinamento richiede almeno 2 persone!",
-            directMatchEvenError: "L'abbinamento diretto richiede un numero pari! Per favore aggiungi o rimuovi qualcuno.",
-            drawError: "Si è verificato un errore, per favore riprova."
-        },
-        result: {
-            whoGetsGift: "A chi compro un regalo?",
-            selectName: "Seleziona il tuo nome e vedi il risultato. 🎁",
-            matchList: "Lista abbinamenti",
-            christmasMatches: "Ecco gli abbinamenti natalizi! 🎄",
-            giftRecipient: "IL TUO DESTINATARIO",
-            keepSecret: "Non dimenticarlo! Mantieni il segreto, non rovinare la sorpresa. 🤫",
-            seeGiftIdeas: "Vedi idee regalo",
-            aiSuggestions: "Suggerimenti IA per regali",
-            noSuggestions: "Nessun suggerimento trovato.",
-            someoneElse: "Lascia guardare qualcun altro",
-            newDraw: "Nuova estrazione",
-            seeResult: "Vedi risultato",
-            selectYourName: "Seleziona il tuo nome...",
-            backToHome: "Torna alla home"
-        },
-        common: {
-            loading: "Caricamento...",
-            error: "Errore",
-            confirm: "Conferma",
-            cancel: "Annulla",
-            yes: "Sì",
-            no: "No",
-            clearConfirm: "Sei sicuro di voler cancellare l'intera lista?"
-        }
-    },
-
-    // Portuguese
-    pt: {
-        meta: {
-            title: "YulaSanta - Sorteio de Amigo Secreto Online",
-            description: "Crie sorteios gratuitos de Amigo Secreto sem anúncios com amigos, família ou colegas em segundos!",
-            keywords: ["amigo secreto", "troca de presentes", "sorteio de natal", "sorteio online", "presente de natal"]
-        },
-        home: {
-            title: "YulaSanta",
-            subtitle: "Adicione seus amigos, inicie o sorteio!",
-            secretDraw: "Sorteio Secreto 🤫",
-            directMatch: "Correspondência Direta 🤝",
-            inputPlaceholder: "Digite um nome...",
-            noParticipants: "Ninguém adicionado ainda",
-            uploadList: "Carregar lista (Excel/PDF)",
-            uploading: "Carregando...",
-            clearList: "Limpar lista",
-            startDraw: "Iniciar sorteio",
-            match: "Corresponder",
-            happyNewYear: "🎄 Feliz Ano Novo!",
-            minPeople3: "Adicione pelo menos 3 pessoas",
-            minPeople2: "Adicione pelo menos 2 pessoas",
-            evenNumber: "O número deve ser par",
-            nameExists: "Este nome já existe!",
-            namesAdded: "nomes adicionados",
-            totalCount: "Total",
-            startDrawConfirm: "Você quer iniciar o sorteio?",
-            notEnoughPeople: "Não há pessoas suficientes para o sorteio.",
-            noNamesFound: "Não foi possível ler nomes do arquivo.",
-            uploadError: "Ocorreu um erro ao carregar.",
-            unsupportedFormat: "Formato não suportado. Por favor use Excel (.xlsx) ou PDF.",
-            secretDrawMinError: "O sorteio secreto requer pelo menos 3 pessoas!",
-            directMatchMinError: "A correspondência requer pelo menos 2 pessoas!",
-            directMatchEvenError: "A correspondência direta requer um número par! Por favor adicione ou remova alguém.",
-            drawError: "Ocorreu um erro, por favor tente novamente."
-        },
-        result: {
-            whoGetsGift: "Para quem eu compro um presente?",
-            selectName: "Selecione seu nome e veja o resultado. 🎁",
-            matchList: "Lista de correspondências",
-            christmasMatches: "Aqui estão as correspondências de Natal! 🎄",
-            giftRecipient: "SEU DESTINATÁRIO",
-            keepSecret: "Não esqueça! Guarde segredo, não estrague a surpresa. 🤫",
-            seeGiftIdeas: "Ver ideias de presentes",
-            aiSuggestions: "Sugestões IA de presentes",
-            noSuggestions: "Nenhuma sugestão encontrada.",
-            someoneElse: "Deixe outra pessoa olhar",
-            newDraw: "Novo sorteio",
-            seeResult: "Ver resultado",
-            selectYourName: "Selecione seu nome...",
-            backToHome: "Voltar ao início"
-        },
-        common: {
-            loading: "Carregando...",
-            error: "Erro",
-            confirm: "Confirmar",
-            cancel: "Cancelar",
-            yes: "Sim",
-            no: "Não",
-            clearConfirm: "Tem certeza de que deseja limpar toda a lista?"
-        }
-    },
-
-    // Russian
-    ru: {
-        meta: {
-            title: "YulaSanta - Онлайн Тайный Санта",
-            description: "Создавайте бесплатные жеребьёвки Тайного Санты без рекламы с друзьями, семьёй или коллегами за секунды!",
-            keywords: ["тайный санта", "обмен подарками", "новогодняя жеребьёвка", "онлайн розыгрыш", "новогодний подарок"]
-        },
-        home: {
-            title: "YulaSanta",
-            subtitle: "Добавьте друзей, начните жеребьёвку!",
-            secretDraw: "Тайная Жеребьёвка 🤫",
-            directMatch: "Прямое Сопоставление 🤝",
-            inputPlaceholder: "Введите имя...",
-            noParticipants: "Пока никто не добавлен",
-            uploadList: "Загрузить список (Excel/PDF)",
-            uploading: "Загрузка...",
-            clearList: "Очистить список",
-            startDraw: "Начать жеребьёвку",
-            match: "Сопоставить",
-            happyNewYear: "🎄 С Новым Годом!",
-            minPeople3: "Добавьте минимум 3 человека",
-            minPeople2: "Добавьте минимум 2 человека",
-            evenNumber: "Количество должно быть чётным",
-            nameExists: "Это имя уже существует!",
-            namesAdded: "имён добавлено",
-            totalCount: "Всего",
-            startDrawConfirm: "Хотите начать жеребьёвку?",
-            notEnoughPeople: "Недостаточно людей для жеребьёвки.",
-            noNamesFound: "Не удалось прочитать имена из файла.",
-            uploadError: "Произошла ошибка при загрузке.",
-            unsupportedFormat: "Неподдерживаемый формат. Пожалуйста, используйте Excel (.xlsx) или PDF.",
-            secretDrawMinError: "Тайная жеребьёвка требует минимум 3 человека!",
-            directMatchMinError: "Сопоставление требует минимум 2 человека!",
-            directMatchEvenError: "Прямое сопоставление требует чётное количество! Пожалуйста, добавьте или удалите кого-то.",
-            drawError: "Произошла ошибка, пожалуйста, попробуйте снова."
-        },
-        result: {
-            whoGetsGift: "Кому я покупаю подарок?",
-            selectName: "Выберите своё имя и увидите результат. 🎁",
-            matchList: "Список сопоставлений",
-            christmasMatches: "Вот новогодние сопоставления! 🎄",
-            giftRecipient: "ВАШ ПОЛУЧАТЕЛЬ",
-            keepSecret: "Не забудьте! Храните секрет, не портите сюрприз. 🤫",
-            seeGiftIdeas: "Посмотреть идеи подарков",
-            aiSuggestions: "ИИ-предложения подарков",
-            noSuggestions: "Предложения не найдены.",
-            someoneElse: "Пусть посмотрит кто-то другой",
-            newDraw: "Новая жеребьёвка",
-            seeResult: "Посмотреть результат",
-            selectYourName: "Выберите своё имя...",
-            backToHome: "Вернуться на главную"
-        },
-        common: {
-            loading: "Загрузка...",
-            error: "Ошибка",
-            confirm: "Подтвердить",
-            cancel: "Отмена",
-            yes: "Да",
-            no: "Нет",
-            clearConfirm: "Вы уверены, что хотите очистить весь список?"
-        }
-    },
-
-    // Arabic
-    ar: {
-        meta: {
-            title: "YulaSanta - قرعة بابا نويل السري عبر الإنترنت",
-            description: "أنشئ قرعات بابا نويل السري مجانية وبدون إعلانات مع الأصدقاء والعائلة أو الزملاء في ثوانٍ!",
-            keywords: ["بابا نويل السري", "تبادل الهدايا", "قرعة عيد الميلاد", "قرعة عبر الإنترنت", "هدية عيد الميلاد"]
-        },
-        home: {
-            title: "YulaSanta",
-            subtitle: "أضف أصدقاءك، ابدأ القرعة!",
-            secretDraw: "قرعة سرية 🤫",
-            directMatch: "مطابقة مباشرة 🤝",
-            inputPlaceholder: "أدخل اسماً...",
-            noParticipants: "لم يُضف أحد بعد",
-            uploadList: "تحميل القائمة (Excel/PDF)",
-            uploading: "جاري التحميل...",
-            clearList: "مسح القائمة",
-            startDraw: "بدء القرعة",
-            match: "مطابقة",
-            happyNewYear: "🎄 سنة جديدة سعيدة!",
-            minPeople3: "أضف 3 أشخاص على الأقل",
-            minPeople2: "أضف شخصين على الأقل",
-            evenNumber: "يجب أن يكون العدد زوجياً",
-            nameExists: "هذا الاسم موجود بالفعل!",
-            namesAdded: "أسماء مضافة",
-            totalCount: "المجموع",
-            startDrawConfirm: "هل تريد بدء القرعة؟",
-            notEnoughPeople: "لا يوجد عدد كافٍ من الأشخاص للقرعة.",
-            noNamesFound: "تعذر قراءة الأسماء من الملف.",
-            uploadError: "حدث خطأ أثناء التحميل.",
-            unsupportedFormat: "تنسيق غير مدعوم. يرجى استخدام Excel (.xlsx) أو PDF.",
-            secretDrawMinError: "القرعة السرية تتطلب 3 أشخاص على الأقل!",
-            directMatchMinError: "المطابقة تتطلب شخصين على الأقل!",
-            directMatchEvenError: "المطابقة المباشرة تتطلب عدداً زوجياً! يرجى إضافة أو إزالة شخص.",
-            drawError: "حدث خطأ، يرجى المحاولة مرة أخرى."
-        },
-        result: {
-            whoGetsGift: "لمن أشتري هدية؟",
-            selectName: "اختر اسمك وشاهد النتيجة. 🎁",
-            matchList: "قائمة المطابقات",
-            christmasMatches: "إليك مطابقات العيد! 🎄",
-            giftRecipient: "مستلم هديتك",
-            keepSecret: "لا تنسَ! احفظ السر، لا تفسد المفاجأة. 🤫",
-            seeGiftIdeas: "شاهد أفكار الهدايا",
-            aiSuggestions: "اقتراحات الذكاء الاصطناعي للهدايا",
-            noSuggestions: "لم يتم العثور على اقتراحات.",
-            someoneElse: "دع شخصاً آخر ينظر",
-            newDraw: "قرعة جديدة",
-            seeResult: "شاهد النتيجة",
-            selectYourName: "اختر اسمك...",
-            backToHome: "العودة للرئيسية"
-        },
-        common: {
-            loading: "جاري التحميل...",
-            error: "خطأ",
-            confirm: "تأكيد",
-            cancel: "إلغاء",
-            yes: "نعم",
-            no: "لا",
-            clearConfirm: "هل أنت متأكد أنك تريد مسح القائمة بأكملها؟"
-        }
-    },
-
-    // Japanese
-    ja: {
-        meta: {
-            title: "YulaSanta - オンラインシークレットサンタ抽選",
-            description: "友達、家族、同僚と無料で広告なしのシークレットサンタ抽選を数秒で作成しましょう！",
-            keywords: ["シークレットサンタ", "プレゼント交換", "クリスマス抽選", "オンライン抽選", "クリスマスプレゼント"]
-        },
-        home: {
-            title: "YulaSanta",
-            subtitle: "友達を追加して、抽選を開始！",
-            secretDraw: "シークレット抽選 🤫",
-            directMatch: "ダイレクトマッチ 🤝",
-            inputPlaceholder: "名前を入力...",
-            noParticipants: "まだ誰も追加されていません",
-            uploadList: "リストをアップロード (Excel/PDF)",
-            uploading: "アップロード中...",
-            clearList: "リストをクリア",
-            startDraw: "抽選開始",
-            match: "マッチ",
-            happyNewYear: "🎄 新年おめでとう！",
-            minPeople3: "最低3人追加してください",
-            minPeople2: "最低2人追加してください",
-            evenNumber: "人数は偶数でなければなりません",
-            nameExists: "この名前は既に存在します！",
-            namesAdded: "名前が追加されました",
-            totalCount: "合計",
-            startDrawConfirm: "抽選を開始しますか？",
-            notEnoughPeople: "抽選に十分な人数がいません。",
-            noNamesFound: "ファイルから名前を読み取れませんでした。",
-            uploadError: "アップロード中にエラーが発生しました。",
-            unsupportedFormat: "サポートされていない形式です。Excel (.xlsx) または PDF を使用してください。",
-            secretDrawMinError: "シークレット抽選には最低3人必要です！",
-            directMatchMinError: "マッチングには最低2人必要です！",
-            directMatchEvenError: "ダイレクトマッチには偶数の人数が必要です！誰かを追加または削除してください。",
-            drawError: "エラーが発生しました。もう一度お試しください。"
-        },
-        result: {
-            whoGetsGift: "誰にプレゼントを買う？",
-            selectName: "名前を選択して結果を見てください。 🎁",
-            matchList: "マッチリスト",
-            christmasMatches: "クリスマスマッチです！ 🎄",
-            giftRecipient: "あなたの贈り先",
-            keepSecret: "忘れないで！秘密を守って、サプライズを台無しにしないで。 🤫",
-            seeGiftIdeas: "ギフトアイデアを見る",
-            aiSuggestions: "AIギフト提案",
-            noSuggestions: "提案が見つかりませんでした。",
-            someoneElse: "他の人に見てもらう",
-            newDraw: "新しい抽選",
-            seeResult: "結果を見る",
-            selectYourName: "名前を選択...",
-            backToHome: "ホームに戻る"
-        },
-        common: {
-            loading: "読み込み中...",
-            error: "エラー",
-            confirm: "確認",
-            cancel: "キャンセル",
-            yes: "はい",
-            no: "いいえ",
-            clearConfirm: "リスト全体を削除してもよろしいですか？"
-        }
-    },
-
-    // Korean
-    ko: {
-        meta: {
-            title: "YulaSanta - 온라인 시크릿 산타 추첨",
-            description: "친구, 가족, 동료와 함께 무료로 광고 없이 시크릿 산타 추첨을 몇 초 만에 만드세요!",
-            keywords: ["시크릿 산타", "선물 교환", "크리스마스 추첨", "온라인 추첨", "크리스마스 선물"]
-        },
-        home: {
-            title: "YulaSanta",
-            subtitle: "친구를 추가하고 추첨을 시작하세요!",
-            secretDraw: "비밀 추첨 🤫",
-            directMatch: "직접 매칭 🤝",
-            inputPlaceholder: "이름을 입력하세요...",
-            noParticipants: "아직 아무도 추가되지 않았습니다",
-            uploadList: "목록 업로드 (Excel/PDF)",
-            uploading: "업로드 중...",
-            clearList: "목록 지우기",
-            startDraw: "추첨 시작",
-            match: "매칭",
-            happyNewYear: "🎄 새해 복 많이 받으세요!",
-            minPeople3: "최소 3명을 추가하세요",
-            minPeople2: "최소 2명을 추가하세요",
-            evenNumber: "인원이 짝수여야 합니다",
-            nameExists: "이 이름은 이미 존재합니다!",
-            namesAdded: "이름이 추가됨",
-            totalCount: "총",
-            startDrawConfirm: "추첨을 시작하시겠습니까?",
-            notEnoughPeople: "추첨에 충분한 인원이 없습니다.",
-            noNamesFound: "파일에서 이름을 읽을 수 없습니다.",
-            uploadError: "업로드 중 오류가 발생했습니다.",
-            unsupportedFormat: "지원되지 않는 형식입니다. Excel (.xlsx) 또는 PDF를 사용하세요.",
-            secretDrawMinError: "비밀 추첨에는 최소 3명이 필요합니다!",
-            directMatchMinError: "매칭에는 최소 2명이 필요합니다!",
-            directMatchEvenError: "직접 매칭에는 짝수 인원이 필요합니다! 누군가를 추가하거나 제거하세요.",
-            drawError: "오류가 발생했습니다. 다시 시도해 주세요."
-        },
-        result: {
-            whoGetsGift: "누구에게 선물을 사나요?",
-            selectName: "이름을 선택하고 결과를 확인하세요. 🎁",
-            matchList: "매칭 목록",
-            christmasMatches: "크리스마스 매칭입니다! 🎄",
-            giftRecipient: "선물 받는 사람",
-            keepSecret: "잊지 마세요! 비밀을 지키고, 서프라이즈를 망치지 마세요. 🤫",
-            seeGiftIdeas: "선물 아이디어 보기",
-            aiSuggestions: "AI 선물 추천",
-            noSuggestions: "추천을 찾을 수 없습니다.",
-            someoneElse: "다른 사람이 확인하게 하기",
-            newDraw: "새 추첨",
-            seeResult: "결과 보기",
-            selectYourName: "이름을 선택하세요...",
-            backToHome: "홈으로 돌아가기"
-        },
-        common: {
-            loading: "로딩 중...",
-            error: "오류",
-            confirm: "확인",
-            cancel: "취소",
-            yes: "예",
-            no: "아니오",
-            clearConfirm: "전체 목록을 삭제하시겠습니까?"
-        }
-    },
-
-    // Chinese
-    zh: {
-        meta: {
-            title: "YulaSanta - 在线神秘圣诞老人抽签",
-            description: "与朋友、家人或同事在几秒钟内创建免费、无广告的神秘圣诞老人抽签！",
-            keywords: ["神秘圣诞老人", "礼物交换", "圣诞抽签", "在线抽签", "圣诞礼物"]
-        },
-        home: {
-            title: "YulaSanta",
-            subtitle: "添加朋友，开始抽签！",
-            secretDraw: "秘密抽签 🤫",
-            directMatch: "直接配对 🤝",
-            inputPlaceholder: "输入姓名...",
-            noParticipants: "还没有添加任何人",
-            uploadList: "上传列表 (Excel/PDF)",
-            uploading: "上传中...",
-            clearList: "清除列表",
-            startDraw: "开始抽签",
-            match: "配对",
-            happyNewYear: "🎄 新年快乐！",
-            minPeople3: "至少添加3人",
-            minPeople2: "至少添加2人",
-            evenNumber: "人数必须是偶数",
-            nameExists: "此名字已存在！",
-            namesAdded: "个名字已添加",
-            totalCount: "总计",
-            startDrawConfirm: "要开始抽签吗？",
-            notEnoughPeople: "抽签人数不足。",
-            noNamesFound: "无法从文件中读取名字。",
-            uploadError: "上传时发生错误。",
-            unsupportedFormat: "不支持的格式。请使用 Excel (.xlsx) 或 PDF。",
-            secretDrawMinError: "秘密抽签至少需要3人！",
-            directMatchMinError: "配对至少需要2人！",
-            directMatchEvenError: "直接配对需要偶数人数！请添加或移除一人。",
-            drawError: "发生错误，请重试。"
-        },
-        result: {
-            whoGetsGift: "我给谁买礼物？",
-            selectName: "选择你的名字并查看结果。 🎁",
-            matchList: "配对列表",
-            christmasMatches: "这是圣诞配对！ 🎄",
-            giftRecipient: "你的礼物接收者",
-            keepSecret: "别忘了！保守秘密，不要破坏惊喜。 🤫",
-            seeGiftIdeas: "查看礼物创意",
-            aiSuggestions: "AI礼物建议",
-            noSuggestions: "未找到建议。",
-            someoneElse: "让其他人查看",
-            newDraw: "新抽签",
-            seeResult: "查看结果",
-            selectYourName: "选择你的名字...",
-            backToHome: "返回首页"
-        },
-        common: {
-            loading: "加载中...",
-            error: "错误",
-            confirm: "确认",
-            cancel: "取消",
-            yes: "是",
-            no: "否",
-            clearConfirm: "确定要清除整个列表吗？"
-        }
-    }
+    // Other languages (Fallback to English for now)
+    es: enTranslation,
+    it: enTranslation,
+    pt: enTranslation,
+    ru: enTranslation,
+    ar: enTranslation,
+    ja: enTranslation,
+    ko: enTranslation,
+    zh: enTranslation
 };
 
 export default translations;
