@@ -21,7 +21,7 @@
  */
 
 import { MetadataRoute } from 'next';
-import { locales } from '@/i18n/config';
+import { locales, defaultLocale } from '@/i18n/config';
 
 const SITE_URL = 'https://yulasanta.com';
 
@@ -51,13 +51,13 @@ export default function sitemap(): MetadataRoute.Sitemap {
             });
 
             // Add x-default (usually the default locale)
-            alternates.languages['x-default'] = `${SITE_URL}/tr${route.path}`;
+            alternates.languages['x-default'] = `${SITE_URL}/${defaultLocale}${route.path}`;
 
             sitemap.push({
                 url: `${SITE_URL}/${locale}${route.path}`,
                 lastModified: now,
                 changeFrequency: route.changeFrequency,
-                priority: locale === 'tr' ? route.priority : route.priority * 0.9,
+                priority: locale === defaultLocale ? route.priority : route.priority * 0.9,
                 alternates,
             });
         });
