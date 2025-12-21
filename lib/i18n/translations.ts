@@ -256,9 +256,9 @@ const enTranslation: Translation = {
         fetchError: "Could not fetch data.",
         apiLimitation: "Automatic fetching is currently unavailable due to platform limitations. Please use manual entry.",
         manualMode: "Manual Entry (Free)",
-        autoMode: "Automatic Fetch (Apify)",
+        autoMode: "Automatic Fetch",
         manualDesc: "Best for small giveaways (50-100 comments). Paste comments directly.",
-        autoDesc: "Best for large giveaways. Requires Apify set up.",
+        autoDesc: "Best for large giveaways and high volumes of comments.",
         pasteComments: "Paste comments here (One per line)",
         parse: "Parse Comments",
         parsed: "{count} participants parsed"
@@ -379,9 +379,9 @@ export const translations: Record<Locale, Translation> = {
             fetchError: "Veriler çekilemedi.",
             apiLimitation: "Platform kısıtlamaları nedeniyle otomatik veri çekme şu anda kullanılamıyor. Lütfen manuel giriş yapınız.",
             manualMode: "Manuel Giriş (Ücretsiz)",
-            autoMode: "Otomatik Çekim (Apify)",
+            autoMode: "Otomatik Çekim",
             manualDesc: "Küçük çekilişler (50-100 yorum) için ideal. Yorumları direkt yapıştırın.",
-            autoDesc: "Büyük çekilişler için ideal. Apify kurulumu gerektirir.",
+            autoDesc: "Büyük çekilişler ve çok sayıda yorum için ideal.",
             pasteComments: "Yorumları buraya yapıştırın (Her satıra bir tane)",
             parse: "Yorumları Ayrıştır",
             parsed: "{count} kişi ayrıştırıldı"

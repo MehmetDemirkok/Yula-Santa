@@ -99,9 +99,9 @@
         "fetchError": "Daten konnten nicht abgerufen werden.",
         "apiLimitation": "Automatisches Abrufen ist aufgrund von Plattformbeschränkungen derzeit nicht verfügbar.",
         "manualMode": "Manuelle Eingabe (Kostenlos)",
-        "autoMode": "Automatisches Abrufen (Apify)",
+        "autoMode": "Automatisches Abrufen",
         "manualDesc": "Ideal für kleine Verlosungen. Kommentare direkt einfügen.",
-        "autoDesc": "Ideal für große Verlosungen. Erfordert Apify-Setup.",
+        "autoDesc": "Ideal für große Verlosungen. Ruft automatisch ab.",
         "pasteComments": "Kommentare hier einfügen (Eine pro Zeile)",
         "parse": "Kommentare analysieren",
         "parsed": "{count} Teilnehmer analysiert"

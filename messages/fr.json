@@ -99,9 +99,9 @@
         "fetchError": "Impossible de récupérer les données.",
         "apiLimitation": "La récupération automatique est actuellement indisponible.",
         "manualMode": "Entrée Manuelle (Gratuit)",
-        "autoMode": "Récupération Auto (Apify)",
+        "autoMode": "Récupération Auto",
         "manualDesc": "Idéal pour les petits concours. Collez directement les commentaires.",
-        "autoDesc": "Idéal pour les grands concours. Nécessite Apify.",
+        "autoDesc": "Idéal pour les grands concours. Récupère automatiquement.",
         "pasteComments": "Collez les commentaires ici (Un par ligne)",
         "parse": "Analyser les Commentaires",
         "parsed": "{count} participants analysés"

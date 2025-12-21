@@ -99,9 +99,9 @@
         "fetchError": "No se pudieron obtener los datos.",
         "apiLimitation": "La obtención automática no está disponible actualmente.",
         "manualMode": "Entrada Manual (Gratis)",
-        "autoMode": "Obtención Auto (Apify)",
+        "autoMode": "Obtención Auto",
         "manualDesc": "Ideal para sorteos pequeños. Pega los comentarios directamente.",
-        "autoDesc": "Ideal para sorteos grandes. Requiere Apify.",
+        "autoDesc": "Ideal para sorteos grandes. Obtiene automáticamente.",
         "pasteComments": "Pega los comentarios aquí (Uno por línea)",
         "parse": "Analizar Comentarios",
         "parsed": "{count} participantes analizados"

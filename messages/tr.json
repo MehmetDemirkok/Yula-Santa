@@ -93,9 +93,9 @@
     "fetchError": "Veriler çekilemedi.",
     "apiLimitation": "Platform kısıtlamaları nedeniyle otomatik veri çekme şu anda kullanılamıyor. Lütfen manuel giriş yapınız.",
     "manualMode": "Manuel Giriş (Ücretsiz)",
-    "autoMode": "Otomatik Çekim (Apify)",
+    "autoMode": "Otomatik Çekim",
     "manualDesc": "Küçük çekilişler (50-100 yorum) için ideal. Yorumları direkt yapıştırın.",
-    "autoDesc": "Büyük çekilişler için ideal. Apify kurulumu gerektirir.",
+    "autoDesc": "Büyük çekilişler ve çok sayıda yorum için ideal.",
     "pasteComments": "Yorumları buraya yapıştırın (Her satıra bir tane)",
     "parse": "Yorumları Ayrıştır",
     "parsed": "{count} kişi ayrıştırıldı"

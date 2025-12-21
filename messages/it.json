@@ -99,9 +99,9 @@
         "fetchError": "Impossibile ottenere i dati.",
         "apiLimitation": "L'ottenimento automatico non è attualmente disponibile.",
         "manualMode": "Inserimento Manuale (Gratuito)",
-        "autoMode": "Ottenimento Auto (Apify)",
+        "autoMode": "Ottenimento Auto",
         "manualDesc": "Ideale per piccole estrazioni. Incolla direttamente i commenti.",
-        "autoDesc": "Ideale per grandi estrazioni. Richiede Apify.",
+        "autoDesc": "Ideale per grandi estrazioni. Ottiene automaticamente.",
         "pasteComments": "Incolla i commenti qui (Uno per riga)",
         "parse": "Analizza Commenti",
         "parsed": "{count} partecipanti analizzati"

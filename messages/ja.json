@@ -99,9 +99,9 @@
         "fetchError": "データを取得できませんでした。",
         "apiLimitation": "自動取得は現在利用できません。",
         "manualMode": "手動入力（無料）",
-        "autoMode": "自動取得（Apify）",
+        "autoMode": "自動取得",
         "manualDesc": "小規模な抽選に最適。コメントを直接貼り付けてください。",
-        "autoDesc": "大規模な抽選に最適。Apifyが必要です。",
+        "autoDesc": "大規模な抽選に最適。自動的に取得します。",
         "pasteComments": "ここにコメントを貼り付け（1行に1つ）",
         "parse": "コメントを解析",
         "parsed": "{count}人の参加者を解析しました"

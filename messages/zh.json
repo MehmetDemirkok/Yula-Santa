@@ -99,9 +99,9 @@
         "fetchError": "无法获取数据。",
         "apiLimitation": "自动获取目前不可用。",
         "manualMode": "手动输入（免费）",
-        "autoMode": "自动获取（Apify）",
+        "autoMode": "自动获取",
         "manualDesc": "适合小型抽奖。直接粘贴评论。",
-        "autoDesc": "适合大型抽奖。需要Apify。",
+        "autoDesc": "适合大型抽奖。自动获取。",
         "pasteComments": "在此粘贴评论（每行一条）",
         "parse": "解析评论",
         "parsed": "已解析 {count} 名参与者"

@@ -99,9 +99,9 @@
         "fetchError": "Could not fetch data.",
         "apiLimitation": "Automatic fetching is currently unavailable due to platform limitations. Please use manual entry.",
         "manualMode": "Manual Entry (Free)",
-        "autoMode": "Automatic Fetch (Apify)",
+        "autoMode": "Automatic Fetch",
         "manualDesc": "Best for small giveaways (50-100 comments). Paste comments directly.",
-        "autoDesc": "Best for large giveaways. Requires Apify set up.",
+        "autoDesc": "Best for large giveaways and high volumes of comments.",
         "pasteComments": "Paste comments here (One per line)",
         "parse": "Parse Comments",
         "parsed": "{count} participants parsed"
