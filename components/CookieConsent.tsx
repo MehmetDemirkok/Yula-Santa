@@ -1,6 +1,7 @@
 "use client";
 
 import { useState, useEffect } from 'react';
+import Link from 'next/link';
 import { X, Cookie } from 'lucide-react';
 import { Button } from '@/components/ui/Button';
 import { useLanguage } from '@/lib/i18n/LanguageContext';
@@ -154,12 +155,12 @@ export function CookieConsent() {
                             <Button onClick={handleDecline} variant="outline" size="sm">
                                 {t.decline}
                             </Button>
-                            <a
+                            <Link
                                 href="/privacy"
                                 className="inline-flex items-center text-sm text-gray-500 hover:text-gray-700 underline px-2"
                             >
                                 {t.learnMore}
-                            </a>
+                            </Link>
                         </div>
                     </div>
                     <button

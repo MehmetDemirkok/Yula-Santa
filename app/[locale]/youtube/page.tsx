@@ -93,8 +93,8 @@ export default function YouTubeGiveaway() {
             setActiveTab('participants');
             // alert(`${data.participants.length} ${t.home.namesAdded}`); // Optional: show success toast
 
-        } catch (error: any) {
-            setError(error.message);
+        } catch (error) {
+            setError(error instanceof Error ? error.message : String(error));
         } finally {
             setLoading(false);
         }

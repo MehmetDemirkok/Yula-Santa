@@ -12,7 +12,7 @@ export async function POST(request: Request) {
         let body;
         try {
             body = await request.json();
-        } catch (e) {
+        } catch {
             return NextResponse.json({ error: 'Invalid JSON body' }, { status: 400 });
         }
 
@@ -45,15 +45,15 @@ export async function POST(request: Request) {
         const { items } = await client.dataset(run.defaultDatasetId).listItems();
 
         // Extract usernames
-        const participants = items.map((item: any) => item.ownerUsername || item.owner?.username).filter(Boolean);
+        const participants = items.map((item: Record<string, any>) => item.ownerUsername || item.owner?.username).filter(Boolean);
 
         // Remove duplicates
         const uniqueParticipants = [...new Set(participants)];
 
         return NextResponse.json({ participants: uniqueParticipants });
 
-    } catch (error: any) {
+    } catch (error) {
         console.error('Error fetching Instagram comments:', error);
-        return NextResponse.json({ error: error.message || 'Failed to fetch comments' }, { status: 500 });
+        return NextResponse.json({ error: error instanceof Error ? error.message : 'Failed to fetch comments' }, { status: 500 });
     }
 }

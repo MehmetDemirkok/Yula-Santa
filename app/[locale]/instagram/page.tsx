@@ -148,9 +148,9 @@ export default function InstagramGiveaway() {
             const unique = [...new Set([...participants, ...data.participants])];
             setParticipants(unique);
             setActiveTab('participants');
-        } catch (error: any) {
+        } catch (error) {
             console.error('Fetch error:', error);
-            setError(error.message || t.giveaway.fetchError);
+            setError(error instanceof Error ? error.message : String(error));
         } finally {
             setLoading(false);
         }

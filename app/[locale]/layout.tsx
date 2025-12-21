@@ -20,7 +20,7 @@ import { getMessages, setRequestLocale } from 'next-intl/server';
 import { notFound } from 'next/navigation';
 import Script from "next/script";
 import "../globals.css";
-import { locales, localeNames, getDirection, type Locale } from '@/i18n/config';
+import { locales, getDirection, type Locale } from '@/i18n/config';
 
 const geistSans = Geist({
     variable: "--font-geist-sans",
@@ -108,7 +108,7 @@ export async function generateMetadata({
 }
 
 // JSON-LD structured data
-function getJsonLd(locale: string, messages: any) {
+function getJsonLd(locale: string, messages: Record<string, any>) {
     return {
         "@context": "https://schema.org",
         "@type": "SoftwareApplication",
@@ -173,17 +173,6 @@ export default async function LocaleLayout({
                     strategy="beforeInteractive"
                     dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
                 />
-
-                {/* Hreflang tags for SEO */}
-                {locales.map((loc) => (
-                    <link
-                        key={loc}
-                        rel="alternate"
-                        hrefLang={loc}
-                        href={`${SITE_URL}/${loc}`}
-                    />
-                ))}
-                <link rel="alternate" hrefLang="x-default" href={`${SITE_URL}/tr`} />
 
                 {/* Google AdSense Script */}
                 <Script
