@@ -23,7 +23,7 @@ export async function POST(request: Request) {
 
         const apiKey = process.env.YOUTUBE_API_KEY;
 
-        let allParticipants: string[] = [];
+        let allParticipants: { name: string, comment: string }[] = [];
         let nextPageToken = '';
         let pageCount = 0;
         const MAX_PAGES = 100; // Limit pages to avoid timeouts
@@ -41,9 +41,6 @@ export async function POST(request: Request) {
                 // Detailed error message
                 const errorMessage = data.error?.message || 'YouTube API hatası';
 
-                // If it fails on the first page, return the error.
-                // If it fails on subsequent pages, we can either return partial results or error.
-                // Returning partial results is safer for UX.
                 if (pageCount === 0) {
                     return NextResponse.json({ error: errorMessage }, { status: response.status });
                 }
@@ -52,22 +49,28 @@ export async function POST(request: Request) {
 
             const data = await response.json();
 
-            // Extract authors
-            const pageParticipants: string[] = [];
+            // Extract authors and comments
+            const pageParticipants: { name: string, comment: string }[] = [];
 
             if (data.items) {
                 for (const item of data.items) {
                     // Top level comment
                     const topLevelSnippet = item.snippet?.topLevelComment?.snippet;
                     if (topLevelSnippet) {
-                        pageParticipants.push(topLevelSnippet.authorDisplayName);
+                        pageParticipants.push({
+                            name: topLevelSnippet.authorDisplayName,
+                            comment: topLevelSnippet.textDisplay
+                        });
                     }
 
                     // Replies
                     if (item.replies && item.replies.comments) {
                         for (const reply of item.replies.comments) {
                             if (reply.snippet) {
-                                pageParticipants.push(reply.snippet.authorDisplayName);
+                                pageParticipants.push({
+                                    name: reply.snippet.authorDisplayName,
+                                    comment: reply.snippet.textDisplay
+                                });
                             }
                         }
                     }
@@ -80,8 +83,8 @@ export async function POST(request: Request) {
 
         } while (nextPageToken && pageCount < MAX_PAGES);
 
-        // Remove duplicates
-        const uniqueParticipants = [...new Set(allParticipants)];
+        // Remove duplicates based on name
+        const uniqueParticipants = allParticipants.filter((v, i, a) => a.findIndex(t => t.name === v.name) === i);
 
         return NextResponse.json({
             participants: uniqueParticipants,

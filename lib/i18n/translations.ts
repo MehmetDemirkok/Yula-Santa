@@ -159,6 +159,7 @@ export interface Translation {
         yes: string;
         no: string;
         clearConfirm: string;
+        or: string;
     };
 }
 

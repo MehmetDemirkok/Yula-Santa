@@ -122,7 +122,8 @@
         "cancel": "취소",
         "yes": "예",
         "no": "아니오",
-        "clearConfirm": "전체 목록을 지우시겠습니까?"
+        "clearConfirm": "전체 목록을 지우시겠습니까?",
+        "or": "또는"
     },
     "languageSwitcher": {
         "label": "언어 선택",

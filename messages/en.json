@@ -122,7 +122,8 @@
         "cancel": "Cancel",
         "yes": "Yes",
         "no": "No",
-        "clearConfirm": "Are you sure you want to clear the entire list?"
+        "clearConfirm": "Are you sure you want to clear the entire list?",
+        "or": "OR"
     },
     "languageSwitcher": {
         "label": "Select Language",

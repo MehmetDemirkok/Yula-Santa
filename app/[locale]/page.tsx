@@ -12,7 +12,7 @@ import { Plus, Trash2, Gift, Sparkles, FileUp, Instagram, Youtube, Twitter } fro
 import { Button } from "@/components/ui/Button";
 import { Input } from "@/components/ui/Input";
 import { useTranslations } from 'next-intl';
-import { LanguageSwitcher } from "@/components/LanguageSwitcher";
+import { Navbar } from "@/components/Navbar";
 import * as XLSX from "xlsx";
 
 export default function Home() {
@@ -189,11 +189,9 @@ export default function Home() {
     const handleDraw = () => triggerDraw(participants);
 
     return (
-        <main className="min-h-screen min-h-dvh flex flex-col items-center justify-center p-3 sm:p-4 md:p-6 relative overflow-hidden bg-gradient-to-b from-[#FFF5F5] to-white safe-area-inset-bottom">
-            {/* Language Switcher */}
-            <div className="absolute top-4 right-4 z-20">
-                <LanguageSwitcher />
-            </div>
+        <main className="min-h-screen min-h-dvh flex flex-col items-center justify-center p-3 sm:p-4 md:p-6 pt-20 relative overflow-hidden bg-gradient-to-b from-[#FFF5F5] to-white safe-area-inset-bottom">
+            {/* Navbar */}
+            <Navbar />
 
             {/* Decorative BG */}
             <div className="absolute top-0 left-0 w-32 sm:w-48 md:w-64 h-32 sm:h-48 md:h-64 bg-red-200 rounded-full blur-[60px] sm:blur-[80px] md:blur-[100px] opacity-30 -translate-x-1/2 -translate-y-1/2"></div>

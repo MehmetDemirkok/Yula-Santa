@@ -122,7 +122,8 @@
         "cancel": "取消",
         "yes": "是",
         "no": "否",
-        "clearConfirm": "您确定要清除整个列表吗？"
+        "clearConfirm": "您确定要清除整个列表吗？",
+        "or": "或者"
     },
     "languageSwitcher": {
         "label": "选择语言",

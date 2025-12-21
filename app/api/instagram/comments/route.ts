@@ -28,11 +28,9 @@ export async function POST(request: Request) {
         });
 
         // Using the 'apify/instagram-comment-scraper' actor
-        // Note: Apify Free plan or Instagram limits might restrict the number of comments.
         const run = await client.actor("apify/instagram-comment-scraper").call({
             directUrls: [postLink],
             resultsLimit: 1000,
-            // Some actors use 'limit' or 'maxItems'
             limit: 1000,
         });
 
@@ -44,11 +42,14 @@ export async function POST(request: Request) {
         // Fetch results from the run's dataset
         const { items } = await client.dataset(run.defaultDatasetId).listItems();
 
-        // Extract usernames
-        const participants = items.map((item: Record<string, any>) => item.ownerUsername || item.owner?.username).filter(Boolean);
+        // Extract usernames and comments
+        const participants = items.map((item: Record<string, any>) => ({
+            name: item.ownerUsername || item.owner?.username,
+            comment: item.text || item.caption || item.textDisplay || ''
+        })).filter((p: any) => p.name);
 
-        // Remove duplicates
-        const uniqueParticipants = [...new Set(participants)];
+        // Remove duplicates based on name
+        const uniqueParticipants = participants.filter((v: any, i: number, a: any[]) => a.findIndex((t: any) => t.name === v.name) === i);
 
         return NextResponse.json({ participants: uniqueParticipants });
 

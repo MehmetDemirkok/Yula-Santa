@@ -122,7 +122,8 @@
         "cancel": "キャンセル",
         "yes": "はい",
         "no": "いいえ",
-        "clearConfirm": "リスト全体をクリアしてもよろしいですか？"
+        "clearConfirm": "リスト全体をクリアしてもよろしいですか？",
+        "or": "または"
     },
     "languageSwitcher": {
         "label": "言語を選択",

@@ -122,7 +122,8 @@
         "cancel": "Cancelar",
         "yes": "Sí",
         "no": "No",
-        "clearConfirm": "¿Estás seguro de que quieres borrar toda la lista?"
+        "clearConfirm": "¿Estás seguro de que quieres borrar toda la lista?",
+        "or": "O"
     },
     "languageSwitcher": {
         "label": "Seleccionar Idioma",
