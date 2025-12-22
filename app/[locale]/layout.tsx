@@ -71,8 +71,9 @@ export async function generateMetadata({
         keywords: meta.keywords,
         icons: {
             icon: '/icon.png',
-            apple: '/icon.png',
+            apple: '/apple-icon.png',
         },
+        manifest: '/manifest.json',
         authors: [{ name: "YulaSanta Team" }],
         creator: "YulaSanta Team",
         publisher: "YulaSanta",
@@ -98,19 +99,34 @@ export async function generateMetadata({
             title: meta.title,
             description: meta.description,
             siteName: "YulaSanta",
+            images: [
+                {
+                    url: '/opengraph-image.png',
+                    width: 1200,
+                    height: 630,
+                    alt: meta.title,
+                }
+            ],
         },
         twitter: {
             card: "summary_large_image",
             title: meta.title,
             description: meta.description,
+            images: ['/twitter-image.png'],
         },
     };
 }
 
 // JSON-LD structured data
 function getJsonLd(locale: string, messages: Record<string, any>) {
-    return {
-        "@context": "https://schema.org",
+    const organizationSchema = {
+        "@type": "Organization",
+        "name": "YulaSanta",
+        "url": SITE_URL,
+        "logo": `${SITE_URL}/icon-512.png`,
+    };
+
+    const appSchema = {
         "@type": "SoftwareApplication",
         "name": "YulaSanta",
         "applicationCategory": "Utility",
@@ -133,6 +149,14 @@ function getJsonLd(locale: string, messages: Record<string, any>) {
             "YouTube Giveaway",
             "Twitter Giveaway",
             "Free to use"
+        ]
+    };
+
+    return {
+        "@context": "https://schema.org",
+        "@graph": [
+            organizationSchema,
+            appSchema
         ]
     };
 }
