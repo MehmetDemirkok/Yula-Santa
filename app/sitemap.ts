@@ -22,8 +22,7 @@
 
 import { MetadataRoute } from 'next';
 import { locales, defaultLocale } from '@/i18n/config';
-
-const SITE_URL = 'https://yulasanta.com';
+import { SITE_URL } from '@/lib/constants';
 
 // All routes in the app (without locale prefix)
 const routes = [

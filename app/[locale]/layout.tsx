@@ -22,6 +22,8 @@ import Script from "next/script";
 import "../globals.css";
 import { locales, getDirection, type Locale } from '@/i18n/config';
 
+import { SITE_URL } from "@/lib/constants";
+
 const geistSans = Geist({
     variable: "--font-geist-sans",
     subsets: ["latin"],
@@ -31,8 +33,6 @@ const geistMono = Geist_Mono({
     variable: "--font-geist-mono",
     subsets: ["latin"],
 });
-
-const SITE_URL = "https://yulasanta.com";
 const ADSENSE_CLIENT_ID = process.env.NEXT_PUBLIC_ADSENSE_CLIENT_ID || "ca-pub-1407870205867199";
 
 // Generate static params for all locales
