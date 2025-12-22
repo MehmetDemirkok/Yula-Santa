@@ -49,8 +49,8 @@ export default function sitemap(): MetadataRoute.Sitemap {
                 alternates.languages[altLocale] = `${SITE_URL}/${altLocale}${route.path}`;
             });
 
-            // Add x-default (usually the default locale)
-            alternates.languages['x-default'] = `${SITE_URL}/${defaultLocale}${route.path}`;
+            // Add x-default (generic URL that redirects based on locale)
+            alternates.languages['x-default'] = `${SITE_URL}${route.path}`;
 
             sitemap.push({
                 url: `${SITE_URL}/${locale}${route.path}`,

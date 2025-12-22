@@ -58,14 +58,10 @@ export async function generateMetadata({
 
     const meta = messages.meta;
 
-    // Build alternate language URLs
-    const languages: Record<string, string> = {};
-    locales.forEach((loc) => {
-        languages[loc] = `${SITE_URL}/${loc}`;
-    });
-    languages['x-default'] = `${SITE_URL}/tr`;
+
 
     return {
+        metadataBase: new URL(SITE_URL),
         title: meta.title,
         description: meta.description,
         keywords: meta.keywords,
@@ -88,10 +84,7 @@ export async function generateMetadata({
                 'max-snippet': -1,
             },
         },
-        alternates: {
-            canonical: `${SITE_URL}/${locale}`,
-            languages,
-        },
+
         openGraph: {
             type: "website",
             locale: locale === 'tr' ? 'tr_TR' : locale === 'en' ? 'en_US' : `${locale}_${locale.toUpperCase()}`,
