@@ -23,7 +23,22 @@ export async function POST(request: Request) {
 
         const apiKey = process.env.YOUTUBE_API_KEY;
 
-        let allParticipants: { name: string, comment: string }[] = [];
+        // 1. Get Video Details (Owner Channel ID)
+        const videoUrl = `https://www.googleapis.com/youtube/v3/videos?part=snippet&id=${videoId}&key=${apiKey}`;
+        const videoResponse = await fetch(videoUrl);
+
+        if (!videoResponse.ok) {
+            return NextResponse.json({ error: 'Video bilgileri alınamadı' }, { status: videoResponse.status });
+        }
+
+        const videoData = await videoResponse.json();
+        const videoOwnerChannelId = videoData.items?.[0]?.snippet?.channelId;
+
+        if (!videoOwnerChannelId) {
+            return NextResponse.json({ error: 'Video sahibi bulunamadı' }, { status: 404 });
+        }
+
+        let allParticipants: { name: string, comment: string, channelId: string, profileImageUrl?: string }[] = [];
         let nextPageToken = '';
         let pageCount = 0;
         const MAX_PAGES = 100; // Limit pages to avoid timeouts
@@ -50,7 +65,7 @@ export async function POST(request: Request) {
             const data = await response.json();
 
             // Extract authors and comments
-            const pageParticipants: { name: string, comment: string }[] = [];
+            const pageParticipants: { name: string, comment: string, channelId: string, profileImageUrl?: string }[] = [];
 
             if (data.items) {
                 for (const item of data.items) {
@@ -59,7 +74,9 @@ export async function POST(request: Request) {
                     if (topLevelSnippet) {
                         pageParticipants.push({
                             name: topLevelSnippet.authorDisplayName,
-                            comment: topLevelSnippet.textDisplay
+                            comment: topLevelSnippet.textDisplay,
+                            channelId: topLevelSnippet.authorChannelId?.value,
+                            profileImageUrl: topLevelSnippet.authorProfileImageUrl
                         });
                     }
 
@@ -69,7 +86,9 @@ export async function POST(request: Request) {
                             if (reply.snippet) {
                                 pageParticipants.push({
                                     name: reply.snippet.authorDisplayName,
-                                    comment: reply.snippet.textDisplay
+                                    comment: reply.snippet.textDisplay,
+                                    channelId: reply.snippet.authorChannelId?.value,
+                                    profileImageUrl: reply.snippet.authorProfileImageUrl
                                 });
                             }
                         }
@@ -83,11 +102,12 @@ export async function POST(request: Request) {
 
         } while (nextPageToken && pageCount < MAX_PAGES);
 
-        // Remove duplicates based on name
-        const uniqueParticipants = allParticipants.filter((v, i, a) => a.findIndex(t => t.name === v.name) === i);
+        // Remove duplicates based on channelId (more reliable than name)
+        const uniqueParticipants = allParticipants.filter((v, i, a) => a.findIndex(t => t.channelId === v.channelId) === i);
 
         return NextResponse.json({
             participants: uniqueParticipants,
+            videoOwnerChannelId,
             count: uniqueParticipants.length,
             totalFetched: allParticipants.length
         });

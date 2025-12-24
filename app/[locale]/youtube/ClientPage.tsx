@@ -31,6 +31,9 @@ type DrawType = 'comments' | 'likes' | 'subscribers';
 interface Participant {
     name: string;
     comment: string;
+    channelId?: string;
+    profileImageUrl?: string;
+    isSubscribed?: boolean | null | 'private'; // null = check not run yet, 'private' = hidden, false = not subbed, true = subbed
 }
 
 export default function YouTubeGiveaway() {
@@ -53,6 +56,7 @@ export default function YouTubeGiveaway() {
     const [requireSubscription, setRequireSubscription] = useState(true);
     const [requireNotification, setRequireNotification] = useState(false);
     const [countUserOnce, setCountUserOnce] = useState(true);
+    const [videoOwnerChannelId, setVideoOwnerChannelId] = useState<string | null>(null);
 
     // Participants (Manual Entry)
     const [participants, setParticipants] = useState<Participant[]>([]);
@@ -111,6 +115,8 @@ export default function YouTubeGiveaway() {
             }
 
             const newParticipants = data.participants as Participant[];
+            setVideoOwnerChannelId(data.videoOwnerChannelId);
+
             const existingNames = new Set(participants.map(p => p.name));
             const unique = [...participants];
 
@@ -128,6 +134,25 @@ export default function YouTubeGiveaway() {
             setError(error instanceof Error ? error.message : String(error));
         } finally {
             setLoading(false);
+        }
+    };
+
+    const verifyParticipantSubscription = async (participant: Participant): Promise<boolean | null | 'private'> => {
+        if (!participant.channelId || !videoOwnerChannelId) return null;
+        try {
+            const res = await fetch('/api/youtube/verify', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({
+                    channelId: participant.channelId,
+                    videoOwnerChannelId: videoOwnerChannelId
+                })
+            });
+            const data = await res.json();
+            return data.isSubscribed; // true or false
+        } catch (e) {
+            console.error("Verification failed", e);
+            return null;
         }
     };
 
@@ -220,6 +245,23 @@ export default function YouTubeGiveaway() {
             setIsRolling(false);
             setShowResults(true);
             triggerConfetti();
+
+            // Verify Winners asynchronously
+            if (videoOwnerChannelId) {
+                selectedWinners.forEach(async (winner, index) => {
+                    if (winner.channelId) {
+                        const isSubbed = await verifyParticipantSubscription(winner);
+                        setWinners(prev => {
+                            const newWinners = [...prev];
+                            // Make sure we update the specific winner in case list changed (unlikely here)
+                            if (newWinners[index] && newWinners[index].name === winner.name) {
+                                newWinners[index] = { ...newWinners[index], isSubscribed: isSubbed };
+                            }
+                            return newWinners;
+                        });
+                    }
+                });
+            }
         }, 3000);
     };
 
@@ -624,11 +666,42 @@ export default function YouTubeGiveaway() {
                                             {winners.map((winner, i) => (
                                                 <div key={i} className="p-4 bg-gradient-to-r from-red-50 to-yellow-50 rounded-xl border border-red-200 animate-in slide-in-from-bottom duration-500" style={{ animationDelay: `${i * 100}ms` }}>
                                                     <div className="flex flex-col gap-2">
-                                                        <div className="flex items-center gap-3">
-                                                            <span className="w-8 h-8 rounded-full bg-gradient-to-br from-red-500 to-red-600 text-white flex items-center justify-center font-bold text-sm flex-shrink-0">
-                                                                {i + 1}
-                                                            </span>
-                                                            <span className="font-bold text-gray-800 text-lg">{winner.name}</span>
+                                                        <div className="flex items-center justify-between">
+                                                            <div className="flex items-center gap-3">
+                                                                <span className="w-8 h-8 rounded-full bg-gradient-to-br from-red-500 to-red-600 text-white flex items-center justify-center font-bold text-sm flex-shrink-0">
+                                                                    {i + 1}
+                                                                </span>
+                                                                <span className="font-bold text-gray-800 text-lg">{winner.name}</span>
+                                                            </div>
+                                                            {/* Subscription Status Badge */}
+                                                            {videoOwnerChannelId && (
+                                                                <div className="flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-bold shadow-sm bg-white border border-gray-100">
+                                                                    {winner.isSubscribed === true && (
+                                                                        <>
+                                                                            <span className="w-2 h-2 bg-green-500 rounded-full animate-pulse" />
+                                                                            <span className="text-green-600">SUBSCRIBED</span>
+                                                                        </>
+                                                                    )}
+                                                                    {winner.isSubscribed === false && (
+                                                                        <>
+                                                                            <span className="w-2 h-2 bg-red-500 rounded-full" />
+                                                                            <span className="text-red-500">NOT SUBSCRIBED</span>
+                                                                        </>
+                                                                    )}
+                                                                    {winner.isSubscribed === 'private' && (
+                                                                        <>
+                                                                            <span className="w-2 h-2 bg-yellow-500 rounded-full" />
+                                                                            <span className="text-yellow-600">PRIVATE</span>
+                                                                        </>
+                                                                    )}
+                                                                    {(winner.isSubscribed === undefined || winner.isSubscribed === null) && (
+                                                                        <>
+                                                                            <Loader2 className="w-3 h-3 text-gray-400 animate-spin" />
+                                                                            <span className="text-gray-400">CHECKING...</span>
+                                                                        </>
+                                                                    )}
+                                                                </div>
+                                                            )}
                                                         </div>
                                                         {winner.comment && (
                                                             <div className="ml-11 p-3 bg-white/60 rounded-lg text-sm text-gray-600 italic border-l-4 border-red-300">
