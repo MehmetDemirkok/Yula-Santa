@@ -594,7 +594,7 @@ export default function TwitterGiveaway() {
                                                     <div className="flex flex-col gap-2">
                                                         <span className="font-bold text-gray-800 text-lg">@{winner.name}</span>
                                                         {winner.comment && winner.comment !== 'Manual Entry' && (
-                                                            <p className="text-sm text-gray-600 italic">"{winner.comment}"</p>
+                                                            <p className="text-sm text-gray-600 italic">&quot;{winner.comment}&quot;</p>
                                                         )}
                                                     </div>
                                                 </div>

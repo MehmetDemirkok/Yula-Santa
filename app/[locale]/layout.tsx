@@ -65,10 +65,7 @@ export async function generateMetadata({
         title: meta.title,
         description: meta.description,
         keywords: meta.keywords,
-        icons: {
-            icon: '/icon.png',
-            apple: '/apple-icon.png',
-        },
+
         manifest: '/manifest.json',
         authors: [{ name: "YulaSanta Team" }],
         creator: "YulaSanta Team",
@@ -122,8 +119,8 @@ function getJsonLd(locale: string, messages: Record<string, any>) {
     const appSchema = {
         "@type": "SoftwareApplication",
         "name": "YulaSanta",
-        "applicationCategory": "Utility",
-        "operatingSystem": "Browser",
+        "applicationCategory": "UtilityApplication",
+        "operatingSystem": "Any",
         "inLanguage": locale,
         "offers": {
             "@type": "Offer",
@@ -137,10 +134,12 @@ function getJsonLd(locale: string, messages: Record<string, any>) {
             "ratingCount": "1250"
         },
         "featureList": [
-            "Secret Santa generator",
-            "Instagram Giveaway",
-            "YouTube Giveaway",
-            "Twitter Giveaway",
+            "Secret Santa Generator",
+            "Instagram Comment Picker",
+            "YouTube Comment Picker",
+            "TikTok Comment Picker",
+            "Twitter Giveaway Tool",
+            "No Login Required",
             "Free to use"
         ]
     };

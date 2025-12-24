@@ -1,13 +1,23 @@
 {
     "meta": {
-        "title": "YulaSanta - Online Çekiliş Yap",
-        "description": "Arkadaşlarınızla, ailenizle veya iş arkadaşlarınızla saniyeler içinde ücretsiz, reklamsız ve üyeliksiz online yılbaşı çekilişi yapın!",
+        "title": "YulaSanta - Online Çekiliş Yap | Instagram, YouTube, TikTok, Yılbaşı",
+        "description": "YulaSanta ile ücretsiz, şifresiz Online Yılbaşı Çekilişi (Secret Santa) yapın. Instagram, YouTube, TikTok ve Twitter çekilişlerinizi saniyeler içinde gerçekleştirin. Hediye çekilişi, gizli noel çekilişi yapın!",
         "keywords": [
+            "online çekiliş",
+            "çekiliş yap",
             "yılbaşı çekilişi",
             "secret santa",
+            "gizli noel",
             "hediye çekilişi",
-            "online çekiliş",
-            "yılbaşı hediyesi"
+            "yılbaşı hediyesi",
+            "instagram çekiliş",
+            "youtube çekiliş",
+            "tiktok çekiliş",
+            "twitter çekiliş",
+            "ücretsiz çekiliş aracı",
+            "online yılbaşı çekilişi",
+            "secret santa online",
+            "arkadaş çekilişi"
         ]
     },
     "home": {
@@ -89,6 +99,8 @@
         "youtubeDesc": "YouTube videolarınızdaki yorumlar ve beğeniler arasından kolayca çekiliş yapın.",
         "instagramDesc": "Instagram gönderilerinizdeki yorumlar ve beğeniler arasından kolayca çekiliş yapın.",
         "twitterDesc": "Twitter/X'teki retweet ve beğeniler arasından kolayca çekiliş yapın.",
+        "tiktokTitle": "TikTok Çekiliş Aracı",
+        "tiktokDesc": "TikTok videolarınızdaki yorumlar arasından kolayca çekiliş yapın.",
         "requireSubscription": "Abone Olma Şartı",
         "requireNotification": "Bildirim Şartı",
         "requireFollow": "Takip Şartı",
@@ -104,7 +116,17 @@
         "autoDesc": "Büyük çekilişler ve çok sayıda yorum için ideal.",
         "pasteComments": "Yorumları buraya yapıştırın (Her satıra bir tane)",
         "parse": "Yorumları Ayrıştır",
-        "parsed": "{count} kişi ayrıştırıldı"
+        "parsed": "{count} kişi ayrıştırıldı",
+        "youtubeLimitNote": "Not: API üzerinden otomatik olarak en fazla 1000 yorum çekilebilir.",
+        "instagramLimitNote": "Not: API üzerinden otomatik olarak en fazla 1000 yorum çekilebilir.",
+        "tiktokLimitNote": "Not: API üzerinden otomatik olarak en fazla 100 yorum çekilebilir.",
+        "participantLimitDetails": "Daha fazla yorum için lütfen manuel giriş modunu kullanın.",
+        "channelUsername": "Kullanıcı Adı (Takip Kontrolü)",
+        "channelUsernameHint": "Kazananların sizi takip edip etmediğini kontrol etmek için kullanıcı adınızı girin",
+        "following": "Takip Ediyor",
+        "notFollowing": "Takip Etmiyor",
+        "checkingFollow": "Kontrol ediliyor...",
+        "unknownFollow": "Bilinmiyor"
     },
     "support": {
         "button": "Destek",

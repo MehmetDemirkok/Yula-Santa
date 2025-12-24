@@ -1,13 +1,22 @@
 {
     "meta": {
-        "title": "YulaSanta - Online Secret Santa Draw",
-        "description": "Create free, ad-free online Secret Santa draws with friends, family, or colleagues in seconds!",
+        "title": "YulaSanta - Free Online Giveaway & Secret Santa Tool",
+        "description": "The best free online giveaway tool. Create Secret Santa draws or run Instagram, YouTube, TikTok, and Twitter giveaways instantly. No login required. Perfect for holiday gift exchanges!",
         "keywords": [
+            "online giveaway",
+            "raffle tool",
             "secret santa",
-            "gift exchange",
+            "secret santa generator",
             "christmas draw",
+            "holiday gift exchange",
+            "instagram giveaway",
+            "youtube giveaway",
+            "tiktok giveaway",
+            "twitter giveaway",
+            "free giveaway tool",
+            "gift exchange",
             "online raffle",
-            "holiday gift"
+            "new year draw"
         ]
     },
     "home": {
@@ -89,6 +98,8 @@
         "youtubeDesc": "Easily draw from comments, likes, and subscribers on your YouTube videos.",
         "instagramDesc": "Easily draw from comments and likes on your Instagram posts.",
         "twitterDesc": "Easily draw from retweets, likes, and replies on Twitter/X.",
+        "tiktokTitle": "TikTok Giveaway Tool",
+        "tiktokDesc": "Easily draw from comments on your TikTok videos.",
         "requireSubscription": "Require Subscription",
         "requireNotification": "Require Notification",
         "requireFollow": "Require Follow",
@@ -104,7 +115,17 @@
         "autoDesc": "Best for large giveaways and high volumes of comments.",
         "pasteComments": "Paste comments here (One per line)",
         "parse": "Parse Comments",
-        "parsed": "{count} participants parsed"
+        "parsed": "{count} participants parsed",
+        "participantLimitDetails": "To see more comments, please use manual entry mode.",
+        "youtubeLimitNote": "Note: Up to 1000 comments can be fetched automatically from the API.",
+        "instagramLimitNote": "Note: Up to 1000 comments can be fetched automatically from the API.",
+        "tiktokLimitNote": "Note: Up to 100 comments can be fetched automatically from the API.",
+        "channelUsername": "Username (Follower Check)",
+        "channelUsernameHint": "Enter your username to check if winners follow you",
+        "following": "Following",
+        "notFollowing": "Not Following",
+        "checkingFollow": "Checking...",
+        "unknownFollow": "Unknown"
     },
     "support": {
         "button": "Support",

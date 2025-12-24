@@ -147,6 +147,8 @@ export interface Translation {
         youtubeDesc: string;
         instagramDesc: string;
         twitterDesc: string;
+        tiktokTitle: string;
+        tiktokDesc: string;
         requireSubscription: string;
         requireNotification: string;
         requireFollow: string;
@@ -163,6 +165,16 @@ export interface Translation {
         pasteComments: string;
         parse: string;
         parsed: string;
+        participantLimitDetails: string;
+        youtubeLimitNote: string;
+        instagramLimitNote: string;
+        tiktokLimitNote: string;
+        channelUsername: string;
+        channelUsernameHint: string;
+        following: string;
+        notFollowing: string;
+        checkingFollow: string;
+        unknownFollow: string;
     };
     support: {
         button: string;

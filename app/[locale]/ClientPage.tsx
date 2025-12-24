@@ -330,7 +330,7 @@ export default function Home() {
                 {/* Social Media Giveaways Section */}
                 <div className="w-full space-y-3 sm:space-y-4 mt-3 sm:mt-4">
                     <h2 className="text-base sm:text-lg font-bold text-gray-800 text-center">{t('home.socialMediaGiveaways')}</h2>
-                    <div className="grid grid-cols-3 gap-2 sm:gap-3">
+                    <div className="grid grid-cols-2 sm:grid-cols-4 gap-2 sm:gap-3">
                         {/* Instagram */}
                         <button
                             onClick={() => router.push(`/${locale}/instagram`)}
@@ -362,6 +362,19 @@ export default function Home() {
                                 <Twitter className="w-5 h-5 sm:w-6 sm:h-6 text-white" />
                             </div>
                             <span className="text-[10px] sm:text-xs font-bold text-gray-600 group-hover:text-sky-600">Twitter/X</span>
+                        </button>
+
+                        {/* TikTok */}
+                        <button
+                            onClick={() => router.push(`/${locale}/tiktok`)}
+                            className="group flex flex-col items-center gap-1.5 sm:gap-2 p-3 sm:p-4 bg-white rounded-xl sm:rounded-2xl border border-gray-100 hover:border-cyan-200 hover:shadow-lg hover:shadow-cyan-100/50 transition-all"
+                        >
+                            <div className="p-2 sm:p-3 bg-black rounded-lg sm:rounded-xl group-hover:scale-110 transition-transform flex items-center justify-center">
+                                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512" className="w-5 h-5 sm:w-6 sm:h-6 text-white" fill="currentColor">
+                                    <path d="M448 209.91a210.06 210.06 0 0 1-122.77-39.25V349.38A162.55 162.55 0 1 1 185 188.31V278.2a74.62 74.62 0 1 0 52.23 71.18V0l88 0a121.18 121.18 0 0 0 1.86 22.17h0A122.18 122.18 0 0 0 381 102.39a121.43 121.43 0 0 0 67 20.14z" />
+                                </svg>
+                            </div>
+                            <span className="text-[10px] sm:text-xs font-bold text-gray-600 group-hover:text-cyan-600">TikTok</span>
                         </button>
                     </div>
                 </div>

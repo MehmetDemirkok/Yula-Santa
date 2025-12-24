@@ -404,6 +404,16 @@ export default function YouTubeGiveaway() {
                                                     {error}
                                                 </div>
                                             )}
+
+                                            <div className="bg-blue-50 border border-blue-200 rounded-xl p-4 text-sm text-blue-700 space-y-2">
+                                                <h4 className="font-bold flex items-center gap-2">
+                                                    <span className="text-xl">ℹ️</span>
+                                                    {t.giveaway.youtubeLimitNote}
+                                                </h4>
+                                                <p className="opacity-90">
+                                                    {t.giveaway.participantLimitDetails}
+                                                </p>
+                                            </div>
                                         </div>
 
                                         <div className="flex flex-wrap gap-3 justify-center">
@@ -705,7 +715,7 @@ export default function YouTubeGiveaway() {
                                                         </div>
                                                         {winner.comment && (
                                                             <div className="ml-11 p-3 bg-white/60 rounded-lg text-sm text-gray-600 italic border-l-4 border-red-300">
-                                                                "{winner.comment}"
+                                                                &quot;{winner.comment}&quot;
                                                             </div>
                                                         )}
                                                     </div>
@@ -725,7 +735,7 @@ export default function YouTubeGiveaway() {
                                                             <span>{i + 1}. {backup.name}</span>
                                                             <span className="text-xs font-medium bg-gray-200 px-2 py-0.5 rounded text-gray-500">{t.giveaway.backups.slice(0, -1)}</span>
                                                         </div>
-                                                        {backup.comment && <p className="text-xs text-gray-400 mt-1 truncate pl-4">"{backup.comment}"</p>}
+                                                        {backup.comment && <p className="text-xs text-gray-400 mt-1 truncate pl-4">&quot;{backup.comment}&quot;</p>}
                                                     </div>
                                                 ))}
                                             </div>

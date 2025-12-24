@@ -89,6 +89,8 @@
         "youtubeDesc": "동영상의 댓글, 좋아요, 구독자 중에서 쉽게 추첨하세요.",
         "instagramDesc": "게시물의 댓글과 좋아요에서 쉽게 추첨하세요.",
         "twitterDesc": "Twitter/X의 리트윗, 좋아요, 답글에서 쉽게 추첨하세요.",
+        "tiktokTitle": "TikTok 경품 도구",
+        "tiktokDesc": "TikTok 동영상의 댓글에서 쉽게 추첨하세요.",
         "requireSubscription": "구독 필수",
         "requireNotification": "알림 필수",
         "requireFollow": "팔로우 필수",

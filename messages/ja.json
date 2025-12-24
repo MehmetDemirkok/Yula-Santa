@@ -89,6 +89,8 @@
         "youtubeDesc": "動画のコメント、いいね、登録者から簡単に抽選できます。",
         "instagramDesc": "投稿のコメントやいいねから簡単に抽選できます。",
         "twitterDesc": "Twitter/Xのリツイート、いいね、返信から簡単に抽選できます。",
+        "tiktokTitle": "TikTokプレゼントツール",
+        "tiktokDesc": "TikTok動画のコメントから簡単に抽選できます。",
         "requireSubscription": "登録必須",
         "requireNotification": "通知必須",
         "requireFollow": "フォロー必須",
