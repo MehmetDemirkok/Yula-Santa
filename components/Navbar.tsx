@@ -10,14 +10,14 @@ export function Navbar() {
     const locale = params.locale as string;
 
     return (
-        <nav className="fixed top-0 left-0 right-0 z-50 flex items-center justify-between p-3 sm:p-4 safe-area-inset-top pointer-events-none">
+        <nav className="fixed top-0 left-0 right-0 z-50 flex items-center justify-between px-1.5 sm:px-4 py-1 sm:py-1.5 safe-area-inset-top pointer-events-none">
             {/* Left Side: Logo */}
             <div className="pointer-events-auto flex-shrink-0">
                 <button
                     onClick={() => router.push(`/${locale}`)}
-                    className="flex items-center gap-2 bg-white/90 backdrop-blur-md px-3 py-2 rounded-xl shadow-sm border border-white/50 hover:shadow-md transition-all"
+                    className="flex items-center gap-2 bg-white/90 backdrop-blur-md px-2 py-1.5 rounded-xl shadow-sm border border-white/50 hover:shadow-md transition-all overflow-hidden"
                 >
-                    <Gift className="w-5 h-5 text-santa-red" strokeWidth={1.5} />
+                    <img src="/icon.png" alt="YulaSanta Logo" className="w-7 h-7 object-contain rounded-lg" />
                     <span className="text-sm font-black tracking-tight text-gray-900 hidden md:inline">
                         Yula<span className="text-santa-red">Santa</span>
                     </span>

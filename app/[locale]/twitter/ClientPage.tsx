@@ -189,7 +189,7 @@ export default function TwitterGiveaway() {
     };
 
     return (
-        <main className="min-h-screen min-h-dvh flex flex-col items-center p-3 sm:p-4 relative overflow-hidden bg-gradient-to-b from-sky-50 via-blue-50 to-white safe-area-inset-bottom">
+        <main className="min-h-screen min-h-dvh flex flex-col items-center p-3 sm:p-4 pt-24 sm:pt-32 relative overflow-hidden bg-gradient-to-b from-sky-50 via-blue-50 to-white safe-area-inset-bottom">
             {/* Decorative BG */}
             <div className="absolute top-0 left-0 w-48 sm:w-72 md:w-96 h-48 sm:h-72 md:h-96 bg-sky-200 rounded-full blur-[80px] sm:blur-[100px] md:blur-[120px] opacity-40 -translate-x-1/2 -translate-y-1/2" />
             <div className="absolute bottom-0 right-0 w-48 sm:w-72 md:w-96 h-48 sm:h-72 md:h-96 bg-blue-200 rounded-full blur-[80px] sm:blur-[100px] md:blur-[120px] opacity-40 translate-x-1/3 translate-y-1/3" />

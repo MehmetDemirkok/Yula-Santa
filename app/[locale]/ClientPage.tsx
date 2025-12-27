@@ -13,6 +13,8 @@ import { Button } from "@/components/ui/Button";
 import { Input } from "@/components/ui/Input";
 import { useTranslations } from 'next-intl';
 import { Navbar } from "@/components/Navbar";
+import { CountdownBanner } from "@/components/NewYearTheme";
+import { isNewYearThemeActive } from "@/components/NewYearTheme/config";
 import * as XLSX from "xlsx";
 
 export default function Home() {
@@ -189,7 +191,7 @@ export default function Home() {
     const handleDraw = () => triggerDraw(participants);
 
     return (
-        <main className="min-h-screen min-h-dvh flex flex-col items-center justify-center p-3 sm:p-4 md:p-6 pt-20 relative overflow-hidden bg-gradient-to-b from-[#FFF5F5] to-white safe-area-inset-bottom">
+        <main className="min-h-screen min-h-dvh flex flex-col items-center pt-24 sm:pt-32 relative overflow-hidden bg-gradient-to-b from-[#FFF5F5] to-white safe-area-inset-bottom">
             {/* Navbar */}
             <Navbar />
 
@@ -197,10 +199,10 @@ export default function Home() {
             <div className="absolute top-0 left-0 w-32 sm:w-48 md:w-64 h-32 sm:h-48 md:h-64 bg-red-200 rounded-full blur-[60px] sm:blur-[80px] md:blur-[100px] opacity-30 -translate-x-1/2 -translate-y-1/2"></div>
             <div className="absolute bottom-0 right-0 w-40 sm:w-60 md:w-80 h-40 sm:h-60 md:h-80 bg-green-200 rounded-full blur-[60px] sm:blur-[80px] md:blur-[100px] opacity-30 translate-x-1/3 translate-y-1/3"></div>
 
-            <div className="z-10 w-full max-w-md space-y-4 sm:space-y-6 md:space-y-8 text-center px-1">
+            <div className="z-10 w-full max-w-md space-y-4 sm:space-y-6 md:space-y-8 text-center px-1 flex-1 flex flex-col justify-center">
                 <div className="space-y-2">
-                    <div className="inline-flex items-center justify-center p-3 sm:p-4 bg-white rounded-full mb-2 sm:mb-4 shadow-sm border border-red-50">
-                        <Gift className="w-8 h-8 sm:w-10 sm:h-10 text-santa-red" strokeWidth={1.5} />
+                    <div className="inline-flex items-center justify-center p-1 bg-white rounded-2xl mb-2 sm:mb-4 shadow-sm border border-red-50 overflow-hidden ring-4 ring-white shadow-xl">
+                        <img src="/icon.png" alt="YulaSanta Logo" className="w-16 h-16 sm:w-20 sm:h-20 object-contain rounded-xl" />
                     </div>
                     <h1 className="text-3xl sm:text-4xl font-black text-gray-900 tracking-tight">
                         Yula<span className="text-santa-red">Santa</span>
@@ -326,6 +328,13 @@ export default function Home() {
                         )}
                     </div>
                 </div>
+
+                {/* 🎄 Yılbaşı Geri Sayım Banner */}
+                {isNewYearThemeActive() && (
+                    <div className="w-full flex justify-center mt-4 mb-2">
+                        <CountdownBanner />
+                    </div>
+                )}
 
                 {/* Social Media Giveaways Section */}
                 <div className="w-full space-y-3 sm:space-y-4 mt-3 sm:mt-4">

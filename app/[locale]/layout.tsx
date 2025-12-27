@@ -14,7 +14,6 @@
 
 import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
-import { Analytics } from "@vercel/analytics/next";
 import { NextIntlClientProvider } from 'next-intl';
 import { getMessages, setRequestLocale } from 'next-intl/server';
 import { notFound } from 'next/navigation';
@@ -23,6 +22,7 @@ import "../globals.css";
 import { locales, getDirection, type Locale } from '@/i18n/config';
 
 import { SITE_URL } from "@/lib/constants";
+import { ClientLayout } from "./ClientLayout";
 
 const geistSans = Geist({
     variable: "--font-geist-sans",
@@ -204,9 +204,10 @@ export default async function LocaleLayout({
                 suppressHydrationWarning
             >
                 <NextIntlClientProvider messages={messages}>
-                    {children}
+                    <ClientLayout>
+                        {children}
+                    </ClientLayout>
                 </NextIntlClientProvider>
-                <Analytics />
             </body>
         </html>
     );

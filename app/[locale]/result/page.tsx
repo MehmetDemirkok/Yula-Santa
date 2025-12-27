@@ -117,13 +117,19 @@ export default function ResultPage() {
     if (!drawMode) return null;
 
     return (
-        <main className="min-h-screen min-h-dvh flex flex-col items-center justify-center p-3 sm:p-4 bg-gradient-to-b from-green-50 to-white relative overflow-x-hidden safe-area-inset-bottom">
+        <main className="min-h-screen min-h-dvh flex flex-col items-center pt-24 sm:pt-32 bg-gradient-to-b from-green-50 to-white relative overflow-x-hidden safe-area-inset-bottom">
             {/* Decorative BG */}
             <div className="absolute top-0 right-0 w-48 sm:w-72 md:w-96 h-48 sm:h-72 md:h-96 bg-red-100 rounded-full blur-[80px] sm:blur-[100px] md:blur-[120px] opacity-40 translate-x-1/3 -translate-y-1/3"></div>
             <div className="absolute bottom-0 left-0 w-48 sm:w-72 md:w-96 h-48 sm:h-72 md:h-96 bg-green-100 rounded-full blur-[80px] sm:blur-[100px] md:blur-[120px] opacity-40 -translate-x-1/3 translate-y-1/3"></div>
 
-            <div className="z-10 w-full max-w-lg space-y-4 sm:space-y-6 md:space-y-8 text-center px-1">
-                {/* Header */}
+            <div className="z-10 w-full max-w-lg space-y-4 sm:space-y-6 md:space-y-8 text-center px-1 flex-1 flex flex-col justify-center">
+                {/* Header with Logo */}
+                <div className="flex flex-col items-center justify-center space-y-4">
+                    <div className="inline-flex items-center justify-center p-1 bg-white rounded-2xl shadow-xl border border-white/50 overflow-hidden ring-4 ring-white">
+                        <img src="/icon.png" alt="YulaSanta Logo" className="w-12 h-12 sm:w-16 sm:h-16 object-contain rounded-xl" />
+                    </div>
+                </div>
+
                 {!result && drawMode === 'secret' && (
                     <div className="space-y-2 animate-fade-in">
                         <h1 className="text-2xl sm:text-3xl font-black text-gray-900 tracking-tight">

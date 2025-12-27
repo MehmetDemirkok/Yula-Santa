@@ -6,7 +6,9 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "lint": "eslint"
+    "lint": "eslint",
+    "theme:off": "bash scripts/theme-off.sh",
+    "theme:on": "bash scripts/theme-on.sh"
   },
   "dependencies": {
     "@vercel/analytics": "^1.6.1",
