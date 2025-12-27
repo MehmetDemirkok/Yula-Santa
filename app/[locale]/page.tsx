@@ -1,5 +1,6 @@
 
-import { getSEOMetadata } from '@/lib/seo';
+import { getSEOMetadata, viewport } from '@/lib/seo';
+export { viewport };
 import ClientPage from './ClientPage';
 
 export async function generateMetadata({ params }: { params: Promise<{ locale: string }> }) {

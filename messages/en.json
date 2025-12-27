@@ -1,22 +1,31 @@
 {
     "meta": {
-        "title": "YulaSanta - Free Online Giveaway & Secret Santa Tool",
-        "description": "The best free online giveaway tool. Create Secret Santa draws or run Instagram, YouTube, TikTok, and Twitter giveaways instantly. No login required. Perfect for holiday gift exchanges!",
+        "title": "YulaSanta - Free Online Giveaway Tool | Instagram, YouTube, TikTok & Secret Santa 2025",
+        "description": "Create free online Secret Santa draws and run Instagram, YouTube, TikTok, and Twitter giveaways in seconds with YulaSanta. Free dice roller, coin flip, random number generator and more!",
         "keywords": [
             "online giveaway",
-            "raffle tool",
+            "free raffle tool",
+            "giveaway generator",
             "secret santa",
+            "secret santa 2025",
             "secret santa generator",
             "christmas draw",
             "holiday gift exchange",
             "instagram giveaway",
+            "instagram comment picker",
             "youtube giveaway",
+            "youtube comment picker",
             "tiktok giveaway",
             "twitter giveaway",
             "free giveaway tool",
-            "gift exchange",
             "online raffle",
-            "new year draw"
+            "new year draw",
+            "dice roller",
+            "coin flip online",
+            "random number generator",
+            "short straw game",
+            "giveaway app",
+            "social media giveaway"
         ]
     },
     "home": {
@@ -166,7 +175,149 @@
         "diceGame": "Dice Roller",
         "coinFlip": "Coin Flip",
         "randomNumber": "Random Number Generator",
-        "shortStraw": "Short Straw Game"
+        "shortStraw": "Short Straw Game",
+        "meta": {
+            "title": "Free Online Tools | YulaSanta - Dice, Coin Flip, Random Number",
+            "description": "YulaSanta free online tools: Dice roller, coin flip, random number generator, draw short straw, Instagram story viewer and profile picture downloader."
+        },
+        "diceMeta": {
+            "title": "🎲 Dice Roller | Free Online Dice Roll - YulaSanta",
+            "description": "Online dice roller tool. Roll 1 or 2 dice for free. Professional dice simulator for board games, Backgammon and Ludo.",
+            "keywords": [
+                "dice roller",
+                "roll dice",
+                "online dice",
+                "die roller",
+                "backgammon dice",
+                "ludo dice"
+            ]
+        },
+        "coinFlipMeta": {
+            "title": "🪙 Coin Flip | Online Heads or Tails - Free Coin Toss - YulaSanta",
+            "description": "Online coin flip tool. Free heads or tails generator for quick decisions. Flip a coin online now!",
+            "keywords": [
+                "coin flip",
+                "heads or tails",
+                "coin toss",
+                "flip a coin",
+                "heads or tails online"
+            ]
+        },
+        "randomNumberMeta": {
+            "title": "🔢 Random Number Generator | Pick Random Numbers Online - YulaSanta",
+            "description": "Online random number generator. Pick random numbers within your specified range. Ideal for raffles and games.",
+            "keywords": [
+                "random number",
+                "number generator",
+                "random number generator",
+                "lottery numbers",
+                "pick a number"
+            ]
+        },
+        "shortStrawMeta": {
+            "title": "🎋 Short Straw Game | Draw Straws Online Free - YulaSanta",
+            "description": "Online short straw game. Make fair and fun selections within a group. Who draws the short straw?",
+            "keywords": [
+                "short straw",
+                "draw straws",
+                "short straw game",
+                "random picker",
+                "fair selection"
+            ]
+        },
+        "instagramStoryMeta": {
+            "title": "📱 Instagram Story Viewer | Anonymous Story Viewer - YulaSanta",
+            "description": "Watch Instagram stories anonymously. Private Instagram story viewer without login.",
+            "keywords": [
+                "instagram story",
+                "story viewer",
+                "anonymous story viewer",
+                "private story viewer"
+            ]
+        },
+        "instagramProfileMeta": {
+            "title": "🖼️ Instagram Profile Picture Viewer | HD Downloader - YulaSanta",
+            "description": "View and download Instagram profile pictures in full HD quality.",
+            "keywords": [
+                "instagram profile",
+                "profile picture viewer",
+                "HD profile picture",
+                "pp downloader"
+            ]
+        },
+        "diceContent": {
+            "title": "Dice Roller",
+            "subtitle": "Online Dice Roller - Free",
+            "label": "Number of Dice",
+            "option": "{count} Dice",
+            "roll": "Roll Dice",
+            "rolling": "Rolling...",
+            "total": "Total",
+            "history": "History",
+            "aboutTitle": "About Dice Roller",
+            "aboutText": "Roll dice online for free. Use our professional dice simulator for board games.",
+            "placeholder": "Click the button to roll the dice",
+            "featuresTitle": "Features:",
+            "features": [
+                "Roll 1 or 2 dice",
+                "Realistic 3D dice animation",
+                "Roll history is recorded",
+                "Mobile-friendly design",
+                "Completely free, no registration required"
+            ]
+        },
+        "coinFlipContent": {
+            "title": "Coin Flip",
+            "subtitle": "Online Coin Flip - Heads or Tails",
+            "heads": "Heads",
+            "tails": "Tails",
+            "roll": "Flip Coin",
+            "rolling": "Flipping...",
+            "reset": "Reset",
+            "aboutTitle": "About Coin Flip",
+            "aboutText": "Make quick decisions with our online heads or tails generator."
+        },
+        "randomNumberContent": {
+            "title": "Random Number Generator",
+            "subtitle": "Pick Numbers Online",
+            "min": "Min",
+            "max": "Max",
+            "generate": "Generate",
+            "rolling": "Generating...",
+            "result": "Result",
+            "aboutTitle": "About Random Number Generator",
+            "aboutText": "Generate unbiased random numbers for your giveaways and games.",
+            "placeholder": "Click the button to generate numbers"
+        },
+        "shortStrawContent": {
+            "title": "Short Straw Game",
+            "subtitle": "Draw Straws Online",
+            "label": "Participants",
+            "draw": "Draw a Straw",
+            "reset": "Reset",
+            "lost": "You lost! You drew the short straw.",
+            "saved": "Saved! Long straw.",
+            "aboutTitle": "About Short Straw",
+            "aboutText": "Classic short straw game for fair group selections."
+        },
+        "instagramStoryContent": {
+            "title": "Instagram Story Viewer",
+            "subtitle": "Anonymous Story Viewer",
+            "placeholder": "Enter username",
+            "view": "View Stories",
+            "helper": "Watch stories anonymously without the owner knowing.",
+            "aboutTitle": "About Story Viewer",
+            "aboutText": "Secretly watch Instagram stories with YulaSanta's anonymous viewer."
+        },
+        "instagramProfileContent": {
+            "title": "Instagram Profile Picture",
+            "subtitle": "HD Profile Picture Size",
+            "placeholder": "Enter username",
+            "view": "View Profile Picture",
+            "helper": "View the profile photo in full size and HD.",
+            "aboutTitle": "About PP Viewer",
+            "aboutText": "Use our free tool to see and download Instagram profile pictures."
+        }
     },
     "footer": {
         "privacyPolicy": "Privacy Policy",

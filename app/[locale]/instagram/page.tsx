@@ -1,5 +1,6 @@
 
-import { getSEOMetadata } from '@/lib/seo';
+import { getSEOMetadata, viewport } from '@/lib/seo';
+export { viewport };
 import ClientPage from './ClientPage';
 import { getTranslations } from 'next-intl/server';
 
@@ -10,8 +11,7 @@ export async function generateMetadata({ params }: { params: Promise<{ locale: s
     return getSEOMetadata({
         locale,
         path: '/instagram',
-        titleOverride: t('instagramTitle'),
-        descriptionOverride: t('instagramDesc')
+        translationKey: 'giveaway.meta.instagram'
     });
 }
 

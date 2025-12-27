@@ -152,12 +152,113 @@
     "tools": {
         "title": "Herramientas",
         "instagramStoryViewer": "Visor de Historias de Instagram",
-        "instagramProfilePicture": "Visor de Foto de Perfil de Instagram",
-        "onlineGiveaway": "Herramienta de Sorteo Online",
+        "instagramProfilePicture": "Visor de Fotos de Perfil de Instagram",
+        "onlineGiveaway": "Herramienta de Sorteos en Línea",
         "diceGame": "Juego de Dados",
-        "coinFlip": "Lanzar Moneda",
+        "coinFlip": "Cara o Cruz",
         "randomNumber": "Generador de Números Aleatorios",
-        "shortStraw": "Sacar Pajita Corta"
+        "shortStraw": "Sacar Pajitas",
+        "meta": {
+            "title": "Herramientas Gratuitas | YulaSanta - Dados, Moneda, Números",
+            "description": "Herramientas gratis de YulaSanta: dados, cara o cruz, generador de números, pajitas, visor de historias y fotos de perfil."
+        },
+        "diceMeta": {
+            "title": "🎲 Juego de Dados | Tirar Dados Online Gratis - YulaSanta",
+            "description": "Tirar dados online. Lanza 1 o 2 dados gratis. Simulador profesional para juegos de mesa, Backgammon y Ludo."
+        },
+        "diceContent": {
+            "title": "Juego de Dados",
+            "subtitle": "Dice Roller - Online Gratis",
+            "label": "Número de Dados",
+            "option": "{count} Dados",
+            "roll": "Tirar Dados",
+            "rolling": "Tirando...",
+            "total": "Total",
+            "history": "Últimas Tiradas",
+            "aboutTitle": "Sobre el Juego de Dados",
+            "aboutText": "Tira dados online gratis con YulaSanta. Usa nuestro simulador para Backgammon, Parchís y Monopoly.",
+            "placeholder": "Haga clic en el botón para tirar los dados",
+            "featuresTitle": "Características:",
+            "features": [
+                "Tira 1 o 2 dados",
+                "Animación 3D realista de dados",
+                "El historial de tiradas se guarda",
+                "Diseño adaptado a móviles",
+                "Totalmente gratis, sin registro"
+            ]
+        },
+        "coinFlipMeta": {
+            "title": "🪙 Cara o Cruz | Lanzar Moneda Online - YulaSanta",
+            "description": "Lanzar moneda online. Generador gratuito para decisiones rápidas. ¡Lanza una moneda ahora!"
+        },
+        "coinFlipContent": {
+            "title": "Cara o Cruz",
+            "subtitle": "Cara o Cruz Online",
+            "heads": "Cara",
+            "tails": "Cruz",
+            "roll": "Lanzar Moneda",
+            "rolling": "Lanzando...",
+            "reset": "Reiniciar",
+            "aboutTitle": "Sobre Cara o Cruz",
+            "aboutText": "Toma decisiones rápidas con nuestro generador de cara o cruz."
+        },
+        "randomNumberMeta": {
+            "title": "🔢 Generador de Números | Sorteo Online - YulaSanta",
+            "description": "Generador de números aleatorios online. Ideal para sorteos y juegos."
+        },
+        "randomNumberContent": {
+            "title": "Generador de Números",
+            "subtitle": "Sorteo en línea",
+            "min": "Min",
+            "max": "Max",
+            "generate": "Generar",
+            "rolling": "Generando...",
+            "result": "Resultado",
+            "aboutTitle": "Sobre el Generador",
+            "aboutText": "Genera números aleatorios imparciales para tus sorteos.",
+            "placeholder": "Haga clic para generar números"
+        },
+        "shortStrawContent": {
+            "title": "Sacar Pajitas",
+            "subtitle": "Sorteo online",
+            "label": "Participantes",
+            "draw": "Sacar pajita",
+            "reset": "Reiniciar",
+            "lost": "¡Perdiste! Sacaste la pajita corta.",
+            "saved": "¡Salvado! Pajita larga.",
+            "aboutTitle": "Sobre Sacar Pajitas",
+            "aboutText": "Juego clásico para selecciones grupales justas."
+        },
+        "shortStrawMeta": {
+            "title": "🎋 Sacar Pajitas | Sorteo online - YulaSanta",
+            "description": "Juego de pajitas online. Decisiones grupales divertidas."
+        },
+        "instagramStoryContent": {
+            "title": "Story Viewer",
+            "subtitle": "Ver anónimamente",
+            "placeholder": "Nombre de usuario",
+            "view": "Ver Historias",
+            "helper": "Mira las historias de forma anónima.",
+            "aboutTitle": "Sobre Story Viewer",
+            "aboutText": "Mira historias de Instagram en secreto con YulaSanta."
+        },
+        "instagramStoryMeta": {
+            "title": "📱 Instagram Story Viewer | Anónimo - YulaSanta",
+            "description": "Mira historias de forma anónima y segura."
+        },
+        "instagramProfileContent": {
+            "title": "Foto de Perfil",
+            "subtitle": "Tamaño HD",
+            "placeholder": "Nombre de usuario",
+            "view": "Ver Foto",
+            "helper": "Mira la foto en HD.",
+            "aboutTitle": "Sobre PP Viewer",
+            "aboutText": "Ver y descargar fotos de perfil de Instagram."
+        },
+        "instagramProfileMeta": {
+            "title": "🖼️ Instagram Profile Picture | HD Downloader - YulaSanta",
+            "description": "Descarga fotos de perfil de Instagram en HD."
+        }
     },
     "footer": {
         "privacyPolicy": "Privacidad",

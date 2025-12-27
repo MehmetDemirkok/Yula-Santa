@@ -1,17 +1,35 @@
 
-import { Metadata } from 'next';
-import { locales, defaultLocale, Locale } from '@/i18n/config';
+import { Metadata, Viewport } from 'next';
+import { locales, defaultLocale } from '@/i18n/config';
 import { SITE_URL } from '@/lib/constants';
+
+// Standard viewport for all pages
+export const viewport: Viewport = {
+    width: 'device-width',
+    initialScale: 1,
+    maximumScale: 5,
+    themeColor: '#EF4444',
+};
 
 interface SEOProps {
     locale: string;
     path: string; // e.g., '', '/youtube', '/instagram'
-    translationKey?: string; // Key in messages.json
+    translationKey?: string; // Key in messages.json (e.g., 'giveaway.meta.instagram')
     titleOverride?: string;
     descriptionOverride?: string;
+    keywordsOverride?: string[];
+    noIndex?: boolean;
 }
 
-export async function getSEOMetadata({ locale, path, translationKey, titleOverride, descriptionOverride }: SEOProps): Promise<Metadata> {
+export async function getSEOMetadata({
+    locale,
+    path,
+    translationKey,
+    titleOverride,
+    descriptionOverride,
+    keywordsOverride,
+    noIndex = false
+}: SEOProps): Promise<Metadata> {
     // Dynamically import messages for the locale
     let messages;
     try {
@@ -20,19 +38,28 @@ export async function getSEOMetadata({ locale, path, translationKey, titleOverri
         messages = (await import(`@/messages/${defaultLocale}.json`)).default;
     }
 
-    let title, description;
+    let title, description, keywords;
 
     if (titleOverride) {
         title = titleOverride;
         description = descriptionOverride;
+        keywords = keywordsOverride;
     } else if (translationKey) {
-        const t = messages[translationKey];
-        title = t?.meta?.title || t?.title || 'YulaSanta';
-        description = t?.meta?.description || t?.description || 'Best Secret Santa App';
+        // Support nested keys like 'giveaway.meta.instagram'
+        const keys = translationKey.split('.');
+        let current = messages;
+        for (const key of keys) {
+            current = current?.[key];
+        }
+
+        title = current?.title || messages.meta?.title || 'YulaSanta';
+        description = current?.description || messages.meta?.description || 'Best Secret Santa App';
+        keywords = current?.keywords || messages.meta?.keywords || [];
     } else {
         // Fallback to meta global
         title = messages.meta?.title || 'YulaSanta';
         description = messages.meta?.description || 'Best Secret Santa App';
+        keywords = messages.meta?.keywords || [];
     }
 
     // Construct alternates
@@ -41,33 +68,54 @@ export async function getSEOMetadata({ locale, path, translationKey, titleOverri
         languages[loc] = `${SITE_URL}/${loc}${path}`;
     });
 
-    // x-default: usually points to the root of the content (generic URL) 
-    // or the default locale version.
-    // For consistency with sitemap (which I will also fix), let's point to the default locale version 
-    // OR just use the site url + path if we assume auto-redirect.
-    // Google recommends x-default to be the auto-redirecting page.
-    // Since our middleware redirects /youtube -> /tr/youtube, 
-    // x-default should be https://www.yulasanta.com.tr/youtube
+    languages['x-default'] = `${SITE_URL}/${defaultLocale}${path}`;
 
-    languages['x-default'] = `${SITE_URL}${path}`;
+    const canonicalUrl = `${SITE_URL}/${locale}${path}`;
 
     return {
         title,
         description,
+        keywords: Array.isArray(keywords) ? keywords.join(', ') : keywords,
+        robots: noIndex ? 'noindex, nofollow' : {
+            index: true,
+            follow: true,
+            googleBot: {
+                index: true,
+                follow: true,
+                'max-video-preview': -1,
+                'max-image-preview': 'large',
+                'max-snippet': -1,
+            },
+        },
         alternates: {
-            canonical: `${SITE_URL}/${locale}${path}`,
+            canonical: canonicalUrl,
             languages,
         },
         openGraph: {
             title,
             description,
-            url: `${SITE_URL}/${locale}${path}`,
+            url: canonicalUrl,
             locale: locale,
-            // Images usually cascade from layout, but can be overridden
+            siteName: 'YulaSanta',
+            type: 'website',
+            images: [
+                {
+                    url: `${SITE_URL}/opengraph-image.png`,
+                    width: 1200,
+                    height: 630,
+                    alt: title,
+                },
+            ],
         },
         twitter: {
+            card: 'summary_large_image',
             title,
             description,
-        }
+            images: [`${SITE_URL}/opengraph-image.png`],
+            creator: '@yulasanta',
+        },
+        verification: {
+            google: process.env.NEXT_PUBLIC_GOOGLE_SITE_VERIFICATION,
+        },
     };
 }

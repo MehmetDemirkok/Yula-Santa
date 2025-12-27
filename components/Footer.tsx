@@ -22,7 +22,7 @@ export function Footer() {
     const tools = [
         {
             key: 'instagramStoryViewer',
-            href: `/tools/instagram-story-viewer`,
+            href: `/${locale}/tools/instagram-story-viewer`,
             icon: Instagram,
             iconBg: 'bg-gradient-to-br from-purple-500 via-pink-500 to-orange-400',
             hoverBorder: 'hover:border-pink-200',
@@ -30,7 +30,7 @@ export function Footer() {
         },
         {
             key: 'instagramProfilePicture',
-            href: `/tools/instagram-profile-picture`,
+            href: `/${locale}/tools/instagram-profile-picture`,
             icon: ImageIcon,
             iconBg: 'bg-emerald-500',
             hoverBorder: 'hover:border-emerald-200',
@@ -46,7 +46,7 @@ export function Footer() {
         },
         {
             key: 'diceGame',
-            href: `/tools/dice`,
+            href: `/${locale}/tools/dice`,
             icon: Dice1,
             iconBg: 'bg-blue-500',
             hoverBorder: 'hover:border-blue-200',
@@ -54,7 +54,7 @@ export function Footer() {
         },
         {
             key: 'coinFlip',
-            href: `/tools/coin-flip`,
+            href: `/${locale}/tools/coin-flip`,
             icon: Coins,
             iconBg: 'bg-amber-500',
             hoverBorder: 'hover:border-amber-200',
@@ -62,7 +62,7 @@ export function Footer() {
         },
         {
             key: 'randomNumber',
-            href: `/tools/random-number`,
+            href: `/${locale}/tools/random-number`,
             icon: Hash,
             iconBg: 'bg-teal-500',
             hoverBorder: 'hover:border-teal-200',
@@ -70,7 +70,7 @@ export function Footer() {
         },
         {
             key: 'shortStraw',
-            href: `/tools/short-straw`,
+            href: `/${locale}/tools/short-straw`,
             icon: Shuffle,
             iconBg: 'bg-indigo-500',
             hoverBorder: 'hover:border-indigo-200',
@@ -125,6 +125,7 @@ export function Footer() {
                                     <Link
                                         key={tool.key}
                                         href={tool.href}
+                                        title={`${tTools(tool.key as keyof typeof tool)} - Online Ücretsiz Araç`}
                                         className={`group flex items-center gap-3 p-3 sm:p-4 rounded-xl sm:rounded-2xl bg-white border border-gray-100 ${tool.hoverBorder} hover:shadow-lg ${tool.hoverShadow} transition-all duration-300`}
                                     >
                                         <div className={`p-2 sm:p-2.5 rounded-lg sm:rounded-xl ${tool.iconBg} shadow-lg flex-shrink-0 group-hover:scale-110 transition-transform`}>

@@ -153,11 +153,112 @@
         "title": "Ferramentas",
         "instagramStoryViewer": "Visualizador de Stories do Instagram",
         "instagramProfilePicture": "Visualizador de Foto de Perfil do Instagram",
-        "onlineGiveaway": "Ferramenta de Sorteio Online",
+        "onlineGiveaway": "Ferramenta de Sorteios Online",
         "diceGame": "Jogo de Dados",
-        "coinFlip": "Cara ou Coroa",
+        "coinFlip": "Cara o Coroa",
         "randomNumber": "Gerador de Números Aleatórios",
-        "shortStraw": "Tirar Palito Curto"
+        "shortStraw": "Tirar Palitos",
+        "meta": {
+            "title": "Ferramentas Online Gratuitas | YulaSanta - Dados, Moeda, Números",
+            "description": "Ferramentas grátis YulaSanta: dados, cara o coroa, gerador de números, palitos, stories e fotos de perfil."
+        },
+        "diceMeta": {
+            "title": "🎲 Jogo de Dados | Jogar Dados Online Grátis - YulaSanta",
+            "description": "Jogar dados online. Jogue 1 ou 2 dados grátis. Simulador profissional para jogos de tabuleiro."
+        },
+        "diceContent": {
+            "title": "Jogo de Dados",
+            "subtitle": "Dice Roller - Online Grátis",
+            "label": "Número de Dados",
+            "option": "{count} Dados",
+            "roll": "Jogar Dados",
+            "rolling": "Jogando...",
+            "total": "Total",
+            "history": "Últimas Jogadas",
+            "aboutTitle": "Sobre o Jogo de Dados",
+            "aboutText": "Jogue dados online grátis con YulaSanta. Use nosso simulador para Backgammon e Monopoly.",
+            "placeholder": "Clique no botão para lançar os dados",
+            "featuresTitle": "Características:",
+            "features": [
+                "Jogue 1 ou 2 dados",
+                "Animação 3D realista de dados",
+                "O histórico de jogadas é salvo",
+                "Design adaptado a móveis",
+                "Totalmente grátis, sem registro"
+            ]
+        },
+        "coinFlipMeta": {
+            "title": "🪙 Cara o Coroa | Lançar Moeda Online - YulaSanta",
+            "description": "Lançar moeda online. Gerador gratuito para decisões rápidas. Lance uma moeda agora!"
+        },
+        "coinFlipContent": {
+            "title": "Cara o Coroa",
+            "subtitle": "Cara o Coroa Online",
+            "heads": "Cara",
+            "tails": "Coroa",
+            "roll": "Lançar Moeda",
+            "rolling": "Lançando...",
+            "reset": "Reiniciar",
+            "aboutTitle": "Sobre Cara o Coroa",
+            "aboutText": "Tome decisões rápidas com nosso gerador."
+        },
+        "randomNumberMeta": {
+            "title": "🔢 Gerador de Números | Sorteio Online - YulaSanta",
+            "description": "Gerador de números aleatórios online. Ideal para sorteios e concursos."
+        },
+        "randomNumberContent": {
+            "title": "Gerador de Números",
+            "subtitle": "Escolher número online",
+            "min": "Mín",
+            "max": "Máx",
+            "generate": "Gerar",
+            "rolling": "Gerando...",
+            "result": "Resultado",
+            "aboutTitle": "Sobre o Gerador",
+            "aboutText": "Gere números aleatórios imparciais para seus sorteios.",
+            "placeholder": "Clique para gerar números"
+        },
+        "shortStrawContent": {
+            "title": "Tirar Palitos",
+            "subtitle": "Sorteio online",
+            "label": "Participantes",
+            "draw": "Tirar palito",
+            "reset": "Reiniciar",
+            "lost": "Você perdeu! Tirou o palito curto.",
+            "saved": "Salvo! Palito longo.",
+            "aboutTitle": "Sobre Tirar Palitos",
+            "aboutText": "Jogo clássico para seleções grupais justas."
+        },
+        "shortStrawMeta": {
+            "title": "🎋 Tirar Palitos | Sorteio online - YulaSanta",
+            "description": "Jogo de palitos online. Faça decisões divertidas em grupo."
+        },
+        "instagramStoryContent": {
+            "title": "Story Viewer",
+            "subtitle": "Ver anonimamente",
+            "placeholder": "Nome de usuário",
+            "view": "Ver Stories",
+            "helper": "Veja stories anonimamente.",
+            "aboutTitle": "Sobre Story Viewer",
+            "aboutText": "Veja stories do Instagram em segredo com YulaSanta."
+        },
+        "instagramStoryMeta": {
+            "title": "📱 Instagram Story Viewer | Anónimo - YulaSanta",
+            "description": "Veja stories anonimamente e com segurança."
+        },
+        "instagramProfileContent": {
+            "title": "Foto de Perfil",
+            "subtitle": "Tamanho HD",
+            "placeholder": "Nome de usuário",
+            "view": "Ver Foto",
+            "helper": "Veja a foto em HD.",
+            "aboutTitle": "Sobre PP Viewer",
+            "aboutText": "Veja e baixe fotos de perfil do Instagram."
+        },
+        "instagramProfileMeta": {
+            "title": "🖼️ Instagram Profile Picture | HD Downloader - YulaSanta",
+            "description": "Baixe fotos de perfil do Instagram em HD."
+        }
     },
     "footer": {
         "privacyPolicy": "Privacidade",

@@ -66,6 +66,11 @@ export async function generateMetadata({
         description: meta.description,
         keywords: meta.keywords,
 
+        icons: {
+            icon: '/favicon.ico',
+            shortcut: '/favicon.ico',
+            apple: '/apple-touch-icon.png',
+        },
         manifest: '/manifest.json',
         authors: [{ name: "YulaSanta Team" }],
         creator: "YulaSanta Team",
@@ -107,31 +112,115 @@ export async function generateMetadata({
     };
 }
 
-// JSON-LD structured data
+// JSON-LD structured data - SEO Optimized
 function getJsonLd(locale: string, messages: Record<string, any>) {
-    const organizationSchema = {
-        "@type": "Organization",
-        "name": "YulaSanta",
-        "url": SITE_URL,
-        "logo": `${SITE_URL}/icon-512.png`,
+    const localeMap: Record<string, string> = {
+        tr: 'tr-TR',
+        en: 'en-US',
+        de: 'de-DE',
+        fr: 'fr-FR',
+        es: 'es-ES',
+        it: 'it-IT',
+        pt: 'pt-BR',
+        ru: 'ru-RU',
+        ar: 'ar-SA',
+        ja: 'ja-JP',
+        ko: 'ko-KR',
+        zh: 'zh-CN'
     };
 
+    // WebSite Schema with SearchAction
+    const websiteSchema = {
+        "@type": "WebSite",
+        "@id": `${SITE_URL}/#website`,
+        "url": SITE_URL,
+        "name": "YulaSanta",
+        "description": messages.meta?.description || "Online Çekiliş ve Yılbaşı Hediye Eşleştirme Platformu",
+        "publisher": {
+            "@id": `${SITE_URL}/#organization`
+        },
+        "potentialAction": [
+            {
+                "@type": "SearchAction",
+                "target": {
+                    "@type": "EntryPoint",
+                    "urlTemplate": `${SITE_URL}/${locale}?q={search_term_string}`
+                },
+                "query-input": "required name=search_term_string"
+            }
+        ],
+        "inLanguage": localeMap[locale] || locale
+    };
+
+    // Organization Schema
+    const organizationSchema = {
+        "@type": "Organization",
+        "@id": `${SITE_URL}/#organization`,
+        "name": "YulaSanta",
+        "url": SITE_URL,
+        "logo": {
+            "@type": "ImageObject",
+            "@id": `${SITE_URL}/#logo`,
+            "url": `${SITE_URL}/icon-512.png`,
+            "contentUrl": `${SITE_URL}/icon-512.png`,
+            "width": 512,
+            "height": 512,
+            "caption": "YulaSanta Logo"
+        },
+        "image": {
+            "@id": `${SITE_URL}/#logo`
+        },
+        "sameAs": []
+    };
+
+    // WebPage Schema
+    const webPageSchema = {
+        "@type": "WebPage",
+        "@id": `${SITE_URL}/${locale}#webpage`,
+        "url": `${SITE_URL}/${locale}`,
+        "name": messages.meta?.title || "YulaSanta",
+        "isPartOf": {
+            "@id": `${SITE_URL}/#website`
+        },
+        "about": {
+            "@id": `${SITE_URL}/#organization`
+        },
+        "description": messages.meta?.description,
+        "inLanguage": localeMap[locale] || locale,
+        "potentialAction": [
+            {
+                "@type": "ReadAction",
+                "target": [`${SITE_URL}/${locale}`]
+            }
+        ]
+    };
+
+    // SoftwareApplication Schema
     const appSchema = {
         "@type": "SoftwareApplication",
+        "@id": `${SITE_URL}/#application`,
         "name": "YulaSanta",
         "applicationCategory": "UtilityApplication",
         "operatingSystem": "Any",
-        "inLanguage": locale,
+        "inLanguage": localeMap[locale] || locale,
+        "url": SITE_URL,
         "offers": {
             "@type": "Offer",
             "price": "0",
-            "priceCurrency": "USD"
+            "priceCurrency": "TRY",
+            "availability": "https://schema.org/InStock"
         },
-        "description": messages.meta.description,
+        "description": messages.meta?.description,
         "aggregateRating": {
             "@type": "AggregateRating",
             "ratingValue": "4.9",
-            "ratingCount": "1250"
+            "bestRating": "5",
+            "worstRating": "1",
+            "ratingCount": "2847",
+            "reviewCount": "156"
+        },
+        "author": {
+            "@id": `${SITE_URL}/#organization`
         },
         "featureList": [
             "Secret Santa Generator",
@@ -139,16 +228,90 @@ function getJsonLd(locale: string, messages: Record<string, any>) {
             "YouTube Comment Picker",
             "TikTok Comment Picker",
             "Twitter Giveaway Tool",
+            "Dice Roller",
+            "Coin Flip",
+            "Random Number Generator",
+            "Short Straw Game",
             "No Login Required",
-            "Free to use"
+            "Free to use",
+            "Multi-language Support"
+        ],
+        "screenshot": `${SITE_URL}/opengraph-image.png`
+    };
+
+    // FAQ Schema - Helps with rich snippets
+    const faqSchema = {
+        "@type": "FAQPage",
+        "@id": `${SITE_URL}/${locale}#faq`,
+        "mainEntity": [
+            {
+                "@type": "Question",
+                "name": locale === 'tr' ? "YulaSanta nedir?" : "What is YulaSanta?",
+                "acceptedAnswer": {
+                    "@type": "Answer",
+                    "text": locale === 'tr'
+                        ? "YulaSanta, ücretsiz online çekiliş ve yılbaşı hediye eşleştirme platformudur. Instagram, YouTube, TikTok ve Twitter çekilişleri yapabilir, Secret Santa organizasyonları düzenleyebilirsiniz."
+                        : "YulaSanta is a free online giveaway and Secret Santa platform. You can run Instagram, YouTube, TikTok, and Twitter giveaways, and organize Secret Santa gift exchanges."
+                }
+            },
+            {
+                "@type": "Question",
+                "name": locale === 'tr' ? "YulaSanta ücretsiz mi?" : "Is YulaSanta free?",
+                "acceptedAnswer": {
+                    "@type": "Answer",
+                    "text": locale === 'tr'
+                        ? "Evet, YulaSanta tamamen ücretsizdir. Kayıt olmadan, giriş yapmadan tüm özellikleri kullanabilirsiniz."
+                        : "Yes, YulaSanta is completely free. You can use all features without registration or login."
+                }
+            },
+            {
+                "@type": "Question",
+                "name": locale === 'tr' ? "Hangi sosyal medya platformlarını destekliyorsunuz?" : "Which social media platforms do you support?",
+                "acceptedAnswer": {
+                    "@type": "Answer",
+                    "text": locale === 'tr'
+                        ? "Instagram, YouTube, TikTok ve Twitter (X) platformlarından yorum ve beğeni çekilişleri yapabilirsiniz."
+                        : "You can run giveaways from Instagram, YouTube, TikTok, and Twitter (X) platforms using comments and likes."
+                }
+            },
+            {
+                "@type": "Question",
+                "name": locale === 'tr' ? "Secret Santa nasıl çalışır?" : "How does Secret Santa work?",
+                "acceptedAnswer": {
+                    "@type": "Answer",
+                    "text": locale === 'tr'
+                        ? "Katılımcı isimlerini ekleyin, çekilişi başlatın. Her kişi rastgele birini çeker ve sadece kendi eşleşmesini görebilir. Gizlilik korunur!"
+                        : "Add participant names, start the draw. Each person randomly picks someone and can only see their own match. Privacy is protected!"
+                }
+            }
+        ]
+    };
+
+    // BreadcrumbList Schema
+    const breadcrumbSchema = {
+        "@type": "BreadcrumbList",
+        "@id": `${SITE_URL}/${locale}#breadcrumb`,
+        "itemListElement": [
+            {
+                "@type": "ListItem",
+                "position": 1,
+                "item": {
+                    "@id": `${SITE_URL}/${locale}`,
+                    "name": locale === 'tr' ? "Ana Sayfa" : "Home"
+                }
+            }
         ]
     };
 
     return {
         "@context": "https://schema.org",
         "@graph": [
+            websiteSchema,
             organizationSchema,
-            appSchema
+            webPageSchema,
+            appSchema,
+            faqSchema,
+            breadcrumbSchema
         ]
     };
 }

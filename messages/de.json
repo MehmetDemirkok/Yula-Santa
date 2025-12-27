@@ -157,7 +157,108 @@
         "diceGame": "Würfelspiel",
         "coinFlip": "Münzwurf",
         "randomNumber": "Zufallszahlengenerator",
-        "shortStraw": "Strohhalm Ziehen"
+        "shortStraw": "Strohhalm Ziehen",
+        "meta": {
+            "title": "Kostenlose Online-Tools | YulaSanta - Würfel, Münzwurf, Zufallszahl",
+            "description": "YulaSanta kostenlose Online-Tools: Würfelspiel, Münzwurf, Zufallszahlengenerator, Strohhalm ziehen, Instagram Story Viewer und Profilbild-Downloader."
+        },
+        "diceMeta": {
+            "title": "🎲 Würfelspiel | Kostenlos Online Würfeln - YulaSanta",
+            "description": "Online Würfelspiel. Würfeln Sie kostenlos mit 1 oder 2 Würfeln. Professioneller Würfel-Simulator für Brettspiele, Backgammon und Ludo."
+        },
+        "diceContent": {
+            "title": "Würfelspiel",
+            "subtitle": "Dice Roller - Online Kostenlos",
+            "label": "Anzahl der Würfel",
+            "option": "{count} Würfel",
+            "roll": "Würfeln",
+            "rolling": "Wird gewürfelt...",
+            "total": "Gesamt",
+            "history": "Letzte Würfe",
+            "aboutTitle": "Über das Würfelspiel",
+            "aboutText": "Würfeln Sie online kostenlos mit dem YulaSanta Würfel-Tool. Nutzen Sie unseren professionellen Würfel-Simulator für Backgammon, Okey, Monopoly und andere Brettspiele.",
+            "placeholder": "Klicken Sie auf die Schaltfläche, um zu würfeln",
+            "featuresTitle": "Funktionen:",
+            "features": [
+                "Mit 1 oder 2 Würfeln würfeln",
+                "Realistische 3D-Würfelanimation",
+                "Wurf-Verlauf wird gespeichert",
+                "Mobilfreundliches Design",
+                "Völlig kostenlos, keine Registrierung erforderlich"
+            ]
+        },
+        "coinFlipMeta": {
+            "title": "🪙 Münzwurf | Online Kopf oder Zahl - YulaSanta",
+            "description": "Online-Münzwurf-Tool. Kostenloser Kopf oder Zahl Generator für schnelle Entscheidungen. Wirf jetzt eine Münze online!"
+        },
+        "coinFlipContent": {
+            "title": "Münzwurf",
+            "subtitle": "Online Kopf oder Zahl",
+            "heads": "Kopf",
+            "tails": "Zahl",
+            "roll": "Münze werfen",
+            "rolling": "Wird geworfen...",
+            "reset": "Zurücksetzen",
+            "aboutTitle": "Über den Münzwurf",
+            "aboutText": "Treffen Sie schnelle Entscheidungen mit unserem Online-Kopf-oder-Zahl-Generator."
+        },
+        "randomNumberMeta": {
+            "title": "🔢 Zufallszahlengenerator | Zufallszahlen Online ziehen - YulaSanta",
+            "description": "Online Zufallszahlengenerator. Ziehen Sie Zufallszahlen in Ihrem angegebenen Bereich. Ideal für Verlosungen und Spiele."
+        },
+        "randomNumberContent": {
+            "title": "Zufallszahlengenerator",
+            "subtitle": "Zahlen online ziehen",
+            "min": "Min",
+            "max": "Max",
+            "generate": "Generieren",
+            "rolling": "Generieren...",
+            "result": "Ergebnis",
+            "aboutTitle": "Über den Zufallszahlengenerator",
+            "aboutText": "Generieren Sie unvoreingenommene Zufallszahlen für Ihre Verlosungen und Spiele.",
+            "placeholder": "Klicken Sie zum Generieren von Zahlen"
+        },
+        "shortStrawContent": {
+            "title": "Strohhalm Ziehen",
+            "subtitle": "Strohhalme online ziehen",
+            "label": "Teilnehmer",
+            "draw": "Strohhalm ziehen",
+            "reset": "Zurücksetzen",
+            "lost": "Du hast verloren! Du hast den kürzeren Strohhalm gezogen.",
+            "saved": "Gerettet! Langer Strohhalm.",
+            "aboutTitle": "Über Strohhalm Ziehen",
+            "aboutText": "Klassisches Strohhalm-Zieh-Spiel für faire Gruppenentscheidungen."
+        },
+        "shortStrawMeta": {
+            "title": "🎋 Strohhalm Ziehen | Strohhalm Spiel Online - YulaSanta",
+            "description": "Online Strohhalm-Zieh-Spiel. Treffen Sie faire und lustige Entscheidungen in einer Gruppe."
+        },
+        "instagramStoryContent": {
+            "title": "Instagram Story Viewer",
+            "subtitle": "Anonymer Story Viewer",
+            "placeholder": "Benutzername eingeben",
+            "view": "Stories ansehen",
+            "helper": "Stories anonym ansehen, ohne dass der Besitzer es merkt.",
+            "aboutTitle": "Über Story Viewer",
+            "aboutText": "Instagram Stories heimlich ansehen mit dem anonymen Viewer von YulaSanta."
+        },
+        "instagramStoryMeta": {
+            "title": "📱 Instagram Story Viewer | Anonym Stories ansehen - YulaSanta",
+            "description": "Instagram Stories anonym ansehen. Privater Instagram Story Viewer ohne Login."
+        },
+        "instagramProfileContent": {
+            "title": "Instagram Profilbild",
+            "subtitle": "HD Profilbild Größe",
+            "placeholder": "Benutzername eingeben",
+            "view": "Profilbild ansehen",
+            "helper": "Profilfoto in voller Größe und HD ansehen.",
+            "aboutTitle": "Über Profilbild Viewer",
+            "aboutText": "Nutzen Sie unser kostenloses Tool, um Instagram-Profilbilder anzusehen und herunterzuladen."
+        },
+        "instagramProfileMeta": {
+            "title": "🖼️ Instagram Profilbild Viewer | HD Downloader - YulaSanta",
+            "description": "Instagram Profilbilder in voller HD-Qualität ansehen und herunterladen."
+        }
     },
     "footer": {
         "privacyPolicy": "Datenschutz",

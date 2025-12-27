@@ -56,6 +56,6 @@ export const config = {
         // - _vercel (Vercel internals)
         // - tools (standalone tools pages)
         // - favicon.ico, sitemap.xml, robots.txt (static files)
-        '/((?!api|_next|_vercel|tools|.*\\.png|.*\\.ico|.*\\.json|.*\\.txt|sitemap\\.xml|robots\\.txt).*)',
+        '/((?!api|_next|_vercel|.*\\.png|.*\\.ico|.*\\.json|.*\\.txt|sitemap\\.xml|robots\\.txt).*)',
     ]
 };

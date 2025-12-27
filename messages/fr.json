@@ -157,7 +157,108 @@
         "diceGame": "Jeu de Dés",
         "coinFlip": "Pile ou Face",
         "randomNumber": "Générateur de Nombres Aléatoires",
-        "shortStraw": "Tirer la Courte Paille"
+        "shortStraw": "Tirer la Courte Paille",
+        "meta": {
+            "title": "Outils en ligne gratuits | YulaSanta - Dés, Pile ou face, Nombre aléatoire",
+            "description": "Outils gratuits YulaSanta : jeu de dés, pile ou face, générateur de nombres, tirage à la courte paille, story viewer et photo de profil."
+        },
+        "diceMeta": {
+            "title": "🎲 Jeu de Dés | Lancer les Dés en Ligne - YulaSanta",
+            "description": "Lancer les dés en ligne. Lancez 1 ou 2 dés gratuitement. Simulateur de dés professionnel pour jeux de société, Backgammon et Ludo."
+        },
+        "diceContent": {
+            "title": "Jeu de Dés",
+            "subtitle": "Dice Roller - En Ligne Gratuit",
+            "label": "Nombre de Dés",
+            "option": "{count} Dés",
+            "roll": "Lancer les Dés",
+            "rolling": "Lancement...",
+            "total": "Total",
+            "history": "Derniers Lancers",
+            "aboutTitle": "À propos du Jeu de Dés",
+            "aboutText": "Lancez les dés en ligne gratuitement avec YulaSanta. Utilisez notre simulateur pour le Backgammon, Monopoli et autres jeux.",
+            "placeholder": "Cliquez sur le bouton pour lancer les dés",
+            "featuresTitle": "Fonctionnalités :",
+            "features": [
+                "Lancez 1 ou 2 dés",
+                "Animation 3D réaliste des dés",
+                "L'historique des lancers est enregistré",
+                "Design adapté aux mobiles",
+                "Totalement gratuit, sans inscription"
+            ]
+        },
+        "coinFlipMeta": {
+            "title": "🪙 Pile ou Face | Lancer la Pièce en Ligne - YulaSanta",
+            "description": "Outil pile ou face en ligne. Générateur gratuit pour des décisions rapides. Lancez une pièce maintenant !"
+        },
+        "coinFlipContent": {
+            "title": "Pile ou Face",
+            "subtitle": "Pile ou Face En Ligne",
+            "heads": "Face",
+            "tails": "Pile",
+            "roll": "Lancer la Pièce",
+            "rolling": "Lancement...",
+            "reset": "Réinitialiser",
+            "aboutTitle": "À propos du Pile ou Face",
+            "aboutText": "Prenez des décisions rapides avec notre générateur de pile ou face."
+        },
+        "randomNumberMeta": {
+            "title": "🔢 Générateur de Nombres Aléatoires | Tirage au Sort - YulaSanta",
+            "description": "Générateur de nombres aléatoires en ligne. Idéal pour concours et jeux."
+        },
+        "randomNumberContent": {
+            "title": "Générateur de Nombres Aléatoires",
+            "subtitle": "Tirage au sort en ligne",
+            "min": "Min",
+            "max": "Max",
+            "generate": "Générer",
+            "rolling": "Génération...",
+            "result": "Résultat",
+            "aboutTitle": "À propos du Générateur",
+            "aboutText": "Générez des nombres aléatoires impartiaux pour vos tirages et jeux.",
+            "placeholder": "Cliquez pour générer des numéros"
+        },
+        "shortStrawContent": {
+            "title": "Courte Paille",
+            "subtitle": "Tirage en ligne",
+            "label": "Participants",
+            "draw": "Tirer une paille",
+            "reset": "Réinitialiser",
+            "lost": "Perdu ! Vous avez la courte paille.",
+            "saved": "Sauvé ! Paille longue.",
+            "aboutTitle": "À propos de la Courte Paille",
+            "aboutText": "Jeu classique pour des sélections équitables en groupe."
+        },
+        "shortStrawMeta": {
+            "title": "🎋 Courte Paille | Tirage au sort en ligne - YulaSanta",
+            "description": "Jeu de la courte paille en ligne. Prenez des décisions fun en groupe."
+        },
+        "instagramStoryContent": {
+            "title": "Story Viewer",
+            "subtitle": "Visionnage anonyme",
+            "placeholder": "Nom d'utilisateur",
+            "view": "Voir les Stories",
+            "helper": "Regardez les stories anonymement.",
+            "aboutTitle": "À propos du Story Viewer",
+            "aboutText": "Regardez secrètement les stories Instagram avec YulaSanta."
+        },
+        "instagramStoryMeta": {
+            "title": "📱 Instagram Story Viewer | Anonyme - YulaSanta",
+            "description": "Regardez les stories anonymement. Sans connexion."
+        },
+        "instagramProfileContent": {
+            "title": "Photo de Profil",
+            "subtitle": "Taille HD",
+            "placeholder": "Nom d'utilisateur",
+            "view": "Voir la Photo",
+            "helper": "Voir la photo en HD.",
+            "aboutTitle": "À propos du PP Viewer",
+            "aboutText": "Affichez et téléchargez les photos de profil Instagram."
+        },
+        "instagramProfileMeta": {
+            "title": "🖼️ Instagram Profile Picture | HD Downloader - YulaSanta",
+            "description": "Affichez et téléchargez les photos de profil Instagram en HD."
+        }
     },
     "footer": {
         "privacyPolicy": "Confidentialité",

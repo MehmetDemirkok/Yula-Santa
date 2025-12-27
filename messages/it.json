@@ -150,14 +150,153 @@
         "current": "Italiano"
     },
     "tools": {
-        "title": "Strumenti",
+        "title": "Strumenti Online Gratuiti",
         "instagramStoryViewer": "Visualizzatore Storie Instagram",
         "instagramProfilePicture": "Visualizzatore Foto Profilo Instagram",
-        "onlineGiveaway": "Strumento Estrazione Online",
-        "diceGame": "Lancio Dadi",
+        "onlineGiveaway": "Strumento Estrazioni Online",
+        "diceGame": "Lancio dei Dadi",
         "coinFlip": "Testa o Croce",
-        "randomNumber": "Generatore Numeri Casuali",
-        "shortStraw": "Gioco del Bastoncino Corto"
+        "randomNumber": "Generatore di Numeri Casuali",
+        "shortStraw": "Gioco del Bastoncino Corto",
+        "meta": {
+            "title": "Strumenti Online Gratuiti | YulaSanta - Dadi, Moneta, Numeri",
+            "description": "Strumenti online gratuiti di YulaSanta: lancio dadi, testa o croce, generatore numeri, bastoncino corto, story viewer e foto profilo."
+        },
+        "diceMeta": {
+            "title": "🎲 Gioco dei Dadi | Lancia i Dadi Online Gratis - YulaSanta",
+            "description": "Gioco dei dadi online. Lancia 1 o 2 dadi gratuitamente. Simulatore di dadi professionale per giochi da tavolo, Backgammon e altro.",
+            "keywords": [
+                "lancio dadi",
+                "lancia dadi",
+                "dadi online",
+                "dice roller",
+                "dadi backgammon"
+            ]
+        },
+        "diceContent": {
+            "title": "Gioco dei Dadi",
+            "subtitle": "Dice Roller - Online Gratis",
+            "label": "Numero di Dadi",
+            "option": "{count} Dadi",
+            "roll": "Lancia i Dadi",
+            "rolling": "Lancio in corso...",
+            "total": "Totale",
+            "history": "Ultimi Lanci",
+            "aboutTitle": "Informazioni sul Gioco dei Dadi",
+            "aboutText": "Con lo strumento di lancio dei dadi di YulaSanta puoi lanciare dadi online gratuitamente. Usa il nostro simulatore professionale per Backgammon, Monopoli e altri giochi da tavolo. Vivi un'esperienza realistica scegliendo 1 o 2 dadi.",
+            "featuresTitle": "Caratteristiche:",
+            "features": [
+                "Puoi lanciare 1 o 2 dadi",
+                "Animazione 3D realistica",
+                "La cronologia dei lanci viene registrata",
+                "Design compatibile con dispositivi mobili",
+                "Completamente gratuito, nessuna registrazione richiesta"
+            ],
+            "placeholder": "Clicca il pulsante per lanciare i dadi"
+        },
+        "coinFlipMeta": {
+            "title": "🪙 Testa o Croce | Lancio della Moneta Online - YulaSanta",
+            "description": "Lancia una moneta online gratis. Prendi decisioni veloci con il nostro simulatore di testa o croce realistico.",
+            "keywords": [
+                "testa o croce",
+                "lancio moneta",
+                "coin flip",
+                "prendere decisioni"
+            ]
+        },
+        "coinFlipContent": {
+            "title": "Testa o Croce",
+            "subtitle": "Coin Flip Online - Gratis",
+            "heads": "Testa",
+            "tails": "Croce",
+            "roll": "Lancia la Moneta",
+            "rolling": "Lancio...",
+            "reset": "Ricomincia",
+            "aboutTitle": "Informazioni su Testa o Croce",
+            "aboutText": "Il lancio della moneta è il modo più semplice per risolvere un dubbio o prendere una decisione veloce. Con il nostro simulatore online, puoi lanciare una moneta virtuale ovunque tu sia.",
+            "placeholder": "Clicca per lanciare la moneta"
+        },
+        "randomNumberMeta": {
+            "title": "🔢 Generatore di Numeri Casuali | Online Gratis - YulaSanta",
+            "description": "Genera numeri casuali in un intervallo personalizzato. Ideale per estrazioni, giochi e decisioni.",
+            "keywords": [
+                "numeri casuali",
+                "generatore numeri",
+                "random number",
+                "estrazione numeri"
+            ]
+        },
+        "randomNumberContent": {
+            "title": "Generatore di Numeri Casuali",
+            "subtitle": "Random Number Generator",
+            "min": "Minimo",
+            "max": "Massimo",
+            "generate": "Genera Numero",
+            "rolling": "Generando...",
+            "result": "Risultato",
+            "aboutTitle": "Informazioni sul Generatore di Numeri",
+            "aboutText": "Genera numeri casuali sicuri e imparziali tra due valori a tua scelta. Perfetto per insegnanti, giocatori e organizzatori di estrazioni.",
+            "placeholder": "Clicca per generare numeri"
+        },
+        "shortStrawMeta": {
+            "title": "🌿 Gioco del Bastoncino Corto | Estrazione Online - YulaSanta",
+            "description": "Chi pescherà il bastoncino corto? Un modo divertente e giusto per decidere chi deve fare qualcosa.",
+            "keywords": [
+                "bastoncino corto",
+                "short straw",
+                "estrazione",
+                "chi perde"
+            ]
+        },
+        "shortStrawContent": {
+            "title": "Gioco del Bastoncino Corto",
+            "subtitle": "Pesca il Bastoncino",
+            "label": "Numero di Partecipanti",
+            "draw": "Pesca un Bastoncino",
+            "reset": "Ricomincia",
+            "lost": "Hai perso! Hai pescato il bastoncino corto.",
+            "saved": "Sei salvo! Il bastoncino è lungo.",
+            "aboutTitle": "Informazioni sul Bastoncino Corto",
+            "aboutText": "Il gioco del bastoncino corto è un classico per decidere chi 'perde' o chi deve svolgere un compito. Il nostro strumento garantisce un'estrazione 100% casuale."
+        },
+        "instagramStoryMeta": {
+            "title": "📱 Visualizzatore Storie Instagram | Anonimo e Gratis - YulaSanta",
+            "description": "Guarda le storie di Instagram in modo anonimo senza che l'utente lo sappia. Veloce, sicuro e gratuito.",
+            "keywords": [
+                "storie instagram",
+                "story viewer",
+                "anonimo",
+                "visualizza storie"
+            ]
+        },
+        "instagramStoryContent": {
+            "title": "Visualizzatore Storie Instagram",
+            "subtitle": "Story Viewer Anonimo",
+            "placeholder": "Inserisci username (es: yula)",
+            "view": "Guarda Storie",
+            "helper": "Guarda le storie in modo anonimo senza che il proprietario lo sappia.",
+            "aboutTitle": "Informazioni sul Visualizzatore Storie",
+            "aboutText": "Con lo story viewer di YulaSanta puoi guardare le storie di Instagram in segreto. Le persone che visualizzi non potranno vederlo."
+        },
+        "instagramProfileMeta": {
+            "title": "🖼️ Ingrandimento Foto Profilo Instagram | Download HD",
+            "description": "Ingrandisci e scarica le foto del profilo Instagram in alta definizione (HD). Gratuito e veloce.",
+            "keywords": [
+                "foto profilo instagram",
+                "ingrandisci pp",
+                "download hd",
+                "instagram profile picture"
+            ]
+        },
+        "instagramProfileContent": {
+            "title": "Ingrandimento Foto Profilo Instagram",
+            "subtitle": "HD Profile Picture Size",
+            "placeholder": "Inserisci username",
+            "view": "Vedi Foto Profilo",
+            "helper": "Visualizza la foto del profilo a grandezza naturale e in HD.",
+            "aboutTitle": "Informazioni sull'Ingrandimento PP",
+            "aboutText": "Usa il nostro strumento gratuito per vedere e scaricare le foto del profilo degli utenti Instagram in piena qualità."
+        }
     },
     "footer": {
         "privacyPolicy": "Privacy",

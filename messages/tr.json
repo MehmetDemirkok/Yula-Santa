@@ -1,23 +1,33 @@
 {
     "meta": {
-        "title": "YulaSanta - Online Çekiliş Yap | Instagram, YouTube, TikTok, Yılbaşı",
-        "description": "YulaSanta ile ücretsiz, şifresiz Online Yılbaşı Çekilişi (Secret Santa) yapın. Instagram, YouTube, TikTok ve Twitter çekilişlerinizi saniyeler içinde gerçekleştirin. Hediye çekilişi, gizli noel çekilişi yapın!",
+        "title": "YulaSanta - Ücretsiz Online Çekiliş Yap | Instagram, YouTube, TikTok Çekilişi & Secret Santa 2025",
+        "description": "YulaSanta ile ücretsiz, şifresiz Online Yılbaşı Çekilişi (Secret Santa) yapın. Instagram, YouTube, TikTok ve Twitter çekilişlerinizi saniyeler içinde gerçekleştirin. Zar atma, yazı tura, rastgele sayı seçici ve daha fazla ücretsiz araç!",
         "keywords": [
             "online çekiliş",
             "çekiliş yap",
+            "ücretsiz çekiliş",
             "yılbaşı çekilişi",
             "secret santa",
+            "secret santa 2025",
             "gizli noel",
             "hediye çekilişi",
             "yılbaşı hediyesi",
             "instagram çekiliş",
+            "instagram yorum çekilişi",
             "youtube çekiliş",
+            "youtube yorum çekilişi",
             "tiktok çekiliş",
             "twitter çekiliş",
             "ücretsiz çekiliş aracı",
             "online yılbaşı çekilişi",
             "secret santa online",
-            "arkadaş çekilişi"
+            "arkadaş çekilişi",
+            "zar atma",
+            "yazı tura",
+            "rastgele sayı",
+            "kısa çöp oyunu",
+            "çekiliş programı",
+            "sosyal medya çekilişi"
         ]
     },
     "home": {
@@ -93,14 +103,60 @@
         "results": "Sonuçlar",
         "winners": "Kazananlar",
         "backups": "Yedekler",
-        "youtubeTitle": "Ücretsiz YouTube Çekiliş Aracı",
-        "instagramTitle": "Instagram Çekiliş Aracı",
-        "twitterTitle": "Ücretsiz Twitter/X Çekiliş Aracı",
-        "youtubeDesc": "YouTube videolarınızdaki yorumlar ve beğeniler arasından kolayca çekiliş yapın.",
-        "instagramDesc": "Instagram gönderilerinizdeki yorumlar ve beğeniler arasından kolayca çekiliş yapın.",
-        "twitterDesc": "Twitter/X'teki retweet ve beğeniler arasından kolayca çekiliş yapın.",
-        "tiktokTitle": "TikTok Çekiliş Aracı",
-        "tiktokDesc": "TikTok videolarınızdaki yorumlar arasından kolayca çekiliş yapın.",
+        "youtubeTitle": "Ücretsiz YouTube Çekiliş Aracı 2025 | Yorum & Beğeni Çekilişi",
+        "instagramTitle": "Instagram Çekiliş Aracı | Ücretsiz Yorum Çekilişi Yap",
+        "twitterTitle": "Twitter (X) Çekiliş Aracı | Retweet & Beğeni Çekilişi",
+        "youtubeDesc": "Ücretsiz YouTube çekiliş aracı ile videolarınızdaki yorumlar ve beğeniler arasından hızlıca kazananı belirleyin. Şifresiz ve güvenilir YouTube yorum seçici.",
+        "instagramDesc": "Ücretsiz Instagram çekiliş aracı ile gönderilerinizdeki yorumlar arasından asil ve yedek kazananları anında belirleyin. En iyi Instagram yorum çekiliş programı.",
+        "twitterDesc": "Twitter (X) çekiliş aracı ile retweet ve beğeniler arasından kolayca çekiliş yapın. Ücretsiz, şifresiz Twitter kura çekme sitesi.",
+        "tiktokTitle": "TikTok Çekiliş Aracı | Ücretsiz TikTok Yorum Çekilişi",
+        "tiktokDesc": "TikTok çekiliş aracı ile videolarınızdaki yorumlar arasından kolayca çekiliş yapın. Ücretsiz ve şifresiz TikTok kura çek!",
+        "meta": {
+            "instagram": {
+                "title": "Ücretsiz Instagram Çekiliş Aracı | Yorum Çekilişi Yap - YulaSanta",
+                "description": "Instagram çekilişlerinizi YulaSanta ile ücretsiz ve şifresiz yapın. Instagram yorum seçici ile asil ve yedek kazananları anında belirleyin.",
+                "keywords": [
+                    "instagram çekiliş",
+                    "ücretsiz instagram çekiliş",
+                    "instagram yorum çekilişi",
+                    "instagram çekiliş yap",
+                    "instagram giveaway"
+                ]
+            },
+            "youtube": {
+                "title": "Ücretsiz YouTube Çekiliş Aracı | Yorum Seçici & Beğeni Kontrolü - YulaSanta",
+                "description": "YouTube videolarınız için hızlı ve güvenilir çekilişler yapın. Yorumlar arasından rastgele kazananı seçin. Şifresiz YouTube çekiliş sitesi.",
+                "keywords": [
+                    "youtube çekiliş",
+                    "youtube yorum çekilişi",
+                    "youtube çekiliş aracı",
+                    "youtube giveaway",
+                    "ücretsiz çekiliş"
+                ]
+            },
+            "tiktok": {
+                "title": "TikTok Çekiliş Aracı | Ücretsiz TikTok Kura Çek - YulaSanta",
+                "description": "TikTok videolarınızdaki yorumlar arasından çekiliş yapın. TikTok çekiliş sitesi ile hızlı ve adil kura sonuçları.",
+                "keywords": [
+                    "tiktok çekiliş",
+                    "tiktok kura çek",
+                    "tiktok yorum çekilişi",
+                    "tiktok giveaway",
+                    "tiktok çekiliş sitesi"
+                ]
+            },
+            "twitter": {
+                "title": "Twitter (X) Çekiliş Aracı | Retweet & Beğeni Çekilişi Yap - YulaSanta",
+                "description": "Twitter (X) çekilişlerinizi kolayca yönetin. Retweet ve beğeniler arasından kazananları belirleyin. Ücretsiz Twitter çekiliş sitesi.",
+                "keywords": [
+                    "twitter çekiliş",
+                    "x çekiliş",
+                    "retweet çekilişi",
+                    "twitter kura",
+                    "twitter giveaway"
+                ]
+            }
+        },
         "requireSubscription": "Abone Olma Şartı",
         "requireNotification": "Bildirim Şartı",
         "requireFollow": "Takip Şartı",
@@ -167,7 +223,148 @@
         "diceGame": "Zar Atma Oyunu",
         "coinFlip": "Yazı Tura Oyunu",
         "randomNumber": "Rastgele Sayı Seçici",
-        "shortStraw": "Kısa Çöp Oyunu"
+        "shortStraw": "Kısa Çöp Oyunu",
+        "meta": {
+            "title": "Ücretsiz Online Araçlar | YulaSanta - Zar, Yazı Tura, Rastgele Sayı",
+            "description": "YulaSanta ücretsiz online araçlar: Zar atma oyunu, yazı tura, rastgele sayı seçici, kısa çöp çekme, Instagram hikaye izleyici ve profil resmi indirici."
+        },
+        "diceMeta": {
+            "title": "🎲 Zar Atma Oyunu | Online Ücretsiz Zar At - YulaSanta",
+            "description": "Online zar atma oyunu. 1 veya 2 zar ile ücretsiz zar at. Tavla, okey ve masa oyunları için profesyonel zar simülatörü.",
+            "keywords": [
+                "zar atma",
+                "zar at",
+                "online zar",
+                "dice roller",
+                "tavla zarı",
+                "zar oyunu"
+            ]
+        },
+        "dice": "Zar Atma",
+        "diceContent": {
+            "title": "Zar Atma Oyunu",
+            "subtitle": "Dice Roller - Online Ücretsiz",
+            "label": "Zar Sayısı",
+            "option": "{count} Zar",
+            "roll": "Zar At",
+            "rolling": "Atılıyor...",
+            "total": "Toplam",
+            "history": "Son Atışlar",
+            "aboutTitle": "Zar Atma Oyunu Hakkında",
+            "aboutText": "YulaSanta zar atma aracı ile online ücretsiz zar atabilirsiniz. Tavla, okey, monopoly ve diğer masa oyunları için profesyonel zar simülatörümüzü kullanın. 1 veya 2 zar seçerek gerçekçi zar atma deneyimi yaşayın.",
+            "featuresTitle": "Özellikler:",
+            "features": [
+                "1 veya 2 zar ile atış yapabilirsiniz",
+                "Gerçekçi 3D zar animasyonu",
+                "Atış geçmişi kayıt altına alınır",
+                "Mobil uyumlu tasarım",
+                "Tamamen ücretsiz, kayıt gerektirmez"
+            ],
+            "placeholder": "Zar atmak için butona tıklayın"
+        },
+        "coinFlipMeta": {
+            "title": "🪙 Yazı Tura | Online Coin Flip - Ücretsiz Para At - YulaSanta",
+            "description": "Online yazı tura atma aracı. Hızlı karar vermek için ücretsiz coin flip. Yazı mı tura mı?",
+            "keywords": [
+                "yazı tura",
+                "coin flip",
+                "para at",
+                "heads or tails",
+                "yazı mı tura mı"
+            ]
+        },
+        "coinFlipContent": {
+            "title": "Yazı Tura",
+            "subtitle": "Online Yazı Tura - Ücretsiz",
+            "heads": "Yazı",
+            "tails": "Tura",
+            "roll": "Para At",
+            "rolling": "Atılıyor...",
+            "aboutTitle": "Yazı Tura Hakkında",
+            "aboutText": "Hızlı karar vermeniz gereken durumlarda online yazı tura aracımızı kullanabilirsiniz."
+        },
+        "randomNumberMeta": {
+            "title": "🔢 Rastgele Sayı Seçici | Random Number Generator - YulaSanta",
+            "description": "Online rastgele sayı üretici. Belirlediğiniz aralıkta rastgele sayı seçin. Çekilişler ve oyunlar için ideal.",
+            "keywords": [
+                "rastgele sayı",
+                "random number",
+                "sayı seçici",
+                "loto sayısı",
+                "çekiliş sayısı"
+            ]
+        },
+        "randomNumberContent": {
+            "title": "Rastgele Sayı Seçici",
+            "subtitle": "Online Sayı Üretici",
+            "min": "Min",
+            "max": "Max",
+            "generate": "Sayı Üret",
+            "result": "Sonuç",
+            "aboutTitle": "Rastgele Sayı Hakkında",
+            "aboutText": "Belirlediğiniz aralıkta tamamen rastgele ve adil sayılar üretin.",
+            "placeholder": "Sayı üretmek için butona tıklayın"
+        },
+        "shortStrawContent": {
+            "title": "Kısa Çöp Çekme",
+            "subtitle": "Kimin Şanssız Olduğunu Gör",
+            "label": "Katılımcı Sayısı",
+            "draw": "Çöp Çek",
+            "reset": "Rastgele Kısa Çöp Çek",
+            "lost": "Kaybettin! Kısa çöpü sen çektin.",
+            "saved": "Kurtuldun! Çöpün uzun.",
+            "aboutTitle": "Kısa Çöp Çekme Oyunu",
+            "aboutText": "Karar veremediğiniz durumlarda kimin şanslı veya şanssız olduğunu belirlemek için online kısa çöp çekin."
+        },
+        "instagramStoryContent": {
+            "title": "Instagram Hikaye İzleme",
+            "subtitle": "Anonim Story Viewer",
+            "placeholder": "Kullanıcı adı girin (örn: yula)",
+            "view": "Hikayeleri İzle",
+            "helper": "Profil sahibinin haberi olmadan anonim izleyin.",
+            "aboutTitle": "Instagram Hikaye İzleme Hakkında",
+            "aboutText": "YulaSanta story viewer ile Instagram hikayelerini gizlice izleyebilirsiniz. İzlediğiniz kişiler bunu göremez."
+        },
+        "instagramProfileContent": {
+            "title": "Instagram Profil Resmi Büyütme",
+            "subtitle": "HD Profile Picture Size",
+            "placeholder": "Kullanıcı adı girin",
+            "view": "Profil Resmini Gör",
+            "helper": "Profil fotoğrafını tam boy ve HD olarak görüntüleyin.",
+            "aboutTitle": "PP Büyütme Hakkında",
+            "aboutText": "Instagram kullanıcılarının profil resimlerini tam kalitede görmek ve indirmek için ücretsiz aracımızı kullanın."
+        },
+        "shortStrawMeta": {
+            "title": "🎋 Kısa Çöp Oyunu | Short Straw Game Online - YulaSanta",
+            "description": "Online kısa çöp çekme oyunu. Grup içinde adil ve eğlenceli seçim yapın.",
+            "keywords": [
+                "kısa çöp",
+                "short straw",
+                "çöp çekme",
+                "kura çekme",
+                "rastgele seçim"
+            ]
+        },
+        "instagramStoryMeta": {
+            "title": "📱 Instagram Hikaye İzleme | Story Viewer Anonim - YulaSanta",
+            "description": "Instagram hikayelerini anonim olarak izleyin. Gizli Instagram hikaye görüntüleyici.",
+            "keywords": [
+                "instagram hikaye",
+                "story viewer",
+                "anonim hikaye",
+                "gizli izleme"
+            ]
+        },
+        "instagramProfileMeta": {
+            "title": "🖼️ Instagram Profil Resmi Büyütme | HD İndirme - YulaSanta",
+            "description": "Instagram profil fotoğraflarını HD kalitede görüntüleyin ve indirin.",
+            "keywords": [
+                "instagram profil",
+                "profil resmi büyütme",
+                "HD profil",
+                "pp indirme"
+            ]
+        }
     },
     "footer": {
         "privacyPolicy": "Gizlilik Koşulları",

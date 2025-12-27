@@ -151,13 +151,114 @@
     },
     "tools": {
         "title": "工具",
-        "instagramStoryViewer": "Instagram故事查看器",
-        "instagramProfilePicture": "Instagram头像查看器",
+        "instagramStoryViewer": "Instagram 故事查看器",
+        "instagramProfilePicture": "Instagram 头像查看器",
         "onlineGiveaway": "在线抽奖工具",
         "diceGame": "掷骰子",
         "coinFlip": "抛硬币",
         "randomNumber": "随机数生成器",
-        "shortStraw": "抽签游戏"
+        "shortStraw": "抽签游戏",
+        "meta": {
+            "title": "免费在线工具 | YulaSanta - 骰子、硬币、随机数",
+            "description": "YulaSanta 免费在线工具：掷骰子、抛硬币、随机数生成器、抽签、Instagram 故事匿名查看及头像下载。"
+        },
+        "diceMeta": {
+            "title": "🎲 掷骰子 | 免费在线掷骰子 - YulaSanta",
+            "description": "在线掷骰子。免费掷 1 个或 2 个骰子。适用于桌面游戏、步步高和飞行棋的专业模拟器。"
+        },
+        "diceContent": {
+            "title": "掷骰子",
+            "subtitle": "Dice Roller - 在线免费",
+            "label": "骰子数量",
+            "option": "{count} 个骰子",
+            "roll": "掷骰子",
+            "rolling": "掷中...",
+            "total": "总计",
+            "history": "历史记录",
+            "aboutTitle": "关于掷骰子",
+            "aboutText": "使用 YulaSanta 在线免费掷骰子。适用于各种桌面游戏。",
+            "placeholder": "点击按钮掷骰子",
+            "featuresTitle": "特点：",
+            "features": [
+                "可以掷 1 个或 2 个骰子",
+                "逼真的 3D 骰子动画",
+                "历史记录会被保存",
+                "移动端友好设计",
+                "完全免费，无需注册"
+            ]
+        },
+        "coinFlipMeta": {
+            "title": "🪙 抛硬币 | 在线正反面 - YulaSanta",
+            "description": "在线抛硬币工具。免费的正反面生成器，用于快速决策。"
+        },
+        "coinFlipContent": {
+            "title": "抛硬币",
+            "subtitle": "在线正反面",
+            "heads": "正面",
+            "tails": "反面",
+            "roll": "抛硬币",
+            "rolling": "抛中...",
+            "reset": "重置",
+            "aboutTitle": "关于抛硬币",
+            "aboutText": "在需要决策时，用抛硬币来解决。"
+        },
+        "randomNumberMeta": {
+            "title": "🔢 随机数生成器 | 在线随机数字 - YulaSanta",
+            "description": "在线随机数生成工具。适用于抽奖和游戏。"
+        },
+        "randomNumberContent": {
+            "title": "随机数生成器",
+            "subtitle": "在线选号",
+            "min": "最小值",
+            "max": "最大值",
+            "generate": "生成",
+            "rolling": "生成中...",
+            "result": "结果",
+            "aboutTitle": "关于随机数生成器",
+            "aboutText": "生成公平的随机数，用于抽奖等场景。",
+            "placeholder": "点击按钮生成数字"
+        },
+        "shortStrawContent": {
+            "title": "抽签游戏",
+            "subtitle": "在线抽签",
+            "label": "参加人数",
+            "draw": "抽签",
+            "reset": "重置",
+            "lost": "输了！你抽到了短签。",
+            "saved": "安全！长签。",
+            "aboutTitle": "关于抽签游戏",
+            "aboutText": "经典的游戏，用于公平的角色分配和决策。"
+        },
+        "shortStrawMeta": {
+            "title": "🎋 抽签游戏 | 在线抽签 - YulaSanta",
+            "description": "在线抽签工具。公平有趣的决策体验。"
+        },
+        "instagramStoryContent": {
+            "title": "故事查看器",
+            "subtitle": "匿名查看",
+            "placeholder": "用户名",
+            "view": "查看故事",
+            "helper": "无需登录即可匿名查看 Instagram 故事。",
+            "aboutTitle": "关于故事查看器",
+            "aboutText": "匿名浏览 Instagram 故事，不留痕迹。"
+        },
+        "instagramStoryMeta": {
+            "title": "📱 Instagram 故事查看器 | 匿名 - YulaSanta",
+            "description": "匿名安全地浏览故事。"
+        },
+        "instagramProfileContent": {
+            "title": "头像查看器",
+            "subtitle": "HD 画质",
+            "placeholder": "用户名",
+            "view": "查看头像",
+            "helper": "查看并下载高清 Instagram 头像。",
+            "aboutTitle": "关于头像查看",
+            "aboutText": "查看并下载高画质的 Instagram 用户头像。"
+        },
+        "instagramProfileMeta": {
+            "title": "🖼️ Instagram Profile Picture | HD Downloader - YulaSanta",
+            "description": "高清保存 Instagram 头像。"
+        }
     },
     "footer": {
         "privacyPolicy": "隐私政策",

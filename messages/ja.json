@@ -154,10 +154,111 @@
         "instagramStoryViewer": "Instagramストーリービューアー",
         "instagramProfilePicture": "Instagramプロフィール写真ビューアー",
         "onlineGiveaway": "オンライン抽選ツール",
-        "diceGame": "サイコロゲーム",
+        "diceGame": "サイコロ",
         "coinFlip": "コイントス",
-        "randomNumber": "乱数ジェネレーター",
-        "shortStraw": "くじ引きゲーム"
+        "randomNumber": "乱数メーカー",
+        "shortStraw": "あみだくじ",
+        "meta": {
+            "title": "無料オンラインツール | YulaSanta - サイコロ、コイントス、乱数",
+            "description": "YulaSanta無料オンラインツール：サイコロ、コイントス、乱数メーカー、あみだくじ、Instagramストーリー閲覧・プロフィール写真保存。"
+        },
+        "diceMeta": {
+            "title": "🎲 サイコロ | 無料オンラインサイコロ - YulaSanta",
+            "description": "オンラインサイコロ。1個または2個のサイコロを無料で。ボードゲームやバックギャモンに最適なプロフェッショナルシミュレーター。"
+        },
+        "diceContent": {
+            "title": "サイコロ",
+            "subtitle": "Dice Roller - 無料オンライン",
+            "label": "サイコロの数",
+            "option": "{count}個のサイコロ",
+            "roll": "サイコロを振る",
+            "rolling": "振っています...",
+            "total": "合計",
+            "history": "履歴",
+            "aboutTitle": "サイコロについて",
+            "aboutText": "YulaSantaのオンラインサイコロ。ボードゲームなどでご利用ください。",
+            "placeholder": "ボタンをクリックしてサイコロを振ります",
+            "featuresTitle": "特徴：",
+            "features": [
+                "1個または2個のサイコロで振れます",
+                "リアルな3Dサイコロアニメーション",
+                "履歴が記録されます",
+                "モバイル対応デザイン",
+                "完全無料、登録不要"
+            ]
+        },
+        "coinFlipMeta": {
+            "title": "🪙 コイントス | オンライン表か裏か - YulaSanta",
+            "description": "オンラインコイントスツール。素早い決断に最適な無料表か裏かメーカー。"
+        },
+        "coinFlipContent": {
+            "title": "コイントス",
+            "subtitle": "オンライン表か裏か",
+            "heads": "表",
+            "tails": "裏",
+            "roll": "コインを投げる",
+            "rolling": "投げています...",
+            "reset": "リセット",
+            "aboutTitle": "コイントスについて",
+            "aboutText": "決断に迷った時はコイントスで解決しましょう。"
+        },
+        "randomNumberMeta": {
+            "title": "🔢 乱数集計 | オンライン乱数メーカー - YulaSanta",
+            "description": "オンライン乱数生成ツール。抽選やゲームに最適です。"
+        },
+        "randomNumberContent": {
+            "title": "乱数メーカー",
+            "subtitle": "オンライン乱数生成",
+            "min": "最小",
+            "max": "最大",
+            "generate": "生成する",
+            "rolling": "生成中...",
+            "result": "結果",
+            "aboutTitle": "乱数メーカーについて",
+            "aboutText": "抽選などに使える公平な乱数を生成します。",
+            "placeholder": "ボタンをクリックして数字を生成します"
+        },
+        "shortStrawContent": {
+            "title": "あみだくじ",
+            "subtitle": "オンライン抽選",
+            "label": "参加人数",
+            "draw": "くじを引く",
+            "reset": "リセット",
+            "lost": "ハズレ！短い棒を引きました。",
+            "saved": "セーフ！長い棒です。",
+            "aboutTitle": "あみだくじについて",
+            "aboutText": "公平なグループ分けや役割決めに最適です。"
+        },
+        "shortStrawMeta": {
+            "title": "🎋 あみだくじ | オンラインくじ引き - YulaSanta",
+            "description": "オンラインあみだくじツール。公平で楽しい決断を。"
+        },
+        "instagramStoryContent": {
+            "title": "ストーリービューアー",
+            "subtitle": "匿名閲覧",
+            "placeholder": "ユーザー名",
+            "view": "ストーリーを見る",
+            "helper": "足跡をつけずにストーリーを閲覧できます。",
+            "aboutTitle": "ストーリービューアーについて",
+            "aboutText": "Instagramのストーリーを相手に知られずに閲覧できます。"
+        },
+        "instagramStoryMeta": {
+            "title": "📱 Instagramストーリービューアー | 匿名 - YulaSanta",
+            "description": "ストーリーを匿名で安全に閲覧。"
+        },
+        "instagramProfileContent": {
+            "title": "プロフィール写真",
+            "subtitle": "HDサイズ",
+            "placeholder": "ユーザー名",
+            "view": "写真を見る",
+            "helper": "プロフィール写真を拡大・保存します。",
+            "aboutTitle": "プロフィール閲覧について",
+            "aboutText": "Instagramのプロフィール写真を高画質で確認できます。"
+        },
+        "instagramProfileMeta": {
+            "title": "🖼️ Instagram Profile Picture | HD Downloader - YulaSanta",
+            "description": "Instagramのアイコンを高画質で保存。"
+        }
     },
     "footer": {
         "privacyPolicy": "プライバシーポリシー",

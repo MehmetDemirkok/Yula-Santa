@@ -1,21 +1,98 @@
 {
-  "name": "YulaSanta",
+  "name": "YulaSanta - Online Çekiliş & Secret Santa",
   "short_name": "YulaSanta",
-  "description": "Online Yılbaşı Çekilişi ve Sosyal Medya Hediye Çekilişleri - Instagram, YouTube, Twitter",
-  "start_url": "/",
+  "description": "Ücretsiz online çekiliş ve Secret Santa platformu. Instagram, YouTube, TikTok, Twitter çekilişleri yapın. Zar atma, yazı tura ve daha fazla araç!",
+  "start_url": "/tr",
+  "scope": "/",
   "display": "standalone",
+  "orientation": "portrait-primary",
   "background_color": "#ffffff",
   "theme_color": "#EF4444",
+  "lang": "tr",
+  "categories": [
+    "utilities",
+    "entertainment",
+    "social"
+  ],
   "icons": [
     {
       "src": "/icon-192.png",
       "sizes": "192x192",
-      "type": "image/png"
+      "type": "image/png",
+      "purpose": "any"
     },
     {
       "src": "/icon-512.png",
       "sizes": "512x512",
-      "type": "image/png"
+      "type": "image/png",
+      "purpose": "any"
+    },
+    {
+      "src": "/apple-icon.png",
+      "sizes": "180x180",
+      "type": "image/png",
+      "purpose": "apple-touch-icon"
     }
-  ]
+  ],
+  "screenshots": [
+    {
+      "src": "/opengraph-image.png",
+      "sizes": "1200x630",
+      "type": "image/png",
+      "form_factor": "wide",
+      "label": "YulaSanta Ana Sayfa"
+    }
+  ],
+  "shortcuts": [
+    {
+      "name": "Instagram Çekiliş",
+      "short_name": "Instagram",
+      "description": "Instagram çekilişi yap",
+      "url": "/tr/instagram",
+      "icons": [
+        {
+          "src": "/icon-192.png",
+          "sizes": "192x192"
+        }
+      ]
+    },
+    {
+      "name": "YouTube Çekiliş",
+      "short_name": "YouTube",
+      "description": "YouTube çekilişi yap",
+      "url": "/tr/youtube",
+      "icons": [
+        {
+          "src": "/icon-192.png",
+          "sizes": "192x192"
+        }
+      ]
+    },
+    {
+      "name": "Zar At",
+      "short_name": "Zar",
+      "description": "Online zar atma oyunu",
+      "url": "/tr/tools/dice",
+      "icons": [
+        {
+          "src": "/icon-192.png",
+          "sizes": "192x192"
+        }
+      ]
+    },
+    {
+      "name": "Yazı Tura",
+      "short_name": "Coin Flip",
+      "description": "Online yazı tura",
+      "url": "/tr/tools/coin-flip",
+      "icons": [
+        {
+          "src": "/icon-192.png",
+          "sizes": "192x192"
+        }
+      ]
+    }
+  ],
+  "related_applications": [],
+  "prefer_related_applications": false
 }
