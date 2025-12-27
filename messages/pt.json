@@ -110,12 +110,20 @@
     },
     "support": {
         "button": "Suporte",
-        "title": "Contatar Suporte",
-        "description": "Precisa de ajuda? Estamos aqui.",
+        "title": "Suporte e Contato",
+        "description": "Entre em contato para feedback.",
+        "header": "Não hesite em pedir suporte!",
+        "subheader": "Estamos aqui para ajudar.",
+        "name": "Nome",
+        "email": "E-mail",
+        "phone": "Telefone",
         "subject": "Assunto",
         "message": "Mensagem",
-        "send": "Enviar Email",
-        "contact": "Entre em contato"
+        "placeholderName": "Seu nome completo",
+        "placeholderEmail": "email@exemplo.com",
+        "placeholderPhone": "+55",
+        "send": "Enviar",
+        "contact": "Contato"
     },
     "common": {
         "loading": "Carregando...",
@@ -130,5 +138,45 @@
     "languageSwitcher": {
         "label": "Selecionar Idioma",
         "current": "Português"
+    },
+    "footer": {
+        "privacyPolicy": "Privacidade",
+        "legalInfo": "Informações Legais",
+        "copyright": "© 2025 YulaSanta. Todos os direitos reservados.",
+        "cookieDisclaimer": "Este site utiliza cookies para melhorar sua experiência."
+    },
+    "privacy": {
+        "title": "Privacidade",
+        "meta": {
+            "title": "Privacidade | YulaSanta",
+            "description": "Informações sobre política de privacidade e segurança de dados do YulaSanta."
+        },
+        "lastUpdated": "Última atualização: 27 de dezembro de 2025",
+        "intro": "No YulaSanta, valorizamos sua privacidade.",
+        "dataTitle": "Coleta de Dados",
+        "dataDesc": "Seus dados são armazenados localmente no navegador.",
+        "cookiesTitle": "Cookies",
+        "cookiesDesc": "Usamos cookies para fins publicitários.",
+        "securityTitle": "Segurança",
+        "securityDesc": "Seus dados permanecem no seu dispositivo.",
+        "thirdPartyTitle": "Serviços Terceiros",
+        "thirdPartyDesc": "Usamos serviços do Google."
+    },
+    "legal": {
+        "title": "Informações Legais",
+        "meta": {
+            "title": "Legal | YulaSanta",
+            "description": "Termos de uso e avisos legais."
+        },
+        "lastUpdated": "Última atualização: 27 de dezembro de 2025",
+        "intro": "Termos legais para o uso da plataforma YulaSanta.",
+        "usageTitle": "Uso",
+        "usageDesc": "YulaSanta é uma ferramenta gratuita.",
+        "liabilityTitle": "Responsabilidade",
+        "liabilityDesc": "Nenhuma responsabilidade por erros nos sorteios.",
+        "contentTitle": "Copyright",
+        "contentDesc": "Todos os direitos pertencem à equipe YulaSanta.",
+        "contactTitle": "Contato",
+        "contactDesc": "Contate-nos via botão de suporte."
     }
 }

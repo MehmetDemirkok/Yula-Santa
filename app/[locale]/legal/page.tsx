@@ -1,12 +1,12 @@
 
 import { getSEOMetadata } from '@/lib/seo';
-import PrivacyClient from './ClientPage';
+import LegalClient from './ClientPage';
 
 export async function generateMetadata({ params }: { params: Promise<{ locale: string }> }) {
     const { locale } = await params;
-    return getSEOMetadata({ locale, path: '/privacy', translationKey: 'privacy' });
+    return getSEOMetadata({ locale, path: '/legal', translationKey: 'legal' });
 }
 
 export default async function Page() {
-    return <PrivacyClient />;
+    return <LegalClient />;
 }

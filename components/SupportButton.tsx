@@ -1,111 +1,162 @@
 "use client";
 
-import { useState } from "react";
-import { useLanguage } from "@/lib/i18n/LanguageContext";
-import { MessageCircle, X, Send, Mail } from "lucide-react";
+import { useState, useEffect } from "react";
+import { useTranslations } from "next-intl";
+import { MessageCircle, X, Send, User, Mail, Phone, MessageSquare } from "lucide-react";
 import { Button } from "@/components/ui/Button";
 
 export function SupportButton() {
-    const { t } = useLanguage();
+    const t = useTranslations('support');
     const [isOpen, setIsOpen] = useState(false);
-    const [subject, setSubject] = useState("");
+    const [name, setName] = useState("");
+    const [email, setEmail] = useState("");
+    const [phone, setPhone] = useState("");
     const [message, setMessage] = useState("");
 
-    const handleSendEmail = () => {
-        const emailSubject = subject || "Support Request";
-        const emailBody = message;
+    // Prevent scrolling when drawer is open
+    useEffect(() => {
+        if (isOpen) {
+            document.body.style.overflow = "hidden";
+        } else {
+            document.body.style.overflow = "unset";
+        }
+        return () => {
+            document.body.style.overflow = "unset";
+        };
+    }, [isOpen]);
 
-        // Construct mailto link
+    const handleSend = () => {
+        const emailSubject = `YulaSanta Destek Talebi - ${name}`;
+        const emailBody = `Ad Soyad: ${name}\nE-posta: ${email}\nTelefon: ${phone}\n\nMesaj:\n${message}`;
+
         const mailtoLink = `mailto:mehmetdemirkok@gmail.com?subject=${encodeURIComponent(emailSubject)}&body=${encodeURIComponent(emailBody)}`;
-
-        // Open default mail client
         window.location.href = mailtoLink;
     };
 
     return (
         <>
-            <div className="fixed bottom-4 right-4 z-40">
-                <Button
+            {/* Floating Action Button */}
+            <div className="fixed bottom-6 right-6 z-[60]">
+                <button
                     onClick={() => setIsOpen(true)}
-                    className="shadow-lg flex items-center gap-2 rounded-full h-12 px-6 bg-blue-600 hover:bg-blue-700 text-white"
+                    className="group relative flex items-center justify-center w-14 h-14 bg-santa-red text-white rounded-full shadow-[0_8px_30px_rgb(239,68,68,0.4)] hover:shadow-[0_8px_30px_rgb(239,68,68,0.6)] transform hover:-translate-y-1 active:scale-95 transition-all duration-300 pointer-events-auto"
+                    aria-label={t('button')}
                 >
-                    <MessageCircle size={20} />
-                    <span className="hidden sm:inline">{t.support.button}</span>
-                </Button>
+                    <div className="absolute inset-0 rounded-full bg-santa-red animate-ping opacity-20 pointer-events-none group-hover:hidden" />
+                    <MessageSquare className="w-6 h-6 transform group-hover:rotate-12 transition-transform" />
+                </button>
             </div>
 
-            {isOpen && (
-                <div className="fixed inset-0 z-[100] flex items-center justify-center bg-black/60 backdrop-blur-sm p-4 animate-in fade-in duration-200">
-                    <div className="bg-white rounded-2xl shadow-xl w-full max-w-md overflow-hidden animate-in zoom-in-95 duration-200 relative">
-                        {/* Header */}
-                        <div className="bg-blue-600 p-6 text-white">
-                            <div className="flex justify-between items-start">
-                                <div>
-                                    <h3 className="text-xl font-bold flex items-center gap-2">
-                                        <MessageCircle size={24} className="text-blue-200" />
-                                        {t.support.title}
-                                    </h3>
-                                    <p className="text-blue-100 text-sm mt-1 opacity-90">
-                                        {t.support.description}
-                                    </p>
-                                </div>
-                                <button
-                                    onClick={() => setIsOpen(false)}
-                                    className="text-white/80 hover:text-white hover:bg-white/20 p-2 rounded-full transition-colors"
-                                >
-                                    <X size={20} />
-                                </button>
-                            </div>
-                        </div>
+            {/* Sidebar Drawer Container */}
+            <div
+                className={`fixed inset-0 z-[100] transition-opacity duration-500 ease-in-out ${isOpen ? "opacity-100" : "opacity-0 pointer-events-none"}`}
+            >
+                {/* Backdrop */}
+                <div
+                    className="absolute inset-0 bg-black/80 backdrop-blur-sm"
+                    onClick={() => setIsOpen(false)}
+                />
 
-                        {/* Body */}
-                        <div className="p-6 space-y-4">
-                            {/* Contact Info */}
-                            <div className="p-4 bg-blue-50 border border-blue-100 rounded-xl flex items-center gap-3">
-                                <div className="bg-white p-2 rounded-full text-blue-600 shadow-sm border border-blue-100">
-                                    <Mail size={20} />
-                                </div>
-                                <div>
-                                    <div className="text-xs text-blue-600 font-bold uppercase tracking-wider">{t.support.contact}</div>
-                                    <div className="font-semibold text-gray-900 break-all">mehmetdemirkok@gmail.com</div>
-                                </div>
-                            </div>
+                {/* Sidebar Content */}
+                <div
+                    className={`absolute top-0 right-0 h-full w-full sm:w-[480px] bg-[#121212] shadow-2xl transform transition-transform duration-500 ease-in-out border-l border-white/5 flex flex-col ${isOpen ? "translate-x-0" : "translate-x-full"}`}
+                >
+                    {/* Header */}
+                    <div className="relative p-10 pt-16 flex-shrink-0">
+                        <button
+                            onClick={() => setIsOpen(false)}
+                            className="absolute top-8 right-8 p-3 rounded-full bg-white/5 text-gray-400 hover:text-white hover:bg-white/10 transition-all border border-white/5"
+                        >
+                            <X size={24} />
+                        </button>
 
-                            {/* Form Fields */}
-                            <div className="space-y-3">
-                                <div>
-                                    <label className="block text-sm font-medium text-gray-700 mb-1">{t.support.subject}</label>
-                                    <input
-                                        type="text"
-                                        value={subject}
-                                        onChange={(e) => setSubject(e.target.value)}
-                                        className="w-full px-4 py-2 border border-gray-200 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent outline-none transition-all"
-                                        placeholder="Feedback / Öneri / Hata Bildirimi"
-                                    />
-                                </div>
-                                <div>
-                                    <label className="block text-sm font-medium text-gray-700 mb-1">{t.support.message}</label>
-                                    <textarea
-                                        rows={4}
-                                        value={message}
-                                        onChange={(e) => setMessage(e.target.value)}
-                                        className="w-full px-4 py-2 border border-gray-200 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent outline-none transition-all resize-none"
-                                        placeholder="..."
-                                    />
-                                </div>
-                            </div>
-
-                            <Button
-                                onClick={handleSendEmail}
-                                className="w-full flex justify-center items-center gap-2 py-6 text-lg bg-blue-600 hover:bg-blue-700 text-white shadow-md hover:shadow-lg transition-all transform active:scale-95"
-                            >
-                                <Send size={20} />
-                                {t.support.send}
-                            </Button>
+                        <div className="space-y-4">
+                            <h2 className="text-3xl sm:text-4xl font-black text-white tracking-tight leading-tight">
+                                {t('header')}
+                            </h2>
+                            <p className="text-gray-400 text-lg font-medium">
+                                {t('subheader')}
+                            </p>
                         </div>
                     </div>
+
+                    {/* Form Body - Scrollable */}
+                    <div className="flex-1 overflow-y-auto px-10 pb-10 custom-scrollbar">
+                        <div className="space-y-8">
+                            {/* Name Field */}
+                            <div className="space-y-3">
+                                <label className="flex items-center gap-2 text-xs font-black uppercase tracking-widest text-gray-500">
+                                    <User size={14} className="text-santa-red" />
+                                    {t('name')}
+                                </label>
+                                <input
+                                    type="text"
+                                    value={name}
+                                    onChange={(e) => setName(e.target.value)}
+                                    placeholder={t('placeholderName')}
+                                    className="w-full bg-white/5 border border-white/10 rounded-2xl px-6 py-4 text-white placeholder:text-gray-600 focus:outline-none focus:ring-2 focus:ring-santa-red/50 focus:border-santa-red transition-all font-medium"
+                                />
+                            </div>
+
+                            {/* Email Field */}
+                            <div className="space-y-3">
+                                <label className="flex items-center gap-2 text-xs font-black uppercase tracking-widest text-gray-500">
+                                    <Mail size={14} className="text-santa-red" />
+                                    {t('email')}
+                                </label>
+                                <input
+                                    type="email"
+                                    value={email}
+                                    onChange={(e) => setEmail(e.target.value)}
+                                    placeholder={t('placeholderEmail')}
+                                    className="w-full bg-white/5 border border-white/10 rounded-2xl px-6 py-4 text-white placeholder:text-gray-600 focus:outline-none focus:ring-2 focus:ring-santa-red/50 focus:border-santa-red transition-all font-medium"
+                                />
+                            </div>
+
+                            {/* Phone Field */}
+                            <div className="space-y-3">
+                                <label className="flex items-center gap-2 text-xs font-black uppercase tracking-widest text-gray-500">
+                                    <Phone size={14} className="text-santa-red" />
+                                    {t('phone')}
+                                </label>
+                                <input
+                                    type="text"
+                                    value={phone}
+                                    onChange={(e) => setPhone(e.target.value)}
+                                    placeholder={t('placeholderPhone')}
+                                    className="w-full bg-white/5 border border-white/10 rounded-2xl px-6 py-4 text-white placeholder:text-gray-600 focus:outline-none focus:ring-2 focus:ring-santa-red/50 focus:border-santa-red transition-all font-medium"
+                                />
+                            </div>
+
+                            {/* Message Field */}
+                            <div className="space-y-3">
+                                <label className="flex items-center gap-2 text-xs font-black uppercase tracking-widest text-gray-500">
+                                    <MessageCircle size={14} className="text-santa-red" />
+                                    {t('message')}
+                                </label>
+                                <textarea
+                                    value={message}
+                                    onChange={(e) => setMessage(e.target.value)}
+                                    placeholder="..."
+                                    rows={5}
+                                    className="w-full bg-white/5 border border-white/10 rounded-2xl px-6 py-4 text-white placeholder:text-gray-600 focus:outline-none focus:ring-2 focus:ring-santa-red/50 focus:border-santa-red transition-all font-medium resize-none shadow-inner"
+                                />
+                            </div>
+                        </div>
+                    </div>
+
+                    {/* Footer / Submit Button */}
+                    <div className="p-10 bg-white/[0.02] border-t border-white/5 flex-shrink-0">
+                        <Button
+                            onClick={handleSend}
+                            className="w-full h-16 bg-santa-red hover:bg-red-600 text-white text-lg font-black tracking-tight rounded-2xl shadow-[0_8px_30px_rgb(239,68,68,0.3)] hover:shadow-[0_8px_30px_rgb(239,68,68,0.5)] transform active:scale-95 transition-all group"
+                        >
+                            <Send className="w-5 h-5 mr-3 group-hover:translate-x-1 group-hover:-translate-y-1 transition-transform" />
+                            {t('send')}
+                        </Button>
+                    </div>
                 </div>
-            )}
+            </div>
         </>
     );
 }

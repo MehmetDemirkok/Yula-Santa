@@ -110,11 +110,19 @@
     },
     "support": {
         "button": "サポート",
-        "title": "サポートに連絡",
-        "description": "助けが必要ですか？私たちがいます。",
+        "title": "サポート＆お問い合わせ",
+        "description": "フィードバックをお寄せください。",
+        "header": "お気軽にご相談ください！",
+        "subheader": "私たちが全力でサポートします。",
+        "name": "お名前",
+        "email": "メールアドレス",
+        "phone": "電話番号",
         "subject": "件名",
         "message": "メッセージ",
-        "send": "メールを送信",
+        "placeholderName": "フルネームを入力",
+        "placeholderEmail": "email@example.com",
+        "placeholderPhone": "+81",
+        "send": "送信",
         "contact": "お問い合わせ"
     },
     "common": {
@@ -130,5 +138,45 @@
     "languageSwitcher": {
         "label": "言語を選択",
         "current": "日本語"
+    },
+    "footer": {
+        "privacyPolicy": "プライバシーポリシー",
+        "legalInfo": "法的情報",
+        "copyright": "© 2025 YulaSanta. All rights reserved.",
+        "cookieDisclaimer": "当サイトでは、サービスの向上のためにクッキーを使用しています。"
+    },
+    "privacy": {
+        "title": "プライバシーポリシー",
+        "meta": {
+            "title": "プライバシー | YulaSanta",
+            "description": "YulaSantaのプライバシーポリシーとデータセキュリティに関する情報。"
+        },
+        "lastUpdated": "最終更新日: 2025年12月27日",
+        "intro": "YulaSantaは、お客様のプライバシーを尊重します。",
+        "dataTitle": "データ収集",
+        "dataDesc": "データはお客様のブラウザにローカル保存されます。",
+        "cookiesTitle": "クッキー",
+        "cookiesDesc": "広告表示のためにクッキーを使用する場合があります。",
+        "securityTitle": "セキュリティ",
+        "securityDesc": "データは外部に送信されず、端末内に保持されます。",
+        "thirdPartyTitle": "外部サービス",
+        "thirdPartyDesc": "Googleのサービスを使用しています。"
+    },
+    "legal": {
+        "title": "法的情報",
+        "meta": {
+            "title": "リーガル | YulaSanta",
+            "description": "利用規約と法的通知。"
+        },
+        "lastUpdated": "最終更新日: 2025年12月27日",
+        "intro": "YulaSantaプラットフォーム利用に関する法的条件。",
+        "usageTitle": "利用条件",
+        "usageDesc": "YulaSantaは無料のツールです。",
+        "liabilityTitle": "免責事項",
+        "liabilityDesc": "抽選結果や不具合に関する責任は負いかねます。",
+        "contentTitle": "著作権",
+        "contentDesc": "全ての権利はYulaSantaチームに帰属します。",
+        "contactTitle": "お問い合わせ",
+        "contactDesc": "サポートボタンよりご連絡ください。"
     }
 }

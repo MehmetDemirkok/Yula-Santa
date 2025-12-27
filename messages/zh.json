@@ -110,12 +110,20 @@
     },
     "support": {
         "button": "支持",
-        "title": "联系支持",
-        "description": "需要帮助？我们在这里。",
+        "title": "支持与联系",
+        "description": "请联系我们以获取反馈。",
+        "header": "随时联系我们获得支持！",
+        "subheader": "我们随时为您提供帮助。",
+        "name": "姓名",
+        "email": "电子邮件",
+        "phone": "电话号码",
         "subject": "主题",
-        "message": "消息",
-        "send": "发送邮件",
-        "contact": "联系我们"
+        "message": "您的消息",
+        "placeholderName": "输入您的全名",
+        "placeholderEmail": "email@example.com",
+        "placeholderPhone": "+86",
+        "send": "发送",
+        "contact": "联系方式"
     },
     "common": {
         "loading": "加载中...",
@@ -130,5 +138,45 @@
     "languageSwitcher": {
         "label": "选择语言",
         "current": "中文"
+    },
+    "footer": {
+        "privacyPolicy": "隐私政策",
+        "legalInfo": "法律信息",
+        "copyright": "© 2025 YulaSanta. 保留所有权利。",
+        "cookieDisclaimer": "本网站使用 Cookie 来提供更好的体验。"
+    },
+    "privacy": {
+        "title": "隐私政策",
+        "meta": {
+            "title": "隐私 | YulaSanta",
+            "description": "关于 YulaSanta 的隐私政策和数据安全信息。"
+        },
+        "lastUpdated": "最后更新：2025年12月27日",
+        "intro": "在 YulaSanta，我们非常重视您的隐私。",
+        "dataTitle": "数据收集",
+        "dataDesc": "您的数据本地保存在您的浏览器中。",
+        "cookiesTitle": "Cookie",
+        "cookiesDesc": "我们可能会将 Cookie 用于广告目的。",
+        "securityTitle": "数据安全",
+        "securityDesc": "您的数据保留在您的设备上。",
+        "thirdPartyTitle": "第三方服务",
+        "thirdPartyDesc": "我们使用 Google 服务。"
+    },
+    "legal": {
+        "title": "法律信息",
+        "meta": {
+            "title": "法律 | YulaSanta",
+            "description": "使用条款和法律声明。"
+        },
+        "lastUpdated": "最后更新：2025年12月27日",
+        "intro": "使用 YulaSanta 平台的法律条款。",
+        "usageTitle": "使用",
+        "usageDesc": "YulaSanta 是一个免费工具。",
+        "liabilityTitle": "免责声明",
+        "liabilityDesc": "对抽奖结果或错误不承担任何责任。",
+        "contentTitle": "版权",
+        "contentDesc": "所有权利归 YulaSanta 团队所有。",
+        "contactTitle": "联系方式",
+        "contactDesc": "通过支持按钮联系我们。"
     }
 }

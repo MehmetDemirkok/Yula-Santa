@@ -110,12 +110,20 @@
     },
     "support": {
         "button": "지원",
-        "title": "지원팀 연락",
-        "description": "도움이 필요하세요? 저희가 여기 있습니다.",
+        "title": "지원 및 문의",
+        "description": "의견이 있으시면 연락주세요.",
+        "header": "망설이지 말고 지원을 요청하세요!",
+        "subheader": "저희가 도와드리겠습니다.",
+        "name": "성함",
+        "email": "이메일",
+        "phone": "전화번호",
         "subject": "제목",
         "message": "메시지",
-        "send": "이메일 보내기",
-        "contact": "문의하기"
+        "placeholderName": "성함을 입력하세요",
+        "placeholderEmail": "email@example.com",
+        "placeholderPhone": "+82",
+        "send": "보내기",
+        "contact": "문의"
     },
     "common": {
         "loading": "로딩 중...",
@@ -130,5 +138,45 @@
     "languageSwitcher": {
         "label": "언어 선택",
         "current": "한국어"
+    },
+    "footer": {
+        "privacyPolicy": "개인정보 처리방침",
+        "legalInfo": "법적 고지",
+        "copyright": "© 2025 YulaSanta. All rights reserved.",
+        "cookieDisclaimer": "저희 웹사이트는 최상의 경험을 제공하기 위해 쿠키를 사용합니다."
+    },
+    "privacy": {
+        "title": "개인정보 처리방침",
+        "meta": {
+            "title": "개인정보 | YulaSanta",
+            "description": "YulaSanta의 개인정보 처리방침 및 데이터 보안 정보."
+        },
+        "lastUpdated": "최종 업데이트: 2025년 12月 27日",
+        "intro": "YulaSanta는 귀하의 개인정보를 소중히 여깁니다.",
+        "dataTitle": "데이터 수집",
+        "dataDesc": "귀하의 데이터는 브라우저의 로컬 저장소에 저장됩니다.",
+        "cookiesTitle": "쿠키",
+        "cookiesDesc": "광고 목적으로 쿠키를 사용할 수 있습니다.",
+        "securityTitle": "보안",
+        "securityDesc": "데이터는 귀하의 장치에만 유지됩니다.",
+        "thirdPartyTitle": "제3자 서비스",
+        "thirdPartyDesc": "Google 서비스를 사용합니다."
+    },
+    "legal": {
+        "title": "법적 고지",
+        "meta": {
+            "title": "리걸 | YulaSanta",
+            "description": "이용 약관 및 법적 공지."
+        },
+        "lastUpdated": "최종 업데이트: 2025년 12月 27日",
+        "intro": "YulaSanta 플랫폼 이용에 관한 법적 조건.",
+        "usageTitle": "이용",
+        "usageDesc": "YulaSanta는 무료 도구입니다.",
+        "liabilityTitle": "책임",
+        "liabilityDesc": "추첨 결과에 대한 책임은 지지 않습니다.",
+        "contentTitle": "저작권",
+        "contentDesc": "모든 권리는 YulaSanta 팀에 있습니다.",
+        "contactTitle": "문의",
+        "contactDesc": "지원 버튼을 통해 문의하세요."
     }
 }

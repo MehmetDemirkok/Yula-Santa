@@ -110,12 +110,20 @@
     },
     "support": {
         "button": "Поддержка",
-        "title": "Связаться с Поддержкой",
-        "description": "Нужна помощь? Мы здесь.",
+        "title": "Поддержка и Контакты",
+        "description": "Свяжитесь с нами для обратной связи.",
+        "header": "Обращайтесь за поддержкой!",
+        "subheader": "Мы здесь, чтобы помочь вам.",
+        "name": "Имя",
+        "email": "Электронная почта",
+        "phone": "Номер телефона",
         "subject": "Тема",
         "message": "Сообщение",
-        "send": "Отправить Email",
-        "contact": "Свяжитесь с нами"
+        "placeholderName": "Ваше имя и фамилия",
+        "placeholderEmail": "email@example.com",
+        "placeholderPhone": "+7",
+        "send": "Отправить",
+        "contact": "Контакт"
     },
     "common": {
         "loading": "Загрузка...",
@@ -130,5 +138,45 @@
     "languageSwitcher": {
         "label": "Выбрать Язык",
         "current": "Русский"
+    },
+    "footer": {
+        "privacyPolicy": "Конфиденциальность",
+        "legalInfo": "Правовая информация",
+        "copyright": "© 2025 YulaSanta. Все права защищены.",
+        "cookieDisclaimer": "Этот сайт использует файлы cookie для улучшения вашего опыта."
+    },
+    "privacy": {
+        "title": "Конфиденциальность",
+        "meta": {
+            "title": "Приватность | YulaSanta",
+            "description": "Информация о политике конфиденциальности и безопасности данных YulaSanta."
+        },
+        "lastUpdated": "Последнее обновление: 27 декабря 2025",
+        "intro": "В YulaSanta мы очень серьезно относимся к вашей конфиденциальности.",
+        "dataTitle": "Сбор данных",
+        "dataDesc": "Ваши данные хранятся локально в вашем браузере.",
+        "cookiesTitle": "Cookie",
+        "cookiesDesc": "Мы используем файлы cookie в рекламных целях.",
+        "securityTitle": "Безопасность",
+        "securityDesc": "Ваши данные остаются на вашем устройстве.",
+        "thirdPartyTitle": "Сторонние сервисы",
+        "thirdPartyDesc": "Мы используем сервисы Google."
+    },
+    "legal": {
+        "title": "Правовая информация",
+        "meta": {
+            "title": "Юридическая информация | YulaSanta",
+            "description": "Условия использования и правовые уведомления."
+        },
+        "lastUpdated": "Последнее обновление: 27 декабря 2025",
+        "intro": "Юридические условия использования платформы YulaSanta.",
+        "usageTitle": "Использование",
+        "usageDesc": "YulaSanta — это бесплатный инструмент.",
+        "liabilityTitle": "Отказ от ответственности",
+        "liabilityDesc": "Мы не несем ответственности за ошибки в жеребьевке.",
+        "contentTitle": "Авторские права",
+        "contentDesc": "Все права принадлежат команде YulaSanta.",
+        "contactTitle": "Контакт",
+        "contactDesc": "Свяжитесь с нами через кнопку поддержки."
     }
 }

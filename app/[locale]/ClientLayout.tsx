@@ -16,6 +16,7 @@ import { Analytics } from "@vercel/analytics/next";
 import { NewYearTheme } from "@/components/NewYearTheme";
 import { CookieConsent } from "@/components/CookieConsent";
 import { SupportButton } from "@/components/SupportButton";
+import { Footer } from "@/components/Footer";
 
 interface ClientLayoutProps {
     children: ReactNode;
@@ -39,6 +40,9 @@ export function ClientLayout({ children }: ClientLayoutProps) {
             {/* Cookie Consent & Support */}
             <CookieConsent />
             <SupportButton />
+
+            {/* Footer */}
+            <Footer />
 
             {/* Analytics */}
             <Analytics />

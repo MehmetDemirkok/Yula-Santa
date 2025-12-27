@@ -110,12 +110,20 @@
     },
     "support": {
         "button": "الدعم",
-        "title": "اتصل بالدعم",
-        "description": "تحتاج مساعدة؟ نحن هنا.",
+        "title": "الدعم والاتصال",
+        "description": "اتصل بنا لتقديم ملاحظاتك.",
+        "header": "لا تتردد في طلب الدعم!",
+        "subheader": "نحن هنا لمساعدتكم.",
+        "name": "الاسم",
+        "email": "البريد الإلكتروني",
+        "phone": "رقم الهاتف",
         "subject": "الموضوع",
         "message": "الرسالة",
-        "send": "إرسال البريد",
-        "contact": "اتصل بنا"
+        "placeholderName": "الاسم الكامل",
+        "placeholderEmail": "email@example.com",
+        "placeholderPhone": "+966",
+        "send": "إرسال",
+        "contact": "الاتصال"
     },
     "common": {
         "loading": "جارٍ التحميل...",
@@ -130,5 +138,45 @@
     "languageSwitcher": {
         "label": "اختر اللغة",
         "current": "العربية"
+    },
+    "footer": {
+        "privacyPolicy": "سياسة الخصوصية",
+        "legalInfo": "معلومات قانونية",
+        "copyright": "© 2025 YulaSanta. جميع الحقوق محفوظة.",
+        "cookieDisclaimer": "يستخدم هذا الموقع ملفات تعريف الارتباط لتحسين تجربتك."
+    },
+    "privacy": {
+        "title": "سياسة الخصوصية",
+        "meta": {
+            "title": "الخصوصية | YulaSanta",
+            "description": "معلومات حول سياسة الخصوصية وأمان البيانات في YulaSanta."
+        },
+        "lastUpdated": "آخر تحديث: 27 ديسمبر 2025",
+        "intro": "في YulaSanta، نهتم كثيراً بخصوصيتك.",
+        "dataTitle": "جمع البيانات",
+        "dataDesc": "يتم تخزين بياناتك محلياً في متصفحك.",
+        "cookiesTitle": "ملفات تعريف الارتباط",
+        "cookiesDesc": "نحن نستخدم ملفات تعريف الارتباط لأغراض إعلانية.",
+        "securityTitle": "أمان البيانات",
+        "securityDesc": "تبقى بياناتك على جهازك الخاص.",
+        "thirdPartyTitle": "خدمات الطرف الثالث",
+        "thirdPartyDesc": "نحن نستخدم خدمات Google."
+    },
+    "legal": {
+        "title": "المعلومات القانونية",
+        "meta": {
+            "title": "قانوني | YulaSanta",
+            "description": "شروط الاستخدام والإشعارات القانونية."
+        },
+        "lastUpdated": "آخر تحديث: 27 ديسمبر 2025",
+        "intro": "الشروط القانونية لاستخدام منصة YulaSanta.",
+        "usageTitle": "الاستخدام",
+        "usageDesc": "YulaSanta هي أداة مجانية.",
+        "liabilityTitle": "إخلاء المسؤولية",
+        "liabilityDesc": "لا نتحمل أي مسؤولية عن أخطاء في القرعة.",
+        "contentTitle": "حقوق الملكية",
+        "contentDesc": "جميع الحقوق محفوظة لفريق YulaSanta.",
+        "contactTitle": "الاتصال",
+        "contactDesc": "اتصل بنا عبر زر الدعم."
     }
 }

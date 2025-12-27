@@ -132,8 +132,16 @@
         "button": "Destek",
         "title": "Destek & İletişim",
         "description": "Görüşleriniz için bize ulaşın.",
+        "header": "Destek almaktan çekinmeyin!",
+        "subheader": "Size yardımcı olmak için buradayız.",
+        "name": "Adınız",
+        "email": "E-postanız",
+        "phone": "Telefon Numaranız",
         "subject": "Konu",
-        "message": "Mesaj",
+        "message": "Mesajınız",
+        "placeholderName": "Adınız ve Soyadınız",
+        "placeholderEmail": "email@example.com",
+        "placeholderPhone": "+90",
         "send": "Gönder",
         "contact": "İletişim"
     },
@@ -150,5 +158,45 @@
     "languageSwitcher": {
         "label": "Dil Seçin",
         "current": "Türkçe"
+    },
+    "footer": {
+        "privacyPolicy": "Gizlilik Koşulları",
+        "legalInfo": "Yasal Bilgiler",
+        "copyright": "© 2025 YulaSanta. Tüm hakları saklıdır.",
+        "cookieDisclaimer": "Web sayfamımızı, hizmetlerimizi veya araçlarımızı ziyaret ettiğinizde ve bunlarla etkileşim kurduğunuzda, biz veya hizmet sağlayıcılarımız, size daha iyi, daha hızlı ve daha güvenli bir deneyim sunmaya yardımcı olmak ve pazarlama amaçlarıyla bilgi depolamak için çerezleri kullanabiliriz."
+    },
+    "privacy": {
+        "title": "Gizlilik Koşulları",
+        "meta": {
+            "title": "Gizlilik Koşulları | YulaSanta",
+            "description": "YulaSanta gizlilik politikası ve veri güvenliği hakkında bilgiler."
+        },
+        "lastUpdated": "Son Güncelleme: 27 Aralık 2025",
+        "intro": "YulaSanta olarak gizliliğinize büyük önem veriyoruz. Bu politika, web sitemizi kullandığınızda verilerinizin nasıl işlendiğini açıklar.",
+        "dataTitle": "Veri Toplama",
+        "dataDesc": "YulaSanta, çekiliş oluşturmak için girdiğiniz isimleri yalnızca tarayıcınızın yerel depolamasında (localStorage) saklar. Bu veriler sunucularımıza iletilmez ve yalnızca kendi cihazınızda kalır.",
+        "cookiesTitle": "Çerezler ve Reklam",
+        "cookiesDesc": "Sitemizde Google AdSense reklamları gösterilmektedir. Google ve reklam ortakları, ilgi alanlarınıza dayalı reklamlar sunmak için çerezleri (cookies) kullanabilir.",
+        "securityTitle": "Veri Güvenliği",
+        "securityDesc": "Verileriniz yalnızca tarayıcınızda saklandığı için, tarayıcı geçmişinizi veya verilerinizi temizlediğinizde tüm çekiliş bilgileri silinir.",
+        "thirdPartyTitle": "Üçüncü Taraf Hizmetler",
+        "thirdPartyDesc": "Google Analytics ve Google AdSense gibi dünya standartlarında servisler kullanmaktayız. Bu servislerin kendi gizlilik politikaları geçerlidir."
+    },
+    "legal": {
+        "title": "Yasal Bilgiler",
+        "meta": {
+            "title": "Yasal Bilgiler | YulaSanta",
+            "description": "YulaSanta platformunun kullanım koşulları ve yasal uyarıları."
+        },
+        "lastUpdated": "Son Güncelleme: 27 Aralık 2025",
+        "intro": "Bu sayfa, YulaSanta platformunun kullanımına dair yasal uyarıları ve kullanım koşullarını içermektedir.",
+        "usageTitle": "Kullanım Koşulları",
+        "usageDesc": "YulaSanta, eğlence ve organizasyon amaçlı bir çekiliş aracıdır. Sonuçlar rastgele algoritmalarla belirlenir ve herhangi bir yönlendirme içermez.",
+        "liabilityTitle": "Sorumluluk Reddi",
+        "liabilityDesc": "Platformda yapılan çekilişlerin sonuçlarından veya oluşabilecek teknik aksaklıklardan YulaSanta sorumlu tutulamaz.",
+        "contentTitle": "Telif Hakları",
+        "contentDesc": "Sitede yer alan tüm tasarım ve kod hakları YulaSanta ekibine aittir. İzinsiz kopyalanması veya kullanılması yasaktır.",
+        "contactTitle": "İletişim",
+        "contactDesc": "Yasal konularla ilgili her türlü sorunuz için destek butonunu kullanarak bizimle iletişime geçebilirsiniz."
     }
 }

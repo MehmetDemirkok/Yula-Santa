@@ -129,12 +129,20 @@
     },
     "support": {
         "button": "Support",
-        "title": "Contact Support",
-        "description": "Have feedback or need help? We are here.",
+        "title": "Support & Contact",
+        "description": "Contact us for your feedback.",
+        "header": "Don't hesitate to get support!",
+        "subheader": "We are here to help you.",
+        "name": "Your Name",
+        "email": "Your Email",
+        "phone": "Phone Number",
         "subject": "Subject",
-        "message": "Message",
-        "send": "Send Email",
-        "contact": "Contact us at"
+        "message": "Your Message",
+        "placeholderName": "Your Full Name",
+        "placeholderEmail": "email@example.com",
+        "placeholderPhone": "+1",
+        "send": "Send",
+        "contact": "Contact"
     },
     "common": {
         "loading": "Loading...",
@@ -149,5 +157,45 @@
     "languageSwitcher": {
         "label": "Select Language",
         "current": "English"
+    },
+    "footer": {
+        "privacyPolicy": "Privacy Policy",
+        "legalInfo": "Legal Information",
+        "copyright": "© 2025 YulaSanta. All rights reserved.",
+        "cookieDisclaimer": "When you visit and interact with our website, services or tools, we or our service providers may use cookies for storing information to help provide you with a better, faster and safer experience and for marketing purposes."
+    },
+    "privacy": {
+        "title": "Privacy Policy",
+        "meta": {
+            "title": "Privacy Policy | YulaSanta",
+            "description": "Information about YulaSanta's privacy policy and data security."
+        },
+        "lastUpdated": "Last Updated: December 27, 2025",
+        "intro": "At YulaSanta, we care deeply about your privacy. This policy explains how your data is handled when you use our website.",
+        "dataTitle": "Data Collection",
+        "dataDesc": "YulaSanta only stores the names you enter for creating draws in your browser's local storage (localStorage). This data is not transmitted to our servers and remains only on your device.",
+        "cookiesTitle": "Cookies and Advertising",
+        "cookiesDesc": "Our site displays Google AdSense advertisements. Google and its advertising partners may use cookies to serve ads based on your interests.",
+        "securityTitle": "Data Security",
+        "securityDesc": "Since your data is only stored in your browser, all drawing information is deleted when you clear your browser history or data.",
+        "thirdPartyTitle": "Third Party Services",
+        "thirdPartyDesc": "We use world-class services such as Google Analytics and Google AdSense. These services have their own privacy policies."
+    },
+    "legal": {
+        "title": "Legal Information",
+        "meta": {
+            "title": "Legal Information | YulaSanta",
+            "description": "Terms of use and legal notices of the YulaSanta platform."
+        },
+        "lastUpdated": "Last Updated: December 27, 2025",
+        "intro": "This page contains legal notices and terms of use for the YulaSanta platform.",
+        "usageTitle": "Terms of Use",
+        "usageDesc": "YulaSanta is a drawing tool for entertainment and organizational purposes. Results are determined by random algorithms and contain no bias.",
+        "liabilityTitle": "Disclaimer",
+        "liabilityDesc": "YulaSanta cannot be held responsible for the results of drawings conducted on the platform or any technical malfunctions that may occur.",
+        "contentTitle": "Copyright",
+        "contentDesc": "All design and code rights on the site belong to the YulaSanta team. Unauthorized copying or use is prohibited.",
+        "contactTitle": "Contact",
+        "contactDesc": "For any questions regarding legal matters, you can contact us using the support button."
     }
 }
