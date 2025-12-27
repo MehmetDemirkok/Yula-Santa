@@ -106,7 +106,17 @@
         "autoDesc": "مثالي للمسابقات الكبيرة. يجلب تلقائيا.",
         "pasteComments": "الصق التعليقات هنا (واحد لكل سطر)",
         "parse": "تحليل التعليقات",
-        "parsed": "تم تحليل {count} مشارك"
+        "parsed": "تم تحليل {count} مشارك",
+        "youtubeLimitNote": "ملاحظة: يمكن جلب ما يصل إلى 1000 تعليق تلقائياً من API.",
+        "instagramLimitNote": "ملاحظة: يمكن جلب ما يصل إلى 1000 تعليق تلقائياً من API.",
+        "tiktokLimitNote": "ملاحظة: يمكن جلب ما يصل إلى 100 تعليق تلقائياً من API.",
+        "participantLimitDetails": "لمشاهدة المزيد من التعليقات، استخدم وضع الإدخال اليدوي.",
+        "channelUsername": "اسم المستخدم (التحقق من المتابعين)",
+        "channelUsernameHint": "أدخل اسم المستخدم الخاص بك للتحقق مما إذا كان الفائزون يتابعونك",
+        "following": "يتابع",
+        "notFollowing": "لا يتابع",
+        "checkingFollow": "جاري التحقق...",
+        "unknownFollow": "غير معروف"
     },
     "support": {
         "button": "الدعم",
@@ -138,6 +148,16 @@
     "languageSwitcher": {
         "label": "اختر اللغة",
         "current": "العربية"
+    },
+    "tools": {
+        "title": "أدوات",
+        "instagramStoryViewer": "عارض قصص انستغرام",
+        "instagramProfilePicture": "عارض صورة الملف الشخصي انستغرام",
+        "onlineGiveaway": "أداة السحب عبر الإنترنت",
+        "diceGame": "لعبة النرد",
+        "coinFlip": "قذف العملة",
+        "randomNumber": "مولد الأرقام العشوائية",
+        "shortStraw": "لعبة القشة القصيرة"
     },
     "footer": {
         "privacyPolicy": "سياسة الخصوصية",

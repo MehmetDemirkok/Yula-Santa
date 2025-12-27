@@ -106,7 +106,17 @@
         "autoDesc": "大規模な抽選に最適。自動的に取得します。",
         "pasteComments": "ここにコメントを貼り付け（1行に1つ）",
         "parse": "コメントを解析",
-        "parsed": "{count}人の参加者を解析しました"
+        "parsed": "{count}人の参加者を解析しました",
+        "youtubeLimitNote": "注: APIから自動的に最大1000件のコメントを取得できます。",
+        "instagramLimitNote": "注: APIから自動的に最大1000件のコメントを取得できます。",
+        "tiktokLimitNote": "注: APIから自動的に最大100件のコメントを取得できます。",
+        "participantLimitDetails": "さらにコメントを表示するには、手動入力モードを使用してください。",
+        "channelUsername": "ユーザー名（フォロワーチェック）",
+        "channelUsernameHint": "当選者があなたをフォローしているか確認するためにユーザー名を入力してください",
+        "following": "フォロー中",
+        "notFollowing": "フォローなし",
+        "checkingFollow": "確認中...",
+        "unknownFollow": "不明"
     },
     "support": {
         "button": "サポート",
@@ -138,6 +148,16 @@
     "languageSwitcher": {
         "label": "言語を選択",
         "current": "日本語"
+    },
+    "tools": {
+        "title": "ツール",
+        "instagramStoryViewer": "Instagramストーリービューアー",
+        "instagramProfilePicture": "Instagramプロフィール写真ビューアー",
+        "onlineGiveaway": "オンライン抽選ツール",
+        "diceGame": "サイコロゲーム",
+        "coinFlip": "コイントス",
+        "randomNumber": "乱数ジェネレーター",
+        "shortStraw": "くじ引きゲーム"
     },
     "footer": {
         "privacyPolicy": "プライバシーポリシー",

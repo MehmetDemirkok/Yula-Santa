@@ -48,12 +48,14 @@ export const config = {
     // Match all pathnames except:
     // - API routes (/api/...)
     // - Static files (_next/static, favicon.ico, etc.)
+    // - Tools (standalone pages without locale prefix)
     matcher: [
         // Match all pathnames except those starting with:
         // - api (API routes)
         // - _next (Next.js internals)
         // - _vercel (Vercel internals)
+        // - tools (standalone tools pages)
         // - favicon.ico, sitemap.xml, robots.txt (static files)
-        '/((?!api|_next|_vercel|.*\\.png|.*\\.ico|.*\\.json|.*\\.txt|sitemap\\.xml|robots\\.txt).*)',
+        '/((?!api|_next|_vercel|tools|.*\\.png|.*\\.ico|.*\\.json|.*\\.txt|sitemap\\.xml|robots\\.txt).*)',
     ]
 };

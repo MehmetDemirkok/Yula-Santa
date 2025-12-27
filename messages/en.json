@@ -158,6 +158,16 @@
         "label": "Select Language",
         "current": "English"
     },
+    "tools": {
+        "title": "Tools",
+        "instagramStoryViewer": "Instagram Story Viewer",
+        "instagramProfilePicture": "Instagram Profile Picture Viewer",
+        "onlineGiveaway": "Online Giveaway Tool",
+        "diceGame": "Dice Roller",
+        "coinFlip": "Coin Flip",
+        "randomNumber": "Random Number Generator",
+        "shortStraw": "Short Straw Game"
+    },
     "footer": {
         "privacyPolicy": "Privacy Policy",
         "legalInfo": "Legal Information",

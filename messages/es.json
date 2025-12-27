@@ -106,7 +106,17 @@
         "autoDesc": "Ideal para sorteos grandes. Obtiene automáticamente.",
         "pasteComments": "Pega los comentarios aquí (Uno por línea)",
         "parse": "Analizar Comentarios",
-        "parsed": "{count} participantes analizados"
+        "parsed": "{count} participantes analizados",
+        "youtubeLimitNote": "Nota: Se pueden obtener automáticamente hasta 1000 comentarios a través de la API.",
+        "instagramLimitNote": "Nota: Se pueden obtener automáticamente hasta 1000 comentarios a través de la API.",
+        "tiktokLimitNote": "Nota: Se pueden obtener automáticamente hasta 100 comentarios a través de la API.",
+        "participantLimitDetails": "Para ver más comentarios, use el modo de entrada manual.",
+        "channelUsername": "Nombre de Usuario (Verificación de Seguidores)",
+        "channelUsernameHint": "Ingrese su nombre de usuario para verificar si los ganadores lo siguen",
+        "following": "Siguiendo",
+        "notFollowing": "No Sigue",
+        "checkingFollow": "Verificando...",
+        "unknownFollow": "Desconocido"
     },
     "support": {
         "button": "Soporte",
@@ -138,6 +148,16 @@
     "languageSwitcher": {
         "label": "Seleccionar Idioma",
         "current": "Español"
+    },
+    "tools": {
+        "title": "Herramientas",
+        "instagramStoryViewer": "Visor de Historias de Instagram",
+        "instagramProfilePicture": "Visor de Foto de Perfil de Instagram",
+        "onlineGiveaway": "Herramienta de Sorteo Online",
+        "diceGame": "Juego de Dados",
+        "coinFlip": "Lanzar Moneda",
+        "randomNumber": "Generador de Números Aleatorios",
+        "shortStraw": "Sacar Pajita Corta"
     },
     "footer": {
         "privacyPolicy": "Privacidad",

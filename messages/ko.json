@@ -106,7 +106,17 @@
         "autoDesc": "대규모 추첨에 적합합니다. 자동으로 가져옵니다.",
         "pasteComments": "여기에 댓글을 붙여넣으세요 (한 줄에 하나씩)",
         "parse": "댓글 분석",
-        "parsed": "{count}명의 참가자가 분석됨"
+        "parsed": "{count}명의 참가자가 분석됨",
+        "youtubeLimitNote": "참고: API를 통해 최대 1000개의 댓글을 자동으로 가져올 수 있습니다.",
+        "instagramLimitNote": "참고: API를 통해 최대 1000개의 댓글을 자동으로 가져올 수 있습니다.",
+        "tiktokLimitNote": "참고: API를 통해 최대 100개의 댓글을 자동으로 가져올 수 있습니다.",
+        "participantLimitDetails": "더 많은 댓글을 보려면 수동 입력 모드를 사용하세요.",
+        "channelUsername": "사용자 이름 (팔로워 확인)",
+        "channelUsernameHint": "당첨자가 당신을 팔로우하는지 확인하려면 사용자 이름을 입력하세요",
+        "following": "팔로잉",
+        "notFollowing": "팔로우 안함",
+        "checkingFollow": "확인 중...",
+        "unknownFollow": "알 수 없음"
     },
     "support": {
         "button": "지원",
@@ -138,6 +148,16 @@
     "languageSwitcher": {
         "label": "언어 선택",
         "current": "한국어"
+    },
+    "tools": {
+        "title": "도구",
+        "instagramStoryViewer": "인스타그램 스토리 뷰어",
+        "instagramProfilePicture": "인스타그램 프로필 사진 뷰어",
+        "onlineGiveaway": "온라인 추첨 도구",
+        "diceGame": "주사위 게임",
+        "coinFlip": "동전 던지기",
+        "randomNumber": "난수 생성기",
+        "shortStraw": "제비뽑기"
     },
     "footer": {
         "privacyPolicy": "개인정보 처리방침",

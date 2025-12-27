@@ -106,7 +106,17 @@
         "autoDesc": "Ideale per grandi estrazioni. Ottiene automaticamente.",
         "pasteComments": "Incolla i commenti qui (Uno per riga)",
         "parse": "Analizza Commenti",
-        "parsed": "{count} partecipanti analizzati"
+        "parsed": "{count} partecipanti analizzati",
+        "youtubeLimitNote": "Nota: È possibile ottenere automaticamente fino a 1000 commenti tramite API.",
+        "instagramLimitNote": "Nota: È possibile ottenere automaticamente fino a 1000 commenti tramite API.",
+        "tiktokLimitNote": "Nota: È possibile ottenere automaticamente fino a 100 commenti tramite API.",
+        "participantLimitDetails": "Per visualizzare più commenti, utilizza la modalità di inserimento manuale.",
+        "channelUsername": "Nome Utente (Verifica Follower)",
+        "channelUsernameHint": "Inserisci il tuo nome utente per verificare se i vincitori ti seguono",
+        "following": "Segue",
+        "notFollowing": "Non Segue",
+        "checkingFollow": "Verifica in corso...",
+        "unknownFollow": "Sconosciuto"
     },
     "support": {
         "button": "Supporto",
@@ -138,6 +148,16 @@
     "languageSwitcher": {
         "label": "Seleziona Lingua",
         "current": "Italiano"
+    },
+    "tools": {
+        "title": "Strumenti",
+        "instagramStoryViewer": "Visualizzatore Storie Instagram",
+        "instagramProfilePicture": "Visualizzatore Foto Profilo Instagram",
+        "onlineGiveaway": "Strumento Estrazione Online",
+        "diceGame": "Lancio Dadi",
+        "coinFlip": "Testa o Croce",
+        "randomNumber": "Generatore Numeri Casuali",
+        "shortStraw": "Gioco del Bastoncino Corto"
     },
     "footer": {
         "privacyPolicy": "Privacy",

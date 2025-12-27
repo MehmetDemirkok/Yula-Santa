@@ -159,6 +159,16 @@
         "label": "Dil Seçin",
         "current": "Türkçe"
     },
+    "tools": {
+        "title": "Araçlar",
+        "instagramStoryViewer": "Instagram Hikaye İzleme",
+        "instagramProfilePicture": "Instagram Profil Resmi Büyütme",
+        "onlineGiveaway": "Online Çekiliş Programı",
+        "diceGame": "Zar Atma Oyunu",
+        "coinFlip": "Yazı Tura Oyunu",
+        "randomNumber": "Rastgele Sayı Seçici",
+        "shortStraw": "Kısa Çöp Oyunu"
+    },
     "footer": {
         "privacyPolicy": "Gizlilik Koşulları",
         "legalInfo": "Yasal Bilgiler",

@@ -106,7 +106,17 @@
         "autoDesc": "适合大型抽奖。自动获取。",
         "pasteComments": "在此粘贴评论（每行一条）",
         "parse": "解析评论",
-        "parsed": "已解析 {count} 名参与者"
+        "parsed": "已解析 {count} 名参与者",
+        "youtubeLimitNote": "注意：最多可通过API自动获取1000条评论。",
+        "instagramLimitNote": "注意：最多可通过API自动获取1000条评论。",
+        "tiktokLimitNote": "注意：最多可通过API自动获取100条评论。",
+        "participantLimitDetails": "要查看更多评论，请使用手动输入模式。",
+        "channelUsername": "用户名（粉丝检查）",
+        "channelUsernameHint": "输入您的用户名以检查获奖者是否关注您",
+        "following": "已关注",
+        "notFollowing": "未关注",
+        "checkingFollow": "检查中...",
+        "unknownFollow": "未知"
     },
     "support": {
         "button": "支持",
@@ -138,6 +148,16 @@
     "languageSwitcher": {
         "label": "选择语言",
         "current": "中文"
+    },
+    "tools": {
+        "title": "工具",
+        "instagramStoryViewer": "Instagram故事查看器",
+        "instagramProfilePicture": "Instagram头像查看器",
+        "onlineGiveaway": "在线抽奖工具",
+        "diceGame": "掷骰子",
+        "coinFlip": "抛硬币",
+        "randomNumber": "随机数生成器",
+        "shortStraw": "抽签游戏"
     },
     "footer": {
         "privacyPolicy": "隐私政策",
