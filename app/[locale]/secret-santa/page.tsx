@@ -1,13 +1,13 @@
 
 import { getSEOMetadata, viewport } from '@/lib/seo';
 export { viewport };
-import HomeClientPage from './HomeClientPage';
+import ClientPage from './ClientPage';
 
 export async function generateMetadata({ params }: { params: Promise<{ locale: string }> }) {
     const { locale } = await params;
-    return getSEOMetadata({ locale, path: '', translationKey: 'home' });
+    return getSEOMetadata({ locale, path: '/secret-santa', translationKey: 'home' });
 }
 
 export default async function Page() {
-    return <HomeClientPage />;
+    return <ClientPage />;
 }

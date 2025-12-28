@@ -38,7 +38,15 @@
         "directMatchMinError": "配对至少需要2人！",
         "directMatchEvenError": "直接配对需要偶数人数！",
         "drawError": "发生错误，请重试。",
-        "socialMediaGiveaways": "社交媒体抽奖"
+        "socialMediaGiveaways": "社交媒体抽奖",
+        "secure": "100% 安全",
+        "fast": "超快速",
+        "noPassword": "无需密码",
+        "noRegistration": "无需注册",
+        "startNow": "现在开始",
+        "socialDesc": "在所有平台上轻松进行抽奖",
+        "toolsDesc": "方便日常生活的迷你工具和有趣游戏。",
+        "viewAll": "查看全部"
     },
     "result": {
         "whoGetsGift": "我该给谁买礼物？",
@@ -87,10 +95,10 @@
         "instagramTitle": "Instagram抽奖工具",
         "twitterTitle": "免费Twitter/X抽奖",
         "youtubeDesc": "轻松从您视频的评论、点赞和订阅者中抽奖。",
-        "instagramDesc": "轻松从帖子的评论和点赞中抽奖。",
-        "twitterDesc": "轻松从 Twitter/X 的转推、点赞和回复中抽取。",
+        "instagramDesc": "轻松从 Instagram 帖子的评论和点赞中抽奖。",
+        "twitterDesc": "轻松从 Twitter/X 的转推、点赞和回复中抽奖。",
         "tiktokTitle": "TikTok 抽奖工具",
-        "tiktokDesc": "轻松从您的 TikTok 视频评论中抽取。",
+        "tiktokDesc": "轻松从您的 TikTok 视频评论中抽奖。",
         "requireSubscription": "需要订阅",
         "requireNotification": "需要通知",
         "requireFollow": "需要关注",
@@ -154,7 +162,7 @@
         "instagramStoryViewer": "Instagram 故事查看器",
         "instagramProfilePicture": "Instagram 头像查看器",
         "onlineGiveaway": "在线抽奖工具",
-        "diceGame": "掷骰子",
+        "dice": "掷骰子",
         "coinFlip": "抛硬币",
         "randomNumber": "随机数生成器",
         "shortStraw": "抽签游戏",
@@ -168,7 +176,7 @@
         },
         "diceContent": {
             "title": "掷骰子",
-            "subtitle": "Dice Roller - 在线免费",
+            "subtitle": "在线掷骰子 - 免费",
             "label": "骰子数量",
             "option": "{count} 个骰子",
             "roll": "掷骰子",
@@ -193,7 +201,7 @@
         },
         "coinFlipContent": {
             "title": "抛硬币",
-            "subtitle": "在线正反面",
+            "subtitle": "在线抛硬币 - 正面/反面",
             "heads": "正面",
             "tails": "反面",
             "roll": "抛硬币",
@@ -208,7 +216,7 @@
         },
         "randomNumberContent": {
             "title": "随机数生成器",
-            "subtitle": "在线选号",
+            "subtitle": "在线随机数生成器",
             "min": "最小值",
             "max": "最大值",
             "generate": "生成",
@@ -220,7 +228,7 @@
         },
         "shortStrawContent": {
             "title": "抽签游戏",
-            "subtitle": "在线抽签",
+            "subtitle": "在线抽签/抽长短",
             "label": "参加人数",
             "draw": "抽签",
             "reset": "重置",
@@ -235,7 +243,7 @@
         },
         "instagramStoryContent": {
             "title": "故事查看器",
-            "subtitle": "匿名查看",
+            "subtitle": "匿名观看 Instagram 故事",
             "placeholder": "用户名",
             "view": "查看故事",
             "helper": "无需登录即可匿名查看 Instagram 故事。",
@@ -248,7 +256,7 @@
         },
         "instagramProfileContent": {
             "title": "头像查看器",
-            "subtitle": "HD 画质",
+            "subtitle": "HD 高清头像尺寸查看",
             "placeholder": "用户名",
             "view": "查看头像",
             "helper": "查看并下载高清 Instagram 头像。",

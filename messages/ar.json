@@ -38,7 +38,15 @@
         "directMatchMinError": "تتطلب المطابقة شخصين على الأقل!",
         "directMatchEvenError": "تتطلب المطابقة المباشرة عدداً زوجياً من الأشخاص!",
         "drawError": "حدث خطأ، يرجى المحاولة مرة أخرى.",
-        "socialMediaGiveaways": "مسابقات وسائل التواصل الاجتماعي"
+        "socialMediaGiveaways": "مسابقات وسائل التواصل الاجتماعي",
+        "secure": "امن بنسبة 100%",
+        "fast": "سريع جدا",
+        "noPassword": "بدون كلمة مرور",
+        "noRegistration": "بدون تسجيل",
+        "startNow": "ابدأ الآن",
+        "socialDesc": "قم بإجراء سحوباتك بسهولة على جميع المنصات",
+        "toolsDesc": "أدوات مصغرة وألعاب ممتعة لتسهيل حياتك اليومية.",
+        "viewAll": "عرض الكل"
     },
     "result": {
         "whoGetsGift": "لمن أشتري هدية؟",
@@ -87,10 +95,10 @@
         "instagramTitle": "أداة مسابقة Instagram",
         "twitterTitle": "مسابقة Twitter/X المجانية",
         "youtubeDesc": "اسحب بسهولة من التعليقات والإعجابات والمشتركين في فيديوهاتك.",
-        "instagramDesc": "اسحب بسهولة من التعليقات والإعجابات في منشوراتك.",
-        "twitterDesc": "اختر بسهولة من إعادة التغريد والإعجابات والردود على Twitter/X.",
+        "instagramDesc": "قم بإجراء سحب بسهولة من التعليقات والإعجابات على انستقرام.",
+        "twitterDesc": "قم بإجراء سحب بسهولة من الريتويت والإعجابات والردود على تويتر/X.",
         "tiktokTitle": "أداة سحب TikTok",
-        "tiktokDesc": "اختر بسهولة من التعليقات على فيديوهات TikTok الخاصة بك.",
+        "tiktokDesc": "قم بإجراء سحب بسهولة من التعليقات على تيك توك.",
         "requireSubscription": "يتطلب الاشتراك",
         "requireNotification": "يتطلب الإشعارات",
         "requireFollow": "يتطلب المتابعة",
@@ -154,7 +162,7 @@
         "instagramStoryViewer": "مشاهدة قصص إنستغرام",
         "instagramProfilePicture": "مشاهدة صورة الملف الشخصي",
         "onlineGiveaway": "داة السحب عبر الإنترنت",
-        "diceGame": "لعبة النرد",
+        "dice": "لعبة النرد",
         "coinFlip": "رمي العملة",
         "randomNumber": "مولد الأرقام العشوائية",
         "shortStraw": "لعبة سحب القش",
@@ -168,7 +176,7 @@
         },
         "diceContent": {
             "title": "لعبة النرد",
-            "subtitle": "Dice Roller - مجاني عبر الإنترنت",
+            "subtitle": "رمي النرد أونلاين - مجاني",
             "label": "عدد النرد",
             "option": "{count} نرد",
             "roll": "ارمِ النرد",
@@ -193,7 +201,7 @@
         },
         "coinFlipContent": {
             "title": "رمي العملة",
-            "subtitle": "ملك أم كتاب عبر الإنترنت",
+            "subtitle": "ملك أم كتابة أونلاين - مجاني",
             "heads": "ملك",
             "tails": "كتاب",
             "roll": "ارمِ العملة",
@@ -208,7 +216,7 @@
         },
         "randomNumberContent": {
             "title": "مولد الأرقام العشوائية",
-            "subtitle": "سحب أرقام عبر الإنترنت",
+            "subtitle": "مولد أرقام عشوائية أونلاين",
             "min": "الأدنى",
             "max": "الأقصى",
             "generate": "توليد",
@@ -220,7 +228,7 @@
         },
         "shortStrawContent": {
             "title": "سحب القش",
-            "subtitle": "سحب عبر الإنترنت",
+            "subtitle": "لعبة سحب القش أونلاين",
             "label": "المشاركين",
             "draw": "اسحب قشة",
             "reset": "إعادة تعيين",
@@ -235,7 +243,7 @@
         },
         "instagramStoryContent": {
             "title": "Instagram Story Viewer",
-            "subtitle": "مشاهدة مجهولة",
+            "subtitle": "مشاهدة ستوري انستقرام بهوية مجهولة",
             "placeholder": "اسم المستخدم",
             "view": "مشاهدة القصص",
             "helper": "شاهد القصص بشكل مجهول دون علم المالك.",
@@ -248,7 +256,7 @@
         },
         "instagramProfileContent": {
             "title": "صورة الملف الشخصي",
-            "subtitle": "جودة HD",
+            "subtitle": "تكبير صورة الملف الشخصي بجودة HD",
             "placeholder": "اسم المستخدم",
             "view": "رؤية الصورة",
             "helper": "شاهد الصورة بجودة HD.",

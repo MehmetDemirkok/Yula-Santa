@@ -58,7 +58,15 @@
         "directMatchMinError": "Eşleştirme için en az 2 kişi gerekli!",
         "directMatchEvenError": "Direkt eşleştirme için kişi sayısı çift olmalıdır! Lütfen bir kişi ekleyin veya çıkarın.",
         "drawError": "Bir hata oluştu, lütfen tekrar deneyin.",
-        "socialMediaGiveaways": "Sosyal Medya Çekilişleri"
+        "socialMediaGiveaways": "Sosyal Medya Çekilişleri",
+        "secure": "%100 Güvenli",
+        "fast": "Süper Hızlı",
+        "noPassword": "Şifresiz",
+        "noRegistration": "Kayıtsız",
+        "startNow": "Hemen Başla",
+        "socialDesc": "Tüm platformlarda çekilişlerinizi kolayca yapın",
+        "toolsDesc": "Günlük işlerinizi kolaylaştıracak minik araçlar ve eğlenceli oyunlar.",
+        "viewAll": "Tümünü Gör"
     },
     "result": {
         "whoGetsGift": "Kime Hediye Alacağım?",
@@ -220,8 +228,8 @@
         "instagramStoryViewer": "Instagram Hikaye İzleme",
         "instagramProfilePicture": "Instagram Profil Resmi Büyütme",
         "onlineGiveaway": "Online Çekiliş Programı",
-        "diceGame": "Zar Atma Oyunu",
-        "coinFlip": "Yazı Tura Oyunu",
+        "dice": "Zar Atma",
+        "coinFlip": "Yazı Tura",
         "randomNumber": "Rastgele Sayı Seçici",
         "shortStraw": "Kısa Çöp Oyunu",
         "meta": {
@@ -240,7 +248,6 @@
                 "zar oyunu"
             ]
         },
-        "dice": "Zar Atma",
         "diceContent": {
             "title": "Zar Atma Oyunu",
             "subtitle": "Dice Roller - Online Ücretsiz",

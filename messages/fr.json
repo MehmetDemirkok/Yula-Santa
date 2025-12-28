@@ -38,7 +38,15 @@
         "directMatchMinError": "La correspondance nécessite au moins 2 personnes !",
         "directMatchEvenError": "La correspondance directe nécessite un nombre pair de personnes !",
         "drawError": "Une erreur s'est produite, veuillez réessayer.",
-        "socialMediaGiveaways": "Concours Réseaux Sociaux"
+        "socialMediaGiveaways": "Concours Réseaux Sociaux",
+        "secure": "100% Sécurisé",
+        "fast": "Super Rapide",
+        "noPassword": "Sans Mot de Passe",
+        "noRegistration": "Sans Inscription",
+        "startNow": "Commencez Maintenant",
+        "socialDesc": "Organisez vos concours facilement sur toutes les plateformes",
+        "toolsDesc": "Mini outils et jeux amusants pour faciliter votre vie quotidienne.",
+        "viewAll": "Voir Tout"
     },
     "result": {
         "whoGetsGift": "À qui dois-je offrir un cadeau ?",
@@ -87,7 +95,7 @@
         "instagramTitle": "Outil Concours Instagram",
         "twitterTitle": "Concours Twitter/X Gratuit",
         "youtubeDesc": "Tirez facilement parmi les commentaires, likes et abonnés de vos vidéos YouTube.",
-        "instagramDesc": "Tirez facilement parmi les commentaires et likes de vos posts Instagram.",
+        "instagramDesc": "Tirez facilement au sort parmi les commentaires et likes de vos posts Instagram.",
         "twitterDesc": "Tirez facilement au sort parmi les retweets, les likes et les réponses sur Twitter/X.",
         "tiktokTitle": "Outil Concours TikTok",
         "tiktokDesc": "Tirez facilement au sort parmi les commentaires de vos vidéos TikTok.",
@@ -154,7 +162,7 @@
         "instagramStoryViewer": "Visionneuse d'Histoires Instagram",
         "instagramProfilePicture": "Visionneuse de Photo de Profil Instagram",
         "onlineGiveaway": "Outil de Tirage en Ligne",
-        "diceGame": "Jeu de Dés",
+        "dice": "Jeu de Dés",
         "coinFlip": "Pile ou Face",
         "randomNumber": "Générateur de Nombres Aléatoires",
         "shortStraw": "Tirer la Courte Paille",
@@ -168,7 +176,7 @@
         },
         "diceContent": {
             "title": "Jeu de Dés",
-            "subtitle": "Dice Roller - En Ligne Gratuit",
+            "subtitle": "Lanceur de Dés Online - Gratuit",
             "label": "Nombre de Dés",
             "option": "{count} Dés",
             "roll": "Lancer les Dés",
@@ -193,7 +201,7 @@
         },
         "coinFlipContent": {
             "title": "Pile ou Face",
-            "subtitle": "Pile ou Face En Ligne",
+            "subtitle": "Pile ou Face Online - Gratuit",
             "heads": "Face",
             "tails": "Pile",
             "roll": "Lancer la Pièce",
@@ -207,8 +215,8 @@
             "description": "Générateur de nombres aléatoires en ligne. Idéal pour concours et jeux."
         },
         "randomNumberContent": {
-            "title": "Générateur de Nombres Aléatoires",
-            "subtitle": "Tirage au sort en ligne",
+            "title": "Générateur de Nombres",
+            "subtitle": "Générateur de Nombres Online",
             "min": "Min",
             "max": "Max",
             "generate": "Générer",
@@ -220,7 +228,7 @@
         },
         "shortStrawContent": {
             "title": "Courte Paille",
-            "subtitle": "Tirage en ligne",
+            "subtitle": "Tirage à la Courte Paille Online",
             "label": "Participants",
             "draw": "Tirer une paille",
             "reset": "Réinitialiser",
@@ -235,7 +243,7 @@
         },
         "instagramStoryContent": {
             "title": "Story Viewer",
-            "subtitle": "Visionnage anonyme",
+            "subtitle": "Visionneuse de Story Anonyme",
             "placeholder": "Nom d'utilisateur",
             "view": "Voir les Stories",
             "helper": "Regardez les stories anonymement.",
@@ -248,7 +256,7 @@
         },
         "instagramProfileContent": {
             "title": "Photo de Profil",
-            "subtitle": "Taille HD",
+            "subtitle": "Taille de Photo de Profil HD",
             "placeholder": "Nom d'utilisateur",
             "view": "Voir la Photo",
             "helper": "Voir la photo en HD.",

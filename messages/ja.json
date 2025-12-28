@@ -38,7 +38,15 @@
         "directMatchMinError": "マッチングには最低2人必要です！",
         "directMatchEvenError": "ダイレクトマッチングには偶数の人数が必要です！",
         "drawError": "エラーが発生しました。もう一度お試しください。",
-        "socialMediaGiveaways": "SNSプレゼント企画"
+        "socialMediaGiveaways": "SNSプレゼント企画",
+        "secure": "100% 安全",
+        "fast": "超高速",
+        "noPassword": "パスワード不要",
+        "noRegistration": "登録不要",
+        "startNow": "今すぐ開始",
+        "socialDesc": "すべてのプラットフォームで簡単にプレゼント企画を実施",
+        "toolsDesc": "日常生活を便利にするミニツールや楽しいゲーム。",
+        "viewAll": "すべて見る"
     },
     "result": {
         "whoGetsGift": "誰にプレゼントを買う？",
@@ -87,8 +95,8 @@
         "instagramTitle": "Instagramプレゼント企画ツール",
         "twitterTitle": "無料Twitter/Xプレゼント企画",
         "youtubeDesc": "動画のコメント、いいね、登録者から簡単に抽選できます。",
-        "instagramDesc": "投稿のコメントやいいねから簡単に抽選できます。",
-        "twitterDesc": "Twitter/Xのリツイート、いいね、返信から簡単に抽選できます。",
+        "instagramDesc": "Instagramのコメントや「いいね！」から簡単に抽選できます。",
+        "twitterDesc": "Twitter/Xのリツイート、いいね！、返信から簡単に抽選できます。",
         "tiktokTitle": "TikTokプレゼントツール",
         "tiktokDesc": "TikTok動画のコメントから簡単に抽選できます。",
         "requireSubscription": "登録必須",
@@ -154,7 +162,7 @@
         "instagramStoryViewer": "Instagramストーリービューアー",
         "instagramProfilePicture": "Instagramプロフィール写真ビューアー",
         "onlineGiveaway": "オンライン抽選ツール",
-        "diceGame": "サイコロ",
+        "dice": "サイコロ",
         "coinFlip": "コイントス",
         "randomNumber": "乱数メーカー",
         "shortStraw": "あみだくじ",
@@ -168,7 +176,7 @@
         },
         "diceContent": {
             "title": "サイコロ",
-            "subtitle": "Dice Roller - 無料オンライン",
+            "subtitle": "オンラインサイコロ - 無料",
             "label": "サイコロの数",
             "option": "{count}個のサイコロ",
             "roll": "サイコロを振る",
@@ -193,7 +201,7 @@
         },
         "coinFlipContent": {
             "title": "コイントス",
-            "subtitle": "オンライン表か裏か",
+            "subtitle": "オンラインコイントス - 表か裏か",
             "heads": "表",
             "tails": "裏",
             "roll": "コインを投げる",
@@ -208,7 +216,7 @@
         },
         "randomNumberContent": {
             "title": "乱数メーカー",
-            "subtitle": "オンライン乱数生成",
+            "subtitle": "オンライン乱数メーカー",
             "min": "最小",
             "max": "最大",
             "generate": "生成する",
@@ -220,7 +228,7 @@
         },
         "shortStrawContent": {
             "title": "あみだくじ",
-            "subtitle": "オンライン抽選",
+            "subtitle": "オンラインあみだくじ/くじ引き",
             "label": "参加人数",
             "draw": "くじを引く",
             "reset": "リセット",
@@ -235,7 +243,7 @@
         },
         "instagramStoryContent": {
             "title": "ストーリービューアー",
-            "subtitle": "匿名閲覧",
+            "subtitle": "匿名インスタストーリー閲覧",
             "placeholder": "ユーザー名",
             "view": "ストーリーを見る",
             "helper": "足跡をつけずにストーリーを閲覧できます。",
@@ -248,7 +256,7 @@
         },
         "instagramProfileContent": {
             "title": "プロフィール写真",
-            "subtitle": "HDサイズ",
+            "subtitle": "HDプロフィール画像サイズ表示",
             "placeholder": "ユーザー名",
             "view": "写真を見る",
             "helper": "プロフィール写真を拡大・保存します。",

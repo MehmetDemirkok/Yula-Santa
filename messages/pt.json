@@ -38,7 +38,15 @@
         "directMatchMinError": "O emparelhamento requer pelo menos 2 pessoas!",
         "directMatchEvenError": "O emparelhamento direto requer um número par de pessoas!",
         "drawError": "Ocorreu um erro, por favor tente novamente.",
-        "socialMediaGiveaways": "Sorteios de Redes Sociais"
+        "socialMediaGiveaways": "Sorteios de Redes Sociais",
+        "secure": "100% Seguro",
+        "fast": "Super Rápido",
+        "noPassword": "Sem Senha",
+        "noRegistration": "Sem Registro",
+        "startNow": "Começar Agora",
+        "socialDesc": "Faça seus sorteios facilmente em todas as plataformas",
+        "toolsDesc": "Mini ferramentas e jogos divertidos para facilitar seu dia a dia.",
+        "viewAll": "Ver Tudo"
     },
     "result": {
         "whoGetsGift": "Para quem compro um presente?",
@@ -87,10 +95,10 @@
         "instagramTitle": "Ferramenta de Sorteio Instagram",
         "twitterTitle": "Sorteio Twitter/X Grátis",
         "youtubeDesc": "Sorteie facilmente entre comentários, curtidas e inscritos dos seus vídeos.",
-        "instagramDesc": "Sorteie facilmente entre comentários e curtidas das suas postagens.",
+        "instagramDesc": "Sorteie facilmente entre os comentários e curtidas dos seus posts no Instagram.",
         "twitterDesc": "Sorteie facilmente entre retweets, curtidas e respostas no Twitter/X.",
         "tiktokTitle": "Sorteio do TikTok",
-        "tiktokDesc": "Sorteie facilmente entre os comentários dos seus vídeos do TikTok.",
+        "tiktokDesc": "Sorteie facilmente entre os comentários dos seus vídeos no TikTok.",
         "requireSubscription": "Requer Inscrição",
         "requireNotification": "Requer Notificação",
         "requireFollow": "Requer Seguir",
@@ -154,7 +162,7 @@
         "instagramStoryViewer": "Visualizador de Stories do Instagram",
         "instagramProfilePicture": "Visualizador de Foto de Perfil do Instagram",
         "onlineGiveaway": "Ferramenta de Sorteios Online",
-        "diceGame": "Jogo de Dados",
+        "dice": "Jogo de Dados",
         "coinFlip": "Cara o Coroa",
         "randomNumber": "Gerador de Números Aleatórios",
         "shortStraw": "Tirar Palitos",
@@ -168,7 +176,7 @@
         },
         "diceContent": {
             "title": "Jogo de Dados",
-            "subtitle": "Dice Roller - Online Grátis",
+            "subtitle": "Lançador de Dados Online - Grátis",
             "label": "Número de Dados",
             "option": "{count} Dados",
             "roll": "Jogar Dados",
@@ -193,7 +201,7 @@
         },
         "coinFlipContent": {
             "title": "Cara o Coroa",
-            "subtitle": "Cara o Coroa Online",
+            "subtitle": "Cara ou Coroa Online - Grátis",
             "heads": "Cara",
             "tails": "Coroa",
             "roll": "Lançar Moeda",
@@ -208,7 +216,7 @@
         },
         "randomNumberContent": {
             "title": "Gerador de Números",
-            "subtitle": "Escolher número online",
+            "subtitle": "Gerador de Números Online",
             "min": "Mín",
             "max": "Máx",
             "generate": "Gerar",
@@ -220,7 +228,7 @@
         },
         "shortStrawContent": {
             "title": "Tirar Palitos",
-            "subtitle": "Sorteio online",
+            "subtitle": "Jogo da Palhinha Online",
             "label": "Participantes",
             "draw": "Tirar palito",
             "reset": "Reiniciar",
@@ -235,7 +243,7 @@
         },
         "instagramStoryContent": {
             "title": "Story Viewer",
-            "subtitle": "Ver anonimamente",
+            "subtitle": "Visualizador de Stories Anônimo",
             "placeholder": "Nome de usuário",
             "view": "Ver Stories",
             "helper": "Veja stories anonimamente.",
@@ -248,7 +256,7 @@
         },
         "instagramProfileContent": {
             "title": "Foto de Perfil",
-            "subtitle": "Tamanho HD",
+            "subtitle": "Tamanho da Foto de Perfil HD",
             "placeholder": "Nome de usuário",
             "view": "Ver Foto",
             "helper": "Veja a foto em HD.",

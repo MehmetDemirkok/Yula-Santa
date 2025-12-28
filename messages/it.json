@@ -38,7 +38,15 @@
         "directMatchMinError": "L'abbinamento richiede almeno 2 persone!",
         "directMatchEvenError": "L'abbinamento diretto richiede un numero pari di persone!",
         "drawError": "Si è verificato un errore, riprova.",
-        "socialMediaGiveaways": "Estrazioni Social Media"
+        "socialMediaGiveaways": "Estrazioni Social Media",
+        "secure": "100% Sicuro",
+        "fast": "Super Veloce",
+        "noPassword": "Senza Password",
+        "noRegistration": "Senza Registrazione",
+        "startNow": "Inizia Ora",
+        "socialDesc": "Gestisci i tuoi concorsi facilmente su tutte le piattaforme",
+        "toolsDesc": "Mini strumenti e giochi divertenti per semplificare la tua vita quotidiana.",
+        "viewAll": "Vedi Tutto"
     },
     "result": {
         "whoGetsGift": "A chi compro un regalo?",
@@ -87,7 +95,7 @@
         "instagramTitle": "Strumento Estrazione Instagram",
         "twitterTitle": "Estrazione Twitter/X Gratuita",
         "youtubeDesc": "Estrai facilmente tra commenti, like e iscritti dei tuoi video.",
-        "instagramDesc": "Estrai facilmente tra commenti e like dei tuoi post.",
+        "instagramDesc": "Estrai facilmente tra i commenti e i like dei tuoi post Instagram.",
         "twitterDesc": "Estrai facilmente tra retweet, like e risposte su Twitter/X.",
         "tiktokTitle": "Strumento Estrazione TikTok",
         "tiktokDesc": "Estrai facilmente tra commenti dei tuoi video TikTok.",
@@ -154,7 +162,7 @@
         "instagramStoryViewer": "Visualizzatore Storie Instagram",
         "instagramProfilePicture": "Visualizzatore Foto Profilo Instagram",
         "onlineGiveaway": "Strumento Estrazioni Online",
-        "diceGame": "Lancio dei Dadi",
+        "dice": "Lancio dei Dadi",
         "coinFlip": "Testa o Croce",
         "randomNumber": "Generatore di Numeri Casuali",
         "shortStraw": "Gioco del Bastoncino Corto",
@@ -175,7 +183,7 @@
         },
         "diceContent": {
             "title": "Gioco dei Dadi",
-            "subtitle": "Dice Roller - Online Gratis",
+            "subtitle": "Lancio dei Dadi Online - Gratuito",
             "label": "Numero di Dadi",
             "option": "{count} Dadi",
             "roll": "Lancia i Dadi",
@@ -206,7 +214,7 @@
         },
         "coinFlipContent": {
             "title": "Testa o Croce",
-            "subtitle": "Coin Flip Online - Gratis",
+            "subtitle": "Testa o Croce Online - Gratuito",
             "heads": "Testa",
             "tails": "Croce",
             "roll": "Lancia la Moneta",
@@ -228,7 +236,7 @@
         },
         "randomNumberContent": {
             "title": "Generatore di Numeri Casuali",
-            "subtitle": "Random Number Generator",
+            "subtitle": "Generatore di Numeri Online",
             "min": "Minimo",
             "max": "Massimo",
             "generate": "Genera Numero",
@@ -250,7 +258,7 @@
         },
         "shortStrawContent": {
             "title": "Gioco del Bastoncino Corto",
-            "subtitle": "Pesca il Bastoncino",
+            "subtitle": "Tiraggio della Pagliuzza Online",
             "label": "Numero di Partecipanti",
             "draw": "Pesca un Bastoncino",
             "reset": "Ricomincia",
@@ -271,7 +279,7 @@
         },
         "instagramStoryContent": {
             "title": "Visualizzatore Storie Instagram",
-            "subtitle": "Story Viewer Anonimo",
+            "subtitle": "Visualizzatore Story Anonimo",
             "placeholder": "Inserisci username (es: yula)",
             "view": "Guarda Storie",
             "helper": "Guarda le storie in modo anonimo senza che il proprietario lo sappia.",
@@ -290,7 +298,7 @@
         },
         "instagramProfileContent": {
             "title": "Ingrandimento Foto Profilo Instagram",
-            "subtitle": "HD Profile Picture Size",
+            "subtitle": "Dimensioni Foto Profilo HD",
             "placeholder": "Inserisci username",
             "view": "Vedi Foto Profilo",
             "helper": "Visualizza la foto del profilo a grandezza naturale e in HD.",

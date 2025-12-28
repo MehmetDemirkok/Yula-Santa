@@ -38,7 +38,15 @@
         "directMatchMinError": "¡El emparejamiento requiere al menos 2 personas!",
         "directMatchEvenError": "¡El emparejamiento directo requiere un número par de personas!",
         "drawError": "Ocurrió un error, por favor intenta de nuevo.",
-        "socialMediaGiveaways": "Sorteos en Redes Sociales"
+        "socialMediaGiveaways": "Sorteos en Redes Sociales",
+        "secure": "100% Seguro",
+        "fast": "Súper Rápido",
+        "noPassword": "Sin Contraseña",
+        "noRegistration": "Sin Registro",
+        "startNow": "Empezar Ahora",
+        "socialDesc": "Realiza tus sorteos fácilmente en todas las plataformas",
+        "toolsDesc": "Mini herramientas y juegos divertidos para facilitar tu vida diaria.",
+        "viewAll": "Ver Todo"
     },
     "result": {
         "whoGetsGift": "¿A quién le compro un regalo?",
@@ -87,8 +95,8 @@
         "instagramTitle": "Herramienta de Sorteo Instagram",
         "twitterTitle": "Sorteo Twitter/X Gratis",
         "youtubeDesc": "Sortea fácilmente entre comentarios, likes y suscriptores de tus videos.",
-        "instagramDesc": "Sortea fácilmente entre comentarios y likes de tus posts.",
-        "twitterDesc": "Sortea fácilmente entre retweets, likes y respuestas en Twitter/X.",
+        "instagramDesc": "Sortea fácilmente entre los comentarios y likes de tus posts de Instagram.",
+        "twitterDesc": "Sortea fácilmente entre los retweets, likes y respuestas en Twitter/X.",
         "tiktokTitle": "Sorteo de TikTok",
         "tiktokDesc": "Sortea fácilmente entre comentarios de tus videos de TikTok.",
         "requireSubscription": "Requiere Suscripción",
@@ -154,7 +162,7 @@
         "instagramStoryViewer": "Visor de Historias de Instagram",
         "instagramProfilePicture": "Visor de Fotos de Perfil de Instagram",
         "onlineGiveaway": "Herramienta de Sorteos en Línea",
-        "diceGame": "Juego de Dados",
+        "dice": "Juego de Dados",
         "coinFlip": "Cara o Cruz",
         "randomNumber": "Generador de Números Aleatorios",
         "shortStraw": "Sacar Pajitas",
@@ -168,7 +176,7 @@
         },
         "diceContent": {
             "title": "Juego de Dados",
-            "subtitle": "Dice Roller - Online Gratis",
+            "subtitle": "Lanzador de Dados Online - Gratis",
             "label": "Número de Dados",
             "option": "{count} Dados",
             "roll": "Tirar Dados",
@@ -193,7 +201,7 @@
         },
         "coinFlipContent": {
             "title": "Cara o Cruz",
-            "subtitle": "Cara o Cruz Online",
+            "subtitle": "Cara o Cruz Online - Gratis",
             "heads": "Cara",
             "tails": "Cruz",
             "roll": "Lanzar Moneda",
@@ -208,7 +216,7 @@
         },
         "randomNumberContent": {
             "title": "Generador de Números",
-            "subtitle": "Sorteo en línea",
+            "subtitle": "Generador de Números Online",
             "min": "Min",
             "max": "Max",
             "generate": "Generar",
@@ -220,7 +228,7 @@
         },
         "shortStrawContent": {
             "title": "Sacar Pajitas",
-            "subtitle": "Sorteo online",
+            "subtitle": "Juego de la Pajita Más Corta Online",
             "label": "Participantes",
             "draw": "Sacar pajita",
             "reset": "Reiniciar",
@@ -235,7 +243,7 @@
         },
         "instagramStoryContent": {
             "title": "Story Viewer",
-            "subtitle": "Ver anónimamente",
+            "subtitle": "Visor de Historias Anónimo",
             "placeholder": "Nombre de usuario",
             "view": "Ver Historias",
             "helper": "Mira las historias de forma anónima.",
@@ -248,7 +256,7 @@
         },
         "instagramProfileContent": {
             "title": "Foto de Perfil",
-            "subtitle": "Tamaño HD",
+            "subtitle": "Foto de Perfil en HD",
             "placeholder": "Nombre de usuario",
             "view": "Ver Foto",
             "helper": "Mira la foto en HD.",

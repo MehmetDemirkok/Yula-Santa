@@ -2,7 +2,7 @@
 
 import { useTranslations } from 'next-intl';
 import Link from 'next/link';
-import { useParams } from 'next/navigation';
+import { useParams, usePathname } from 'next/navigation';
 import {
     Instagram,
     ImageIcon,
@@ -17,7 +17,11 @@ export function Footer() {
     const t = useTranslations('footer');
     const tTools = useTranslations('tools');
     const params = useParams();
+    const pathname = usePathname();
     const locale = params.locale as string;
+
+    // Check if we are on the home page
+    const isHomePage = pathname === `/${locale}` || pathname === `/${locale}/`;
 
     const tools = [
         {
@@ -45,7 +49,7 @@ export function Footer() {
             hoverShadow: 'hover:shadow-red-100/50'
         },
         {
-            key: 'diceGame',
+            key: 'dice',
             href: `/${locale}/tools/dice`,
             icon: Dice1,
             iconBg: 'bg-blue-500',
@@ -107,38 +111,40 @@ export function Footer() {
                     </div>
 
                     {/* ═══════════════════════════════════════════════════════════════════ */}
-                    {/* Tools Section - Açık Tema */}
+                    {/* Tools Section - Hide on Home Page to avoid duplication */}
                     {/* ═══════════════════════════════════════════════════════════════════ */}
-                    <div className="w-full">
-                        <div className="bg-white/80 backdrop-blur-xl rounded-2xl sm:rounded-3xl p-4 sm:p-6 md:p-8 border border-gray-100 shadow-xl">
-                            {/* Section Title */}
-                            <div className="flex items-center gap-2 sm:gap-3 mb-4 sm:mb-6">
-                                <div className="w-1 sm:w-1.5 h-6 sm:h-8 bg-santa-red rounded-full" />
-                                <h3 className="text-base sm:text-lg md:text-xl font-bold text-gray-800 tracking-wide">
-                                    {tTools('title')}
-                                </h3>
-                            </div>
+                    {!isHomePage && (
+                        <div className="w-full">
+                            <div className="bg-white/80 backdrop-blur-xl rounded-2xl sm:rounded-3xl p-4 sm:p-6 md:p-8 border border-gray-100 shadow-xl">
+                                {/* Section Title */}
+                                <div className="flex items-center gap-2 sm:gap-3 mb-4 sm:mb-6">
+                                    <div className="w-1 sm:w-1.5 h-6 sm:h-8 bg-santa-red rounded-full" />
+                                    <h3 className="text-base sm:text-lg md:text-xl font-bold text-gray-800 tracking-wide">
+                                        {tTools('title')}
+                                    </h3>
+                                </div>
 
-                            {/* Tools Grid - 2 columns */}
-                            <div className="grid grid-cols-1 sm:grid-cols-2 gap-2 sm:gap-3">
-                                {tools.map((tool) => (
-                                    <Link
-                                        key={tool.key}
-                                        href={tool.href}
-                                        title={`${tTools(tool.key as keyof typeof tool)} - Online Ücretsiz Araç`}
-                                        className={`group flex items-center gap-3 p-3 sm:p-4 rounded-xl sm:rounded-2xl bg-white border border-gray-100 ${tool.hoverBorder} hover:shadow-lg ${tool.hoverShadow} transition-all duration-300`}
-                                    >
-                                        <div className={`p-2 sm:p-2.5 rounded-lg sm:rounded-xl ${tool.iconBg} shadow-lg flex-shrink-0 group-hover:scale-110 transition-transform`}>
-                                            <tool.icon className="w-4 h-4 sm:w-5 sm:h-5 text-white" />
-                                        </div>
-                                        <span className="text-sm sm:text-base text-gray-600 group-hover:text-gray-900 font-medium transition-colors truncate">
-                                            {tTools(tool.key as keyof typeof tool)}
-                                        </span>
-                                    </Link>
-                                ))}
+                                {/* Tools Grid - 2 columns */}
+                                <div className="grid grid-cols-1 sm:grid-cols-2 gap-2 sm:gap-3">
+                                    {tools.map((tool) => (
+                                        <Link
+                                            key={tool.key}
+                                            href={tool.href}
+                                            title={`${tTools(tool.key as keyof typeof tool)} - Online Ücretsiz Araç`}
+                                            className={`group flex items-center gap-3 p-3 sm:p-4 rounded-xl sm:rounded-2xl bg-white border border-gray-100 ${tool.hoverBorder} hover:shadow-lg ${tool.hoverShadow} transition-all duration-300`}
+                                        >
+                                            <div className={`p-2 sm:p-2.5 rounded-lg sm:rounded-xl ${tool.iconBg} shadow-lg flex-shrink-0 group-hover:scale-110 transition-transform`}>
+                                                <tool.icon className="w-4 h-4 sm:w-5 sm:h-5 text-white" />
+                                            </div>
+                                            <span className="text-sm sm:text-base text-gray-600 group-hover:text-gray-900 font-medium transition-colors truncate">
+                                                {tTools(tool.key as keyof typeof tool)}
+                                            </span>
+                                        </Link>
+                                    ))}
+                                </div>
                             </div>
                         </div>
-                    </div>
+                    )}
 
                     {/* Navigation Links */}
                     <div className="flex flex-col items-center space-y-4 sm:space-y-6">

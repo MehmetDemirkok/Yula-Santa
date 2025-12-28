@@ -4,7 +4,6 @@ import { useTranslations } from 'next-intl';
 import { ArrowLeft, Shield, CheckCircle, Lock, Eye, Globe } from 'lucide-react';
 import Link from 'next/link';
 import { useParams } from 'next/navigation';
-import { Navbar } from '@/components/Navbar';
 
 export default function PrivacyClient() {
     const t = useTranslations('privacy');
@@ -45,8 +44,6 @@ export default function PrivacyClient() {
 
     return (
         <main className="min-h-screen bg-gradient-to-b from-[#FFF5F5] to-white pb-20">
-            <Navbar />
-
             <div className="max-w-4xl mx-auto px-6 pt-32 sm:pt-40 text-center sm:text-left">
                 {/* Back Link */}
                 <Link
