@@ -353,6 +353,9 @@ export default async function LocaleLayout({
                     dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
                 />
 
+                {/* Google AdSense Account Verification */}
+                <meta name="google-adsense-account" content={ADSENSE_CLIENT_ID} />
+
                 {/* Google AdSense Script */}
                 <Script
                     id="adsense-init"
