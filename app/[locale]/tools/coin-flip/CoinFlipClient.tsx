@@ -36,24 +36,24 @@ export default function CoinFlipPage() {
     };
 
     return (
-        <div className="min-h-screen bg-gradient-to-br from-yellow-50 via-white to-amber-50 py-12 px-4">
+        <div className="min-h-screen bg-gradient-to-br from-yellow-50 via-white to-amber-50 dark:from-gray-900 dark:via-gray-900 dark:to-gray-950 py-12 px-4 transition-colors duration-300">
             <div className="max-w-2xl mx-auto">
                 <div className="flex items-center gap-4 mb-8">
                     <Link
                         href={`/${locale}`}
-                        className="p-2 rounded-xl bg-white shadow-sm border border-gray-100 hover:shadow-md transition-all"
+                        className="p-2 rounded-xl bg-white dark:bg-gray-800 shadow-sm border border-gray-100 dark:border-gray-700 hover:shadow-md transition-all"
                     >
-                        <ArrowLeft className="w-5 h-5 text-gray-600" />
+                        <ArrowLeft className="w-5 h-5 text-gray-600 dark:text-gray-400" />
                     </Link>
                     <div>
-                        <h1 className="text-2xl md:text-3xl font-black text-gray-900">
+                        <h1 className="text-2xl md:text-3xl font-black text-gray-900 dark:text-white">
                             🪙 {t('title')}
                         </h1>
-                        <p className="text-sm text-gray-500 mt-1">{t('subtitle')}</p>
+                        <p className="text-sm text-gray-500 dark:text-gray-400 mt-1">{t('subtitle')}</p>
                     </div>
                 </div>
 
-                <article className="bg-white rounded-3xl shadow-xl border border-gray-100 p-6 md:p-8">
+                <article className="bg-white dark:bg-gray-800 rounded-3xl shadow-xl border border-gray-100 dark:border-gray-700 p-6 md:p-8">
                     <div className="flex justify-center mb-8" aria-live="polite" aria-atomic="true">
                         <div
                             className={`w-48 h-48 rounded-full shadow-2xl flex items-center justify-center transition-all duration-500 ${isFlipping
@@ -62,7 +62,7 @@ export default function CoinFlipPage() {
                                     ? 'bg-gradient-to-br from-yellow-400 to-amber-500'
                                     : result === 'tails'
                                         ? 'bg-gradient-to-br from-amber-500 to-orange-500'
-                                        : 'bg-gradient-to-br from-gray-200 to-gray-300'
+                                        : 'bg-gradient-to-br from-gray-200 to-gray-300 dark:from-gray-700 dark:to-gray-600'
                                 }`}
                             role="img"
                         >
@@ -77,7 +77,7 @@ export default function CoinFlipPage() {
                                 </div>
                             )}
                             {!isFlipping && !result && (
-                                <Coins className="w-20 h-20 text-gray-400" aria-hidden="true" />
+                                <Coins className="w-20 h-20 text-gray-400 dark:text-gray-500" aria-hidden="true" />
                             )}
                             {isFlipping && (
                                 <Coins className="w-20 h-20 text-white" aria-hidden="true" />
@@ -86,13 +86,13 @@ export default function CoinFlipPage() {
                     </div>
 
                     <div className="grid grid-cols-2 gap-4 mb-8">
-                        <div className="bg-gradient-to-br from-yellow-50 to-amber-50 rounded-2xl p-4 text-center border border-yellow-100">
-                            <p className="text-3xl font-black text-amber-600">{flipCount.heads}</p>
-                            <p className="text-sm text-gray-500 font-medium">{t('heads')} 👑</p>
+                        <div className="bg-gradient-to-br from-yellow-50 to-amber-50 dark:from-gray-900/50 dark:to-yellow-950/20 rounded-2xl p-4 text-center border border-yellow-100 dark:border-yellow-900/30">
+                            <p className="text-3xl font-black text-amber-600 dark:text-amber-500">{flipCount.heads}</p>
+                            <p className="text-sm text-gray-500 dark:text-gray-400 font-medium">{t('heads')} 👑</p>
                         </div>
-                        <div className="bg-gradient-to-br from-orange-50 to-amber-50 rounded-2xl p-4 text-center border border-orange-100">
-                            <p className="text-3xl font-black text-orange-600">{flipCount.tails}</p>
-                            <p className="text-sm text-gray-500 font-medium">{t('tails')} 🔢</p>
+                        <div className="bg-gradient-to-br from-orange-50 to-amber-50 dark:from-gray-900/50 dark:to-orange-950/20 rounded-2xl p-4 text-center border border-orange-100 dark:border-orange-900/30">
+                            <p className="text-3xl font-black text-orange-600 dark:text-orange-500">{flipCount.tails}</p>
+                            <p className="text-sm text-gray-500 dark:text-gray-400 font-medium">{t('tails')} 🔢</p>
                         </div>
                     </div>
 
@@ -109,7 +109,7 @@ export default function CoinFlipPage() {
                         {(flipCount.heads > 0 || flipCount.tails > 0) && (
                             <button
                                 onClick={resetStats}
-                                className="w-full py-3 bg-gray-100 hover:bg-gray-200 text-gray-600 font-medium rounded-2xl transition-all flex items-center justify-center gap-2"
+                                className="w-full py-3 bg-gray-100 dark:bg-gray-700 hover:bg-gray-200 dark:hover:bg-gray-600 text-gray-600 dark:text-gray-300 font-medium rounded-2xl transition-all flex items-center justify-center gap-2"
                             >
                                 <RotateCcw className="w-4 h-4" aria-hidden="true" />
                                 {t('reset')}
@@ -118,9 +118,9 @@ export default function CoinFlipPage() {
                     </div>
                 </article>
 
-                <section className="mt-8 bg-white/60 backdrop-blur rounded-2xl p-6 border border-gray-100">
-                    <h2 className="text-lg font-bold text-gray-800 mb-3">{t('aboutTitle')}</h2>
-                    <p className="text-sm text-gray-600">
+                <section className="mt-8 bg-white/60 dark:bg-gray-800/60 backdrop-blur rounded-2xl p-6 border border-gray-100 dark:border-gray-700">
+                    <h2 className="text-lg font-bold text-gray-800 dark:text-white mb-3">{t('aboutTitle')}</h2>
+                    <p className="text-sm text-gray-600 dark:text-gray-400 leading-relaxed">
                         {t('aboutText')}
                     </p>
                 </section>

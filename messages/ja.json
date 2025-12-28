@@ -1,83 +1,92 @@
 {
     "meta": {
-        "title": "YulaSanta - オンラインシークレットサンタ抽選",
-        "description": "友人、家族、同僚と数秒で無料のシークレットサンタ抽選を作成しましょう！",
+        "title": "YulaSanta - 無料オンライン抽選ツール | Instagram, YouTube, TikTok & Secret Santa 2025",
+        "description": "YulaSantaで無料のオンライン・シークレット・サンタ抽選を作成しましょう。Instagram、YouTube、TikTok、Twitterのプレゼント・キャンペーンを数秒で実施。サイコロ、コイン投げ、乱数生成などの無料ツールも充実！",
         "keywords": [
-            "シークレットサンタ",
-            "ギフト交換",
-            "クリスマス抽選",
             "オンライン抽選",
-            "クリスマスプレゼント"
+            "抽選ツール",
+            "無料プレゼント",
+            "シークレットサンタ",
+            "secret santa",
+            "クリスマス抽選",
+            "ギフト交換",
+            "インスタ抽選",
+            "YouTube抽選",
+            "TikTok抽選",
+            "Twitter抽選",
+            "サイコロ",
+            "コイン投げ",
+            "乱数生成"
         ]
     },
     "home": {
         "title": "YulaSanta",
-        "subtitle": "友達を追加して、抽選を開始！",
+        "subtitle": "友達を追加して、抽選を始めましょう！",
         "secretDraw": "シークレット抽選 🤫",
-        "directMatch": "ダイレクトマッチング 🤝",
+        "directMatch": "直接マッチング 🤝",
         "inputPlaceholder": "名前を入力...",
         "noParticipants": "まだ誰も追加されていません",
         "uploadList": "リストをアップロード (Excel/PDF)",
         "uploading": "アップロード中...",
         "clearList": "リストをクリア",
-        "startDraw": "抽選を開始",
+        "startDraw": "抽選を行う",
         "match": "マッチング",
-        "happyNewYear": "🎄 新年おめでとう！",
-        "minPeople3": "最低3人を追加してください",
-        "minPeople2": "最低2人を追加してください",
-        "evenNumber": "人数は偶数でなければなりません",
-        "nameExists": "この名前はすでに存在します！",
-        "namesAdded": "名前が追加されました",
+        "happyNewYear": "🎄 ハッピーニューイヤー！",
+        "minPeople3": "3人以上追加してください",
+        "minPeople2": "2人以上追加してください",
+        "evenNumber": "人数は偶数である必要があります",
+        "nameExists": "この名前は既に追加されています！",
+        "namesAdded": "名追加されました",
         "totalCount": "合計",
         "startDrawConfirm": "抽選を開始しますか？",
-        "notEnoughPeople": "抽選に十分な人数がいません。",
+        "notEnoughPeople": "抽選に必要な人数が足りません。",
         "noNamesFound": "ファイルから名前を読み取れませんでした。",
         "uploadError": "アップロード中にエラーが発生しました。",
         "unsupportedFormat": "サポートされていない形式です。Excel (.xlsx) または PDF を使用してください。",
-        "secretDrawMinError": "シークレット抽選には最低3人必要です！",
-        "directMatchMinError": "マッチングには最低2人必要です！",
-        "directMatchEvenError": "ダイレクトマッチングには偶数の人数が必要です！",
+        "secretDrawMinError": "シークレット抽選には少なくとも3人が必要です！",
+        "directMatchMinError": "マッチングには少なくとも2人が必要です！",
+        "directMatchEvenError": "直接マッチングには偶数の人数が必要です！",
         "drawError": "エラーが発生しました。もう一度お試しください。",
-        "socialMediaGiveaways": "SNSプレゼント企画",
+        "socialMediaGiveaways": "SNS抽選キャンペーン",
         "secure": "100% 安全",
         "fast": "超高速",
         "noPassword": "パスワード不要",
         "noRegistration": "登録不要",
         "startNow": "今すぐ開始",
-        "socialDesc": "すべてのプラットフォームで簡単にプレゼント企画を実施",
+        "socialDesc": "すべてのプラットフォームで簡単に抽選を実施",
         "toolsDesc": "日常生活を便利にするミニツールや楽しいゲーム。",
         "viewAll": "すべて見る"
     },
     "result": {
         "whoGetsGift": "誰にプレゼントを買う？",
-        "selectName": "名前を選択して結果を見てください。🎁",
+        "selectName": "自分の名前を選んで結果を確認しましょう。 🎁",
         "matchList": "マッチングリスト",
-        "christmasMatches": "クリスマスのマッチングはこちら！🎄",
-        "giftRecipient": "あなたのプレゼント相手",
-        "keepSecret": "忘れないで！秘密を守って、サプライズを台無しにしないで。🤫",
-        "seeGiftIdeas": "ギフトアイデアを見る",
-        "aiSuggestions": "AIの提案",
-        "noSuggestions": "提案が見つかりません。",
-        "someoneElse": "他の人に確認させる",
-        "newDraw": "新しい抽選",
+        "christmasMatches": "抽選結果はこちらです！ 🎄",
+        "giftRecipient": "プレゼントを贈る相手",
+        "keepSecret": "この情報を忘れないで！秘密にして、サプライズを台無しにしないでください。 🤫",
+        "seeGiftIdeas": "ギフトのアイデアを見る",
+        "aiSuggestions": "AIおすすめギフト",
+        "noSuggestions": "おすすめが見つかりませんでした。",
+        "someoneElse": "他の人を確認する",
+        "newDraw": "新しい抽選を開始",
         "seeResult": "結果を見る",
-        "selectYourName": "名前を選択...",
+        "selectYourName": "名前を選択してください...",
         "backToHome": "ホームに戻る"
     },
     "giveaway": {
         "links": "リンク",
         "rules": "ルール",
         "participants": "参加者",
-        "giveawayName": "抽選名",
+        "giveawayName": "キャンペーン名",
         "winnerCount": "当選者数",
-        "backupCount": "補欠数",
-        "startGiveaway": "抽選を開始",
+        "backupCount": "補欠当選者数",
+        "startGiveaway": "抽選開始",
         "newGiveaway": "新しい抽選",
         "copyResults": "結果をコピー",
         "copied": "コピーしました！",
         "comments": "コメント",
         "likes": "いいね",
-        "subscribers": "登録者",
+        "subscribers": "チャンネル登録者",
         "retweets": "リツイート",
         "replies": "返信",
         "followers": "フォロワー",
@@ -87,61 +96,102 @@
         "linkInputPlaceholder": "リンクを貼り付け",
         "addParticipant": "参加者を追加",
         "bulkAdd": "一括追加",
-        "clearAll": "すべてクリア",
+        "clearAll": "すべて削除",
         "results": "結果",
         "winners": "当選者",
         "backups": "補欠",
-        "youtubeTitle": "無料YouTubeプレゼント企画",
-        "instagramTitle": "Instagramプレゼント企画ツール",
-        "twitterTitle": "無料Twitter/Xプレゼント企画",
-        "youtubeDesc": "動画のコメント、いいね、登録者から簡単に抽選できます。",
-        "instagramDesc": "Instagramのコメントや「いいね！」から簡単に抽選できます。",
-        "twitterDesc": "Twitter/Xのリツイート、いいね！、返信から簡単に抽選できます。",
-        "tiktokTitle": "TikTokプレゼントツール",
-        "tiktokDesc": "TikTok動画のコメントから簡単に抽選できます。",
-        "requireSubscription": "登録必須",
-        "requireNotification": "通知必須",
-        "requireFollow": "フォロー必須",
-        "requireRetweet": "リツイート必須",
-        "requireLike": "いいね必須",
-        "countUserOnce": "ユーザーを1回だけカウント",
+        "youtubeTitle": "無料YouTube抽選ツール 2025",
+        "instagramTitle": "Instagram抽選ツール | 無料コメント抽出",
+        "twitterTitle": "Twitter (X) 抽選ツール | リツイート＆いいね抽出",
+        "youtubeDesc": "YouTube動画のコメントやいいねから、無料のツールで素早く当選者を選びましょう。",
+        "instagramDesc": "Instagram投稿のコメントから、当選者と補欠を即座に選びます。最高のインスタコメント抽出アプリです。",
+        "twitterDesc": "Twitter (X) のリツイートやいいねから簡単に抽選を実施。無料の抽選サイトです。",
+        "tiktokTitle": "TikTok抽選ツール | 無料TikTokコメント抽出",
+        "tiktokDesc": "TikTok動画のコメントから簡単に抽選を実施。無料で当選者を選べます！",
+        "meta": {
+            "instagram": {
+                "title": "無料Instagram抽選ツール | YulaSanta",
+                "description": "YulaSantaを使って、パスワード不要でInstagram抽選を無料で実施しましょう。",
+                "keywords": [
+                    "インスタ 抽選",
+                    "コメント 抽出",
+                    "無料 キャンペーン"
+                ]
+            },
+            "youtube": {
+                "title": "無料YouTube抽選ツール | YulaSanta",
+                "description": "YouTube動画のための素早く信頼性の高い抽選を実施。",
+                "keywords": [
+                    "YouTube 抽選",
+                    "コメント 抽出"
+                ]
+            },
+            "tiktok": {
+                "title": "TikTok Giveaway Tool | Free TikTok Raffle - YulaSanta",
+                "description": "Run giveaways from comments on your TikTok videos. Fast and fair raffle results with our TikTok giveaway site.",
+                "keywords": [
+                    "tiktok giveaway",
+                    "tiktok raffle",
+                    "tiktok comment picker",
+                    "tiktok giveaway tool",
+                    "tiktok contest"
+                ]
+            },
+            "twitter": {
+                "title": "Twitter (X) Giveaway Tool | Retweet & Like Picker - YulaSanta",
+                "description": "Easily manage your Twitter (X) giveaways. Pick winners from retweets and likes. Free Twitter giveaway site.",
+                "keywords": [
+                    "twitter giveaway",
+                    "x giveaway",
+                    "retweet giveaway",
+                    "twitter raffle",
+                    "twitter contest"
+                ]
+            }
+        },
+        "requireSubscription": "チャンネル登録を条件にする",
+        "requireNotification": "通知を条件にする",
+        "requireFollow": "フォローを条件にする",
+        "requireRetweet": "リツイートを条件にする",
+        "requireLike": "いいねを条件にする",
+        "countUserOnce": "1ユーザーを1回としてカウント",
         "inputError": "有効なリンクを入力してください！",
         "fetchError": "データを取得できませんでした。",
-        "apiLimitation": "自動取得は現在利用できません。",
+        "apiLimitation": "現在、自動取得は利用できません。手動入力モードを使用してください。",
         "manualMode": "手動入力（無料）",
         "autoMode": "自動取得",
-        "manualDesc": "小規模な抽選に最適。コメントを直接貼り付けてください。",
-        "autoDesc": "大規模な抽選に最適。自動的に取得します。",
-        "pasteComments": "ここにコメントを貼り付け（1行に1つ）",
+        "manualDesc": "小規模な抽選に最適です。コメントを直接貼り付けてください。",
+        "autoDesc": "大規模な抽選に最適です。",
+        "pasteComments": "ここにコメントを貼り付けてください（1行に1つ）",
         "parse": "コメントを解析",
-        "parsed": "{count}人の参加者を解析しました",
-        "youtubeLimitNote": "注: APIから自動的に最大1000件のコメントを取得できます。",
-        "instagramLimitNote": "注: APIから自動的に最大1000件のコメントを取得できます。",
-        "tiktokLimitNote": "注: APIから自動的に最大100件のコメントを取得できます。",
-        "participantLimitDetails": "さらにコメントを表示するには、手動入力モードを使用してください。",
-        "channelUsername": "ユーザー名（フォロワーチェック）",
-        "channelUsernameHint": "当選者があなたをフォローしているか確認するためにユーザー名を入力してください",
+        "parsed": "{count} 名を解析しました",
+        "youtubeLimitNote": "注：API経由で自動取得できるのは最大1000コメントまでです。",
+        "instagramLimitNote": "注：API経由で自動取得できるのは最大1000コメントまでです。",
+        "tiktokLimitNote": "注：API経由で自動取得できるのは最大100コメントまでです。",
+        "participantLimitDetails": "より多くのコメントを抽出するには、手動入力モードを使用してください。",
+        "channelUsername": "ユーザー名（フォロー確認用）",
+        "channelUsernameHint": "当選者がフォローしているか確認するためにユーザー名を入力してください",
         "following": "フォロー中",
-        "notFollowing": "フォローなし",
+        "notFollowing": "未フォロー",
         "checkingFollow": "確認中...",
         "unknownFollow": "不明"
     },
     "support": {
         "button": "サポート",
-        "title": "サポート＆お問い合わせ",
+        "title": "サポートと連絡先",
         "description": "フィードバックをお寄せください。",
-        "header": "お気軽にご相談ください！",
-        "subheader": "私たちが全力でサポートします。",
+        "header": "お気軽にお問い合わせください！",
+        "subheader": "お手伝いさせていただきます。",
         "name": "お名前",
         "email": "メールアドレス",
         "phone": "電話番号",
         "subject": "件名",
         "message": "メッセージ",
-        "placeholderName": "フルネームを入力",
+        "placeholderName": "お名前（フルネーム）",
         "placeholderEmail": "email@example.com",
         "placeholderPhone": "+81",
         "send": "送信",
-        "contact": "お問い合わせ"
+        "contact": "連絡先"
     },
     "common": {
         "loading": "読み込み中...",
@@ -150,162 +200,304 @@
         "cancel": "キャンセル",
         "yes": "はい",
         "no": "いいえ",
-        "clearConfirm": "リスト全体をクリアしてもよろしいですか？",
+        "clearConfirm": "全リストを削除してもよろしいですか？",
         "or": "または"
     },
     "languageSwitcher": {
         "label": "言語を選択",
         "current": "日本語"
     },
+    "theme": {
+        "light": "ライトテーマ",
+        "dark": "ダークテーマ",
+        "system": "システム",
+        "toggle": "テーマ切り替え"
+    },
     "tools": {
         "title": "ツール",
-        "instagramStoryViewer": "Instagramストーリービューアー",
-        "instagramProfilePicture": "Instagramプロフィール写真ビューアー",
+        "instagramStoryViewer": "インスタストーリー閲覧",
+        "instagramProfilePicture": "インスタプロフ画像拡大",
         "onlineGiveaway": "オンライン抽選ツール",
         "dice": "サイコロ",
-        "coinFlip": "コイントス",
-        "randomNumber": "乱数メーカー",
-        "shortStraw": "あみだくじ",
+        "coinFlip": "コイン投げ",
+        "randomNumber": "乱数生成器",
+        "shortStraw": "くじ引き",
         "meta": {
-            "title": "無料オンラインツール | YulaSanta - サイコロ、コイントス、乱数",
-            "description": "YulaSanta無料オンラインツール：サイコロ、コイントス、乱数メーカー、あみだくじ、Instagramストーリー閲覧・プロフィール写真保存。"
+            "title": "無料オンラインツール | YulaSanta",
+            "description": "無料ツール：サイコロ、コイン投げ、乱数生成、くじ引きなど。"
         },
         "diceMeta": {
             "title": "🎲 サイコロ | 無料オンラインサイコロ - YulaSanta",
-            "description": "オンラインサイコロ。1個または2個のサイコロを無料で。ボードゲームやバックギャモンに最適なプロフェッショナルシミュレーター。"
+            "description": "無料で1個または2個のサイコロを振ります。",
+            "keywords": [
+                "dice roller",
+                "roll dice",
+                "online dice",
+                "die roller",
+                "backgammon dice",
+                "ludo dice"
+            ]
         },
         "diceContent": {
             "title": "サイコロ",
-            "subtitle": "オンラインサイコロ - 無料",
+            "subtitle": "オンライン・サイコロ - 無料",
             "label": "サイコロの数",
-            "option": "{count}個のサイコロ",
-            "roll": "サイコロを振る",
+            "option": "{count} 個",
+            "roll": "振る",
             "rolling": "振っています...",
             "total": "合計",
             "history": "履歴",
-            "aboutTitle": "サイコロについて",
-            "aboutText": "YulaSantaのオンラインサイコロ。ボードゲームなどでご利用ください。",
-            "placeholder": "ボタンをクリックしてサイコロを振ります",
-            "featuresTitle": "特徴：",
+            "aboutTitle": "About Dice Roller",
+            "aboutText": "Roll dice online for free. Use our professional dice simulator for board games.",
+            "placeholder": "Click the button to roll the dice",
+            "featuresTitle": "Features:",
             "features": [
-                "1個または2個のサイコロで振れます",
-                "リアルな3Dサイコロアニメーション",
-                "履歴が記録されます",
-                "モバイル対応デザイン",
-                "完全無料、登録不要"
+                "Roll 1 or 2 dice",
+                "Realistic 3D dice animation",
+                "Roll history is recorded",
+                "Mobile-friendly design",
+                "Completely free, no registration required"
             ]
         },
         "coinFlipMeta": {
-            "title": "🪙 コイントス | オンライン表か裏か - YulaSanta",
-            "description": "オンラインコイントスツール。素早い決断に最適な無料表か裏かメーカー。"
+            "title": "🪙 コイン投げ | 無料コイン・トス - YulaSanta",
+            "description": "コインを投げて決めましょう。",
+            "keywords": [
+                "coin flip",
+                "heads or tails",
+                "coin toss",
+                "flip a coin",
+                "heads or tails online"
+            ]
         },
         "coinFlipContent": {
-            "title": "コイントス",
-            "subtitle": "オンラインコイントス - 表か裏か",
+            "title": "コイン投げ",
+            "subtitle": "オンライン・コイン投げ",
             "heads": "表",
             "tails": "裏",
-            "roll": "コインを投げる",
+            "roll": "投げる",
             "rolling": "投げています...",
             "reset": "リセット",
-            "aboutTitle": "コイントスについて",
-            "aboutText": "決断に迷った時はコイントスで解決しましょう。"
+            "aboutTitle": "About Coin Flip",
+            "aboutText": "Make quick decisions with our online heads or tails generator."
         },
         "randomNumberMeta": {
-            "title": "🔢 乱数集計 | オンライン乱数メーカー - YulaSanta",
-            "description": "オンライン乱数生成ツール。抽選やゲームに最適です。"
+            "title": "🔢 乱数生成器 | 無料オンライン乱数メーカー - YulaSanta",
+            "description": "オンラインで乱数を生成します。指定した範囲からランダムに数字を選びます。抽選やゲームに最適です。",
+            "keywords": [
+                "random number",
+                "number generator",
+                "random number generator",
+                "lottery numbers",
+                "pick a number"
+            ]
         },
         "randomNumberContent": {
-            "title": "乱数メーカー",
-            "subtitle": "オンライン乱数メーカー",
+            "title": "乱数生成器",
+            "subtitle": "数字をランダムに選ぶ",
             "min": "最小",
             "max": "最大",
             "generate": "生成する",
-            "rolling": "生成中...",
             "result": "結果",
-            "aboutTitle": "乱数メーカーについて",
-            "aboutText": "抽選などに使える公平な乱数を生成します。",
-            "placeholder": "ボタンをクリックして数字を生成します"
+            "aboutTitle": "乱数生成器について",
+            "aboutText": "お好みの範囲内で、完全にランダムで公平な数字を生成します。",
+            "placeholder": "ボタンをクリックして数字を生成",
+            "rolling": "Generating..."
         },
         "shortStrawContent": {
-            "title": "あみだくじ",
-            "subtitle": "オンラインあみだくじ/くじ引き",
+            "title": "くじ引き",
+            "subtitle": "誰がハズレを引くか運試し",
             "label": "参加人数",
             "draw": "くじを引く",
             "reset": "リセット",
-            "lost": "ハズレ！短い棒を引きました。",
-            "saved": "セーフ！長い棒です。",
-            "aboutTitle": "あみだくじについて",
-            "aboutText": "公平なグループ分けや役割決めに最適です。"
+            "lost": "残念！ハズレ（短い棒）を引きました。",
+            "saved": "セーフ！長い棒でした。",
+            "aboutTitle": "このゲームについて",
+            "aboutText": "オンラインのくじ引き（短い棒引き）を使って、グループで公平に役割などを決めましょう。"
         },
         "shortStrawMeta": {
-            "title": "🎋 あみだくじ | オンラインくじ引き - YulaSanta",
-            "description": "オンラインあみだくじツール。公平で楽しい決断を。"
+            "title": "🎋 くじ引き | オンライン運試しゲーム - YulaSanta",
+            "description": "オンラインくじ引き。グループで公平かつ楽しく物事を決めましょう。",
+            "keywords": [
+                "short straw",
+                "draw straws",
+                "short straw game",
+                "random picker",
+                "fair selection"
+            ]
         },
         "instagramStoryContent": {
-            "title": "ストーリービューアー",
-            "subtitle": "匿名インスタストーリー閲覧",
-            "placeholder": "ユーザー名",
+            "title": "Instagramストーリー閲覧",
+            "subtitle": "匿名ストーリービューアー",
+            "placeholder": "ユーザー名を入力",
             "view": "ストーリーを見る",
-            "helper": "足跡をつけずにストーリーを閲覧できます。",
+            "helper": "足跡をつけずに匿名でストーリーを閲覧できます。",
             "aboutTitle": "ストーリービューアーについて",
-            "aboutText": "Instagramのストーリーを相手に知られずに閲覧できます。"
+            "aboutText": "YulaSantaの匿名ビューアーを使って、こっそりインスタのストーリーをチェックできます。"
         },
         "instagramStoryMeta": {
-            "title": "📱 Instagramストーリービューアー | 匿名 - YulaSanta",
-            "description": "ストーリーを匿名で安全に閲覧。"
+            "title": "📱 インスタストーリー閲覧 | 匿名ビューアー - YulaSanta",
+            "description": "インスタのストーリーを匿名で閲覧。秘密のストーリービューアー。",
+            "keywords": [
+                "instagram story",
+                "story viewer",
+                "anonymous story viewer",
+                "private story viewer"
+            ]
         },
         "instagramProfileContent": {
-            "title": "プロフィール写真",
-            "subtitle": "HDプロフィール画像サイズ表示",
-            "placeholder": "ユーザー名",
-            "view": "写真を見る",
-            "helper": "プロフィール写真を拡大・保存します。",
-            "aboutTitle": "プロフィール閲覧について",
-            "aboutText": "Instagramのプロフィール写真を高画質で確認できます。"
+            "title": "インスタのプロフ画像",
+            "subtitle": "高画質プロフィール画像サイズ",
+            "placeholder": "ユーザー名を入力",
+            "view": "画像を見る",
+            "helper": "プロフィール写真をフルサイズかつ高画質で表示します。",
+            "aboutTitle": "PPビューアーについて",
+            "aboutText": "無料ツールを使って、インスタユーザーのプロフィール画像を高品質で閲覧・保存できます。"
         },
         "instagramProfileMeta": {
-            "title": "🖼️ Instagram Profile Picture | HD Downloader - YulaSanta",
-            "description": "Instagramのアイコンを高画質で保存。"
+            "title": "🖼️ インスタプロフ画像拡大 | 高画質保存 - YulaSanta",
+            "description": "インスタのプロフィール写真をHD画質で表示し、保存できます。",
+            "keywords": [
+                "instagram profile",
+                "profile picture viewer",
+                "HD profile picture",
+                "pp downloader"
+            ]
         }
     },
     "footer": {
+        "about": "私たちについて",
+        "contact": "お問い合わせ",
         "privacyPolicy": "プライバシーポリシー",
         "legalInfo": "法的情報",
         "copyright": "© 2025 YulaSanta. All rights reserved.",
-        "cookieDisclaimer": "当サイトでは、サービスの向上のためにクッキーを使用しています。"
+        "cookieDisclaimer": "このサイトではUX向上のためにクッキーを使用しています。"
     },
     "privacy": {
         "title": "プライバシーポリシー",
         "meta": {
             "title": "プライバシー | YulaSanta",
-            "description": "YulaSantaのプライバシーポリシーとデータセキュリティに関する情報。"
+            "description": "YulaSantaのプライバシーポリシー。"
         },
-        "lastUpdated": "最終更新日: 2025年12月27日",
-        "intro": "YulaSantaは、お客様のプライバシーを尊重します。",
+        "lastUpdated": "最終更新：2025年12月27日",
+        "intro": "YulaSantaでは、お客様のプライバシーを重視しています。",
         "dataTitle": "データ収集",
-        "dataDesc": "データはお客様のブラウザにローカル保存されます。",
+        "dataDesc": "YulaSantaは、ブラウザのローカルストレージ（localStorage）にのみデータを保存します。",
         "cookiesTitle": "クッキー",
-        "cookiesDesc": "広告表示のためにクッキーを使用する場合があります。",
+        "cookiesDesc": "Google AdSenseを使用して広告を表示しています。",
         "securityTitle": "セキュリティ",
-        "securityDesc": "データは外部に送信されず、端末内に保持されます。",
-        "thirdPartyTitle": "外部サービス",
-        "thirdPartyDesc": "Googleのサービスを使用しています。"
+        "securityDesc": "データはお客様のデバイスに残り、サーバーへは送信されません。",
+        "thirdPartyTitle": "サードパーティ・サービス",
+        "thirdPartyDesc": "Google AnalyticsやAdSenseを使用しています。"
     },
     "legal": {
         "title": "法的情報",
         "meta": {
-            "title": "リーガル | YulaSanta",
+            "title": "法的通知 | YulaSanta",
             "description": "利用規約と法的通知。"
         },
-        "lastUpdated": "最終更新日: 2025年12月27日",
-        "intro": "YulaSantaプラットフォーム利用に関する法的条件。",
+        "lastUpdated": "最終更新：2025年12月27日",
+        "intro": "YulaSantaプラットフォームの利用に関する法的条件。",
         "usageTitle": "利用条件",
-        "usageDesc": "YulaSantaは無料のツールです。",
+        "usageDesc": "YulaSantaはエンターテインメント目的の無料ツールです。",
         "liabilityTitle": "免責事項",
-        "liabilityDesc": "抽選結果や不具合に関する責任は負いかねます。",
+        "liabilityDesc": "抽選結果や技術的なトラブルについて責任を負いません。",
         "contentTitle": "著作権",
-        "contentDesc": "全ての権利はYulaSantaチームに帰属します。",
+        "contentDesc": "デザインとコードの権利はYulaSantaチームに帰属します。",
         "contactTitle": "お問い合わせ",
-        "contactDesc": "サポートボタンよりご連絡ください。"
+        "contactDesc": "サポートボタンからお問い合わせください。"
+    },
+    "about": {
+        "meta": {
+            "title": "私たちについて | YulaSanta - 無料抽選プラットフォーム",
+            "description": "YulaSantaについて。最も信頼性の高い抽選プラットフォーム。"
+        },
+        "title": "私たちについて",
+        "subtitle": "YulaSantaは、誰でも簡単に抽選ができる無料プラットフォームです。",
+        "story": {
+            "title": "ストーリー",
+            "p1": "YulaSantaは2024年、「抽選をするのはなぜこんなに大変なのか？」という疑問から生まれました。",
+            "p2": "目標はシンプル：誰もが無料、安全、簡単に抽選をできるようにすること。",
+            "p3": "現在、何千人ものユーザーがYulaSantaを利用しています。"
+        },
+        "whyUs": {
+            "title": "なぜYulaSanta？"
+        },
+        "features": {
+            "free": {
+                "title": "100% 無料",
+                "desc": "すべての機能が無料です。"
+            },
+            "secure": {
+                "title": "安全＆プライベート",
+                "desc": "データはブラウザ内に保存されます。"
+            },
+            "fast": {
+                "title": "超高速",
+                "desc": "数秒で抽選が完了。"
+            },
+            "easy": {
+                "title": "使いやすい",
+                "desc": "誰でも直感的に操作できます。"
+            },
+            "global": {
+                "title": "Multi-language Support",
+                "desc": "We serve in Turkish, English, German, French, and 8 more languages."
+            },
+            "passion": {
+                "title": "Made with Passion",
+                "desc": "We carefully design and continuously improve every feature."
+            }
+        },
+        "mission": {
+            "title": "私たちのミッション",
+            "desc": "抽選を誰にとっても公正で楽しいものにすること。"
+        },
+        "cta": {
+            "title": "抽選の準備はいいですか？",
+            "desc": "今すぐ無料で抽選を作成しましょう。",
+            "button": "抽選を始める"
+        }
+    },
+    "contact": {
+        "meta": {
+            "title": "Contact | YulaSanta - Get in Touch",
+            "description": "Get in touch with YulaSanta. Write to us for your questions, suggestions, or partnership proposals."
+        },
+        "title": "Contact Us",
+        "subtitle": "Have questions? We're happy to help. You can reach us by filling out the form below or by sending an email directly.",
+        "form": {
+            "title": "Write to Us",
+            "name": "Your Full Name",
+            "namePlaceholder": "e.g., John Doe",
+            "email": "Your Email Address",
+            "emailPlaceholder": "email@example.com",
+            "subject": "Subject",
+            "subjectPlaceholder": "Subject of your message",
+            "message": "Your Message",
+            "messagePlaceholder": "Write your message here...",
+            "send": "Send Message"
+        },
+        "info": {
+            "email": {
+                "title": "Email",
+                "value": "mehmetdemirkok@gmail.com"
+            },
+            "hours": {
+                "title": "Working Hours",
+                "value": "24/7 - Always available"
+            },
+            "location": {
+                "title": "Location",
+                "value": "Turkey"
+            }
+        },
+        "faq": {
+            "title": "Frequently Asked Questions",
+            "desc": "Most commonly asked topics:",
+            "q1": "Is YulaSanta free?",
+            "q2": "Is my data safe?",
+            "q3": "How many people can I include in a giveaway?"
+        }
     }
 }

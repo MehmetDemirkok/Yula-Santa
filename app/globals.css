@@ -1,12 +1,78 @@
 @import "tailwindcss";
 
+/* Tailwind v4 class-based dark mode support */
+@variant dark (&:where(.dark, .dark *));
+
+/* ═══════════════════════════════════════════════════════════════════════════
+   LIGHT MODE (DEFAULT)
+═══════════════════════════════════════════════════════════════════════════ */
 :root {
-  --background: #FDF2F2; /* Very light redish/snow white */
+  --background: #FDF2F2;
+  /* Very light redish/snow white */
   --foreground: #171717;
   --santa-red: #D42426;
   --christmas-green: #165B33;
   --gold: #F0A500;
   --snow: #FFFFFF;
+
+  /* Card/Surface colors */
+  --card-bg: rgba(255, 255, 255, 0.8);
+  --card-border: rgba(255, 255, 255, 0.5);
+  --card-hover: rgba(255, 255, 255, 0.95);
+
+  /* Text colors */
+  --text-primary: #111827;
+  --text-secondary: #4B5563;
+  --text-muted: #9CA3AF;
+
+  /* Border colors */
+  --border-light: #F3F4F6;
+  --border-medium: #E5E7EB;
+
+  /* Input colors */
+  --input-bg: rgba(255, 255, 255, 0.5);
+  --input-border: #E5E7EB;
+  --input-focus: var(--santa-red);
+
+  /* Shadow colors */
+  --shadow-color: rgba(0, 0, 0, 0.05);
+  --shadow-color-lg: rgba(0, 0, 0, 0.1);
+}
+
+/* ═══════════════════════════════════════════════════════════════════════════
+   DARK MODE
+═══════════════════════════════════════════════════════════════════════════ */
+.dark {
+  --background: #0a0a0a;
+  /* Deep black */
+  --foreground: #FAFAFA;
+  --santa-red: #EF4444;
+  --christmas-green: #22C55E;
+  --gold: #FBBF24;
+  --snow: #1F1F1F;
+
+  /* Card/Surface colors */
+  --card-bg: rgba(30, 30, 30, 0.8);
+  --card-border: rgba(255, 255, 255, 0.08);
+  --card-hover: rgba(40, 40, 40, 0.95);
+
+  /* Text colors */
+  --text-primary: #F9FAFB;
+  --text-secondary: #D1D5DB;
+  --text-muted: #6B7280;
+
+  /* Border colors */
+  --border-light: rgba(255, 255, 255, 0.05);
+  --border-medium: rgba(255, 255, 255, 0.1);
+
+  /* Input colors */
+  --input-bg: rgba(255, 255, 255, 0.05);
+  --input-border: rgba(255, 255, 255, 0.1);
+  --input-focus: var(--gold);
+
+  /* Shadow colors */
+  --shadow-color: rgba(0, 0, 0, 0.3);
+  --shadow-color-lg: rgba(0, 0, 0, 0.5);
 }
 
 @theme inline {
@@ -16,7 +82,7 @@
   --color-snow: var(--snow);
   --color-background: var(--background);
   --color-foreground: var(--foreground);
-  
+
   --font-sans: var(--font-geist-sans);
   --font-mono: var(--font-geist-mono);
 }
@@ -34,7 +100,9 @@ body {
   font-family: var(--font-sans), sans-serif;
   overflow-x: hidden;
   min-height: 100vh;
-  min-height: 100dvh; /* Dynamic viewport height for mobile browsers */
+  min-height: 100dvh;
+  /* Dynamic viewport height for mobile browsers */
+  transition: background-color 0.3s ease, color 0.3s ease;
 }
 
 /* Responsive typography */
@@ -62,19 +130,30 @@ body {
   background: rgba(0, 0, 0, 0.2);
 }
 
+/* Dark mode scrollbar */
+.dark .custom-scrollbar::-webkit-scrollbar-thumb {
+  background: rgba(255, 255, 255, 0.15);
+}
+
+.dark .custom-scrollbar::-webkit-scrollbar-thumb:hover {
+  background: rgba(255, 255, 255, 0.25);
+}
+
 /* Mobile-friendly touch targets */
 @media (max-width: 640px) {
-  button, 
+
+  button,
   [role="button"],
   input[type="submit"],
   input[type="button"] {
     min-height: 44px;
   }
-  
-  input, 
-  select, 
+
+  input,
+  select,
   textarea {
-    font-size: 16px !important; /* Prevents iOS zoom on input focus */
+    font-size: 16px !important;
+    /* Prevents iOS zoom on input focus */
   }
 }
 
@@ -83,7 +162,7 @@ body {
   .safe-area-inset-bottom {
     padding-bottom: max(1rem, env(safe-area-inset-bottom));
   }
-  
+
   .safe-area-inset-top {
     padding-top: max(1rem, env(safe-area-inset-top));
   }
@@ -91,27 +170,34 @@ body {
 
 /* Animation classes */
 @keyframes fadeIn {
-  from { opacity: 0; }
-  to { opacity: 1; }
+  from {
+    opacity: 0;
+  }
+
+  to {
+    opacity: 1;
+  }
 }
 
 @keyframes slideUp {
-  from { 
+  from {
     opacity: 0;
     transform: translateY(20px);
   }
-  to { 
+
+  to {
     opacity: 1;
     transform: translateY(0);
   }
 }
 
 @keyframes zoomIn {
-  from { 
+  from {
     opacity: 0;
     transform: scale(0.95);
   }
-  to { 
+
+  to {
     opacity: 1;
     transform: scale(1);
   }
@@ -180,7 +266,9 @@ select {
   max-width: 100%;
 }
 
-img, video, iframe {
+img,
+video,
+iframe {
   max-width: 100%;
   height: auto;
 }
@@ -198,7 +286,7 @@ img, video, iframe {
   .tab-text-mobile {
     font-size: 0.75rem;
   }
-  
+
   .tab-icon-mobile {
     width: 1rem;
     height: 1rem;

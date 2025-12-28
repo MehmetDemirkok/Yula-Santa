@@ -1,13 +1,33 @@
 {
     "meta": {
-        "title": "YulaSanta - Online Wichteln",
-        "description": "Erstellen Sie kostenlose, werbefreie Online-Wichtel-Ziehungen mit Freunden, Familie oder Kollegen in Sekunden!",
+        "title": "YulaSanta - Online Wichteln kostenlos | Instagram, YouTube, TikTok Gewinnspiel & Secret Santa 2025",
+        "description": "Erstellen Sie mit YulaSanta kostenloses Online-Wichteln (Secret Santa). Führen Sie Ihre Instagram, YouTube, TikTok und Twitter Gewinnspiele in Sekunden durch. Würfeln, Münzwurf, Zufallszahlengenerator und weitere kostenlose Tools!",
         "keywords": [
-            "wichteln",
-            "geschenkaustausch",
+            "online wichteln",
+            "gewinnspiel machen",
+            "kostenloses gewinnspiel",
+            "weihnachtswichteln",
+            "secret santa",
+            "secret santa 2025",
             "weihnachtsziehung",
-            "online verlosung",
-            "weihnachtsgeschenk"
+            "geschenkaustausch",
+            "weihnachtsgeschenk",
+            "instagram gewinnspiel",
+            "instagram kommentar zieher",
+            "youtube gewinnspiel",
+            "youtube kommentar zieher",
+            "tiktok gewinnspiel",
+            "twitter gewinnspiel",
+            "kostenloses gewinnspiel tool",
+            "online weihnachtswichteln",
+            "secret santa online",
+            "freunde wichteln",
+            "würfeln",
+            "münzwurf",
+            "zufallszahl",
+            "strohhalm ziehen",
+            "gewinnspiel programm",
+            "social media gewinnspiel"
         ]
     },
     "home": {
@@ -91,14 +111,54 @@
         "results": "Ergebnisse",
         "winners": "Gewinner",
         "backups": "Ersatzgewinner",
-        "youtubeTitle": "Kostenloses YouTube Gewinnspiel",
-        "instagramTitle": "Instagram Gewinnspiel-Tool",
-        "twitterTitle": "Kostenloses Twitter/X Gewinnspiel",
-        "youtubeDesc": "Ziehe einfach aus Kommentaren, Likes und Abonnenten deiner YouTube-Videos.",
-        "instagramDesc": "Ziehen Sie ganz einfach aus Kommentaren und Likes Ihrer Instagram-Posts.",
-        "twitterDesc": "Ziehen Sie ganz einfach aus Retweets, Likes und Antworten auf Twitter/X.",
-        "tiktokTitle": "TikTok Gewinnspiel",
-        "tiktokDesc": "Ziehe einfach aus Kommentaren unter deinen TikTok-Videos.",
+        "youtubeTitle": "Kostenloses YouTube Gewinnspiel-Tool 2025",
+        "instagramTitle": "Instagram Gewinnspiel-Tool | Kostenloser Kommentar-Zieher",
+        "twitterTitle": "Twitter (X) Gewinnspiel-Tool | Retweet & Like Picker",
+        "youtubeDesc": "Nutzen Sie unser kostenloses YouTube-Gewinnspiel-Tool, um schnell Gewinner aus Kommentaren und Likes zu ziehen. Sicherer YouTube Kommentar-Zieher.",
+        "instagramDesc": "Ziehen Sie sofort Gewinner und Ersatzgewinner aus Ihren Instagram-Kommentaren. Die beste Instagram Kommentar-Zieher App.",
+        "twitterDesc": "Führen Sie Gewinnspiele aus Retweets und Likes auf Twitter (X) einfach durch. Kostenlose Twitter Verlosungsseite.",
+        "tiktokTitle": "TikTok Gewinnspiel-Tool | Kostenloser TikTok Kommentar-Zieher",
+        "tiktokDesc": "Führen Sie Gewinnspiele aus Kommentaren unter Ihren TikTok-Videos einfach durch. Gewinner kostenlos ziehen!",
+        "meta": {
+            "instagram": {
+                "title": "Kostenloses Instagram Gewinnspiel-Tool | YulaSanta",
+                "description": "Führen Sie Ihre Instagram-Gewinnspiele kostenlos und ohne Passwort mit YulaSanta durch. Bestimmen Sie Gewinner sofort.",
+                "keywords": [
+                    "instagram gewinnspiel",
+                    "instagram kommentar zieher",
+                    "instagram verlosung",
+                    "instagram giveaway"
+                ]
+            },
+            "youtube": {
+                "title": "Kostenloses YouTube Gewinnspiel-Tool | YulaSanta",
+                "description": "Führen Sie schnelle und zuverlässige Gewinnspiele für Ihre YouTube-Videos durch. Gewinner aus Kommentaren ziehen.",
+                "keywords": [
+                    "youtube gewinnspiel",
+                    "youtube kommentar zieher",
+                    "youtube verlosung",
+                    "youtube giveaway"
+                ]
+            },
+            "tiktok": {
+                "title": "TikTok Gewinnspiel-Tool | Kostenlose TikTok Verlosung - YulaSanta",
+                "description": "Gewinnspiele aus Kommentaren unter Ihren TikTok-Videos. Schnelle und faire Ergebnisse.",
+                "keywords": [
+                    "tiktok gewinnspiel",
+                    "tiktok verlosung",
+                    "tiktok giveaway"
+                ]
+            },
+            "twitter": {
+                "title": "Twitter (X) Gewinnspiel-Tool | Retweet Picker - YulaSanta",
+                "description": "Verwalten Sie Ihre Twitter (X) Gewinnspiele einfach. Gewinner aus Retweets und Likes ziehen.",
+                "keywords": [
+                    "twitter gewinnspiel",
+                    "x gewinnspiel",
+                    "retweet verlosung"
+                ]
+            }
+        },
         "requireSubscription": "Abonnement erforderlich",
         "requireNotification": "Benachrichtigung erforderlich",
         "requireFollow": "Folgen erforderlich",
@@ -107,11 +167,11 @@
         "countUserOnce": "Benutzer nur einmal zählen",
         "inputError": "Bitte geben Sie einen gültigen Link ein!",
         "fetchError": "Daten konnten nicht abgerufen werden.",
-        "apiLimitation": "Automatisches Abrufen ist aufgrund von Plattformbeschränkungen derzeit nicht verfügbar.",
+        "apiLimitation": "Automatisches Abrufen ist aufgrund von Plattformbeschränkungen derzeit nicht verfügbar. Bitte manuelle Eingabe nutzen.",
         "manualMode": "Manuelle Eingabe (Kostenlos)",
         "autoMode": "Automatisches Abrufen",
         "manualDesc": "Ideal für kleine Verlosungen. Kommentare direkt einfügen.",
-        "autoDesc": "Ideal für große Verlosungen. Ruft automatisch ab.",
+        "autoDesc": "Ideal für große Verlosungen.",
         "pasteComments": "Kommentare hier einfügen (Eine pro Zeile)",
         "parse": "Kommentare analysieren",
         "parsed": "{count} Teilnehmer analysiert",
@@ -157,6 +217,12 @@
         "label": "Sprache auswählen",
         "current": "Deutsch"
     },
+    "theme": {
+        "light": "Helles Design",
+        "dark": "Dunkles Design",
+        "system": "System",
+        "toggle": "Design umschalten"
+    },
     "tools": {
         "title": "Werkzeuge",
         "instagramStoryViewer": "Instagram Story Viewer",
@@ -172,7 +238,15 @@
         },
         "diceMeta": {
             "title": "🎲 Würfelspiel | Kostenlos Online Würfeln - YulaSanta",
-            "description": "Online Würfelspiel. Würfeln Sie kostenlos mit 1 oder 2 Würfeln. Professioneller Würfel-Simulator für Brettspiele, Backgammon und Ludo."
+            "description": "Online Würfelspiel. Würfeln Sie kostenlos mit 1 oder 2 Würfeln. Professioneller Würfel-Simulator für Brettspiele, Backgammon und Ludo.",
+            "keywords": [
+                "würfel",
+                "würfeln",
+                "online würfeln",
+                "würfel online",
+                "backgammon würfel",
+                "kniffel würfel"
+            ]
         },
         "diceContent": {
             "title": "Würfelspiel",
@@ -197,7 +271,14 @@
         },
         "coinFlipMeta": {
             "title": "🪙 Münzwurf | Online Kopf oder Zahl - YulaSanta",
-            "description": "Online-Münzwurf-Tool. Kostenloser Kopf oder Zahl Generator für schnelle Entscheidungen. Wirf jetzt eine Münze online!"
+            "description": "Online-Münzwurf-Tool. Kostenloser Kopf oder Zahl Generator für schnelle Entscheidungen. Wirf jetzt eine Münze online!",
+            "keywords": [
+                "coin flip",
+                "heads or tails",
+                "coin toss",
+                "flip a coin",
+                "heads or tails online"
+            ]
         },
         "coinFlipContent": {
             "title": "Münzwurf",
@@ -212,7 +293,14 @@
         },
         "randomNumberMeta": {
             "title": "🔢 Zufallszahlengenerator | Zufallszahlen Online ziehen - YulaSanta",
-            "description": "Online Zufallszahlengenerator. Ziehen Sie Zufallszahlen in Ihrem angegebenen Bereich. Ideal für Verlosungen und Spiele."
+            "description": "Online Zufallszahlengenerator. Ziehen Sie Zufallszahlen in Ihrem angegebenen Bereich. Ideal für Verlosungen und Spiele.",
+            "keywords": [
+                "random number",
+                "number generator",
+                "random number generator",
+                "lottery numbers",
+                "pick a number"
+            ]
         },
         "randomNumberContent": {
             "title": "Zufallszahlengenerator",
@@ -239,7 +327,14 @@
         },
         "shortStrawMeta": {
             "title": "🎋 Strohhalm Ziehen | Strohhalm Spiel Online - YulaSanta",
-            "description": "Online Strohhalm-Zieh-Spiel. Treffen Sie faire und lustige Entscheidungen in einer Gruppe."
+            "description": "Online Strohhalm-Zieh-Spiel. Treffen Sie faire und lustige Entscheidungen in einer Gruppe.",
+            "keywords": [
+                "short straw",
+                "draw straws",
+                "short straw game",
+                "random picker",
+                "fair selection"
+            ]
         },
         "instagramStoryContent": {
             "title": "Instagram Story Viewer",
@@ -252,7 +347,13 @@
         },
         "instagramStoryMeta": {
             "title": "📱 Instagram Story Viewer | Anonym Stories ansehen - YulaSanta",
-            "description": "Instagram Stories anonym ansehen. Privater Instagram Story Viewer ohne Login."
+            "description": "Instagram Stories anonym ansehen. Privater Instagram Story Viewer ohne Login.",
+            "keywords": [
+                "instagram story",
+                "story viewer",
+                "anonymous story viewer",
+                "private story viewer"
+            ]
         },
         "instagramProfileContent": {
             "title": "Instagram Profilbild",
@@ -265,10 +366,18 @@
         },
         "instagramProfileMeta": {
             "title": "🖼️ Instagram Profilbild Viewer | HD Downloader - YulaSanta",
-            "description": "Instagram Profilbilder in voller HD-Qualität ansehen und herunterladen."
+            "description": "Instagram Profilbilder in voller HD-Qualität ansehen und herunterladen.",
+            "keywords": [
+                "instagram profile",
+                "profile picture viewer",
+                "HD profile picture",
+                "pp downloader"
+            ]
         }
     },
     "footer": {
+        "about": "Über uns",
+        "contact": "Kontakt",
         "privacyPolicy": "Datenschutz",
         "legalInfo": "Impressum",
         "copyright": "© 2025 YulaSanta. Alle Rechte vorbehalten.",
@@ -283,13 +392,13 @@
         "lastUpdated": "Zuletzt aktualisiert: 27. Dezember 2025",
         "intro": "Wir bei YulaSanta legen großen Wert auf den Schutz Ihrer Privatsphäre.",
         "dataTitle": "Datenerhebung",
-        "dataDesc": "Ihre Daten werden lokal in Ihrem Browser gespeichert.",
+        "dataDesc": "YulaSanta speichert die von Ihnen eingegebenen Namen nur im lokalen Speicher Ihres Browsers (localStorage).",
         "cookiesTitle": "Cookies",
-        "cookiesDesc": "Wir verwenden Cookies für Werbezwecke.",
+        "cookiesDesc": "Wir verwenden Google AdSense. Google verwendet Cookies, um Anzeigen basierend auf Ihren Interessen anzuzeigen.",
         "securityTitle": "Sicherheit",
-        "securityDesc": "Ihre Daten bleiben auf Ihrem Gerät.",
+        "securityDesc": "Ihre Daten bleiben auf Ihrem Gerät und werden gelöscht, wenn Sie Ihre Browserdaten bereinigen.",
         "thirdPartyTitle": "Drittanbieter",
-        "thirdPartyDesc": "Wir nutzen Google-Dienste."
+        "thirdPartyDesc": "Wir nutzen Dienste wie Google Analytics und Google AdSense."
     },
     "legal": {
         "title": "Rechtliche Hinweise",
@@ -300,12 +409,105 @@
         "lastUpdated": "Zuletzt aktualisiert: 27. Dezember 2025",
         "intro": "Rechtliche Bedingungen für die Nutzung von YulaSanta.",
         "usageTitle": "Nutzung",
-        "usageDesc": "YulaSanta ist ein kostenloses Tool.",
+        "usageDesc": "YulaSanta ist ein kostenloses Tool für Unterhaltungszwecke.",
         "liabilityTitle": "Haftung",
-        "liabilityDesc": "Keine Haftung für fehlerhafte Ziehungen.",
+        "liabilityDesc": "Keine Haftung für fehlerhafte Ziehungen oder technische Ausfälle.",
         "contentTitle": "Urheberrecht",
-        "contentDesc": "Alle Rechte liegen bei YulaSanta.",
+        "contentDesc": "Alle Rechte an Design und Code liegen bei YulaSanta.",
         "contactTitle": "Kontakt",
-        "contactDesc": "Kontaktieren Sie uns über den Support."
+        "contactDesc": "Kontaktieren Sie uns über den Support-Button."
+    },
+    "about": {
+        "meta": {
+            "title": "Über uns | YulaSanta - Kostenlose Online-Gewinnspiel-Plattform",
+            "description": "Erfahren Sie mehr über YulaSanta. Die zuverlässigste Plattform für Online-Verlosungen."
+        },
+        "title": "Über uns",
+        "subtitle": "YulaSanta ist eine kostenlose Plattform, die Gewinnspiele für jeden einfach macht.",
+        "story": {
+            "title": "Unsere Geschichte",
+            "p1": "YulaSanta entstand 2024 aus der Frage: 'Warum ist es so schwer, ein Gewinnspiel zu machen?'",
+            "p2": "Unser Ziel war einfach: Gewinnspiele kostenlos, sicher und einfach für alle zu machen.",
+            "p3": "Heute wählen Tausende von Nutzern YulaSanta für ihre Verlosungen."
+        },
+        "whyUs": {
+            "title": "Warum YulaSanta?"
+        },
+        "features": {
+            "free": {
+                "title": "100% Kostenlos",
+                "desc": "Alle Funktionen sind völlig kostenlos."
+            },
+            "secure": {
+                "title": "Sicher & Privat",
+                "desc": "Deine Daten bleiben in deinem Browser."
+            },
+            "fast": {
+                "title": "Superschnell",
+                "desc": "Gewinnspiele in Sekunden erstellen."
+            },
+            "easy": {
+                "title": "Einfach",
+                "desc": "Intuitive Benutzeroberfläche für jeden."
+            },
+            "global": {
+                "title": "Multi-language Support",
+                "desc": "We serve in Turkish, English, German, French, and 8 more languages."
+            },
+            "passion": {
+                "title": "Made with Passion",
+                "desc": "We carefully design and continuously improve every feature."
+            }
+        },
+        "mission": {
+            "title": "Unsere Mission",
+            "desc": "Gewinnspiele für jeden zugänglich, fair und unterhaltsam zu machen."
+        },
+        "cta": {
+            "title": "Bereit für dein Gewinnspiel?",
+            "desc": "Jetzt kostenlos Verlosung erstellen.",
+            "button": "Gewinnspiel starten"
+        }
+    },
+    "contact": {
+        "meta": {
+            "title": "Kontakt | YulaSanta - Nehmen Sie Kontakt auf",
+            "description": "Kontaktieren Sie YulaSanta. Schreiben Sie uns bei Fragen, Anregungen oder Partnerschaftsangeboten."
+        },
+        "title": "Kontaktieren Sie uns",
+        "subtitle": "Haben Sie Fragen? Wir helfen Ihnen gerne weiter.",
+        "form": {
+            "title": "Schreiben Sie uns",
+            "name": "Ihr vollständiger Name",
+            "namePlaceholder": "z.B. Max Mustermann",
+            "email": "Ihre E-Mail-Adresse",
+            "emailPlaceholder": "email@example.com",
+            "subject": "Betreff",
+            "subjectPlaceholder": "Betreff Ihrer Nachricht",
+            "message": "Ihre Nachricht",
+            "messagePlaceholder": "Schreiben Sie Ihre Nachricht hier...",
+            "send": "Nachricht senden"
+        },
+        "info": {
+            "email": {
+                "title": "E-Mail",
+                "value": "mehmetdemirkok@gmail.com"
+            },
+            "hours": {
+                "title": "Arbeitszeiten",
+                "value": "24/7 - Immer erreichbar"
+            },
+            "location": {
+                "title": "Standort",
+                "value": "Türkei"
+            }
+        },
+        "faq": {
+            "title": "Häufig gestellte Fragen",
+            "desc": "Am häufigsten gefragte Themen:",
+            "q1": "Ist YulaSanta kostenlos?",
+            "q2": "Sind meine Daten sicher?",
+            "q3": "Wie viele Personen?"
+        }
     }
 }

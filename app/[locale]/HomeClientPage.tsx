@@ -35,7 +35,7 @@ export default function HomeClientPage() {
             icon: Instagram,
             href: `/${locale}/instagram`,
             color: "from-purple-500 via-pink-500 to-orange-500",
-            shadow: "shadow-pink-200"
+            shadow: "shadow-pink-200 dark:shadow-pink-500/20"
         },
         {
             title: "YouTube",
@@ -43,7 +43,7 @@ export default function HomeClientPage() {
             icon: Youtube,
             href: `/${locale}/youtube`,
             color: "from-red-600 to-red-500",
-            shadow: "shadow-red-200"
+            shadow: "shadow-red-200 dark:shadow-red-500/20"
         },
         {
             title: "Twitter / X",
@@ -51,7 +51,7 @@ export default function HomeClientPage() {
             icon: Twitter,
             href: `/${locale}/twitter`,
             color: "from-gray-900 to-gray-700",
-            shadow: "shadow-gray-200"
+            shadow: "shadow-gray-200 dark:shadow-gray-500/20"
         },
         {
             title: "TikTok",
@@ -63,7 +63,7 @@ export default function HomeClientPage() {
             ),
             href: `/${locale}/tiktok`,
             color: "from-black to-gray-800",
-            shadow: "shadow-cyan-100"
+            shadow: "shadow-cyan-100 dark:shadow-cyan-500/20"
         },
         {
             title: t('home.secretDraw').replace(' 🤫', ''),
@@ -71,7 +71,7 @@ export default function HomeClientPage() {
             icon: Gift,
             href: `/${locale}/secret-santa`,
             color: "from-santa-red to-red-500",
-            shadow: "shadow-red-200"
+            shadow: "shadow-red-200 dark:shadow-red-500/20"
         }
     ];
 
@@ -83,25 +83,25 @@ export default function HomeClientPage() {
     ];
 
     return (
-        <main className="min-h-screen bg-white overflow-hidden">
+        <main className="min-h-screen bg-white dark:bg-gray-950 overflow-hidden transition-colors duration-300">
             {/* Hero Section */}
             <section className="relative pt-32 pb-20 lg:pt-48 lg:pb-32 overflow-hidden">
                 {/* Background Decoration */}
                 <div className="absolute top-0 left-1/2 -translate-x-1/2 w-full max-w-7xl h-full -z-10">
-                    <div className="absolute top-[-10%] right-[-10%] w-[500px] h-[500px] bg-red-100/50 rounded-full blur-[120px] animate-pulse"></div>
-                    <div className="absolute bottom-[-10%] left-[-10%] w-[500px] h-[500px] bg-blue-100/50 rounded-full blur-[120px]"></div>
+                    <div className="absolute top-[-10%] right-[-10%] w-[500px] h-[500px] bg-red-100/50 dark:bg-red-500/20 rounded-full blur-[120px] animate-pulse"></div>
+                    <div className="absolute bottom-[-10%] left-[-10%] w-[500px] h-[500px] bg-blue-100/50 dark:bg-blue-500/20 rounded-full blur-[120px]"></div>
                 </div>
 
                 <div className="container mx-auto px-4 text-center">
-                    <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-red-50 text-santa-red text-sm font-bold mb-8 animate-bounce">
+                    <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-red-50 dark:bg-red-500/20 text-santa-red text-sm font-bold mb-8 animate-bounce">
                         <Sparkles className="w-4 h-4" />
                         <span>{t('home.happyNewYear')}</span>
                     </div>
 
-                    <h1 className="text-5xl lg:text-7xl font-black text-gray-900 tracking-tight mb-6 leading-tight">
+                    <h1 className="text-5xl lg:text-7xl font-black text-gray-900 dark:text-white tracking-tight mb-6 leading-tight">
                         {t('meta.title').split('|')[0]}
                     </h1>
-                    <p className="max-w-2xl mx-auto text-lg lg:text-xl text-gray-500 mb-8 leading-relaxed font-medium">
+                    <p className="max-w-2xl mx-auto text-lg lg:text-xl text-gray-500 dark:text-gray-400 mb-8 leading-relaxed font-medium">
                         {t('meta.description')}
                     </p>
 
@@ -112,14 +112,14 @@ export default function HomeClientPage() {
                     <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
                         <Button
                             onClick={() => router.push(`/${locale}/secret-santa`)}
-                            className="w-full sm:w-auto text-lg py-7 px-10 rounded-2xl shadow-xl shadow-red-200 hover:scale-105 transition-all text-white font-bold"
+                            className="w-full sm:w-auto text-lg py-7 px-10 rounded-2xl shadow-xl shadow-red-200 dark:shadow-red-500/20 hover:scale-105 transition-all text-white font-bold"
                         >
                             {t('home.startDraw')} <ArrowRight className="ml-2 w-5 h-5" />
                         </Button>
                         <Button
                             variant="ghost"
                             onClick={() => document.getElementById('draws')?.scrollIntoView({ behavior: 'smooth' })}
-                            className="w-full sm:w-auto text-lg py-7 px-10 rounded-2xl border-2 border-gray-100 bg-white hover:bg-gray-50 text-gray-700 font-bold"
+                            className="w-full sm:w-auto text-lg py-7 px-10 rounded-2xl border-2 border-gray-100 dark:border-gray-700 bg-white dark:bg-gray-800 hover:bg-gray-50 dark:hover:bg-gray-700 text-gray-700 dark:text-gray-200 font-bold"
                         >
                             {t('home.socialMediaGiveaways')}
                         </Button>
@@ -128,46 +128,46 @@ export default function HomeClientPage() {
                     {/* Stats or Features */}
                     <div className="mt-20 grid grid-cols-2 lg:grid-cols-4 gap-8 max-w-4xl mx-auto">
                         <div className="flex flex-col items-center">
-                            <div className="w-12 h-12 rounded-2xl bg-green-50 flex items-center justify-center text-green-600 mb-3">
+                            <div className="w-12 h-12 rounded-2xl bg-green-50 dark:bg-green-500/20 flex items-center justify-center text-green-600 dark:text-green-400 mb-3">
                                 <ShieldCheck className="w-6 h-6" />
                             </div>
-                            <span className="text-sm font-bold text-gray-900">{t('home.secure')}</span>
+                            <span className="text-sm font-bold text-gray-900 dark:text-white">{t('home.secure')}</span>
                         </div>
                         <div className="flex flex-col items-center">
-                            <div className="w-12 h-12 rounded-2xl bg-blue-50 flex items-center justify-center text-blue-600 mb-3">
+                            <div className="w-12 h-12 rounded-2xl bg-blue-50 dark:bg-blue-500/20 flex items-center justify-center text-blue-600 dark:text-blue-400 mb-3">
                                 <Zap className="w-6 h-6" />
                             </div>
-                            <span className="text-sm font-bold text-gray-900">{t('home.fast')}</span>
+                            <span className="text-sm font-bold text-gray-900 dark:text-white">{t('home.fast')}</span>
                         </div>
                         <div className="flex flex-col items-center">
-                            <div className="w-12 h-12 rounded-2xl bg-purple-50 flex items-center justify-center text-purple-600 mb-3">
+                            <div className="w-12 h-12 rounded-2xl bg-purple-50 dark:bg-purple-500/20 flex items-center justify-center text-purple-600 dark:text-purple-400 mb-3">
                                 <Users className="w-6 h-6" />
                             </div>
-                            <span className="text-sm font-bold text-gray-900">{t('home.noPassword')}</span>
+                            <span className="text-sm font-bold text-gray-900 dark:text-white">{t('home.noPassword')}</span>
                         </div>
                         <div className="flex flex-col items-center">
-                            <div className="w-12 h-12 rounded-2xl bg-orange-50 flex items-center justify-center text-orange-600 mb-3">
+                            <div className="w-12 h-12 rounded-2xl bg-orange-50 dark:bg-orange-500/20 flex items-center justify-center text-orange-600 dark:text-orange-400 mb-3">
                                 <CheckCircle2 className="w-6 h-6" />
                             </div>
-                            <span className="text-sm font-bold text-gray-900">{t('home.noRegistration')}</span>
+                            <span className="text-sm font-bold text-gray-900 dark:text-white">{t('home.noRegistration')}</span>
                         </div>
                     </div>
                 </div>
             </section>
 
             {/* Social Media Giveaways Section */}
-            <section id="draws" className="py-24 bg-gray-50">
+            <section id="draws" className="py-24 bg-gray-50 dark:bg-gray-900/50">
                 <div className="container mx-auto px-4">
                     <div className="text-center mb-16">
-                        <h2 className="text-3xl lg:text-4xl font-black text-gray-900 mb-4">{t('home.socialMediaGiveaways')}</h2>
-                        <p className="text-gray-500 font-medium">{t('home.socialDesc')}</p>
+                        <h2 className="text-3xl lg:text-4xl font-black text-gray-900 dark:text-white mb-4">{t('home.socialMediaGiveaways')}</h2>
+                        <p className="text-gray-500 dark:text-gray-400 font-medium">{t('home.socialDesc')}</p>
                     </div>
 
                     <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
                         {giveaways.map((item) => (
                             <div
                                 key={item.title}
-                                className="group relative bg-white rounded-[32px] p-8 shadow-sm hover:shadow-2xl hover:-translate-y-2 transition-all duration-300 border border-gray-100 flex flex-col items-start text-left"
+                                className="group relative bg-white dark:bg-gray-800 rounded-[32px] p-8 shadow-sm hover:shadow-2xl dark:hover:shadow-xl hover:-translate-y-2 transition-all duration-300 border border-gray-100 dark:border-gray-700 flex flex-col items-start text-left"
                             >
                                 <div className={cn(
                                     "w-16 h-16 rounded-2xl bg-gradient-to-br flex items-center justify-center text-white mb-6 shadow-lg group-hover:scale-110 transition-transform",
@@ -175,8 +175,8 @@ export default function HomeClientPage() {
                                 )}>
                                     <item.icon className="w-8 h-8" />
                                 </div>
-                                <h3 className="text-2xl font-black text-gray-900 mb-3">{item.title}</h3>
-                                <p className="text-gray-500 mb-8 leading-relaxed line-clamp-2">{item.desc}</p>
+                                <h3 className="text-2xl font-black text-gray-900 dark:text-white mb-3">{item.title}</h3>
+                                <p className="text-gray-500 dark:text-gray-400 mb-8 leading-relaxed line-clamp-2">{item.desc}</p>
                                 <Button
                                     onClick={() => router.push(item.href)}
                                     className={cn("mt-auto w-full py-6 rounded-2xl font-bold transition-all", item.color, "text-white opacity-90 hover:opacity-100 hover:shadow-lg", item.shadow)}
@@ -190,17 +190,17 @@ export default function HomeClientPage() {
             </section>
 
             {/* Tools Section */}
-            <section className="py-24">
+            <section className="py-24 bg-white dark:bg-gray-950">
                 <div className="container mx-auto px-4">
                     <div className="flex flex-col lg:flex-row items-end justify-between mb-12 gap-6">
                         <div className="max-w-xl text-left">
-                            <h2 className="text-3xl lg:text-4xl font-black text-gray-900 mb-4">{t('tools.title')}</h2>
-                            <p className="text-gray-500 font-medium">{t('home.toolsDesc')}</p>
+                            <h2 className="text-3xl lg:text-4xl font-black text-gray-900 dark:text-white mb-4">{t('tools.title')}</h2>
+                            <p className="text-gray-500 dark:text-gray-400 font-medium">{t('home.toolsDesc')}</p>
                         </div>
                         <Button
                             variant="ghost"
                             onClick={() => router.push(`/${locale}/tools/dice`)}
-                            className="bg-gray-100 hover:bg-gray-200 rounded-full font-bold px-6"
+                            className="bg-gray-100 dark:bg-gray-800 hover:bg-gray-200 dark:hover:bg-gray-700 rounded-full font-bold px-6 text-gray-700 dark:text-gray-200"
                         >
                             {t('home.viewAll')}
                         </Button>
@@ -211,12 +211,12 @@ export default function HomeClientPage() {
                             <button
                                 key={tool.name}
                                 onClick={() => router.push(tool.href)}
-                                className="group flex flex-col items-center p-8 bg-white rounded-[32px] border border-gray-100 hover:border-indigo-100 hover:bg-gray-50/50 hover:shadow-xl transition-all"
+                                className="group flex flex-col items-center p-8 bg-white dark:bg-gray-800 rounded-[32px] border border-gray-100 dark:border-gray-700 hover:border-indigo-100 dark:hover:border-indigo-500/30 hover:bg-gray-50/50 dark:hover:bg-gray-700/50 hover:shadow-xl transition-all"
                             >
                                 <div className={cn("w-16 h-16 rounded-2xl flex items-center justify-center text-white mb-4 group-hover:scale-110 transition-transform", tool.color)}>
                                     <tool.icon className="w-8 h-8" />
                                 </div>
-                                <h4 className="text-lg font-black text-gray-900">{tool.name}</h4>
+                                <h4 className="text-lg font-black text-gray-900 dark:text-white">{tool.name}</h4>
                             </button>
                         ))}
                     </div>

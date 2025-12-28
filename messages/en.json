@@ -109,14 +109,60 @@
         "results": "Results",
         "winners": "Winners",
         "backups": "Backups",
-        "youtubeTitle": "Free YouTube Giveaway",
-        "instagramTitle": "Instagram Giveaway Tool",
-        "twitterTitle": "Free Twitter/X Giveaway",
-        "youtubeDesc": "Easily draw from comments, likes, and subscribers on your YouTube videos.",
-        "instagramDesc": "Easily draw from comments and likes of your Instagram posts.",
-        "twitterDesc": "Easily draw from retweets, likes and replies on Twitter/X.",
-        "tiktokTitle": "TikTok Giveaway Tool",
-        "tiktokDesc": "Easily draw from comments of your TikTok videos.",
+        "youtubeTitle": "Free YouTube Giveaway Tool 2025 | Comment & Like Picker",
+        "instagramTitle": "Instagram Giveaway Tool | Free Comment Picker",
+        "twitterTitle": "Twitter (X) Giveaway Tool | Retweet & Like Picker",
+        "youtubeDesc": "Use our free YouTube giveaway tool to quickly pick winners from comments and likes on your videos. Secure and password-free YouTube comment picker.",
+        "instagramDesc": "Use our free Instagram giveaway tool to instantly pick winners and backups from your post comments. The best Instagram comment picker app.",
+        "twitterDesc": "Easily run giveaways from retweets and likes on Twitter (X). Free, password-free Twitter raffle site.",
+        "tiktokTitle": "TikTok Giveaway Tool | Free TikTok Comment Picker",
+        "tiktokDesc": "Run giveaways from comments on your TikTok videos easily. Pick winners for free and without passwords on TikTok!",
+        "meta": {
+            "instagram": {
+                "title": "Free Instagram Giveaway Tool | Pick Comment Winners - YulaSanta",
+                "description": "Run your Instagram giveaways for free and without passwords with YulaSanta. Instantly pick winners and backups with our Instagram comment picker.",
+                "keywords": [
+                    "instagram giveaway",
+                    "free instagram giveaway",
+                    "instagram comment picker",
+                    "run instagram giveaway",
+                    "instagram raffle"
+                ]
+            },
+            "youtube": {
+                "title": "Free YouTube Giveaway Tool | Comment Picker & Like Check - YulaSanta",
+                "description": "Run fast and reliable giveaways for your YouTube videos. Randomly pick winners from comments. Password-free YouTube giveaway site.",
+                "keywords": [
+                    "youtube giveaway",
+                    "youtube comment picker",
+                    "youtube giveaway tool",
+                    "youtube raffle",
+                    "free giveaway"
+                ]
+            },
+            "tiktok": {
+                "title": "TikTok Giveaway Tool | Free TikTok Raffle - YulaSanta",
+                "description": "Run giveaways from comments on your TikTok videos. Fast and fair raffle results with our TikTok giveaway site.",
+                "keywords": [
+                    "tiktok giveaway",
+                    "tiktok raffle",
+                    "tiktok comment picker",
+                    "tiktok giveaway tool",
+                    "tiktok contest"
+                ]
+            },
+            "twitter": {
+                "title": "Twitter (X) Giveaway Tool | Retweet & Like Picker - YulaSanta",
+                "description": "Easily manage your Twitter (X) giveaways. Pick winners from retweets and likes. Free Twitter giveaway site.",
+                "keywords": [
+                    "twitter giveaway",
+                    "x giveaway",
+                    "retweet giveaway",
+                    "twitter raffle",
+                    "twitter contest"
+                ]
+            }
+        },
         "requireSubscription": "Require Subscription",
         "requireNotification": "Require Notification",
         "requireFollow": "Require Follow",
@@ -174,6 +220,12 @@
     "languageSwitcher": {
         "label": "Select Language",
         "current": "English"
+    },
+    "theme": {
+        "light": "Light Theme",
+        "dark": "Dark Theme",
+        "system": "System",
+        "toggle": "Toggle Theme"
     },
     "tools": {
         "title": "Tools",
@@ -328,6 +380,8 @@
         }
     },
     "footer": {
+        "about": "About Us",
+        "contact": "Contact",
         "privacyPolicy": "Privacy Policy",
         "legalInfo": "Legal Information",
         "copyright": "© 2025 YulaSanta. All rights reserved.",
@@ -366,5 +420,98 @@
         "contentDesc": "All design and code rights on the site belong to the YulaSanta team. Unauthorized copying or use is prohibited.",
         "contactTitle": "Contact",
         "contactDesc": "For any questions regarding legal matters, you can contact us using the support button."
+    },
+    "about": {
+        "meta": {
+            "title": "About Us | YulaSanta - Free Online Giveaway Platform",
+            "description": "Learn about YulaSanta. The most reliable free online giveaway and Secret Santa platform."
+        },
+        "title": "About Us",
+        "subtitle": "YulaSanta is a free platform designed to make giveaways easy for everyone. From social media giveaways to Secret Santa organizations, we cover all your needs.",
+        "story": {
+            "title": "Our Story",
+            "p1": "YulaSanta was born in 2024 when a group of software developers asked 'why is running a giveaway so difficult?' We noticed that existing giveaway tools were either too complex, expensive, or unreliable.",
+            "p2": "Our goal was simple: to enable everyone to run giveaways for free, securely, and easily. We developed specialized tools for popular platforms like Instagram, YouTube, TikTok, and Twitter. We also created a perfect matching system for Secret Santa.",
+            "p3": "Today, thousands of users choose YulaSanta. From holiday giveaways to brand campaigns, from friend groups to large communities, everyone runs their giveaways with YulaSanta."
+        },
+        "whyUs": {
+            "title": "Why YulaSanta?"
+        },
+        "features": {
+            "free": {
+                "title": "100% Free",
+                "desc": "All our features are completely free. No hidden fees, premium memberships, or credit cards required."
+            },
+            "secure": {
+                "title": "Secure & Private",
+                "desc": "Your data is stored only in your browser. We don't send any personal information to our servers."
+            },
+            "fast": {
+                "title": "Super Fast",
+                "desc": "Run giveaways in seconds. Start immediately without registration or passwords."
+            },
+            "easy": {
+                "title": "Easy to Use",
+                "desc": "With a simple and intuitive interface, anyone can easily run a giveaway."
+            },
+            "global": {
+                "title": "Multi-language Support",
+                "desc": "We serve in Turkish, English, German, French, and 8 more languages."
+            },
+            "passion": {
+                "title": "Made with Passion",
+                "desc": "We carefully design and continuously improve every feature."
+            }
+        },
+        "mission": {
+            "title": "Our Mission",
+            "desc": "To make running giveaways accessible, fair, and fun for everyone. We want to bring people together with the power of technology and make special moments even more special."
+        },
+        "cta": {
+            "title": "Ready to Run Your Giveaway?",
+            "desc": "Create your giveaway for free right now. No registration required, no password needed.",
+            "button": "Start Giveaway"
+        }
+    },
+    "contact": {
+        "meta": {
+            "title": "Contact | YulaSanta - Get in Touch",
+            "description": "Get in touch with YulaSanta. Write to us for your questions, suggestions, or partnership proposals."
+        },
+        "title": "Contact Us",
+        "subtitle": "Have questions? We're happy to help. You can reach us by filling out the form below or by sending an email directly.",
+        "form": {
+            "title": "Write to Us",
+            "name": "Your Full Name",
+            "namePlaceholder": "e.g., John Doe",
+            "email": "Your Email Address",
+            "emailPlaceholder": "email@example.com",
+            "subject": "Subject",
+            "subjectPlaceholder": "Subject of your message",
+            "message": "Your Message",
+            "messagePlaceholder": "Write your message here...",
+            "send": "Send Message"
+        },
+        "info": {
+            "email": {
+                "title": "Email",
+                "value": "mehmetdemirkok@gmail.com"
+            },
+            "hours": {
+                "title": "Working Hours",
+                "value": "24/7 - Always available"
+            },
+            "location": {
+                "title": "Location",
+                "value": "Turkey"
+            }
+        },
+        "faq": {
+            "title": "Frequently Asked Questions",
+            "desc": "Most commonly asked topics:",
+            "q1": "Is YulaSanta free?",
+            "q2": "Is my data safe?",
+            "q3": "How many people can I include in a giveaway?"
+        }
     }
 }

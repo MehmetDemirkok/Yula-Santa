@@ -223,6 +223,12 @@
         "label": "Dil Seçin",
         "current": "Türkçe"
     },
+    "theme": {
+        "light": "Açık Tema",
+        "dark": "Koyu Tema",
+        "system": "Sistem",
+        "toggle": "Tema Değiştir"
+    },
     "tools": {
         "title": "Araçlar",
         "instagramStoryViewer": "Instagram Hikaye İzleme",
@@ -311,7 +317,8 @@
             "result": "Sonuç",
             "aboutTitle": "Rastgele Sayı Hakkında",
             "aboutText": "Belirlediğiniz aralıkta tamamen rastgele ve adil sayılar üretin.",
-            "placeholder": "Sayı üretmek için butona tıklayın"
+            "placeholder": "Sayı üretmek için butona tıklayın",
+            "rolling": "Generating..."
         },
         "shortStrawContent": {
             "title": "Kısa Çöp Çekme",
@@ -375,6 +382,8 @@
         }
     },
     "footer": {
+        "about": "Hakkımızda",
+        "contact": "İletişim",
         "privacyPolicy": "Gizlilik Koşulları",
         "legalInfo": "Yasal Bilgiler",
         "copyright": "© 2025 YulaSanta. Tüm hakları saklıdır.",
@@ -413,5 +422,98 @@
         "contentDesc": "Sitede yer alan tüm tasarım ve kod hakları YulaSanta ekibine aittir. İzinsiz kopyalanması veya kullanılması yasaktır.",
         "contactTitle": "İletişim",
         "contactDesc": "Yasal konularla ilgili her türlü sorunuz için destek butonunu kullanarak bizimle iletişime geçebilirsiniz."
+    },
+    "about": {
+        "meta": {
+            "title": "Hakkımızda | YulaSanta - Ücretsiz Online Çekiliş Platformu",
+            "description": "YulaSanta hakkında bilgi edinin. Türkiye'nin en güvenilir ücretsiz online çekiliş ve Secret Santa platformu."
+        },
+        "title": "Hakkımızda",
+        "subtitle": "YulaSanta, herkesin kolayca çekiliş yapabilmesi için tasarlanmış ücretsiz bir platformdur. Sosyal medya çekilişlerinden Secret Santa organizasyonlarına kadar tüm ihtiyaçlarınızı karşılıyoruz.",
+        "story": {
+            "title": "Hikayemiz",
+            "p1": "YulaSanta, 2024 yılında bir grup yazılım geliştiricisinin 'çekiliş yapmak neden bu kadar zor?' sorusuna yanıt aramasıyla doğdu. Mevcut çekiliş araçlarının ya çok karmaşık, ya ücretli, ya da güvenilir olmadığını fark ettik.",
+            "p2": "Amacımız basitti: Herkesin ücretsiz, güvenli ve kolay bir şekilde çekiliş yapabilmesini sağlamak. Instagram, YouTube, TikTok ve Twitter gibi popüler platformlar için özel araçlar geliştirdik. Secret Santa için de mükemmel bir eşleştirme sistemi oluşturduk.",
+            "p3": "Bugün binlerce kullanıcı YulaSanta'yı tercih ediyor. Yılbaşı çekilişlerinden marka kampanyalarına, arkadaş gruplarından büyük topluluklara kadar herkes YulaSanta ile çekiliş yapıyor."
+        },
+        "whyUs": {
+            "title": "Neden YulaSanta?"
+        },
+        "features": {
+            "free": {
+                "title": "%100 Ücretsiz",
+                "desc": "Tüm özelliklerimiz tamamen ücretsizdir. Gizli ücret, premium üyelik veya kredi kartı gerektirmez."
+            },
+            "secure": {
+                "title": "Güvenli & Gizli",
+                "desc": "Verileriniz sadece tarayıcınızda saklanır. Sunucularımıza herhangi bir kişisel bilgi göndermiyoruz."
+            },
+            "fast": {
+                "title": "Süper Hızlı",
+                "desc": "Saniyeler içinde çekiliş yapın. Kayıt olmadan, şifre girmeden hemen başlayın."
+            },
+            "easy": {
+                "title": "Kolay Kullanım",
+                "desc": "Basit ve sezgisel arayüz sayesinde herkes kolayca çekiliş yapabilir."
+            },
+            "global": {
+                "title": "Çok Dilli Destek",
+                "desc": "Türkçe, İngilizce, Almanca, Fransızca ve 8 dilde daha hizmet veriyoruz."
+            },
+            "passion": {
+                "title": "Tutkuyla Yapıldı",
+                "desc": "Her özelliği özenle tasarlıyor ve sürekli olarak geliştiriyoruz."
+            }
+        },
+        "mission": {
+            "title": "Misyonumuz",
+            "desc": "Çekiliş yapmayı herkes için erişilebilir, adil ve eğlenceli hale getirmek. Teknolojinin gücüyle insanları bir araya getirmek ve özel anları daha da özel kılmak istiyoruz."
+        },
+        "cta": {
+            "title": "Çekilişinizi Yapmaya Hazır mısınız?",
+            "desc": "Hemen ücretsiz olarak çekiliş oluşturun. Kayıt gerektirmez, şifre gerekmez.",
+            "button": "Çekilişe Başla"
+        }
+    },
+    "contact": {
+        "meta": {
+            "title": "İletişim | YulaSanta - Bize Ulaşın",
+            "description": "YulaSanta ile iletişime geçin. Sorularınız, önerileriniz veya işbirliği teklifleriniz için bize yazın."
+        },
+        "title": "İletişim",
+        "subtitle": "Sorularınız mı var? Size yardımcı olmaktan mutluluk duyarız. Aşağıdaki formu doldurarak veya doğrudan e-posta göndererek bize ulaşabilirsiniz.",
+        "form": {
+            "title": "Bize Yazın",
+            "name": "Adınız Soyadınız",
+            "namePlaceholder": "Örn: Ahmet Yılmaz",
+            "email": "E-posta Adresiniz",
+            "emailPlaceholder": "email@example.com",
+            "subject": "Konu",
+            "subjectPlaceholder": "Mesajınızın konusu",
+            "message": "Mesajınız",
+            "messagePlaceholder": "Mesajınızı buraya yazın...",
+            "send": "Mesaj Gönder"
+        },
+        "info": {
+            "email": {
+                "title": "E-posta",
+                "value": "mehmetdemirkok@gmail.com"
+            },
+            "hours": {
+                "title": "Çalışma Saatleri",
+                "value": "7/24 - Her zaman ulaşılabilir"
+            },
+            "location": {
+                "title": "Konum",
+                "value": "Türkiye"
+            }
+        },
+        "faq": {
+            "title": "Sık Sorulan Sorular",
+            "desc": "En çok merak edilen konular:",
+            "q1": "YulaSanta ücretsiz mi?",
+            "q2": "Verilerim güvende mi?",
+            "q3": "Kaç kişi ile çekiliş yapabilirim?"
+        }
     }
 }

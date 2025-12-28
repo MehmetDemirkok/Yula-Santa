@@ -18,6 +18,7 @@ import { CookieConsent } from "@/components/CookieConsent";
 import { SupportButton } from "@/components/SupportButton";
 import { Footer } from "@/components/Footer";
 import { Navbar } from "@/components/Navbar";
+import { ThemeProvider } from "@/lib/ThemeContext";
 
 interface ClientLayoutProps {
     children: ReactNode;
@@ -25,7 +26,7 @@ interface ClientLayoutProps {
 
 export function ClientLayout({ children }: ClientLayoutProps) {
     return (
-        <>
+        <ThemeProvider>
             {/* Yılbaşı Teması - Kar, Konfeti (Countdown ayrı olarak sayfalarda gösterilecek) */}
             <NewYearTheme
                 showSnowfall={true}
@@ -57,6 +58,6 @@ export function ClientLayout({ children }: ClientLayoutProps) {
 
             {/* Analytics */}
             <Analytics />
-        </>
+        </ThemeProvider>
     );
 }

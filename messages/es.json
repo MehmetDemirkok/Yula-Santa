@@ -1,26 +1,37 @@
 {
     "meta": {
-        "title": "YulaSanta - Sorteo de Amigo Invisible Online",
-        "description": "¡Crea sorteos de Amigo Invisible gratis con amigos, familia o colegas en segundos!",
+        "title": "YulaSanta - Sorteo en línea gratis | Instagram, YouTube, TikTok y Secret Santa 2025",
+        "description": "Crea sorteos de Secret Santa en línea gratis con YulaSanta. Realiza tus concursos de Instagram, YouTube, TikTok y Twitter en segundos. ¡Lanzamiento de dados, cara o cruz, generador de números y más herramientas gratis!",
         "keywords": [
+            "sorteo en línea",
+            "hacer sorteo",
+            "concurso gratis",
+            "sorteo de navidad",
+            "secret santa",
+            "secret santa 2025",
             "amigo invisible",
             "intercambio de regalos",
-            "sorteo navideño",
-            "sorteo online",
-            "regalo de navidad"
+            "sorteo instagram",
+            "sorteo youtube",
+            "sorteo tiktok",
+            "sorteo twitter",
+            "herramienta de sorteo gratis",
+            "azar",
+            "cara o cruz",
+            "número aleatorio"
         ]
     },
     "home": {
         "title": "YulaSanta",
-        "subtitle": "¡Añade a tus amigos, inicia el sorteo!",
+        "subtitle": "¡Añade a tus amigos, comienza el sorteo!",
         "secretDraw": "Sorteo Secreto 🤫",
         "directMatch": "Emparejamiento Directo 🤝",
-        "inputPlaceholder": "Ingresa un nombre...",
-        "noParticipants": "Nadie añadido aún",
-        "uploadList": "Subir Lista (Excel/PDF)",
-        "uploading": "Subiendo...",
-        "clearList": "Limpiar Lista",
-        "startDraw": "Iniciar Sorteo",
+        "inputPlaceholder": "Introduce un nombre...",
+        "noParticipants": "Nadie ha sido añadido aún",
+        "uploadList": "Cargar lista (Excel/PDF)",
+        "uploading": "Cargando...",
+        "clearList": "Limpiar lista",
+        "startDraw": "Hacer Sorteo",
         "match": "Emparejar",
         "happyNewYear": "🎄 ¡Feliz Año Nuevo!",
         "minPeople3": "Añade al menos 3 personas",
@@ -29,50 +40,50 @@
         "nameExists": "¡Este nombre ya existe!",
         "namesAdded": "nombres añadidos",
         "totalCount": "Total",
-        "startDrawConfirm": "¿Quieres iniciar el sorteo?",
+        "startDrawConfirm": "¿Quieres comenzar el sorteo?",
         "notEnoughPeople": "No hay suficientes personas para el sorteo.",
-        "noNamesFound": "No se pudieron leer nombres del archivo.",
-        "uploadError": "Ocurrió un error al subir.",
+        "noNamesFound": "No se pudieron leer los nombres del archivo.",
+        "uploadError": "Ocurrió un error al cargar el archivo.",
         "unsupportedFormat": "Formato no soportado. Usa Excel (.xlsx) o PDF.",
         "secretDrawMinError": "¡El Sorteo Secreto requiere al menos 3 personas!",
         "directMatchMinError": "¡El emparejamiento requiere al menos 2 personas!",
-        "directMatchEvenError": "¡El emparejamiento directo requiere un número par de personas!",
-        "drawError": "Ocurrió un error, por favor intenta de nuevo.",
-        "socialMediaGiveaways": "Sorteos en Redes Sociales",
+        "directMatchEvenError": "¡El emparejamiento directo requiere un número par!",
+        "drawError": "Ocurrió un error, por favor inténtalo de nuevo.",
+        "socialMediaGiveaways": "Sorteos de Redes Sociales",
         "secure": "100% Seguro",
         "fast": "Súper Rápido",
         "noPassword": "Sin Contraseña",
         "noRegistration": "Sin Registro",
         "startNow": "Empezar Ahora",
         "socialDesc": "Realiza tus sorteos fácilmente en todas las plataformas",
-        "toolsDesc": "Mini herramientas y juegos divertidos para facilitar tu vida diaria.",
-        "viewAll": "Ver Todo"
+        "toolsDesc": "Herramientas y juegos divertidos para tu día a día.",
+        "viewAll": "Ver todo"
     },
     "result": {
-        "whoGetsGift": "¿A quién le compro un regalo?",
-        "selectName": "Selecciona tu nombre y ve el resultado. 🎁",
+        "whoGetsGift": "¿A quién le voy a dar un regalo?",
+        "selectName": "Elige tu nombre y mira el resultado. 🎁",
         "matchList": "Lista de Emparejamientos",
-        "christmasMatches": "¡Aquí están los emparejamientos navideños! 🎄",
+        "christmasMatches": "¡Aquí están los emparejamientos de Navidad! 🎄",
         "giftRecipient": "TU DESTINATARIO",
-        "keepSecret": "¡No lo olvides! Guarda el secreto, no arruines la sorpresa. 🤫",
-        "seeGiftIdeas": "Ver Ideas de Regalos",
-        "aiSuggestions": "Sugerencias de IA",
+        "keepSecret": "¡No olvides esto! Guárdalo en secreto, no arruines la sorpresa. 🤫",
+        "seeGiftIdeas": "Ideas de regalos",
+        "aiSuggestions": "Sugerencias IA",
         "noSuggestions": "No se encontraron sugerencias.",
-        "someoneElse": "Dejar que otro vea",
+        "someoneElse": "¿Alguien más?",
         "newDraw": "Nuevo Sorteo",
         "seeResult": "Ver Resultado",
-        "selectYourName": "Selecciona tu nombre...",
-        "backToHome": "Volver al Inicio"
+        "selectYourName": "Elige tu nombre...",
+        "backToHome": "Volver al inicio"
     },
     "giveaway": {
         "links": "Enlaces",
         "rules": "Reglas",
         "participants": "Participantes",
-        "giveawayName": "Nombre del Sorteo",
+        "giveawayName": "Nombre del Concurso",
         "winnerCount": "Número de Ganadores",
         "backupCount": "Número de Suplentes",
-        "startGiveaway": "Iniciar Sorteo",
-        "newGiveaway": "Nuevo Sorteo",
+        "startGiveaway": "Comenzar Concurso",
+        "newGiveaway": "Nuevo Concurso",
         "copyResults": "Copiar Resultados",
         "copied": "¡Copiado!",
         "comments": "Comentarios",
@@ -84,60 +95,100 @@
         "tags": "Etiquetas",
         "fetchComments": "Obtener Comentarios",
         "fetching": "Obteniendo...",
-        "linkInputPlaceholder": "Pegar Enlace",
+        "linkInputPlaceholder": "Pegar enlace",
         "addParticipant": "Añadir Participante",
-        "bulkAdd": "Añadir en Masa",
+        "bulkAdd": "Añadir en Bloque",
         "clearAll": "Borrar Todo",
         "results": "Resultados",
         "winners": "Ganadores",
         "backups": "Suplentes",
-        "youtubeTitle": "Sorteo YouTube Gratis",
-        "instagramTitle": "Herramienta de Sorteo Instagram",
-        "twitterTitle": "Sorteo Twitter/X Gratis",
-        "youtubeDesc": "Sortea fácilmente entre comentarios, likes y suscriptores de tus videos.",
-        "instagramDesc": "Sortea fácilmente entre los comentarios y likes de tus posts de Instagram.",
-        "twitterDesc": "Sortea fácilmente entre los retweets, likes y respuestas en Twitter/X.",
-        "tiktokTitle": "Sorteo de TikTok",
-        "tiktokDesc": "Sortea fácilmente entre comentarios de tus videos de TikTok.",
+        "youtubeTitle": "Herramienta de Sorteo YouTube Gratis 2025",
+        "instagramTitle": "Sorteo Instagram | Seleccionador de comentarios",
+        "twitterTitle": "Sorteo Twitter (X) | Sorteo de Retweets y Likes",
+        "youtubeDesc": "Usa nuestra herramienta gratuita para elegir ganadores de comentarios de YouTube.",
+        "instagramDesc": "Elige ganadores y suplentes de tus comentarios de Instagram al instante.",
+        "twitterDesc": "Haz sorteos de retweets y likes en Twitter (X) fácilmente.",
+        "tiktokTitle": "Sorteo TikTok | Sorteo de comentarios TikTok gratis",
+        "tiktokDesc": "Haz sorteos de comentarios en tus videos de TikTok gratis.",
+        "meta": {
+            "instagram": {
+                "title": "Sorteo Instagram Gratis | YulaSanta",
+                "description": "Haz tus sorteos de Instagram gratis y sin contraseña con YulaSanta.",
+                "keywords": [
+                    "sorteo instagram",
+                    "comentarios instagram"
+                ]
+            },
+            "youtube": {
+                "title": "Sorteo YouTube Gratis | YulaSanta",
+                "description": "Sorteos rápidos y fiables para tus vídeos de YouTube.",
+                "keywords": [
+                    "sorteo youtube",
+                    "comentarios youtube"
+                ]
+            },
+            "tiktok": {
+                "title": "TikTok Giveaway Tool | Free TikTok Raffle - YulaSanta",
+                "description": "Run giveaways from comments on your TikTok videos. Fast and fair raffle results with our TikTok giveaway site.",
+                "keywords": [
+                    "tiktok giveaway",
+                    "tiktok raffle",
+                    "tiktok comment picker",
+                    "tiktok giveaway tool",
+                    "tiktok contest"
+                ]
+            },
+            "twitter": {
+                "title": "Twitter (X) Giveaway Tool | Retweet & Like Picker - YulaSanta",
+                "description": "Easily manage your Twitter (X) giveaways. Pick winners from retweets and likes. Free Twitter giveaway site.",
+                "keywords": [
+                    "twitter giveaway",
+                    "x giveaway",
+                    "retweet giveaway",
+                    "twitter raffle",
+                    "twitter contest"
+                ]
+            }
+        },
         "requireSubscription": "Requiere Suscripción",
         "requireNotification": "Requiere Notificación",
         "requireFollow": "Requiere Seguir",
         "requireRetweet": "Requiere Retweet",
-        "requireLike": "Requiere Like",
-        "countUserOnce": "Contar Usuario Una Vez",
-        "inputError": "¡Por favor ingresa un enlace válido!",
+        "requireLike": "Requiere Me gusta",
+        "countUserOnce": "Contar cada usuario una vez",
+        "inputError": "¡Por favor introduce un enlace válido!",
         "fetchError": "No se pudieron obtener los datos.",
-        "apiLimitation": "La obtención automática no está disponible actualmente.",
+        "apiLimitation": "La obtención automática no está disponible actualmente. Usa la entrada manual.",
         "manualMode": "Entrada Manual (Gratis)",
-        "autoMode": "Obtención Auto",
+        "autoMode": "Obtención Automática",
         "manualDesc": "Ideal para sorteos pequeños. Pega los comentarios directamente.",
-        "autoDesc": "Ideal para sorteos grandes. Obtiene automáticamente.",
+        "autoDesc": "Ideal para sorteos grandes.",
         "pasteComments": "Pega los comentarios aquí (Uno por línea)",
         "parse": "Analizar Comentarios",
         "parsed": "{count} participantes analizados",
-        "youtubeLimitNote": "Nota: Se pueden obtener automáticamente hasta 1000 comentarios a través de la API.",
-        "instagramLimitNote": "Nota: Se pueden obtener automáticamente hasta 1000 comentarios a través de la API.",
-        "tiktokLimitNote": "Nota: Se pueden obtener automáticamente hasta 100 comentarios a través de la API.",
-        "participantLimitDetails": "Para ver más comentarios, use el modo de entrada manual.",
-        "channelUsername": "Nombre de Usuario (Verificación de Seguidores)",
-        "channelUsernameHint": "Ingrese su nombre de usuario para verificar si los ganadores lo siguen",
-        "following": "Siguiendo",
-        "notFollowing": "No Sigue",
+        "youtubeLimitNote": "Nota: Se pueden obtener hasta 1000 comentarios automáticamente.",
+        "instagramLimitNote": "Nota: Se pueden obtener hasta 1000 comentarios automáticamente.",
+        "tiktokLimitNote": "Nota: Se pueden obtener hasta 100 comentarios automáticamente.",
+        "participantLimitDetails": "Para ver más comentarios, usa el modo manual.",
+        "channelUsername": "Nombre de usuario (Check seguidores)",
+        "channelUsernameHint": "Introduce tu usuario para verificar si los ganadores te siguen",
+        "following": "Sigue",
+        "notFollowing": "No sigue",
         "checkingFollow": "Verificando...",
         "unknownFollow": "Desconocido"
     },
     "support": {
         "button": "Soporte",
         "title": "Soporte y Contacto",
-        "description": "Contáctenos para sus comentarios.",
-        "header": "¡No dude en pedir ayuda!",
-        "subheader": "Estamos aquí para ayudarle.",
-        "name": "Su Nombre",
-        "email": "Su Email",
-        "phone": "Número de teléfono",
+        "description": "Contáctanos para tus comentarios.",
+        "header": "¡No dudes en pedir soporte!",
+        "subheader": "Estamos aquí para ayudarte.",
+        "name": "Tu Nombre",
+        "email": "Tu Email",
+        "phone": "Teléfono",
         "subject": "Asunto",
-        "message": "Su Message",
-        "placeholderName": "Su nombre completo",
+        "message": "Tu Mensaje",
+        "placeholderName": "Tu nombre completo",
         "placeholderEmail": "email@ejemplo.com",
         "placeholderPhone": "+34",
         "send": "Enviar",
@@ -154,158 +205,300 @@
         "or": "O"
     },
     "languageSwitcher": {
-        "label": "Seleccionar Idioma",
+        "label": "Elegir idioma",
         "current": "Español"
+    },
+    "theme": {
+        "light": "Tema Claro",
+        "dark": "Tema Oscuro",
+        "system": "Sistema",
+        "toggle": "Cambiar Tema"
     },
     "tools": {
         "title": "Herramientas",
-        "instagramStoryViewer": "Visor de Historias de Instagram",
-        "instagramProfilePicture": "Visor de Fotos de Perfil de Instagram",
-        "onlineGiveaway": "Herramienta de Sorteos en Línea",
-        "dice": "Juego de Dados",
+        "instagramStoryViewer": "Instagram Story Viewer",
+        "instagramProfilePicture": "Ver Foto de Perfil Instagram",
+        "onlineGiveaway": "Sorteo en línea",
+        "dice": "Dados",
         "coinFlip": "Cara o Cruz",
-        "randomNumber": "Generador de Números Aleatorios",
-        "shortStraw": "Sacar Pajitas",
+        "randomNumber": "Número Aleatorio",
+        "shortStraw": "Pajita más corta",
         "meta": {
-            "title": "Herramientas Gratuitas | YulaSanta - Dados, Moneda, Números",
-            "description": "Herramientas gratis de YulaSanta: dados, cara o cruz, generador de números, pajitas, visor de historias y fotos de perfil."
+            "title": "Herramientas gratis | YulaSanta",
+            "description": "Herramientas gratis: dados, cara o cruz, números aleatorios, corta pajita."
         },
         "diceMeta": {
-            "title": "🎲 Juego de Dados | Tirar Dados Online Gratis - YulaSanta",
-            "description": "Tirar dados online. Lanza 1 o 2 dados gratis. Simulador profesional para juegos de mesa, Backgammon y Ludo."
+            "title": "🎲 Dados | Tirar dados gratis online - YulaSanta",
+            "description": "Tira 1 o 2 dados gratis.",
+            "keywords": [
+                "dice roller",
+                "roll dice",
+                "online dice",
+                "die roller",
+                "backgammon dice",
+                "ludo dice"
+            ]
         },
         "diceContent": {
-            "title": "Juego de Dados",
-            "subtitle": "Lanzador de Dados Online - Gratis",
-            "label": "Número de Dados",
+            "title": "Dados",
+            "subtitle": "Dados en línea - Gratis",
+            "label": "Número de dados",
             "option": "{count} Dados",
-            "roll": "Tirar Dados",
+            "roll": "Tirar",
             "rolling": "Tirando...",
             "total": "Total",
-            "history": "Últimas Tiradas",
-            "aboutTitle": "Sobre el Juego de Dados",
-            "aboutText": "Tira dados online gratis con YulaSanta. Usa nuestro simulador para Backgammon, Parchís y Monopoly.",
-            "placeholder": "Haga clic en el botón para tirar los dados",
-            "featuresTitle": "Características:",
+            "history": "Historial",
+            "aboutTitle": "About Dice Roller",
+            "aboutText": "Roll dice online for free. Use our professional dice simulator for board games.",
+            "placeholder": "Click the button to roll the dice",
+            "featuresTitle": "Features:",
             "features": [
-                "Tira 1 o 2 dados",
-                "Animación 3D realista de dados",
-                "El historial de tiradas se guarda",
-                "Diseño adaptado a móviles",
-                "Totalmente gratis, sin registro"
+                "Roll 1 or 2 dice",
+                "Realistic 3D dice animation",
+                "Roll history is recorded",
+                "Mobile-friendly design",
+                "Completely free, no registration required"
             ]
         },
         "coinFlipMeta": {
-            "title": "🪙 Cara o Cruz | Lanzar Moneda Online - YulaSanta",
-            "description": "Lanzar moneda online. Generador gratuito para decisiones rápidas. ¡Lanza una moneda ahora!"
+            "title": "🪙 Cara o Cruz | Sorteo gratis - YulaSanta",
+            "description": "Tira una moneda para decidir.",
+            "keywords": [
+                "coin flip",
+                "heads or tails",
+                "coin toss",
+                "flip a coin",
+                "heads or tails online"
+            ]
         },
         "coinFlipContent": {
-            "title": "Cara o Cruz",
-            "subtitle": "Cara o Cruz Online - Gratis",
+            "title": "Cara o cruz",
+            "subtitle": "Cara o cruz online",
             "heads": "Cara",
             "tails": "Cruz",
-            "roll": "Lanzar Moneda",
-            "rolling": "Lanzando...",
+            "roll": "Tirar",
+            "rolling": "Tirando...",
             "reset": "Reiniciar",
-            "aboutTitle": "Sobre Cara o Cruz",
-            "aboutText": "Toma decisiones rápidas con nuestro generador de cara o cruz."
+            "aboutTitle": "About Coin Flip",
+            "aboutText": "Make quick decisions with our online heads or tails generator."
         },
         "randomNumberMeta": {
-            "title": "🔢 Generador de Números | Sorteo Online - YulaSanta",
-            "description": "Generador de números aleatorios online. Ideal para sorteos y juegos."
+            "title": "🔢 Número Aleatorio | Generador de números online - YulaSanta",
+            "description": "Generador de números aleatorios en línea. Elige un número al azar en el rango definido. Ideal para sorteos.",
+            "keywords": [
+                "random number",
+                "number generator",
+                "random number generator",
+                "lottery numbers",
+                "pick a number"
+            ]
         },
         "randomNumberContent": {
-            "title": "Generador de Números",
-            "subtitle": "Generador de Números Online",
-            "min": "Min",
-            "max": "Max",
+            "title": "Número Aleatorio",
+            "subtitle": "Generador de números",
+            "min": "Mín",
+            "max": "Máx",
             "generate": "Generar",
-            "rolling": "Generando...",
             "result": "Resultado",
-            "aboutTitle": "Sobre el Generador",
-            "aboutText": "Genera números aleatorios imparciales para tus sorteos.",
-            "placeholder": "Haga clic para generar números"
+            "aboutTitle": "Sobre el Número Aleatorio",
+            "aboutText": "Genera números totalmente aleatorios y justos en el intervalo que elijas.",
+            "placeholder": "Haz clic en el botón para generar un número",
+            "rolling": "Generating..."
         },
         "shortStrawContent": {
-            "title": "Sacar Pajitas",
-            "subtitle": "Juego de la Pajita Más Corta Online",
-            "label": "Participantes",
+            "title": "Pajita más corta",
+            "subtitle": "Ver quién saca la pajita corta",
+            "label": "Número de participantes",
             "draw": "Sacar pajita",
             "reset": "Reiniciar",
-            "lost": "¡Perdiste! Sacaste la pajita corta.",
-            "saved": "¡Salvado! Pajita larga.",
-            "aboutTitle": "Sobre Sacar Pajitas",
-            "aboutText": "Juego clásico para selecciones grupales justas."
+            "lost": "¡Has perdido! Has sacado la pajita corta.",
+            "saved": "¡Salvado! Tu pajita es larga.",
+            "aboutTitle": "Sobre el Juego",
+            "aboutText": "Usa el juego de la pajita corta online para tomar decisiones justas en grupo."
         },
         "shortStrawMeta": {
-            "title": "🎋 Sacar Pajitas | Sorteo online - YulaSanta",
-            "description": "Juego de pajitas online. Decisiones grupales divertidas."
+            "title": "🎋 Pajita más corta | Juego de azar online - YulaSanta",
+            "description": "Juego de la pajita corta online. Toma decisiones justas y divertidas en grupo.",
+            "keywords": [
+                "short straw",
+                "draw straws",
+                "short straw game",
+                "random picker",
+                "fair selection"
+            ]
         },
         "instagramStoryContent": {
-            "title": "Story Viewer",
+            "title": "Instagram Story Viewer",
             "subtitle": "Visor de Historias Anónimo",
-            "placeholder": "Nombre de usuario",
+            "placeholder": "Introduce un usuario",
             "view": "Ver Historias",
-            "helper": "Mira las historias de forma anónima.",
+            "helper": "Mira las historias de forma anónima sin que el dueño lo sepa.",
             "aboutTitle": "Sobre Story Viewer",
-            "aboutText": "Mira historias de Instagram en secreto con YulaSanta."
+            "aboutText": "Mira discretamente las historias de Instagram con el visor anónimo de YulaSanta."
         },
         "instagramStoryMeta": {
-            "title": "📱 Instagram Story Viewer | Anónimo - YulaSanta",
-            "description": "Mira historias de forma anónima y segura."
+            "title": "📱 Visor de Historias Instagram | Anónimo - YulaSanta",
+            "description": "Mira las historias de Instagram de forma anónima. Visor de historias privado.",
+            "keywords": [
+                "instagram story",
+                "story viewer",
+                "anonymous story viewer",
+                "private story viewer"
+            ]
         },
         "instagramProfileContent": {
-            "title": "Foto de Perfil",
-            "subtitle": "Foto de Perfil en HD",
-            "placeholder": "Nombre de usuario",
+            "title": "Foto de Perfil Instagram",
+            "subtitle": "Tamaño de Foto de Perfil HD",
+            "placeholder": "Introduce un usuario",
             "view": "Ver Foto",
-            "helper": "Mira la foto en HD.",
+            "helper": "Muestra la foto de perfil en tamaño completo y HD.",
             "aboutTitle": "Sobre PP Viewer",
-            "aboutText": "Ver y descargar fotos de perfil de Instagram."
+            "aboutText": "Usa nuestra herramienta gratuita para ver y descargar las fotos de perfil de Instagram en alta calidad."
         },
         "instagramProfileMeta": {
-            "title": "🖼️ Instagram Profile Picture | HD Downloader - YulaSanta",
-            "description": "Descarga fotos de perfil de Instagram en HD."
+            "title": "🖼️ Foto de Perfil Instagram | Descarga HD - YulaSanta",
+            "description": "Visualiza y descarga fotos de perfil de Instagram en calidad HD.",
+            "keywords": [
+                "instagram profile",
+                "profile picture viewer",
+                "HD profile picture",
+                "pp downloader"
+            ]
         }
     },
     "footer": {
+        "about": "Sobre nosotros",
+        "contact": "Contacto",
         "privacyPolicy": "Privacidad",
         "legalInfo": "Información Legal",
         "copyright": "© 2025 YulaSanta. Todos los derechos reservados.",
-        "cookieDisclaimer": "Este sitio utiliza cookies para mejorar su experiencia."
+        "cookieDisclaimer": "Este sitio utiliza cookies para mejorar tu experiencia."
     },
     "privacy": {
-        "title": "Política de Privacidad",
+        "title": "Privacidad",
         "meta": {
             "title": "Privacidad | YulaSanta",
             "description": "Política de privacidad de YulaSanta."
         },
         "lastUpdated": "Última actualización: 27 de diciembre de 2025",
-        "intro": "En YulaSanta, nos tomamos muy en serio su privacidad.",
+        "intro": "En YulaSanta, nos importa mucho tu privacidad.",
         "dataTitle": "Recopilación de Datos",
-        "dataDesc": "Sus datos se almacenan localmente en su navegador.",
+        "dataDesc": "YulaSanta guarda los nombres solo localmente en tu navegador.",
         "cookiesTitle": "Cookies",
-        "cookiesDesc": "Utilizamos cookies para fines publicitarios.",
+        "cookiesDesc": "Usamos Google AdSense.",
         "securityTitle": "Seguridad",
-        "securityDesc": "Sus datos permanecen en su dispositivo.",
+        "securityDesc": "Tus datos se quedan en tu dispositivo.",
         "thirdPartyTitle": "Servicios de Terceros",
-        "thirdPartyDesc": "Utilizamos servicios de Google."
+        "thirdPartyDesc": "Usamos Google Analytics y AdSense."
     },
     "legal": {
         "title": "Información Legal",
         "meta": {
-            "title": "Legal | YulaSanta",
-            "description": "Términos de uso y avisos legales."
+            "title": "Información Legal | YulaSanta",
+            "description": "Condiciones de uso y avisos legales."
         },
         "lastUpdated": "Última actualización: 27 de diciembre de 2025",
-        "intro": "Términos legales para el uso de YulaSanta.",
+        "intro": "Condiciones legales para usar YulaSanta.",
         "usageTitle": "Uso",
-        "usageDesc": "YulaSanta es una herramienta gratuita.",
+        "usageDesc": "YulaSanta es gratis para fines de entretenimiento.",
         "liabilityTitle": "Responsabilidad",
-        "liabilityDesc": "Sin responsabilidad por errores en el sorteo.",
+        "liabilityDesc": "Sin responsabilidad por errores en los sorteos.",
         "contentTitle": "Derechos de Autor",
-        "contentDesc": "Todos los derechos pertenecen a YulaSanta.",
+        "contentDesc": "Derechos de diseño y código de YulaSanta.",
         "contactTitle": "Contacto",
-        "contactDesc": "Contáctenos a través del soporte."
+        "contactDesc": "Contáctanos mediante el botón de soporte."
+    },
+    "about": {
+        "meta": {
+            "title": "Sobre nosotros | YulaSanta - Plataforma de sorteos gratis",
+            "description": "Conoce YulaSanta. La plataforma de sorteos más fiable."
+        },
+        "title": "Sobre nosotros",
+        "subtitle": "YulaSanta es una plataforma gratis para hacer sorteos fáciles.",
+        "story": {
+            "title": "Nuestra Historia",
+            "p1": "YulaSanta nació en 2024 para simplificar los sorteos.",
+            "p2": "Nuestra meta era sorteos gratis, seguros y fáciles para todos.",
+            "p3": "Hoy, miles de usuarios eligen YulaSanta."
+        },
+        "whyUs": {
+            "title": "¿Por qué YulaSanta?"
+        },
+        "features": {
+            "free": {
+                "title": "100% Gratis",
+                "desc": "Todas las funciones gratis."
+            },
+            "secure": {
+                "title": "Seguro",
+                "desc": "Tus datos en tu navegador."
+            },
+            "fast": {
+                "title": "Súper Rápido",
+                "desc": "Sorteos en segundos."
+            },
+            "easy": {
+                "title": "Fácil",
+                "desc": "Interfaz intuitiva."
+            },
+            "global": {
+                "title": "Multi-language Support",
+                "desc": "We serve in Turkish, English, German, French, and 8 more languages."
+            },
+            "passion": {
+                "title": "Made with Passion",
+                "desc": "We carefully design and continuously improve every feature."
+            }
+        },
+        "mission": {
+            "title": "Nuestra Misión",
+            "desc": "Hacer sorteos accesibles, justos y divertidos."
+        },
+        "cta": {
+            "title": "¿Listo para tu sorteo?",
+            "desc": "Crea tu sorteo gratis ahora.",
+            "button": "Empezar sorteo"
+        }
+    },
+    "contact": {
+        "meta": {
+            "title": "Contacto | YulaSanta - Ponte en contacto",
+            "description": "Ponte en contacto con YulaSanta. Escríbenos para tus dudas, sugerencias o propuestas de colaboración."
+        },
+        "title": "Contáctanos",
+        "subtitle": "¿Tienes preguntas? Estamos encantados de ayudarte.",
+        "form": {
+            "title": "Escríbenos",
+            "name": "Tu Nombre Completo",
+            "namePlaceholder": "ej: Juan Pérez",
+            "email": "Tu Correo Electrónico",
+            "emailPlaceholder": "email@ejemplo.com",
+            "subject": "Asunto",
+            "subjectPlaceholder": "Asunto de tu mensaje",
+            "message": "Tu Mensaje",
+            "messagePlaceholder": "Escribe tu mensaje aquí...",
+            "send": "Enviar Mensaje"
+        },
+        "info": {
+            "email": {
+                "title": "Correo Electrónico",
+                "value": "mehmetdemirkok@gmail.com"
+            },
+            "hours": {
+                "title": "Horario de Trabajo",
+                "value": "24/7 - Siempre disponible"
+            },
+            "location": {
+                "title": "Ubicación",
+                "value": "Turquía"
+            }
+        },
+        "faq": {
+            "title": "Preguntas Frecuentes",
+            "desc": "Temas más consultados:",
+            "q1": "¿YulaSanta es gratis?",
+            "q2": "¿Mis datos están seguros?",
+            "q3": "¿Cuántas personas?"
+        }
     }
 }

@@ -1,80 +1,89 @@
 {
     "meta": {
-        "title": "YulaSanta - 온라인 시크릿 산타 추첨",
-        "description": "친구, 가족 또는 동료와 몇 초 만에 무료 시크릿 산타 추첨을 만드세요!",
+        "title": "YulaSanta - 무료 온라인 추첨기 | 인스타그램, 유튜브, 틱톡 & 시크릿 산타 2025",
+        "description": "YulaSanta로 무료 온라인 시크릿 산타 추첨을 만들어보세요. 인스타그램, 유튜브, 틱톡, 트위터 이벤트를 몇 초 만에 진행하세요. 주사위 굴리기, 동전 던지기, 난수 생성기 등 다양한 무료 툴 제공!",
         "keywords": [
+            "온라인 추첨기",
+            "이벤트 추첨",
+            "무료 추첨",
             "시크릿 산타",
-            "선물 교환",
+            "secret santa",
             "크리스마스 추첨",
-            "온라인 추첨",
-            "크리스마스 선물"
+            "선물 교환",
+            "인스타 추첨",
+            "유튜브 추첨",
+            "틱톡 추첨",
+            "트위터 추첨",
+            "주사위",
+            "동전 던지기",
+            "랜덤 숫자"
         ]
     },
     "home": {
         "title": "YulaSanta",
-        "subtitle": "친구를 추가하고 추첨을 시작하세요!",
+        "subtitle": "친구를 추가하고, 추첨을 시작하세요!",
         "secretDraw": "비밀 추첨 🤫",
         "directMatch": "직접 매칭 🤝",
         "inputPlaceholder": "이름 입력...",
-        "noParticipants": "아직 아무도 추가되지 않았습니다",
-        "uploadList": "목록 업로드 (Excel/PDF)",
+        "noParticipants": "아직 추가된 사람이 없습니다",
+        "uploadList": "리스트 업로드 (Excel/PDF)",
         "uploading": "업로드 중...",
-        "clearList": "목록 지우기",
-        "startDraw": "추첨 시작",
+        "clearList": "리스트 초기화",
+        "startDraw": "추첨하기",
         "match": "매칭",
         "happyNewYear": "🎄 새해 복 많이 받으세요!",
-        "minPeople3": "최소 3명을 추가하세요",
-        "minPeople2": "최소 2명을 추가하세요",
+        "minPeople3": "최소 3명을 추가해주세요",
+        "minPeople2": "최소 2명을 추가해주세요",
         "evenNumber": "인원수는 짝수여야 합니다",
-        "nameExists": "이 이름은 이미 존재합니다!",
-        "namesAdded": "이름이 추가됨",
-        "totalCount": "총",
+        "nameExists": "이미 같은 이름이 있습니다!",
+        "namesAdded": "명이 추가되었습니다",
+        "totalCount": "합계",
         "startDrawConfirm": "추첨을 시작하시겠습니까?",
-        "notEnoughPeople": "추첨에 충분한 인원이 없습니다.",
+        "notEnoughPeople": "추첨에 필요한 인원이 부족합니다.",
         "noNamesFound": "파일에서 이름을 읽을 수 없습니다.",
         "uploadError": "업로드 중 오류가 발생했습니다.",
-        "unsupportedFormat": "지원되지 않는 형식입니다. Excel (.xlsx) 또는 PDF를 사용하세요.",
-        "secretDrawMinError": "비밀 추첨에는 최소 3명이 필요합니다!",
-        "directMatchMinError": "매칭에는 최소 2명이 필요합니다!",
-        "directMatchEvenError": "직접 매칭에는 짝수 인원이 필요합니다!",
-        "drawError": "오류가 발생했습니다. 다시 시도해 주세요.",
-        "socialMediaGiveaways": "SNS 경품 추첨",
+        "unsupportedFormat": "지원되지 않는 형식입니다. Excel(.xlsx) 또는 PDF를 사용하세요.",
+        "secretDrawMinError": "비밀 추첨은 최소 3명이 필요합니다!",
+        "directMatchMinError": "매칭은 최소 2명이 필요합니다!",
+        "directMatchEvenError": "직접 매칭은 짝수 인원이 필요합니다!",
+        "drawError": "오류가 발생했습니다. 다시 시도해주세요.",
+        "socialMediaGiveaways": "SNS 이벤트 추첨",
         "secure": "100% 안전",
         "fast": "초고속",
         "noPassword": "비밀번호 불필요",
-        "noRegistration": "회원가입 불필요",
-        "startNow": "지금 시작하기",
-        "socialDesc": "모든 플랫폼에서 이벤트를 간편하게 진행하세요",
-        "toolsDesc": "일상 생활을 편리하게 해주는 미니 도구와 재미있는 게임.",
-        "viewAll": "모두 보기"
+        "noRegistration": "가입 불필요",
+        "startNow": "지금 시작",
+        "socialDesc": "모든 플랫폼에서 간편하게 추첨 진행",
+        "toolsDesc": "일상에 유용한 미니 툴과 재미있는 게임들.",
+        "viewAll": "전체 보기"
     },
     "result": {
-        "whoGetsGift": "누구에게 선물을 살까요?",
-        "selectName": "이름을 선택하고 결과를 확인하세요. 🎁",
-        "matchList": "매칭 목록",
-        "christmasMatches": "크리스마스 매칭입니다! 🎄",
-        "giftRecipient": "선물 받을 사람",
-        "keepSecret": "잊지 마세요! 비밀을 지키고 서프라이즈를 망치지 마세요. 🤫",
+        "whoGetsGift": "나는 누구에게 선물을 줄까요?",
+        "selectName": "자신의 이름을 선택하고 결과를 확인하세요. 🎁",
+        "matchList": "매칭 리스트",
+        "christmasMatches": "추첨 결과입니다! 🎄",
+        "giftRecipient": "나의 선물 대상자",
+        "keepSecret": "잊지 마세요! 비밀을 유지하고 깜짝 선물을 망치지 마세요. 🤫",
         "seeGiftIdeas": "선물 아이디어 보기",
-        "aiSuggestions": "AI 제안",
-        "noSuggestions": "제안을 찾을 수 없습니다.",
-        "someoneElse": "다른 사람이 확인하게 하기",
-        "newDraw": "새 추첨",
+        "aiSuggestions": "AI 선물 추천",
+        "noSuggestions": "추천 결과를 찾을 수 없습니다.",
+        "someoneElse": "다른 사람 확인하기",
+        "newDraw": "새 추첨 시작",
         "seeResult": "결과 보기",
         "selectYourName": "이름을 선택하세요...",
-        "backToHome": "홈으로 돌아가기"
+        "backToHome": "홈으로 이동"
     },
     "giveaway": {
         "links": "링크",
         "rules": "규칙",
-        "participants": "참가자",
-        "giveawayName": "추첨 이름",
+        "participants": "참여자",
+        "giveawayName": "이벤트 이름",
         "winnerCount": "당첨자 수",
         "backupCount": "예비 당첨자 수",
         "startGiveaway": "추첨 시작",
-        "newGiveaway": "새 추첨",
+        "newGiveaway": "새 이벤트",
         "copyResults": "결과 복사",
-        "copied": "복사됨!",
+        "copied": "복사 완료!",
         "comments": "댓글",
         "likes": "좋아요",
         "subscribers": "구독자",
@@ -82,230 +91,413 @@
         "replies": "답글",
         "followers": "팔로워",
         "tags": "태그",
-        "fetchComments": "댓글 가져오기",
-        "fetching": "가져오는 중...",
+        "fetchComments": "댓글 불러오기",
+        "fetching": "불러오는 중...",
         "linkInputPlaceholder": "링크 붙여넣기",
-        "addParticipant": "참가자 추가",
+        "addParticipant": "참여자 추가",
         "bulkAdd": "대량 추가",
-        "clearAll": "모두 지우기",
+        "clearAll": "전체 삭제",
         "results": "결과",
         "winners": "당첨자",
-        "backups": "예비 당첨자",
-        "youtubeTitle": "무료 YouTube 경품 추첨",
-        "instagramTitle": "Instagram 경품 추첨 도구",
-        "twitterTitle": "무료 Twitter/X 경품 추첨",
-        "youtubeDesc": "동영상의 댓글, 좋아요, 구독자 중에서 쉽게 추첨하세요.",
-        "instagramDesc": "인스타그램 댓글과 '좋아요'에서 간편하게 추첨하세요.",
-        "twitterDesc": "Twitter/X 리트윗, 좋아요, 답글 중에서 간편하게 추첨하세요.",
-        "tiktokTitle": "TikTok 경품 도구",
-        "tiktokDesc": "TikTok 동영상의 댓글 중에서 간편하게 추첨하세요.",
-        "requireSubscription": "구독 필수",
-        "requireNotification": "알림 필수",
+        "backups": "예비 번호",
+        "youtubeTitle": "무료 유튜브 추첨기 2025",
+        "instagramTitle": "인스타그램 추첨기 | 무료 댓글 추출",
+        "twitterTitle": "트위터 (X) 추첨기 | 리트윗 & 좋아요 추첨",
+        "youtubeDesc": "유튜브 댓글과 좋아요에서 무료 툴로 빠르게 당첨자를 뽑아보세요.",
+        "instagramDesc": "인스타그램 댓글에서 당첨자와 예비 당첨자를 즉시 뽑습니다. 최고의 댓글 추출 앱입니다.",
+        "twitterDesc": "트위터 (X) 리트윗과 좋아요에서 간편하게 추첨을 진행하세요. 무료 추첨 사이트입니다.",
+        "tiktokTitle": "틱톡 추첨기 | 무료 틱톡 댓글 추출",
+        "tiktokDesc": "틱톡 영상의 댓글에서 간편하게 무료로 당첨자를 뽑으세요!",
+        "meta": {
+            "instagram": {
+                "title": "무료 인스타그램 추첨기 | YulaSanta",
+                "description": "YulaSanta로 비밀번호 없이 인스타그램 이벤트를 무료로 진행하세요.",
+                "keywords": [
+                    "인스타 추첨",
+                    "댓글 추출",
+                    "무료 이벤트"
+                ]
+            },
+            "youtube": {
+                "title": "무료 유튜브 추첨기 | YulaSanta",
+                "description": "유튜브 영상을 위한 빠르고 정확한 무료 추첨기.",
+                "keywords": [
+                    "유튜브 추첨",
+                    "댓글 추출"
+                ]
+            },
+            "tiktok": {
+                "title": "TikTok Giveaway Tool | Free TikTok Raffle - YulaSanta",
+                "description": "Run giveaways from comments on your TikTok videos. Fast and fair raffle results with our TikTok giveaway site.",
+                "keywords": [
+                    "tiktok giveaway",
+                    "tiktok raffle",
+                    "tiktok comment picker",
+                    "tiktok giveaway tool",
+                    "tiktok contest"
+                ]
+            },
+            "twitter": {
+                "title": "Twitter (X) Giveaway Tool | Retweet & Like Picker - YulaSanta",
+                "description": "Easily manage your Twitter (X) giveaways. Pick winners from retweets and likes. Free Twitter giveaway site.",
+                "keywords": [
+                    "twitter giveaway",
+                    "x giveaway",
+                    "retweet giveaway",
+                    "twitter raffle",
+                    "twitter contest"
+                ]
+            }
+        },
+        "requireSubscription": "채널 구독 필수",
+        "requireNotification": "알림 설정 필수",
         "requireFollow": "팔로우 필수",
         "requireRetweet": "리트윗 필수",
         "requireLike": "좋아요 필수",
-        "countUserOnce": "사용자를 한 번만 카운트",
-        "inputError": "유효한 링크를 입력하세요!",
-        "fetchError": "데이터를 가져올 수 없습니다.",
-        "apiLimitation": "자동 가져오기는 현재 사용할 수 없습니다.",
+        "countUserOnce": "사용자 중복 제거 (1회 카운트)",
+        "inputError": "유효한 링크를 입력해주세요!",
+        "fetchError": "데이터를 불러올 수 없습니다.",
+        "apiLimitation": "현재 자동 불러오기가 불가능합니다. 수동 입력 모드를 사용해주세요.",
         "manualMode": "수동 입력 (무료)",
-        "autoMode": "자동 가져오기",
-        "manualDesc": "소규모 추첨에 적합합니다. 댓글을 직접 붙여넣으세요.",
-        "autoDesc": "대규모 추첨에 적합합니다. 자동으로 가져옵니다.",
+        "autoMode": "자동 불러오기",
+        "manualDesc": "소규모 이벤트에 적합합니다. 댓글을 직접 붙여넣으세요.",
+        "autoDesc": "대규모 이벤트에 적합합니다.",
         "pasteComments": "여기에 댓글을 붙여넣으세요 (한 줄에 하나씩)",
         "parse": "댓글 분석",
-        "parsed": "{count}명의 참가자가 분석됨",
+        "parsed": "{count}명의 참여자를 찾았습니다",
         "youtubeLimitNote": "참고: API를 통해 최대 1000개의 댓글을 자동으로 가져올 수 있습니다.",
         "instagramLimitNote": "참고: API를 통해 최대 1000개의 댓글을 자동으로 가져올 수 있습니다.",
         "tiktokLimitNote": "참고: API를 통해 최대 100개의 댓글을 자동으로 가져올 수 있습니다.",
-        "participantLimitDetails": "더 많은 댓글을 보려면 수동 입력 모드를 사용하세요.",
-        "channelUsername": "사용자 이름 (팔로워 확인)",
-        "channelUsernameHint": "당첨자가 당신을 팔로우하는지 확인하려면 사용자 이름을 입력하세요",
-        "following": "팔로잉",
-        "notFollowing": "팔로우 안함",
+        "participantLimitDetails": "더 많은 댓글을 확인하려면 수동 입력 모드를 사용하세요.",
+        "channelUsername": "사용자 이름 (팔로우 확인용)",
+        "channelUsernameHint": "당첨자가 나를 팔로우하고 있는지 확인하려면 아이디를 입력하세요",
+        "following": "팔로우 중",
+        "notFollowing": "미팔로우",
         "checkingFollow": "확인 중...",
-        "unknownFollow": "알 수 없음"
+        "unknownFollow": "결과 없음"
     },
     "support": {
-        "button": "지원",
+        "button": "고객지원",
         "title": "지원 및 문의",
-        "description": "의견이 있으시면 연락주세요.",
-        "header": "망설이지 말고 지원을 요청하세요!",
-        "subheader": "저희가 도와드리겠습니다.",
+        "description": "피드백을 보내주세요.",
+        "header": "궁금한 점이 있으신가요?",
+        "subheader": "언제든 도와드리겠습니다.",
         "name": "성함",
-        "email": "이메일",
+        "email": "이메일 주소",
         "phone": "전화번호",
         "subject": "제목",
-        "message": "메시지",
-        "placeholderName": "성함을 입력하세요",
+        "message": "메시지 내용",
+        "placeholderName": "성함(풀네임)",
         "placeholderEmail": "email@example.com",
         "placeholderPhone": "+82",
-        "send": "보내기",
-        "contact": "문의"
+        "send": "전송하기",
+        "contact": "연락처"
     },
     "common": {
-        "loading": "로딩 중...",
+        "loading": "불러오는 중...",
         "error": "오류",
         "confirm": "확인",
         "cancel": "취소",
         "yes": "예",
-        "no": "아니오",
-        "clearConfirm": "전체 목록을 지우시겠습니까?",
+        "no": "아니요",
+        "clearConfirm": "전체 리스트를 삭제하시겠습니까?",
         "or": "또는"
     },
     "languageSwitcher": {
         "label": "언어 선택",
         "current": "한국어"
     },
+    "theme": {
+        "light": "라이트 모드",
+        "dark": "다크 모드",
+        "system": "시스템 설정",
+        "toggle": "테마 변경"
+    },
     "tools": {
         "title": "도구",
-        "instagramStoryViewer": "인스타그램 스토리 뷰어",
-        "instagramProfilePicture": "인스타그램 프로필 사진 뷰어",
-        "onlineGiveaway": "온라인 추첨 도구",
+        "instagramStoryViewer": "인스타 스토리 보기",
+        "instagramProfilePicture": "인스타 프로필 확대",
+        "onlineGiveaway": "온라인 추첨기",
         "dice": "주사위",
         "coinFlip": "동전 던지기",
         "randomNumber": "난수 생성기",
         "shortStraw": "제비뽑기",
         "meta": {
-            "title": "무료 온라인 도구 | YulaSanta - 주사위, 동전, 난수",
-            "description": "YulaSanta 무료 온라인 도구: 주사위 던지기, 동전 던지기, 난수 생성기, 제비뽑기,인스타그램 스토리 익명 보기 및 프로필 사진 다운로드."
+            "title": "무료 온라인 툴 | YulaSanta",
+            "description": "주사위, 동전 던지기, 랜덤 숫자, 제비뽑기 등 무료 온라인 도구."
         },
         "diceMeta": {
-            "title": "🎲 주사위 던지기 | 무료 온라인 주사위 - YulaSanta",
-            "description": "온라인 주사위 던지기. 1개 또는 2개의 주사위를 무료로. 보드게임, 백개먼용 전문 시뮬레이터."
+            "title": "🎲 주사위 굴리기 | 무료 온라인 주사위 - YulaSanta",
+            "description": "1개 또는 2개의 주사위를 무료로 굴려보세요.",
+            "keywords": [
+                "dice roller",
+                "roll dice",
+                "online dice",
+                "die roller",
+                "backgammon dice",
+                "ludo dice"
+            ]
         },
         "diceContent": {
-            "title": "주사위 던지기",
-            "subtitle": "온라인 주사위 굴리기 - 무료",
+            "title": "주사위",
+            "subtitle": "온라인 주사위 - 무료",
             "label": "주사위 개수",
-            "option": "{count}개 주사위",
-            "roll": "주사위 굴리기",
+            "option": "{count} 개",
+            "roll": "굴리기",
             "rolling": "굴리는 중...",
             "total": "합계",
-            "history": "최근 결과",
-            "aboutTitle": "주사위 던지기 안내",
-            "aboutText": "YulaSanta 온라인 주사위를 사용하여 보드게임 등을 즐겨보세요.",
-            "placeholder": "버튼을 클릭하여 주사위를 굴리세요",
-            "featuresTitle": "특징:",
+            "history": "과거 기록",
+            "aboutTitle": "About Dice Roller",
+            "aboutText": "Roll dice online for free. Use our professional dice simulator for board games.",
+            "placeholder": "Click the button to roll the dice",
+            "featuresTitle": "Features:",
             "features": [
-                "1개 또는 2개의 주사위로 굴릴 수 있습니다",
-                "사실적인 3D 주사위 애니메이션",
-                "굴림 기록이 저장됩니다",
-                "모바일 친화적 디자인",
-                "완전 무료, 등록 불필요"
+                "Roll 1 or 2 dice",
+                "Realistic 3D dice animation",
+                "Roll history is recorded",
+                "Mobile-friendly design",
+                "Completely free, no registration required"
             ]
         },
         "coinFlipMeta": {
-            "title": "🪙 동전 던지기 | 온라인 앞면 또는 뒷면 - YulaSanta",
-            "description": "온라인 동전 던지기 도구. 빠른 결정을 위한 무료 앞면 뒷면 생성기."
+            "title": "🪙 동전 던지기 | 무료 온라인 동전 토스 - YulaSanta",
+            "description": "동전을 던져서 결정하세요.",
+            "keywords": [
+                "coin flip",
+                "heads or tails",
+                "coin toss",
+                "flip a coin",
+                "heads or tails online"
+            ]
         },
         "coinFlipContent": {
             "title": "동전 던지기",
-            "subtitle": "온라인 동전 던지기 - 앞면/뒷면",
+            "subtitle": "온라인 동전 던지기",
             "heads": "앞면",
             "tails": "뒷면",
-            "roll": "동전 던지기",
+            "roll": "던지기",
             "rolling": "던지는 중...",
             "reset": "초기화",
-            "aboutTitle": "동전 던지기 안내",
-            "aboutText": "결정이 필요할 때 동전 던지기로 해결하세요."
+            "aboutTitle": "About Coin Flip",
+            "aboutText": "Make quick decisions with our online heads or tails generator."
         },
         "randomNumberMeta": {
-            "title": "🔢 난수 생성기 | 온라인 번호 추첨 - YulaSanta",
-            "description": "온라인 난수 생성 도구. 추첨 및 게임에 적합합니다."
+            "title": "🔢 난수 생성기 | 무료 온라인 랜덤 숫자 생성 - YulaSanta",
+            "description": "온라인으로 무작위 숫자를 생성합니다. 지정된 범위 내에서 임의로 숫자를 선택하세요. 추첨이나 게임에 적합합니다.",
+            "keywords": [
+                "random number",
+                "number generator",
+                "random number generator",
+                "lottery numbers",
+                "pick a number"
+            ]
         },
         "randomNumberContent": {
             "title": "난수 생성기",
-            "subtitle": "온라인 난수 생성기",
+            "subtitle": "숫자 무작위 선택",
             "min": "최소",
             "max": "최대",
-            "generate": "생성하기",
-            "rolling": "생성 중...",
+            "generate": "생성",
             "result": "결과",
-            "aboutTitle": "난수 생성기 안내",
-            "aboutText": "공정한 난수를 생성하여 추첨 등에 사용하세요.",
-            "placeholder": "버튼을 클릭하여 번호를 생성하세요"
+            "aboutTitle": "난수 생성기 정보",
+            "aboutText": "지정한 범위 내에서 완전히 무작위고 공정한 숫자를 생성합니다.",
+            "placeholder": "버튼을 클릭하여 숫자 생성",
+            "rolling": "Generating..."
         },
         "shortStrawContent": {
             "title": "제비뽑기",
-            "subtitle": "온라인 제비뽑기",
+            "subtitle": "누가 짧은 막대를 뽑을지 확인",
             "label": "참가 인원",
-            "draw": "제비 뽑기",
+            "draw": "막대 뽑기",
             "reset": "초기화",
-            "lost": "꽝! 짧은 제비를 뽑았습니다.",
-            "saved": "세이프! 긴 제비입니다.",
-            "aboutTitle": "제비뽑기 안내",
-            "aboutText": "공정한 그룹 선택과 역할 분담을 위한 클래식 게임입니다."
+            "lost": "꽝! 당신이 짧은 막대를 뽑았습니다.",
+            "saved": "성공! 긴 막대입니다.",
+            "aboutTitle": "게임 정보",
+            "aboutText": "온라인 제비뽑기를 사용하여 그룹 내에서 공정하게 역할을 정해보세요."
         },
         "shortStrawMeta": {
-            "title": "🎋 제비뽑기 | 온라인 추첨 - YulaSanta",
-            "description": "온라인 제비뽑기 도구. 공정하고 즐거운 결정."
+            "title": "🎋 제비뽑기 | 온라인 복불복 게임 - YulaSanta",
+            "description": "온라인 제비뽑기 게임. 그룹 내에서 공정하고 재미있게 결정을 내려보세요.",
+            "keywords": [
+                "short straw",
+                "draw straws",
+                "short straw game",
+                "random picker",
+                "fair selection"
+            ]
         },
         "instagramStoryContent": {
-            "title": "스토리 뷰어",
-            "subtitle": "인스타그램 스토리 익명 보기",
-            "placeholder": "사용자 이름",
+            "title": "인스타 스토리 보기",
+            "subtitle": "익명 스토리 뷰어",
+            "placeholder": "아이디 입력",
             "view": "스토리 보기",
-            "helper": "기록 없이 익명으로 스토리를 볼 수 있습니다.",
-            "aboutTitle": "스토리 뷰어 안내",
-            "aboutText": "상대방 모르게 인스타그램 스토리를 익명으로 감상하세요."
+            "helper": "상대방 모르게 익명으로 스토리를 확인하세요.",
+            "aboutTitle": "스토리 뷰어 정보",
+            "aboutText": "YulaSanta의 익명 뷰어로 인스타그램 스토리를 몰래 확인할 수 있습니다."
         },
         "instagramStoryMeta": {
-            "title": "📱 인스타그램 스토리 뷰어 | 익명 - YulaSanta",
-            "description": "스토리를 익명으로 안전하게 감상."
+            "title": "📱 인스타 스토리 보기 | 익명 뷰어 - YulaSanta",
+            "description": "인스타 스토리를 익명으로 확인하세요. 비밀 스토리 뷰어.",
+            "keywords": [
+                "instagram story",
+                "story viewer",
+                "anonymous story viewer",
+                "private story viewer"
+            ]
         },
         "instagramProfileContent": {
-            "title": "프로필 사진",
-            "subtitle": "HD 프로필 사진 크기 보기",
-            "placeholder": "사용자 이름",
+            "title": "인스타 프로필 사진",
+            "subtitle": "고화질 프로필 사진 크기",
+            "placeholder": "아이디 입력",
             "view": "사진 보기",
-            "helper": "프로필 사진을 크게 보고 저장합니다.",
-            "aboutTitle": "프로필 뷰어 안내",
-            "aboutText": "인스타그램 프로필 사진을 고화질로 확인하고 소장하세요."
+            "helper": "프로필 사진을 전체 크기 및 고화질로 표시합니다.",
+            "aboutTitle": "PP 뷰어 정보",
+            "aboutText": "무료 도구로 인스타 사용자의 프로필 사진을 고품질로 확인하고 저장하세요."
         },
         "instagramProfileMeta": {
-            "title": "🖼️ Instagram Profile Picture | HD Downloader - YulaSanta",
-            "description": "인스타그램 아이콘 고화질 저장 도구."
+            "title": "🖼️ 인스타 프로필 확대 | 고화질 다운로드 - YulaSanta",
+            "description": "인스타 프로필 사진을 HD 화질로 확인하고 저장할 수 있습니다.",
+            "keywords": [
+                "instagram profile",
+                "profile picture viewer",
+                "HD profile picture",
+                "pp downloader"
+            ]
         }
     },
     "footer": {
-        "privacyPolicy": "개인정보 처리방침",
+        "about": "회사 소개",
+        "contact": "문의하기",
+        "privacyPolicy": "개인정보처리방침",
         "legalInfo": "법적 고지",
         "copyright": "© 2025 YulaSanta. All rights reserved.",
-        "cookieDisclaimer": "저희 웹사이트는 최상의 경험을 제공하기 위해 쿠키를 사용합니다."
+        "cookieDisclaimer": "이 사이트는 사용자 경험 개선을 위해 쿠키를 사용합니다."
     },
     "privacy": {
-        "title": "개인정보 처리방침",
+        "title": "개인정보처리방침",
         "meta": {
-            "title": "개인정보 | YulaSanta",
-            "description": "YulaSanta의 개인정보 처리방침 및 데이터 보안 정보."
+            "title": "개인정보보호 | YulaSanta",
+            "description": "YulaSanta의 개인정보 보호 정책입니다."
         },
-        "lastUpdated": "최종 업데이트: 2025년 12月 27日",
-        "intro": "YulaSanta는 귀하의 개인정보를 소중히 여깁니다.",
+        "lastUpdated": "최종 업데이트: 2025년 12월 27日",
+        "intro": "YulaSanta는 사용자의 개인정보를 소중히 여깁니다.",
         "dataTitle": "데이터 수집",
-        "dataDesc": "귀하의 데이터는 브라우저의 로컬 저장소에 저장됩니다.",
+        "dataDesc": "YulaSanta는 브라우저의 로컬 스토리지(localStorage)에만 데이터를 저장합니다.",
         "cookiesTitle": "쿠키",
-        "cookiesDesc": "광고 목적으로 쿠키를 사용할 수 있습니다.",
+        "cookiesDesc": "Google AdSense를 사용하여 광고를 표시합니다.",
         "securityTitle": "보안",
-        "securityDesc": "데이터는 귀하의 장치에만 유지됩니다.",
+        "securityDesc": "데이터는 사용자의 기기에 머물며 서버로 전송되지 않습니다.",
         "thirdPartyTitle": "제3자 서비스",
-        "thirdPartyDesc": "Google 서비스를 사용합니다."
+        "thirdPartyDesc": "Google Analytics 및 AdSense를 사용합니다."
     },
     "legal": {
         "title": "법적 고지",
         "meta": {
-            "title": "리걸 | YulaSanta",
-            "description": "이용 약관 및 법적 공지."
+            "title": "법적 공지 | YulaSanta",
+            "description": "이용 약관 및 법적 공지 사항."
         },
-        "lastUpdated": "최종 업데이트: 2025년 12月 27日",
-        "intro": "YulaSanta 플랫폼 이용에 관한 법적 조건.",
-        "usageTitle": "이용",
-        "usageDesc": "YulaSanta는 무료 도구입니다.",
-        "liabilityTitle": "책임",
-        "liabilityDesc": "추첨 결과에 대한 책임은 지지 않습니다.",
+        "lastUpdated": "최종 업데이트: 2025년 12월 27日",
+        "intro": "YulaSanta 플랫폼 이용에 관한 법적 조건입니다.",
+        "usageTitle": "이용 조건",
+        "usageDesc": "YulaSanta는 오락 목적의 무료 도구입니다.",
+        "liabilityTitle": "책임 제한",
+        "liabilityDesc": "추첨 결과나 기술적 문제에 대해 책임을 지지 않습니다.",
         "contentTitle": "저작권",
-        "contentDesc": "모든 권리는 YulaSanta 팀에 있습니다.",
-        "contactTitle": "문의",
-        "contactDesc": "지원 버튼을 통해 문의하세요."
+        "contentDesc": "디자인 및 코드의 권리는 YulaSanta 팀에 있습니다.",
+        "contactTitle": "문의하기",
+        "contactDesc": "고객지원 기능을 통해 문의해주세요."
+    },
+    "about": {
+        "meta": {
+            "title": "소개 | YulaSanta - 무료 추첨 플랫폼",
+            "description": "YulaSanta 소개. 가장 신뢰받는 무료 추첨 플랫폼."
+        },
+        "title": "소개",
+        "subtitle": "YulaSanta는 누구나 쉽게 추첨을 할 수 있는 무료 플랫폼입니다.",
+        "story": {
+            "title": "스토리",
+            "p1": "YulaSanta는 2024년, '더 쉽고 공정한 추첨은 없을까?'라는 고민에서 시작되었습니다.",
+            "p2": "목표는 간단합니다: 누구나 무료로, 안전하고 쉽게 추첨을 할 수 있게 만드는 것.",
+            "p3": "현재 수천 명의 사용자가 YulaSanta와 함께하고 있습니다."
+        },
+        "whyUs": {
+            "title": "왜 YulaSanta인가요?"
+        },
+        "features": {
+            "free": {
+                "title": "100% 무료",
+                "desc": "모든 기능을 무료로 제공합니다."
+            },
+            "secure": {
+                "title": "안전 및 보안",
+                "desc": "데이터는 사용자 브라우저에 저장됩니다."
+            },
+            "fast": {
+                "title": "초고속 시스템",
+                "desc": "단 몇 초 만에 추첨 완료."
+            },
+            "easy": {
+                "title": "쉬운 사용법",
+                "desc": "누구나 직관적으로 사용할 수 있습니다."
+            },
+            "global": {
+                "title": "Multi-language Support",
+                "desc": "We serve in Turkish, English, German, French, and 8 more languages."
+            },
+            "passion": {
+                "title": "Made with Passion",
+                "desc": "We carefully design and continuously improve every feature."
+            }
+        },
+        "mission": {
+            "title": "우리의 미션",
+            "desc": "추첨을 모든 사람에게 공평하고 즐거운 경험으로 만드는 것."
+        },
+        "cta": {
+            "title": "추첨할 준비가 되셨나요?",
+            "desc": "지금 바로 무료로 추첨을 시작해보세요.",
+            "button": "추첨 시작하기"
+        }
+    },
+    "contact": {
+        "meta": {
+            "title": "Contact | YulaSanta - Get in Touch",
+            "description": "Get in touch with YulaSanta. Write to us for your questions, suggestions, or partnership proposals."
+        },
+        "title": "Contact Us",
+        "subtitle": "Have questions? We're happy to help. You can reach us by filling out the form below or by sending an email directly.",
+        "form": {
+            "title": "Write to Us",
+            "name": "Your Full Name",
+            "namePlaceholder": "e.g., John Doe",
+            "email": "Your Email Address",
+            "emailPlaceholder": "email@example.com",
+            "subject": "Subject",
+            "subjectPlaceholder": "Subject of your message",
+            "message": "Your Message",
+            "messagePlaceholder": "Write your message here...",
+            "send": "Send Message"
+        },
+        "info": {
+            "email": {
+                "title": "Email",
+                "value": "mehmetdemirkok@gmail.com"
+            },
+            "hours": {
+                "title": "Working Hours",
+                "value": "24/7 - Always available"
+            },
+            "location": {
+                "title": "Location",
+                "value": "Turkey"
+            }
+        },
+        "faq": {
+            "title": "Frequently Asked Questions",
+            "desc": "Most commonly asked topics:",
+            "q1": "Is YulaSanta free?",
+            "q2": "Is my data safe?",
+            "q3": "How many people can I include in a giveaway?"
+        }
     }
 }

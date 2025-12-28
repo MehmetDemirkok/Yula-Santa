@@ -355,7 +355,7 @@ export default async function LocaleLayout({
 
                 {/* Google AdSense Script */}
                 <Script
-                    id="google-adsense"
+                    id="adsense-init"
                     async
                     src={`https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=${ADSENSE_CLIENT_ID}`}
                     crossOrigin="anonymous"

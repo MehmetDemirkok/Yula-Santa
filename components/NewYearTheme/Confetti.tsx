@@ -20,14 +20,10 @@ interface ConfettiPiece {
 }
 
 const colors = [
-  "#FFD700", // Gold
-  "#C0C0C0", // Silver
-  "#FF6B6B", // Red
-  "#4ECDC4", // Teal
-  "#A855F7", // Purple
-  "#F59E0B", // Amber
-  "#EC4899", // Pink
-  "#10B981", // Emerald
+  "#FFFFFF", // Pure White
+  "#E0F2FE", // Light Blue
+  "#F8FAFC", // Ghost White
+  "#BAE6FD", // Sky Blue tint
 ];
 
 export function Confetti() {
@@ -35,18 +31,18 @@ export function Confetti() {
 
   useEffect(() => {
     const pieces: ConfettiPiece[] = [];
-    const pieceCount = 80;
+    const pieceCount = 30; // Reduced from 80 for a more subtle effect
 
     for (let i = 0; i < pieceCount; i++) {
       pieces.push({
         id: i,
         x: Math.random() * 100,
         color: colors[Math.floor(Math.random() * colors.length)],
-        size: Math.random() * 8 + 4,
+        size: Math.random() * 12 + 6, // Slightly larger flakes
         rotation: Math.random() * 360,
-        animationDuration: Math.random() * 4 + 6,
-        animationDelay: Math.random() * -10,
-        shape: Math.random() > 0.5 ? "rect" : "circle",
+        animationDuration: Math.random() * 6 + 10, // Slower fall
+        animationDelay: Math.random() * -15,
+        shape: "circle", // Circles looks better for soft snow
       });
     }
 
@@ -58,14 +54,17 @@ export function Confetti() {
       <style jsx>{`
         @keyframes confetti-fall {
           0% {
-            transform: translateY(-20px) rotate(0deg) scale(1);
-            opacity: 1;
+            transform: translateY(-20px) rotate(0deg) scale(0.8);
+            opacity: 0;
           }
-          80% {
-            opacity: 1;
+          10% {
+            opacity: 0.8;
+          }
+          90% {
+            opacity: 0.8;
           }
           100% {
-            transform: translateY(100vh) rotate(720deg) scale(0.5);
+            transform: translateY(100vh) rotate(360deg) scale(1.2);
             opacity: 0;
           }
         }
@@ -75,10 +74,10 @@ export function Confetti() {
             transform: translateX(0);
           }
           25% {
-            transform: translateX(30px);
+            transform: translateX(50px);
           }
           75% {
-            transform: translateX(-30px);
+            transform: translateX(-50px);
           }
         }
         
@@ -89,7 +88,12 @@ export function Confetti() {
         }
         
         .confetti-inner {
-          animation: confetti-sway 2s ease-in-out infinite;
+          animation: confetti-sway 4s ease-in-out infinite;
+          display: flex;
+          items-center: center;
+          justify-content: center;
+          color: white;
+          text-shadow: 0 0 8px rgba(255, 255, 255, 0.4);
         }
       `}</style>
 
@@ -106,14 +110,13 @@ export function Confetti() {
           <div
             className="confetti-inner"
             style={{
-              width: `${piece.size}px`,
-              height: piece.shape === "rect" ? `${piece.size * 1.5}px` : `${piece.size}px`,
-              backgroundColor: piece.color,
-              borderRadius: piece.shape === "circle" ? "50%" : "2px",
+              fontSize: `${piece.size}px`,
+              opacity: 0.6,
               transform: `rotate(${piece.rotation}deg)`,
-              boxShadow: `0 0 4px ${piece.color}`,
             }}
-          />
+          >
+            ❄
+          </div>
         </div>
       ))}
     </div>

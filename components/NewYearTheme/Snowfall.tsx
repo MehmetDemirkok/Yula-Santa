@@ -22,16 +22,16 @@ export function Snowfall() {
 
   useEffect(() => {
     const flakes: Snowflake[] = [];
-    const flakeCount = 50;
+    const flakeCount = 20; // Reduced from 50 for a more balanced look
 
     for (let i = 0; i < flakeCount; i++) {
       flakes.push({
         id: i,
         x: Math.random() * 100,
-        size: Math.random() * 8 + 4,
-        animationDuration: Math.random() * 10 + 8,
-        animationDelay: Math.random() * -15,
-        opacity: Math.random() * 0.6 + 0.4,
+        size: Math.random() * 6 + 3, // Slightly smaller flakes
+        animationDuration: Math.random() * 10 + 12, // Even slower
+        animationDelay: Math.random() * -20,
+        opacity: Math.random() * 0.4 + 0.3,
       });
     }
 

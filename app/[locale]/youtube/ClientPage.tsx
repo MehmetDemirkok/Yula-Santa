@@ -284,9 +284,9 @@ export default function YouTubeGiveaway() {
     };
 
     return (
-        <main className="min-h-screen min-h-dvh flex flex-col items-center p-3 sm:p-4 pt-24 sm:pt-32 relative overflow-hidden bg-gradient-to-b from-red-50 via-gray-50 to-white safe-area-inset-bottom">
-            <div className="absolute top-0 left-0 w-48 sm:w-72 md:w-96 h-48 sm:h-72 md:h-96 bg-red-200 rounded-full blur-[80px] sm:blur-[100px] md:blur-[120px] opacity-40 -translate-x-1/2 -translate-y-1/2" />
-            <div className="absolute bottom-0 right-0 w-48 sm:w-72 md:w-96 h-48 sm:h-72 md:h-96 bg-gray-200 rounded-full blur-[80px] sm:blur-[100px] md:blur-[120px] opacity-40 translate-x-1/3 translate-y-1/3" />
+        <main className="min-h-screen min-h-dvh flex flex-col items-center p-3 sm:p-4 pt-24 sm:pt-32 relative overflow-hidden bg-gradient-to-b from-red-50 via-gray-50 to-white dark:from-gray-900 dark:via-gray-900 dark:to-gray-950 safe-area-inset-bottom transition-colors duration-300">
+            <div className="absolute top-0 left-0 w-48 sm:w-72 md:w-96 h-48 sm:h-72 md:h-96 bg-red-200 dark:bg-red-500/20 rounded-full blur-[80px] sm:blur-[100px] md:blur-[120px] opacity-40 -translate-x-1/2 -translate-y-1/2" />
+            <div className="absolute bottom-0 right-0 w-48 sm:w-72 md:w-96 h-48 sm:h-72 md:h-96 bg-gray-200 dark:bg-gray-500/20 rounded-full blur-[80px] sm:blur-[100px] md:blur-[120px] opacity-40 translate-x-1/3 translate-y-1/3" />
 
             <div className="z-10 w-full max-w-2xl space-y-4 sm:space-y-6">
                 {/* Header */}
@@ -294,16 +294,16 @@ export default function YouTubeGiveaway() {
                     <div className="inline-flex items-center justify-center p-3 sm:p-4 bg-red-600 rounded-xl sm:rounded-2xl shadow-lg">
                         <Youtube className="w-8 h-8 sm:w-10 sm:h-10 text-white" strokeWidth={1.5} />
                     </div>
-                    <h1 className="text-2xl sm:text-3xl md:text-4xl font-black text-gray-900 tracking-tight">
+                    <h1 className="text-2xl sm:text-3xl md:text-4xl font-black text-gray-900 dark:text-white tracking-tight">
                         {t.giveaway.youtubeTitle}
                     </h1>
-                    <p className="text-gray-500 max-w-lg mx-auto text-sm sm:text-base px-2">
+                    <p className="text-gray-500 dark:text-gray-400 max-w-lg mx-auto text-sm sm:text-base px-2">
                         {t.giveaway.youtubeDesc}
                     </p>
                 </div>
 
                 {/* Main Card */}
-                <div className="bg-white/90 backdrop-blur-xl rounded-2xl sm:rounded-3xl shadow-xl border border-white/50 overflow-hidden min-h-[400px]">
+                <div className="bg-white/90 dark:bg-gray-800/90 backdrop-blur-xl rounded-2xl sm:rounded-3xl shadow-xl dark:shadow-2xl border border-white/50 dark:border-white/10 overflow-hidden min-h-[400px]">
                     {/* Tab Navigation */}
                     <div className={`flex border-b border-gray-100 ${isRolling ? 'opacity-50 pointer-events-none' : ''}`}>
                         <button
