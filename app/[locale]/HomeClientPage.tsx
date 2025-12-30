@@ -34,7 +34,7 @@ export default function HomeClientPage() {
             desc: t('giveaway.instagramDesc'),
             icon: Instagram,
             href: `/${locale}/instagram`,
-            color: "from-purple-500 via-pink-500 to-orange-500",
+            color: "bg-purple-500 from-purple-500 via-pink-500 to-orange-500",
             shadow: "shadow-pink-200 dark:shadow-pink-500/20"
         },
         {
@@ -42,7 +42,7 @@ export default function HomeClientPage() {
             desc: t('giveaway.youtubeDesc'),
             icon: Youtube,
             href: `/${locale}/youtube`,
-            color: "from-red-600 to-red-500",
+            color: "bg-red-600 from-red-600 to-red-500",
             shadow: "shadow-red-200 dark:shadow-red-500/20"
         },
         {
@@ -50,7 +50,7 @@ export default function HomeClientPage() {
             desc: t('giveaway.twitterDesc'),
             icon: Twitter,
             href: `/${locale}/twitter`,
-            color: "from-gray-900 to-gray-700",
+            color: "bg-gray-900 from-gray-900 to-gray-700",
             shadow: "shadow-gray-200 dark:shadow-gray-500/20"
         },
         {
@@ -62,7 +62,7 @@ export default function HomeClientPage() {
                 </svg>
             ),
             href: `/${locale}/tiktok`,
-            color: "from-black to-gray-800",
+            color: "bg-black from-black to-gray-800",
             shadow: "shadow-cyan-100 dark:shadow-cyan-500/20"
         },
         {
@@ -70,7 +70,7 @@ export default function HomeClientPage() {
             desc: t('meta.description').split('.')[0],
             icon: Gift,
             href: `/${locale}/secret-santa`,
-            color: "from-santa-red to-red-500",
+            color: "bg-santa-red from-santa-red to-red-500",
             shadow: "shadow-red-200 dark:shadow-red-500/20"
         }
     ];
