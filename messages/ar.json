@@ -279,6 +279,7 @@
             "roll": "ارمِ العملة",
             "rolling": "جاري الرمي...",
             "reset": "إعادة تعيين",
+            "edge": "The coin landed on its edge! No one wins. Please try again.",
             "aboutTitle": "عن رمي العملة",
             "aboutText": "اتخذ قرارات سريعة مع ملك أم كتاب الخاص بنا."
         },
@@ -311,6 +312,7 @@
             "label": "المشاركين",
             "draw": "اسحب قشة",
             "reset": "إعادة تعيين",
+            "edge": "The coin landed on its edge! No one wins. Please try again.",
             "lost": "لقد خسرت! لقد سحبت القشة القصيرة.",
             "saved": "لقد نجوت! القشة طويلة.",
             "aboutTitle": "عن سحب القش",

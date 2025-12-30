@@ -313,6 +313,10 @@
             "roll": "Roll Dice",
             "rolling": "Rolling...",
             "total": "Total",
+            "oneDie": "Die",
+            "twoDice": "Dice",
+            "threeDice": "Dice",
+            "clear": "Clear",
             "history": "History",
             "aboutTitle": "About Dice Roller",
             "aboutText": "Roll dice online for free. Use our professional dice simulator for board games.",
@@ -334,6 +338,7 @@
             "roll": "Flip Coin",
             "rolling": "Flipping...",
             "reset": "Reset",
+            "edge": "The coin landed on its edge! No one wins. Please try again.",
             "aboutTitle": "About Coin Flip",
             "aboutText": "Make quick decisions with our online heads or tails generator."
         },

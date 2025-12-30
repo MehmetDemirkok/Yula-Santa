@@ -278,6 +278,7 @@
             "roll": "Бросить",
             "rolling": "Бросаем...",
             "reset": "Сброс",
+            "edge": "The coin landed on its edge! No one wins. Please try again.",
             "aboutTitle": "About Coin Flip",
             "aboutText": "Make quick decisions with our online heads or tails generator."
         },

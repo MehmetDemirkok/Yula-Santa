@@ -262,6 +262,10 @@
             "roll": "Zar At",
             "rolling": "Atılıyor...",
             "total": "Toplam",
+            "oneDie": "Zar",
+            "twoDice": "Zar",
+            "threeDice": "Zar",
+            "clear": "Temizle",
             "history": "Son Atışlar",
             "aboutTitle": "Zar Atma Oyunu Hakkında",
             "aboutText": "YulaSanta zar atma aracı ile online ücretsiz zar atabilirsiniz. Tavla, okey, monopoly ve diğer masa oyunları için profesyonel zar simülatörümüzü kullanın. 1 veya 2 zar seçerek gerçekçi zar atma deneyimi yaşayın.",
@@ -294,6 +298,7 @@
             "roll": "Para At",
             "rolling": "Atılıyor...",
             "reset": "Sıfırla",
+            "edge": "Para dik geldi, kimsenin şansı yok. Lütfen yeniden deneyiniz.",
             "aboutTitle": "Yazı Tura Hakkında",
             "aboutText": "Hızlı karar vermeniz gereken durumlarda online yazı tura aracımızı kullanabilirsiniz."
         },

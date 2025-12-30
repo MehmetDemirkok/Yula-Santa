@@ -279,6 +279,7 @@
             "roll": "Tirar",
             "rolling": "Tirando...",
             "reset": "Reiniciar",
+            "edge": "The coin landed on its edge! No one wins. Please try again.",
             "aboutTitle": "About Coin Flip",
             "aboutText": "Make quick decisions with our online heads or tails generator."
         },
@@ -311,6 +312,7 @@
             "label": "Número de participantes",
             "draw": "Tirar vareta",
             "reset": "Reiniciar",
+            "edge": "The coin landed on its edge! No one wins. Please try again.",
             "lost": "Você perdeu! Você tirou a vareta curta.",
             "saved": "Salvo! Sua vareta é longa.",
             "aboutTitle": "Sobre o Jogo",

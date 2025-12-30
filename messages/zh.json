@@ -279,6 +279,7 @@
             "roll": "掷硬币",
             "rolling": "滚动中...",
             "reset": "重置",
+            "edge": "The coin landed on its edge! No one wins. Please try again.",
             "aboutTitle": "About Coin Flip",
             "aboutText": "Make quick decisions with our online heads or tails generator."
         },
@@ -311,6 +312,7 @@
             "label": "参与人数",
             "draw": "抽签",
             "reset": "重置",
+            "edge": "The coin landed on its edge! No one wins. Please try again.",
             "lost": "你输了！你抽到了短签。",
             "saved": "安全！你抽到的是长签。",
             "aboutTitle": "关于游戏",

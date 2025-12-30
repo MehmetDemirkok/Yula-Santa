@@ -120,7 +120,7 @@ export default function CoinFlipPage() {
     const params = useParams();
     const locale = params.locale as string || 'tr';
 
-    const [result, setResult] = useState<'heads' | 'tails' | null>(null);
+    const [result, setResult] = useState<'heads' | 'tails' | 'edge' | null>(null);
     const [isFlipping, setIsFlipping] = useState(false);
     const [flipCount, setFlipCount] = useState({ heads: 0, tails: 0 });
 
@@ -354,7 +354,9 @@ export default function CoinFlipPage() {
         shake();
 
         const checkInterval = setInterval(() => {
-            if (body.velocity.length() < 0.1 && body.position.y < 0.6) {
+            // Relaxed condition: Checking if velocity is low.
+            // Increased Y threshold to 3.0 because if it stands on edge (radius 2), Y is ~2.0.
+            if (body.velocity.length() < 0.1 && body.position.y < 3.0) {
                 clearInterval(checkInterval);
 
                 // Detect Face
@@ -362,12 +364,23 @@ export default function CoinFlipPage() {
                 const coinUp = body.vectorToWorldFrame(new CANNON.Vec3(0, 1, 0));
                 const dot = coinUp.dot(up);
 
-                const outcome = dot > 0 ? 'heads' : 'tails';
+                let outcome: 'heads' | 'tails' | 'edge';
+
+                // Check if standing on edge (dot product close to 0)
+                if (Math.abs(dot) < 0.2) {
+                    outcome = 'edge';
+                } else {
+                    outcome = dot > 0 ? 'heads' : 'tails';
+                }
+
                 setResult(outcome);
-                setFlipCount(prev => ({
-                    ...prev,
-                    [outcome]: prev[outcome] + 1
-                }));
+
+                if (outcome !== 'edge') {
+                    setFlipCount(prev => ({
+                        ...prev,
+                        [outcome]: prev[outcome] + 1
+                    }));
+                }
                 setIsFlipping(false);
             }
         }, 100);
@@ -403,16 +416,38 @@ export default function CoinFlipPage() {
                     >
 
                         {result && !isFlipping && (
-                            <div className="absolute top-4 left-1/2 -translate-x-1/2 z-20 animate-slide-up">
-                                <div className={`px-6 py-2 rounded-full shadow-lg border border-white/20 ${result === 'heads'
-                                    ? 'bg-gradient-to-r from-slate-700 to-slate-600'
-                                    : 'bg-gradient-to-r from-red-600 to-red-500'
-                                    }`}>
-                                    <span className="text-white font-black uppercase text-sm tracking-widest whitespace-nowrap flex items-center gap-2">
-                                        {result === 'heads' ? t('heads') : t('tails')}
-                                    </span>
-                                </div>
-                            </div>
+                            <>
+                                {result === 'edge' ? (
+                                    <div className="absolute inset-0 z-30 flex flex-col items-center justify-center p-6 bg-black/20 backdrop-blur-sm animate-fade-in text-center">
+                                        <div className="bg-white dark:bg-gray-800 p-6 rounded-3xl shadow-2xl max-w-sm w-full border-4 border-amber-400 transform transition-all animate-bounce-slow">
+                                            <div className="w-32 h-32 mx-auto mb-4 rounded-full overflow-hidden border-4 border-amber-200 shadow-inner">
+                                                <img
+                                                    src="/yula.jpeg"
+                                                    alt="Yula"
+                                                    className="w-full h-full object-cover"
+                                                />
+                                            </div>
+                                            <h3 className="text-xl font-black text-amber-600 dark:text-amber-400 mb-2">
+                                                🎲 OOPS!
+                                            </h3>
+                                            <p className="text-gray-700 dark:text-gray-200 font-medium">
+                                                {t('edge')}
+                                            </p>
+                                        </div>
+                                    </div>
+                                ) : (
+                                    <div className="absolute top-4 left-1/2 -translate-x-1/2 z-20 animate-slide-up">
+                                        <div className={`px-6 py-2 rounded-full shadow-lg border border-white/20 ${result === 'heads'
+                                            ? 'bg-gradient-to-r from-slate-700 to-slate-600'
+                                            : 'bg-gradient-to-r from-red-600 to-red-500'
+                                            }`}>
+                                            <span className="text-white font-black uppercase text-sm tracking-widest whitespace-nowrap flex items-center gap-2">
+                                                {result === 'heads' ? t('heads') : t('tails')}
+                                            </span>
+                                        </div>
+                                    </div>
+                                )}
+                            </>
                         )}
                     </div>
 

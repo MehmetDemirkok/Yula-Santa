@@ -279,6 +279,7 @@
             "roll": "Lancer",
             "rolling": "Lancement...",
             "reset": "Réinitialiser",
+            "edge": "The coin landed on its edge! No one wins. Please try again.",
             "aboutTitle": "About Coin Flip",
             "aboutText": "Make quick decisions with our online heads or tails generator."
         },
@@ -311,6 +312,7 @@
             "label": "Nombre de participants",
             "draw": "Tirer une paille",
             "reset": "Réinitialiser",
+            "edge": "The coin landed on its edge! No one wins. Please try again.",
             "lost": "Tu as perdu ! Tu as tiré la courte paille.",
             "saved": "Tu es sauvé ! Ta paille est longue.",
             "aboutTitle": "À propos de la Courte Paille",

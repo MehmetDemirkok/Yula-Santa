@@ -288,6 +288,7 @@
             "roll": "Münze werfen",
             "rolling": "Wird geworfen...",
             "reset": "Zurücksetzen",
+            "edge": "The coin landed on its edge! No one wins. Please try again.",
             "aboutTitle": "Über den Münzwurf",
             "aboutText": "Treffen Sie schnelle Entscheidungen mit unserem Online-Kopf-oder-Zahl-Generator."
         },
@@ -320,6 +321,7 @@
             "label": "Teilnehmer",
             "draw": "Strohhalm ziehen",
             "reset": "Zurücksetzen",
+            "edge": "The coin landed on its edge! No one wins. Please try again.",
             "lost": "Du hast verloren! Du hast den kürzeren Strohhalm gezogen.",
             "saved": "Gerettet! Langer Strohhalm.",
             "aboutTitle": "Über Strohhalm Ziehen",

@@ -396,20 +396,20 @@ export default function DicePage() {
                                 className="w-full sm:w-48 bg-white dark:bg-gray-700 border border-gray-200 dark:border-gray-600 rounded-xl px-4 py-3 text-left flex items-center justify-between shadow-sm hover:border-indigo-400 transition-colors"
                             >
                                 <span className="font-bold text-gray-700 dark:text-gray-200">
-                                    {diceCount} {diceCount === 1 ? t('oneDie') : diceCount === 2 ? t('twoDice') : t('threeDice')}
+                                    {diceCount} {diceCount === 1 ? t('oneDie') : t('twoDice')}
                                 </span>
                                 <ChevronDown className={`w-4 h-4 transition-transform ${isDropdownOpen ? 'rotate-180' : ''}`} />
                             </button>
 
                             {isDropdownOpen && (
                                 <div className="absolute top-full left-0 right-0 mt-2 bg-white dark:bg-gray-700 border border-gray-100 dark:border-gray-600 rounded-xl shadow-xl overflow-hidden z-40 animate-slide-up">
-                                    {[1, 2, 3].map((num) => (
+                                    {[1, 2].map((num) => (
                                         <button
                                             key={num}
                                             onClick={() => selectDiceCount(num)}
                                             className="w-full px-4 py-3 text-left text-sm font-medium hover:bg-indigo-50 dark:hover:bg-gray-600 transition-colors bg-white dark:bg-gray-700 text-gray-900 dark:text-gray-100"
                                         >
-                                            {num} {num === 1 ? t('oneDie') : num === 2 ? t('twoDice') : t('threeDice')}
+                                            {num} {num === 1 ? t('oneDie') : t('twoDice')}
                                         </button>
                                     ))}
                                 </div>

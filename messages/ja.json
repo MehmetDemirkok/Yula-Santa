@@ -278,6 +278,7 @@
             "roll": "投げる",
             "rolling": "投げています...",
             "reset": "リセット",
+            "edge": "The coin landed on its edge! No one wins. Please try again.",
             "aboutTitle": "About Coin Flip",
             "aboutText": "Make quick decisions with our online heads or tails generator."
         },
@@ -310,6 +311,7 @@
             "label": "参加人数",
             "draw": "くじを引く",
             "reset": "リセット",
+            "edge": "The coin landed on its edge! No one wins. Please try again.",
             "lost": "残念！ハズレ（短い棒）を引きました。",
             "saved": "セーフ！長い棒でした。",
             "aboutTitle": "このゲームについて",

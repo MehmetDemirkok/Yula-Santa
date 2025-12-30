@@ -278,6 +278,7 @@
             "roll": "Lancia",
             "rolling": "Lancio...",
             "reset": "Reimposta",
+            "edge": "The coin landed on its edge! No one wins. Please try again.",
             "aboutTitle": "About Coin Flip",
             "aboutText": "Make quick decisions with our online heads or tails generator."
         },
@@ -310,6 +311,7 @@
             "label": "Numero di partecipanti",
             "draw": "Tira la cannuccia",
             "reset": "Reimposta",
+            "edge": "The coin landed on its edge! No one wins. Please try again.",
             "lost": "Hai perso! Hai tirato la cannuccia corta.",
             "saved": "Salvato! La tua cannuccia è lunga.",
             "aboutTitle": "Informazioni sul Gioco",

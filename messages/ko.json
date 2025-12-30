@@ -278,6 +278,7 @@
             "roll": "던지기",
             "rolling": "던지는 중...",
             "reset": "초기화",
+            "edge": "The coin landed on its edge! No one wins. Please try again.",
             "aboutTitle": "About Coin Flip",
             "aboutText": "Make quick decisions with our online heads or tails generator."
         },
@@ -310,6 +311,7 @@
             "label": "참가 인원",
             "draw": "막대 뽑기",
             "reset": "초기화",
+            "edge": "The coin landed on its edge! No one wins. Please try again.",
             "lost": "꽝! 당신이 짧은 막대를 뽑았습니다.",
             "saved": "성공! 긴 막대입니다.",
             "aboutTitle": "게임 정보",
