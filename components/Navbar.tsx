@@ -99,117 +99,119 @@ export function Navbar() {
     ];
 
     return (
-        <header
-            className={cn(
-                "fixed top-0 left-0 right-0 z-[100] transition-all duration-300",
-                scrolled
-                    ? "py-2 bg-white/90 dark:bg-gray-900/95 backdrop-blur-2xl shadow-[0_8px_30px_rgb(0,0,0,0.04)] dark:shadow-[0_8px_30px_rgb(0,0,0,0.3)] border-b border-gray-100 dark:border-white/10"
-                    : "py-4 bg-transparent"
-            )}
-        >
-            <div className="container mx-auto px-4 sm:px-6">
-                <nav className="flex items-center justify-between">
-                    {/* Logo */}
-                    <button
-                        onClick={() => router.push(`/${locale}`)}
-                        className="flex items-center gap-2 group relative z-10"
-                    >
-                        <div className="p-1.5 bg-white dark:bg-gray-800 rounded-xl shadow-sm border border-gray-100 dark:border-gray-700 group-hover:scale-110 transition-transform duration-300 ring-1 ring-gray-100 dark:ring-gray-700">
-                            <img src="/icon.png" alt="YulaSanta Logo" className="w-8 h-8 sm:w-9 sm:h-9 object-contain" />
-                        </div>
-                        <span className="text-xl sm:text-2xl font-black tracking-tight text-gray-900 dark:text-white">
-                            Yula<span className="text-santa-red">Santa</span>
-                        </span>
-                    </button>
-
-                    {/* Desktop Navigation */}
-                    <div className="hidden lg:flex items-center gap-1">
-                        {/* Çekilişler Dropdown */}
-                        <div className="relative group/dropdown">
-                            <button className="flex items-center gap-1.5 px-5 py-2.5 text-sm font-bold text-gray-700 dark:text-gray-300 hover:text-santa-red dark:hover:text-santa-red transition-all rounded-full hover:bg-gray-50/80 dark:hover:bg-white/10">
-                                <Sparkles className="w-4 h-4" />
-                                {t('home.socialMediaGiveaways')}
-                                <ChevronDown className="w-3.5 h-3.5 transition-transform duration-300 group-hover/dropdown:rotate-180" />
-                            </button>
-
-                            <div className="absolute top-full left-0 mt-3 w-max min-w-[340px] lg:min-w-[480px] bg-white/95 dark:bg-gray-900/95 backdrop-blur-2xl rounded-[28px] shadow-[0_20px_60px_rgba(0,0,0,0.18)] dark:shadow-[0_20px_60px_rgba(0,0,0,0.5)] border border-gray-100 dark:border-white/10 opacity-0 invisible group-hover/dropdown:opacity-100 group-hover/dropdown:visible transition-all duration-300 translate-y-4 group-hover/dropdown:translate-y-0 p-3 ring-1 ring-black/[0.03] dark:ring-white/[0.05]">
-                                <div className="flex flex-col gap-2">
-                                    {giveawayLinks.map((link) => (
-                                        <button
-                                            key={link.name}
-                                            onClick={() => router.push(link.href)}
-                                            className="w-full flex items-center gap-4 p-4 rounded-2xl hover:bg-gray-50/80 dark:hover:bg-white/10 transition-all text-left group/item"
-                                        >
-                                            <div className={cn(
-                                                "w-12 h-12 flex-shrink-0 flex items-center justify-center rounded-xl text-white shadow-lg group-hover/item:scale-110 group-hover/item:rotate-3 transition-all duration-300",
-                                                link.color.includes('from') ? `bg-gradient-to-br ${link.color}` : link.color
-                                            )}>
-                                                <link.icon className="w-6 h-6" />
-                                            </div>
-                                            <div className="flex flex-col min-w-0 pr-12">
-                                                <span className="text-base font-black text-gray-900 dark:text-white group-hover/item:text-santa-red transition-colors whitespace-nowrap">{link.name}</span>
-                                                <span className="text-xs font-medium text-gray-400 dark:text-gray-500 leading-tight line-clamp-1">{link.description}</span>
-                                            </div>
-                                        </button>
-                                    ))}
-                                </div>
-                            </div>
-                        </div>
-
-                        {/* Araçlar Dropdown */}
-                        <div className="relative group/dropdown">
-                            <button className="flex items-center gap-1.5 px-5 py-2.5 text-sm font-bold text-gray-700 dark:text-gray-300 hover:text-indigo-600 dark:hover:text-indigo-400 transition-all rounded-full hover:bg-gray-50/80 dark:hover:bg-white/10">
-                                <Gamepad2 className="w-4 h-4" />
-                                {t('tools.title')}
-                                <ChevronDown className="w-3.5 h-3.5 transition-transform duration-300 group-hover/dropdown:rotate-180" />
-                            </button>
-
-                            <div className="absolute top-full right-0 mt-3 w-max min-w-[340px] lg:min-w-[480px] bg-white/95 dark:bg-gray-900/95 backdrop-blur-2xl rounded-[28px] shadow-[0_20px_60px_rgba(0,0,0,0.18)] dark:shadow-[0_20px_60px_rgba(0,0,0,0.5)] border border-gray-100 dark:border-white/10 opacity-0 invisible group-hover/dropdown:opacity-100 group-hover/dropdown:visible transition-all duration-300 translate-y-4 group-hover/dropdown:translate-y-0 p-3 ring-1 ring-black/[0.03] dark:ring-white/[0.05]">
-                                <div className="flex flex-col gap-2">
-                                    {toolLinks.map((link) => (
-                                        <button
-                                            key={link.name}
-                                            onClick={() => router.push(link.href)}
-                                            className="w-full flex items-center gap-4 p-4 rounded-2xl hover:bg-gray-50/80 dark:hover:bg-white/10 transition-all text-left group/item"
-                                        >
-                                            <div className={cn("w-12 h-12 flex-shrink-0 flex items-center justify-center rounded-xl text-white shadow-lg group-hover/item:scale-110 group-hover/item:-rotate-3 transition-all duration-300", link.color)}>
-                                                <link.icon className="w-6 h-6" />
-                                            </div>
-                                            <div className="flex flex-col min-w-0 pr-12">
-                                                <span className="text-base font-black text-gray-900 dark:text-white group-hover/item:text-indigo-600 dark:group-hover/item:text-indigo-400 transition-colors whitespace-nowrap">{link.name}</span>
-                                                <span className="text-xs font-medium text-gray-400 dark:text-gray-500 leading-tight line-clamp-1">{link.description}</span>
-                                            </div>
-                                        </button>
-                                    ))}
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
-                    {/* Right Side: Theme Toggle, Language & Mobile Toggle */}
-                    <div className="flex items-center gap-2 sm:gap-3">
-                        {/* Theme Toggle - Desktop */}
-                        <div className="hidden sm:block">
-                            <ThemeToggle />
-                        </div>
-
-                        <div className="hidden sm:block">
-                            <LanguageSwitcher />
-                        </div>
-
+        <>
+            <header
+                className={cn(
+                    "fixed top-0 left-0 right-0 z-[100] transition-all duration-300",
+                    scrolled
+                        ? "py-2 bg-white/90 dark:bg-gray-900/95 backdrop-blur-2xl shadow-[0_8px_30px_rgb(0,0,0,0.04)] dark:shadow-[0_8px_30px_rgb(0,0,0,0.3)] border-b border-gray-100 dark:border-white/10"
+                        : "py-4 bg-transparent"
+                )}
+            >
+                <div className="container mx-auto px-4 sm:px-6">
+                    <nav className="flex items-center justify-between">
+                        {/* Logo */}
                         <button
-                            onClick={() => setIsMenuOpen(!isMenuOpen)}
-                            className="lg:hidden p-2.5 rounded-xl bg-gray-50 dark:bg-white/10 text-gray-600 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-white/20 transition-colors border border-gray-100 dark:border-white/10"
+                            onClick={() => router.push(`/${locale}`)}
+                            className="flex items-center gap-2 group relative z-10"
                         >
-                            {isMenuOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
+                            <div className="p-1.5 bg-white dark:bg-gray-800 rounded-xl shadow-sm border border-gray-100 dark:border-gray-700 group-hover:scale-110 transition-transform duration-300 ring-1 ring-gray-100 dark:ring-gray-700">
+                                <img src="/icon.png" alt="YulaSanta Logo" className="w-8 h-8 sm:w-9 sm:h-9 object-contain" />
+                            </div>
+                            <span className="text-xl sm:text-2xl font-black tracking-tight text-gray-900 dark:text-white">
+                                Yula<span className="text-santa-red">Santa</span>
+                            </span>
                         </button>
-                    </div>
-                </nav>
-            </div>
+
+                        {/* Desktop Navigation */}
+                        <div className="hidden lg:flex items-center gap-1">
+                            {/* Çekilişler Dropdown */}
+                            <div className="relative group/dropdown">
+                                <button className="flex items-center gap-1.5 px-5 py-2.5 text-sm font-bold text-gray-700 dark:text-gray-300 hover:text-santa-red dark:hover:text-santa-red transition-all rounded-full hover:bg-gray-50/80 dark:hover:bg-white/10">
+                                    <Sparkles className="w-4 h-4" />
+                                    {t('home.socialMediaGiveaways')}
+                                    <ChevronDown className="w-3.5 h-3.5 transition-transform duration-300 group-hover/dropdown:rotate-180" />
+                                </button>
+
+                                <div className="absolute top-full left-0 mt-3 w-max min-w-[340px] lg:min-w-[480px] bg-white/95 dark:bg-gray-900/95 backdrop-blur-2xl rounded-[28px] shadow-[0_20px_60px_rgba(0,0,0,0.18)] dark:shadow-[0_20px_60px_rgba(0,0,0,0.5)] border border-gray-100 dark:border-white/10 opacity-0 invisible group-hover/dropdown:opacity-100 group-hover/dropdown:visible transition-all duration-300 translate-y-4 group-hover/dropdown:translate-y-0 p-3 ring-1 ring-black/[0.03] dark:ring-white/[0.05]">
+                                    <div className="flex flex-col gap-2">
+                                        {giveawayLinks.map((link) => (
+                                            <button
+                                                key={link.name}
+                                                onClick={() => router.push(link.href)}
+                                                className="w-full flex items-center gap-4 p-4 rounded-2xl hover:bg-gray-50/80 dark:hover:bg-white/10 transition-all text-left group/item"
+                                            >
+                                                <div className={cn(
+                                                    "w-12 h-12 flex-shrink-0 flex items-center justify-center rounded-xl text-white shadow-lg group-hover/item:scale-110 group-hover/item:rotate-3 transition-all duration-300",
+                                                    link.color.includes('from') ? `bg-gradient-to-br ${link.color}` : link.color
+                                                )}>
+                                                    <link.icon className="w-6 h-6" />
+                                                </div>
+                                                <div className="flex flex-col min-w-0 pr-12">
+                                                    <span className="text-base font-black text-gray-900 dark:text-white group-hover/item:text-santa-red transition-colors whitespace-nowrap">{link.name}</span>
+                                                    <span className="text-xs font-medium text-gray-400 dark:text-gray-500 leading-tight line-clamp-1">{link.description}</span>
+                                                </div>
+                                            </button>
+                                        ))}
+                                    </div>
+                                </div>
+                            </div>
+
+                            {/* Araçlar Dropdown */}
+                            <div className="relative group/dropdown">
+                                <button className="flex items-center gap-1.5 px-5 py-2.5 text-sm font-bold text-gray-700 dark:text-gray-300 hover:text-indigo-600 dark:hover:text-indigo-400 transition-all rounded-full hover:bg-gray-50/80 dark:hover:bg-white/10">
+                                    <Gamepad2 className="w-4 h-4" />
+                                    {t('tools.title')}
+                                    <ChevronDown className="w-3.5 h-3.5 transition-transform duration-300 group-hover/dropdown:rotate-180" />
+                                </button>
+
+                                <div className="absolute top-full right-0 mt-3 w-max min-w-[340px] lg:min-w-[480px] bg-white/95 dark:bg-gray-900/95 backdrop-blur-2xl rounded-[28px] shadow-[0_20px_60px_rgba(0,0,0,0.18)] dark:shadow-[0_20px_60px_rgba(0,0,0,0.5)] border border-gray-100 dark:border-white/10 opacity-0 invisible group-hover/dropdown:opacity-100 group-hover/dropdown:visible transition-all duration-300 translate-y-4 group-hover/dropdown:translate-y-0 p-3 ring-1 ring-black/[0.03] dark:ring-white/[0.05]">
+                                    <div className="flex flex-col gap-2">
+                                        {toolLinks.map((link) => (
+                                            <button
+                                                key={link.name}
+                                                onClick={() => router.push(link.href)}
+                                                className="w-full flex items-center gap-4 p-4 rounded-2xl hover:bg-gray-50/80 dark:hover:bg-white/10 transition-all text-left group/item"
+                                            >
+                                                <div className={cn("w-12 h-12 flex-shrink-0 flex items-center justify-center rounded-xl text-white shadow-lg group-hover/item:scale-110 group-hover/item:-rotate-3 transition-all duration-300", link.color)}>
+                                                    <link.icon className="w-6 h-6" />
+                                                </div>
+                                                <div className="flex flex-col min-w-0 pr-12">
+                                                    <span className="text-base font-black text-gray-900 dark:text-white group-hover/item:text-indigo-600 dark:group-hover/item:text-indigo-400 transition-colors whitespace-nowrap">{link.name}</span>
+                                                    <span className="text-xs font-medium text-gray-400 dark:text-gray-500 leading-tight line-clamp-1">{link.description}</span>
+                                                </div>
+                                            </button>
+                                        ))}
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        {/* Right Side: Theme Toggle, Language & Mobile Toggle */}
+                        <div className="flex items-center gap-2 sm:gap-3">
+                            {/* Theme Toggle - Desktop */}
+                            <div className="hidden sm:block">
+                                <ThemeToggle />
+                            </div>
+
+                            <div className="hidden sm:block">
+                                <LanguageSwitcher />
+                            </div>
+
+                            <button
+                                onClick={() => setIsMenuOpen(!isMenuOpen)}
+                                className="lg:hidden p-2.5 rounded-xl bg-gray-50 dark:bg-white/10 text-gray-600 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-white/20 transition-colors border border-gray-100 dark:border-white/10"
+                            >
+                                {isMenuOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
+                            </button>
+                        </div>
+                    </nav>
+                </div>
+            </header>
 
             {/* Mobile Navigation Menu */}
             <div className={cn(
-                "fixed inset-0 top-[70px] bg-white dark:bg-gray-900 z-[90] lg:hidden transition-all duration-300 ease-in-out overflow-y-auto pb-20",
+                "fixed inset-0 top-0 pt-24 bg-white dark:bg-gray-900 z-[90] lg:hidden transition-all duration-300 ease-in-out overflow-y-auto pb-20",
                 isMenuOpen ? "translate-x-0 opacity-100" : "translate-x-full opacity-0"
             )}>
                 <div className="p-4 space-y-8">
@@ -275,6 +277,6 @@ export function Navbar() {
                     </div>
                 </div>
             </div>
-        </header>
+        </>
     );
 }
