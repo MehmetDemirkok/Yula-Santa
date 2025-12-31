@@ -67,8 +67,8 @@ export async function generateMetadata({
         keywords: meta.keywords,
 
         icons: {
-            icon: '/favicon.ico',
-            shortcut: '/favicon.ico',
+            icon: '/icon.png',
+            shortcut: '/icon.png',
             apple: '/apple-touch-icon.png',
         },
         manifest: '/manifest.json',
