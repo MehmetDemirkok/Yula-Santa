@@ -22,6 +22,7 @@ import { Button } from "@/components/ui/Button";
 import { useTranslations } from "next-intl";
 import { cn } from "@/lib/utils";
 import { CountdownBanner } from "@/components/NewYearTheme/CountdownBanner";
+import { isNewYearThemeActive } from "@/components/NewYearTheme/config";
 
 export default function HomeClientPage() {
     const router = useRouter();
@@ -93,10 +94,12 @@ export default function HomeClientPage() {
                 </div>
 
                 <div className="container mx-auto px-4 text-center">
-                    <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-red-50 dark:bg-red-500/20 text-santa-red text-sm font-bold mb-8 animate-bounce">
-                        <Sparkles className="w-4 h-4" />
-                        <span>{t('home.happyNewYear')}</span>
-                    </div>
+                    {isNewYearThemeActive() && (
+                        <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-red-50 dark:bg-red-500/20 text-santa-red text-sm font-bold mb-8 animate-bounce">
+                            <Sparkles className="w-4 h-4" />
+                            <span>{t('home.happyNewYear')}</span>
+                        </div>
+                    )}
 
                     <h1 className="text-5xl lg:text-7xl font-black text-gray-900 dark:text-white tracking-tight mb-6 leading-tight">
                         {t('meta.title').split('|')[0]}
@@ -105,9 +108,11 @@ export default function HomeClientPage() {
                         {t('meta.description')}
                     </p>
 
-                    <div className="flex justify-center mb-10">
-                        <CountdownBanner />
-                    </div>
+                    {isNewYearThemeActive() && (
+                        <div className="flex justify-center mb-10">
+                            <CountdownBanner />
+                        </div>
+                    )}
 
                     <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
                         <Button
