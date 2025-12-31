@@ -31,7 +31,7 @@
         "uploadList": "Charger une liste (Excel/PDF)",
         "uploading": "Chargement...",
         "clearList": "Effacer la liste",
-        "startDraw": "Lancer le Tirage",
+        "startDraw": "Lancer le Tirage du Nouvel An",
         "match": "Matcher",
         "happyNewYear": "🎄 Bonne Année !",
         "minPeople3": "Ajoutez au moins 3 personnes",
@@ -502,5 +502,13 @@
             "q2": "Mes données sont-elles en sécurité?",
             "q3": "Combien de personnes ?"
         }
+    },
+    "howToPlay": {
+        "title": "Comment jouer ?",
+        "subtitle": "Organiser un tirage au sort Secret Santa n'a jamais été aussi simple ! Voici les étapes :",
+        "step1": "Ajoutez les noms de tous les participants à la liste.",
+        "step2": "Sélectionnez le mode de tirage (Tirage Secret ou Match Direct).",
+        "step3": "Cliquez sur le bouton 'Lancer le Tirage'.",
+        "step4": "Sur la page de résultats, chacun sélectionne son nom pour voir à qui il doit offrir un cadeau !"
     }
 }

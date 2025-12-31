@@ -31,7 +31,7 @@
         "uploadList": "Cargar lista (Excel/PDF)",
         "uploading": "Cargando...",
         "clearList": "Limpiar lista",
-        "startDraw": "Hacer Sorteo",
+        "startDraw": "Realizar Sorteo de Año Nuevo",
         "match": "Emparejar",
         "happyNewYear": "🎄 ¡Feliz Año Nuevo!",
         "minPeople3": "Añade al menos 3 personas",
@@ -502,5 +502,13 @@
             "q2": "¿Mis datos están seguros?",
             "q3": "¿Cuántas personas?"
         }
+    },
+    "howToPlay": {
+        "title": "¿Cómo jugar?",
+        "subtitle": "¡Organizar un sorteo de Amigo Invisible nunca ha sido tan fácil! Aquí tienes los pasos:",
+        "step1": "Añade los nombres de todos los participantes a la lista.",
+        "step2": "Selecciona el modo de sorteo (Sorteo Secreto o Emparejamiento Directo).",
+        "step3": "Haz clic en el botón 'Realizar Sorteo'.",
+        "step4": "¡En la página de resultados, cada uno selecciona su nombre para ver a quién le toca regalar!"
     }
 }

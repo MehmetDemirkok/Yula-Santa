@@ -38,7 +38,7 @@
         "uploadList": "Upload List (Excel/PDF)",
         "uploading": "Uploading...",
         "clearList": "Clear List",
-        "startDraw": "Start Draw",
+        "startDraw": "Start New Year's Draw",
         "match": "Match",
         "happyNewYear": "🎄 Happy New Year!",
         "minPeople3": "Add at least 3 people",
@@ -518,5 +518,13 @@
             "q2": "Is my data safe?",
             "q3": "How many people can I include in a giveaway?"
         }
+    },
+    "howToPlay": {
+        "title": "How to Play?",
+        "subtitle": "Setting up a Secret Santa draw has never been easier! Here are the steps:",
+        "step1": "Add the names of all participants to the list.",
+        "step2": "Select the draw mode (Secret Draw or Direct Match).",
+        "step3": "Click the 'Start Draw' button.",
+        "step4": "On the result page, everyone selects their name to see who they are buying a gift for!"
     }
 }

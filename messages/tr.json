@@ -40,7 +40,7 @@
         "uploadList": "Toplu Liste Yükle (Excel/PDF)",
         "uploading": "Yükleniyor...",
         "clearList": "Listeyi Temizle",
-        "startDraw": "Çekilişi Yap",
+        "startDraw": "Yılbaşı Çekilişi Yap",
         "match": "Eşleştir",
         "happyNewYear": "🎄 Mutlu Yıllar!",
         "minPeople3": "En az 3 kişi eklemelisiniz",
@@ -520,5 +520,13 @@
             "q2": "Verilerim güvende mi?",
             "q3": "Kaç kişi ile çekiliş yapabilirim?"
         }
+    },
+    "howToPlay": {
+        "title": "Nasıl Oynanır?",
+        "subtitle": "Yılbaşı çekilişi yapmak hiç bu kadar kolay olmamıştı! İşte adımlar:",
+        "step1": "Katılımcıların isimlerini listeye ekleyin.",
+        "step2": "Eşleşme türünü seçin (Gizli Çekiliş veya Eşleştirme).",
+        "step3": "'Çekilişi Başlat' butonuna tıklayın.",
+        "step4": "Sonuç sayfasında herkes kendi ismini seçerek kime hediye alacağını öğrensin!"
     }
 }

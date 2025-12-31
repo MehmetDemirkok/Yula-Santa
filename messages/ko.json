@@ -29,7 +29,7 @@
         "uploadList": "리스트 업로드 (Excel/PDF)",
         "uploading": "업로드 중...",
         "clearList": "리스트 초기화",
-        "startDraw": "추첨하기",
+        "startDraw": "새해 추첨 시작",
         "match": "매칭",
         "happyNewYear": "🎄 새해 복 많이 받으세요!",
         "minPeople3": "최소 3명을 추가해주세요",
@@ -501,5 +501,13 @@
             "q2": "Is my data safe?",
             "q3": "How many people can I include in a giveaway?"
         }
+    },
+    "howToPlay": {
+        "title": "사용 방법",
+        "subtitle": "시크릿 산타 추첨 설정이 그 어느 때보다 쉬워졌습니다! 단계는 다음과 같습니다:",
+        "step1": "모든 참가자의 이름을 목록에 추가합니다.",
+        "step2": "추첨 모드(비밀 추첨 또는 직접 매칭)를 선택합니다.",
+        "step3": "'새해 추첨 시작' 버튼을 클릭합니다.",
+        "step4": "결과 페이지에서 각자 자신의 이름을 선택하여 선물을 줄 사람을 확인합니다!"
     }
 }

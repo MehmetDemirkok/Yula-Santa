@@ -40,7 +40,7 @@
         "uploadList": "Liste hochladen (Excel/PDF)",
         "uploading": "Hochladen...",
         "clearList": "Liste löschen",
-        "startDraw": "Ziehung starten",
+        "startDraw": "Neujahrsverlosung starten",
         "match": "Zuordnen",
         "happyNewYear": "🎄 Frohes neues Jahr!",
         "minPeople3": "Mindestens 3 Personen hinzufügen",
@@ -511,5 +511,13 @@
             "q2": "Sind meine Daten sicher?",
             "q3": "Wie viele Personen?"
         }
+    },
+    "howToPlay": {
+        "title": "Wie wird gespielt?",
+        "subtitle": "Ein Secret Santa Gewinnspiel einzurichten war noch nie so einfach! Hier sind die Schritte:",
+        "step1": "Füge die Namen aller Teilnehmer zur Liste hinzu.",
+        "step2": "Wähle den Ziehungsmodus (Geheime Ziehung oder Direktes Matching).",
+        "step3": "Klicke auf den 'Verlosung starten' Button.",
+        "step4": "Auf der Ergebnisseite wählt jeder seinen Namen aus, um zu sehen, für wen er ein Geschenk kaufen soll!"
     }
 }

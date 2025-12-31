@@ -30,7 +30,7 @@
         "uploadList": "Carica Lista (Excel/PDF)",
         "uploading": "Caricamento...",
         "clearList": "Pulisci Lista",
-        "startDraw": "Fai il Sorteggio",
+        "startDraw": "Avvia Estrazione di Capodanno",
         "match": "Abbina",
         "happyNewYear": "🎄 Felice Anno Nuovo!",
         "minPeople3": "Aggiungi almeno 3 persone",
@@ -501,5 +501,13 @@
             "q2": "I miei dati sono al sicuro?",
             "q3": "Quante persone?"
         }
+    },
+    "howToPlay": {
+        "title": "Come giocare?",
+        "subtitle": "Organizzare un'estrazione di Babbo Natale Segreto non è mai stato così facile! Ecco i passaggi:",
+        "step1": "Aggiungi i nomi di tutti i partecipanti alla lista.",
+        "step2": "Seleziona la modalità di estrazione (Estrazione Segreta o Abbinamento Diretto).",
+        "step3": "Clicca sul pulsante 'Avvia Estrazione'.",
+        "step4": "Nella pagina dei risultati, ognuno seleziona il proprio nome per vedere a chi deve fare il regalo!"
     }
 }

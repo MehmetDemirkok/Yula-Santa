@@ -31,7 +31,7 @@
         "uploadList": "Carregar Lista (Excel/PDF)",
         "uploading": "Carregando...",
         "clearList": "Limpar Lista",
-        "startDraw": "Fazer Sorteio",
+        "startDraw": "Iniciar Sorteio de Ano Novo",
         "match": "Combinar",
         "happyNewYear": "🎄 Feliz Ano Novo!",
         "minPeople3": "Adicione pelo menos 3 pessoas",
@@ -502,5 +502,13 @@
             "q2": "Is my data safe?",
             "q3": "How many people can I include in a giveaway?"
         }
+    },
+    "howToPlay": {
+        "title": "Como jogar?",
+        "subtitle": "Organizar um sorteio de Amigo Secreto nunca foi tão fácil! Aqui estão os passos:",
+        "step1": "Adicione os nomes de todos os participantes à lista.",
+        "step2": "Selecione o modo de sorteio (Sorteio Secreto ou Correspondência Direta).",
+        "step3": "Clique no botão 'Iniciar Sorteio'.",
+        "step4": "Na página de resultados, cada um seleciona seu nome para ver para quem vai comprar um presente!"
     }
 }

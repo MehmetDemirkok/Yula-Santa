@@ -29,7 +29,7 @@
         "uploadList": "リストをアップロード (Excel/PDF)",
         "uploading": "アップロード中...",
         "clearList": "リストをクリア",
-        "startDraw": "抽選を行う",
+        "startDraw": "新年抽選を始める",
         "match": "マッチング",
         "happyNewYear": "🎄 ハッピーニューイヤー！",
         "minPeople3": "3人以上追加してください",
@@ -501,5 +501,13 @@
             "q2": "Is my data safe?",
             "q3": "How many people can I include in a giveaway?"
         }
+    },
+    "howToPlay": {
+        "title": "遊び方",
+        "subtitle": "シークレットサンタの抽選を設定するのはこれまでになく簡単です！手順は以下の通りです：",
+        "step1": "参加者全員の名前をリストに追加します。",
+        "step2": "抽選モード（秘密の抽選または直接マッチ）を選択します。",
+        "step3": "「新年抽選を始める」ボタンをクリックします。",
+        "step4": "結果ページで、全員が自分の名前を選択して、誰にプレゼントを贈るかを確認します！"
     }
 }

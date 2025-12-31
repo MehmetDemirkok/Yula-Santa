@@ -8,7 +8,7 @@
 
 import { useState, useEffect, useRef } from "react";
 import { useRouter, useParams } from "next/navigation";
-import { Plus, Trash2, Gift, Sparkles, FileUp, Instagram, Youtube, Twitter } from "lucide-react";
+import { Plus, Trash2, Gift, Sparkles, FileUp, Instagram, Youtube, Twitter, HelpCircle } from "lucide-react";
 import { Button } from "@/components/ui/Button";
 import { Input } from "@/components/ui/Input";
 import { useTranslations } from 'next-intl';
@@ -331,6 +331,27 @@ export default function Home() {
                         <CountdownBanner />
                     </div>
                 )}
+
+                {/* How to Play Section */}
+                <div className="w-full mt-4 bg-white/60 dark:bg-gray-800/60 backdrop-blur-sm rounded-2xl p-5 border border-white/50 dark:border-gray-700/50 shadow-sm">
+                    <h3 className="text-lg font-bold text-gray-900 dark:text-white mb-3 text-center flex items-center justify-center gap-2">
+                        <HelpCircle className="w-5 h-5 text-santa-red" />
+                        {t('howToPlay.title')}
+                    </h3>
+                    <p className="text-sm text-gray-600 dark:text-gray-300 mb-4 text-center leading-relaxed font-medium">
+                        {t('howToPlay.subtitle')}
+                    </p>
+                    <ul className="space-y-3">
+                        {[1, 2, 3, 4].map((step) => (
+                            <li key={step} className="flex gap-3 text-sm text-gray-600 dark:text-gray-300 items-start text-left">
+                                <span className="flex-shrink-0 w-6 h-6 rounded-full bg-red-100 dark:bg-red-900/40 text-santa-red font-bold text-xs flex items-center justify-center mt-0.5 border border-red-200 dark:border-red-800/50">
+                                    {step}
+                                </span>
+                                <span>{t(`howToPlay.step${step}`)}</span>
+                            </li>
+                        ))}
+                    </ul>
+                </div>
 
                 {/* Social Media Giveaways Section */}
                 <div className="w-full space-y-3 sm:space-y-4 mt-3 sm:mt-4">
