@@ -11,7 +11,7 @@
 
 // Yılbaşı temasını açıp kapatmak için bu değeri değiştirin
 // true = tema aktif, false = tema devre dışı
-export const ENABLE_NEW_YEAR_THEME = true;
+export const ENABLE_NEW_YEAR_THEME = false;
 
 // Yılbaşı teması otomatik bitiş tarihi (bu tarihten sonra tema otomatik kapanır)
 // Format: YYYY-MM-DD
