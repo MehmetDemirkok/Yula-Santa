@@ -258,7 +258,11 @@
                 "记录掷骰历史",
                 "移动端适配设计",
                 "完全免费，无需注册"
-            ]
+            ],
+            "oneDie": "骰子",
+            "twoDice": "骰子",
+            "threeDice": "骰子",
+            "clear": "清除"
         },
         "coinFlipMeta": {
             "title": "🪙 掷硬币 | 免费掷硬币抽奖 - YulaSanta",
@@ -355,7 +359,20 @@
             "view": "查看头像",
             "helper": "以全尺寸和高清格式显示头像照片。",
             "aboutTitle": "关于头像查看器",
-            "aboutText": "使用我们的免费工具查看并下载高质量的 Instagram 用户头像。"
+            "aboutText": "使用我们的免费工具查看并下载高质量的 Instagram 用户头像。",
+            "usernameLabel": "用户名",
+            "searchButton": "搜索",
+            "loading": "正在加载个人资料...",
+            "downloadHD": "下载高清",
+            "downloadNormal": "下载普通",
+            "openInInstagram": "在Instagram中打开",
+            "searchAnother": "← 搜索其他资料",
+            "tryAgain": "重试",
+            "posts": "帖子",
+            "followers": "粉丝",
+            "following": "关注",
+            "errorEmptyUsername": "请输入用户名",
+            "errorGeneric": "发生错误"
         },
         "instagramProfileMeta": {
             "title": "🖼️ IG 头像查看器 | 高清下载 - YulaSanta",

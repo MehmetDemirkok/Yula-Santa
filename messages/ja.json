@@ -257,7 +257,11 @@
                 "Roll history is recorded",
                 "Mobile-friendly design",
                 "Completely free, no registration required"
-            ]
+            ],
+            "oneDie": "サイコロ",
+            "twoDice": "サイコロ",
+            "threeDice": "サイコロ",
+            "clear": "クリア"
         },
         "coinFlipMeta": {
             "title": "🪙 コイン投げ | 無料コイン・トス - YulaSanta",
@@ -354,7 +358,20 @@
             "view": "画像を見る",
             "helper": "プロフィール写真をフルサイズかつ高画質で表示します。",
             "aboutTitle": "PPビューアーについて",
-            "aboutText": "無料ツールを使って、インスタユーザーのプロフィール画像を高品質で閲覧・保存できます。"
+            "aboutText": "無料ツールを使って、インスタユーザーのプロフィール画像を高品質で閲覧・保存できます。",
+            "usernameLabel": "ユーザー名",
+            "searchButton": "検索",
+            "loading": "プロフィールを読み込み中...",
+            "downloadHD": "HDをダウンロード",
+            "downloadNormal": "通常ダウンロード",
+            "openInInstagram": "Instagramで開く",
+            "searchAnother": "← 別のプロフィールを検索",
+            "tryAgain": "再試行",
+            "posts": "投稿",
+            "followers": "フォロワー",
+            "following": "フォロー中",
+            "errorEmptyUsername": "ユーザー名を入力してください",
+            "errorGeneric": "エラーが発生しました"
         },
         "instagramProfileMeta": {
             "title": "🖼️ インスタプロフ画像拡大 | 高画質保存 - YulaSanta",

@@ -257,7 +257,11 @@
                 "Roll history is recorded",
                 "Mobile-friendly design",
                 "Completely free, no registration required"
-            ]
+            ],
+            "oneDie": "주사위",
+            "twoDice": "주사위",
+            "threeDice": "주사위",
+            "clear": "지우기"
         },
         "coinFlipMeta": {
             "title": "🪙 동전 던지기 | 무료 온라인 동전 토스 - YulaSanta",
@@ -354,7 +358,20 @@
             "view": "사진 보기",
             "helper": "프로필 사진을 전체 크기 및 고화질로 표시합니다.",
             "aboutTitle": "PP 뷰어 정보",
-            "aboutText": "무료 도구로 인스타 사용자의 프로필 사진을 고품질로 확인하고 저장하세요."
+            "aboutText": "무료 도구로 인스타 사용자의 프로필 사진을 고품질로 확인하고 저장하세요.",
+            "usernameLabel": "사용자 이름",
+            "searchButton": "검색",
+            "loading": "프로필 로딩 중...",
+            "downloadHD": "HD 다운로드",
+            "downloadNormal": "일반 다운로드",
+            "openInInstagram": "Instagram에서 열기",
+            "searchAnother": "← 다른 프로필 검색",
+            "tryAgain": "다시 시도",
+            "posts": "게시물",
+            "followers": "팔로워",
+            "following": "팔로잉",
+            "errorEmptyUsername": "사용자 이름을 입력하세요",
+            "errorGeneric": "오류가 발생했습니다"
         },
         "instagramProfileMeta": {
             "title": "🖼️ 인스타 프로필 확대 | 고화질 다운로드 - YulaSanta",

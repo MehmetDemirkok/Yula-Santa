@@ -258,7 +258,11 @@
                 "Roll history is recorded",
                 "Mobile-friendly design",
                 "Completely free, no registration required"
-            ]
+            ],
+            "oneDie": "نرد",
+            "twoDice": "نرد",
+            "threeDice": "نرد",
+            "clear": "مسح"
         },
         "coinFlipMeta": {
             "title": "🪙 رمي العملة | ملك أم كتاب عبر الإنترنت - YulaSanta",
@@ -355,7 +359,20 @@
             "view": "مشاهدة الصورة",
             "helper": "اعرض صورة الملف الشخصي بالحجم الكامل وبجودة عالية.",
             "aboutTitle": "عن تكبير الصورة",
-            "aboutText": "استخدم أداتنا المجانية لمشاهدة وتحميل صور ملفات إنستغرام الشخصية بجودة عالية."
+            "aboutText": "استخدم أداتنا المجانية لمشاهدة وتحميل صور ملفات إنستغرام الشخصية بجودة عالية.",
+            "usernameLabel": "اسم المستخدم",
+            "searchButton": "بحث",
+            "loading": "جارٍ تحميل الملف الشخصي...",
+            "downloadHD": "تحميل HD",
+            "downloadNormal": "تحميل عادي",
+            "openInInstagram": "فتح في Instagram",
+            "searchAnother": "← البحث عن ملف شخصي آخر",
+            "tryAgain": "حاول مرة أخرى",
+            "posts": "المنشورات",
+            "followers": "المتابعون",
+            "following": "المتابَعون",
+            "errorEmptyUsername": "يرجى إدخال اسم المستخدم",
+            "errorGeneric": "حدث خطأ"
         },
         "instagramProfileMeta": {
             "title": "🖼️ صورة ملف إنستغرام الشخصي | تحميل HD - YulaSanta",

@@ -258,7 +258,11 @@
                 "Historique des lancers enregistré",
                 "Design optimisé pour mobile",
                 "Totalement gratuit, sans inscription"
-            ]
+            ],
+            "oneDie": "Dé",
+            "twoDice": "Dés",
+            "threeDice": "Dés",
+            "clear": "Effacer"
         },
         "coinFlipMeta": {
             "title": "🪙 Pile ou Face | Tirage au sort gratuit - YulaSanta",
@@ -355,7 +359,20 @@
             "view": "Voir la Photo",
             "helper": "Affichez la photo de profil en taille réelle et en HD.",
             "aboutTitle": "À propos de PP Viewer",
-            "aboutText": "Utilisez notre outil gratuit pour voir et télécharger les photos de profil Instagram en haute qualité."
+            "aboutText": "Utilisez notre outil gratuit pour voir et télécharger les photos de profil Instagram en haute qualité.",
+            "usernameLabel": "Nom d'utilisateur",
+            "searchButton": "Rechercher",
+            "loading": "Chargement du profil...",
+            "downloadHD": "Télécharger HD",
+            "downloadNormal": "Télécharger Normal",
+            "openInInstagram": "Ouvrir dans Instagram",
+            "searchAnother": "← Rechercher un autre profil",
+            "tryAgain": "Réessayer",
+            "posts": "Publications",
+            "followers": "Abonnés",
+            "following": "Suivis",
+            "errorEmptyUsername": "Veuillez entrer un nom d'utilisateur",
+            "errorGeneric": "Une erreur s'est produite"
         },
         "instagramProfileMeta": {
             "title": "🖼️ Photo de Profil Instagram | Téléchargement HD - YulaSanta",

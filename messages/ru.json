@@ -257,7 +257,11 @@
                 "Roll history is recorded",
                 "Mobile-friendly design",
                 "Completely free, no registration required"
-            ]
+            ],
+            "oneDie": "Кубик",
+            "twoDice": "Кубики",
+            "threeDice": "Кубики",
+            "clear": "Очистить"
         },
         "coinFlipMeta": {
             "title": "🪙 Орел или Решка | Бросить монетку - YulaSanta",
@@ -353,7 +357,20 @@
             "view": "Смотреть фото",
             "helper": "Просматривайте фото профиля в полном размере и HD качестве.",
             "aboutTitle": "О PP Viewer",
-            "aboutText": "Используйте наш бесплатный инструмент для просмотра и скачивания фото профиля Instagram в высоком качестве."
+            "aboutText": "Используйте наш бесплатный инструмент для просмотра и скачивания фото профиля Instagram в высоком качестве.",
+            "usernameLabel": "Имя пользователя",
+            "searchButton": "Поиск",
+            "loading": "Загрузка профиля...",
+            "downloadHD": "Скачать HD",
+            "downloadNormal": "Скачать обычное",
+            "openInInstagram": "Открыть в Instagram",
+            "searchAnother": "← Искать другой профиль",
+            "tryAgain": "Попробовать снова",
+            "posts": "Публикации",
+            "followers": "Подписчики",
+            "following": "Подписки",
+            "errorEmptyUsername": "Пожалуйста, введите имя пользователя",
+            "errorGeneric": "Произошла ошибка"
         },
         "instagramProfileMeta": {
             "title": "🖼️ Фото профиля Instagram | Скачать в HD - YulaSanta",

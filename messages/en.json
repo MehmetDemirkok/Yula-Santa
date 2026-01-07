@@ -378,10 +378,23 @@
             "title": "Instagram Profile Picture",
             "subtitle": "HD Profile Picture Size",
             "placeholder": "Enter username",
+            "usernameLabel": "Username",
             "view": "View Profile Picture",
             "helper": "View the profile photo in full size and HD.",
             "aboutTitle": "About PP Viewer",
-            "aboutText": "Use our free tool to see and download Instagram profile pictures."
+            "aboutText": "Use our free tool to see and download Instagram profile pictures.",
+            "searchButton": "Search",
+            "loading": "Fetching profile...",
+            "downloadHD": "Download HD",
+            "downloadNormal": "Download Normal",
+            "openInInstagram": "Open in Instagram",
+            "searchAnother": "← Search another profile",
+            "tryAgain": "Try again",
+            "posts": "Posts",
+            "followers": "Followers",
+            "following": "Following",
+            "errorEmptyUsername": "Please enter a username",
+            "errorGeneric": "An error occurred"
         }
     },
     "footer": {

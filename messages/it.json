@@ -257,7 +257,11 @@
                 "Roll history is recorded",
                 "Mobile-friendly design",
                 "Completely free, no registration required"
-            ]
+            ],
+            "oneDie": "Dado",
+            "twoDice": "Dadi",
+            "threeDice": "Dadi",
+            "clear": "Cancella"
         },
         "coinFlipMeta": {
             "title": "🪙 Testa o Croce | Sorteggio gratis - YulaSanta",
@@ -354,7 +358,20 @@
             "view": "Vedi Foto",
             "helper": "Visualizza la foto del profilo in dimensioni reali e HD.",
             "aboutTitle": "Informazioni su PP Viewer",
-            "aboutText": "Usa il nostro strumento gratuito per vedere e scaricare le foto del profilo Instagram in alta qualità."
+            "aboutText": "Usa il nostro strumento gratuito per vedere e scaricare le foto del profilo Instagram in alta qualità.",
+            "usernameLabel": "Nome utente",
+            "searchButton": "Cerca",
+            "loading": "Caricamento profilo...",
+            "downloadHD": "Scarica HD",
+            "downloadNormal": "Scarica Normale",
+            "openInInstagram": "Apri in Instagram",
+            "searchAnother": "← Cerca un altro profilo",
+            "tryAgain": "Riprova",
+            "posts": "Post",
+            "followers": "Follower",
+            "following": "Seguiti",
+            "errorEmptyUsername": "Inserisci un nome utente",
+            "errorGeneric": "Si è verificato un errore"
         },
         "instagramProfileMeta": {
             "title": "🖼️ Foto Profilo Instagram | Download HD - YulaSanta",

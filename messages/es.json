@@ -258,7 +258,11 @@
                 "Roll history is recorded",
                 "Mobile-friendly design",
                 "Completely free, no registration required"
-            ]
+            ],
+            "oneDie": "Dado",
+            "twoDice": "Dados",
+            "threeDice": "Dados",
+            "clear": "Limpiar"
         },
         "coinFlipMeta": {
             "title": "🪙 Cara o Cruz | Sorteo gratis - YulaSanta",
@@ -355,7 +359,20 @@
             "view": "Ver Foto",
             "helper": "Muestra la foto de perfil en tamaño completo y HD.",
             "aboutTitle": "Sobre PP Viewer",
-            "aboutText": "Usa nuestra herramienta gratuita para ver y descargar las fotos de perfil de Instagram en alta calidad."
+            "aboutText": "Usa nuestra herramienta gratuita para ver y descargar las fotos de perfil de Instagram en alta calidad.",
+            "usernameLabel": "Nombre de usuario",
+            "searchButton": "Buscar",
+            "loading": "Cargando perfil...",
+            "downloadHD": "Descargar HD",
+            "downloadNormal": "Descargar Normal",
+            "openInInstagram": "Abrir en Instagram",
+            "searchAnother": "← Buscar otro perfil",
+            "tryAgain": "Reintentar",
+            "posts": "Publicaciones",
+            "followers": "Seguidores",
+            "following": "Siguiendo",
+            "errorEmptyUsername": "Por favor ingrese un nombre de usuario",
+            "errorGeneric": "Ocurrió un error"
         },
         "instagramProfileMeta": {
             "title": "🖼️ Foto de Perfil Instagram | Descarga HD - YulaSanta",
