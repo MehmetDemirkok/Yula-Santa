@@ -30,19 +30,19 @@ import { SITE_URL } from '@/lib/constants';
 // Main locale-based routes (under /[locale]/)
 const localeRoutes = [
     { path: '', priority: 1.0, changeFrequency: 'daily' as const },
-    { path: '/youtube', priority: 0.9, changeFrequency: 'weekly' as const },
-    { path: '/instagram', priority: 0.9, changeFrequency: 'weekly' as const },
-    { path: '/twitter', priority: 0.9, changeFrequency: 'weekly' as const },
-    { path: '/tiktok', priority: 0.9, changeFrequency: 'weekly' as const },
-    { path: '/privacy', priority: 0.3, changeFrequency: 'monthly' as const },
-    { path: '/legal', priority: 0.3, changeFrequency: 'monthly' as const },
-    // Tools routes (now localized)
-    { path: '/tools/dice', priority: 0.8, changeFrequency: 'monthly' as const },
-    { path: '/tools/coin-flip', priority: 0.8, changeFrequency: 'monthly' as const },
-    { path: '/tools/random-number', priority: 0.8, changeFrequency: 'monthly' as const },
-    { path: '/tools/short-straw', priority: 0.8, changeFrequency: 'monthly' as const },
-    { path: '/tools/instagram-story-viewer', priority: 0.85, changeFrequency: 'weekly' as const },
-    { path: '/tools/instagram-profile-picture', priority: 0.85, changeFrequency: 'weekly' as const },
+    { path: '/youtube', priority: 0.95, changeFrequency: 'daily' as const },
+    { path: '/instagram', priority: 0.95, changeFrequency: 'daily' as const },
+    { path: '/twitter', priority: 0.95, changeFrequency: 'daily' as const },
+    { path: '/tiktok', priority: 0.95, changeFrequency: 'daily' as const },
+    { path: '/privacy', priority: 0.5, changeFrequency: 'weekly' as const },
+    { path: '/legal', priority: 0.5, changeFrequency: 'weekly' as const },
+    // Tools routes (high priority for indexing)
+    { path: '/tools/dice', priority: 0.9, changeFrequency: 'daily' as const },
+    { path: '/tools/coin-flip', priority: 0.9, changeFrequency: 'daily' as const },
+    { path: '/tools/random-number', priority: 0.9, changeFrequency: 'daily' as const },
+    { path: '/tools/short-straw', priority: 0.9, changeFrequency: 'daily' as const },
+    { path: '/tools/instagram-story-viewer', priority: 0.95, changeFrequency: 'daily' as const },
+    { path: '/tools/instagram-profile-picture', priority: 0.95, changeFrequency: 'daily' as const },
 ];
 
 export default function sitemap(): MetadataRoute.Sitemap {
