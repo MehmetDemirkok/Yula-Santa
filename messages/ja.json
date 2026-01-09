@@ -437,24 +437,24 @@
                 },
                 "wedding": {
                     "1": {
-                        "title": "Customized Cutting Board",
-                        "desc": "Engraved with the couple's names and wedding date."
+                        "title": "ロマンチックな週末旅行",
+                        "desc": "自然の中や高級ホテルでの忘れられないひととき。"
                     },
                     "2": {
-                        "title": "Smart Home Hub",
-                        "desc": "Help them start their smart home journey together."
+                        "title": "カスタムスターマップ",
+                        "desc": "結婚した瞬間や出会った瞬間の星空の地図。"
                     },
                     "3": {
-                        "title": "Luxury Bedding Set",
-                        "desc": "High-quality sheets for a comfortable new life."
+                        "title": "グルメ料理教室",
+                        "desc": "二人で新しい味を発見できる楽しい体験。"
                     },
                     "4": {
-                        "title": "Coffee Maker Machine",
-                        "desc": "For the couple who loves their morning brew."
+                        "title": "ヴィンテージレコードプレーヤー",
+                        "desc": "音楽好きのためのノスタルジックでロマンチックな贈り物。"
                     },
                     "5": {
-                        "title": "Personalized Photo Album",
-                        "desc": "A beautiful album to store their wedding memories."
+                        "title": "特別なテイスティング体験",
+                        "desc": "ワイン、コーヒー、またはチョコレートのテイスティングで味覚を満たす。"
                     }
                 },
                 "new_year": {

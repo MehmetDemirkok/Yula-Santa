@@ -436,24 +436,24 @@
                 },
                 "wedding": {
                     "1": {
-                        "title": "Customized Cutting Board",
-                        "desc": "Engraved with the couple's names and wedding date."
+                        "title": "Романтические Выходные",
+                        "desc": "Незабываемый отдых на природе или в роскошном отеле."
                     },
                     "2": {
-                        "title": "Smart Home Hub",
-                        "desc": "Help them start their smart home journey together."
+                        "title": "Персонализированная Карта Звездного Неба",
+                        "desc": "Карта неба в момент вашей свадьбы или знакомства."
                     },
                     "3": {
-                        "title": "Luxury Bedding Set",
-                        "desc": "High-quality sheets for a comfortable new life."
+                        "title": "Кулинарный Мастер-класс",
+                        "desc": "Восхитительный опыт открытия новых вкусов вместе."
                     },
                     "4": {
-                        "title": "Coffee Maker Machine",
-                        "desc": "For the couple who loves their morning brew."
+                        "title": "Винтажный Проигрыватель",
+                        "desc": "Ностальгический и романтичный подарок для меломанов."
                     },
                     "5": {
-                        "title": "Personalized Photo Album",
-                        "desc": "A beautiful album to store their wedding memories."
+                        "title": "Эксклюзивная Дегустация",
+                        "desc": "Побалуйте себя дегустацией вина, кофе или шоколада."
                     }
                 },
                 "new_year": {

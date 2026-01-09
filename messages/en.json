@@ -450,24 +450,24 @@
                 },
                 "wedding": {
                     "1": {
-                        "title": "Customized Cutting Board",
-                        "desc": "Engraved with the couple's names and wedding date."
+                        "title": "Romantic Weekend Getaway",
+                        "desc": "An unforgettable getaway in nature or a luxury hotel."
                     },
                     "2": {
-                        "title": "Smart Home Hub",
-                        "desc": "Help them start their smart home journey together."
+                        "title": "Personalized Star Map",
+                        "desc": "The sky map of the moment you got married or met."
                     },
                     "3": {
-                        "title": "Luxury Bedding Set",
-                        "desc": "High-quality sheets for a comfortable new life."
+                        "title": "Gourmet Cooking Class",
+                        "desc": "A delightful experience to discover new flavors together."
                     },
                     "4": {
-                        "title": "Coffee Maker Machine",
-                        "desc": "For the couple who loves their morning brew."
+                        "title": "Vintage Turntable & Records",
+                        "desc": "A nostalgic and romantic gift for music lovers."
                     },
                     "5": {
-                        "title": "Personalized Photo Album",
-                        "desc": "A beautiful album to store their wedding memories."
+                        "title": "Exclusive Tasting Workshop",
+                        "desc": "Indulge your palate with wine, coffee, or chocolate tasting."
                     }
                 },
                 "new_year": {

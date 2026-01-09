@@ -438,24 +438,24 @@
                 },
                 "wedding": {
                     "1": {
-                        "title": "Customized Cutting Board",
-                        "desc": "Engraved with the couple's names and wedding date."
+                        "title": "浪漫周末度假",
+                        "desc": "在大自然或豪华酒店度过难忘的假期。"
                     },
                     "2": {
-                        "title": "Smart Home Hub",
-                        "desc": "Help them start their smart home journey together."
+                        "title": "定制星空图",
+                        "desc": "结婚或相遇那一刻的星空地图。"
                     },
                     "3": {
-                        "title": "Luxury Bedding Set",
-                        "desc": "High-quality sheets for a comfortable new life."
+                        "title": "美食烹饪课程",
+                        "desc": "一起探索新口味的愉快体验。"
                     },
                     "4": {
-                        "title": "Coffee Maker Machine",
-                        "desc": "For the couple who loves their morning brew."
+                        "title": "复古黑胶唱片机",
+                        "desc": "送给音乐爱好者的怀旧浪漫礼物。"
                     },
                     "5": {
-                        "title": "Personalized Photo Album",
-                        "desc": "A beautiful album to store their wedding memories."
+                        "title": "专属品鉴工坊",
+                        "desc": "通过品尝葡萄酒、咖啡或巧克力来犒劳味蕾。"
                     }
                 },
                 "new_year": {

@@ -438,24 +438,24 @@
                 },
                 "wedding": {
                     "1": {
-                        "title": "Customized Cutting Board",
-                        "desc": "Engraved with the couple's names and wedding date."
+                        "title": "Escapade Romantique",
+                        "desc": "Un séjour inoubliable en pleine nature ou dans un hôtel de luxe."
                     },
                     "2": {
-                        "title": "Smart Home Hub",
-                        "desc": "Help them start their smart home journey together."
+                        "title": "Carte des Étoiles Personnalisée",
+                        "desc": "La carte du ciel au moment de votre mariage ou de votre rencontre."
                     },
                     "3": {
-                        "title": "Luxury Bedding Set",
-                        "desc": "High-quality sheets for a comfortable new life."
+                        "title": "Cours de Cuisine Gastronomique",
+                        "desc": "Une expérience délicieuse pour découvrir de nouvelles saveurs ensemble."
                     },
                     "4": {
-                        "title": "Coffee Maker Machine",
-                        "desc": "For the couple who loves their morning brew."
+                        "title": "Tourne-disque Vintage",
+                        "desc": "Un cadeau nostalgique et romantique pour les mélomanes."
                     },
                     "5": {
-                        "title": "Personalized Photo Album",
-                        "desc": "A beautiful album to store their wedding memories."
+                        "title": "Atelier de Dégustation Exclusif",
+                        "desc": "Faites plaisir à votre palais avec une dégustation de vin, café ou chocolat."
                     }
                 },
                 "new_year": {

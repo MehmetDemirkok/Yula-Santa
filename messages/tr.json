@@ -421,24 +421,24 @@
                 },
                 "wedding": {
                     "1": {
-                        "title": "Özel Tasarım Kesme Tahtası",
-                        "desc": "Çiftin isimleri ve evlilik tarihinin işlendiği ahşap tahta."
+                        "title": "Romantik Hafta Sonu Tatili",
+                        "desc": "Doğa ile iç içe veya lüks bir otelde unutulmaz bir kaçamak."
                     },
                     "2": {
-                        "title": "Akıllı Ev Asistanı",
-                        "desc": "Yeni evlerini akıllı hale getirmeleri için başlangıç."
+                        "title": "Kişiye Özel Yıldız Haritası",
+                        "desc": "Evlendiğiniz veya tanıştığınız anın gökyüzü haritası."
                     },
                     "3": {
-                        "title": "Lüks Nevresim Takımı",
-                        "desc": "Konforlu bir yeni hayat için kaliteli tekstil ürünleri."
+                        "title": "Gurme Yemek Kursu",
+                        "desc": "Birlikte yeni lezzetler keşfedebileceğiniz keyifli bir deneyim."
                     },
                     "4": {
-                        "title": "Kahve Makinesi",
-                        "desc": "Sabah kahvesini seven çiftler için vazgeçilmez."
+                        "title": "Vintage Pikap ve Plak Koleksiyonu",
+                        "desc": "Müzik tutkunu çiftler için nostaljik ve romantik bir hediye."
                     },
                     "5": {
-                        "title": "Kişiselleştirilmiş Fotoğraf Albümü",
-                        "desc": "Düğün anılarını saklayabilecekleri şık bir albüm."
+                        "title": "Özel Tadım Atölyesi",
+                        "desc": "Şarap, kahve veya çikolata tadımı ile damak zevkinizi şımartın."
                     }
                 },
                 "new_year": {
