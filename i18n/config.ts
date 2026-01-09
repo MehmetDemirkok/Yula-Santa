@@ -31,6 +31,9 @@ export type Locale = (typeof locales)[number];
 // Default locale (fallback)
 export const defaultLocale: Locale = 'tr';
 
+// Locale prefix strategy
+export const localePrefix = 'as-needed';
+
 // Locale display names
 export const localeNames: Record<Locale, string> = {
     tr: 'Türkçe',

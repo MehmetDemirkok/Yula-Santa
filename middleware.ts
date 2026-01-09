@@ -21,7 +21,7 @@
  */
 
 import createMiddleware from 'next-intl/middleware';
-import { locales, defaultLocale } from './i18n/config';
+import { locales, defaultLocale, localePrefix } from './i18n/config';
 
 export default createMiddleware({
     // Supported locales
@@ -33,7 +33,7 @@ export default createMiddleware({
     // Prefix the default locale in the URL
     // 'always' = /tr/page, /en/page
     // 'as-needed' = /page (for tr), /en/page
-    localePrefix: 'as-needed',
+    localePrefix,
 
     // Cookie name for persisting locale preference
     localeCookie: {
