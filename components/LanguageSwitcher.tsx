@@ -29,8 +29,7 @@ export function LanguageSwitcher() {
 
     const currentLocale = (params.locale as Locale) || 'tr';
 
-    // Get the path without the locale prefix
-    const pathWithoutLocale = pathname.replace(`/${currentLocale}`, '') || '/';
+
 
     // Close dropdown when clicking outside
     useEffect(() => {
@@ -107,13 +106,20 @@ export function LanguageSwitcher() {
                         <div className="max-h-[60vh] sm:max-h-80 overflow-y-auto overflow-x-hidden p-2 custom-scrollbar">
                             {locales.map((locale) => {
                                 const isActive = locale === currentLocale;
+                                // Handle path replacement securely with regex
+                                const pathWithoutLocale = pathname.replace(new RegExp(`^/${currentLocale}(/|$)`), '$1') || '/';
                                 const href = `/${locale}${pathWithoutLocale === '/' ? '' : pathWithoutLocale}`;
 
                                 return (
                                     <Link
                                         key={locale}
                                         href={href}
-                                        onClick={() => setIsOpen(false)}
+                                        onClick={() => {
+                                            setIsOpen(false);
+                                            // Explicitly set cookie to ensure preference persists, 
+                                            // especially when redirecting to default locale (tr) which might strip the prefix
+                                            document.cookie = `NEXT_LOCALE=${locale}; path=/; max-age=31536000; SameSite=Lax`;
+                                        }}
                                         className={`flex items-center gap-4 sm:gap-3 px-4 sm:px-3 py-3.5 sm:py-2.5 rounded-xl sm:rounded-lg transition-all ${isActive
                                             ? 'bg-red-50 text-santa-red shadow-sm sm:shadow-none font-bold'
                                             : 'hover:bg-gray-50 text-gray-600 hover:text-gray-900 font-medium'
@@ -123,7 +129,7 @@ export function LanguageSwitcher() {
                                         hrefLang={locale}
                                     >
                                         <span className="text-2xl sm:text-lg shadow-sm rounded-sm overflow-hidden">{localeFlags[locale]}</span>
-                                        <span className="flex-1 text-base sm:text-sm">{localeNames[locale]}</span>
+                                        <span className="text-base sm:text-sm">{localeNames[locale]}</span>
                                         {isActive && (
                                             <div className="bg-red-100 p-1 rounded-full sm:bg-transparent sm:p-0">
                                                 <span className="text-santa-red text-sm">✓</span>
