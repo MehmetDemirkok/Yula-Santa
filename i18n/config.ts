@@ -32,7 +32,9 @@ export type Locale = (typeof locales)[number];
 export const defaultLocale: Locale = 'tr';
 
 // Locale prefix strategy
-export const localePrefix = 'as-needed';
+// 'always' ensures all locales have URL prefix (/tr, /en, etc.)
+// This prevents middleware from re-detecting browser language on every request
+export const localePrefix = 'always';
 
 // Locale display names
 export const localeNames: Record<Locale, string> = {

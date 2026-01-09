@@ -1,6 +1,17 @@
+/**
+ * ═══════════════════════════════════════════════════════════════════════════
+ * Navigation Utilities for next-intl
+ * ═══════════════════════════════════════════════════════════════════════════
+ * 
+ * This file exports navigation utilities that are locale-aware.
+ * Updated for next-intl v4.x which uses createNavigation instead of 
+ * createSharedPathnamesNavigation.
+ * 
+ * ═══════════════════════════════════════════════════════════════════════════
+ */
 
-import { createSharedPathnamesNavigation } from 'next-intl/navigation';
+import { createNavigation } from 'next-intl/navigation';
 import { locales, localePrefix } from './config';
 
-export const { Link, redirect, usePathname, useRouter } =
-    createSharedPathnamesNavigation({ locales, localePrefix });
+export const { Link, redirect, usePathname, useRouter, permanentRedirect } =
+    createNavigation({ locales, localePrefix });

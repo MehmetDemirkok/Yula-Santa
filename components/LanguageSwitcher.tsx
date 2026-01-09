@@ -19,7 +19,7 @@ import { useState, useRef, useEffect } from 'react';
 import { useParams, usePathname } from 'next/navigation';
 import Link from 'next/link';
 import { Globe, ChevronDown } from 'lucide-react';
-import { locales, localeNames, localeFlags, type Locale, defaultLocale, localePrefix } from '@/i18n/config';
+import { locales, localeNames, localeFlags, type Locale } from '@/i18n/config';
 
 export function LanguageSwitcher() {
     const [isOpen, setIsOpen] = useState(false);
@@ -108,12 +108,7 @@ export function LanguageSwitcher() {
                                 const isActive = locale === currentLocale;
                                 // Handle path replacement securely with regex
                                 const pathWithoutLocale = pathname.replace(new RegExp(`^/${currentLocale}(/|$)`), '$1') || '/';
-                                let href = `/${locale}${pathWithoutLocale === '/' ? '' : pathWithoutLocale}`;
-
-                                // Handle "as-needed" prefix strategy for default locale
-                                if (locale === defaultLocale && localePrefix === 'as-needed') {
-                                    href = pathWithoutLocale;
-                                }
+                                const href = `/${locale}${pathWithoutLocale === '/' ? '' : pathWithoutLocale}`;
 
                                 return (
                                     <Link
