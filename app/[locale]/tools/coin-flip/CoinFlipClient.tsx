@@ -326,13 +326,30 @@ export default function CoinFlipPage() {
         const { body } = sceneRef.current.coin;
         const { camera } = sceneRef.current;
 
-        // Start flip
-        body.position.set(0, 1, 0);
-        body.velocity.set(0, 20 + Math.random() * 5, 0);
+        // Randomize initial orientation slightly to prevent identical starting conditions
+        body.quaternion.setFromEuler(
+            Math.random() * Math.PI * 0.1,
+            Math.random() * Math.PI * 2,
+            Math.random() * Math.PI * 0.1
+        );
+
+        // Start flip with more chaotic forces
+        body.position.set(0, 2, 0);
+
+        // Randomize vertical force significantly (15 to 25)
+        // Add slight horizontal drift to make landing position unpredictable
+        body.velocity.set(
+            (Math.random() - 0.5) * 2,
+            18 + Math.random() * 10,
+            (Math.random() - 0.5) * 2
+        );
+
+        // Massive rotation randomization
+        // Randomize direction and magnitude for all axes
         body.angularVelocity.set(
-            (Math.random() - 0.5) * 10,
-            (Math.random() - 0.5) * 5,
-            30 + Math.random() * 20
+            (Math.random() - 0.5) * 100, // Violent rotation on X
+            (Math.random() - 0.5) * 60,  // Spin on Y
+            (Math.random() - 0.5) * 100  // Violent rotation on Z
         );
 
         // Shake Effect

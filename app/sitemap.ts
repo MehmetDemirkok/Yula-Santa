@@ -43,6 +43,7 @@ const localeRoutes = [
     { path: '/tools/short-straw', priority: 0.9, changeFrequency: 'daily' as const },
     { path: '/tools/instagram-story-viewer', priority: 0.95, changeFrequency: 'daily' as const },
     { path: '/tools/instagram-profile-picture', priority: 0.95, changeFrequency: 'daily' as const },
+    { path: '/tools/gift-suggestions', priority: 0.95, changeFrequency: 'daily' as const },
 ];
 
 export default function sitemap(): MetadataRoute.Sitemap {
@@ -61,11 +62,18 @@ export default function sitemap(): MetadataRoute.Sitemap {
                 alternates.languages[altLocale] = `${SITE_URL}/${altLocale}${route.path}`;
             });
 
-            // Add x-default (generic URL that redirects based on locale)
-            alternates.languages['x-default'] = `${SITE_URL}/${defaultLocale}${route.path}`;
+            // Add x-default (generic URL that redirects based on locale or is the default locale)
+            alternates.languages['x-default'] = `${SITE_URL}${route.path}`; // Now pointing to root for default logic
+
+            // Determine the URL for this specific locale entry
+            // If it's the default locale (tr), it should be at the root level (no prefix)
+            // If it's another locale (en, de...), it should have the prefix
+            const localeUrl = locale === defaultLocale
+                ? `${SITE_URL}${route.path}`
+                : `${SITE_URL}/${locale}${route.path}`;
 
             sitemap.push({
-                url: `${SITE_URL}/${locale}${route.path}`,
+                url: localeUrl,
                 lastModified: now,
                 changeFrequency: route.changeFrequency,
                 priority: locale === defaultLocale ? route.priority : route.priority * 0.9,

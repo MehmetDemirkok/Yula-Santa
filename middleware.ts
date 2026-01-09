@@ -33,7 +33,7 @@ export default createMiddleware({
     // Prefix the default locale in the URL
     // 'always' = /tr/page, /en/page
     // 'as-needed' = /page (for tr), /en/page
-    localePrefix: 'always',
+    localePrefix: 'as-needed',
 
     // Cookie name for persisting locale preference
     localeCookie: {
