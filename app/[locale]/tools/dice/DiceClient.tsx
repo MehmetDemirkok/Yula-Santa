@@ -333,12 +333,12 @@ export default function DicePage() {
         const quaternion = die.body.quaternion;
 
         const faces = [
-            { normal: new CANNON.Vec3(0, 0, 1), value: 5 }, // Front
-            { normal: new CANNON.Vec3(0, 0, -1), value: 6 }, // Back
-            { normal: new CANNON.Vec3(0, 1, 0), value: 3 }, // Top
-            { normal: new CANNON.Vec3(0, -1, 0), value: 4 }, // Bottom
-            { normal: new CANNON.Vec3(1, 0, 0), value: 2 }, // Right
-            { normal: new CANNON.Vec3(-1, 0, 0), value: 1 }, // Left
+            { normal: new CANNON.Vec3(0, 0, 1), value: 1 }, // Front (z+) - mapped to texture 1
+            { normal: new CANNON.Vec3(0, 0, -1), value: 6 }, // Back (z-) - mapped to texture 6
+            { normal: new CANNON.Vec3(0, 1, 0), value: 3 }, // Top (y+) - mapped to texture 3
+            { normal: new CANNON.Vec3(0, -1, 0), value: 4 }, // Bottom (y-) - mapped to texture 4
+            { normal: new CANNON.Vec3(1, 0, 0), value: 2 }, // Right (x+) - mapped to texture 2
+            { normal: new CANNON.Vec3(-1, 0, 0), value: 5 }, // Left (x-) - mapped to texture 5
         ];
 
         let bestMatch = 0;
