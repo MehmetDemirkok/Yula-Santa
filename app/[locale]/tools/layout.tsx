@@ -1,6 +1,6 @@
 
 import { Metadata } from "next";
-import Script from "next/script";
+
 import { SITE_URL } from "@/lib/constants";
 import { getSEOMetadata, viewport } from '@/lib/seo';
 
@@ -109,10 +109,8 @@ export default async function ToolsLayout({
 
     return (
         <>
-            <Script
-                id="tools-json-ld"
+            <script
                 type="application/ld+json"
-                strategy="afterInteractive"
                 dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
             />
             <div className="min-h-screen">

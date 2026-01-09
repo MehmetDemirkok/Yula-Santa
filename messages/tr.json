@@ -367,6 +367,446 @@
             "errorEmptyUsername": "Lütfen bir kullanıcı adı girin",
             "errorGeneric": "Bir hata oluştu"
         },
+        "giftSuggestions": "Hediye Önerileri",
+        "giftSuggestionsContent": {
+            "title": "Hediye Önerileri Aracı",
+            "subtitle": "Her özel gün için mükemmel hediye fikirlerini keşfedin",
+            "selectDay": "Bir Özel Gün Seçin",
+            "noDaySelected": "Hediye önerilerini görmek için lütfen bir gün seçin.",
+            "price": "Fiyat",
+            "aboutTitle": "Hediye Önerileri Hakkında",
+            "aboutText": "Dünyadaki tüm özel günler için özenle seçilmiş hediye fikirlerini keşfedin. Doğum günü, düğün veya bayramlar için en güzel hediyeyi kolayca bulun.",
+            "days": {
+                "birthday": "Doğum Günü",
+                "wedding": "Düğün & Yıldönümü",
+                "new_year": "Yeni Yıl",
+                "valentines": "Sevgililer Günü",
+                "womens_day": "Dünya Kadınlar Günü",
+                "mothers_day": "Anneler Günü",
+                "fathers_day": "Babalar Günü",
+                "teachers_day": "Öğretmenler Günü",
+                "christmas": "Noel",
+                "halloween": "Cadılar Bayramı",
+                "baby_shower": "Baby Shower",
+                "housewarming": "Ev Hediyesi",
+                "graduation": "Mezuniyet",
+                "thanksgiving": "Şükran Günü",
+                "eid": "Ramazan Bayramı",
+                "diwali": "Diwali",
+                "hanukkah": "Hanuka",
+                "easter": "Paskalya"
+            },
+            "suggestions": {
+                "birthday": {
+                    "1": {
+                        "title": "Kişiselleştirilmiş Yıldız Haritası",
+                        "desc": "Doğdukları gece gökyüzünün nasıl göründüğünü gösteren özel harita."
+                    },
+                    "2": {
+                        "title": "Kablosuz Gürültü Önleyici Kulaklık",
+                        "desc": "Müzik severler ve sık seyahat edenler için mükemmel."
+                    },
+                    "3": {
+                        "title": "Gurme Hediye Sepeti",
+                        "desc": "Seçkin peynirler, çikolatalar ve kahvelerden oluşan sepet."
+                    },
+                    "4": {
+                        "title": "Akıllı Saat",
+                        "desc": "Teknoloji tutkunları ve sporcular için harika bir hediye."
+                    },
+                    "5": {
+                        "title": "Deneyim Kuponu",
+                        "desc": "Konser bileti, yemek kursu veya yamaç paraşütü deneyimi."
+                    }
+                },
+                "wedding": {
+                    "1": {
+                        "title": "Özel Tasarım Kesme Tahtası",
+                        "desc": "Çiftin isimleri ve evlilik tarihinin işlendiği ahşap tahta."
+                    },
+                    "2": {
+                        "title": "Akıllı Ev Asistanı",
+                        "desc": "Yeni evlerini akıllı hale getirmeleri için başlangıç."
+                    },
+                    "3": {
+                        "title": "Lüks Nevresim Takımı",
+                        "desc": "Konforlu bir yeni hayat için kaliteli tekstil ürünleri."
+                    },
+                    "4": {
+                        "title": "Kahve Makinesi",
+                        "desc": "Sabah kahvesini seven çiftler için vazgeçilmez."
+                    },
+                    "5": {
+                        "title": "Kişiselleştirilmiş Fotoğraf Albümü",
+                        "desc": "Düğün anılarını saklayabilecekleri şık bir albüm."
+                    }
+                },
+                "new_year": {
+                    "1": {
+                        "title": "2026 Ajandası",
+                        "desc": "Yeni yıla planlı ve organize başlamak için."
+                    },
+                    "2": {
+                        "title": "Sağlıklı Yaşam Kutusu",
+                        "desc": "Yeni yılda sağlıklı alışkanlıklar kazanmaları için."
+                    },
+                    "3": {
+                        "title": "Şampanya Kadeh Seti",
+                        "desc": "Yeni yılı kutlamak için şık kadehler."
+                    },
+                    "4": {
+                        "title": "Harfli Battaniye",
+                        "desc": "Kış günleri için sıcak ve kişisel bir hediye."
+                    },
+                    "5": {
+                        "title": "Masa Düzenleyici Set",
+                        "desc": "Ofis veya çalışma masası için şık aksesuarlar."
+                    }
+                },
+                "valentines": {
+                    "1": {
+                        "title": "Spa Günü Paketi",
+                        "desc": "Birlikte rahatlayabileceğiniz masaj ve bakım günü."
+                    },
+                    "2": {
+                        "title": "Özel Tasarım Takı",
+                        "desc": "Kişisel dokunuşlu bir kolye veya bileklik."
+                    },
+                    "3": {
+                        "title": "Romantik Akşam Yemeği",
+                        "desc": "Şık bir restoranda unutulmaz bir yemek."
+                    },
+                    "4": {
+                        "title": "Anı Defteri",
+                        "desc": "Birlikte geçirdiğiniz güzel günlerin fotoğrafları."
+                    },
+                    "5": {
+                        "title": "Çikolata ve Çiçek",
+                        "desc": "Klasik ve zamansız romantik bir jest."
+                    }
+                },
+                "womens_day": {
+                    "1": {
+                        "title": "İlham Veren Kitap",
+                        "desc": "Başarılı kadınların biyografileri veya kişisel gelişim kitabı."
+                    },
+                    "2": {
+                        "title": "Aromaterapi Mum Seti",
+                        "desc": "Rahatlama ve huzur için kaliteli kokular."
+                    },
+                    "3": {
+                        "title": "Bağış Sertifikası",
+                        "desc": "Kadınları güçlendiren bir kuruma onun adına bağış."
+                    },
+                    "4": {
+                        "title": "İpek Eşarp",
+                        "desc": "Zarif ve her zaman moda bir aksesuar."
+                    },
+                    "5": {
+                        "title": "Teraryum veya Çiçek",
+                        "desc": "Yaşamı ve büyümeyi simgeleyen canlı bir hediye."
+                    }
+                },
+                "mothers_day": {
+                    "1": {
+                        "title": "İsimli Kolye",
+                        "desc": "Çocuklarının baş harflerini veya doğum taşlarını taşıyan kolye."
+                    },
+                    "2": {
+                        "title": "Lüks Cilt Bakım Seti",
+                        "desc": "Kendini özel hissetmesi için kaliteli bakım ürünleri."
+                    },
+                    "3": {
+                        "title": "Hafta Sonu Tatili",
+                        "desc": "Dinlenmesi ve yenilenmesi için kısa bir kaçamak."
+                    },
+                    "4": {
+                        "title": "Hava Nemlendirici ve Yağlar",
+                        "desc": "Evin havasını değiştirecek aromaterapi seti."
+                    },
+                    "5": {
+                        "title": "El Yazısı Mektup",
+                        "desc": "Sevginizi ve minnetinizi anlatan samimi bir mektup."
+                    }
+                },
+                "fathers_day": {
+                    "1": {
+                        "title": "Tıraş Bakım Seti",
+                        "desc": "Mükemmel bir tıraş deneyimi için gerekli her şey."
+                    },
+                    "2": {
+                        "title": "Deri Cüzdan",
+                        "desc": "İsminin baş harfleri işlenmiş, uzun ömürlü klasik cüzdan."
+                    },
+                    "3": {
+                        "title": "Mangal Seti",
+                        "desc": "Mangal yapmayı seven babalar için profesyonel aletler."
+                    },
+                    "4": {
+                        "title": "Teknolojik Aksesuar",
+                        "desc": "Yeni bir kulaklık, tablet veya akıllı ev ürünü."
+                    },
+                    "5": {
+                        "title": "Viski Taşları",
+                        "desc": "İçeceğini sulandırmadan soğuk tutan taşlar."
+                    }
+                },
+                "teachers_day": {
+                    "1": {
+                        "title": "Özel Tasarım Kupa",
+                        "desc": "Dünyanın En İyi Öğretmeni yazılı kupa."
+                    },
+                    "2": {
+                        "title": "Kitapçı Hediye Kartı",
+                        "desc": "Okumayı seven öğretmenler için istedikleri kitabı alma şansı."
+                    },
+                    "3": {
+                        "title": "Kalem Seti",
+                        "desc": "Kaliteli ve şık bir dolma kalem veya tükenmez kalem."
+                    },
+                    "4": {
+                        "title": "Saksı Çiçeği",
+                        "desc": "Sınıfı veya masayı renklendirecek canlı bir çiçek."
+                    },
+                    "5": {
+                        "title": "Teşekkür Notu",
+                        "desc": "Öğrenci veya veliden gelen içten bir teşekkür."
+                    }
+                },
+                "christmas": {
+                    "1": {
+                        "title": "Yılbaşı Kazağı",
+                        "desc": "Sıcak tutan, eğlenceli ve temalı kazak."
+                    },
+                    "2": {
+                        "title": "Kutu Oyunu",
+                        "desc": "Yılbaşı gecesi ailece oynanabilecek eğlenceli oyun."
+                    },
+                    "3": {
+                        "title": "Yılbaşı Süsü",
+                        "desc": "Ağaç için kişiselleştirilmiş bir hatıra."
+                    },
+                    "4": {
+                        "title": "Sıcak Çikolata Seti",
+                        "desc": "Kupa ve özel karışım sıcak çikolata."
+                    },
+                    "5": {
+                        "title": "Teknoloji Aksesuarları",
+                        "desc": "Şarj aleti, kılıf veya yeni gadgetlar."
+                    }
+                },
+                "halloween": {
+                    "1": {
+                        "title": "Korku Temalı Dekor",
+                        "desc": "Ev için eğlenceli ve ürkütücü süsler."
+                    },
+                    "2": {
+                        "title": "Şeker Sepeti",
+                        "desc": "Çeşit çeşit şekerlerle dolu dev bir sepet."
+                    },
+                    "3": {
+                        "title": "Kostüm Aksesuarları",
+                        "desc": "Maske, peruk veya makyaj seti."
+                    },
+                    "4": {
+                        "title": "Korku Filmi Koleksiyonu",
+                        "desc": "Maraton yapmak için klasik korku filmleri."
+                    },
+                    "5": {
+                        "title": "Balkabağı Oyma Seti",
+                        "desc": "En iyi feneri yapmak için gerekli aletler."
+                    }
+                },
+                "baby_shower": {
+                    "1": {
+                        "title": "Bez Pastası",
+                        "desc": "Yeni anne babalar için hem pratik hem şık hediye."
+                    },
+                    "2": {
+                        "title": "Bebek Telsizi/Kamerası",
+                        "desc": "Ebeveynlerin içi rahat olsun diye."
+                    },
+                    "3": {
+                        "title": "Zıbın Seti",
+                        "desc": "Bebek için yumuşak ve sevimli kıyafetler."
+                    },
+                    "4": {
+                        "title": "Bebek Anı Defteri",
+                        "desc": "İlklerini kaydetmek için harika bir hediye."
+                    },
+                    "5": {
+                        "title": "Buhar Makinesi",
+                        "desc": "Bebek odasının havasını nemlendirmek için."
+                    }
+                },
+                "housewarming": {
+                    "1": {
+                        "title": "Kapı Süsü",
+                        "desc": "Yeni eve hoş geldin diyen şık bir çelenk."
+                    },
+                    "2": {
+                        "title": "Mutfak Robotu",
+                        "desc": "Pratik yemekler için airfryer veya blender."
+                    },
+                    "3": {
+                        "title": "Tamir Çantası",
+                        "desc": "Yeni evde her zaman lazım olacak temel aletler."
+                    },
+                    "4": {
+                        "title": "Şaraplık",
+                        "desc": "İçecek koleksiyonları için şık bir raf."
+                    },
+                    "5": {
+                        "title": "Akıllı Hoparlör",
+                        "desc": "Evin yeni sesli asistanı."
+                    }
+                },
+                "graduation": {
+                    "1": {
+                        "title": "Evrak Çantası",
+                        "desc": "İlk işi için profesyonel ve şık bir çanta."
+                    },
+                    "2": {
+                        "title": "Kol Saati",
+                        "desc": "Zamanın değerini bilenler için klasik bir hediye."
+                    },
+                    "3": {
+                        "title": "Seyahat Bileti",
+                        "desc": "Kariyerine başlamadan önce güzel bir tatil."
+                    },
+                    "4": {
+                        "title": "Kartvizitlik",
+                        "desc": "Profesyonel ağını kurarken kullanacağı şık aksesuar."
+                    },
+                    "5": {
+                        "title": "Motivasyon Kitabı",
+                        "desc": "Hayatın yeni döneminde rehberlik edecek bir kitap."
+                    }
+                },
+                "thanksgiving": {
+                    "1": {
+                        "title": "Ev Sahibi Hediye Sepeti",
+                        "desc": "Şarap, peynir ve kraker dolu sepet."
+                    },
+                    "2": {
+                        "title": "Servis Tabağı",
+                        "desc": "Sofraya şıklık katacak güzel bir tabak."
+                    },
+                    "3": {
+                        "title": "Çiçek Aranjmanı",
+                        "desc": "Yemek masası için taze çiçekler."
+                    },
+                    "4": {
+                        "title": "Özel Kahve",
+                        "desc": "Yemek sonrası keyif kahvesi."
+                    },
+                    "5": {
+                        "title": "Kutu Oyunu",
+                        "desc": "Yemekten sonra ailece oynamak için."
+                    }
+                },
+                "eid": {
+                    "1": {
+                        "title": "Hurma ve Lokum",
+                        "desc": "Premium hurma ve geleneksel tatlılar."
+                    },
+                    "2": {
+                        "title": "Parfüm veya Oda Kokusu",
+                        "desc": "Kalıcı ve hoş kokular."
+                    },
+                    "3": {
+                        "title": "Bayramlık",
+                        "desc": "Kutlama için şık kıyafetler."
+                    },
+                    "4": {
+                        "title": "Ev Dekorasyonu",
+                        "desc": "Tablo veya dekoratif objeler."
+                    },
+                    "5": {
+                        "title": "Çocuklar İçin Oyuncak",
+                        "desc": "Bayram sevincini artıracak hediyeler."
+                    }
+                },
+                "diwali": {
+                    "1": {
+                        "title": "Diya (Kandil) Seti",
+                        "desc": "Işık festivali için güzel toprak kandiller."
+                    },
+                    "2": {
+                        "title": "Tatlı Kutusu",
+                        "desc": "Geleneksel Hint tatlıları."
+                    },
+                    "3": {
+                        "title": "Altın veya Gümüş Para",
+                        "desc": "Bereket sembolü."
+                    },
+                    "4": {
+                        "title": "Kuru Yemiş Kutusu",
+                        "desc": "Sağlıklı ve premium bir hediye."
+                    },
+                    "5": {
+                        "title": "Fenerler",
+                        "desc": "Rengarenk asma fenerler."
+                    }
+                },
+                "hanukkah": {
+                    "1": {
+                        "title": "Menora",
+                        "desc": "Mumlar için güzel bir şamdan."
+                    },
+                    "2": {
+                        "title": "Çikolata Para",
+                        "desc": "Bayram için geleneksel tatlı."
+                    },
+                    "3": {
+                        "title": "Topaç (Dreidel)",
+                        "desc": "Geleneksel oyun için topaç."
+                    },
+                    "4": {
+                        "title": "Yemek Kitabı",
+                        "desc": "Geleneksel tarifler içeren kitap."
+                    },
+                    "5": {
+                        "title": "Donut (Sufganiyot)",
+                        "desc": "İçi dolgulu çörekler."
+                    }
+                },
+                "easter": {
+                    "1": {
+                        "title": "Paskalya Sepeti",
+                        "desc": "Çikolata yumurta ve tavşanlarla dolu sepet."
+                    },
+                    "2": {
+                        "title": "Oyuncak Tavşan",
+                        "desc": "Çocuklar için yumuşak oyuncak."
+                    },
+                    "3": {
+                        "title": "Bahar Çiçekleri",
+                        "desc": "Lale veya nergis buketi."
+                    },
+                    "4": {
+                        "title": "Paskalya Dekoru",
+                        "desc": "Ev için temalı süsler."
+                    },
+                    "5": {
+                        "title": "Yumurta Boyama Seti",
+                        "desc": "Ailece yapılacak eğlenceli aktivite."
+                    }
+                }
+            }
+        },
+        "giftSuggestionsMeta": {
+            "title": "🎁 Hediye Önerileri Aracı | Özel Günler İçin Hediye Fikirleri - YulaSanta",
+            "description": "Doğum günü, düğün, sevgililer günü ve daha fazlası için mükemmel hediyeyi bulun. Yapay zeka destekli ücretsiz hediye öneri aracı.",
+            "keywords": [
+                "hediye önerileri",
+                "hediye fikirleri",
+                "doğum günü hediyesi",
+                "sevgililer günü hediyesi",
+                "ne hediye alınır",
+                "hediye bulucu"
+            ]
+        },
         "shortStrawMeta": {
             "title": "🎋 Kısa Çöp Oyunu | Short Straw Game Online - YulaSanta",
             "description": "Online kısa çöp çekme oyunu. Grup içinde adil ve eğlenceli seçim yapın.",

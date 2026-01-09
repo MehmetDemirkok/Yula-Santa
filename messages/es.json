@@ -383,6 +383,447 @@
                 "HD profile picture",
                 "pp downloader"
             ]
+        },
+        "giftSuggestions": "Gift Suggestions",
+        "giftSuggestionsContent": {
+            "title": "Gift Suggestions Generator",
+            "subtitle": "Discover perfect gift ideas for every special occasion",
+            "selectDay": "Select an Occasion",
+            "noDaySelected": "Please select a special day to see gift ideas.",
+            "price": "Price",
+            "aboutTitle": "About Gift Suggestions",
+            "aboutText": "Explore our curated list of gift ideas for special days around the world. Whether it's a birthday, wedding, or holiday, find the perfect present easily.",
+            "days": {
+                "birthday": "Birthday",
+                "wedding": "Wedding & Anniversary",
+                "new_year": "New Year",
+                "valentines": "Valentine's Day",
+                "womens_day": "International Women's Day",
+                "mothers_day": "Mother's Day",
+                "fathers_day": "Father's Day",
+                "teachers_day": "Teachers' Day",
+                "christmas": "Christmas",
+                "halloween": "Halloween",
+                "baby_shower": "Baby Shower",
+                "housewarming": "Housewarming",
+                "graduation": "Graduation",
+                "thanksgiving": "Thanksgiving",
+                "eid": "Eid al-Fitr",
+                "diwali": "Diwali",
+                "hanukkah": "Hanukkah",
+                "easter": "Easter"
+            },
+            "suggestions": {
+                "birthday": {
+                    "1": {
+                        "title": "Personalized Star Map",
+                        "desc": "A custom map of the stars on the night they were born."
+                    },
+                    "2": {
+                        "title": "Wireless Noise-Canceling Headphones",
+                        "desc": "Perfect for music lovers or commuters."
+                    },
+                    "3": {
+                        "title": "Gourmet Food Basket",
+                        "desc": "A selection of fine cheeses, chocolates, and wines."
+                    },
+                    "4": {
+                        "title": "Smart Watch",
+                        "desc": "A great gift for fitness enthusiasts and tech lovers."
+                    },
+                    "5": {
+                        "title": "Experience Voucher",
+                        "desc": "Tickets to a concert, a cooking class, or a skydiving session."
+                    }
+                },
+                "wedding": {
+                    "1": {
+                        "title": "Customized Cutting Board",
+                        "desc": "Engraved with the couple's names and wedding date."
+                    },
+                    "2": {
+                        "title": "Smart Home Hub",
+                        "desc": "Help them start their smart home journey together."
+                    },
+                    "3": {
+                        "title": "Luxury Bedding Set",
+                        "desc": "High-quality sheets for a comfortable new life."
+                    },
+                    "4": {
+                        "title": "Coffee Maker Machine",
+                        "desc": "For the couple who loves their morning brew."
+                    },
+                    "5": {
+                        "title": "Personalized Photo Album",
+                        "desc": "A beautiful album to store their wedding memories."
+                    }
+                },
+                "new_year": {
+                    "1": {
+                        "title": "2026 Planner",
+                        "desc": "Start the new year organized and productive."
+                    },
+                    "2": {
+                        "title": "Wellness Subscription Box",
+                        "desc": "Encourage a healthy start to the year."
+                    },
+                    "3": {
+                        "title": "Champagne Flutes",
+                        "desc": "Elegant glasses to toast to the new year."
+                    },
+                    "4": {
+                        "title": "Initial Blanket",
+                        "desc": "A cozy, personalized throw blanket."
+                    },
+                    "5": {
+                        "title": "Desk Organizer Set",
+                        "desc": "Refresh their workspace for the year ahead."
+                    }
+                },
+                "valentines": {
+                    "1": {
+                        "title": "Spa Day Package",
+                        "desc": "A relaxing day of massages and treatments."
+                    },
+                    "2": {
+                        "title": "Custom Jewelry",
+                        "desc": "A necklace or bracelet with a personal touch."
+                    },
+                    "3": {
+                        "title": "Romantic Dinner Reservation",
+                        "desc": "A special meal at a top-rated restaurant."
+                    },
+                    "4": {
+                        "title": "Photo Book",
+                        "desc": "A collection of your best memories together."
+                    },
+                    "5": {
+                        "title": "Chocolate & Flowers",
+                        "desc": "The classic, timeless romantic gesture."
+                    }
+                },
+                "womens_day": {
+                    "1": {
+                        "title": "Empowering Book",
+                        "desc": "A biography of an inspiring woman or self-development book."
+                    },
+                    "2": {
+                        "title": "Aromatic Candle Set",
+                        "desc": "High-quality scents for relaxation."
+                    },
+                    "3": {
+                        "title": "Donation in Her Name",
+                        "desc": "Support a charity that empowers women."
+                    },
+                    "4": {
+                        "title": "Silk Scarf",
+                        "desc": "Elegant and timeless accessory."
+                    },
+                    "5": {
+                        "title": "Plant or Terrarium",
+                        "desc": "A symbol of growth and life."
+                    }
+                },
+                "mothers_day": {
+                    "1": {
+                        "title": "Personalized Necklace",
+                        "desc": "With the initials or birthstones of her children."
+                    },
+                    "2": {
+                        "title": "Luxury Skincare Set",
+                        "desc": "Pamper her with high-end beauty products."
+                    },
+                    "3": {
+                        "title": "Weekend Getaway",
+                        "desc": "A trip to relax and unwind somewhere nice."
+                    },
+                    "4": {
+                        "title": "Diffuser & Essential Oils",
+                        "desc": "Create a calming atmosphere at home."
+                    },
+                    "5": {
+                        "title": "Handwritten Letter",
+                        "desc": "Express your love and gratitude in words."
+                    }
+                },
+                "fathers_day": {
+                    "1": {
+                        "title": "Premium Shaving Kit",
+                        "desc": "Everything he needs for a perfect shave."
+                    },
+                    "2": {
+                        "title": "Leather Wallet",
+                        "desc": "Durable and classic, personalized with initials."
+                    },
+                    "3": {
+                        "title": "BBQ Tool Set",
+                        "desc": "For the master of the grill."
+                    },
+                    "4": {
+                        "title": "Tech Gadget",
+                        "desc": "New headphones, a tablet, or smart home device."
+                    },
+                    "5": {
+                        "title": "Whiskey Stones",
+                        "desc": "Keep his drink cool without diluting it."
+                    }
+                },
+                "teachers_day": {
+                    "1": {
+                        "title": "Custom Mug",
+                        "desc": "World's Best Teacher mug."
+                    },
+                    "2": {
+                        "title": "Bookstore Gift Card",
+                        "desc": "Let them choose their next read."
+                    },
+                    "3": {
+                        "title": "Stationery Set",
+                        "desc": "High-quality pens and notebooks."
+                    },
+                    "4": {
+                        "title": "Classroom Plant",
+                        "desc": "Something green to brighten their day."
+                    },
+                    "5": {
+                        "title": "Thank You Note",
+                        "desc": "A heartfelt message from a student or parent."
+                    }
+                },
+                "christmas": {
+                    "1": {
+                        "title": "Cozy Sweater",
+                        "desc": "Warm and festive for the season."
+                    },
+                    "2": {
+                        "title": "Board Game",
+                        "desc": "Fun for the whole family during holidays."
+                    },
+                    "3": {
+                        "title": "Christmas Ornament",
+                        "desc": "A personalized decoration for the tree."
+                    },
+                    "4": {
+                        "title": "Hot Chocolate Set",
+                        "desc": "Gourmet mix with marshmallows and a mug."
+                    },
+                    "5": {
+                        "title": "Tech Accessories",
+                        "desc": "Chargers, cases, or new gadgets."
+                    }
+                },
+                "halloween": {
+                    "1": {
+                        "title": "Spooky Decor",
+                        "desc": "Fun and scary decorations for the home."
+                    },
+                    "2": {
+                        "title": "Candy Basket",
+                        "desc": "A giant assortment of Halloween treats."
+                    },
+                    "3": {
+                        "title": "Costume Accessories",
+                        "desc": "Masks, wigs, or makeup kits."
+                    },
+                    "4": {
+                        "title": "Horror Movie Collection",
+                        "desc": "Classic scary movies for a marathon."
+                    },
+                    "5": {
+                        "title": "Pumpkin Carving Kit",
+                        "desc": "Tools for creating the best jack-o'-lantern."
+                    }
+                },
+                "baby_shower": {
+                    "1": {
+                        "title": "Diaper Cake",
+                        "desc": "Practical and creative gift for new parents."
+                    },
+                    "2": {
+                        "title": "Baby Monitor",
+                        "desc": "Peace of mind for the parents."
+                    },
+                    "3": {
+                        "title": "Onesie Set",
+                        "desc": "Cute and comfortable clothes for the baby."
+                    },
+                    "4": {
+                        "title": "Baby Book",
+                        "desc": "To record milestones and memories."
+                    },
+                    "5": {
+                        "title": "Humidifier",
+                        "desc": "Essential for the nursery air quality."
+                    }
+                },
+                "housewarming": {
+                    "1": {
+                        "title": "Door Wreath",
+                        "desc": "A welcoming decoration for the front door."
+                    },
+                    "2": {
+                        "title": "Kitchen Gadget",
+                        "desc": "Air fryer, blender, or mixer."
+                    },
+                    "3": {
+                        "title": "Toolkit",
+                        "desc": "Essential tools for any new home owner."
+                    },
+                    "4": {
+                        "title": "Wine Rack",
+                        "desc": "Stylish storage for their collection."
+                    },
+                    "5": {
+                        "title": "Smart Speaker",
+                        "desc": "Voice assistant for the new home."
+                    }
+                },
+                "graduation": {
+                    "1": {
+                        "title": "Briefcase or Bag",
+                        "desc": "Professional bag for their first job."
+                    },
+                    "2": {
+                        "title": "Watch",
+                        "desc": "A classic timepiece to mark the milestone."
+                    },
+                    "3": {
+                        "title": "Travel Vouches",
+                        "desc": "A trip before starting their career."
+                    },
+                    "4": {
+                        "title": "Business Card Holder",
+                        "desc": "Sleek accessory for networking."
+                    },
+                    "5": {
+                        "title": "Motivational Book",
+                        "desc": "Advice for the next chapter of life."
+                    }
+                },
+                "thanksgiving": {
+                    "1": {
+                        "title": "Host Gift Basket",
+                        "desc": "Wine, cheese, and crackers."
+                    },
+                    "2": {
+                        "title": "Serving Platter",
+                        "desc": "Beautiful dish for the table."
+                    },
+                    "3": {
+                        "title": "Flower Centerpiece",
+                        "desc": "Fresh flowers for the holiday table."
+                    },
+                    "4": {
+                        "title": "Specialty Coffee",
+                        "desc": "For after dinner."
+                    },
+                    "5": {
+                        "title": "Board Game",
+                        "desc": "To play with family after the meal."
+                    }
+                },
+                "eid": {
+                    "1": {
+                        "title": "Dates & Sweets",
+                        "desc": "Premium dates and traditional sweets."
+                    },
+                    "2": {
+                        "title": "Fragrance/Oud",
+                        "desc": "Traditional and luxurious scents."
+                    },
+                    "3": {
+                        "title": "New Clothes",
+                        "desc": "Traditional or modern attire for the celebration."
+                    },
+                    "4": {
+                        "title": "Home Decor",
+                        "desc": "Islamic art or lanterns."
+                    },
+                    "5": {
+                        "title": "Toys for Kids",
+                        "desc": "Celebratory gifts for the little ones."
+                    }
+                },
+                "diwali": {
+                    "1": {
+                        "title": "Diya Set",
+                        "desc": "Beautiful clay lamps for the festival of lights."
+                    },
+                    "2": {
+                        "title": "Sweets Box (Mithai)",
+                        "desc": "Assortment of traditional Indian sweets."
+                    },
+                    "3": {
+                        "title": "Gold or Silver Coin",
+                        "desc": "Symbol of prosperity."
+                    },
+                    "4": {
+                        "title": "Dry Fruit Box",
+                        "desc": "Healthy and premium gift option."
+                    },
+                    "5": {
+                        "title": "Lanterns",
+                        "desc": "Colorful hanging lanterns."
+                    }
+                },
+                "hanukkah": {
+                    "1": {
+                        "title": "Menorah",
+                        "desc": "A beautiful Hanukkiah for the candles."
+                    },
+                    "2": {
+                        "title": "Gelt (Chocolate Coins)",
+                        "desc": "Traditional treat for the festival."
+                    },
+                    "3": {
+                        "title": "Dreidels",
+                        "desc": "Spinning tops for the traditional game."
+                    },
+                    "4": {
+                        "title": "Cookbook",
+                        "desc": "Jewish traditional recipes."
+                    },
+                    "5": {
+                        "title": "Sufganiyot",
+                        "desc": "Jelly-filled doughnuts."
+                    }
+                },
+                "easter": {
+                    "1": {
+                        "title": "Easter Egg Basket",
+                        "desc": "Filled with chocolate eggs and bunnies."
+                    },
+                    "2": {
+                        "title": "Stuffed Bunny",
+                        "desc": "Soft toy for children."
+                    },
+                    "3": {
+                        "title": "Spring Flowers",
+                        "desc": "Tulips or daffodils."
+                    },
+                    "4": {
+                        "title": "Easter Decor",
+                        "desc": "Ornaments for the home."
+                    },
+                    "5": {
+                        "title": "DIY Egg Painting Kit",
+                        "desc": "Fun activity for the family."
+                    }
+                }
+            }
+        },
+        "giftSuggestionsMeta": {
+            "title": "🎁 Generador de Ideas de Regalos | Sugerencias Gratis por Ocasión - YulaSanta",
+            "description": "Encuentra el regalo perfecto para cumpleaños, bodas, San Valentín y más. Herramienta gratuita impulsada por IA para sugerencias de regalos en cada ocasión especial.",
+            "keywords": [
+                "ideas de regalos",
+                "sugerencias de regalos",
+                "regalos de cumpleaños",
+                "regalos de boda",
+                "regalos de san valentin",
+                "generador de regalos",
+                "qué comprar"
+            ]
         }
     },
     "footer": {

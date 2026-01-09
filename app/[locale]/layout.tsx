@@ -346,10 +346,9 @@ export default async function LocaleLayout({
         <html lang={locale} dir={dir} suppressHydrationWarning>
             <head>
                 {/* Schema.org Structured Data */}
-                <Script
+                <script
                     id="json-ld"
                     type="application/ld+json"
-                    strategy="beforeInteractive"
                     dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
                 />
 
@@ -357,10 +356,11 @@ export default async function LocaleLayout({
                 <meta name="google-adsense-account" content={ADSENSE_CLIENT_ID} />
 
                 {/* Google AdSense Script */}
-                <script
+                <Script
                     async
                     src={`https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=${ADSENSE_CLIENT_ID}`}
                     crossOrigin="anonymous"
+                    strategy="afterInteractive"
                 />
             </head>
             <body

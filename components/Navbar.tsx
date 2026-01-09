@@ -185,6 +185,15 @@ export function Navbar() {
                                     </div>
                                 </div>
                             </div>
+
+                            {/* Gift Suggestions - Standalone */}
+                            <button
+                                onClick={() => router.push(`/${locale}/tools/gift-suggestions`)}
+                                className="flex items-center gap-1.5 px-5 py-2.5 text-sm font-bold text-gray-700 dark:text-gray-300 hover:text-pink-500 dark:hover:text-pink-400 transition-all rounded-full hover:bg-gray-50/80 dark:hover:bg-white/10"
+                            >
+                                <Gift className="w-4 h-4" />
+                                {t('tools.giftSuggestions')}
+                            </button>
                         </div>
 
                         {/* Right Side: Theme Toggle, Language & Mobile Toggle */}
@@ -223,6 +232,20 @@ export function Navbar() {
                             <LanguageSwitcher />
                         </div>
                     </div>
+
+                    {/* Gift Suggestions - Standalone Mobile */}
+                    <button
+                        onClick={() => router.push(`/${locale}/tools/gift-suggestions`)}
+                        className="w-full flex items-center gap-4 p-4 bg-gradient-to-r from-pink-500/10 to-purple-500/10 dark:from-pink-500/20 dark:to-purple-500/20 rounded-2xl hover:bg-pink-50 dark:hover:bg-pink-500/30 transition-all border border-pink-100 dark:border-pink-500/20 active:scale-[0.98]"
+                    >
+                        <div className="w-12 h-12 flex-shrink-0 flex items-center justify-center rounded-xl bg-pink-500 text-white shadow-md">
+                            <Gift className="w-6 h-6" />
+                        </div>
+                        <div className="flex flex-col text-left min-w-0">
+                            <span className="font-extrabold text-gray-900 dark:text-white leading-none mb-1.5">{t('tools.giftSuggestions')}</span>
+                            <span className="text-[11px] font-medium text-gray-500 dark:text-gray-400 line-clamp-1">{t('tools.giftSuggestionsContent.subtitle')}</span>
+                        </div>
+                    </button>
 
                     {/* Giveaways Section */}
                     <div className="space-y-4">
