@@ -409,7 +409,18 @@
             "congrats": "La ruota si è fermata su:",
             "aboutTitle": "Sulla Ruota della Fortuna",
             "aboutText": "Usa la nostra ruota della fortuna online gratuita per prendere decisioni casuali. Inserisci le tue opzioni e gira la ruota!",
-            "removeWinner": "Rimuovi Vincitore"
+            "removeWinner": "Rimuovi Vincitore",
+            "howToTitle": "Come usare la Ruota della Fortuna?",
+            "howToText": [
+                "1. Inserisci nomi o opzioni nell'elenco o usa la modalità di modifica in blocco.",
+                "2. Clicca sul pulsante 'Gira' per avviare la ruota.",
+                "3. Attendi che la ruota si fermi e riveli il vincitore casuale.",
+                "4. Puoi rimuovere il vincitore dall'elenco e girare di nuovo se necessario."
+            ],
+            "addName": "Aggiungi Nome",
+            "bulkMode": "Modifica in Blocco",
+            "listMode": "Vista Elenco",
+            "clear": "Cancella Tutto"
         },
         "teamGeneratorContent": {
             "title": "Generatore di Squadre",
@@ -421,7 +432,18 @@
             "teams": "Squadre",
             "team": "Squadra",
             "aboutTitle": "Sul Generatore di Squadre",
-            "aboutText": "Crea istantaneamente squadre casuali da un elenco di persone. Ideale per sport, giochi e progetti di gruppo."
+            "aboutText": "Crea istantaneamente squadre casuali da un elenco di persone. Ideale per sport, giochi e progetti di gruppo.",
+            "howToTitle": "Come usare il Generatore di Squadre?",
+            "howToText": [
+                "1. Aggiungi i nomi di tutti i partecipanti all'elenco.",
+                "2. Usa il cursore per selezionare quante squadre vuoi creare.",
+                "3. Clicca su 'Genera Squadre' per assegnare casualmente le persone alle squadre.",
+                "4. Puoi copiare gli elenchi delle squadre negli appunti con un clic."
+            ],
+            "addName": "Aggiungi Nome",
+            "bulkMode": "Modifica in Blocco",
+            "listMode": "Vista Elenco",
+            "clear": "Cancella Tutto"
         },
         "instagramProfileMeta": {
             "title": "🖼️ Foto Profilo Instagram | Download HD - YulaSanta",

@@ -397,7 +397,18 @@
             "congrats": "Das Rad stoppte bei:",
             "aboutTitle": "Über das Glücksrad",
             "aboutText": "Nutzen Sie unser kostenloses Online-Glücksrad für zufällige Entscheidungen. Geben Sie Ihre Optionen ein und drehen Sie das Rad!",
-            "removeWinner": "Gewinner entfernen"
+            "removeWinner": "Gewinner entfernen",
+            "howToTitle": "Wie benutzt man das Glücksrad?",
+            "howToText": [
+                "1. Geben Sie Namen oder Optionen in die Liste ein oder verwenden Sie den Massenbearbeitungsmodus.",
+                "2. Klicken Sie auf den 'Drehen'-Button, um das Rad zu starten.",
+                "3. Warten Sie, bis das Rad stoppt und den zufälligen Gewinner anzeigt.",
+                "4. Sie können den Gewinner aus der Liste entfernen und bei Bedarf erneut drehen."
+            ],
+            "addName": "Namen hinzufügen",
+            "bulkMode": "Massenbearbeitung",
+            "listMode": "Listenansicht",
+            "clear": "Alles löschen"
         },
         "teamGeneratorContent": {
             "title": "Team-Generator",
@@ -409,7 +420,18 @@
             "teams": "Teams",
             "team": "Team",
             "aboutTitle": "Über den Team-Generator",
-            "aboutText": "Erstellen Sie sofort zufällige Teams aus einer Personenliste. Ideal für Sport, Spiele und Gruppenprojekte."
+            "aboutText": "Erstellen Sie sofort zufällige Teams aus einer Personenliste. Ideal für Sport, Spiele und Gruppenprojekte.",
+            "howToTitle": "Wie benutzt man den Team-Generator?",
+            "howToText": [
+                "1. Fügen Sie die Namen aller Teilnehmer zur Liste hinzu.",
+                "2. Verwenden Sie den Schieberegler, um auszuwählen, wie viele Teams Sie erstellen möchten.",
+                "3. Klicken Sie auf 'Teams generieren', um Personen zufällig Teams zuzuweisen.",
+                "4. Sie können die Teamlisten mit einem Klick in die Zwischenablage kopieren."
+            ],
+            "addName": "Namen hinzufügen",
+            "bulkMode": "Massenbearbeitung",
+            "listMode": "Listenansicht",
+            "clear": "Alles löschen"
         },
         "instagramProfileMeta": {
             "title": "🖼️ Instagram Profilbild Viewer | HD Downloader - YulaSanta",

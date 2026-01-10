@@ -410,7 +410,18 @@
             "congrats": "La rueda se detuvo en:",
             "aboutTitle": "Sobre la Rueda de la Fortuna",
             "aboutText": "¡Utilice nuestra rueda de la fortuna online gratuita para tomar decisiones aleatorias. Ingrese sus opciones y gire la rueda!",
-            "removeWinner": "Eliminar Ganador"
+            "removeWinner": "Eliminar Ganador",
+            "howToTitle": "¿Cómo usar la Rueda de la Fortuna?",
+            "howToText": [
+                "1. Ingrese nombres u opciones en la lista o use el modo de edición en bloque.",
+                "2. Haga clic en el botón 'Girar' para iniciar la rueda.",
+                "3. Espere a que la rueda se detenga y revele al ganador aleatorio.",
+                "4. Puede eliminar al ganador de la lista y girar de nuevo si es necesario."
+            ],
+            "addName": "Añadir Nombre",
+            "bulkMode": "Edición en Bloque",
+            "listMode": "Vista de Lista",
+            "clear": "Borrar Todo"
         },
         "teamGeneratorContent": {
             "title": "Generador de Equipos",
@@ -422,7 +433,18 @@
             "teams": "Equipos",
             "team": "Equipo",
             "aboutTitle": "Sobre el Generador de Equipos",
-            "aboutText": "Crea equipos aleatorios al instante a partir de una lista de personas. Ideal para deportes, juegos y proyectos grupales."
+            "aboutText": "Crea equipos aleatorios al instante a partir de una lista de personas. Ideal para deportes, juegos y proyectos grupales.",
+            "howToTitle": "¿Cómo usar el Generador de Equipos?",
+            "howToText": [
+                "1. Añada los nombres de todos los participantes a la lista.",
+                "2. Use el control deslizante para seleccionar cuántos equipos desea crear.",
+                "3. Haga clic en 'Generar Equipos' para asignar aleatoriamente a las personas en equipos.",
+                "4. Puede copiar las listas de equipos al portapapeles con un solo clic."
+            ],
+            "addName": "Añadir Nombre",
+            "bulkMode": "Edición en Bloque",
+            "listMode": "Vista de Lista",
+            "clear": "Borrar Todo"
         },
         "instagramProfileMeta": {
             "title": "🖼️ Foto de Perfil Instagram | Descarga HD - YulaSanta",

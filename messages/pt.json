@@ -410,7 +410,18 @@
             "congrats": "A roda parou em:",
             "aboutTitle": "Sobre a Roda da Fortuna",
             "aboutText": "Use nossa roda da fortuna online gratuita para tomar decisões aleatórias. Insira suas opções e gire a roda!",
-            "removeWinner": "Remover Vencedor"
+            "removeWinner": "Remover Vencedor",
+            "howToTitle": "Como usar a Roda da Fortuna?",
+            "howToText": [
+                "1. Insira nomes ou opções na lista ou use o modo de edição em massa.",
+                "2. Clique no botão 'Girar' para iniciar a roda.",
+                "3. Espere a roda parar e revelar o vencedor aleatório.",
+                "4. Você pode remover o vencedor da lista e girar novamente se necessário."
+            ],
+            "addName": "Adicionar Nome",
+            "bulkMode": "Edição em Massa",
+            "listMode": "Visualização de Lista",
+            "clear": "Limpar Tudo"
         },
         "teamGeneratorContent": {
             "title": "Gerador de Equipes",
@@ -422,7 +433,18 @@
             "teams": "Equipes",
             "team": "Equipe",
             "aboutTitle": "Sobre o Gerador de Equipes",
-            "aboutText": "Crie instantaneamente equipes aleatórias a partir de uma lista de pessoas. Ideal para esportes, jogos e projetos em grupo."
+            "aboutText": "Crie instantaneamente equipes aleatórias a partir de uma lista de pessoas. Ideal para esportes, jogos e projetos em grupo.",
+            "howToTitle": "Como usar o Gerador de Equipes?",
+            "howToText": [
+                "1. Adicione os nomes de todos os participantes à lista.",
+                "2. Use o controle deslizante para selecionar quantas equipes deseja criar.",
+                "3. Clique em 'Gerar Equipes' para atribuir aleatoriamente as pessoas às equipes.",
+                "4. Você pode copiar as listas de equipes para a área de transferência com um clique."
+            ],
+            "addName": "Adicionar Nome",
+            "bulkMode": "Edição em Massa",
+            "listMode": "Visualização de Lista",
+            "clear": "Limpar Tudo"
         },
         "instagramProfileMeta": {
             "title": "🖼️ Foto de Perfil Instagram | Download HD - YulaSanta",

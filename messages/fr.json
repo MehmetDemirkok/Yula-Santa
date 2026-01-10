@@ -388,7 +388,18 @@
             "congrats": "La roue s'est arrêtée sur:",
             "aboutTitle": "À propos de la Roue de la Fortune",
             "aboutText": "Utilisez notre roue de la fortune en ligne gratuite pour prendre des décisions aléatoires. Entrez vos choix et tournez la roue !",
-            "removeWinner": "Supprimer le Gagnant"
+            "removeWinner": "Supprimer le Gagnant",
+            "howToTitle": "Comment utiliser la Roue de la Fortune ?",
+            "howToText": [
+                "1. Entrez des noms ou des options dans la liste ou utilisez le mode d'édition groupé.",
+                "2. Cliquez sur le bouton 'Tourner' pour lancer la roue.",
+                "3. Attendez que la roue s'arrête et révèle le gagnant aléatoire.",
+                "4. Vous pouvez retirer le gagnant de la liste et tourner à nouveau si nécessaire."
+            ],
+            "addName": "Ajouter un Nom",
+            "bulkMode": "Édition Groupée",
+            "listMode": "Vue Liste",
+            "clear": "Tout Effacer"
         },
         "teamGeneratorContent": {
             "title": "Générateur d'Équipes",
@@ -400,7 +411,18 @@
             "teams": "Équipes",
             "team": "Équipe",
             "aboutTitle": "À propos du Générateur d'Équipes",
-            "aboutText": "Créez instantanément des équipes aléatoires à partir d'une liste de personnes. Idéal pour les sports, les jeux et les projets de groupe."
+            "aboutText": "Créez instantanément des équipes aléatoires à partir d'une liste de personnes. Idéal pour les sports, les jeux et les projets de groupe.",
+            "howToTitle": "Comment utiliser le Générateur d'Équipes ?",
+            "howToText": [
+                "1. Ajoutez les noms de tous les participants à la liste.",
+                "2. Utilisez le curseur pour sélectionner le nombre d'équipes à créer.",
+                "3. Cliquez sur 'Générer les Équipes' pour répartir aléatoirement les personnes dans des équipes.",
+                "4. Vous pouvez copier les listes d'équipes dans le presse-papiers en un seul clic."
+            ],
+            "addName": "Ajouter un Nom",
+            "bulkMode": "Édition Groupée",
+            "listMode": "Vue Liste",
+            "clear": "Tout Effacer"
         },
         "instagramProfileMeta": {
             "title": "🖼️ Photo de Profil Instagram | Téléchargement HD - YulaSanta",
