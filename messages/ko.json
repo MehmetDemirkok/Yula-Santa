@@ -222,6 +222,8 @@
         "coinFlip": "동전 던지기",
         "randomNumber": "난수 생성기",
         "shortStraw": "제비뽑기",
+        "wheelOfFortune": "행운의 룰렛",
+        "teamGenerator": "팀 생성기",
         "meta": {
             "title": "무료 온라인 툴 | YulaSanta",
             "description": "주사위, 동전 던지기, 랜덤 숫자, 제비뽑기 등 무료 온라인 도구."
@@ -372,6 +374,32 @@
             "following": "팔로잉",
             "errorEmptyUsername": "사용자 이름을 입력하세요",
             "errorGeneric": "오류가 발생했습니다"
+        },
+        "wheelOfFortuneContent": {
+            "title": "행운의 룰렛",
+            "subtitle": "룰렛 돌리기 - 랜덤 선택기",
+            "placeholder": "이름 또는 옵션 입력 (한 줄에 하나씩)",
+            "spin": "돌리기",
+            "reset": "초기화",
+            "shuffle": "섞기",
+            "sort": "정렬",
+            "winner": "당첨자!",
+            "congrats": "룰렛이 멈춘 곳:",
+            "aboutTitle": "행운의 룰렛 정보",
+            "aboutText": "무료 온라인 행운의 룰렛을 사용하여 무작위 결정을 내리세요. 옵션을 입력하고 휠을 돌리세요!",
+            "removeWinner": "당첨자 제거"
+        },
+        "teamGeneratorContent": {
+            "title": "팀 생성기",
+            "subtitle": "랜덤 팀 만들기",
+            "namesPlaceholder": "이름 입력 (한 줄에 하나씩)",
+            "countLabel": "팀 수",
+            "generate": "팀 생성",
+            "reset": "초기화",
+            "teams": "팀",
+            "team": "팀",
+            "aboutTitle": "팀 생성기 정보",
+            "aboutText": "사람 목록에서 즉시 랜덤 팀을 만듭니다. 스포츠, 게임 및 그룹 프로젝트에 이상적입니다."
         },
         "instagramProfileMeta": {
             "title": "🖼️ 인스타 프로필 확대 | 고화질 다운로드 - YulaSanta",
@@ -822,6 +850,28 @@
                 "발렌타인데이 선물",
                 "선물 생성기",
                 "무엇을 살까"
+            ]
+        },
+        "wheelOfFortuneMeta": {
+            "title": "🎡 행운의 룰렛 | 온라인 룰렛 돌리기 무료 - YulaSanta",
+            "description": "사용자 정의 가능한 랜덤 행운의 룰렛. 이름이나 옵션을 입력하고 휠을 돌려 결정하세요. 무료 온라인 선택 휠.",
+            "keywords": [
+                "행운의 룰렛",
+                "룰렛 돌리기",
+                "랜덤 룰렛",
+                "의사 결정",
+                "온라인 추첨"
+            ]
+        },
+        "teamGeneratorMeta": {
+            "title": "👥 팀 생성기 | 랜덤 팀 만들기 - YulaSanta",
+            "description": "무료 온라인 랜덤 팀 생성기. 이름 목록에서 균형 잡힌 팀을 만드세요. 그룹, 스포츠 및 사무실 활동에 적합합니다.",
+            "keywords": [
+                "팀 생성기",
+                "랜덤 팀",
+                "팀 나누기",
+                "조 편성",
+                "그룹 생성"
             ]
         }
     },

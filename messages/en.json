@@ -236,6 +236,8 @@
         "coinFlip": "Coin Flip",
         "randomNumber": "Random Number Generator",
         "shortStraw": "Short Straw Game",
+        "wheelOfFortune": "Wheel of Fortune",
+        "teamGenerator": "Team Generator",
         "meta": {
             "title": "Free Online Tools | YulaSanta - Dice, Coin Flip, Random Number",
             "description": "YulaSanta free online tools: Dice roller, coin flip, random number generator, draw short straw, Instagram story viewer and profile picture downloader."
@@ -303,6 +305,28 @@
                 "profile picture viewer",
                 "HD profile picture",
                 "pp downloader"
+            ]
+        },
+        "wheelOfFortuneMeta": {
+            "title": "🎡 Wheel of Fortune | Spin the Wheel Online Free - YulaSanta",
+            "description": "Customizable random wheel of fortune. Enter names or options, spin the wheel to decide. Free online picker wheel.",
+            "keywords": [
+                "wheel of fortune",
+                "spin the wheel",
+                "picker wheel",
+                "random wheel",
+                "decision maker"
+            ]
+        },
+        "teamGeneratorMeta": {
+            "title": "👥 Team Generator | Random Team Maker - YulaSanta",
+            "description": "Free online random team generator. Create balanced teams from a list of names. Perfect for groups, sports, and office activities.",
+            "keywords": [
+                "team generator",
+                "random teams",
+                "team maker",
+                "split teams",
+                "group generator"
             ]
         },
         "diceContent": {
@@ -395,6 +419,54 @@
             "following": "Following",
             "errorEmptyUsername": "Please enter a username",
             "errorGeneric": "An error occurred"
+        },
+        "wheelOfFortuneContent": {
+            "title": "Wheel of Fortune",
+            "subtitle": "Spin the Wheel - Random Picker",
+            "placeholder": "Enter names or options (one per line)",
+            "spin": "Spin",
+            "reset": "Reset",
+            "shuffle": "Shuffle",
+            "sort": "Sort",
+            "winner": "Winner!",
+            "congrats": "The wheel landed on:",
+            "aboutTitle": "About Wheel of Fortune",
+            "aboutText": "Decide faster and have fun with this free Wheel of Fortune tool. Perfect for raffles, classroom activities, choosing a place to eat, or just making random decisions. Fully customizable - just add your options and spin!",
+            "howToTitle": "How to Use Wheel of Fortune?",
+            "howToText": [
+                "1. Enter names or options in the list or use the bulk edit mode.",
+                "2. Click the 'Spin' button to start the wheel.",
+                "3. Wait for the wheel to stop and reveal the random winner.",
+                "4. You can remove the winner from the list and spin again if needed."
+            ],
+            "removeWinner": "Remove Winner",
+            "addName": "Add Name",
+            "bulkMode": "Bulk Edit",
+            "listMode": "List View",
+            "clear": "Clear All"
+        },
+        "teamGeneratorContent": {
+            "title": "Team Generator",
+            "subtitle": "Random Team Maker",
+            "namesPlaceholder": "Enter names (one per line)",
+            "countLabel": "Number of Teams",
+            "generate": "Generate Teams",
+            "reset": "Reset",
+            "teams": "Teams",
+            "team": "Team",
+            "aboutTitle": "About Team Generator",
+            "aboutText": "Easily split any group of people into random teams. This tool is perfect for organizing sports matches, classroom projects, board games, or office team-building activities. It ensures a fair and unbiased distribution every time.",
+            "howToTitle": "How to Use Team Generator?",
+            "howToText": [
+                "1. Add the names of all participants to the list.",
+                "2. Use the slider to select how many teams you want to create.",
+                "3. Click 'Generate Teams' to randomly assign people to teams.",
+                "4. You can copy the team lists to your clipboard with a single click."
+            ],
+            "addName": "Add Name",
+            "bulkMode": "Bulk Edit",
+            "listMode": "List View",
+            "clear": "Clear All"
         },
         "giftSuggestions": "Gift Suggestions",
         "giftSuggestionsContent": {

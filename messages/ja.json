@@ -222,6 +222,8 @@
         "coinFlip": "コイン投げ",
         "randomNumber": "乱数生成器",
         "shortStraw": "くじ引き",
+        "wheelOfFortune": "運命の輪",
+        "teamGenerator": "チームジェネレーター",
         "meta": {
             "title": "無料オンラインツール | YulaSanta",
             "description": "無料ツール：サイコロ、コイン投げ、乱数生成、くじ引きなど。"
@@ -372,6 +374,32 @@
             "following": "フォロー中",
             "errorEmptyUsername": "ユーザー名を入力してください",
             "errorGeneric": "エラーが発生しました"
+        },
+        "wheelOfFortuneContent": {
+            "title": "運命の輪",
+            "subtitle": "ルーレットを回す - ランダムセレクター",
+            "placeholder": "名前またはオプションを入力（1行に1つ）",
+            "spin": "回す",
+            "reset": "リセット",
+            "shuffle": "シャッフル",
+            "sort": "並べ替え",
+            "winner": "当選者！",
+            "congrats": "ホイールが止まったのは：",
+            "aboutTitle": "運命の輪について",
+            "aboutText": "無料のオンライン運命の輪を使って、ランダムな決定を下しましょう。選択肢を入力してホイールを回してください！",
+            "removeWinner": "当選者を削除"
+        },
+        "teamGeneratorContent": {
+            "title": "チームジェネレーター",
+            "subtitle": "ランダムチーム作成",
+            "namesPlaceholder": "名前を入力（1行に1つ）",
+            "countLabel": "チーム数",
+            "generate": "チームを作成",
+            "reset": "リセット",
+            "teams": "チーム",
+            "team": "チーム",
+            "aboutTitle": "チームジェネレーターについて",
+            "aboutText": "人のリストから即座にランダムなチームを作成します。スポーツ、ゲーム、グループプロジェクトに最適です。"
         },
         "instagramProfileMeta": {
             "title": "🖼️ インスタプロフ画像拡大 | 高画質保存 - YulaSanta",
@@ -822,6 +850,28 @@
                 "バレンタインデーのギフト",
                 "ギフトジェネレーター",
                 "何を買うか"
+            ]
+        },
+        "wheelOfFortuneMeta": {
+            "title": "🎡 運命の輪 | 無料オンラインルーレット - YulaSanta",
+            "description": "カスタマイズ可能なランダムルーレット。名前やオプションを入力して、ホイールを回して決定します。無料のオンライン選択ホイール。",
+            "keywords": [
+                "ルーレット",
+                "ホイールを回す",
+                "抽選ホイール",
+                "ランダムルーレット",
+                "意思決定"
+            ]
+        },
+        "teamGeneratorMeta": {
+            "title": "👥 チームジェネレーター | ランダムチーム作成 - YulaSanta",
+            "description": "無料のオンラインランダムチームジェネレーター。名前のリストからバランスの取れたチームを作成します。グループ、スポーツ、社内アクティビティに最適です。",
+            "keywords": [
+                "チームジェネレーター",
+                "ランダムチーム",
+                "チーム分け",
+                "グループ作成",
+                "チームメーカー"
             ]
         }
     },

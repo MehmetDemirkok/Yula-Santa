@@ -232,6 +232,8 @@
         "coinFlip": "Münzwurf",
         "randomNumber": "Zufallszahlengenerator",
         "shortStraw": "Strohhalm Ziehen",
+        "wheelOfFortune": "Glücksrad",
+        "teamGenerator": "Team-Generator",
         "meta": {
             "title": "Kostenlose Online-Tools | YulaSanta - Würfel, Münzwurf, Zufallszahl",
             "description": "YulaSanta kostenlose Online-Tools: Würfelspiel, Münzwurf, Zufallszahlengenerator, Strohhalm ziehen, Instagram Story Viewer und Profilbild-Downloader."
@@ -383,14 +385,62 @@
             "errorEmptyUsername": "Bitte geben Sie einen Benutzernamen ein",
             "errorGeneric": "Ein Fehler ist aufgetreten"
         },
+        "wheelOfFortuneContent": {
+            "title": "Glücksrad",
+            "subtitle": "Rad drehen - Zufallsauswahl",
+            "placeholder": "Namen oder Optionen eingeben (einer pro Zeile)",
+            "spin": "Drehen",
+            "reset": "Zurücksetzen",
+            "shuffle": "Mischen",
+            "sort": "Sortieren",
+            "winner": "Gewinner!",
+            "congrats": "Das Rad stoppte bei:",
+            "aboutTitle": "Über das Glücksrad",
+            "aboutText": "Nutzen Sie unser kostenloses Online-Glücksrad für zufällige Entscheidungen. Geben Sie Ihre Optionen ein und drehen Sie das Rad!",
+            "removeWinner": "Gewinner entfernen"
+        },
+        "teamGeneratorContent": {
+            "title": "Team-Generator",
+            "subtitle": "Zufällige Teams erstellen",
+            "namesPlaceholder": "Namen eingeben (einer pro Zeile)",
+            "countLabel": "Anzahl der Teams",
+            "generate": "Teams generieren",
+            "reset": "Zurücksetzen",
+            "teams": "Teams",
+            "team": "Team",
+            "aboutTitle": "Über den Team-Generator",
+            "aboutText": "Erstellen Sie sofort zufällige Teams aus einer Personenliste. Ideal für Sport, Spiele und Gruppenprojekte."
+        },
         "instagramProfileMeta": {
             "title": "🖼️ Instagram Profilbild Viewer | HD Downloader - YulaSanta",
             "description": "Instagram Profilbilder in voller HD-Qualität ansehen und herunterladen.",
             "keywords": [
-                "instagram profile",
-                "profile picture viewer",
-                "HD profile picture",
-                "pp downloader"
+                "instagram profil",
+                "profilbild",
+                "profilbild vergrößern",
+                "hd profilbild"
+            ]
+        },
+        "wheelOfFortuneMeta": {
+            "title": "🎡 Glücksrad | Online Drehen Kostenlos - YulaSanta",
+            "description": "Anpassbares Glücksrad. Namen oder Optionen eingeben, Rad drehen und entscheiden. Kostenloses Online-Auswahlrad.",
+            "keywords": [
+                "glücksrad",
+                "rad drehen",
+                "auswahlrad",
+                "zufallsrad",
+                "entscheidungshilfe"
+            ]
+        },
+        "teamGeneratorMeta": {
+            "title": "👥 Team-Generator | Zufällige Teams erstellen - YulaSanta",
+            "description": "Kostenloser Online-Team-Generator. Erstellen Sie ausgewogene Teams aus einer Namensliste. Perfekt für Gruppen, Sport und Büroaktivitäten.",
+            "keywords": [
+                "team generator",
+                "zufällige teams",
+                "mannschaftsgenerator",
+                "gruppen bildung",
+                "teams aufteilen"
             ]
         },
         "giftSuggestions": "Gift Suggestions",

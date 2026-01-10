@@ -222,7 +222,9 @@
         "dice": "Dados",
         "coinFlip": "Cara ou Coroa",
         "randomNumber": "Número Aleatório",
-        "shortStraw": "Vareta curta",
+        "shortStraw": "Palitinho",
+        "wheelOfFortune": "Roda da Fortuna",
+        "teamGenerator": "Gerador de Equipes",
         "meta": {
             "title": "Ferramentas online grátis | YulaSanta",
             "description": "Ferramentas grátis: dados, cara ou coroa, números aleatórios, vareta curta."
@@ -346,10 +348,32 @@
             "title": "📱 Visualizador de Stories Instagram | Anônimo - YulaSanta",
             "description": "Veja os stories do Instagram de forma anônima. Visualizador de stories privado.",
             "keywords": [
-                "instagram story",
-                "story viewer",
-                "anonymous story viewer",
-                "private story viewer"
+                "perfil do instagram",
+                "ver foto de perfil",
+                "foto de perfil hd",
+                "baixar foto perfil"
+            ]
+        },
+        "wheelOfFortuneMeta": {
+            "title": "🎡 Roda da Fortuna | Girar a Roda Online Grátis - YulaSanta",
+            "description": "Roda da fortuna aleatória personalizável. Insira nomes ou opções, gire a roda para decidir. Roleta de decisão online gratuita.",
+            "keywords": [
+                "roda da fortuna",
+                "girar a roda",
+                "roleta aleatória",
+                "tomador de decisão",
+                "sorteio online"
+            ]
+        },
+        "teamGeneratorMeta": {
+            "title": "👥 Gerador de Equipes | Criar Times Aleatórios - YulaSanta",
+            "description": "Gerador de equipes aleatórias online gratuito. Crie times equilibrados a partir de uma lista de nomes. Perfeito para grupos, esportes e atividades de escritório.",
+            "keywords": [
+                "gerador de equipes",
+                "times aleatórios",
+                "criador de times",
+                "dividir times",
+                "gerador de grupos"
             ]
         },
         "instagramProfileContent": {
@@ -373,6 +397,32 @@
             "following": "Seguindo",
             "errorEmptyUsername": "Por favor, insira um nome de usuário",
             "errorGeneric": "Ocorreu um erro"
+        },
+        "wheelOfFortuneContent": {
+            "title": "Roda da Fortuna",
+            "subtitle": "Girar a Roda - Seletor Aleatório",
+            "placeholder": "Insira nomes ou opções (um por linha)",
+            "spin": "Girar",
+            "reset": "Redefinir",
+            "shuffle": "Embaralhar",
+            "sort": "Ordenar",
+            "winner": "Vencedor!",
+            "congrats": "A roda parou em:",
+            "aboutTitle": "Sobre a Roda da Fortuna",
+            "aboutText": "Use nossa roda da fortuna online gratuita para tomar decisões aleatórias. Insira suas opções e gire a roda!",
+            "removeWinner": "Remover Vencedor"
+        },
+        "teamGeneratorContent": {
+            "title": "Gerador de Equipes",
+            "subtitle": "Criador de Times Aleatórios",
+            "namesPlaceholder": "Insira nomes (um por linha)",
+            "countLabel": "Número de Equipes",
+            "generate": "Gerar Equipes",
+            "reset": "Redefinir",
+            "teams": "Equipes",
+            "team": "Equipe",
+            "aboutTitle": "Sobre o Gerador de Equipes",
+            "aboutText": "Crie instantaneamente equipes aleatórias a partir de uma lista de pessoas. Ideal para esportes, jogos e projetos em grupo."
         },
         "instagramProfileMeta": {
             "title": "🖼️ Foto de Perfil Instagram | Download HD - YulaSanta",

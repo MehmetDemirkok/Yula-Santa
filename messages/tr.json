@@ -238,6 +238,8 @@
         "coinFlip": "Yazı Tura",
         "randomNumber": "Rastgele Sayı Seçici",
         "shortStraw": "Kısa Çöp Oyunu",
+        "wheelOfFortune": "Çarkıfelek",
+        "teamGenerator": "Takım Oluşturucu",
         "meta": {
             "title": "Ücretsiz Online Araçlar | YulaSanta - Zar, Yazı Tura, Rastgele Sayı",
             "description": "YulaSanta ücretsiz online araçlar: Zar atma oyunu, yazı tura, rastgele sayı seçici, kısa çöp çekme, Instagram hikaye izleyici ve profil resmi indirici."
@@ -345,6 +347,28 @@
             "aboutTitle": "Instagram Hikaye İzleme Hakkında",
             "aboutText": "YulaSanta story viewer ile Instagram hikayelerini gizlice izleyebilirsiniz. İzlediğiniz kişiler bunu göremez."
         },
+        "wheelOfFortuneMeta": {
+            "title": "🎡 Çarkıfelek | Online Çark Çevir - Ücretsiz Karar Çarkı - YulaSanta",
+            "description": "Özelleştirilebilir şans çarkı. İsimleri veya seçenekleri girin, çarkı çevirin ve kazananı belirleyin. Ücretsiz online karar çarkı.",
+            "keywords": [
+                "çarkıfelek",
+                "çark çevir",
+                "şans çarkı",
+                "karar çarkı",
+                "isim çarkı"
+            ]
+        },
+        "teamGeneratorMeta": {
+            "title": "👥 Takım Oluşturucu | Rastgele Takım Kurma - YulaSanta",
+            "description": "Ücretsiz online takım oluşturma aracı. İsim listesinden rastgele ve dengeli takımlar kurun. Maçlar, oyunlar ve ofis aktiviteleri için ideal.",
+            "keywords": [
+                "takım kurma",
+                "takım oluşturucu",
+                "halı saha takımı",
+                "rastgele takım",
+                "grup oluşturma"
+            ]
+        },
         "instagramProfileContent": {
             "title": "Instagram Profil Resmi Büyütme",
             "subtitle": "HD Profile Picture Size",
@@ -366,6 +390,54 @@
             "following": "Takip",
             "errorEmptyUsername": "Lütfen bir kullanıcı adı girin",
             "errorGeneric": "Bir hata oluştu"
+        },
+        "wheelOfFortuneContent": {
+            "title": "Çarkıfelek",
+            "subtitle": "Online Şans Çarkı",
+            "placeholder": "İsimleri veya seçenekleri girin (Her satıra bir tane)",
+            "spin": "Çevir",
+            "reset": "Sıfırla",
+            "shuffle": "Karıştır",
+            "sort": "Sırala",
+            "winner": "Kazanan!",
+            "congrats": "Çark bu seçenekte durdu:",
+            "aboutTitle": "Çarkıfelek Hakkında",
+            "aboutText": "Kararsız mı kaldınız? Ücretsiz Çarkıfelek aracımızla kararlarınızı eğlenceli hale getirin. Çekilişler, sınıf etkinlikleri, yemek yenecek yeri seçme veya oyunlar için mükemmel bir araç. Tamamen özelleştirilebilir seçeneklerle çarkı çevirin ve şanslı kazananı belirleyin.",
+            "howToTitle": "Çarkıfelek Nasıl Kullanılır?",
+            "howToText": [
+                "1. İsimleri veya seçenekleri listeye ekleyin veya toplu düzenleme modunu kullanın.",
+                "2. 'Çevir' butonuna basarak çarkı döndürün.",
+                "3. Çarkın durmasını ve kazananı belirlemesini bekleyin.",
+                "4. İsterseniz kazananı listeden çıkarıp kalanlarla devam edebilirsiniz."
+            ],
+            "removeWinner": "Kazananı Çıkar",
+            "addName": "İsim Ekle",
+            "bulkMode": "Toplu Düzenle",
+            "listMode": "Liste Görünümü",
+            "clear": "Temizle"
+        },
+        "teamGeneratorContent": {
+            "title": "Takım Oluşturucu",
+            "subtitle": "Rastgele Takım Kurma Aracı",
+            "namesPlaceholder": "İsimleri giriniz (her satıra bir isim)",
+            "countLabel": "Takım Sayısı",
+            "generate": "Takımları Oluştur",
+            "reset": "Sıfırla",
+            "teams": "Takımlar",
+            "team": "Takım",
+            "aboutTitle": "Takım Oluşturucu Hakkında",
+            "aboutText": "Kalabalık grupları saniyeler içinde rastgele ve adil takımlara bölün. Halı saha maçları, sınıf projeleri, kutu oyunları veya ofis içi etkinlikler için idealdir. Manuel seçim derdine son verin, listeyi girin ve gerisini araca bırakın.",
+            "howToTitle": "Takım Oluşturucu Nasıl Kullanılır?",
+            "howToText": [
+                "1. Katılımcıların isimlerini listeye ekleyin.",
+                "2. Oluşturmak istediğiniz takım sayısını kaydırma çubuğu ile belirleyin.",
+                "3. 'Takımları Oluştur' butonuna tıklayın.",
+                "4. Oluşan takımları tek tıkla kopyalayabilir veya yeniden dağıtabilirsiniz."
+            ],
+            "addName": "İsim Ekle",
+            "bulkMode": "Toplu Düzenle",
+            "listMode": "Liste Görünümü",
+            "clear": "Temizle"
         },
         "giftSuggestions": "Hediye Önerileri",
         "giftSuggestionsContent": {

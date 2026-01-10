@@ -222,6 +222,8 @@
         "coinFlip": "Testa o Croce",
         "randomNumber": "Numero Casuale",
         "shortStraw": "Cannuccia Corta",
+        "wheelOfFortune": "Ruota della Fortuna",
+        "teamGenerator": "Generatore di Squadre",
         "meta": {
             "title": "Strumenti online gratis | YulaSanta",
             "description": "Strumenti gratis: dadi, testa o croce, numeri casuali, cannuccia corta."
@@ -236,6 +238,28 @@
                 "die roller",
                 "backgammon dice",
                 "ludo dice"
+            ]
+        },
+        "wheelOfFortuneMeta": {
+            "title": "🎡 Ruota della Fortuna | Gira la Ruota Online Gratis - YulaSanta",
+            "description": "Ruota della fortuna casuale personalizzabile. Inserisci nomi o opzioni, gira la ruota per decidere. Ruota delle decisioni online gratuita.",
+            "keywords": [
+                "ruota della fortuna",
+                "gira la ruota",
+                "ruota casuale",
+                "decisore",
+                "estrazione online"
+            ]
+        },
+        "teamGeneratorMeta": {
+            "title": "👥 Generatore di Squadre | Crea Squadre Casuali - YulaSanta",
+            "description": "Generatore di squadre casuali online gratuito. Crea squadre equilibrate da un elenco di nomi. Perfetto per gruppi, sport e attività d'ufficio.",
+            "keywords": [
+                "generatore squadre",
+                "squadre casuali",
+                "crea squadre",
+                "dividi squadre",
+                "generatore gruppi"
             ]
         },
         "diceContent": {
@@ -372,6 +396,32 @@
             "following": "Seguiti",
             "errorEmptyUsername": "Inserisci un nome utente",
             "errorGeneric": "Si è verificato un errore"
+        },
+        "wheelOfFortuneContent": {
+            "title": "Ruota della Fortuna",
+            "subtitle": "Gira la Ruota - Selettore Casuale",
+            "placeholder": "Inserisci nomi o opzioni (uno per riga)",
+            "spin": "Gira",
+            "reset": "Reimposta",
+            "shuffle": "Mescola",
+            "sort": "Ordina",
+            "winner": "Vincitore!",
+            "congrats": "La ruota si è fermata su:",
+            "aboutTitle": "Sulla Ruota della Fortuna",
+            "aboutText": "Usa la nostra ruota della fortuna online gratuita per prendere decisioni casuali. Inserisci le tue opzioni e gira la ruota!",
+            "removeWinner": "Rimuovi Vincitore"
+        },
+        "teamGeneratorContent": {
+            "title": "Generatore di Squadre",
+            "subtitle": "Creatore di Squadre Casuali",
+            "namesPlaceholder": "Inserisci nomi (uno per riga)",
+            "countLabel": "Numero di Squadre",
+            "generate": "Genera Squadre",
+            "reset": "Reimposta",
+            "teams": "Squadre",
+            "team": "Squadra",
+            "aboutTitle": "Sul Generatore di Squadre",
+            "aboutText": "Crea istantaneamente squadre casuali da un elenco di persone. Ideale per sport, giochi e progetti di gruppo."
         },
         "instagramProfileMeta": {
             "title": "🖼️ Foto Profilo Instagram | Download HD - YulaSanta",

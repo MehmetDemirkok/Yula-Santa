@@ -223,6 +223,8 @@
         "coinFlip": "Pile ou face",
         "randomNumber": "Nombre Aléatoire",
         "shortStraw": "Courte Paille",
+        "wheelOfFortune": "Roue de la Fortune",
+        "teamGenerator": "Générateur d'Équipes",
         "meta": {
             "title": "Outils en ligne gratuits | YulaSanta",
             "description": "Outils gratuits : dés, pile ou face, nombre aléatoire, courte paille, story viewer."
@@ -374,14 +376,62 @@
             "errorEmptyUsername": "Veuillez entrer un nom d'utilisateur",
             "errorGeneric": "Une erreur s'est produite"
         },
+        "wheelOfFortuneContent": {
+            "title": "Roue de la Fortune",
+            "subtitle": "Tourner la Roue - Sélecteur Aléatoire",
+            "placeholder": "Entrez des noms ou des options (un par ligne)",
+            "spin": "Tourner",
+            "reset": "Réinitialiser",
+            "shuffle": "Mélanger",
+            "sort": "Trier",
+            "winner": "Gagnant!",
+            "congrats": "La roue s'est arrêtée sur:",
+            "aboutTitle": "À propos de la Roue de la Fortune",
+            "aboutText": "Utilisez notre roue de la fortune en ligne gratuite pour prendre des décisions aléatoires. Entrez vos choix et tournez la roue !",
+            "removeWinner": "Supprimer le Gagnant"
+        },
+        "teamGeneratorContent": {
+            "title": "Générateur d'Équipes",
+            "subtitle": "Créateur d'Équipes Aléatoires",
+            "namesPlaceholder": "Entrez des noms (un par ligne)",
+            "countLabel": "Nombre d'Équipes",
+            "generate": "Générer les Équipes",
+            "reset": "Réinitialiser",
+            "teams": "Équipes",
+            "team": "Équipe",
+            "aboutTitle": "À propos du Générateur d'Équipes",
+            "aboutText": "Créez instantanément des équipes aléatoires à partir d'une liste de personnes. Idéal pour les sports, les jeux et les projets de groupe."
+        },
         "instagramProfileMeta": {
             "title": "🖼️ Photo de Profil Instagram | Téléchargement HD - YulaSanta",
             "description": "Affichez et téléchargez les photos de profil Instagram en qualité HD.",
             "keywords": [
-                "instagram profile",
-                "profile picture viewer",
-                "HD profile picture",
-                "pp downloader"
+                "profil instagram",
+                "voir photo de profil",
+                "photo de profil hd",
+                "télécharger pdp"
+            ]
+        },
+        "wheelOfFortuneMeta": {
+            "title": "🎡 Roue de la Fortune | Tourner la Roue en Ligne Gratuit - YulaSanta",
+            "description": "Roue de la fortune aléatoire personnalisable. Entrez des noms ou des options, tournez la roue pour décider. Roue de sélection en ligne gratuite.",
+            "keywords": [
+                "roue de la fortune",
+                "tourner la roue",
+                "roue aléatoire",
+                "prise de décision",
+                "tirage au sort"
+            ]
+        },
+        "teamGeneratorMeta": {
+            "title": "👥 Générateur d'Équipes | Créer des Équipes Aléatoires - YulaSanta",
+            "description": "Générateur d'équipes aléatoires en ligne gratuit. Créez des équipes équilibrées à partir d'une liste de noms. Parfait pour les groupes, les sports et les activités de bureau.",
+            "keywords": [
+                "générateur d'équipes",
+                "équipes aléatoires",
+                "créateur d'équipe",
+                "diviser les équipes",
+                "générateur de groupe"
             ]
         },
         "giftSuggestions": "Gift Suggestions",

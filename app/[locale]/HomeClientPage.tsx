@@ -16,7 +16,8 @@ import {
     CheckCircle2,
     ShieldCheck,
     Zap,
-    Users
+    Users,
+    Aperture
 } from "lucide-react";
 import { Button } from "@/components/ui/Button";
 import { useTranslations } from "next-intl";
@@ -81,6 +82,8 @@ export default function HomeClientPage() {
         { name: t('tools.coinFlip'), icon: Coins, href: `/${locale}/tools/coin-flip`, color: "bg-amber-500", desc: "Yazı tura" },
         { name: t('tools.randomNumber'), icon: Hash, href: `/${locale}/tools/random-number`, color: "bg-emerald-500", desc: "Sayı seç" },
         { name: t('tools.shortStraw'), icon: Sparkles, href: `/${locale}/tools/short-straw`, color: "bg-rose-500", desc: "Şansını dene" },
+        { name: t('tools.wheelOfFortune'), icon: Aperture, href: `/${locale}/tools/wheel-of-fortune`, color: "bg-pink-500", desc: "Çarkıfelek" },
+        { name: t('tools.teamGenerator'), icon: Users, href: `/${locale}/tools/team-generator`, color: "bg-blue-500", desc: "Takım kur" },
     ];
 
     return (

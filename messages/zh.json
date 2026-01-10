@@ -223,6 +223,8 @@
         "coinFlip": "掷硬币",
         "randomNumber": "随机数生成器",
         "shortStraw": "抽签游戏",
+        "wheelOfFortune": "幸运转盘",
+        "teamGenerator": "团队生成器",
         "meta": {
             "title": "免费在线工具 | YulaSanta",
             "description": "免费工具：骰子、掷硬币、随机数、抽签等。"
@@ -373,6 +375,32 @@
             "following": "关注",
             "errorEmptyUsername": "请输入用户名",
             "errorGeneric": "发生错误"
+        },
+        "wheelOfFortuneContent": {
+            "title": "幸运转盘",
+            "subtitle": "旋转转盘 - 随机选择器",
+            "placeholder": "输入名字或选项（每行一个）",
+            "spin": "旋转",
+            "reset": "重置",
+            "shuffle": "随机打乱",
+            "sort": "排序",
+            "winner": "获胜者！",
+            "congrats": "转盘停在：",
+            "aboutTitle": "关于幸运转盘",
+            "aboutText": "使用我们的免费在线幸运转盘进行随机决定。输入您的选项并旋转转盘！",
+            "removeWinner": "移除获胜者"
+        },
+        "teamGeneratorContent": {
+            "title": "团队生成器",
+            "subtitle": "随机团队创建者",
+            "namesPlaceholder": "输入名字（每行一个）",
+            "countLabel": "团队数量",
+            "generate": "生成团队",
+            "reset": "重置",
+            "teams": "团队",
+            "team": "团队",
+            "aboutTitle": "关于团队生成器",
+            "aboutText": "从人员列表中立即创建随机团队。非常适合运动、游戏和小组项目。"
         },
         "instagramProfileMeta": {
             "title": "🖼️ IG 头像查看器 | 高清下载 - YulaSanta",
@@ -823,6 +851,28 @@
                 "情人节礼物",
                 "礼物生成器",
                 "买什么"
+            ]
+        },
+        "wheelOfFortuneMeta": {
+            "title": "🎡 幸运转盘 | 在线免费转盘 - YulaSanta",
+            "description": "可自定义的随机幸运转盘。输入名字或选项，旋转转盘进行决定。免费的在线选择转盘。",
+            "keywords": [
+                "幸运转盘",
+                "旋转转盘",
+                "选择转盘",
+                "随机转盘",
+                "决策者"
+            ]
+        },
+        "teamGeneratorMeta": {
+            "title": "👥 团队生成器 | 随机分组工具 - YulaSanta",
+            "description": "免费的在线随机团队生成器。从名单中创建平衡的团队。非常适合小组活动、运动和办公室活动。",
+            "keywords": [
+                "团队生成器",
+                "随机分组",
+                "组建团队",
+                "分配团队",
+                "团队创建"
             ]
         }
     },
