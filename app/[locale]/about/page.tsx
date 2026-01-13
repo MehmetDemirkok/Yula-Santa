@@ -8,6 +8,8 @@ import { getTranslations, setRequestLocale } from 'next-intl/server';
 import { Metadata } from 'next';
 import Link from 'next/link';
 import { Gift, Users, Shield, Zap, Heart, Globe } from 'lucide-react';
+import { locales } from '@/i18n/config';
+import { SITE_URL } from '@/lib/constants';
 
 type Props = {
     params: Promise<{ locale: string }>;
@@ -17,9 +19,20 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
     const { locale } = await params;
     const t = await getTranslations({ locale, namespace: 'about' });
 
+    // Build alternates for hreflang
+    const languages: Record<string, string> = {};
+    locales.forEach((loc) => {
+        languages[loc] = `${SITE_URL}/${loc}/about`;
+    });
+    languages['x-default'] = `${SITE_URL}/tr/about`;
+
     return {
         title: t('meta.title'),
         description: t('meta.description'),
+        alternates: {
+            canonical: `${SITE_URL}/${locale}/about`,
+            languages,
+        },
     };
 }
 

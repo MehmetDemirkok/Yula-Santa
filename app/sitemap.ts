@@ -36,11 +36,17 @@ const localeRoutes = [
     { path: '/tiktok', priority: 0.95, changeFrequency: 'daily' as const },
     { path: '/privacy', priority: 0.5, changeFrequency: 'weekly' as const },
     { path: '/legal', priority: 0.5, changeFrequency: 'weekly' as const },
+    // About and Contact pages
+    { path: '/about', priority: 0.6, changeFrequency: 'monthly' as const },
+    { path: '/contact', priority: 0.6, changeFrequency: 'monthly' as const },
     // Tools routes (high priority for indexing)
+    { path: '/tools', priority: 0.85, changeFrequency: 'daily' as const },
     { path: '/tools/dice', priority: 0.9, changeFrequency: 'daily' as const },
     { path: '/tools/coin-flip', priority: 0.9, changeFrequency: 'daily' as const },
     { path: '/tools/random-number', priority: 0.9, changeFrequency: 'daily' as const },
     { path: '/tools/short-straw', priority: 0.9, changeFrequency: 'daily' as const },
+    { path: '/tools/wheel-of-fortune', priority: 0.9, changeFrequency: 'daily' as const },
+    { path: '/tools/team-generator', priority: 0.9, changeFrequency: 'daily' as const },
     { path: '/tools/instagram-story-viewer', priority: 0.95, changeFrequency: 'daily' as const },
     { path: '/tools/instagram-profile-picture', priority: 0.95, changeFrequency: 'daily' as const },
     { path: '/tools/gift-suggestions', priority: 0.95, changeFrequency: 'daily' as const },
@@ -62,15 +68,12 @@ export default function sitemap(): MetadataRoute.Sitemap {
                 alternates.languages[altLocale] = `${SITE_URL}/${altLocale}${route.path}`;
             });
 
-            // Add x-default (generic URL that redirects based on locale or is the default locale)
-            alternates.languages['x-default'] = `${SITE_URL}${route.path}`; // Now pointing to root for default logic
+            // Add x-default pointing to default locale (tr)
+            // Since localePrefix is 'always', we always include the locale in URLs
+            alternates.languages['x-default'] = `${SITE_URL}/${defaultLocale}${route.path}`;
 
-            // Determine the URL for this specific locale entry
-            // If it's the default locale (tr), it should be at the root level (no prefix)
-            // If it's another locale (en, de...), it should have the prefix
-            const localeUrl = locale === defaultLocale
-                ? `${SITE_URL}${route.path}`
-                : `${SITE_URL}/${locale}${route.path}`;
+            // All URLs should include locale prefix (since localePrefix: 'always')
+            const localeUrl = `${SITE_URL}/${locale}${route.path}`;
 
             sitemap.push({
                 url: localeUrl,

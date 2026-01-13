@@ -215,6 +215,15 @@ body {
   animation: zoomIn 0.3s ease-out forwards;
 }
 
+@keyframes float {
+  0%, 100% { transform: translateY(0) rotate(0); }
+  50% { transform: translateY(-10px) rotate(1deg); }
+}
+
+.animate-float {
+  animation: float 4s ease-in-out infinite;
+}
+
 /* Responsive helpers */
 .responsive-padding {
   padding: 1rem;

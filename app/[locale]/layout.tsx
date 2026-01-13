@@ -109,6 +109,13 @@ export async function generateMetadata({
             description: meta.description,
             images: ['/twitter-image.png'],
         },
+        alternates: {
+            canonical: `${SITE_URL}/${locale}`,
+            languages: locales.reduce((acc, loc) => {
+                acc[loc] = `${SITE_URL}/${loc}`;
+                return acc;
+            }, { 'x-default': `${SITE_URL}/tr` } as Record<string, string>),
+        },
     };
 }
 
@@ -129,7 +136,7 @@ function getJsonLd(locale: string, messages: Record<string, any>) {
         zh: 'zh-CN'
     };
 
-    // WebSite Schema with SearchAction
+    // WebSite Schema (without SearchAction since site doesn't have search functionality)
     const websiteSchema = {
         "@type": "WebSite",
         "@id": `${SITE_URL}/#website`,
@@ -139,16 +146,6 @@ function getJsonLd(locale: string, messages: Record<string, any>) {
         "publisher": {
             "@id": `${SITE_URL}/#organization`
         },
-        "potentialAction": [
-            {
-                "@type": "SearchAction",
-                "target": {
-                    "@type": "EntryPoint",
-                    "urlTemplate": `${SITE_URL}/${locale}?q={search_term_string}`
-                },
-                "query-input": "required name=search_term_string"
-            }
-        ],
         "inLanguage": localeMap[locale] || locale
     };
 

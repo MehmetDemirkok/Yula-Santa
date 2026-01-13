@@ -195,7 +195,34 @@ export function Footer() {
                     </div>
 
                     {/* Signature Badge */}
-                    <div className="pt-2 sm:pt-4">
+                    <div className="pt-2 sm:pt-4 flex flex-col items-center">
+                        {/* Yula the Cat - Animated Mascot */}
+                        <div className="relative mb-6 group cursor-pointer">
+                            <div className="absolute -inset-4 bg-red-100 dark:bg-red-500/10 blur-2xl opacity-0 group-hover:opacity-40 transition-opacity rounded-full animate-pulse" />
+                            {/* Container with adaptive background for transparent PNG */}
+                            <div className="relative p-6 rounded-3xl bg-gradient-to-br from-gray-50 via-white to-gray-100 dark:from-gray-900/80 dark:via-gray-950/90 dark:to-black/80 shadow-xl dark:shadow-none border border-gray-200/50 dark:border-white/5 overflow-hidden backdrop-blur-sm">
+                                {/* Subtle gradient overlay */}
+                                <div className="absolute inset-0 bg-gradient-to-t from-santa-red/5 to-transparent dark:from-santa-red/5 dark:to-transparent pointer-events-none" />
+                                {/* Decorative sparkles */}
+                                <div className="absolute top-3 right-3 w-2 h-2 bg-gold rounded-full opacity-70 dark:opacity-40 animate-pulse" />
+                                <div className="absolute top-5 right-6 w-1 h-1 bg-santa-red rounded-full opacity-50 dark:opacity-30 animate-pulse" style={{ animationDelay: '0.3s' }} />
+                                <div className="absolute bottom-3 left-3 w-1.5 h-1.5 bg-christmas-green rounded-full opacity-60 dark:opacity-30 animate-pulse" style={{ animationDelay: '0.6s' }} />
+                                <div className="absolute bottom-5 left-6 w-1 h-1 bg-gold rounded-full opacity-40 dark:opacity-20 animate-pulse" style={{ animationDelay: '0.9s' }} />
+                                <img
+                                    src="/yula-mascot.png"
+                                    alt="Yula the Cat"
+                                    className="w-36 sm:w-44 md:w-52 h-auto object-contain relative z-10 animate-float drop-shadow-lg"
+                                />
+                            </div>
+                            {/* Speech Bubble on Hover */}
+                            <div className="absolute -top-12 left-1/2 -translate-x-1/2 bg-white dark:bg-gray-800 px-4 py-2 rounded-2xl shadow-xl border border-gray-100 dark:border-gray-700 opacity-0 group-hover:opacity-100 transition-all duration-300 -translate-y-2 group-hover:translate-y-0 pointer-events-none whitespace-nowrap z-20">
+                                <span className="text-xs font-bold text-gray-800 dark:text-white">
+                                    {locale === 'tr' ? 'Miyav! 🐾' : 'Meow! 🐾'}
+                                </span>
+                                <div className="absolute -bottom-1.5 left-1/2 -translate-x-1/2 w-3 h-3 bg-white dark:bg-gray-800 border-r border-b border-gray-100 dark:border-gray-700 rotate-45" />
+                            </div>
+                        </div>
+
                         <div className="inline-flex items-center px-3 sm:px-4 py-1.5 sm:py-2 rounded-full bg-gray-50/80 dark:bg-white/5 border border-gray-100 dark:border-white/10 shadow-sm backdrop-blur-sm">
                             <div className="w-1 h-1 sm:w-1.5 sm:h-1.5 rounded-full bg-santa-red animate-pulse mr-2 sm:mr-2.5" />
                             <span className="text-[9px] sm:text-[10px] font-black tracking-[0.1em] sm:tracking-[0.15em] text-gray-400 dark:text-gray-500 uppercase">
