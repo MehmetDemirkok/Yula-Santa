@@ -65,15 +65,19 @@ export default function sitemap(): MetadataRoute.Sitemap {
             };
 
             locales.forEach(altLocale => {
-                alternates.languages[altLocale] = `${SITE_URL}/${altLocale}${route.path}`;
+                alternates.languages[altLocale] = altLocale === defaultLocale
+                    ? `${SITE_URL}${route.path}`
+                    : `${SITE_URL}/${altLocale}${route.path}`;
             });
 
-            // Add x-default pointing to default locale (tr)
-            // Since localePrefix is 'always', we always include the locale in URLs
-            alternates.languages['x-default'] = `${SITE_URL}/${defaultLocale}${route.path}`;
+            // Add x-default pointing to default locale (tr) -> now at root
+            alternates.languages['x-default'] = `${SITE_URL}${route.path}`;
 
-            // All URLs should include locale prefix (since localePrefix: 'always')
-            const localeUrl = `${SITE_URL}/${locale}${route.path}`;
+            // Generate correct URL based on localePrefix: 'as-needed'
+            // Default locale gets root URL, others get prefix
+            const localeUrl = locale === defaultLocale
+                ? `${SITE_URL}${route.path}`
+                : `${SITE_URL}/${locale}${route.path}`;
 
             sitemap.push({
                 url: localeUrl,

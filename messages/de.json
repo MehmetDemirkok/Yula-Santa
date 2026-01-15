@@ -319,7 +319,8 @@
             "result": "Ergebnis",
             "aboutTitle": "Über den Zufallszahlengenerator",
             "aboutText": "Generieren Sie unvoreingenommene Zufallszahlen für Ihre Verlosungen und Spiele.",
-            "placeholder": "Klicken Sie zum Generieren von Zahlen"
+            "placeholder": "Klicken Sie zum Generieren von Zahlen",
+            "countLabel": "Anzahl"
         },
         "shortStrawContent": {
             "title": "Strohhalm Ziehen",

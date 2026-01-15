@@ -309,7 +309,8 @@
             "aboutTitle": "乱数生成器について",
             "aboutText": "お好みの範囲内で、完全にランダムで公平な数字を生成します。",
             "placeholder": "ボタンをクリックして数字を生成",
-            "rolling": "Generating..."
+            "rolling": "Generating...",
+            "countLabel": "数"
         },
         "shortStrawContent": {
             "title": "くじ引き",

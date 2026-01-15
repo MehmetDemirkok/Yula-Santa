@@ -22,15 +22,17 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
     // Build alternates for hreflang
     const languages: Record<string, string> = {};
     locales.forEach((loc) => {
-        languages[loc] = `${SITE_URL}/${loc}/about`;
+        languages[loc] = loc === 'tr'
+            ? `${SITE_URL}/about`
+            : `${SITE_URL}/${loc}/about`;
     });
-    languages['x-default'] = `${SITE_URL}/tr/about`;
+    languages['x-default'] = `${SITE_URL}/about`;
 
     return {
         title: t('meta.title'),
         description: t('meta.description'),
         alternates: {
-            canonical: `${SITE_URL}/${locale}/about`,
+            canonical: locale === 'tr' ? `${SITE_URL}/about` : `${SITE_URL}/${locale}/about`,
             languages,
         },
     };
@@ -133,7 +135,7 @@ export default async function AboutPage({ params }: Props) {
                         {t('cta.desc')}
                     </p>
                     <Link
-                        href={`/${locale}`}
+                        href={locale === 'tr' ? '/' : `/${locale}`}
                         className="inline-flex items-center gap-2 px-8 py-4 bg-santa-red hover:bg-red-600 text-white font-bold text-lg rounded-full shadow-lg hover:shadow-xl transition-all hover:-translate-y-1"
                     >
                         <Gift className="w-5 h-5" />

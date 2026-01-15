@@ -331,7 +331,8 @@
             "aboutTitle": "Informazioni sul Numero Casuale",
             "aboutText": "Genera numeri totalmente casuali ed equi nell'intervallo scelto.",
             "placeholder": "Clicca sul pulsante per generare un numero",
-            "rolling": "Generating..."
+            "rolling": "Generating...",
+            "countLabel": "Quantità"
         },
         "shortStrawContent": {
             "title": "Cannuccia Corta",

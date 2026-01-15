@@ -65,12 +65,16 @@ export async function getSEOMetadata({
     // Construct alternates
     const languages: Record<string, string> = {};
     locales.forEach((loc) => {
-        languages[loc] = `${SITE_URL}/${loc}${path}`;
+        languages[loc] = loc === defaultLocale
+            ? `${SITE_URL}${path}`
+            : `${SITE_URL}/${loc}${path}`;
     });
 
-    languages['x-default'] = `${SITE_URL}/${defaultLocale}${path}`;
+    languages['x-default'] = `${SITE_URL}${path}`;
 
-    const canonicalUrl = `${SITE_URL}/${locale}${path}`;
+    const canonicalUrl = locale === defaultLocale
+        ? `${SITE_URL}${path}`
+        : `${SITE_URL}/${locale}${path}`;
 
     return {
         title,

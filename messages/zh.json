@@ -310,7 +310,8 @@
             "aboutTitle": "关于随机数生成器",
             "aboutText": "在您选择的范围内生成完全随机且公平的数字。",
             "placeholder": "点击按钮生成随机数",
-            "rolling": "Generating..."
+            "rolling": "Generating...",
+            "countLabel": "数量"
         },
         "shortStrawContent": {
             "title": "抽短签游戏",

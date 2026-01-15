@@ -333,7 +333,8 @@
             "result": "النتيجة",
             "aboutTitle": "عن مولد الأرقام",
             "aboutText": "قم بتوليد أرقام عشوائية غير منحازة.",
-            "placeholder": "انقر لتوليد الأرقام"
+            "placeholder": "انقر لتوليد الأرقام",
+            "countLabel": "العدد"
         },
         "shortStrawContent": {
             "title": "سحب القش",

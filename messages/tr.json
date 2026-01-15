@@ -325,7 +325,8 @@
             "aboutTitle": "Rastgele Sayı Hakkında",
             "aboutText": "Belirlediğiniz aralıkta tamamen rastgele ve adil sayılar üretin.",
             "placeholder": "Sayı üretmek için butona tıklayın",
-            "rolling": "Generating..."
+            "rolling": "Generating...",
+            "countLabel": "Sayı Adedi"
         },
         "shortStrawContent": {
             "title": "Kısa Çöp Çekme",

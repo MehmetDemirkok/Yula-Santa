@@ -33,8 +33,9 @@ export const defaultLocale: Locale = 'tr';
 
 // Locale prefix strategy
 // 'always' ensures all locales have URL prefix (/tr, /en, etc.)
-// This prevents middleware from re-detecting browser language on every request
-export const localePrefix = 'always';
+// 'as-needed' removes the prefix for the default locale (e.g. / for tr, /en for en)
+// We use 'as-needed' to avoid 308 redirects on the homepage for the default language
+export const localePrefix = 'as-needed';
 
 // Locale display names
 export const localeNames: Record<Locale, string> = {

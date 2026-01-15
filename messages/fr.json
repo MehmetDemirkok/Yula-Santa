@@ -310,7 +310,8 @@
             "aboutTitle": "À propos du Nombre Aléatoire",
             "aboutText": "Générez des nombres aléatoires et équitables dans l'intervalle de votre choix.",
             "placeholder": "Cliquez sur le bouton pour générer un nombre",
-            "rolling": "Generating..."
+            "rolling": "Generating...",
+            "countLabel": "Nombre"
         },
         "shortStrawContent": {
             "title": "Courte Paille",

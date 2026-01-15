@@ -376,7 +376,8 @@
             "result": "Result",
             "aboutTitle": "About Random Number Generator",
             "aboutText": "Generate unbiased random numbers for your giveaways and games.",
-            "placeholder": "Click the button to generate numbers"
+            "placeholder": "Click the button to generate numbers",
+            "countLabel": "Count"
         },
         "shortStrawContent": {
             "title": "Short Straw Game",

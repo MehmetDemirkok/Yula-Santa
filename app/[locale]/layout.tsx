@@ -90,7 +90,7 @@ export async function generateMetadata({
         openGraph: {
             type: "website",
             locale: locale === 'tr' ? 'tr_TR' : locale === 'en' ? 'en_US' : `${locale}_${locale.toUpperCase()}`,
-            url: `${SITE_URL}/${locale}`,
+            url: locale === 'tr' ? `${SITE_URL}` : `${SITE_URL}/${locale}`,
             title: meta.title,
             description: meta.description,
             siteName: "YulaSanta",
@@ -110,11 +110,11 @@ export async function generateMetadata({
             images: ['/twitter-image.png'],
         },
         alternates: {
-            canonical: `${SITE_URL}/${locale}`,
+            canonical: locale === 'tr' ? `${SITE_URL}` : `${SITE_URL}/${locale}`,
             languages: locales.reduce((acc, loc) => {
-                acc[loc] = `${SITE_URL}/${loc}`;
+                acc[loc] = loc === 'tr' ? `${SITE_URL}` : `${SITE_URL}/${loc}`;
                 return acc;
-            }, { 'x-default': `${SITE_URL}/tr` } as Record<string, string>),
+            }, { 'x-default': `${SITE_URL}` } as Record<string, string>),
         },
     };
 }
@@ -173,8 +173,8 @@ function getJsonLd(locale: string, messages: Record<string, any>) {
     // WebPage Schema
     const webPageSchema = {
         "@type": "WebPage",
-        "@id": `${SITE_URL}/${locale}#webpage`,
-        "url": `${SITE_URL}/${locale}`,
+        "@id": `${SITE_URL}/${locale === 'tr' ? '' : locale + '/'}#webpage`,
+        "url": locale === 'tr' ? `${SITE_URL}` : `${SITE_URL}/${locale}`,
         "name": messages.meta?.title || "YulaSanta",
         "isPartOf": {
             "@id": `${SITE_URL}/#website`
@@ -187,7 +187,7 @@ function getJsonLd(locale: string, messages: Record<string, any>) {
         "potentialAction": [
             {
                 "@type": "ReadAction",
-                "target": [`${SITE_URL}/${locale}`]
+                "target": [locale === 'tr' ? `${SITE_URL}` : `${SITE_URL}/${locale}`]
             }
         ]
     };
@@ -239,7 +239,7 @@ function getJsonLd(locale: string, messages: Record<string, any>) {
     // FAQ Schema - Helps with rich snippets
     const faqSchema = {
         "@type": "FAQPage",
-        "@id": `${SITE_URL}/${locale}#faq`,
+        "@id": `${SITE_URL}/${locale === 'tr' ? '' : locale + '/'}#faq`,
         "mainEntity": [
             {
                 "@type": "Question",
@@ -287,13 +287,13 @@ function getJsonLd(locale: string, messages: Record<string, any>) {
     // BreadcrumbList Schema
     const breadcrumbSchema = {
         "@type": "BreadcrumbList",
-        "@id": `${SITE_URL}/${locale}#breadcrumb`,
+        "@id": `${SITE_URL}/${locale === 'tr' ? '' : locale + '/'}#breadcrumb`,
         "itemListElement": [
             {
                 "@type": "ListItem",
                 "position": 1,
                 "item": {
-                    "@id": `${SITE_URL}/${locale}`,
+                    "@id": locale === 'tr' ? `${SITE_URL}` : `${SITE_URL}/${locale}`,
                     "name": locale === 'tr' ? "Ana Sayfa" : "Home"
                 }
             }

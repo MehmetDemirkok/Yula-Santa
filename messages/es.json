@@ -310,7 +310,8 @@
             "aboutTitle": "Sobre el Número Aleatorio",
             "aboutText": "Genera números totalmente aleatorios y justos en el intervalo que elijas.",
             "placeholder": "Haz clic en el botón para generar un número",
-            "rolling": "Generating..."
+            "rolling": "Generating...",
+            "countLabel": "Cantidad"
         },
         "shortStrawContent": {
             "title": "Pajita más corta",

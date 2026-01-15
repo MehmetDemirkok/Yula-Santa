@@ -58,7 +58,7 @@ export default function RandomNumberPage() {
                 </div>
 
                 <article className="bg-white dark:bg-gray-800 rounded-3xl shadow-xl border border-gray-100 dark:border-gray-700 p-6 md:p-8">
-                    <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mb-8">
+                    <div className="grid grid-cols-1 md:grid-cols-3 gap-4 mb-8">
                         <div>
                             <label htmlFor="min-value" className="block text-sm font-bold text-gray-700 dark:text-gray-300 mb-2">
                                 {t('min')}
@@ -83,6 +83,25 @@ export default function RandomNumberPage() {
                                 onChange={(e) => setMax(parseInt(e.target.value) || 0)}
                                 className="w-full px-4 py-3 rounded-xl border border-gray-200 dark:border-gray-700 bg-white dark:bg-gray-900 focus:border-green-500 focus:ring-2 focus:ring-green-200 dark:focus:ring-green-500/20 outline-none transition-all text-lg font-medium dark:text-white"
                                 aria-label="Maximum"
+                            />
+                        </div>
+                        <div>
+                            <label htmlFor="count-value" className="block text-sm font-bold text-gray-700 dark:text-gray-300 mb-2">
+                                {t('countLabel')}
+                            </label>
+                            <input
+                                id="count-value"
+                                type="number"
+                                value={count}
+                                onChange={(e) => {
+                                    const val = parseInt(e.target.value);
+                                    if (val > 0) setCount(val);
+                                    else if (e.target.value === '') setCount(1);
+                                }}
+                                min="1"
+                                max="1000"
+                                className="w-full px-4 py-3 rounded-xl border border-gray-200 dark:border-gray-700 bg-white dark:bg-gray-900 focus:border-green-500 focus:ring-2 focus:ring-green-200 dark:focus:ring-green-500/20 outline-none transition-all text-lg font-medium dark:text-white"
+                                aria-label="Count"
                             />
                         </div>
                     </div>

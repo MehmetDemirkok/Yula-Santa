@@ -310,7 +310,8 @@
             "aboutTitle": "Sobre o Número Aleatório",
             "aboutText": "Gere números totalmente aleatórios e justos no intervalo que você escolher.",
             "placeholder": "Clique no botão para gerar um número",
-            "rolling": "Generating..."
+            "rolling": "Generating...",
+            "countLabel": "Quantidade"
         },
         "shortStrawContent": {
             "title": "Vareta curta",

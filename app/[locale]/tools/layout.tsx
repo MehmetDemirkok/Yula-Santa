@@ -73,13 +73,13 @@ function getToolsJsonLd(locale: string) {
             },
             {
                 "@type": "BreadcrumbList",
-                "@id": `${SITE_URL}/${locale}/tools#breadcrumb`,
+                "@id": `${SITE_URL}/${locale === 'tr' ? '' : locale + '/'}tools#breadcrumb`,
                 "itemListElement": [
                     {
                         "@type": "ListItem",
                         "position": 1,
                         "item": {
-                            "@id": `${SITE_URL}/${locale}`,
+                            "@id": locale === 'tr' ? `${SITE_URL}` : `${SITE_URL}/${locale}`,
                             "name": homeText[locale] || homeText['en']
                         }
                     },
@@ -87,7 +87,7 @@ function getToolsJsonLd(locale: string) {
                         "@type": "ListItem",
                         "position": 2,
                         "item": {
-                            "@id": `${SITE_URL}/${locale}/tools`,
+                            "@id": locale === 'tr' ? `${SITE_URL}/tools` : `${SITE_URL}/${locale}/tools`,
                             "name": toolsText[locale] || toolsText['en']
                         }
                     }

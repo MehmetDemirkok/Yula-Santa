@@ -331,7 +331,8 @@
             "aboutTitle": "О случайных числах",
             "aboutText": "Генерируйте абсолютно случайные и честные числа в выбранном вами диапазоне.",
             "placeholder": "Нажмите на кнопку для генерации",
-            "rolling": "Generating..."
+            "rolling": "Generating...",
+            "countLabel": "Количество"
         },
         "shortStrawContent": {
             "title": "Короткая соломинка",

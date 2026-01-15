@@ -309,7 +309,8 @@
             "aboutTitle": "난수 생성기 정보",
             "aboutText": "지정한 범위 내에서 완전히 무작위고 공정한 숫자를 생성합니다.",
             "placeholder": "버튼을 클릭하여 숫자 생성",
-            "rolling": "Generating..."
+            "rolling": "Generating...",
+            "countLabel": "수량"
         },
         "shortStrawContent": {
             "title": "제비뽑기",
