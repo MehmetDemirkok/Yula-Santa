@@ -8,31 +8,26 @@ import { getTranslations, setRequestLocale } from 'next-intl/server';
 import { Metadata } from 'next';
 import { Mail, MapPin, Clock, MessageSquare, Send } from 'lucide-react';
 import { locales } from '@/i18n/config';
-import { SITE_URL } from '@/lib/constants';
+import { getSEOMetadata, viewport } from '@/lib/seo';
+
+export { viewport };
 
 type Props = {
     params: Promise<{ locale: string }>;
 };
 
+// Generate static paths for all locales
+export function generateStaticParams() {
+    return locales.map((locale) => ({ locale }));
+}
+
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
     const { locale } = await params;
-    const t = await getTranslations({ locale, namespace: 'contact' });
-
-    // Build alternates for hreflang
-    const languages: Record<string, string> = {};
-    locales.forEach((loc) => {
-        languages[loc] = `${SITE_URL}/${loc}/contact`;
+    return getSEOMetadata({
+        locale,
+        path: '/contact',
+        translationKey: 'contact.meta'
     });
-    languages['x-default'] = `${SITE_URL}/tr/contact`;
-
-    return {
-        title: t('meta.title'),
-        description: t('meta.description'),
-        alternates: {
-            canonical: `${SITE_URL}/${locale}/contact`,
-            languages,
-        },
-    };
 }
 
 export default async function ContactPage({ params }: Props) {

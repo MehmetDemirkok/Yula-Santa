@@ -1,17 +1,22 @@
 
-import { useTranslations } from "next-intl";
-import { getTranslations } from "next-intl/server";
+import { Metadata } from 'next';
+import { getSEOMetadata, viewport } from '@/lib/seo';
+import { locales } from '@/i18n/config';
+export { viewport };
 import { WheelClient } from "./WheelClient";
 
-export async function generateMetadata({ params }: { params: Promise<{ locale: string }> }) {
-    const { locale } = await params;
-    const t = await getTranslations({ locale, namespace: 'tools.wheelOfFortuneMeta' });
+// Generate static paths for all locales
+export function generateStaticParams() {
+    return locales.map((locale) => ({ locale }));
+}
 
-    return {
-        title: t('title'),
-        description: t('description'),
-        keywords: t.raw('keywords')
-    };
+export async function generateMetadata({ params }: { params: Promise<{ locale: string }> }): Promise<Metadata> {
+    const { locale } = await params;
+    return getSEOMetadata({
+        locale,
+        path: '/tools/wheel-of-fortune',
+        translationKey: 'tools.wheelOfFortuneMeta'
+    });
 }
 
 export default function WheelPage() {
