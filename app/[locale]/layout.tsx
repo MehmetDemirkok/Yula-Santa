@@ -67,9 +67,21 @@ export async function generateMetadata({
         keywords: meta.keywords,
 
         icons: {
-            icon: '/icon.png',
-            shortcut: '/icon.png',
-            apple: '/apple-touch-icon.png',
+            icon: [
+                { url: '/favicon.ico', sizes: 'any' },
+                { url: '/icon.png', type: 'image/png', sizes: '512x512' },
+                { url: '/icon-192.png', type: 'image/png', sizes: '192x192' },
+            ],
+            shortcut: '/favicon.ico',
+            apple: [
+                { url: '/apple-touch-icon.png', sizes: '180x180', type: 'image/png' },
+            ],
+            other: [
+                {
+                    rel: 'mask-icon',
+                    url: '/icon-512.png',
+                },
+            ],
         },
         manifest: '/manifest.json',
         authors: [{ name: "YulaSanta Team" }],
@@ -149,25 +161,47 @@ function getJsonLd(locale: string, messages: Record<string, any>) {
         "inLanguage": localeMap[locale] || locale
     };
 
-    // Organization Schema
+    // Organization Schema - Google Knowledge Panel için optimize edilmiş
     const organizationSchema = {
         "@type": "Organization",
         "@id": `${SITE_URL}/#organization`,
         "name": "YulaSanta",
+        "alternateName": ["Yula Santa", "YulaSanta.com.tr"],
         "url": SITE_URL,
         "logo": {
             "@type": "ImageObject",
             "@id": `${SITE_URL}/#logo`,
+            "inLanguage": "tr-TR",
             "url": `${SITE_URL}/icon-512.png`,
+            "secureUrl": `${SITE_URL}/icon-512.png`,
             "contentUrl": `${SITE_URL}/icon-512.png`,
             "width": 512,
             "height": 512,
-            "caption": "YulaSanta Logo"
+            "caption": "YulaSanta Logo",
+            "encodingFormat": "image/png"
         },
-        "image": {
-            "@id": `${SITE_URL}/#logo`
-        },
-        "sameAs": []
+        "image": [
+            {
+                "@type": "ImageObject",
+                "@id": `${SITE_URL}/#primaryimage`,
+                "url": `${SITE_URL}/icon-512.png`,
+                "contentUrl": `${SITE_URL}/icon-512.png`,
+                "width": 512,
+                "height": 512,
+                "encodingFormat": "image/png"
+            },
+            {
+                "@type": "ImageObject",
+                "url": `${SITE_URL}/opengraph-image.png`,
+                "contentUrl": `${SITE_URL}/opengraph-image.png`,
+                "width": 1200,
+                "height": 630,
+                "encodingFormat": "image/png"
+            }
+        ],
+        "sameAs": [],
+        "foundingDate": "2024",
+        "description": messages.meta?.description || "YulaSanta - Ücretsiz Online Çekiliş ve Secret Santa Platformu"
     };
 
     // WebPage Schema

@@ -1,0 +1,27 @@
+# YulaSanta Robots.txt
+# https://www.yulasanta.com.tr
+
+User-agent: *
+Allow: /
+
+# Sitemap
+Sitemap: https://www.yulasanta.com.tr/sitemap.xml
+
+# Googlebot specific
+User-agent: Googlebot
+Allow: /
+Crawl-delay: 1
+
+# Googlebot-Image
+User-agent: Googlebot-Image
+Allow: /icon-512.png
+Allow: /icon-192.png
+Allow: /icon.png
+Allow: /opengraph-image.png
+Allow: /apple-touch-icon.png
+Allow: /favicon.ico
+
+# Disallow unnecessary paths
+User-agent: *
+Disallow: /_next/static/
+Disallow: /api/
