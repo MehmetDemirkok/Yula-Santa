@@ -174,7 +174,12 @@
         "following": "Подписан",
         "notFollowing": "Не подписан",
         "checkingFollow": "Проверка...",
-        "unknownFollow": "Неизвестно"
+        "unknownFollow": "Неизвестно",
+        "shareResults": "Поделиться",
+        "shareTitle": "Поделиться результатами",
+        "shareDesc": "Поделитесь результатами розыгрыша в социальных сетях",
+        "shareCopied": "Скопировано!",
+        "copyLink": "Копировать ссылку"
     },
     "support": {
         "button": "Поддержка",

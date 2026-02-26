@@ -188,7 +188,12 @@
         "following": "Following",
         "notFollowing": "Not Following",
         "checkingFollow": "Checking...",
-        "unknownFollow": "Unknown"
+        "unknownFollow": "Unknown",
+        "shareResults": "Share",
+        "shareTitle": "Share Results",
+        "shareDesc": "Share giveaway results on social media",
+        "shareCopied": "Copied!",
+        "copyLink": "Copy Link"
     },
     "support": {
         "button": "Support",

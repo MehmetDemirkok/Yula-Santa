@@ -174,7 +174,12 @@
         "following": "Segue",
         "notFollowing": "Non segue",
         "checkingFollow": "Verifica...",
-        "unknownFollow": "Sconosciuto"
+        "unknownFollow": "Sconosciuto",
+        "shareResults": "Condividi",
+        "shareTitle": "Condividi risultati",
+        "shareDesc": "Condividi i risultati dell'estrazione sui social media",
+        "shareCopied": "Copiato!",
+        "copyLink": "Copia link"
     },
     "support": {
         "button": "Supporto",

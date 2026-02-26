@@ -190,7 +190,12 @@
         "following": "Takip Ediyor",
         "notFollowing": "Takip Etmiyor",
         "checkingFollow": "Kontrol ediliyor...",
-        "unknownFollow": "Bilinmiyor"
+        "unknownFollow": "Bilinmiyor",
+        "shareResults": "Paylaş",
+        "shareTitle": "Sonuçları Paylaş",
+        "shareDesc": "Çekiliş sonuçlarını sosyal medyada paylaşın",
+        "shareCopied": "Kopyalandı!",
+        "copyLink": "Linki Kopyala"
     },
     "support": {
         "button": "Destek",

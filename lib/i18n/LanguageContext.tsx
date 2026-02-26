@@ -175,6 +175,11 @@ export interface Translation {
         notFollowing: string;
         checkingFollow: string;
         unknownFollow: string;
+        shareResults: string;
+        shareTitle: string;
+        shareDesc: string;
+        shareCopied: string;
+        copyLink: string;
     };
     support: {
         button: string;

@@ -175,7 +175,12 @@
         "following": "Suit",
         "notFollowing": "Ne suit pas",
         "checkingFollow": "Vérification...",
-        "unknownFollow": "Inconnu"
+        "unknownFollow": "Inconnu",
+        "shareResults": "Partager",
+        "shareTitle": "Partager les résultats",
+        "shareDesc": "Partagez les résultats du tirage sur les réseaux sociaux",
+        "shareCopied": "Copié !",
+        "copyLink": "Copier le lien"
     },
     "support": {
         "button": "Support",

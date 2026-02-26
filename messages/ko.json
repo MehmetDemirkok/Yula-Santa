@@ -174,7 +174,12 @@
         "following": "팔로우 중",
         "notFollowing": "미팔로우",
         "checkingFollow": "확인 중...",
-        "unknownFollow": "결과 없음"
+        "unknownFollow": "결과 없음",
+        "shareResults": "공유",
+        "shareTitle": "결과 공유",
+        "shareDesc": "추첨 결과를 소셜 미디어에 공유하세요",
+        "shareCopied": "복사됨!",
+        "copyLink": "링크 복사"
     },
     "support": {
         "button": "고객지원",

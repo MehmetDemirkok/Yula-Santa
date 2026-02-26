@@ -184,7 +184,12 @@
         "following": "Folgt",
         "notFollowing": "Folgt nicht",
         "checkingFollow": "Überprüfung...",
-        "unknownFollow": "Unbekannt"
+        "unknownFollow": "Unbekannt",
+        "shareResults": "Teilen",
+        "shareTitle": "Ergebnisse teilen",
+        "shareDesc": "Verlosungsergebnisse in sozialen Medien teilen",
+        "shareCopied": "Kopiert!",
+        "copyLink": "Link kopieren"
     },
     "support": {
         "button": "Support",

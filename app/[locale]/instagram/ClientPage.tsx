@@ -23,6 +23,7 @@ import {
 } from "lucide-react";
 import { Button } from "@/components/ui/Button";
 import { useLanguage } from "@/lib/i18n/LanguageContext";
+import ShareModal from "@/components/ShareModal";
 
 type TabType = 'links' | 'rules' | 'participants';
 type DrawType = 'comments' | 'likes' | 'tags';
@@ -81,6 +82,7 @@ export default function InstagramGiveaway() {
     const [copied, setCopied] = useState(false);
     const [loading, setLoading] = useState(false);
     const [error, setError] = useState<string | null>(null);
+    const [showShareModal, setShowShareModal] = useState(false);
 
     const addParticipant = () => {
         if (!newParticipant.trim()) return;
@@ -263,6 +265,10 @@ export default function InstagramGiveaway() {
         navigator.clipboard.writeText(text);
         setCopied(true);
         setTimeout(() => setCopied(false), 2000);
+    };
+
+    const getShareText = () => {
+        return `🎉 ${giveawayName || t.giveaway.instagramTitle} ${t.giveaway.results}\n\n🏆 ${t.giveaway.winners}:\n${winners.map((w, i) => `${i + 1}. @${w.name}`).join('\n')}${backups.length > 0 ? `\n\n🔄 ${t.giveaway.backups}:\n${backups.map((b, i) => `${i + 1}. @${b.name}`).join('\n')}` : ''}\n\n🎰 www.yulasanta.com.tr`;
     };
 
     return (
@@ -726,8 +732,26 @@ export default function InstagramGiveaway() {
 
                                         <div className="flex gap-3 pt-4">
                                             <Button onClick={copyResults} variant="secondary" className="flex-1">{copied ? t.giveaway.copied : t.giveaway.copyResults}</Button>
+                                            <Button onClick={() => setShowShareModal(true)} className="flex-1 bg-gradient-to-r from-purple-500 to-pink-500 hover:from-purple-600 hover:to-pink-600 text-white shadow-lg">
+                                                <svg className="w-4 h-4 mr-2" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
+                                                    <path strokeLinecap="round" strokeLinejoin="round" d="M8.684 13.342C8.886 12.938 9 12.482 9 12c0-.482-.114-.938-.316-1.342m0 2.684a3 3 0 110-2.684m0 2.684l6.632 3.316m-6.632-6l6.632-3.316m0 0a3 3 0 105.367-2.684 3 3 0 00-5.367 2.684zm0 9.316a3 3 0 105.368 2.684 3 3 0 00-5.368-2.684z" />
+                                                </svg>
+                                                {t.giveaway.shareResults || "Paylaş"}
+                                            </Button>
                                             <Button onClick={resetGiveaway} className="flex-1 bg-pink-600 hover:bg-pink-700">{t.giveaway.newGiveaway}</Button>
                                         </div>
+
+                                        <ShareModal
+                                            isOpen={showShareModal}
+                                            onClose={() => setShowShareModal(false)}
+                                            shareText={getShareText()}
+                                            t={{
+                                                shareResults: t.giveaway.copyLink || "Linki Kopyala",
+                                                shareTitle: t.giveaway.shareTitle || "Sonuçları Paylaş",
+                                                shareDesc: t.giveaway.shareDesc || "Çekiliş sonuçlarını sosyal medyada paylaşın",
+                                                close: t.giveaway.shareCopied || t.giveaway.copied || "Kopyalandı!"
+                                            }}
+                                        />
                                     </div>
                                 )}
                             </>

@@ -175,7 +175,12 @@
         "following": "Segue",
         "notFollowing": "Não segue",
         "checkingFollow": "Verificando...",
-        "unknownFollow": "Desconhecido"
+        "unknownFollow": "Desconhecido",
+        "shareResults": "Compartilhar",
+        "shareTitle": "Compartilhar resultados",
+        "shareDesc": "Compartilhe os resultados do sorteio nas redes sociais",
+        "shareCopied": "Copiado!",
+        "copyLink": "Copiar link"
     },
     "support": {
         "button": "Suporte",

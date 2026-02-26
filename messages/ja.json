@@ -174,7 +174,12 @@
         "following": "フォロー中",
         "notFollowing": "未フォロー",
         "checkingFollow": "確認中...",
-        "unknownFollow": "不明"
+        "unknownFollow": "不明",
+        "shareResults": "共有",
+        "shareTitle": "結果を共有",
+        "shareDesc": "抽選結果をSNSで共有しましょう",
+        "shareCopied": "コピーしました！",
+        "copyLink": "リンクをコピー"
     },
     "support": {
         "button": "サポート",

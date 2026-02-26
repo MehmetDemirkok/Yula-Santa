@@ -198,7 +198,12 @@
         "following": "يتابع",
         "notFollowing": "لا يتابع",
         "checkingFollow": "جاري التحقق...",
-        "unknownFollow": "غير معروف"
+        "unknownFollow": "غير معروف",
+        "shareResults": "مشاركة",
+        "shareTitle": "مشاركة النتائج",
+        "shareDesc": "شارك نتائج السحب على وسائل التواصل الاجتماعي",
+        "shareCopied": "تم النسخ!",
+        "copyLink": "نسخ الرابط"
     },
     "support": {
         "button": "الدعم",
