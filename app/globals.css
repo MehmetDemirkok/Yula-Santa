@@ -105,6 +105,47 @@ body {
   transition: background-color 0.3s ease, color 0.3s ease;
 }
 
+/* ═══════════════════════════════════════════════════════════════════════════
+   CURSOR POINTER FOR ALL INTERACTIVE ELEMENTS
+   Tailwind v4 doesn't apply cursor: pointer to buttons/links by default.
+   This ensures all clickable elements show the hand cursor on hover.
+═══════════════════════════════════════════════════════════════════════════ */
+a,
+button,
+[role="button"],
+[role="link"],
+[role="tab"],
+[role="option"],
+[role="menuitem"],
+[role="checkbox"],
+[role="radio"],
+[role="switch"],
+input[type="button"],
+input[type="submit"],
+input[type="reset"],
+input[type="checkbox"],
+input[type="radio"],
+input[type="file"],
+input[type="range"],
+label[for],
+label:has(input),
+select,
+summary,
+[tabindex]:not([tabindex="-1"]),
+[onclick] {
+  cursor: pointer;
+}
+
+/* Disabled elements should show not-allowed cursor */
+a[disabled],
+button:disabled,
+[role="button"][aria-disabled="true"],
+input:disabled,
+select:disabled,
+textarea:disabled {
+  cursor: not-allowed;
+}
+
 /* Responsive typography */
 @media (max-width: 640px) {
   html {
