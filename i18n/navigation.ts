@@ -11,7 +11,7 @@
  */
 
 import { createNavigation } from 'next-intl/navigation';
-import { locales, localePrefix } from './config';
+import { locales, localePrefix, defaultLocale } from './config';
 
 export const { Link, redirect, usePathname, useRouter, permanentRedirect } =
-    createNavigation({ locales, localePrefix });
+    createNavigation({ locales, localePrefix, defaultLocale });

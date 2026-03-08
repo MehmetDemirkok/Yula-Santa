@@ -8,28 +8,37 @@
  * - Is fully accessible (keyboard navigation, screen readers)
  * - Persists language choice via URL and cookie
  * - Shows flags and native language names
- * - SEO-friendly (uses proper anchor links)
+ * - Uses next-intl's useRouter for proper locale-aware navigation
  * 
  * ═══════════════════════════════════════════════════════════════════════════
  */
 
 "use client";
 
-import { useState, useRef, useEffect } from 'react';
-import { useParams, usePathname } from 'next/navigation';
-import Link from 'next/link';
+import { useState, useRef, useEffect, useTransition } from 'react';
+import { useParams } from 'next/navigation';
+import { useRouter, usePathname } from '@/i18n/navigation';
 import { Globe, ChevronDown } from 'lucide-react';
 import { locales, localeNames, localeFlags, type Locale } from '@/i18n/config';
 
 export function LanguageSwitcher() {
     const [isOpen, setIsOpen] = useState(false);
+    const [isPending, startTransition] = useTransition();
     const dropdownRef = useRef<HTMLDivElement>(null);
     const params = useParams();
+    const router = useRouter();
     const pathname = usePathname();
 
     const currentLocale = (params.locale as Locale) || 'tr';
 
-
+    const handleLocaleChange = (newLocale: Locale) => {
+        setIsOpen(false);
+        // Set cookie BEFORE navigation to ensure middleware reads the correct value
+        document.cookie = `NEXT_LOCALE=${newLocale}; path=/; max-age=31536000; SameSite=Lax`;
+        startTransition(() => {
+            router.replace(pathname, { locale: newLocale });
+        });
+    };
 
     // Close dropdown when clicking outside
     useEffect(() => {
@@ -60,10 +69,11 @@ export function LanguageSwitcher() {
             {/* Trigger Button */}
             <button
                 onClick={() => setIsOpen(!isOpen)}
-                className="flex items-center gap-1.5 sm:gap-2 px-2.5 sm:px-3 py-1.5 sm:py-2 bg-white/90 backdrop-blur-sm border border-gray-200 rounded-lg sm:rounded-xl shadow-sm hover:shadow-md transition-all text-sm font-medium text-gray-700 hover:text-gray-900"
+                className={`flex items-center gap-1.5 sm:gap-2 px-2.5 sm:px-3 py-1.5 sm:py-2 bg-white/90 backdrop-blur-sm border border-gray-200 rounded-lg sm:rounded-xl shadow-sm hover:shadow-md transition-all text-sm font-medium text-gray-700 hover:text-gray-900 ${isPending ? 'opacity-60 pointer-events-none' : ''}`}
                 aria-expanded={isOpen}
                 aria-haspopup="listbox"
                 aria-label="Select language"
+                disabled={isPending}
             >
                 <Globe className="w-4 h-4 text-gray-500" />
                 <span className="hidden sm:inline">{localeFlags[currentLocale]}</span>
@@ -71,8 +81,6 @@ export function LanguageSwitcher() {
                 <ChevronDown className={`w-3.5 h-3.5 text-gray-400 transition-transform ${isOpen ? 'rotate-180' : ''}`} />
             </button>
 
-            {/* Dropdown Menu */}
-            {/* Dropdown Menu */}
             {/* Dropdown Menu */}
             {isOpen && (
                 <>
@@ -87,12 +95,12 @@ export function LanguageSwitcher() {
                     <div
                         className="
                             fixed inset-x-0 bottom-0 z-[70] w-full bg-white/95 backdrop-blur-xl rounded-t-3xl shadow-[0_-10px_40px_-10px_rgba(0,0,0,0.1)] border-t border-white/50 safe-area-inset-bottom
-                            sm:absolute sm:inset-auto sm:right-0 sm:top-full sm:bottom-auto sm:z-50 sm:mt-2 sm:w-64 sm:bg-white sm:rounded-2xl sm:shadow-2xl sm:border sm:border-gray-100 sm:pb-0
+                            sm:absolute sm:inset-auto sm:right-0 sm:top-full sm:bottom-auto sm:z-50 sm:mt-2 sm:min-w-[16rem] sm:w-auto sm:bg-white sm:rounded-2xl sm:shadow-2xl sm:border sm:border-gray-100 sm:pb-0
                             animate-slide-up sm:animate-fade-in
                         "
                         role="listbox"
                         aria-label="Available languages"
-                        onClick={(e) => e.stopPropagation()} // Prevent click from bubbling to outside listener when clicking inside
+                        onClick={(e) => e.stopPropagation()}
                     >
                         {/* Mobile Handle */}
                         <div className="w-12 h-1.5 bg-gray-200 rounded-full mx-auto my-3 sm:hidden" />
@@ -103,39 +111,30 @@ export function LanguageSwitcher() {
                             </p>
                         </div>
 
-                        <div className="max-h-[60vh] sm:max-h-80 overflow-y-auto overflow-x-hidden p-2 custom-scrollbar">
+                        <div className="max-h-[60vh] sm:max-h-80 overflow-y-auto p-2 sm:p-3 custom-scrollbar">
                             {locales.map((locale) => {
                                 const isActive = locale === currentLocale;
-                                // Handle path replacement securely with regex
-                                const pathWithoutLocale = pathname.replace(new RegExp(`^/${currentLocale}(/|$)`), '$1') || '/';
-                                const href = `/${locale}${pathWithoutLocale === '/' ? '' : pathWithoutLocale}`;
 
                                 return (
-                                    <Link
+                                    <button
                                         key={locale}
-                                        href={href}
-                                        onClick={() => {
-                                            setIsOpen(false);
-                                            // Explicitly set cookie to ensure preference persists, 
-                                            // especially when redirecting to default locale (tr) which might strip the prefix
-                                            document.cookie = `NEXT_LOCALE=${locale}; path=/; max-age=31536000; SameSite=Lax`;
-                                        }}
-                                        className={`flex items-center gap-4 sm:gap-3 px-4 sm:px-3 py-3.5 sm:py-2.5 rounded-xl sm:rounded-lg transition-all ${isActive
+                                        type="button"
+                                        onClick={() => handleLocaleChange(locale)}
+                                        className={`w-full flex items-center gap-4 sm:gap-3 px-4 sm:px-3 py-3.5 sm:py-2.5 rounded-xl sm:rounded-lg transition-all ${isActive
                                             ? 'bg-red-50 text-santa-red shadow-sm sm:shadow-none font-bold'
                                             : 'hover:bg-gray-50 text-gray-600 hover:text-gray-900 font-medium'
                                             }`}
                                         role="option"
                                         aria-selected={isActive}
-                                        hrefLang={locale}
                                     >
-                                        <span className="text-2xl sm:text-lg shadow-sm rounded-sm overflow-hidden">{localeFlags[locale]}</span>
-                                        <span className="text-base sm:text-sm">{localeNames[locale]}</span>
+                                        <span className="text-2xl sm:text-lg leading-none">{localeFlags[locale]}</span>
+                                        <span className="text-base sm:text-sm flex-1 text-left">{localeNames[locale]}</span>
                                         {isActive && (
-                                            <div className="bg-red-100 p-1 rounded-full sm:bg-transparent sm:p-0">
+                                            <div className="bg-red-100 p-1 rounded-full sm:bg-transparent sm:p-0 ml-auto">
                                                 <span className="text-santa-red text-sm">✓</span>
                                             </div>
                                         )}
-                                    </Link>
+                                    </button>
                                 );
                             })}
                         </div>

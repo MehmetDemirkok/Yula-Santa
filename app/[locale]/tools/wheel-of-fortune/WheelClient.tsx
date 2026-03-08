@@ -70,18 +70,35 @@ export function WheelClient() {
         setWinner(null);
         setIsSpinning(true);
 
-        const newRotation = rotation + 1800 + Math.random() * 360; // At least 5 full spins
+        // 1. First, randomly pick a winner (perfectly uniform distribution)
+        const winningIndex = Math.floor(Math.random() * segments.length);
+
+        // 2. Calculate the angle to land the pointer on that segment
+        //    SVG segments start from the right (3 o'clock / 0°) and go clockwise.
+        //    The pointer is on the right side.
+        //    Segment i occupies from (i/n * 360) to ((i+1)/n * 360) degrees.
+        //    To land on segment i, the wheel needs to rotate so that segment i
+        //    is under the pointer (at 0° / right side).
+        const segmentAngle = 360 / segments.length;
+
+        // Random position within the winning segment (avoid edges for visual clarity)
+        const segmentStart = winningIndex * segmentAngle;
+        const padding = segmentAngle * 0.15; // 15% padding from edges
+        const randomWithinSegment = segmentStart + padding + Math.random() * (segmentAngle - 2 * padding);
+
+        // The wheel rotates, so we need to send this segment to 0° (pointer position)
+        // If segment is at angle X, we rotate by (360 - X) to bring it to 0°
+        const targetAngle = (360 - randomWithinSegment + 360) % 360;
+
+        // Add multiple full rotations for dramatic effect (5-8 full spins)
+        const fullSpins = (5 + Math.floor(Math.random() * 4)) * 360;
+        const newRotation = rotation + fullSpins + targetAngle - (rotation % 360);
+
         setRotation(newRotation);
 
         setTimeout(() => {
             setIsSpinning(false);
-            const actualRotation = newRotation % 360;
-            const segmentAngle = 360 / segments.length;
-            const normalizedRotation = (360 - actualRotation) % 360;
-            const winningIndex = Math.floor(normalizedRotation / segmentAngle);
-            const winningName = segments[winningIndex];
-
-            setWinner(winningName);
+            setWinner(segments[winningIndex]);
             triggerConfetti();
         }, 5000);
     };
