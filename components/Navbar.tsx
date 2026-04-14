@@ -5,7 +5,6 @@ import { useRouter, useParams, usePathname } from "next/navigation";
 import {
     Instagram,
     Youtube,
-    Twitter,
     Gift,
     ChevronDown,
     Menu,
@@ -74,13 +73,6 @@ export function Navbar() {
             ),
             href: `/${locale}/tiktok`,
             color: "from-black to-gray-800"
-        },
-        {
-            name: "Twitter / X",
-            description: t('giveaway.twitterDesc'),
-            icon: Twitter,
-            href: `/${locale}/twitter`,
-            color: "from-gray-900 to-gray-700"
         },
         {
             name: t('home.secretDraw').replace(' 🤫', ''),

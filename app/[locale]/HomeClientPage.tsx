@@ -4,7 +4,6 @@ import { useRouter, useParams } from "next/navigation";
 import {
     Instagram,
     Youtube,
-    Twitter,
     Gift,
     Sparkles,
     Dice5,
@@ -46,14 +45,6 @@ export default function HomeClientPage() {
             href: `/${locale}/youtube`,
             color: "bg-red-600 from-red-600 to-red-500",
             shadow: "shadow-red-200 dark:shadow-red-500/20"
-        },
-        {
-            title: "Twitter / X",
-            desc: t('giveaway.twitterDesc'),
-            icon: Twitter,
-            href: `/${locale}/twitter`,
-            color: "bg-gray-900 from-gray-900 to-gray-700",
-            shadow: "shadow-gray-200 dark:shadow-gray-500/20"
         },
         {
             title: "TikTok",
