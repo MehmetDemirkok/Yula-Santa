@@ -1,0 +1,12 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(find /Users/mehmetdemirkok/Downloads/Yula-Santa/app/[locale] -name \"ClientPage.tsx\" -o -name \"*Client*.tsx\")",
+      "Bash(npx tsc *)",
+      "Bash(python3 -c \"import json,sys; d=json.load\\(sys.stdin\\); print\\(json.dumps\\(d.get\\('tools', {}\\), indent=2, ensure_ascii=False\\)\\)\")",
+      "Bash(python3 -c \"import json,sys; d=json.load\\(sys.stdin\\); t=d.get\\('tools', {}\\); print\\(json.dumps\\(t.get\\('instagramStoryMeta', {}\\), indent=2, ensure_ascii=False\\)\\)\")",
+      "Bash(python3 -c \"import json,sys; d=json.load\\(sys.stdin\\); t=d.get\\('tools', {}\\); print\\(json.dumps\\(t.get\\('instagramStoryContent', {}\\), indent=2, ensure_ascii=False\\)\\)\")",
+      "Bash(npx next *)"
+    ]
+  }
+}

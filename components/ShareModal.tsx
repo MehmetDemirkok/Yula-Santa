@@ -120,9 +120,9 @@ export default function ShareModal({ isOpen, onClose, shareText, shareUrl, t }: 
             />
 
             {/* Modal */}
-            <div className="relative bg-white dark:bg-gray-800 rounded-2xl shadow-2xl border border-gray-200 dark:border-gray-700 w-full max-w-md overflow-hidden animate-in zoom-in-95 fade-in duration-300">
+            <div className="relative bg-white dark:bg-[#1C1414] rounded-2xl shadow-[0_20px_60px_rgba(100,35,25,0.15)] dark:shadow-[0_20px_60px_rgba(0,0,0,0.6)] border border-[rgba(225,210,205,0.6)] dark:border-white/[0.07] w-full max-w-md overflow-hidden animate-in zoom-in-95 fade-in duration-300">
                 {/* Header */}
-                <div className="flex items-center justify-between p-5 border-b border-gray-100 dark:border-gray-700">
+                <div className="flex items-center justify-between p-5 border-b border-[rgba(225,210,205,0.5)] dark:border-white/[0.07]">
                     <div className="flex items-center gap-3">
                         <div className="p-2 bg-gradient-to-br from-purple-500 to-pink-500 rounded-xl shadow-lg">
                             <Share2 className="w-5 h-5 text-white" />
@@ -138,7 +138,7 @@ export default function ShareModal({ isOpen, onClose, shareText, shareUrl, t }: 
                     </div>
                     <button
                         onClick={onClose}
-                        className="p-2 rounded-xl hover:bg-gray-100 dark:hover:bg-gray-700 transition-colors"
+                        className="p-2 rounded-xl hover:bg-gray-100 dark:hover:bg-white/10 transition-colors"
                     >
                         <X className="w-5 h-5 text-gray-400" />
                     </button>
@@ -165,10 +165,10 @@ export default function ShareModal({ isOpen, onClose, shareText, shareUrl, t }: 
                     </div>
 
                     {/* Copy Link Button */}
-                    <div className="mt-4 pt-4 border-t border-gray-100 dark:border-gray-700">
+                    <div className="mt-4 pt-4 border-t border-[rgba(225,210,205,0.5)] dark:border-white/[0.07]">
                         <button
                             onClick={handleCopyLink}
-                            className="w-full flex items-center justify-center gap-2 py-3 px-4 bg-gray-100 dark:bg-gray-700 hover:bg-gray-200 dark:hover:bg-gray-600 rounded-xl text-gray-700 dark:text-gray-300 font-medium transition-all duration-200 active:scale-[0.98]"
+                            className="w-full flex items-center justify-center gap-2 py-3 px-4 bg-gray-100 dark:bg-white/8 hover:bg-gray-200 dark:hover:bg-white/14 rounded-xl text-gray-700 dark:text-gray-300 font-medium transition-all duration-200 active:scale-[0.98]"
                         >
                             {copied ? (
                                 <>

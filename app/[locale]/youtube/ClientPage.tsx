@@ -25,6 +25,8 @@ import {
 import { Button } from "@/components/ui/Button";
 import { useLanguage } from "@/lib/i18n/LanguageContext";
 import ShareModal from "@/components/ShareModal";
+import { useToast } from "@/lib/ToastContext";
+import { downloadWinnerCard } from "@/lib/downloadWinnerCard";
 
 type TabType = 'links' | 'rules' | 'participants';
 type DrawType = 'comments' | 'likes' | 'subscribers';
@@ -42,6 +44,7 @@ export default function YouTubeGiveaway() {
     const params = useParams();
     const locale = params.locale as string;
     const { t } = useLanguage();
+    const { toast } = useToast();
 
     // Tab state
     const [activeTab, setActiveTab] = useState<TabType>('links');
@@ -75,6 +78,7 @@ export default function YouTubeGiveaway() {
     const [copied, setCopied] = useState(false);
     const [showShareModal, setShowShareModal] = useState(false);
     const [loading, setLoading] = useState(false);
+    const [loadingStep, setLoadingStep] = useState("");
     const [error, setError] = useState<string | null>(null);
 
     // Close dropdown on click outside
@@ -98,11 +102,24 @@ export default function YouTubeGiveaway() {
         setError(null);
         const videoId = extractVideoId(videoLink);
         if (!videoId) {
-            setError(t.giveaway.inputError || "Invalid link");
+            toast.error("Geçerli bir YouTube video linki giriniz");
             return;
         }
 
         setLoading(true);
+        const steps = [
+            "YouTube'a bağlanılıyor...",
+            "Video yorumları çekiliyor...",
+            "Katılımcılar listeleniyor...",
+            "Veriler hazırlanıyor...",
+        ];
+        let stepIdx = 0;
+        setLoadingStep(steps[0]);
+        const stepInterval = setInterval(() => {
+            stepIdx = (stepIdx + 1) % steps.length;
+            setLoadingStep(steps[stepIdx]);
+        }, 5000);
+
         try {
             const response = await fetch('/api/youtube/comments', {
                 method: 'POST',
@@ -131,11 +148,23 @@ export default function YouTubeGiveaway() {
 
             setParticipants(unique);
             setActiveTab('rules');
+            toast.success(`${newParticipants.length} katılımcı başarıyla eklendi!`);
 
-        } catch (error) {
-            setError(error instanceof Error ? error.message : String(error));
+        } catch (err) {
+            const raw = err instanceof Error ? err.message : String(err);
+            const friendly = raw.includes('API key') || raw.includes('quota')
+                ? 'YouTube API kotası doldu, lütfen daha sonra deneyin'
+                : raw.includes('disabled') || raw.includes('403')
+                ? 'Bu video için yorumlar kapalı'
+                : raw.includes('not found') || raw.includes('404')
+                ? 'Video bulunamadı veya gizli'
+                : 'Yorumlar çekilemedi — video linkini kontrol edin';
+            setError(friendly);
+            toast.error(friendly);
         } finally {
+            clearInterval(stepInterval);
             setLoading(false);
+            setLoadingStep("");
         }
     };
 
@@ -162,11 +191,12 @@ export default function YouTubeGiveaway() {
         if (!newParticipant.trim()) return;
         const name = newParticipant.trim().replace(/^@/, '');
         if (participants.some(p => p.name === name)) {
-            alert(t.home.nameExists);
+            toast.warning(t.home.nameExists || "Bu kullanıcı zaten listede");
             return;
         }
         setParticipants([...participants, { name, comment: 'Manual Entry' }]);
         setNewParticipant("");
+        toast.success(`@${name} eklendi`);
     };
 
     const removeParticipant = (index: number) => {
@@ -224,7 +254,7 @@ export default function YouTubeGiveaway() {
 
     const startGiveaway = () => {
         if (participants.length < winnerCount + backupCount) {
-            alert(t.home.notEnoughPeople);
+            toast.warning(t.home.notEnoughPeople || "Yeterli katılımcı yok");
             return;
         }
 
@@ -278,6 +308,7 @@ export default function YouTubeGiveaway() {
         const text = `🎉 ${giveawayName || t.giveaway.youtubeTitle} ${t.giveaway.results}\n\n🏆 ${t.giveaway.winners}:\n${winners.map((w, i) => `${i + 1}. ${w.name} - "${w.comment}"`).join('\n')}${backups.length > 0 ? `\n\n🔄 ${t.giveaway.backups}:\n${backups.map((b, i) => `${i + 1}. ${b.name}`).join('\n')}` : ''}`;
         navigator.clipboard.writeText(text);
         setCopied(true);
+        toast.success("Sonuçlar panoya kopyalandı!");
         setTimeout(() => setCopied(false), 2000);
     };
 
@@ -405,9 +436,25 @@ export default function YouTubeGiveaway() {
                                             <p className="text-xs text-gray-400 text-center">
                                                 {t.giveaway.youtubeDesc}
                                             </p>
-                                            {error && (
-                                                <div className="p-3 bg-red-50 border border-red-200 text-red-600 rounded-xl text-sm text-center animate-in slide-in-from-top-2">
-                                                    {error}
+                                            {loading && (
+                                                <div className="p-4 bg-red-50 border border-red-200 rounded-xl animate-in fade-in">
+                                                    <div className="flex items-center gap-3">
+                                                        <div className="w-5 h-5 border-2 border-red-300 border-t-red-600 rounded-full animate-spin flex-shrink-0" />
+                                                        <div className="flex-1 min-w-0">
+                                                            <p className="text-sm font-semibold text-red-700">{loadingStep}</p>
+                                                            <p className="text-xs text-red-400 mt-0.5">Bu işlem 10-30 saniye sürebilir, lütfen bekleyin</p>
+                                                        </div>
+                                                    </div>
+                                                    <div className="mt-3 w-full bg-red-100 rounded-full h-1 overflow-hidden">
+                                                        <div className="h-full w-full bg-gradient-to-r from-red-400 to-red-600 rounded-full origin-left animate-[pulse_2s_ease-in-out_infinite]" />
+                                                    </div>
+                                                </div>
+                                            )}
+
+                                            {error && !loading && (
+                                                <div className="p-3 bg-red-50 border border-red-200 text-red-600 rounded-xl text-sm flex items-start gap-2 animate-in slide-in-from-top-2">
+                                                    <span className="text-lg leading-none">⚠️</span>
+                                                    <span>{error}</span>
                                                 </div>
                                             )}
 
@@ -626,9 +673,20 @@ export default function YouTubeGiveaway() {
 
                                             <div className="min-h-[200px] max-h-[50vh] overflow-y-auto space-y-2 pr-2 custom-scrollbar border-2 border-dashed border-gray-100 rounded-xl p-2 bg-gray-50/30">
                                                 {participants.length === 0 ? (
-                                                    <div className="h-full flex flex-col items-center justify-center text-gray-400 py-12">
-                                                        <Users className="w-8 h-8 opacity-20 mb-2" />
-                                                        <p className="text-sm opacity-60">{t.home.noParticipants}</p>
+                                                    <div className="h-full flex flex-col items-center justify-center text-gray-400 py-10 gap-3">
+                                                        <div className="p-4 bg-red-50 rounded-2xl">
+                                                            <Users className="w-10 h-10 text-red-200" />
+                                                        </div>
+                                                        <div className="text-center space-y-1">
+                                                            <p className="text-sm font-semibold text-gray-500">Henüz katılımcı yok</p>
+                                                            <p className="text-xs text-gray-400 max-w-[200px] mx-auto">YouTube video linkini yapıştırın veya manuel olarak kullanıcı ekleyin</p>
+                                                        </div>
+                                                        <button
+                                                            onClick={() => setActiveTab('links')}
+                                                            className="text-xs bg-red-500 text-white font-bold px-4 py-2 rounded-lg hover:bg-red-600 transition-colors"
+                                                        >
+                                                            ← Video Linkinden Çek
+                                                        </button>
                                                     </div>
                                                 ) : (
                                                     participants.map((p, i) => (
@@ -747,17 +805,28 @@ export default function YouTubeGiveaway() {
                                             </div>
                                         )}
 
-                                        <div className="flex gap-3 pt-4">
-                                            <Button onClick={copyResults} variant="secondary" className="flex-1">
+                                        <div className="flex flex-wrap gap-2 pt-4">
+                                            <Button onClick={copyResults} variant="secondary" className="flex-1 min-w-[120px]">
                                                 {copied ? t.giveaway.copied : t.giveaway.copyResults}
                                             </Button>
-                                            <Button onClick={() => setShowShareModal(true)} className="flex-1 bg-gradient-to-r from-red-500 to-orange-500 hover:from-red-600 hover:to-orange-600 text-white shadow-lg">
+                                            <Button
+                                                onClick={() => {
+                                                    downloadWinnerCard({ giveawayName: giveawayName || t.giveaway.youtubeTitle, winners, backups, platform: "youtube" });
+                                                    toast.success("Kazanan kartı indirildi!");
+                                                }}
+                                                variant="secondary"
+                                                className="flex-1 min-w-[120px] border-red-200 text-red-600 hover:bg-red-50"
+                                            >
+                                                <svg className="w-4 h-4 mr-1.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}><path strokeLinecap="round" strokeLinejoin="round" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4" /></svg>
+                                                PNG İndir
+                                            </Button>
+                                            <Button onClick={() => setShowShareModal(true)} className="flex-1 min-w-[120px] bg-gradient-to-r from-red-500 to-orange-500 hover:from-red-600 hover:to-orange-600 text-white shadow-lg">
                                                 <svg className="w-4 h-4 mr-2" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
                                                     <path strokeLinecap="round" strokeLinejoin="round" d="M8.684 13.342C8.886 12.938 9 12.482 9 12c0-.482-.114-.938-.316-1.342m0 2.684a3 3 0 110-2.684m0 2.684l6.632 3.316m-6.632-6l6.632-3.316m0 0a3 3 0 105.367-2.684 3 3 0 00-5.367 2.684zm0 9.316a3 3 0 105.368 2.684 3 3 0 00-5.368-2.684z" />
                                                 </svg>
                                                 {t.giveaway.shareResults || "Paylaş"}
                                             </Button>
-                                            <Button onClick={resetGiveaway} className="flex-1 bg-red-600 hover:bg-red-700">
+                                            <Button onClick={resetGiveaway} className="flex-1 min-w-[120px] bg-red-600 hover:bg-red-700">
                                                 {t.giveaway.newGiveaway}
                                             </Button>
                                         </div>

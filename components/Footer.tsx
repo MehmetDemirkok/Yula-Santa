@@ -83,9 +83,9 @@ export function Footer() {
     ];
 
     return (
-        <footer className="w-full mt-auto relative overflow-hidden bg-gradient-to-b from-white to-gray-50/80 dark:from-gray-900 dark:to-gray-950">
+        <footer className="w-full mt-auto relative overflow-hidden bg-gradient-to-b from-[#FDFBF8] to-[#F5EEEA] dark:from-[#100C0C] dark:to-[#0C0808]">
             {/* Soft top border */}
-            <div className="absolute top-0 left-1/2 -translate-x-1/2 w-full max-w-4xl h-px bg-gradient-to-r from-transparent via-gray-200 dark:via-gray-700 to-transparent" />
+            <div className="absolute top-0 left-1/2 -translate-x-1/2 w-full max-w-4xl h-px bg-gradient-to-r from-transparent via-[rgba(200,180,175,0.6)] dark:via-white/[0.08] to-transparent" />
 
             <div className="max-w-7xl mx-auto px-4 sm:px-6 pt-12 sm:pt-16 pb-8 sm:pb-10">
                 <div className="flex flex-col items-center space-y-8 sm:space-y-12">
@@ -115,7 +115,7 @@ export function Footer() {
                     {/* ═══════════════════════════════════════════════════════════════════ */}
                     {!isHomePage && (
                         <div className="w-full">
-                            <div className="bg-white/80 dark:bg-gray-800/50 backdrop-blur-xl rounded-2xl sm:rounded-3xl p-4 sm:p-6 md:p-8 border border-gray-100 dark:border-white/10 shadow-xl dark:shadow-2xl">
+                            <div className="bg-white/80 dark:bg-[#1A1414]/70 backdrop-blur-xl rounded-2xl sm:rounded-3xl p-4 sm:p-6 md:p-8 border border-[rgba(225,210,205,0.55)] dark:border-white/[0.07] shadow-[0_8px_32px_rgba(100,35,25,0.07)] dark:shadow-[0_8px_32px_rgba(0,0,0,0.4)]">
                                 {/* Section Title */}
                                 <div className="flex items-center gap-2 sm:gap-3 mb-4 sm:mb-6">
                                     <div className="w-1 sm:w-1.5 h-6 sm:h-8 bg-santa-red rounded-full" />

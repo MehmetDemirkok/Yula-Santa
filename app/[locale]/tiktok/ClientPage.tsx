@@ -22,6 +22,8 @@ import {
 import { Button } from "@/components/ui/Button";
 import { useLanguage } from "@/lib/i18n/LanguageContext";
 import ShareModal from "@/components/ShareModal";
+import { useToast } from "@/lib/ToastContext";
+import { downloadWinnerCard } from "@/lib/downloadWinnerCard";
 
 // TikTok Icon Component
 const TikTokIcon = ({ className }: { className?: string }) => (
@@ -44,6 +46,7 @@ export default function TikTokGiveaway() {
     const params = useParams();
     const locale = params.locale as string;
     const { t } = useLanguage();
+    const { toast } = useToast();
 
     // Tab state
     const [activeTab, setActiveTab] = useState<TabType>('links');
@@ -87,6 +90,7 @@ export default function TikTokGiveaway() {
     const [showResults, setShowResults] = useState(false);
     const [copied, setCopied] = useState(false);
     const [loading, setLoading] = useState(false);
+    const [loadingStep, setLoadingStep] = useState("");
     const [error, setError] = useState<string | null>(null);
     const [showShareModal, setShowShareModal] = useState(false);
 
@@ -94,11 +98,12 @@ export default function TikTokGiveaway() {
         if (!newParticipant.trim()) return;
         const name = newParticipant.trim().replace(/^@/, '');
         if (participants.some(p => p.name === name)) {
-            alert(t.home.nameExists);
+            toast.warning(t.home.nameExists || "Bu kullanıcı zaten listede");
             return;
         }
         setParticipants([...participants, { name, comment: 'Manual Entry' }]);
         setNewParticipant("");
+        toast.success(`@${name} eklendi`);
     };
 
     const removeParticipant = (index: number) => {
@@ -162,12 +167,28 @@ export default function TikTokGiveaway() {
 
     const fetchTikTokComments = async () => {
         setError(null);
-        if (!postLink) {
-            setError(t.giveaway.inputError);
+        if (!postLink.trim()) {
+            toast.warning("Lütfen bir TikTok video linki girin");
+            return;
+        }
+        if (!postLink.includes('tiktok.com')) {
+            toast.error("Geçerli bir TikTok video linki giriniz (tiktok.com/@.../video/...)");
             return;
         }
 
         setLoading(true);
+        const steps = [
+            "TikTok'a bağlanılıyor...",
+            "Video yorumları çekiliyor...",
+            "Katılımcılar analiz ediliyor...",
+            "Veriler hazırlanıyor...",
+        ];
+        let stepIdx = 0;
+        setLoadingStep(steps[0]);
+        const stepInterval = setInterval(() => {
+            stepIdx = (stepIdx + 1) % steps.length;
+            setLoadingStep(steps[stepIdx]);
+        }, 5000);
 
         try {
             const response = await fetch('/api/tiktok/comments', {
@@ -186,19 +207,25 @@ export default function TikTokGiveaway() {
             if (data.participants && Array.isArray(data.participants)) {
                 setParticipants(data.participants);
                 setActiveTab('rules');
+                toast.success(`${data.participants.length} katılımcı başarıyla eklendi!`);
             } else {
                 throw new Error(t.giveaway.fetchError);
             }
 
         } catch (err: unknown) {
             console.error(err);
-            if (err instanceof Error) {
-                setError(err.message || t.giveaway.fetchError);
-            } else {
-                setError(t.giveaway.fetchError);
-            }
+            const raw = err instanceof Error ? err.message : String(err);
+            const friendly = raw.includes('token') || raw.includes('API') || raw.includes('valid')
+                ? 'Servis şu anda kullanılamıyor, lütfen daha sonra deneyin'
+                : raw.includes('timeout') || raw.includes('ETIMEDOUT')
+                ? 'Bağlantı zaman aşımına uğradı, lütfen tekrar deneyin'
+                : 'Yorumlar çekilemedi — video linkini kontrol edin ve videonun herkese açık olduğundan emin olun';
+            setError(friendly);
+            toast.error(friendly);
         } finally {
+            clearInterval(stepInterval);
             setLoading(false);
+            setLoadingStep("");
         }
     };
 
@@ -273,7 +300,7 @@ export default function TikTokGiveaway() {
 
     const startGiveaway = () => {
         if (participants.length < winnerCount + backupCount) {
-            alert(t.home.notEnoughPeople);
+            toast.warning(t.home.notEnoughPeople || "Yeterli katılımcı yok");
             return;
         }
 
@@ -320,6 +347,7 @@ export default function TikTokGiveaway() {
         const text = `🎉 ${giveawayName || t.giveaway.tiktokTitle} ${t.giveaway.results}\n\n🏆 ${t.giveaway.winners}:\n${winners.map((w, i) => `${i + 1}. @${w.name} - "${w.comment}"`).join('\n')}${backups.length > 0 ? `\n\n🔄 ${t.giveaway.backups}:\n${backups.map((b, i) => `${i + 1}. @${b.name}`).join('\n')}` : ''}`;
         navigator.clipboard.writeText(text);
         setCopied(true);
+        toast.success("Sonuçlar panoya kopyalandı!");
         setTimeout(() => setCopied(false), 2000);
     };
 
@@ -491,6 +519,28 @@ export default function TikTokGiveaway() {
                                                             </div>
                                                         </div>
 
+                                                        {loading && (
+                                                            <div className="p-4 bg-cyan-50 border border-cyan-200 rounded-xl animate-in fade-in">
+                                                                <div className="flex items-center gap-3">
+                                                                    <div className="w-5 h-5 border-2 border-cyan-300 border-t-cyan-600 rounded-full animate-spin flex-shrink-0" />
+                                                                    <div className="flex-1 min-w-0">
+                                                                        <p className="text-sm font-semibold text-cyan-700">{loadingStep}</p>
+                                                                        <p className="text-xs text-cyan-400 mt-0.5">Bu işlem 20-60 saniye sürebilir, lütfen bekleyin</p>
+                                                                    </div>
+                                                                </div>
+                                                                <div className="mt-3 w-full bg-cyan-100 rounded-full h-1 overflow-hidden">
+                                                                    <div className="h-full w-full bg-gradient-to-r from-cyan-400 to-teal-400 rounded-full origin-left animate-[pulse_2s_ease-in-out_infinite]" />
+                                                                </div>
+                                                            </div>
+                                                        )}
+
+                                                        {error && !loading && (
+                                                            <div className="p-3 bg-red-50 border border-red-200 text-red-600 rounded-xl text-sm flex items-start gap-2 animate-in slide-in-from-top-2">
+                                                                <span className="text-lg leading-none">⚠️</span>
+                                                                <span>{error}</span>
+                                                            </div>
+                                                        )}
+
                                                         <div className="bg-blue-50 border border-blue-200 rounded-xl p-4 text-sm text-blue-700 space-y-2">
                                                             <h4 className="font-bold flex items-center gap-2">
                                                                 <span className="text-xl">ℹ️</span>
@@ -500,12 +550,6 @@ export default function TikTokGiveaway() {
                                                                 {t.giveaway.participantLimitDetails}
                                                             </p>
                                                         </div>
-
-                                                        {error && (
-                                                            <div className="p-3 bg-red-50 border border-red-200 text-red-600 rounded-xl text-sm text-center animate-in slide-in-from-top-2">
-                                                                {error}
-                                                            </div>
-                                                        )}
 
                                                         <div className="pt-4 flex justify-end">
                                                             <Button
@@ -700,9 +744,20 @@ export default function TikTokGiveaway() {
 
                                             <div className="min-h-[200px] max-h-[50vh] overflow-y-auto space-y-2 pr-2 custom-scrollbar border-2 border-dashed border-gray-100 rounded-xl p-2 bg-gray-50/30">
                                                 {participants.length === 0 ? (
-                                                    <div className="h-full flex flex-col items-center justify-center text-gray-400 py-12">
-                                                        <Users className="w-8 h-8 opacity-20 mb-2" />
-                                                        <p className="text-sm opacity-60">{t.home.noParticipants}</p>
+                                                    <div className="h-full flex flex-col items-center justify-center text-gray-400 py-10 gap-3">
+                                                        <div className="p-4 bg-cyan-50 rounded-2xl">
+                                                            <Users className="w-10 h-10 text-cyan-200" />
+                                                        </div>
+                                                        <div className="text-center space-y-1">
+                                                            <p className="text-sm font-semibold text-gray-500">Henüz katılımcı yok</p>
+                                                            <p className="text-xs text-gray-400 max-w-[200px] mx-auto">TikTok video linkini yapıştırın veya manuel olarak kullanıcı ekleyin</p>
+                                                        </div>
+                                                        <button
+                                                            onClick={() => setActiveTab('links')}
+                                                            className="text-xs bg-cyan-500 text-white font-bold px-4 py-2 rounded-lg hover:bg-cyan-600 transition-colors"
+                                                        >
+                                                            ← Video Linkinden Çek
+                                                        </button>
                                                     </div>
                                                 ) : (
                                                     participants.map((p, i) => (
@@ -814,15 +869,26 @@ export default function TikTokGiveaway() {
                                             </div>
                                         )}
 
-                                        <div className="flex gap-3 pt-4">
-                                            <Button onClick={copyResults} variant="secondary" className="flex-1">{copied ? t.giveaway.copied : t.giveaway.copyResults}</Button>
-                                            <Button onClick={() => setShowShareModal(true)} className="flex-1 bg-gradient-to-r from-cyan-500 to-teal-500 hover:from-cyan-600 hover:to-teal-600 text-white shadow-lg">
+                                        <div className="flex flex-wrap gap-2 pt-4">
+                                            <Button onClick={copyResults} variant="secondary" className="flex-1 min-w-[120px]">{copied ? t.giveaway.copied : t.giveaway.copyResults}</Button>
+                                            <Button
+                                                onClick={() => {
+                                                    downloadWinnerCard({ giveawayName: giveawayName || t.giveaway.tiktokTitle, winners, backups, platform: "tiktok" });
+                                                    toast.success("Kazanan kartı indirildi!");
+                                                }}
+                                                variant="secondary"
+                                                className="flex-1 min-w-[120px] border-cyan-200 text-cyan-600 hover:bg-cyan-50"
+                                            >
+                                                <svg className="w-4 h-4 mr-1.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}><path strokeLinecap="round" strokeLinejoin="round" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4" /></svg>
+                                                PNG İndir
+                                            </Button>
+                                            <Button onClick={() => setShowShareModal(true)} className="flex-1 min-w-[120px] bg-gradient-to-r from-cyan-500 to-teal-500 hover:from-cyan-600 hover:to-teal-600 text-white shadow-lg">
                                                 <svg className="w-4 h-4 mr-2" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
                                                     <path strokeLinecap="round" strokeLinejoin="round" d="M8.684 13.342C8.886 12.938 9 12.482 9 12c0-.482-.114-.938-.316-1.342m0 2.684a3 3 0 110-2.684m0 2.684l6.632 3.316m-6.632-6l6.632-3.316m0 0a3 3 0 105.367-2.684 3 3 0 00-5.367 2.684zm0 9.316a3 3 0 105.368 2.684 3 3 0 00-5.368-2.684z" />
                                                 </svg>
                                                 {t.giveaway.shareResults || "Paylaş"}
                                             </Button>
-                                            <Button onClick={resetGiveaway} className="flex-1 bg-cyan-600 hover:bg-cyan-700">{t.giveaway.newGiveaway}</Button>
+                                            <Button onClick={resetGiveaway} className="flex-1 min-w-[120px] bg-cyan-600 hover:bg-cyan-700">{t.giveaway.newGiveaway}</Button>
                                         </div>
 
                                         <ShareModal

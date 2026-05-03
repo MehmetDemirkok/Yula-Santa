@@ -31,19 +31,19 @@ export function ThemeToggle({ variant = "icon", className = "" }: ThemeTogglePro
         return (
             <button
                 onClick={toggleTheme}
-                className={`p-2.5 rounded-xl transition-all duration-300 
-                    bg-gray-100 dark:bg-white/10 
-                    text-gray-600 dark:text-gray-300 
-                    hover:bg-gray-200 dark:hover:bg-white/20 
+                className={`p-2.5 rounded-xl transition-all duration-300
+                    bg-[rgba(225,210,205,0.4)] dark:bg-white/8
+                    text-gray-600 dark:text-gray-300
+                    hover:bg-santa-red/10 dark:hover:bg-santa-red/15
                     hover:text-santa-red dark:hover:text-gold
-                    border border-gray-200 dark:border-white/10
+                    border border-[rgba(210,190,185,0.6)] dark:border-white/[0.08]
                     ${className}`}
                 aria-label={t("toggle")}
             >
                 {resolvedTheme === "dark" ? (
-                    <Sun className="w-5 h-5 transition-transform hover:rotate-45" />
+                    <Sun className="w-5 h-5 transition-transform duration-500 hover:rotate-45" />
                 ) : (
-                    <Moon className="w-5 h-5 transition-transform hover:-rotate-12" />
+                    <Moon className="w-5 h-5 transition-transform duration-300 hover:-rotate-12" />
                 )}
             </button>
         );
@@ -54,12 +54,12 @@ export function ThemeToggle({ variant = "icon", className = "" }: ThemeTogglePro
         <div ref={dropdownRef} className={`relative ${className}`}>
             <button
                 onClick={() => setIsOpen(!isOpen)}
-                className="p-2.5 rounded-xl transition-all duration-300 
-                    bg-gray-100 dark:bg-white/10 
-                    text-gray-600 dark:text-gray-300 
-                    hover:bg-gray-200 dark:hover:bg-white/20 
+                className="p-2.5 rounded-xl transition-all duration-300
+                    bg-[rgba(225,210,205,0.4)] dark:bg-white/8
+                    text-gray-600 dark:text-gray-300
+                    hover:bg-santa-red/10 dark:hover:bg-santa-red/15
                     hover:text-santa-red dark:hover:text-gold
-                    border border-gray-200 dark:border-white/10"
+                    border border-[rgba(210,190,185,0.6)] dark:border-white/[0.08]"
                 aria-label={t("toggle")}
             >
                 {resolvedTheme === "dark" ? (
@@ -70,7 +70,7 @@ export function ThemeToggle({ variant = "icon", className = "" }: ThemeTogglePro
             </button>
 
             {isOpen && (
-                <div className="absolute right-0 mt-2 w-44 bg-white dark:bg-gray-900 rounded-2xl shadow-xl border border-gray-100 dark:border-white/10 overflow-hidden z-50 animate-zoom-in">
+                <div className="absolute right-0 mt-2 w-44 bg-white/95 dark:bg-[#1A1414]/95 backdrop-blur-xl rounded-2xl shadow-[0_8px_32px_rgba(100,35,25,0.12)] dark:shadow-[0_8px_32px_rgba(0,0,0,0.5)] border border-[rgba(225,210,205,0.6)] dark:border-white/[0.07] overflow-hidden z-50 animate-zoom-in">
                     <div className="p-2 space-y-1">
                         <ThemeOption
                             icon={<Sun className="w-4 h-4" />}

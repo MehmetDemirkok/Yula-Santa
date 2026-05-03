@@ -19,6 +19,8 @@ import { SupportButton } from "@/components/SupportButton";
 import { Footer } from "@/components/Footer";
 import { Navbar } from "@/components/Navbar";
 import { ThemeProvider } from "@/lib/ThemeContext";
+import { ToastProvider } from "@/lib/ToastContext";
+import { ToastContainer } from "@/components/ToastContainer";
 
 interface ClientLayoutProps {
     children: ReactNode;
@@ -27,6 +29,7 @@ interface ClientLayoutProps {
 export function ClientLayout({ children }: ClientLayoutProps) {
     return (
         <ThemeProvider>
+        <ToastProvider>
             {/* Yılbaşı Teması - Kar, Konfeti (Countdown ayrı olarak sayfalarda gösterilecek) */}
             <NewYearTheme
                 showSnowfall={true}
@@ -58,6 +61,10 @@ export function ClientLayout({ children }: ClientLayoutProps) {
 
             {/* Analytics */}
             <Analytics />
+
+            {/* Toast Notifications */}
+            <ToastContainer />
+        </ToastProvider>
         </ThemeProvider>
     );
 }

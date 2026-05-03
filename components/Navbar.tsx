@@ -100,7 +100,7 @@ export function Navbar() {
                 className={cn(
                     "fixed top-0 left-0 right-0 z-[100] transition-all duration-300",
                     scrolled
-                        ? "py-2 bg-white/90 dark:bg-gray-900/95 backdrop-blur-2xl shadow-[0_8px_30px_rgb(0,0,0,0.04)] dark:shadow-[0_8px_30px_rgb(0,0,0,0.3)] border-b border-gray-100 dark:border-white/10"
+                        ? "py-2 bg-white/85 dark:bg-[#100C0C]/90 backdrop-blur-2xl border-b border-[rgba(225,210,205,0.5)] dark:border-white/[0.07] shadow-[0_4px_24px_rgba(100,35,25,0.07)] dark:shadow-[0_4px_24px_rgba(0,0,0,0.4)]"
                         : "py-4 bg-transparent"
                 )}
             >
@@ -123,13 +123,13 @@ export function Navbar() {
                         <div className="hidden lg:flex items-center gap-1">
                             {/* Çekilişler Dropdown */}
                             <div className="relative group/dropdown">
-                                <button className="flex items-center gap-1.5 px-5 py-2.5 text-sm font-bold text-gray-700 dark:text-gray-300 hover:text-santa-red dark:hover:text-santa-red transition-all rounded-full hover:bg-gray-50/80 dark:hover:bg-white/10">
+                                <button className="flex items-center gap-1.5 px-5 py-2.5 text-sm font-bold text-gray-700 dark:text-gray-300 hover:text-santa-red dark:hover:text-santa-red transition-all rounded-full hover:bg-santa-red/5 dark:hover:bg-santa-red/10">
                                     <Sparkles className="w-4 h-4" />
                                     {t('home.socialMediaGiveaways')}
                                     <ChevronDown className="w-3.5 h-3.5 transition-transform duration-300 group-hover/dropdown:rotate-180" />
                                 </button>
 
-                                <div className="absolute top-full left-0 mt-3 w-max min-w-[340px] lg:min-w-[480px] bg-white/95 dark:bg-gray-900/95 backdrop-blur-2xl rounded-[28px] shadow-[0_20px_60px_rgba(0,0,0,0.18)] dark:shadow-[0_20px_60px_rgba(0,0,0,0.5)] border border-gray-100 dark:border-white/10 opacity-0 invisible group-hover/dropdown:opacity-100 group-hover/dropdown:visible transition-all duration-300 translate-y-4 group-hover/dropdown:translate-y-0 p-3 ring-1 ring-black/[0.03] dark:ring-white/[0.05]">
+                                <div className="absolute top-full left-0 mt-3 w-max min-w-[340px] lg:min-w-[480px] bg-white/90 dark:bg-[#1A1212]/95 backdrop-blur-2xl rounded-[28px] shadow-[0_20px_60px_rgba(100,35,25,0.14)] dark:shadow-[0_20px_60px_rgba(0,0,0,0.6)] border border-[rgba(225,210,205,0.6)] dark:border-white/[0.07] opacity-0 invisible group-hover/dropdown:opacity-100 group-hover/dropdown:visible transition-all duration-300 translate-y-4 group-hover/dropdown:translate-y-0 p-3">
                                     <div className="flex flex-col gap-2">
                                         {giveawayLinks.map((link) => (
                                             <button
@@ -155,13 +155,13 @@ export function Navbar() {
 
                             {/* Araçlar Dropdown */}
                             <div className="relative group/dropdown">
-                                <button className="flex items-center gap-1.5 px-5 py-2.5 text-sm font-bold text-gray-700 dark:text-gray-300 hover:text-indigo-600 dark:hover:text-indigo-400 transition-all rounded-full hover:bg-gray-50/80 dark:hover:bg-white/10">
+                                <button className="flex items-center gap-1.5 px-5 py-2.5 text-sm font-bold text-gray-700 dark:text-gray-300 hover:text-santa-red dark:hover:text-santa-red transition-all rounded-full hover:bg-santa-red/5 dark:hover:bg-santa-red/10">
                                     <Gamepad2 className="w-4 h-4" />
                                     {t('tools.title')}
                                     <ChevronDown className="w-3.5 h-3.5 transition-transform duration-300 group-hover/dropdown:rotate-180" />
                                 </button>
 
-                                <div className="absolute top-full right-0 mt-3 w-max min-w-[340px] lg:min-w-[480px] bg-white/95 dark:bg-gray-900/95 backdrop-blur-2xl rounded-[28px] shadow-[0_20px_60px_rgba(0,0,0,0.18)] dark:shadow-[0_20px_60px_rgba(0,0,0,0.5)] border border-gray-100 dark:border-white/10 opacity-0 invisible group-hover/dropdown:opacity-100 group-hover/dropdown:visible transition-all duration-300 translate-y-4 group-hover/dropdown:translate-y-0 p-3 ring-1 ring-black/[0.03] dark:ring-white/[0.05]">
+                                <div className="absolute top-full right-0 mt-3 w-max min-w-[340px] lg:min-w-[480px] bg-white/90 dark:bg-[#1A1212]/95 backdrop-blur-2xl rounded-[28px] shadow-[0_20px_60px_rgba(100,35,25,0.14)] dark:shadow-[0_20px_60px_rgba(0,0,0,0.6)] border border-[rgba(225,210,205,0.6)] dark:border-white/[0.07] opacity-0 invisible group-hover/dropdown:opacity-100 group-hover/dropdown:visible transition-all duration-300 translate-y-4 group-hover/dropdown:translate-y-0 p-3">
                                     <div className="flex flex-col gap-2">
                                         {toolLinks.map((link) => (
                                             <button
@@ -173,7 +173,7 @@ export function Navbar() {
                                                     <link.icon className="w-6 h-6" />
                                                 </div>
                                                 <div className="flex flex-col min-w-0 pr-12">
-                                                    <span className="text-base font-black text-gray-900 dark:text-white group-hover/item:text-indigo-600 dark:group-hover/item:text-indigo-400 transition-colors whitespace-nowrap">{link.name}</span>
+                                                    <span className="text-base font-black text-gray-900 dark:text-white group-hover/item:text-santa-red dark:group-hover/item:text-santa-red transition-colors whitespace-nowrap">{link.name}</span>
                                                     <span className="text-xs font-medium text-gray-400 dark:text-gray-500 leading-tight line-clamp-1">{link.description}</span>
                                                 </div>
                                             </button>
@@ -185,7 +185,7 @@ export function Navbar() {
                             {/* Gift Suggestions - Standalone */}
                             <button
                                 onClick={() => router.push(`/${locale}/tools/gift-suggestions`)}
-                                className="flex items-center gap-1.5 px-5 py-2.5 text-sm font-bold text-gray-700 dark:text-gray-300 hover:text-pink-500 dark:hover:text-pink-400 transition-all rounded-full hover:bg-gray-50/80 dark:hover:bg-white/10"
+                                className="flex items-center gap-1.5 px-5 py-2.5 text-sm font-bold text-gray-700 dark:text-gray-300 hover:text-santa-red dark:hover:text-santa-red transition-all rounded-full hover:bg-santa-red/5 dark:hover:bg-santa-red/10"
                             >
                                 <Gift className="w-4 h-4" />
                                 {t('tools.giftSuggestions')}
@@ -216,7 +216,7 @@ export function Navbar() {
 
             {/* Mobile Navigation Menu */}
             <div className={cn(
-                "fixed inset-0 top-0 pt-24 bg-white dark:bg-gray-900 z-[90] lg:hidden transition-all duration-300 ease-in-out overflow-y-auto pb-20",
+                "fixed inset-0 top-0 pt-24 bg-[#FDFBF8] dark:bg-[#100C0C] z-[90] lg:hidden transition-all duration-300 ease-in-out overflow-y-auto pb-20",
                 isMenuOpen ? "translate-x-0 opacity-100" : "translate-x-full opacity-0"
             )}>
                 <div className="p-4 space-y-8">
@@ -272,7 +272,7 @@ export function Navbar() {
 
                     {/* Tools Section */}
                     <div className="space-y-4">
-                        <div className="flex items-center gap-2 text-indigo-500 dark:text-indigo-400 px-2">
+                        <div className="flex items-center gap-2 text-santa-red dark:text-santa-red px-2">
                             <Gamepad2 className="w-5 h-5" />
                             <h3 className="font-black text-xl italic tracking-tight">{t('tools.title')}</h3>
                         </div>
