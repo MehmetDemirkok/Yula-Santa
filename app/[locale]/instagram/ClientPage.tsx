@@ -516,16 +516,13 @@ export default function InstagramGiveaway() {
                                                                 <MessageCircle className="w-4 h-4" />
                                                                 {t.giveaway.comments}
                                                             </button>
-                                                            <button
-                                                                onClick={() => setDrawType('likes')}
-                                                                className={`flex items-center gap-2 px-5 py-3 rounded-full font-medium transition-all ${drawType === 'likes'
-                                                                    ? 'bg-white border-2 border-red-400 text-red-600 shadow-md'
-                                                                    : 'bg-gray-100 text-gray-500 hover:bg-gray-200'
-                                                                    }`}
-                                                            >
-                                                                <Heart className="w-4 h-4" />
-                                                                {t.giveaway.likes}
-                                                            </button>
+                                                            <div className="relative opacity-50 cursor-not-allowed" title="Yakında">
+                                                                <div className="flex items-center gap-2 px-5 py-3 rounded-full font-medium bg-gray-100 text-gray-400 select-none">
+                                                                    <Heart className="w-4 h-4" />
+                                                                    {t.giveaway.likes}
+                                                                </div>
+                                                                <span className="absolute -top-2 -right-2 text-[10px] font-bold bg-gray-400 text-white px-1.5 py-0.5 rounded-full leading-none">Yakında</span>
+                                                            </div>
                                                         </div>
 
                                                         <div className="pt-4 flex justify-end">

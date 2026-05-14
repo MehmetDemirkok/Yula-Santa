@@ -1,7 +1,16 @@
 import { NextResponse } from 'next/server';
 import { ApifyClient } from 'apify-client';
+import { rateLimit } from '@/lib/rateLimit';
 
 export async function POST(request: Request) {
+    const rl = rateLimit(request, 'instagram');
+    if (!rl.allowed) {
+        return NextResponse.json(
+            { error: 'Çok fazla istek. Lütfen 1 dakika bekleyin.' },
+            { status: 429, headers: { 'Retry-After': String(Math.ceil((rl.resetAt - Date.now()) / 1000)) } }
+        );
+    }
+
     try {
         // Validation for API Token
         if (!process.env.APIFY_API_TOKEN) {

@@ -1,6 +1,15 @@
 import { NextResponse } from 'next/server';
+import { rateLimit } from '@/lib/rateLimit';
 
 export async function POST(request: Request) {
+    const rl = rateLimit(request, 'youtube');
+    if (!rl.allowed) {
+        return NextResponse.json(
+            { error: 'Çok fazla istek. Lütfen 1 dakika bekleyin.' },
+            { status: 429, headers: { 'Retry-After': String(Math.ceil((rl.resetAt - Date.now()) / 1000)) } }
+        );
+    }
+
     try {
         // Validation for API Key
         if (!process.env.YOUTUBE_API_KEY) {

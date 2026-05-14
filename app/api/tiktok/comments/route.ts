@@ -1,8 +1,16 @@
-
 import { NextRequest, NextResponse } from 'next/server';
 import { ApifyClient } from 'apify-client';
+import { rateLimit } from '@/lib/rateLimit';
 
 export async function POST(req: NextRequest) {
+    const rl = rateLimit(req, 'tiktok');
+    if (!rl.allowed) {
+        return NextResponse.json(
+            { error: 'Çok fazla istek. Lütfen 1 dakika bekleyin.' },
+            { status: 429, headers: { 'Retry-After': String(Math.ceil((rl.resetAt - Date.now()) / 1000)) } }
+        );
+    }
+
     try {
         const { postLink } = await req.json();
 
@@ -17,7 +25,7 @@ export async function POST(req: NextRequest) {
         // Using 'clockworks/tiktok-comments-scraper' as seen in the user's screenshot
         const run = await client.actor("clockworks/tiktok-comments-scraper").call({
             postURLs: [postLink],
-            commentsPerPost: 100, // Limit to 100 for now to be safe/fast
+            commentsPerPost: 500,
         });
 
         const { items } = await client.dataset(run.defaultDatasetId).listItems();

@@ -480,26 +480,20 @@ export default function YouTubeGiveaway() {
                                                 <MessageCircle className="w-4 h-4" />
                                                 {t.giveaway.comments}
                                             </button>
-                                            <button
-                                                onClick={() => setDrawType('likes')}
-                                                className={`flex items-center gap-2 px-5 py-3 rounded-full font-medium transition-all ${drawType === 'likes'
-                                                    ? 'bg-white border-2 border-blue-400 text-blue-600 shadow-md'
-                                                    : 'bg-gray-100 text-gray-500 hover:bg-gray-200'
-                                                    }`}
-                                            >
-                                                <ThumbsUp className="w-4 h-4" />
-                                                {t.giveaway.likes}
-                                            </button>
-                                            <button
-                                                onClick={() => setDrawType('subscribers')}
-                                                className={`flex items-center gap-2 px-5 py-3 rounded-full font-medium transition-all ${drawType === 'subscribers'
-                                                    ? 'bg-white border-2 border-gray-600 text-gray-700 shadow-md'
-                                                    : 'bg-gray-100 text-gray-500 hover:bg-gray-200'
-                                                    }`}
-                                            >
-                                                <Bell className="w-4 h-4" />
-                                                {t.giveaway.subscribers}
-                                            </button>
+                                            <div className="relative opacity-50 cursor-not-allowed" title="Yakında">
+                                                <div className="flex items-center gap-2 px-5 py-3 rounded-full font-medium bg-gray-100 text-gray-400 select-none">
+                                                    <ThumbsUp className="w-4 h-4" />
+                                                    {t.giveaway.likes}
+                                                </div>
+                                                <span className="absolute -top-2 -right-2 text-[10px] font-bold bg-gray-400 text-white px-1.5 py-0.5 rounded-full leading-none">Yakında</span>
+                                            </div>
+                                            <div className="relative opacity-50 cursor-not-allowed" title="Yakında">
+                                                <div className="flex items-center gap-2 px-5 py-3 rounded-full font-medium bg-gray-100 text-gray-400 select-none">
+                                                    <Bell className="w-4 h-4" />
+                                                    {t.giveaway.subscribers}
+                                                </div>
+                                                <span className="absolute -top-2 -right-2 text-[10px] font-bold bg-gray-400 text-white px-1.5 py-0.5 rounded-full leading-none">Yakında</span>
+                                            </div>
                                         </div>
 
                                         <div className="pt-4 flex justify-end">
