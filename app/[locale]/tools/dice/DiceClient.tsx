@@ -1,53 +1,96 @@
 "use client";
 
-import { useState, useEffect, useRef, useCallback } from 'react';
+import { useState, useEffect, useRef } from 'react';
 import Link from 'next/link';
-import { ArrowLeft, RotateCcw, ChevronDown } from 'lucide-react';
+import { ArrowLeft, RotateCcw } from 'lucide-react';
 import { useTranslations } from 'next-intl';
 import { useParams } from 'next/navigation';
 import * as THREE from 'three';
 import * as CANNON from 'cannon-es';
 import { RoundedBoxGeometry } from 'three/examples/jsm/geometries/RoundedBoxGeometry.js';
 
-// --- Physics & 3D Constants ---
 const DIE_SIZE = 2;
 const DIE_MASS = 1;
 const GROUND_SIZE = 50;
+const DICE_UNICODE = ['', '⚀', '⚁', '⚂', '⚃', '⚄', '⚅'];
 
-// --- Helper: Create Dice Face Texture ---
+// Classic dice: pure white face, near-black dots — maximum contrast for 3D rendering
 const createDiceTexture = (value: number) => {
     const canvas = document.createElement('canvas');
-    canvas.width = 256;
-    canvas.height = 256;
+    const S = 512;
+    canvas.width = S; canvas.height = S;
     const ctx = canvas.getContext('2d');
     if (!ctx) return null;
 
-    // Background - Pure bright white
-    ctx.fillStyle = '#ffffff';
-    ctx.fillRect(0, 0, 256, 256);
+    // ── 1. Fill entire canvas black first (corners will show black) ───────────
+    ctx.fillStyle = '#1a0a0a';
+    ctx.fillRect(0, 0, S, S);
 
-    // Dots - High contrast
-    ctx.fillStyle = '#111827';
-    const dotRadius = 25;
-    const padding = 60;
-    const mid = 128;
-    const left = padding;
-    const right = 256 - padding;
-    const top = padding;
-    const bottom = 256 - padding;
+    // ── 2. White face with subtle warm gradient ───────────────────────────────
+    const R = 56;
+    const face = () => {
+        ctx.beginPath();
+        ctx.roundRect(8, 8, S - 16, S - 16, R);
+        ctx.closePath();
+    };
+    const bg = ctx.createLinearGradient(0, 0, S, S);
+    bg.addColorStop(0, '#ffffff');
+    bg.addColorStop(1, '#f8f4ee');
+    face();
+    ctx.fillStyle = bg;
+    ctx.fill();
+
+    // ── 3. Subtle inner edge shadow (depth) ───────────────────────────────────
+    const edgeShadow = ctx.createLinearGradient(0, 0, 0, S);
+    edgeShadow.addColorStop(0, 'rgba(255,255,255,0.6)');
+    edgeShadow.addColorStop(0.5, 'rgba(0,0,0,0)');
+    edgeShadow.addColorStop(1, 'rgba(0,0,0,0.08)');
+    face();
+    ctx.fillStyle = edgeShadow;
+    ctx.fill();
+
+    // ── 4. Border ─────────────────────────────────────────────────────────────
+    face();
+    ctx.strokeStyle = 'rgba(100, 60, 20, 0.25)';
+    ctx.lineWidth = 6;
+    ctx.stroke();
+
+    // ── 5. Dots — near-black for guaranteed contrast ──────────────────────────
+    const dotR = 46;
+    const pad  = 108;
+    const mid  = S / 2;
+    const L = pad, RI = S - pad, T = pad, B = S - pad;
 
     const positions: Record<number, { x: number; y: number }[]> = {
         1: [{ x: mid, y: mid }],
-        2: [{ x: left, y: top }, { x: right, y: bottom }],
-        3: [{ x: left, y: top }, { x: mid, y: mid }, { x: right, y: bottom }],
-        4: [{ x: left, y: top }, { x: right, y: top }, { x: left, y: bottom }, { x: right, y: bottom }],
-        5: [{ x: left, y: top }, { x: right, y: top }, { x: mid, y: mid }, { x: left, y: bottom }, { x: right, y: bottom }],
-        6: [{ x: left, y: top }, { x: right, y: top }, { x: left, y: mid }, { x: right, y: mid }, { x: left, y: bottom }, { x: right, y: bottom }],
+        2: [{ x: L, y: T }, { x: RI, y: B }],
+        3: [{ x: L, y: T }, { x: mid, y: mid }, { x: RI, y: B }],
+        4: [{ x: L, y: T }, { x: RI, y: T }, { x: L, y: B }, { x: RI, y: B }],
+        5: [{ x: L, y: T }, { x: RI, y: T }, { x: mid, y: mid }, { x: L, y: B }, { x: RI, y: B }],
+        6: [{ x: L, y: T }, { x: RI, y: T }, { x: L, y: mid }, { x: RI, y: mid }, { x: L, y: B }, { x: RI, y: B }],
     };
 
-    positions[value].forEach(pos => {
+    positions[value]?.forEach(({ x, y }) => {
+        // Drop shadow
+        ctx.fillStyle = 'rgba(0,0,0,0.18)';
         ctx.beginPath();
-        ctx.arc(pos.x, pos.y, dotRadius, 0, Math.PI * 2);
+        ctx.arc(x + 2, y + 3, dotR, 0, Math.PI * 2);
+        ctx.fill();
+
+        // Dot body — dark warm charcoal (near-black)
+        const dotFill = ctx.createRadialGradient(x - dotR * 0.25, y - dotR * 0.25, 2, x, y, dotR);
+        dotFill.addColorStop(0, '#3d1515');
+        dotFill.addColorStop(0.5, '#200a0a');
+        dotFill.addColorStop(1, '#0d0404');
+        ctx.fillStyle = dotFill;
+        ctx.beginPath();
+        ctx.arc(x, y, dotR, 0, Math.PI * 2);
+        ctx.fill();
+
+        // Subtle specular
+        ctx.fillStyle = 'rgba(255,255,255,0.18)';
+        ctx.beginPath();
+        ctx.arc(x - dotR * 0.28, y - dotR * 0.3, dotR * 0.36, 0, Math.PI * 2);
         ctx.fill();
     });
 
@@ -62,8 +105,7 @@ export default function DicePage() {
     const [diceCount, setDiceCount] = useState(1);
     const [results, setResults] = useState<number[]>([]);
     const [isRolling, setIsRolling] = useState(false);
-    const [isDropdownOpen, setIsDropdownOpen] = useState(false);
-    const [rollHistory, setRollHistory] = useState<{ dice: number[]; total: number }[]>([]);
+    const [history, setHistory] = useState<{ dice: number[]; total: number }[]>([]);
 
     const canvasRef = useRef<HTMLDivElement>(null);
     const sceneRef = useRef<{
@@ -76,10 +118,8 @@ export default function DicePage() {
         createDice: (count: number) => void;
     } | null>(null);
 
-    // --- Three.js & Cannon.js Initialization ---
     useEffect(() => {
         if (!canvasRef.current) return;
-
         let resizeObserver: ResizeObserver | null = null;
         let animationFrameId: number | null = null;
 
@@ -87,138 +127,91 @@ export default function DicePage() {
             if (!canvasRef.current) return;
             const width = canvasRef.current.clientWidth;
             const height = canvasRef.current.clientHeight;
-
             if (width === 0 || height === 0) return;
+            if (sceneRef.current) sceneRef.current.cleanup();
 
-            // Cleanup
-            if (sceneRef.current) {
-                sceneRef.current.cleanup();
-            }
-
-            // Scene
             const scene = new THREE.Scene();
             scene.background = null;
-
-            // Camera
             const camera = new THREE.PerspectiveCamera(45, width / height, 0.1, 1000);
             camera.position.set(0, 15, 12);
             camera.lookAt(0, 0, 0);
 
-            // Renderer
             const renderer = new THREE.WebGLRenderer({ antialias: true, alpha: true });
             renderer.setSize(width, height);
             renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
             renderer.shadowMap.enabled = true;
             renderer.shadowMap.type = THREE.PCFSoftShadowMap;
             renderer.toneMapping = THREE.ACESFilmicToneMapping;
-            renderer.toneMappingExposure = 1.0;
+            renderer.toneMappingExposure = 1.1;
             canvasRef.current.appendChild(renderer.domElement);
 
-            // Physics World
             const world = new CANNON.World();
             world.gravity.set(0, -20.81, 0);
             world.allowSleep = true;
 
-            // Lights
-            const ambientLight = new THREE.AmbientLight(0xffffff, 0.8);
-            scene.add(ambientLight);
+            // Balanced lighting — bright enough to see detail, not so bright it washes texture
+            scene.add(new THREE.AmbientLight(0xffffff, 0.55));
+            const dir = new THREE.DirectionalLight(0xfff8f0, 1.4);
+            dir.position.set(5, 18, 8); dir.castShadow = true;
+            dir.shadow.mapSize.width = 2048; dir.shadow.mapSize.height = 2048;
+            scene.add(dir);
+            const fill = new THREE.PointLight(0xffeedd, 0.6);
+            fill.position.set(-6, 6, 5); scene.add(fill);
+            const rim = new THREE.PointLight(0xddeeff, 0.35);
+            rim.position.set(0, 5, -9); scene.add(rim);
 
-            const directionalLight = new THREE.DirectionalLight(0xffffff, 1.2);
-            directionalLight.position.set(5, 15, 5);
-            directionalLight.castShadow = true;
-            directionalLight.shadow.mapSize.width = 1024;
-            directionalLight.shadow.mapSize.height = 1024;
-            scene.add(directionalLight);
-
-            const pointLight = new THREE.PointLight(0xffffff, 0.6);
-            pointLight.position.set(-5, 10, -5);
-            scene.add(pointLight);
-
-            // Floor
+            // Ground
             const groundBody = new CANNON.Body({
-                type: CANNON.Body.STATIC,
-                shape: new CANNON.Plane(),
+                type: CANNON.Body.STATIC, shape: new CANNON.Plane(),
                 material: new CANNON.Material({ friction: 0.1, restitution: 0.5 })
             });
             groundBody.quaternion.setFromEuler(-Math.PI / 2, 0, 0);
             world.addBody(groundBody);
-
             const groundMesh = new THREE.Mesh(
                 new THREE.PlaneGeometry(GROUND_SIZE, GROUND_SIZE),
-                new THREE.ShadowMaterial({ opacity: 0.2 })
+                new THREE.ShadowMaterial({ opacity: 0.35 })
             );
-            groundMesh.rotation.x = -Math.PI / 2;
-            groundMesh.receiveShadow = true;
+            groundMesh.rotation.x = -Math.PI / 2; groundMesh.receiveShadow = true;
             scene.add(groundMesh);
 
             // Walls
-            const wallMaterial = new CANNON.Material({ friction: 0, restitution: 0.9 });
-            const walls = [
-                { pos: [10, 5, 0], rot: [0, -Math.PI / 2, 0] },
-                { pos: [-10, 5, 0], rot: [0, Math.PI / 2, 0] },
-                { pos: [0, 5, 6], rot: [0, Math.PI, 0] },
-                { pos: [0, 5, -6], rot: [0, 0, 0] },
+            const wm = new CANNON.Material({ friction: 0, restitution: 0.9 });
+            const wDef: [number, number, number][] = [
+                [10, 5, 0], [-10, 5, 0], [0, 5, 6], [0, 5, -6]
             ];
-            walls.forEach(w => {
-                const body = new CANNON.Body({
-                    type: CANNON.Body.STATIC,
-                    shape: new CANNON.Plane(),
-                    material: wallMaterial
-                });
-                body.position.set(w.pos[0], w.pos[1], w.pos[2]);
-                body.quaternion.setFromEuler(w.rot[0], w.rot[1], w.rot[2]);
-                world.addBody(body);
+            const wRot: [number, number, number][] = [
+                [0, -Math.PI / 2, 0], [0, Math.PI / 2, 0], [0, Math.PI, 0], [0, 0, 0]
+            ];
+            wDef.forEach((pos, i) => {
+                const b = new CANNON.Body({ type: CANNON.Body.STATIC, shape: new CANNON.Plane(), material: wm });
+                b.position.set(...pos); b.quaternion.setFromEuler(...wRot[i]); world.addBody(b);
             });
 
             const dice: { mesh: THREE.Mesh; body: CANNON.Body }[] = [];
-
-            // Helper to create dice
             const createDice = (count: number) => {
-                dice.forEach(d => {
-                    scene.remove(d.mesh);
-                    world.removeBody(d.body);
-                });
+                dice.forEach(d => { scene.remove(d.mesh); world.removeBody(d.body); });
                 dice.length = 0;
-
-                const geometries = new RoundedBoxGeometry(DIE_SIZE, DIE_SIZE, DIE_SIZE, 6, 0.2);
-                const commonProps = { roughness: 0.15, metalness: 0.02, envMapIntensity: 1 };
-                const materials = [
-                    new THREE.MeshStandardMaterial({ map: createDiceTexture(2), ...commonProps }),
-                    new THREE.MeshStandardMaterial({ map: createDiceTexture(5), ...commonProps }),
-                    new THREE.MeshStandardMaterial({ map: createDiceTexture(3), ...commonProps }),
-                    new THREE.MeshStandardMaterial({ map: createDiceTexture(4), ...commonProps }),
-                    new THREE.MeshStandardMaterial({ map: createDiceTexture(1), ...commonProps }),
-                    new THREE.MeshStandardMaterial({ map: createDiceTexture(6), ...commonProps }),
-                ];
-
+                const geo = new RoundedBoxGeometry(DIE_SIZE, DIE_SIZE, DIE_SIZE, 6, 0.28);
+                const matProps = { roughness: 0.45, metalness: 0.0, envMapIntensity: 0.3 };
+                const mats = [2, 5, 3, 4, 1, 6].map(v =>
+                    new THREE.MeshStandardMaterial({ map: createDiceTexture(v), ...matProps })
+                );
                 for (let i = 0; i < count; i++) {
-                    const mesh = new THREE.Mesh(geometries, materials);
-                    mesh.castShadow = true;
-                    mesh.receiveShadow = true;
-                    scene.add(mesh);
-
+                    const mesh = new THREE.Mesh(geo, mats);
+                    mesh.castShadow = true; mesh.receiveShadow = true; scene.add(mesh);
                     const body = new CANNON.Body({
                         mass: DIE_MASS,
                         shape: new CANNON.Box(new CANNON.Vec3(DIE_SIZE / 2, DIE_SIZE / 2, DIE_SIZE / 2)),
                         material: new CANNON.Material({ friction: 0.1, restitution: 0.3 })
                     });
-
-                    // Spread dice out a bit if multiple
                     const offset = (count - 1) * 1.5;
                     body.position.set((i * 3) - offset, 2, 0);
-
                     body.quaternion.setFromEuler(Math.random() * Math.PI, Math.random() * Math.PI, Math.random() * Math.PI);
-                    world.addBody(body);
-                    dice.push({ mesh, body });
+                    world.addBody(body); dice.push({ mesh, body });
                 }
             };
+            createDice(1);
 
-            // Initial creation
-            // We use the current state's diceCount, but we might want to pass it or read from ref if stale
-            // For now, simple init is fine, useEffect([diceCount]) will handle updates
-            createDice(1); // Default start, useEffect update will toggle
-
-            // Animation Loop
             const animate = () => {
                 world.fixedStep();
                 dice.forEach(d => {
@@ -230,99 +223,56 @@ export default function DicePage() {
             };
             animate();
 
-            // Cleanup
             const cleanup = () => {
                 if (animationFrameId) cancelAnimationFrame(animationFrameId);
                 renderer.dispose();
-                if (canvasRef.current?.contains(renderer.domElement)) {
+                if (canvasRef.current?.contains(renderer.domElement))
                     canvasRef.current.removeChild(renderer.domElement);
-                }
             };
-
-            sceneRef.current = {
-                scene,
-                camera,
-                renderer,
-                world,
-                dice,
-                cleanup,
-                createDice
-            };
+            sceneRef.current = { scene, camera, renderer, world, dice, cleanup, createDice };
         };
 
-        // ResizeObserver
         resizeObserver = new ResizeObserver(() => {
             if (sceneRef.current) {
                 if (!canvasRef.current) return;
-                const width = canvasRef.current.clientWidth;
-                const height = canvasRef.current.clientHeight;
-                if (width === 0 || height === 0) return;
-
-                sceneRef.current.camera.aspect = width / height;
+                const w = canvasRef.current.clientWidth, h = canvasRef.current.clientHeight;
+                if (w === 0 || h === 0) return;
+                sceneRef.current.camera.aspect = w / h;
                 sceneRef.current.camera.updateProjectionMatrix();
-                sceneRef.current.renderer.setSize(width, height);
-            } else {
-                initScene();
-            }
+                sceneRef.current.renderer.setSize(w, h);
+            } else { initScene(); }
         });
-
-        if (canvasRef.current) {
-            resizeObserver.observe(canvasRef.current);
-        }
-
+        if (canvasRef.current) resizeObserver.observe(canvasRef.current);
         return () => {
             if (resizeObserver) resizeObserver.disconnect();
             if (sceneRef.current) sceneRef.current.cleanup();
         };
     }, []);
 
-    // --- Update Dice Count ---
     useEffect(() => {
-        if (sceneRef.current && sceneRef.current.createDice) {
-            sceneRef.current.createDice(diceCount);
-        }
+        if (sceneRef.current?.createDice) sceneRef.current.createDice(diceCount);
     }, [diceCount]);
 
     const rollDice = () => {
         if (!sceneRef.current || isRolling) return;
-        setIsRolling(true);
-        setResults([]);
-
-        const { dice } = sceneRef.current;
-
-        // Apply forces
-        dice.forEach(d => {
+        setIsRolling(true); setResults([]);
+        sceneRef.current.dice.forEach(d => {
             d.body.position.set(d.body.position.x, 5 + Math.random() * 2, d.body.position.z);
-            d.body.velocity.set(
-                (Math.random() - 0.5) * 15,
-                10 + Math.random() * 5,
-                (Math.random() - 0.5) * 15
-            );
-            d.body.angularVelocity.set(
-                (Math.random() - 0.5) * 20,
-                (Math.random() - 0.5) * 20,
-                (Math.random() - 0.5) * 20
-            );
+            d.body.velocity.set((Math.random() - 0.5) * 15, 10 + Math.random() * 5, (Math.random() - 0.5) * 15);
+            d.body.angularVelocity.set((Math.random() - 0.5) * 20, (Math.random() - 0.5) * 20, (Math.random() - 0.5) * 20);
             d.body.wakeUp();
         });
-
-        // Wait for rest
-        const checkInterval = setInterval(() => {
-            if (!sceneRef.current) {
-                clearInterval(checkInterval);
-                return;
-            }
-
-            const allResting = sceneRef.current.dice.every(d =>
+        const check = setInterval(() => {
+            if (!sceneRef.current) { clearInterval(check); return; }
+            const resting = sceneRef.current.dice.every(d =>
                 d.body.velocity.length() < 0.1 && d.body.angularVelocity.length() < 0.1 && d.body.position.y < 2
             );
-
-            if (allResting) {
-                clearInterval(checkInterval);
-                const finalResults = sceneRef.current.dice.map(getDieResult);
-                setResults(finalResults);
-                const total = finalResults.reduce((a, b) => a + b, 0);
-                setRollHistory(prev => [{ dice: finalResults, total }, ...prev].slice(0, 10));
+            if (resting) {
+                clearInterval(check);
+                const final = sceneRef.current.dice.map(getDieResult);
+                setResults(final);
+                const total = final.reduce((a, b) => a + b, 0);
+                setHistory(prev => [{ dice: final, total }, ...prev].slice(0, 10));
                 setIsRolling(false);
             }
         }, 200);
@@ -330,152 +280,194 @@ export default function DicePage() {
 
     const getDieResult = (die: { mesh: THREE.Mesh; body: CANNON.Body }) => {
         const up = new CANNON.Vec3(0, 1, 0);
-        const quaternion = die.body.quaternion;
-
         const faces = [
-            { normal: new CANNON.Vec3(0, 0, 1), value: 1 }, // Front (z+) - mapped to texture 1
-            { normal: new CANNON.Vec3(0, 0, -1), value: 6 }, // Back (z-) - mapped to texture 6
-            { normal: new CANNON.Vec3(0, 1, 0), value: 3 }, // Top (y+) - mapped to texture 3
-            { normal: new CANNON.Vec3(0, -1, 0), value: 4 }, // Bottom (y-) - mapped to texture 4
-            { normal: new CANNON.Vec3(1, 0, 0), value: 2 }, // Right (x+) - mapped to texture 2
-            { normal: new CANNON.Vec3(-1, 0, 0), value: 5 }, // Left (x-) - mapped to texture 5
+            { normal: new CANNON.Vec3(0, 0, 1), value: 1 },
+            { normal: new CANNON.Vec3(0, 0, -1), value: 6 },
+            { normal: new CANNON.Vec3(0, 1, 0), value: 3 },
+            { normal: new CANNON.Vec3(0, -1, 0), value: 4 },
+            { normal: new CANNON.Vec3(1, 0, 0), value: 2 },
+            { normal: new CANNON.Vec3(-1, 0, 0), value: 5 },
         ];
-
-        let bestMatch = 0;
-        let maxDot = -Infinity;
-
-        faces.forEach(face => {
-            const worldNormal = new CANNON.Vec3();
-            quaternion.vmult(face.normal, worldNormal);
-            const dot = worldNormal.dot(up);
-            if (dot > maxDot) {
-                maxDot = dot;
-                bestMatch = face.value;
-            }
+        let best = 0, maxDot = -Infinity;
+        faces.forEach(f => {
+            const wn = new CANNON.Vec3(); die.body.quaternion.vmult(f.normal, wn);
+            const dot = wn.dot(up); if (dot > maxDot) { maxDot = dot; best = f.value; }
         });
-
-        return bestMatch;
+        return best;
     };
 
-    const toggleDropdown = () => setIsDropdownOpen(!isDropdownOpen);
-    const selectDiceCount = (count: number) => {
-        setDiceCount(count);
-        setIsDropdownOpen(false);
-    };
-
-    const resetHistory = () => {
-        setRollHistory([]);
-        setResults([]);
-    };
+    const totalScore = results.reduce((a, b) => a + b, 0);
 
     return (
-        <div className="min-h-screen bg-gradient-to-br from-indigo-50 via-white to-purple-50 dark:from-gray-900 dark:via-gray-900 dark:to-gray-950 py-8 sm:py-12 px-4 transition-colors duration-300">
-            <div className="max-w-2xl mx-auto">
+        <div className="min-h-screen bg-gradient-to-br from-amber-50 via-orange-50/30 to-red-50/20 dark:from-gray-950 dark:via-gray-900 dark:to-slate-950 py-8 sm:py-12 px-4 transition-colors duration-300">
+
+            {/* Ambient blobs — matches coin-flip */}
+            <div className="fixed inset-0 overflow-hidden pointer-events-none" aria-hidden="true">
+                <div className="absolute -top-40 -right-40 w-96 h-96 rounded-full bg-red-200/25 dark:bg-red-900/8 blur-3xl" />
+                <div className="absolute -bottom-40 -left-40 w-96 h-96 rounded-full bg-amber-200/25 dark:bg-amber-900/8 blur-3xl" />
+                <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] rounded-full bg-orange-100/15 dark:bg-orange-900/5 blur-3xl" />
+            </div>
+
+            <div className="max-w-lg mx-auto relative">
+
+                {/* Header */}
                 <div className="flex items-center gap-4 mb-8">
-                    <Link
-                        href={`/${locale}`}
-                        className="p-2 rounded-xl bg-white dark:bg-gray-800 shadow-sm border border-gray-100 dark:border-gray-700 hover:shadow-md transition-all"
-                    >
+                    <Link href={`/${locale}`} className="p-2.5 rounded-2xl bg-white/80 dark:bg-gray-800/80 backdrop-blur shadow-md border border-white/60 dark:border-white/10 hover:shadow-lg hover:scale-105 transition-all duration-200">
                         <ArrowLeft className="w-5 h-5 text-gray-600 dark:text-gray-400" />
                     </Link>
                     <div>
-                        <h1 className="text-xl sm:text-2xl md:text-3xl font-black text-gray-900 dark:text-white">
+                        <h1 className="text-2xl sm:text-3xl font-black text-gray-900 dark:text-white tracking-tight">
                             🎲 {t('title')}
                         </h1>
-                        <p className="text-xs sm:text-sm text-gray-500 dark:text-gray-400 mt-1">{t('subtitle')}</p>
+                        <p className="text-xs sm:text-sm text-red-600 dark:text-red-400 mt-0.5 font-medium">{t('subtitle')}</p>
                     </div>
                 </div>
 
-                <div className="bg-white/80 dark:bg-gray-800/80 backdrop-blur-xl rounded-3xl shadow-2xl border border-white/50 dark:border-white/10 p-6 sm:p-8">
+                {/* Main Card */}
+                <div className="bg-white/70 dark:bg-gray-800/70 backdrop-blur-xl rounded-3xl shadow-2xl border border-white/60 dark:border-white/10 overflow-hidden">
 
-                    {/* Controls Row */}
-                    <div className="flex flex-col sm:flex-row items-center justify-between gap-4 mb-6 relative z-30">
-                        <div className="relative w-full sm:w-auto">
+                    {/* Dice count toggle — inline buttons like coin-flip style selector */}
+                    <div className="flex items-center justify-center gap-2 px-5 pt-5">
+                        {[1, 2].map(n => (
                             <button
-                                onClick={toggleDropdown}
-                                className="w-full sm:w-48 bg-white dark:bg-gray-700 border border-gray-200 dark:border-gray-600 rounded-xl px-4 py-3 text-left flex items-center justify-between shadow-sm hover:border-indigo-400 transition-colors"
+                                key={n}
+                                onClick={() => setDiceCount(n)}
+                                disabled={isRolling}
+                                className={`flex items-center gap-2 px-5 py-2 rounded-xl text-sm font-bold transition-all duration-200 border ${
+                                    diceCount === n
+                                        ? 'bg-gradient-to-r from-red-600 to-rose-600 text-white border-red-500 shadow-lg shadow-red-500/20'
+                                        : 'bg-white/60 dark:bg-gray-700/40 text-gray-500 dark:text-gray-400 border-gray-200 dark:border-gray-700 hover:border-red-400'
+                                }`}
                             >
-                                <span className="font-bold text-gray-700 dark:text-gray-200">
-                                    {diceCount} {diceCount === 1 ? t('oneDie') : t('twoDice')}
-                                </span>
-                                <ChevronDown className={`w-4 h-4 transition-transform ${isDropdownOpen ? 'rotate-180' : ''}`} />
+                                <span className="text-base">{n === 1 ? '🎲' : '🎲🎲'}</span>
+                                <span>{n} {n === 1 ? t('oneDie') : t('twoDice')}</span>
                             </button>
+                        ))}
+                    </div>
 
-                            {isDropdownOpen && (
-                                <div className="absolute top-full left-0 right-0 mt-2 bg-white dark:bg-gray-700 border border-gray-100 dark:border-gray-600 rounded-xl shadow-xl overflow-hidden z-40 animate-slide-up">
-                                    {[1, 2].map((num) => (
-                                        <button
-                                            key={num}
-                                            onClick={() => selectDiceCount(num)}
-                                            className="w-full px-4 py-3 text-left text-sm font-medium hover:bg-indigo-50 dark:hover:bg-gray-600 transition-colors bg-white dark:bg-gray-700 text-gray-900 dark:text-gray-100"
-                                        >
-                                            {num} {num === 1 ? t('oneDie') : t('twoDice')}
-                                        </button>
-                                    ))}
+                    {/* 3D Canvas — dark slate with dot grid (identical to coin-flip) */}
+                    <div className="relative mt-4">
+                        <div className="absolute inset-0 rounded-none bg-gradient-to-b from-red-400/5 via-transparent to-transparent pointer-events-none z-10" />
+                        <div
+                            ref={canvasRef}
+                            className="relative bg-gradient-to-br from-slate-900 via-slate-800 to-slate-900 dark:from-gray-950 dark:via-gray-900 dark:to-gray-950 h-[270px] sm:h-[340px] w-full overflow-hidden"
+                        >
+                            {/* Dot grid overlay — same as coin-flip */}
+                            <div
+                                className="absolute inset-0 z-10 pointer-events-none opacity-10"
+                                style={{ backgroundImage: 'radial-gradient(circle at 1px 1px, rgba(255,255,255,0.15) 1px, transparent 0)', backgroundSize: '32px 32px' }}
+                            />
+
+                            {/* Result banner — mirrors coin-flip result banner style */}
+                            {results.length > 0 && !isRolling && (
+                                <div className="absolute top-4 left-1/2 -translate-x-1/2 z-20 animate-slide-up">
+                                    <div className="bg-gradient-to-r from-red-600 to-rose-600 px-7 py-2 rounded-full shadow-2xl border border-white/15 backdrop-blur-sm">
+                                        <span className="text-white font-black uppercase text-sm tracking-widest drop-shadow whitespace-nowrap">
+                                            {results.map(v => DICE_UNICODE[v]).join(' ')} — {t('total')} {totalScore}
+                                        </span>
+                                    </div>
+                                </div>
+                            )}
+
+                            {!results.length && !isRolling && (
+                                <div className="absolute bottom-4 left-1/2 -translate-x-1/2 z-20 pointer-events-none">
+                                    <p className="text-white/25 text-xs font-medium tracking-widest uppercase animate-pulse">
+                                        Atmak için butona bas
+                                    </p>
                                 </div>
                             )}
                         </div>
+                    </div>
 
+                    <div className="p-5 sm:p-7 space-y-4">
+
+                        {/* Roll stats — last roll result shown as large clean numbers */}
                         {results.length > 0 && (
-                            <div className="bg-indigo-100 dark:bg-indigo-900/30 px-5 py-2 rounded-full border border-indigo-200 dark:border-indigo-800 animate-fade-in">
-                                <span className="text-indigo-600 dark:text-indigo-300 font-bold text-lg">
-                                    {t('total')}: {results.reduce((a, b) => a + b, 0)}
-                                </span>
+                            <div className="grid grid-cols-2 gap-3 animate-zoom-in">
+                                {results.map((v, i) => (
+                                    <div key={i} className="rounded-2xl p-4 text-center border bg-red-50 dark:bg-red-900/15 border-red-100 dark:border-red-900/30">
+                                        <p className="text-5xl font-black tabular-nums text-red-600 dark:text-red-400">{v}</p>
+                                        <p className="text-xs font-bold uppercase tracking-widest mt-1 text-slate-500 dark:text-slate-400">
+                                            {t('oneDie')} {i + 1}
+                                        </p>
+                                    </div>
+                                ))}
+                                {diceCount === 2 && results.length === 2 && (
+                                    <div className="col-span-2 rounded-2xl p-3 text-center border bg-slate-50 dark:bg-slate-800/50 border-slate-200 dark:border-slate-700">
+                                        <p className="text-2xl font-black text-slate-700 dark:text-slate-200">
+                                            {t('total')}: <span className="text-red-600 dark:text-red-400">{totalScore}</span>
+                                        </p>
+                                    </div>
+                                )}
                             </div>
                         )}
-                    </div>
 
-                    <div
-                        ref={canvasRef}
-                        className="relative bg-slate-100 dark:bg-slate-800/50 rounded-2xl mb-6 sm:mb-8 h-[300px] sm:h-[400px] w-full overflow-hidden border border-slate-200 dark:border-slate-700 shadow-inner group"
-                    >
-                        {!isRolling && results.length === 0 && (
-                            <div className="absolute inset-0 flex flex-col items-center justify-center text-gray-400 dark:text-gray-600 pointer-events-none z-10">
-                                <span className="text-6xl mb-4 opacity-20 animate-bounce">🎲</span>
-                                <p className="text-sm font-medium opacity-60">Tap Roll to Start</p>
-                            </div>
-                        )}
-                    </div>
+                        {/* Roll Button — matches coin-flip button exactly */}
+                        <button
+                            onClick={rollDice}
+                            disabled={isRolling}
+                            className={`w-full py-5 rounded-2xl font-black text-xl text-white shadow-xl transition-all duration-300 active:scale-[0.97] relative overflow-hidden group ${
+                                isRolling
+                                    ? 'bg-gray-400 dark:bg-gray-600 cursor-not-allowed'
+                                    : 'bg-gradient-to-r from-red-600 via-rose-600 to-red-600 hover:from-red-500 hover:via-rose-500 hover:to-red-500 shadow-red-400/40 dark:shadow-red-900/40 hover:shadow-2xl hover:scale-[1.02]'
+                            }`}
+                        >
+                            {!isRolling && (
+                                <div className="absolute inset-0 -translate-x-full group-hover:translate-x-full transition-transform duration-700 bg-gradient-to-r from-transparent via-white/20 to-transparent skew-x-12" />
+                            )}
+                            <span className="relative z-10 flex items-center justify-center gap-3 uppercase tracking-widest drop-shadow">
+                                <span className={`text-2xl ${isRolling ? 'animate-spin' : ''}`}>🎲</span>
+                                {isRolling ? t('rolling') : t('roll')}
+                            </span>
+                        </button>
 
-                    <button
-                        onClick={rollDice}
-                        disabled={isRolling}
-                        className="w-full py-4 bg-gradient-to-r from-indigo-500 via-purple-600 to-indigo-500 bg-[length:200%_100%] hover:bg-[100%_0%] text-white font-black text-xl rounded-2xl shadow-xl hover:shadow-2xl transition-all duration-500 disabled:opacity-70 flex items-center justify-center gap-3 active:scale-[0.99]"
-                    >
-                        {isRolling ? t('rolling') : t('roll')}
-                    </button>
-                </div>
-
-                {rollHistory.length > 0 && (
-                    <div className="mt-8">
-                        <div className="flex items-center justify-between mb-4">
-                            <h3 className="font-bold text-gray-900 dark:text-white flex items-center gap-2">
-                                <RotateCcw className="w-4 h-4" />
-                                {t('history')}
-                            </h3>
+                        {/* Reset */}
+                        {history.length > 0 && (
                             <button
-                                onClick={resetHistory}
-                                className="text-xs font-semibold text-red-500 hover:text-red-600"
+                                onClick={() => { setHistory([]); setResults([]); }}
+                                className="w-full py-3 bg-gray-50 dark:bg-gray-700/50 hover:bg-red-50 dark:hover:bg-red-900/20 text-gray-400 dark:text-gray-500 hover:text-red-500 dark:hover:text-red-400 font-semibold rounded-2xl transition-all duration-200 flex items-center justify-center gap-2 border border-gray-100 dark:border-gray-700 hover:border-red-200 dark:hover:border-red-900/50 group text-sm uppercase tracking-wide"
                             >
+                                <RotateCcw className="w-4 h-4 group-hover:rotate-180 transition-transform duration-300" />
                                 {t('clear')}
                             </button>
-                        </div>
-                        <div className="space-y-3">
-                            {rollHistory.map((roll, idx) => (
-                                <div key={idx} className="bg-white/60 dark:bg-gray-800/60 p-3 rounded-xl flex items-center justify-between border border-gray-100 dark:border-gray-700 text-sm">
-                                    <div className="flex gap-2">
-                                        {roll.dice.map((d, i) => (
-                                            <span key={i} className="px-2 py-1 bg-gray-100 dark:bg-gray-700 rounded-md font-mono font-bold text-gray-700 dark:text-gray-300">
-                                                {d}
-                                            </span>
-                                        ))}
-                                    </div>
-                                    <span className="font-bold text-indigo-600 dark:text-indigo-400">Total: {roll.total}</span>
+                        )}
+                    </div>
+                </div>
+
+                {/* History — dice badge dots, mirrors coin-flip history style */}
+                {history.length > 0 && (
+                    <div className="mt-6 space-y-2">
+                        <p className="text-xs text-gray-400 dark:text-gray-500 font-medium uppercase tracking-wider px-1">
+                            {t('history')}
+                        </p>
+                        {history.map((roll, idx) => (
+                            <div
+                                key={idx}
+                                className={`bg-white/50 dark:bg-gray-800/50 backdrop-blur-sm rounded-2xl px-4 py-3 flex items-center justify-between border text-sm ${
+                                    idx === 0
+                                        ? 'border-red-200 dark:border-red-800/40 animate-slide-up'
+                                        : 'border-white/40 dark:border-gray-700/50'
+                                }`}
+                            >
+                                <div className="flex gap-1.5">
+                                    {roll.dice.map((d, i) => (
+                                        <div key={i} className={`w-9 h-9 rounded-full flex items-center justify-center text-sm font-black shadow-sm border transition-all ${
+                                            idx === 0 && i === 0
+                                                ? 'bg-gradient-to-br from-red-500 to-rose-600 border-red-400 text-white ring-2 ring-amber-400 ring-offset-1 dark:ring-offset-gray-800 scale-110'
+                                                : 'bg-gradient-to-br from-red-500 to-rose-600 border-red-400 text-white opacity-70'
+                                        }`}>
+                                            {d}
+                                        </div>
+                                    ))}
                                 </div>
-                            ))}
-                        </div>
+                                <span className="font-bold text-gray-500 dark:text-gray-400 tabular-nums text-xs">
+                                    {roll.dice.length > 1 ? `= ${roll.total}` : ''}
+                                </span>
+                            </div>
+                        ))}
                     </div>
                 )}
+
             </div>
         </div>
     );
