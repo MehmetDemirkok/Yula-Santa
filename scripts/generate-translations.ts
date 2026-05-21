@@ -89,15 +89,87 @@ IMPORTANT RULES:
     return data.choices[0].message.content;
 }
 
-async function generateTranslation(targetLocale: string) {
+function flattenKeys(obj: Record<string, any>, prefix = ''): string[] {
+    const keys: string[] = [];
+    for (const [k, v] of Object.entries(obj)) {
+        const full = prefix ? `${prefix}.${k}` : k;
+        if (v !== null && typeof v === 'object' && !Array.isArray(v)) {
+            keys.push(...flattenKeys(v, full));
+        } else {
+            keys.push(full);
+        }
+    }
+    return keys;
+}
+
+function getNestedValue(obj: Record<string, any>, keyPath: string): any {
+    return keyPath.split('.').reduce((acc, k) => acc?.[k], obj);
+}
+
+function setNestedValue(obj: Record<string, any>, keyPath: string, value: any): void {
+    const parts = keyPath.split('.');
+    let cur = obj;
+    for (let i = 0; i < parts.length - 1; i++) {
+        if (!cur[parts[i]] || typeof cur[parts[i]] !== 'object') {
+            cur[parts[i]] = {};
+        }
+        cur = cur[parts[i]];
+    }
+    cur[parts[parts.length - 1]] = value;
+}
+
+async function generateTranslation(targetLocale: string, syncMode = false) {
+    const sourcePath = path.join(process.cwd(), 'messages', 'tr.json');
+    const targetPath = path.join(process.cwd(), 'messages', `${targetLocale}.json`);
+    const sourceJson = JSON.parse(fs.readFileSync(sourcePath, 'utf-8'));
+
+    if (syncMode) {
+        // SYNC MODE: Translate only keys missing in the target file
+        console.log(`\n🔄 Sync mode: ${targetLocale} (${LANGUAGE_NAMES[targetLocale] || targetLocale})\n`);
+
+        let targetJson: Record<string, any> = {};
+        if (fs.existsSync(targetPath)) {
+            targetJson = JSON.parse(fs.readFileSync(targetPath, 'utf-8'));
+        }
+
+        const sourceKeys = flattenKeys(sourceJson);
+        const targetKeys = new Set(flattenKeys(targetJson));
+        const missingKeys = sourceKeys.filter((k) => !targetKeys.has(k));
+
+        if (missingKeys.length === 0) {
+            console.log(`  ✅ ${targetLocale} zaten senkronize, eksik key yok.\n`);
+            return;
+        }
+
+        console.log(`  📋 ${missingKeys.length} eksik key çevriliyor...\n`);
+
+        for (const key of missingKeys) {
+            const sourceValue = getNestedValue(sourceJson, key);
+            if (typeof sourceValue !== 'string') continue;
+
+            const miniJson = JSON.stringify({ [key]: sourceValue });
+            try {
+                const translated = await translateWithOpenAI(miniJson, LANGUAGE_NAMES[targetLocale] || targetLocale);
+                const parsed = JSON.parse(translated);
+                const translatedValue = parsed[key] ?? sourceValue;
+                setNestedValue(targetJson, key, translatedValue);
+                console.log(`  ✅ ${key}: "${translatedValue}"`);
+            } catch {
+                setNestedValue(targetJson, key, sourceValue);
+                console.warn(`  ⚠️  ${key}: çeviri başarısız, kaynak değer kullanıldı`);
+            }
+
+            await new Promise((r) => setTimeout(r, 300));
+        }
+
+        fs.writeFileSync(targetPath, JSON.stringify(targetJson, null, 2), 'utf-8');
+        console.log(`\n✅ Sync tamamlandı: messages/${targetLocale}.json\n`);
+        return;
+    }
+
+    // FULL MODE: Translate entire file from scratch
     console.log(`\n🌍 Generating translation for: ${targetLocale} (${LANGUAGE_NAMES[targetLocale] || targetLocale})\n`);
 
-    // Read source file (Turkish)
-    const sourcePath = path.join(process.cwd(), 'messages', 'tr.json');
-    const sourceContent = fs.readFileSync(sourcePath, 'utf-8');
-    const sourceJson = JSON.parse(sourceContent);
-
-    // Translate each section separately to avoid token limits
     const translatedJson: Record<string, any> = {};
     const sections = Object.keys(sourceJson);
 
@@ -113,27 +185,26 @@ async function generateTranslation(targetLocale: string) {
             console.log(`  ✅ Section "${section}" translated successfully`);
         } catch (error) {
             console.error(`  ❌ Error translating section "${section}":`, error);
-            // Use source as fallback
             translatedJson[section] = sourceJson[section];
         }
 
-        // Small delay to avoid rate limiting
         await new Promise(resolve => setTimeout(resolve, 500));
     }
 
-    // Write translated file
-    const targetPath = path.join(process.cwd(), 'messages', `${targetLocale}.json`);
     fs.writeFileSync(targetPath, JSON.stringify(translatedJson, null, 2), 'utf-8');
-
     console.log(`\n✅ Translation saved to: messages/${targetLocale}.json\n`);
 }
 
 // Main execution
 const targetLocale = process.argv[2];
+const syncMode = process.argv.includes('--sync');
+const allMode = targetLocale === 'all';
 
 if (!targetLocale) {
-    console.error('Usage: npx tsx scripts/generate-translations.ts <locale>');
-    console.error('Example: npx tsx scripts/generate-translations.ts fr');
+    console.error('Usage: npx tsx scripts/generate-translations.ts <locale|all> [--sync]');
+    console.error('  Full:  npx tsx scripts/generate-translations.ts fr');
+    console.error('  Sync:  npx tsx scripts/generate-translations.ts fr --sync');
+    console.error('  All:   npx tsx scripts/generate-translations.ts all --sync');
     process.exit(1);
 }
 
@@ -142,4 +213,13 @@ if (targetLocale === 'tr') {
     process.exit(1);
 }
 
-generateTranslation(targetLocale).catch(console.error);
+if (allMode) {
+    const allLangs = Object.keys(LANGUAGE_NAMES);
+    (async () => {
+        for (const lang of allLangs) {
+            await generateTranslation(lang, syncMode);
+        }
+    })().catch(console.error);
+} else {
+    generateTranslation(targetLocale, syncMode).catch(console.error);
+}

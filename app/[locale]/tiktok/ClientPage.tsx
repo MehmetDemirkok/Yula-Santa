@@ -749,14 +749,14 @@ export default function TikTokGiveaway() {
                                                             <Users className="w-10 h-10 text-cyan-200" />
                                                         </div>
                                                         <div className="text-center space-y-1">
-                                                            <p className="text-sm font-semibold text-gray-500">Henüz katılımcı yok</p>
-                                                            <p className="text-xs text-gray-400 max-w-[200px] mx-auto">TikTok video linkini yapıştırın veya manuel olarak kullanıcı ekleyin</p>
+                                                            <p className="text-sm font-semibold text-gray-500">{t.giveaway.noParticipantsYet}</p>
+                                                            <p className="text-xs text-gray-400 max-w-[200px] mx-auto">{t.giveaway.tiktokNoParticipantsHint}</p>
                                                         </div>
                                                         <button
                                                             onClick={() => setActiveTab('links')}
                                                             className="text-xs bg-cyan-500 text-white font-bold px-4 py-2 rounded-lg hover:bg-cyan-600 transition-colors"
                                                         >
-                                                            ← Video Linkinden Çek
+                                                            {t.giveaway.fetchFromVideo}
                                                         </button>
                                                     </div>
                                                 ) : (

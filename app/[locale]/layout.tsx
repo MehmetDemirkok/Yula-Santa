@@ -271,49 +271,30 @@ function getJsonLd(locale: string, messages: Record<string, any>) {
     };
 
     // FAQ Schema - Helps with rich snippets
+    const faq = messages.meta?.faq ?? {};
     const faqSchema = {
         "@type": "FAQPage",
         "@id": `${SITE_URL}/${locale === 'tr' ? '' : locale + '/'}#faq`,
         "mainEntity": [
             {
                 "@type": "Question",
-                "name": locale === 'tr' ? "YulaSanta nedir?" : "What is YulaSanta?",
-                "acceptedAnswer": {
-                    "@type": "Answer",
-                    "text": locale === 'tr'
-                        ? "YulaSanta, ücretsiz online çekiliş ve yılbaşı hediye eşleştirme platformudur. Instagram, YouTube, TikTok ve Twitter çekilişleri yapabilir, Secret Santa organizasyonları düzenleyebilirsiniz."
-                        : "YulaSanta is a free online giveaway and Secret Santa platform. You can run Instagram, YouTube, TikTok, and Twitter giveaways, and organize Secret Santa gift exchanges."
-                }
+                "name": faq.q1,
+                "acceptedAnswer": { "@type": "Answer", "text": faq.a1 }
             },
             {
                 "@type": "Question",
-                "name": locale === 'tr' ? "YulaSanta ücretsiz mi?" : "Is YulaSanta free?",
-                "acceptedAnswer": {
-                    "@type": "Answer",
-                    "text": locale === 'tr'
-                        ? "Evet, YulaSanta tamamen ücretsizdir. Kayıt olmadan, giriş yapmadan tüm özellikleri kullanabilirsiniz."
-                        : "Yes, YulaSanta is completely free. You can use all features without registration or login."
-                }
+                "name": faq.q2,
+                "acceptedAnswer": { "@type": "Answer", "text": faq.a2 }
             },
             {
                 "@type": "Question",
-                "name": locale === 'tr' ? "Hangi sosyal medya platformlarını destekliyorsunuz?" : "Which social media platforms do you support?",
-                "acceptedAnswer": {
-                    "@type": "Answer",
-                    "text": locale === 'tr'
-                        ? "Instagram, YouTube, TikTok ve Twitter (X) platformlarından yorum ve beğeni çekilişleri yapabilirsiniz."
-                        : "You can run giveaways from Instagram, YouTube, TikTok, and Twitter (X) platforms using comments and likes."
-                }
+                "name": faq.q3,
+                "acceptedAnswer": { "@type": "Answer", "text": faq.a3 }
             },
             {
                 "@type": "Question",
-                "name": locale === 'tr' ? "Secret Santa nasıl çalışır?" : "How does Secret Santa work?",
-                "acceptedAnswer": {
-                    "@type": "Answer",
-                    "text": locale === 'tr'
-                        ? "Katılımcı isimlerini ekleyin, çekilişi başlatın. Her kişi rastgele birini çeker ve sadece kendi eşleşmesini görebilir. Gizlilik korunur!"
-                        : "Add participant names, start the draw. Each person randomly picks someone and can only see their own match. Privacy is protected!"
-                }
+                "name": faq.q4,
+                "acceptedAnswer": { "@type": "Answer", "text": faq.a4 }
             }
         ]
     };
@@ -328,7 +309,7 @@ function getJsonLd(locale: string, messages: Record<string, any>) {
                 "position": 1,
                 "item": {
                     "@id": locale === 'tr' ? `${SITE_URL}` : `${SITE_URL}/${locale}`,
-                    "name": locale === 'tr' ? "Ana Sayfa" : "Home"
+                    "name": messages.meta?.faq?.breadcrumbHome ?? "Home"
                 }
             }
         ]

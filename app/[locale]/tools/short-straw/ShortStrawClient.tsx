@@ -126,7 +126,7 @@ export default function ShortStrawPage() {
                             </div>
                         ) : (
                             <div className="text-center py-8 text-gray-400 dark:text-gray-600">
-                                <p>No participants yet</p>
+                                <p>{t('noParticipants')}</p>
                             </div>
                         )}
                     </div>
@@ -150,7 +150,7 @@ export default function ShortStrawPage() {
                             className="w-full py-4 bg-gradient-to-r from-indigo-500 to-violet-500 hover:from-indigo-600 hover:to-violet-600 text-white font-bold text-lg rounded-2xl shadow-lg hover:shadow-xl transition-all disabled:opacity-50 disabled:cursor-not-allowed flex items-center justify-center gap-3"
                         >
                             <Shuffle className={`w-5 h-5 ${isSelecting ? 'animate-spin' : ''}`} aria-hidden="true" />
-                            {isSelecting ? 'Wait...' : t('draw')}
+                            {isSelecting ? t('selecting') : t('draw')}
                         </button>
 
                         {loser && !isSelecting && (

@@ -18,7 +18,18 @@
             "бросить кубик",
             "орел или решка",
             "случайное число"
-        ]
+        ],
+        "faq": {
+            "breadcrumbHome": "Главная",
+            "q1": "Что такое YulaSanta?",
+            "a1": "YulaSanta — это бесплатная платформа для онлайн-розыгрышей и Secret Santa. Вы можете проводить розыгрыши в Instagram, YouTube, TikTok и Twitter, а также организовывать обмен подарками Secret Santa.",
+            "q2": "YulaSanta бесплатный?",
+            "a2": "Да, YulaSanta полностью бесплатный. Вы можете использовать все функции без регистрации.",
+            "q3": "Какие платформы социальных сетей поддерживаются?",
+            "a3": "Вы можете проводить розыгрыши в Instagram, YouTube, TikTok и Twitter (X), используя комментарии и лайки.",
+            "q4": "Как работает Secret Santa?",
+            "a4": "Добавьте имена участников, запустите розыгрыш. Каждый человек случайно выбирает кого-то и может видеть только свою пару. Конфиденциальность защищена!"
+        }
     },
     "home": {
         "title": "YulaSanta - Бесплатная онлайн-система розыгрышей нового поколения",
@@ -179,7 +190,18 @@
         "shareTitle": "Поделиться результатами",
         "shareDesc": "Поделитесь результатами розыгрыша в социальных сетях",
         "shareCopied": "Скопировано!",
-        "copyLink": "Копировать ссылку"
+        "copyLink": "Копировать ссылку",
+        "comingSoon": "Скоро",
+        "noParticipantsYet": "Пока нет участников",
+        "youtubeNoParticipantsHint": "Вставьте ссылку на видео YouTube или добавьте пользователей вручную",
+        "instagramNoParticipantsHint": "Вставьте ссылку на пост Instagram или добавьте пользователей вручную",
+        "tiktokNoParticipantsHint": "Вставьте ссылку на видео TikTok или добавьте пользователей вручную",
+        "fetchFromVideo": "← Загрузить из ссылки на видео",
+        "fetchFromPost": "← Загрузить из ссылки на пост",
+        "subscribed": "Подписан",
+        "notSubscribed": "Не подписан",
+        "subscribedPrivate": "Приватный",
+        "checkingSubscription": "Проверка..."
     },
     "support": {
         "button": "Поддержка",
@@ -313,7 +335,12 @@
             "reset": "Сброс",
             "edge": "The coin landed on its edge! No one wins. Please try again.",
             "aboutTitle": "About Coin Flip",
-            "aboutText": "Make quick decisions with our online heads or tails generator."
+            "aboutText": "Make quick decisions with our online heads or tails generator.",
+            "classic": "Классический",
+            "gold": "Золотой",
+            "prompt": "Нажмите кнопку, чтобы подбросить монету",
+            "history": "Последние броски",
+            "throws": "броски"
         },
         "randomNumberMeta": {
             "title": "🔢 Случайное число | Генератор чисел онлайн - YulaSanta",
@@ -348,7 +375,10 @@
             "lost": "Ты проиграл! Ты вытянул короткую соломинку.",
             "saved": "Ты спасен! Твоя соломинка длинная.",
             "aboutTitle": "Об игре",
-            "aboutText": "Используйте игру в короткую соломинку для принятия честных решений в группе."
+            "aboutText": "Используйте игру в короткую соломинку для принятия честных решений в группе.",
+            "noParticipants": "Пока нет участников",
+            "selecting": "Пожалуйста, подождите...",
+            "namePlaceholder": "Имя..."
         },
         "shortStrawMeta": {
             "title": "🎋 Короткая соломинка | Игра онлайн - YulaSanta",
@@ -368,7 +398,31 @@
             "view": "Смотреть истории",
             "helper": "Смотрите истории анонимно, чтобы владелец не узнал об этом.",
             "aboutTitle": "О Story Viewer",
-            "aboutText": "Скрытно просматривайте истории Instagram с помощью анонимного просмотрщика YulaSanta."
+            "aboutText": "Скрытно просматривайте истории Instagram с помощью анонимного просмотрщика YulaSanta.",
+            "searchLabel": "Имя пользователя Instagram",
+            "searchButton": "Поиск",
+            "loadingNote": "Это может занять 20-60 секунд",
+            "waitPlease": "Пожалуйста, подождите...",
+            "howItWorks": "Как это работает?",
+            "howStep1": "Введите имя пользователя и нажмите Поиск",
+            "howStep2": "Информация профиля и активные истории загружаются",
+            "howStep3": "Смотрите истории анонимно — никто не узнает",
+            "storiesTitle": "Истории",
+            "viewOnInstagram": "Просмотреть в Instagram",
+            "viewProfile": "Просмотреть в Instagram",
+            "searchAgain": "← Искать другой профиль",
+            "posts": "Публикации",
+            "followingLabel": "Подписки",
+            "noStoriesError": "У этого аккаунта нет активных историй или истории приватные.",
+            "enterUsername": "Пожалуйста, введите имя пользователя",
+            "storiesFound": "Найдено историй: {count}!",
+            "loadStepProfile1": "Загрузка информации профиля...",
+            "loadStepProfile2": "Проверка аккаунта...",
+            "loadStepProfile3": "Подготовка данных...",
+            "loadStepStory1": "Подключение к Instagram...",
+            "loadStepStory2": "Загрузка историй...",
+            "loadStepStory3": "Загрузка медиафайлов...",
+            "loadStepStory4": "Подготовка..."
         },
         "instagramStoryMeta": {
             "title": "📱 Просмотр историй Instagram | Анонимно - YulaSanta",

@@ -18,7 +18,18 @@
             "lancio dadi",
             "testa o croce",
             "numero casuale"
-        ]
+        ],
+        "faq": {
+            "breadcrumbHome": "Home",
+            "q1": "Cos'è YulaSanta?",
+            "a1": "YulaSanta è una piattaforma gratuita di estrazione online e Secret Santa. Puoi organizzare giveaway su Instagram, YouTube, TikTok e Twitter, e organizzare scambi di regali Secret Santa.",
+            "q2": "YulaSanta è gratuito?",
+            "a2": "Sì, YulaSanta è completamente gratuito. Puoi usare tutte le funzionalità senza registrazione.",
+            "q3": "Quali piattaforme social media supportate?",
+            "a3": "Puoi organizzare giveaway da Instagram, YouTube, TikTok e Twitter (X) usando commenti e mi piace.",
+            "q4": "Come funziona Secret Santa?",
+            "a4": "Aggiungi i nomi dei partecipanti, avvia l'estrazione. Ogni persona sceglie casualmente qualcuno e può vedere solo il proprio abbinamento. La privacy è protetta!"
+        }
     },
     "home": {
         "title": "YulaSanta - Sistema di estrazione online gratuito di nuova generazione",
@@ -179,7 +190,18 @@
         "shareTitle": "Condividi risultati",
         "shareDesc": "Condividi i risultati dell'estrazione sui social media",
         "shareCopied": "Copiato!",
-        "copyLink": "Copia link"
+        "copyLink": "Copia link",
+        "comingSoon": "Prossimamente",
+        "noParticipantsYet": "Nessun partecipante ancora",
+        "youtubeNoParticipantsHint": "Incolla un link video YouTube o aggiungi utenti manualmente",
+        "instagramNoParticipantsHint": "Incolla un link post Instagram o aggiungi utenti manualmente",
+        "tiktokNoParticipantsHint": "Incolla un link video TikTok o aggiungi utenti manualmente",
+        "fetchFromVideo": "← Estrai dal link video",
+        "fetchFromPost": "← Estrai dal link post",
+        "subscribed": "Iscritto",
+        "notSubscribed": "Non iscritto",
+        "subscribedPrivate": "Privato",
+        "checkingSubscription": "Verifica in corso..."
     },
     "support": {
         "button": "Supporto",
@@ -313,7 +335,12 @@
             "reset": "Reimposta",
             "edge": "The coin landed on its edge! No one wins. Please try again.",
             "aboutTitle": "About Coin Flip",
-            "aboutText": "Make quick decisions with our online heads or tails generator."
+            "aboutText": "Make quick decisions with our online heads or tails generator.",
+            "classic": "Classico",
+            "gold": "Oro",
+            "prompt": "Premi il pulsante per lanciare la moneta",
+            "history": "Lanci recenti",
+            "throws": "lanci"
         },
         "randomNumberMeta": {
             "title": "🔢 Numero Casuale | Generatore di numeri online - YulaSanta",
@@ -345,11 +372,13 @@
             "label": "Numero di partecipanti",
             "draw": "Tira la cannuccia",
             "reset": "Reimposta",
-            "edge": "The coin landed on its edge! No one wins. Please try again.",
             "lost": "Hai perso! Hai tirato la cannuccia corta.",
             "saved": "Salvato! La tua cannuccia è lunga.",
             "aboutTitle": "Informazioni sul Gioco",
-            "aboutText": "Usa il gioco della cannuccia corta online per prendere decisioni eque in gruppo."
+            "aboutText": "Usa il gioco della cannuccia corta online per prendere decisioni eque in gruppo.",
+            "noParticipants": "Nessun partecipante ancora",
+            "selecting": "Per favore attendere...",
+            "namePlaceholder": "Nome..."
         },
         "shortStrawMeta": {
             "title": "🎋 Cannuccia Corta | Gioco di sorte online - YulaSanta",
@@ -369,7 +398,31 @@
             "view": "Vedi Storie",
             "helper": "Guarda le storie in modo anonimo senza che il proprietario lo sappia.",
             "aboutTitle": "Informazioni su Story Viewer",
-            "aboutText": "Guarda segretamente le storie di Instagram con il visualizzatore anonimo di YulaSanta."
+            "aboutText": "Guarda segretamente le storie di Instagram con il visualizzatore anonimo di YulaSanta.",
+            "searchLabel": "Nome utente Instagram",
+            "searchButton": "Cerca",
+            "loadingNote": "Questo può richiedere 20-60 secondi",
+            "waitPlease": "Per favore attendere...",
+            "howItWorks": "Come funziona?",
+            "howStep1": "Inserisci il nome utente e premi Cerca",
+            "howStep2": "Vengono recuperate le informazioni del profilo e le storie attive",
+            "howStep3": "Guarda le storie in modo anonimo — nessuno lo saprà",
+            "storiesTitle": "Storie",
+            "viewOnInstagram": "Visualizza su Instagram",
+            "viewProfile": "Visualizza su Instagram",
+            "searchAgain": "← Cerca un altro profilo",
+            "posts": "Post",
+            "followingLabel": "Seguiti",
+            "noStoriesError": "Questo account non ha storie attive o le storie sono private.",
+            "enterUsername": "Inserisci un nome utente",
+            "storiesFound": "Trovate {count} storie!",
+            "loadStepProfile1": "Recupero informazioni profilo...",
+            "loadStepProfile2": "Verifica account...",
+            "loadStepProfile3": "Preparazione dati...",
+            "loadStepStory1": "Connessione a Instagram...",
+            "loadStepStory2": "Recupero storie...",
+            "loadStepStory3": "Caricamento file multimediali...",
+            "loadStepStory4": "Preparazione..."
         },
         "instagramStoryMeta": {
             "title": "📱 Visualizzatore Storie Instagram | Anonimo - YulaSanta",

@@ -26,7 +26,18 @@
             "short straw game",
             "giveaway app",
             "social media giveaway"
-        ]
+        ],
+        "faq": {
+            "breadcrumbHome": "Home",
+            "q1": "What is YulaSanta?",
+            "a1": "YulaSanta is a free online giveaway and Secret Santa platform. You can run Instagram, YouTube, TikTok, and Twitter giveaways, and organize Secret Santa gift exchanges.",
+            "q2": "Is YulaSanta free?",
+            "a2": "Yes, YulaSanta is completely free. You can use all features without registration or login.",
+            "q3": "Which social media platforms do you support?",
+            "a3": "You can run giveaways from Instagram, YouTube, TikTok, and Twitter (X) using comments and likes.",
+            "q4": "How does Secret Santa work?",
+            "a4": "Add participant names, start the draw. Each person randomly picks someone and can only see their own match. Privacy is protected!"
+        }
     },
     "home": {
         "title": "YulaSanta - Next Generation Free Online Giveaway System",
@@ -193,7 +204,18 @@
         "shareTitle": "Share Results",
         "shareDesc": "Share giveaway results on social media",
         "shareCopied": "Copied!",
-        "copyLink": "Copy Link"
+        "copyLink": "Copy Link",
+        "comingSoon": "Coming Soon",
+        "noParticipantsYet": "No participants yet",
+        "youtubeNoParticipantsHint": "Paste a YouTube video link or add users manually",
+        "instagramNoParticipantsHint": "Paste an Instagram post link or add users manually",
+        "tiktokNoParticipantsHint": "Paste a TikTok video link or add users manually",
+        "fetchFromVideo": "← Fetch from Video Link",
+        "fetchFromPost": "← Fetch from Post Link",
+        "subscribed": "Subscribed",
+        "notSubscribed": "Not Subscribed",
+        "subscribedPrivate": "Private",
+        "checkingSubscription": "Checking..."
     },
     "support": {
         "button": "Support",
@@ -369,7 +391,12 @@
             "reset": "Reset",
             "edge": "The coin landed on its edge! No one wins. Please try again.",
             "aboutTitle": "About Coin Flip",
-            "aboutText": "Make quick decisions with our online heads or tails generator."
+            "aboutText": "Make quick decisions with our online heads or tails generator.",
+            "classic": "Classic",
+            "gold": "Gold",
+            "prompt": "Press the button to flip the coin",
+            "history": "Recent Flips",
+            "throws": "flips"
         },
         "randomNumberContent": {
             "title": "Random Number Generator",
@@ -393,7 +420,10 @@
             "lost": "You lost! You drew the short straw.",
             "saved": "Saved! Long straw.",
             "aboutTitle": "About Short Straw",
-            "aboutText": "Classic short straw game for fair group selections."
+            "aboutText": "Classic short straw game for fair group selections.",
+            "noParticipants": "No participants yet",
+            "selecting": "Please wait...",
+            "namePlaceholder": "Name..."
         },
         "instagramStoryContent": {
             "title": "Instagram Story Viewer",
@@ -402,7 +432,31 @@
             "view": "View Stories",
             "helper": "Watch stories anonymously without the owner knowing.",
             "aboutTitle": "About Story Viewer",
-            "aboutText": "Secretly watch Instagram stories with YulaSanta's anonymous viewer."
+            "aboutText": "Secretly watch Instagram stories with YulaSanta's anonymous viewer.",
+            "searchLabel": "Instagram Username",
+            "searchButton": "Search",
+            "loadingNote": "This may take 20-60 seconds",
+            "waitPlease": "Please wait...",
+            "howItWorks": "How it works?",
+            "howStep1": "Enter the username and press Search",
+            "howStep2": "Profile info and active stories are fetched",
+            "howStep3": "Watch stories anonymously — no one will know",
+            "storiesTitle": "Stories",
+            "viewOnInstagram": "View on Instagram",
+            "viewProfile": "View on Instagram",
+            "searchAgain": "← Search another profile",
+            "posts": "Posts",
+            "followingLabel": "Following",
+            "noStoriesError": "This account has no active stories or stories are private.",
+            "enterUsername": "Please enter a username",
+            "storiesFound": "{count} stories found!",
+            "loadStepProfile1": "Fetching profile info...",
+            "loadStepProfile2": "Verifying account...",
+            "loadStepProfile3": "Preparing data...",
+            "loadStepStory1": "Connecting to Instagram...",
+            "loadStepStory2": "Fetching stories...",
+            "loadStepStory3": "Loading media files...",
+            "loadStepStory4": "Getting ready..."
         },
         "instagramProfileContent": {
             "title": "Instagram Profile Picture",

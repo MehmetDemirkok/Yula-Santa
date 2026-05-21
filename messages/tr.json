@@ -28,7 +28,18 @@
             "kısa çöp oyunu",
             "çekiliş programı",
             "sosyal medya çekilişi"
-        ]
+        ],
+        "faq": {
+            "breadcrumbHome": "Ana Sayfa",
+            "q1": "YulaSanta nedir?",
+            "a1": "YulaSanta, ücretsiz online çekiliş ve yılbaşı hediye eşleştirme platformudur. Instagram, YouTube, TikTok ve Twitter çekilişleri yapabilir, Secret Santa organizasyonları düzenleyebilirsiniz.",
+            "q2": "YulaSanta ücretsiz mi?",
+            "a2": "Evet, YulaSanta tamamen ücretsizdir. Kayıt olmadan, giriş yapmadan tüm özellikleri kullanabilirsiniz.",
+            "q3": "Hangi sosyal medya platformlarını destekliyorsunuz?",
+            "a3": "Instagram, YouTube, TikTok ve Twitter (X) platformlarından yorum ve beğeni çekilişleri yapabilirsiniz.",
+            "q4": "Secret Santa nasıl çalışır?",
+            "a4": "Katılımcı isimlerini ekleyin, çekilişi başlatın. Her kişi rastgele birini çeker ve sadece kendi eşleşmesini görebilir. Gizlilik korunur!"
+        }
     },
     "home": {
         "title": "YulaSanta - Yeni Nesil Ücretsiz Online Çekiliş Sistemi",
@@ -195,7 +206,18 @@
         "shareTitle": "Sonuçları Paylaş",
         "shareDesc": "Çekiliş sonuçlarını sosyal medyada paylaşın",
         "shareCopied": "Kopyalandı!",
-        "copyLink": "Linki Kopyala"
+        "copyLink": "Linki Kopyala",
+        "comingSoon": "Yakında",
+        "noParticipantsYet": "Henüz katılımcı yok",
+        "youtubeNoParticipantsHint": "YouTube video linkini yapıştırın veya manuel olarak kullanıcı ekleyin",
+        "instagramNoParticipantsHint": "Instagram post linkini yapıştırın veya manuel olarak kullanıcı ekleyin",
+        "tiktokNoParticipantsHint": "TikTok video linkini yapıştırın veya manuel olarak kullanıcı ekleyin",
+        "fetchFromVideo": "← Video Linkinden Çek",
+        "fetchFromPost": "← Post Linkinden Çek",
+        "subscribed": "Abone",
+        "notSubscribed": "Abone Değil",
+        "subscribedPrivate": "Gizli",
+        "checkingSubscription": "Kontrol Ediliyor..."
     },
     "support": {
         "button": "Destek",
@@ -307,7 +329,12 @@
             "reset": "Sıfırla",
             "edge": "Para dik geldi, kimsenin şansı yok. Lütfen yeniden deneyiniz.",
             "aboutTitle": "Yazı Tura Hakkında",
-            "aboutText": "Hızlı karar vermeniz gereken durumlarda online yazı tura aracımızı kullanabilirsiniz."
+            "aboutText": "Hızlı karar vermeniz gereken durumlarda online yazı tura aracımızı kullanabilirsiniz.",
+            "classic": "Klasik",
+            "gold": "Altın",
+            "prompt": "Parayı atmak için butona bas",
+            "history": "Son Atışlar",
+            "throws": "atış"
         },
         "randomNumberMeta": {
             "title": "🔢 Rastgele Sayı Seçici | Random Number Generator - YulaSanta",
@@ -342,7 +369,10 @@
             "lost": "Kaybettin! Kısa çöpü sen çektin.",
             "saved": "Kurtuldun! Çöpün uzun.",
             "aboutTitle": "Kısa Çöp Çekme Oyunu",
-            "aboutText": "Karar veremediğiniz durumlarda kimin şanslı veya şanssız olduğunu belirlemek için online kısa çöp çekin."
+            "aboutText": "Karar veremediğiniz durumlarda kimin şanslı veya şanssız olduğunu belirlemek için online kısa çöp çekin.",
+            "noParticipants": "Henüz kimse eklenmedi",
+            "selecting": "Lütfen bekleyin...",
+            "namePlaceholder": "İsim..."
         },
         "instagramStoryContent": {
             "title": "Instagram Hikaye İzleme",
@@ -351,7 +381,31 @@
             "view": "Hikayeleri İzle",
             "helper": "Profil sahibinin haberi olmadan anonim izleyin.",
             "aboutTitle": "Instagram Hikaye İzleme Hakkında",
-            "aboutText": "YulaSanta story viewer ile Instagram hikayelerini gizlice izleyebilirsiniz. İzlediğiniz kişiler bunu göremez."
+            "aboutText": "YulaSanta story viewer ile Instagram hikayelerini gizlice izleyebilirsiniz. İzlediğiniz kişiler bunu göremez.",
+            "searchLabel": "Instagram Kullanıcı Adı",
+            "searchButton": "Ara",
+            "loadingNote": "Bu işlem 20-60 saniye sürebilir",
+            "waitPlease": "Lütfen bekleyin...",
+            "howItWorks": "Nasıl çalışır?",
+            "howStep1": "Kullanıcı adını girin ve Ara butonuna basın",
+            "howStep2": "Profil bilgileri ve aktif hikayeler çekilir",
+            "howStep3": "Hikayeleri anonim olarak izleyin — kimse görmez",
+            "storiesTitle": "Hikayeler",
+            "viewOnInstagram": "Instagram'da Görüntüle",
+            "viewProfile": "Instagram'da görüntüle",
+            "searchAgain": "← Başka profil ara",
+            "posts": "Gönderi",
+            "followingLabel": "Takip",
+            "noStoriesError": "Bu hesabın aktif hikayesi yok veya hikayeler gizli.",
+            "enterUsername": "Lütfen bir kullanıcı adı girin",
+            "storiesFound": "{count} hikaye bulundu!",
+            "loadStepProfile1": "Profil bilgileri getiriliyor...",
+            "loadStepProfile2": "Hesap doğrulanıyor...",
+            "loadStepProfile3": "Veriler hazırlanıyor...",
+            "loadStepStory1": "Instagram'a bağlanılıyor...",
+            "loadStepStory2": "Hikayeler çekiliyor...",
+            "loadStepStory3": "Medya dosyaları yükleniyor...",
+            "loadStepStory4": "Hazırlanıyor..."
         },
         "wheelOfFortuneMeta": {
             "title": "🎡 Çarkıfelek | Online Çark Çevir - Ücretsiz Karar Çarkı - YulaSanta",

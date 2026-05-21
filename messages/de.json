@@ -28,7 +28,18 @@
             "strohhalm ziehen",
             "gewinnspiel programm",
             "social media gewinnspiel"
-        ]
+        ],
+        "faq": {
+            "breadcrumbHome": "Startseite",
+            "q1": "Was ist YulaSanta?",
+            "a1": "YulaSanta ist eine kostenlose Online-Verlosungsplattform und Secret-Santa-Plattform. Sie können Instagram-, YouTube-, TikTok- und Twitter-Gewinnspiele veranstalten und Secret-Santa-Geschenkeaustausche organisieren.",
+            "q2": "Ist YulaSanta kostenlos?",
+            "a2": "Ja, YulaSanta ist völlig kostenlos. Sie können alle Funktionen ohne Anmeldung nutzen.",
+            "q3": "Welche Social-Media-Plattformen werden unterstützt?",
+            "a3": "Sie können Gewinnspiele von Instagram, YouTube, TikTok und Twitter (X) über Kommentare und Likes durchführen.",
+            "q4": "Wie funktioniert Secret Santa?",
+            "a4": "Füge Teilnehmernamen hinzu und starte die Auslosung. Jede Person wählt zufällig jemanden und kann nur ihre eigene Paarung sehen. Die Privatsphäre ist geschützt!"
+        }
     },
     "home": {
         "title": "YulaSanta - Kostenloses Online-Gewinnspielsystem der nächsten Generation",
@@ -189,7 +200,18 @@
         "shareTitle": "Ergebnisse teilen",
         "shareDesc": "Verlosungsergebnisse in sozialen Medien teilen",
         "shareCopied": "Kopiert!",
-        "copyLink": "Link kopieren"
+        "copyLink": "Link kopieren",
+        "comingSoon": "Demnächst",
+        "noParticipantsYet": "Noch keine Teilnehmer",
+        "youtubeNoParticipantsHint": "YouTube-Video-Link einfügen oder Benutzer manuell hinzufügen",
+        "instagramNoParticipantsHint": "Instagram-Post-Link einfügen oder Benutzer manuell hinzufügen",
+        "tiktokNoParticipantsHint": "TikTok-Video-Link einfügen oder Benutzer manuell hinzufügen",
+        "fetchFromVideo": "← Vom Video-Link laden",
+        "fetchFromPost": "← Vom Post-Link laden",
+        "subscribed": "Abonniert",
+        "notSubscribed": "Nicht abonniert",
+        "subscribedPrivate": "Privat",
+        "checkingSubscription": "Wird überprüft..."
     },
     "support": {
         "button": "Support",
@@ -301,7 +323,12 @@
             "reset": "Zurücksetzen",
             "edge": "The coin landed on its edge! No one wins. Please try again.",
             "aboutTitle": "Über den Münzwurf",
-            "aboutText": "Treffen Sie schnelle Entscheidungen mit unserem Online-Kopf-oder-Zahl-Generator."
+            "aboutText": "Treffen Sie schnelle Entscheidungen mit unserem Online-Kopf-oder-Zahl-Generator.",
+            "classic": "Klassisch",
+            "gold": "Gold",
+            "prompt": "Drücke den Button, um die Münze zu werfen",
+            "history": "Letzte Würfe",
+            "throws": "Würfe"
         },
         "randomNumberMeta": {
             "title": "🔢 Zufallszahlengenerator | Zufallszahlen Online ziehen - YulaSanta",
@@ -333,11 +360,13 @@
             "label": "Teilnehmer",
             "draw": "Strohhalm ziehen",
             "reset": "Zurücksetzen",
-            "edge": "The coin landed on its edge! No one wins. Please try again.",
             "lost": "Du hast verloren! Du hast den kürzeren Strohhalm gezogen.",
             "saved": "Gerettet! Langer Strohhalm.",
             "aboutTitle": "Über Strohhalm Ziehen",
-            "aboutText": "Klassisches Strohhalm-Zieh-Spiel für faire Gruppenentscheidungen."
+            "aboutText": "Klassisches Strohhalm-Zieh-Spiel für faire Gruppenentscheidungen.",
+            "noParticipants": "Noch keine Teilnehmer",
+            "selecting": "Bitte warten...",
+            "namePlaceholder": "Name..."
         },
         "shortStrawMeta": {
             "title": "🎋 Strohhalm Ziehen | Strohhalm Spiel Online - YulaSanta",
@@ -357,7 +386,31 @@
             "view": "Stories ansehen",
             "helper": "Stories anonym ansehen, ohne dass der Besitzer es merkt.",
             "aboutTitle": "Über Story Viewer",
-            "aboutText": "Instagram Stories heimlich ansehen mit dem anonymen Viewer von YulaSanta."
+            "aboutText": "Instagram Stories heimlich ansehen mit dem anonymen Viewer von YulaSanta.",
+            "searchLabel": "Instagram Benutzername",
+            "searchButton": "Suchen",
+            "loadingNote": "Dies kann 20-60 Sekunden dauern",
+            "waitPlease": "Bitte warten...",
+            "howItWorks": "Wie funktioniert es?",
+            "howStep1": "Benutzernamen eingeben und Suchen drücken",
+            "howStep2": "Profilinformationen und aktive Stories werden abgerufen",
+            "howStep3": "Stories anonym ansehen — niemand sieht es",
+            "storiesTitle": "Stories",
+            "viewOnInstagram": "Auf Instagram ansehen",
+            "viewProfile": "Auf Instagram ansehen",
+            "searchAgain": "← Anderes Profil suchen",
+            "posts": "Beiträge",
+            "followingLabel": "Folgend",
+            "noStoriesError": "Dieses Konto hat keine aktiven Stories oder die Stories sind privat.",
+            "enterUsername": "Bitte Benutzernamen eingeben",
+            "storiesFound": "{count} Stories gefunden!",
+            "loadStepProfile1": "Profilinfos abrufen...",
+            "loadStepProfile2": "Konto verifizieren...",
+            "loadStepProfile3": "Daten vorbereiten...",
+            "loadStepStory1": "Mit Instagram verbinden...",
+            "loadStepStory2": "Stories abrufen...",
+            "loadStepStory3": "Mediendateien laden...",
+            "loadStepStory4": "Vorbereiten..."
         },
         "instagramStoryMeta": {
             "title": "📱 Instagram Story Viewer | Anonym Stories ansehen - YulaSanta",

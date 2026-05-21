@@ -21,9 +21,6 @@
  * ═══════════════════════════════════════════════════════════════════════════
  */
 
-import { getRequestConfig } from 'next-intl/server';
-import { notFound } from 'next/navigation';
-
 // Supported locales - add new languages here
 export const locales = ['tr', 'en', 'de', 'fr', 'es', 'it', 'pt', 'ru', 'ar', 'ja', 'ko', 'zh'] as const;
 export type Locale = (typeof locales)[number];
@@ -82,16 +79,3 @@ export function getDirection(locale: Locale): 'ltr' | 'rtl' {
     return rtlLocales.includes(locale) ? 'rtl' : 'ltr';
 }
 
-export default getRequestConfig(async ({ requestLocale }) => {
-    // Validate that the incoming `locale` parameter is valid
-    const locale = await requestLocale;
-
-    if (!locale || !isValidLocale(locale)) {
-        notFound();
-    }
-
-    return {
-        locale,
-        messages: (await import(`../messages/${locale}.json`)).default
-    };
-});

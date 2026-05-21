@@ -510,7 +510,7 @@ export default function CoinFlipPage() {
                             }`}
                         >
                             <span className="text-base">🪙</span>
-                            <span>Klasik</span>
+                            <span>{t('classic')}</span>
                         </button>
                         <div className="text-gray-300 dark:text-gray-600 font-light select-none">|</div>
                         <button
@@ -523,7 +523,7 @@ export default function CoinFlipPage() {
                             }`}
                         >
                             <span className="text-base">✨</span>
-                            <span>Altın</span>
+                            <span>{t('gold')}</span>
                         </button>
                     </div>
 
@@ -569,7 +569,7 @@ export default function CoinFlipPage() {
 
                             {!result && !isFlipping && total === 0 && (
                                 <div className="absolute bottom-4 left-1/2 -translate-x-1/2 z-20 pointer-events-none">
-                                    <p className="text-white/30 text-xs font-medium tracking-widest uppercase animate-pulse">Parayı atmak için butona bas</p>
+                                    <p className="text-white/30 text-xs font-medium tracking-widest uppercase animate-pulse">{t('prompt')}</p>
                                 </div>
                             )}
                         </div>
@@ -615,7 +615,7 @@ export default function CoinFlipPage() {
                         {/* History */}
                         {history.length > 0 && (
                             <div className="space-y-2">
-                                <p className="text-xs text-gray-400 dark:text-gray-500 font-medium uppercase tracking-wider">Son Atışlar</p>
+                                <p className="text-xs text-gray-400 dark:text-gray-500 font-medium uppercase tracking-wider">{t('history')}</p>
                                 <div className="flex gap-1.5 flex-wrap">
                                     {history.map((h, i) => (
                                         <div key={i} className={`w-8 h-8 rounded-full flex items-center justify-center text-xs font-black shadow-sm border transition-all duration-300 ${

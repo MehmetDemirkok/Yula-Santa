@@ -8,7 +8,9 @@
     "start": "next start",
     "lint": "eslint",
     "theme:off": "bash scripts/theme-off.sh",
-    "theme:on": "bash scripts/theme-on.sh"
+    "theme:on": "bash scripts/theme-on.sh",
+    "i18n:check": "npx tsx scripts/check-translations.ts",
+    "i18n:sync": "npx tsx scripts/generate-translations.ts"
   },
   "dependencies": {
     "@types/three": "^0.182.0",
@@ -37,6 +39,7 @@
     "eslint": "^9",
     "eslint-config-next": "16.0.10",
     "tailwindcss": "^4",
+    "tsx": "^4.19.1",
     "typescript": "^5"
   }
 }

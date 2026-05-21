@@ -17,7 +17,18 @@
             "주사위",
             "동전 던지기",
             "랜덤 숫자"
-        ]
+        ],
+        "faq": {
+            "breadcrumbHome": "홈",
+            "q1": "YulaSanta란 무엇인가요?",
+            "a1": "YulaSanta는 무료 온라인 추첨 및 시크릿 산타 플랫폼입니다. Instagram, YouTube, TikTok, Twitter에서 경품 행사를 진행하고 시크릿 산타 선물 교환을 조직할 수 있습니다.",
+            "q2": "YulaSanta는 무료인가요?",
+            "a2": "네, YulaSanta는 완전 무료입니다. 회원가입 없이 모든 기능을 사용할 수 있습니다.",
+            "q3": "어떤 소셜 미디어 플랫폼을 지원하나요?",
+            "a3": "댓글과 좋아요를 사용하여 Instagram, YouTube, TikTok, Twitter(X)에서 경품 행사를 진행할 수 있습니다.",
+            "q4": "시크릿 산타는 어떻게 작동하나요?",
+            "a4": "참가자 이름을 추가하고 추첨을 시작합니다. 각 사람이 무작위로 누군가를 선택하고 자신의 매칭만 볼 수 있습니다. 개인 정보가 보호됩니다!"
+        }
     },
     "home": {
         "title": "YulaSanta - 차세대 무료 온라인 경품 시스템",
@@ -179,7 +190,18 @@
         "shareTitle": "결과 공유",
         "shareDesc": "추첨 결과를 소셜 미디어에 공유하세요",
         "shareCopied": "복사됨!",
-        "copyLink": "링크 복사"
+        "copyLink": "링크 복사",
+        "comingSoon": "출시 예정",
+        "noParticipantsYet": "아직 참가자가 없습니다",
+        "youtubeNoParticipantsHint": "YouTube 동영상 링크를 붙여넣거나 수동으로 사용자를 추가하세요",
+        "instagramNoParticipantsHint": "Instagram 게시물 링크를 붙여넣거나 수동으로 사용자를 추가하세요",
+        "tiktokNoParticipantsHint": "TikTok 동영상 링크를 붙여넣거나 수동으로 사용자를 추가하세요",
+        "fetchFromVideo": "← 동영상 링크에서 가져오기",
+        "fetchFromPost": "← 게시물 링크에서 가져오기",
+        "subscribed": "구독중",
+        "notSubscribed": "미구독",
+        "subscribedPrivate": "비공개",
+        "checkingSubscription": "확인 중..."
     },
     "support": {
         "button": "고객지원",
@@ -291,7 +313,12 @@
             "reset": "초기화",
             "edge": "The coin landed on its edge! No one wins. Please try again.",
             "aboutTitle": "About Coin Flip",
-            "aboutText": "Make quick decisions with our online heads or tails generator."
+            "aboutText": "Make quick decisions with our online heads or tails generator.",
+            "classic": "클래식",
+            "gold": "골드",
+            "prompt": "버튼을 눌러 동전을 던지세요",
+            "history": "최근 결과",
+            "throws": "번"
         },
         "randomNumberMeta": {
             "title": "🔢 난수 생성기 | 무료 온라인 랜덤 숫자 생성 - YulaSanta",
@@ -323,11 +350,13 @@
             "label": "참가 인원",
             "draw": "막대 뽑기",
             "reset": "초기화",
-            "edge": "The coin landed on its edge! No one wins. Please try again.",
             "lost": "꽝! 당신이 짧은 막대를 뽑았습니다.",
             "saved": "성공! 긴 막대입니다.",
             "aboutTitle": "게임 정보",
-            "aboutText": "온라인 제비뽑기를 사용하여 그룹 내에서 공정하게 역할을 정해보세요."
+            "aboutText": "온라인 제비뽑기를 사용하여 그룹 내에서 공정하게 역할을 정해보세요.",
+            "noParticipants": "아직 참가자가 없습니다",
+            "selecting": "잠시 기다려 주세요...",
+            "namePlaceholder": "이름..."
         },
         "shortStrawMeta": {
             "title": "🎋 제비뽑기 | 온라인 복불복 게임 - YulaSanta",
@@ -347,7 +376,31 @@
             "view": "스토리 보기",
             "helper": "상대방 모르게 익명으로 스토리를 확인하세요.",
             "aboutTitle": "스토리 뷰어 정보",
-            "aboutText": "YulaSanta의 익명 뷰어로 인스타그램 스토리를 몰래 확인할 수 있습니다."
+            "aboutText": "YulaSanta의 익명 뷰어로 인스타그램 스토리를 몰래 확인할 수 있습니다.",
+            "searchLabel": "인스타그램 사용자명",
+            "searchButton": "검색",
+            "loadingNote": "20~60초 정도 소요될 수 있습니다",
+            "waitPlease": "잠시 기다려 주세요...",
+            "howItWorks": "사용 방법",
+            "howStep1": "사용자 이름을 입력하고 검색을 누르세요",
+            "howStep2": "프로필 정보와 활성 스토리를 가져옵니다",
+            "howStep3": "익명으로 스토리 시청 — 아무도 모릅니다",
+            "storiesTitle": "스토리",
+            "viewOnInstagram": "인스타그램에서 보기",
+            "viewProfile": "인스타그램에서 보기",
+            "searchAgain": "← 다른 프로필 검색",
+            "posts": "게시물",
+            "followingLabel": "팔로잉",
+            "noStoriesError": "이 계정에 활성 스토리가 없거나 스토리가 비공개입니다.",
+            "enterUsername": "사용자 이름을 입력해 주세요",
+            "storiesFound": "{count}개의 스토리를 찾았습니다!",
+            "loadStepProfile1": "프로필 정보 가져오는 중...",
+            "loadStepProfile2": "계정 확인 중...",
+            "loadStepProfile3": "데이터 준비 중...",
+            "loadStepStory1": "인스타그램 연결 중...",
+            "loadStepStory2": "스토리 가져오는 중...",
+            "loadStepStory3": "미디어 파일 로딩 중...",
+            "loadStepStory4": "준비 중..."
         },
         "instagramStoryMeta": {
             "title": "📱 인스타 스토리 보기 | 익명 뷰어 - YulaSanta",

@@ -9,6 +9,7 @@ import {
     ImageIcon, Volume2, VolumeX, Play
 } from 'lucide-react';
 import { useParams } from 'next/navigation';
+import { useTranslations } from 'next-intl';
 import { useToast } from '@/lib/ToastContext';
 
 interface ProfileData {
@@ -35,17 +36,12 @@ interface Story {
 
 type Phase = 'idle' | 'loading-profile' | 'loading-stories' | 'done' | 'error';
 
-const LOAD_STEPS_PROFILE = [
-    'Profil bilgileri getiriliyor...',
-    'Hesap doğrulanıyor...',
-    'Veriler hazırlanıyor...',
-];
-const LOAD_STEPS_STORIES = [
-    'Instagram\'a bağlanılıyor...',
-    'Hikayeler çekiliyor...',
-    'Medya dosyaları yükleniyor...',
-    'Hazırlanıyor...',
-];
+function getLoadStepsProfile(t: ReturnType<typeof useTranslations<'tools.instagramStoryContent'>>) {
+    return [t('loadStepProfile1'), t('loadStepProfile2'), t('loadStepProfile3')];
+}
+function getLoadStepsStories(t: ReturnType<typeof useTranslations<'tools.instagramStoryContent'>>) {
+    return [t('loadStepStory1'), t('loadStepStory2'), t('loadStepStory3'), t('loadStepStory4')];
+}
 
 function formatCount(n: number) {
     if (n >= 1_000_000) return (n / 1_000_000).toFixed(1) + 'M';
@@ -54,6 +50,7 @@ function formatCount(n: number) {
 }
 
 export default function InstagramStoryViewerPage() {
+    const t = useTranslations('tools.instagramStoryContent');
     const params = useParams();
     const locale = (params.locale as string) || 'tr';
     const { toast } = useToast();
@@ -116,7 +113,7 @@ export default function InstagramStoryViewerPage() {
     const handleSearch = async () => {
         const clean = username.trim().replace(/^@/, '');
         if (!clean) {
-            toast.warning('Lütfen bir kullanıcı adı girin');
+            toast.warning(t('enterUsername'));
             return;
         }
 
@@ -125,7 +122,7 @@ export default function InstagramStoryViewerPage() {
         setStoriesError('');
         setPhase('loading-profile');
 
-        const profileIv = cycleLoadSteps(LOAD_STEPS_PROFILE, setLoadStep);
+        const profileIv = cycleLoadSteps(getLoadStepsProfile(t), setLoadStep);
 
         let fetchedProfile: ProfileData | null = null;
         try {
@@ -135,12 +132,12 @@ export default function InstagramStoryViewerPage() {
                 body: JSON.stringify({ username: clean }),
             });
             const data = await res.json();
-            if (!res.ok) throw new Error(data.error || 'Profil bulunamadı');
+            if (!res.ok) throw new Error(data.error || t('enterUsername'));
             fetchedProfile = data as ProfileData;
             setProfile(fetchedProfile);
         } catch (err) {
             clearInterval(profileIv);
-            const msg = err instanceof Error ? err.message : 'Profil yüklenemedi';
+            const msg = err instanceof Error ? err.message : t('enterUsername');
             toast.error(msg);
             setPhase('error');
             return;
@@ -149,7 +146,7 @@ export default function InstagramStoryViewerPage() {
 
         // Now fetch stories
         setPhase('loading-stories');
-        const storyIv = cycleLoadSteps(LOAD_STEPS_STORIES, setLoadStep);
+        const storyIv = cycleLoadSteps(getLoadStepsStories(t), setLoadStep);
 
         try {
             const res = await fetch('/api/instagram/stories', {
@@ -158,15 +155,15 @@ export default function InstagramStoryViewerPage() {
                 body: JSON.stringify({ username: clean }),
             });
             const data = await res.json();
-            if (!res.ok) throw new Error(data.error || 'Hikayeler alınamadı');
+            if (!res.ok) throw new Error(data.error || t('noStoriesError'));
             if (data.stories && data.stories.length > 0) {
                 setStories(data.stories);
-                toast.success(`${data.stories.length} hikaye bulundu!`);
+                toast.success(t('storiesFound', { count: data.stories.length }));
             } else {
-                setStoriesError('Bu hesabın aktif hikayesi yok veya hikayeler gizli.');
+                setStoriesError(t('noStoriesError'));
             }
         } catch (err) {
-            const msg = err instanceof Error ? err.message : 'Hikayeler alınamadı';
+            const msg = err instanceof Error ? err.message : t('noStoriesError');
             setStoriesError(msg);
         } finally {
             clearInterval(storyIv);
@@ -201,9 +198,9 @@ export default function InstagramStoryViewerPage() {
                     </Link>
                     <div>
                         <h1 className="text-2xl md:text-3xl font-black text-gray-900 dark:text-white">
-                            📱 Instagram Hikaye İzleme
+                            📱 {t('title')}
                         </h1>
-                        <p className="text-sm text-gray-500 dark:text-gray-400 mt-1">Anonim Story Viewer</p>
+                        <p className="text-sm text-gray-500 dark:text-gray-400 mt-1">{t('subtitle')}</p>
                     </div>
                 </div>
 
@@ -213,16 +210,16 @@ export default function InstagramStoryViewerPage() {
                     {/* Hero Banner */}
                     <div className="bg-gradient-to-r from-purple-500 via-pink-500 to-orange-400 rounded-2xl p-6 text-center text-white">
                         <Instagram className="w-12 h-12 mx-auto mb-3" />
-                        <h2 className="text-lg font-bold mb-1">Anonim Story Viewer</h2>
+                        <h2 className="text-lg font-bold mb-1">{t('subtitle')}</h2>
                         <p className="text-white/80 text-sm">
-                            Profil sahibinin haberi olmadan hikayeleri izleyin
+                            {t('helper')}
                         </p>
                     </div>
 
                     {/* Search Input */}
                     <div>
                         <label className="block text-sm font-bold text-gray-700 dark:text-gray-300 mb-2">
-                            Instagram Kullanıcı Adı
+                            {t('searchLabel')}
                         </label>
                         <div className="flex gap-2">
                             <div className="relative flex-1">
@@ -256,7 +253,7 @@ export default function InstagramStoryViewerPage() {
                                 <div>
                                     <p className="text-sm font-semibold text-pink-700 dark:text-pink-400">{loadStep}</p>
                                     <p className="text-xs text-pink-400 dark:text-pink-500 mt-0.5">
-                                        {phase === 'loading-stories' ? 'Bu işlem 20-60 saniye sürebilir' : 'Lütfen bekleyin...'}
+                                        {phase === 'loading-stories' ? t('loadingNote') : t('waitPlease')}
                                     </p>
                                 </div>
                             </div>
@@ -321,7 +318,7 @@ export default function InstagramStoryViewerPage() {
                                         className="inline-flex items-center gap-1 text-xs text-purple-500 hover:underline mt-0.5"
                                     >
                                         <ExternalLink className="w-3 h-3" />
-                                        Instagram&apos;da görüntüle
+                                        {t('viewProfile')}
                                     </a>
                                 </div>
                             </div>
@@ -331,17 +328,17 @@ export default function InstagramStoryViewerPage() {
                                 <div className="text-center">
                                     <Grid3X3 className="w-4 h-4 mx-auto mb-1 text-gray-400" />
                                     <p className="font-bold text-gray-900 dark:text-white text-sm">{formatCount(profile.postsCount)}</p>
-                                    <p className="text-[11px] text-gray-400">Gönderi</p>
+                                    <p className="text-[11px] text-gray-400">{t('posts')}</p>
                                 </div>
                                 <div className="text-center">
                                     <Users className="w-4 h-4 mx-auto mb-1 text-gray-400" />
                                     <p className="font-bold text-gray-900 dark:text-white text-sm">{formatCount(profile.followersCount)}</p>
-                                    <p className="text-[11px] text-gray-400">Takipçi</p>
+                                    <p className="text-[11px] text-gray-400">{t('followers')}</p>
                                 </div>
                                 <div className="text-center">
                                     <User className="w-4 h-4 mx-auto mb-1 text-gray-400" />
                                     <p className="font-bold text-gray-900 dark:text-white text-sm">{formatCount(profile.followsCount)}</p>
-                                    <p className="text-[11px] text-gray-400">Takip</p>
+                                    <p className="text-[11px] text-gray-400">{t('followingLabel')}</p>
                                 </div>
                             </div>
 
@@ -353,7 +350,7 @@ export default function InstagramStoryViewerPage() {
                             {stories.length > 0 ? (
                                 <div>
                                     <p className="text-xs font-bold text-gray-500 dark:text-gray-400 uppercase tracking-wide mb-2 px-1">
-                                        Hikayeler ({stories.length})
+                                        {t('storiesTitle')} ({stories.length})
                                     </p>
                                     <div className="flex gap-3 overflow-x-auto pb-2 -mx-1 px-1 custom-scrollbar">
                                         {stories.map((s, i) => (
@@ -395,7 +392,7 @@ export default function InstagramStoryViewerPage() {
                                         className="inline-flex items-center gap-2 text-sm bg-gradient-to-r from-purple-500 to-pink-500 text-white font-bold px-4 py-2 rounded-xl hover:shadow-md transition-all"
                                     >
                                         <ExternalLink className="w-4 h-4" />
-                                        Instagram&apos;da Görüntüle
+                                        {t('viewOnInstagram')}
                                     </a>
                                 </div>
                             ) : null}
@@ -405,7 +402,7 @@ export default function InstagramStoryViewerPage() {
                                 onClick={() => { setProfile(null); setStories([]); setStoriesError(''); setPhase('idle'); setUsername(''); }}
                                 className="mt-4 text-sm text-gray-400 hover:text-purple-600 dark:hover:text-purple-400 transition-colors"
                             >
-                                ← Başka profil ara
+                                {t('searchAgain')}
                             </button>
                         </div>
                     )}
@@ -413,11 +410,11 @@ export default function InstagramStoryViewerPage() {
                     {/* Info Box (shown only when idle) */}
                     {phase === 'idle' && (
                         <div className="bg-gray-50 dark:bg-gray-900 rounded-xl p-4 border border-gray-100 dark:border-gray-700">
-                            <p className="text-xs font-bold text-gray-500 dark:text-gray-400 uppercase tracking-wide mb-2">Nasıl çalışır?</p>
+                            <p className="text-xs font-bold text-gray-500 dark:text-gray-400 uppercase tracking-wide mb-2">{t('howItWorks')}</p>
                             <ul className="space-y-1.5 text-sm text-gray-600 dark:text-gray-400">
-                                <li className="flex items-start gap-2"><span className="text-pink-500 mt-0.5">①</span> Kullanıcı adını girin ve Ara butonuna basın</li>
-                                <li className="flex items-start gap-2"><span className="text-pink-500 mt-0.5">②</span> Profil bilgileri ve aktif hikayeler çekilir</li>
-                                <li className="flex items-start gap-2"><span className="text-pink-500 mt-0.5">③</span> Hikayeleri anonim olarak izleyin — kimse görmez</li>
+                                <li className="flex items-start gap-2"><span className="text-pink-500 mt-0.5">①</span> {t('howStep1')}</li>
+                                <li className="flex items-start gap-2"><span className="text-pink-500 mt-0.5">②</span> {t('howStep2')}</li>
+                                <li className="flex items-start gap-2"><span className="text-pink-500 mt-0.5">③</span> {t('howStep3')}</li>
                             </ul>
                         </div>
                     )}
@@ -425,9 +422,9 @@ export default function InstagramStoryViewerPage() {
 
                 {/* About */}
                 <section className="mt-6 bg-white/60 dark:bg-gray-800/60 backdrop-blur rounded-2xl p-6 border border-gray-100 dark:border-gray-700">
-                    <h2 className="text-base font-bold text-gray-800 dark:text-white mb-2">Instagram Hikaye İzleme Hakkında</h2>
+                    <h2 className="text-base font-bold text-gray-800 dark:text-white mb-2">{t('aboutTitle')}</h2>
                     <p className="text-sm text-gray-600 dark:text-gray-400 leading-relaxed">
-                        YulaSanta story viewer ile Instagram hikayelerini gizlice izleyebilirsiniz. İzlediğiniz kişiler bunu göremez. Yalnızca herkese açık (public) hesapların hikayeleri görüntülenebilir.
+                        {t('aboutText')}
                     </p>
                 </section>
             </div>

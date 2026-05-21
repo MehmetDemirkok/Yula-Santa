@@ -17,7 +17,18 @@
             "サイコロ",
             "コイン投げ",
             "乱数生成"
-        ]
+        ],
+        "faq": {
+            "breadcrumbHome": "ホーム",
+            "q1": "YulaSantaとは？",
+            "a1": "YulaSantaは無料のオンライン懸賞・シークレットサンタプラットフォームです。Instagram、YouTube、TikTok、Twitterのプレゼント企画を開催し、シークレットサンタのギフト交換を企画できます。",
+            "q2": "YulaSantaは無料ですか？",
+            "a2": "はい、YulaSantaは完全無料です。登録なしですべての機能を使用できます。",
+            "q3": "どのソーシャルメディアプラットフォームに対応していますか？",
+            "a3": "Instagram、YouTube、TikTok、Twitter（X）でコメントやいいねを使ったプレゼント企画を開催できます。",
+            "q4": "シークレットサンタはどのように機能しますか？",
+            "a4": "参加者の名前を追加して抽選を開始します。各自がランダムに誰かを選び、自分の組み合わせのみ確認できます。プライバシーが守られます！"
+        }
     },
     "home": {
         "title": "YulaSanta - 次世代の無料オンライン景品システム",
@@ -179,7 +190,18 @@
         "shareTitle": "結果を共有",
         "shareDesc": "抽選結果をSNSで共有しましょう",
         "shareCopied": "コピーしました！",
-        "copyLink": "リンクをコピー"
+        "copyLink": "リンクをコピー",
+        "comingSoon": "近日公開",
+        "noParticipantsYet": "参加者がいません",
+        "youtubeNoParticipantsHint": "YouTubeのビデオリンクを貼り付けるか、手動でユーザーを追加してください",
+        "instagramNoParticipantsHint": "Instagramの投稿リンクを貼り付けるか、手動でユーザーを追加してください",
+        "tiktokNoParticipantsHint": "TikTokのビデオリンクを貼り付けるか、手動でユーザーを追加してください",
+        "fetchFromVideo": "← ビデオリンクから取得",
+        "fetchFromPost": "← 投稿リンクから取得",
+        "subscribed": "登録済み",
+        "notSubscribed": "未登録",
+        "subscribedPrivate": "非公開",
+        "checkingSubscription": "確認中..."
     },
     "support": {
         "button": "サポート",
@@ -291,7 +313,12 @@
             "reset": "リセット",
             "edge": "The coin landed on its edge! No one wins. Please try again.",
             "aboutTitle": "About Coin Flip",
-            "aboutText": "Make quick decisions with our online heads or tails generator."
+            "aboutText": "Make quick decisions with our online heads or tails generator.",
+            "classic": "クラシック",
+            "gold": "ゴールド",
+            "prompt": "ボタンを押してコインを投げる",
+            "history": "最近の結果",
+            "throws": "回"
         },
         "randomNumberMeta": {
             "title": "🔢 乱数生成器 | 無料オンライン乱数メーカー - YulaSanta",
@@ -323,11 +350,13 @@
             "label": "参加人数",
             "draw": "くじを引く",
             "reset": "リセット",
-            "edge": "The coin landed on its edge! No one wins. Please try again.",
             "lost": "残念！ハズレ（短い棒）を引きました。",
             "saved": "セーフ！長い棒でした。",
             "aboutTitle": "このゲームについて",
-            "aboutText": "オンラインのくじ引き（短い棒引き）を使って、グループで公平に役割などを決めましょう。"
+            "aboutText": "オンラインのくじ引き（短い棒引き）を使って、グループで公平に役割などを決めましょう。",
+            "noParticipants": "参加者がいません",
+            "selecting": "しばらくお待ちください...",
+            "namePlaceholder": "名前..."
         },
         "shortStrawMeta": {
             "title": "🎋 くじ引き | オンライン運試しゲーム - YulaSanta",
@@ -347,7 +376,31 @@
             "view": "ストーリーを見る",
             "helper": "足跡をつけずに匿名でストーリーを閲覧できます。",
             "aboutTitle": "ストーリービューアーについて",
-            "aboutText": "YulaSantaの匿名ビューアーを使って、こっそりインスタのストーリーをチェックできます。"
+            "aboutText": "YulaSantaの匿名ビューアーを使って、こっそりインスタのストーリーをチェックできます。",
+            "searchLabel": "Instagramユーザー名",
+            "searchButton": "検索",
+            "loadingNote": "20〜60秒かかる場合があります",
+            "waitPlease": "しばらくお待ちください...",
+            "howItWorks": "使い方",
+            "howStep1": "ユーザー名を入力して検索を押す",
+            "howStep2": "プロフィール情報とアクティブなストーリーが取得されます",
+            "howStep3": "匿名でストーリーを視聴 — 誰にもわかりません",
+            "storiesTitle": "ストーリー",
+            "viewOnInstagram": "Instagramで見る",
+            "viewProfile": "Instagramで見る",
+            "searchAgain": "← 別のプロフィールを検索",
+            "posts": "投稿",
+            "followingLabel": "フォロー中",
+            "noStoriesError": "このアカウントにはアクティブなストーリーがないか、ストーリーが非公開です。",
+            "enterUsername": "ユーザー名を入力してください",
+            "storiesFound": "{count}件のストーリーが見つかりました！",
+            "loadStepProfile1": "プロフィール情報を取得中...",
+            "loadStepProfile2": "アカウントを確認中...",
+            "loadStepProfile3": "データを準備中...",
+            "loadStepStory1": "Instagramに接続中...",
+            "loadStepStory2": "ストーリーを取得中...",
+            "loadStepStory3": "メディアファイルを読み込み中...",
+            "loadStepStory4": "準備中..."
         },
         "instagramStoryMeta": {
             "title": "📱 インスタストーリー閲覧 | 匿名ビューアー - YulaSanta",

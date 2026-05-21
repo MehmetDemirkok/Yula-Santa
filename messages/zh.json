@@ -18,7 +18,18 @@
             "骰子",
             "掷硬币",
             "随机数"
-        ]
+        ],
+        "faq": {
+            "breadcrumbHome": "首页",
+            "q1": "YulaSanta是什么？",
+            "a1": "YulaSanta是一个免费的在线抽奖和圣诞老人秘密平台。您可以在Instagram、YouTube、TikTok和Twitter上举办赠品活动，并组织圣诞老人秘密礼物交换。",
+            "q2": "YulaSanta免费吗？",
+            "a2": "是的，YulaSanta完全免费。您无需注册即可使用所有功能。",
+            "q3": "您支持哪些社交媒体平台？",
+            "a3": "您可以使用评论和点赞在Instagram、YouTube、TikTok和Twitter（X）上举办赠品活动。",
+            "q4": "圣诞老人秘密是如何工作的？",
+            "a4": "添加参与者姓名，开始抽签。每个人随机选择某人，只能看到自己的配对。隐私受到保护！"
+        }
     },
     "home": {
         "title": "YulaSanta - 下一代免费在线赠品系统",
@@ -180,7 +191,18 @@
         "shareTitle": "分享结果",
         "shareDesc": "在社交媒体上分享抽奖结果",
         "shareCopied": "已复制！",
-        "copyLink": "复制链接"
+        "copyLink": "复制链接",
+        "comingSoon": "即将推出",
+        "noParticipantsYet": "暂无参与者",
+        "youtubeNoParticipantsHint": "粘贴YouTube视频链接或手动添加用户",
+        "instagramNoParticipantsHint": "粘贴Instagram帖子链接或手动添加用户",
+        "tiktokNoParticipantsHint": "粘贴TikTok视频链接或手动添加用户",
+        "fetchFromVideo": "← 从视频链接获取",
+        "fetchFromPost": "← 从帖子链接获取",
+        "subscribed": "已订阅",
+        "notSubscribed": "未订阅",
+        "subscribedPrivate": "私密",
+        "checkingSubscription": "检查中..."
     },
     "support": {
         "button": "支持",
@@ -292,7 +314,12 @@
             "reset": "重置",
             "edge": "The coin landed on its edge! No one wins. Please try again.",
             "aboutTitle": "About Coin Flip",
-            "aboutText": "Make quick decisions with our online heads or tails generator."
+            "aboutText": "Make quick decisions with our online heads or tails generator.",
+            "classic": "经典",
+            "gold": "金色",
+            "prompt": "按按钮掷硬币",
+            "history": "最近结果",
+            "throws": "次"
         },
         "randomNumberMeta": {
             "title": "🔢 随机数生成器 | 免费在线随机数字抽取 - YulaSanta",
@@ -324,11 +351,13 @@
             "label": "参与人数",
             "draw": "抽签",
             "reset": "重置",
-            "edge": "The coin landed on its edge! No one wins. Please try again.",
             "lost": "你输了！你抽到了短签。",
             "saved": "安全！你抽到的是长签。",
             "aboutTitle": "关于游戏",
-            "aboutText": "使用在线抽短签工具，在团队中做出公平的决定。"
+            "aboutText": "使用在线抽短签工具，在团队中做出公平的决定。",
+            "noParticipants": "暂无参与者",
+            "selecting": "请稍候...",
+            "namePlaceholder": "姓名..."
         },
         "shortStrawMeta": {
             "title": "🎋 抽短签 | 在线抽奖游戏 - YulaSanta",
@@ -348,7 +377,31 @@
             "view": "查看动态",
             "helper": "匿名查看动态，不会留下足迹。",
             "aboutTitle": "关于动态查看器",
-            "aboutText": "使用 YulaSanta 匿名查看器，秘密检查 Instagram 动态。"
+            "aboutText": "使用 YulaSanta 匿名查看器，秘密检查 Instagram 动态。",
+            "searchLabel": "Instagram用户名",
+            "searchButton": "搜索",
+            "loadingNote": "这可能需要20-60秒",
+            "waitPlease": "请稍候...",
+            "howItWorks": "如何使用？",
+            "howStep1": "输入用户名并按搜索",
+            "howStep2": "获取个人资料信息和活跃故事",
+            "howStep3": "匿名观看故事 — 没有人知道",
+            "storiesTitle": "故事",
+            "viewOnInstagram": "在Instagram上查看",
+            "viewProfile": "在Instagram上查看",
+            "searchAgain": "← 搜索其他个人资料",
+            "posts": "帖子",
+            "followingLabel": "关注中",
+            "noStoriesError": "该账号没有活跃的故事或故事是私密的。",
+            "enterUsername": "请输入用户名",
+            "storiesFound": "找到 {count} 个故事！",
+            "loadStepProfile1": "获取个人资料信息...",
+            "loadStepProfile2": "验证账号...",
+            "loadStepProfile3": "准备数据...",
+            "loadStepStory1": "连接Instagram...",
+            "loadStepStory2": "获取故事...",
+            "loadStepStory3": "加载媒体文件...",
+            "loadStepStory4": "准备中..."
         },
         "instagramStoryMeta": {
             "title": "📱 IG 动态查看器 | 匿名查看 - YulaSanta",

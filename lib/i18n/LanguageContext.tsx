@@ -180,6 +180,17 @@ export interface Translation {
         shareDesc: string;
         shareCopied: string;
         copyLink: string;
+        comingSoon: string;
+        noParticipantsYet: string;
+        youtubeNoParticipantsHint: string;
+        instagramNoParticipantsHint: string;
+        tiktokNoParticipantsHint: string;
+        fetchFromVideo: string;
+        fetchFromPost: string;
+        subscribed: string;
+        notSubscribed: string;
+        subscribedPrivate: string;
+        checkingSubscription: string;
     };
     support: {
         button: string;

@@ -516,12 +516,12 @@ export default function InstagramGiveaway() {
                                                                 <MessageCircle className="w-4 h-4" />
                                                                 {t.giveaway.comments}
                                                             </button>
-                                                            <div className="relative opacity-50 cursor-not-allowed" title="Yakında">
+                                                            <div className="relative opacity-50 cursor-not-allowed" title={t.giveaway.comingSoon}>
                                                                 <div className="flex items-center gap-2 px-5 py-3 rounded-full font-medium bg-gray-100 text-gray-400 select-none">
                                                                     <Heart className="w-4 h-4" />
                                                                     {t.giveaway.likes}
                                                                 </div>
-                                                                <span className="absolute -top-2 -right-2 text-[10px] font-bold bg-gray-400 text-white px-1.5 py-0.5 rounded-full leading-none">Yakında</span>
+                                                                <span className="absolute -top-2 -right-2 text-[10px] font-bold bg-gray-400 text-white px-1.5 py-0.5 rounded-full leading-none">{t.giveaway.comingSoon}</span>
                                                             </div>
                                                         </div>
 
@@ -700,14 +700,14 @@ export default function InstagramGiveaway() {
                                                             <Users className="w-10 h-10 text-pink-200" />
                                                         </div>
                                                         <div className="text-center space-y-1">
-                                                            <p className="text-sm font-semibold text-gray-500">Henüz katılımcı yok</p>
-                                                            <p className="text-xs text-gray-400 max-w-[200px] mx-auto">Instagram post linkini yapıştırın veya manuel olarak kullanıcı ekleyin</p>
+                                                            <p className="text-sm font-semibold text-gray-500">{t.giveaway.noParticipantsYet}</p>
+                                                            <p className="text-xs text-gray-400 max-w-[200px] mx-auto">{t.giveaway.instagramNoParticipantsHint}</p>
                                                         </div>
                                                         <button
                                                             onClick={() => setActiveTab('links')}
                                                             className="text-xs bg-pink-500 text-white font-bold px-4 py-2 rounded-lg hover:bg-pink-600 transition-colors"
                                                         >
-                                                            ← Post Linkinden Çek
+                                                            {t.giveaway.fetchFromPost}
                                                         </button>
                                                     </div>
                                                 ) : (

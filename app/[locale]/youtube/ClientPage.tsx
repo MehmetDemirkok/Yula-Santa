@@ -480,19 +480,19 @@ export default function YouTubeGiveaway() {
                                                 <MessageCircle className="w-4 h-4" />
                                                 {t.giveaway.comments}
                                             </button>
-                                            <div className="relative opacity-50 cursor-not-allowed" title="Yakında">
+                                            <div className="relative opacity-50 cursor-not-allowed" title={t.giveaway.comingSoon}>
                                                 <div className="flex items-center gap-2 px-5 py-3 rounded-full font-medium bg-gray-100 text-gray-400 select-none">
                                                     <ThumbsUp className="w-4 h-4" />
                                                     {t.giveaway.likes}
                                                 </div>
-                                                <span className="absolute -top-2 -right-2 text-[10px] font-bold bg-gray-400 text-white px-1.5 py-0.5 rounded-full leading-none">Yakında</span>
+                                                <span className="absolute -top-2 -right-2 text-[10px] font-bold bg-gray-400 text-white px-1.5 py-0.5 rounded-full leading-none">{t.giveaway.comingSoon}</span>
                                             </div>
-                                            <div className="relative opacity-50 cursor-not-allowed" title="Yakında">
+                                            <div className="relative opacity-50 cursor-not-allowed" title={t.giveaway.comingSoon}>
                                                 <div className="flex items-center gap-2 px-5 py-3 rounded-full font-medium bg-gray-100 text-gray-400 select-none">
                                                     <Bell className="w-4 h-4" />
                                                     {t.giveaway.subscribers}
                                                 </div>
-                                                <span className="absolute -top-2 -right-2 text-[10px] font-bold bg-gray-400 text-white px-1.5 py-0.5 rounded-full leading-none">Yakında</span>
+                                                <span className="absolute -top-2 -right-2 text-[10px] font-bold bg-gray-400 text-white px-1.5 py-0.5 rounded-full leading-none">{t.giveaway.comingSoon}</span>
                                             </div>
                                         </div>
 
@@ -672,14 +672,14 @@ export default function YouTubeGiveaway() {
                                                             <Users className="w-10 h-10 text-red-200" />
                                                         </div>
                                                         <div className="text-center space-y-1">
-                                                            <p className="text-sm font-semibold text-gray-500">Henüz katılımcı yok</p>
-                                                            <p className="text-xs text-gray-400 max-w-[200px] mx-auto">YouTube video linkini yapıştırın veya manuel olarak kullanıcı ekleyin</p>
+                                                            <p className="text-sm font-semibold text-gray-500">{t.giveaway.noParticipantsYet}</p>
+                                                            <p className="text-xs text-gray-400 max-w-[200px] mx-auto">{t.giveaway.youtubeNoParticipantsHint}</p>
                                                         </div>
                                                         <button
                                                             onClick={() => setActiveTab('links')}
                                                             className="text-xs bg-red-500 text-white font-bold px-4 py-2 rounded-lg hover:bg-red-600 transition-colors"
                                                         >
-                                                            ← Video Linkinden Çek
+                                                            {t.giveaway.fetchFromVideo}
                                                         </button>
                                                     </div>
                                                 ) : (
@@ -747,25 +747,25 @@ export default function YouTubeGiveaway() {
                                                                     {winner.isSubscribed === true && (
                                                                         <>
                                                                             <span className="w-2 h-2 bg-green-500 rounded-full animate-pulse" />
-                                                                            <span className="text-green-600">SUBSCRIBED</span>
+                                                                            <span className="text-green-600">{t.giveaway.subscribed}</span>
                                                                         </>
                                                                     )}
                                                                     {winner.isSubscribed === false && (
                                                                         <>
                                                                             <span className="w-2 h-2 bg-red-500 rounded-full" />
-                                                                            <span className="text-red-500">NOT SUBSCRIBED</span>
+                                                                            <span className="text-red-500">{t.giveaway.notSubscribed}</span>
                                                                         </>
                                                                     )}
                                                                     {winner.isSubscribed === 'private' && (
                                                                         <>
                                                                             <span className="w-2 h-2 bg-yellow-500 rounded-full" />
-                                                                            <span className="text-yellow-600">PRIVATE</span>
+                                                                            <span className="text-yellow-600">{t.giveaway.subscribedPrivate}</span>
                                                                         </>
                                                                     )}
                                                                     {(winner.isSubscribed === undefined || winner.isSubscribed === null) && (
                                                                         <>
                                                                             <Loader2 className="w-3 h-3 text-gray-400 animate-spin" />
-                                                                            <span className="text-gray-400">CHECKING...</span>
+                                                                            <span className="text-gray-400">{t.giveaway.checkingSubscription}</span>
                                                                         </>
                                                                     )}
                                                                 </div>
