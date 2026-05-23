@@ -401,7 +401,8 @@
             "loadStepStory1": "Conectando ao Instagram...",
             "loadStepStory2": "Buscando stories...",
             "loadStepStory3": "Carregando arquivos de mídia...",
-            "loadStepStory4": "Preparando..."
+            "loadStepStory4": "Preparando...",
+            "followers": "Seguidores"
         },
         "instagramStoryMeta": {
             "title": "📱 Visualizador de Stories Instagram | Anônimo - YulaSanta",

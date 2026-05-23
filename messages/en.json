@@ -456,7 +456,8 @@
             "loadStepStory1": "Connecting to Instagram...",
             "loadStepStory2": "Fetching stories...",
             "loadStepStory3": "Loading media files...",
-            "loadStepStory4": "Getting ready..."
+            "loadStepStory4": "Getting ready...",
+            "followers": "Followers"
         },
         "instagramProfileContent": {
             "title": "Instagram Profile Picture",

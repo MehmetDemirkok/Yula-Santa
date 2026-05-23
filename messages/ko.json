@@ -400,7 +400,8 @@
             "loadStepStory1": "인스타그램 연결 중...",
             "loadStepStory2": "스토리 가져오는 중...",
             "loadStepStory3": "미디어 파일 로딩 중...",
-            "loadStepStory4": "준비 중..."
+            "loadStepStory4": "준비 중...",
+            "followers": "팔로워"
         },
         "instagramStoryMeta": {
             "title": "📱 인스타 스토리 보기 | 익명 뷰어 - YulaSanta",

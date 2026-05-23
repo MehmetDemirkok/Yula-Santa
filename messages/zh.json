@@ -401,7 +401,8 @@
             "loadStepStory1": "连接Instagram...",
             "loadStepStory2": "获取故事...",
             "loadStepStory3": "加载媒体文件...",
-            "loadStepStory4": "准备中..."
+            "loadStepStory4": "准备中...",
+            "followers": "粉丝"
         },
         "instagramStoryMeta": {
             "title": "📱 IG 动态查看器 | 匿名查看 - YulaSanta",

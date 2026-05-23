@@ -400,7 +400,8 @@
             "loadStepStory1": "Instagramに接続中...",
             "loadStepStory2": "ストーリーを取得中...",
             "loadStepStory3": "メディアファイルを読み込み中...",
-            "loadStepStory4": "準備中..."
+            "loadStepStory4": "準備中...",
+            "followers": "フォロワー"
         },
         "instagramStoryMeta": {
             "title": "📱 インスタストーリー閲覧 | 匿名ビューアー - YulaSanta",

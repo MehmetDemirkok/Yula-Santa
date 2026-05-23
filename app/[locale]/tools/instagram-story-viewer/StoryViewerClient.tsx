@@ -61,6 +61,7 @@ export default function InstagramStoryViewerPage() {
     const [profile, setProfile] = useState<ProfileData | null>(null);
     const [stories, setStories] = useState<Story[]>([]);
     const [storiesError, setStoriesError] = useState('');
+    const [storiesErrorCode, setStoriesErrorCode] = useState<string | null>(null);
 
     // Story viewer state
     const [viewerOpen, setViewerOpen] = useState(false);
@@ -120,6 +121,7 @@ export default function InstagramStoryViewerPage() {
         setProfile(null);
         setStories([]);
         setStoriesError('');
+        setStoriesErrorCode(null);
         setPhase('loading-profile');
 
         const profileIv = cycleLoadSteps(getLoadStepsProfile(t), setLoadStep);
@@ -155,8 +157,10 @@ export default function InstagramStoryViewerPage() {
                 body: JSON.stringify({ username: clean }),
             });
             const data = await res.json();
-            if (!res.ok) throw new Error(data.error || t('noStoriesError'));
-            if (data.stories && data.stories.length > 0) {
+            if (!res.ok) {
+                setStoriesError(data.error || t('noStoriesError'));
+                setStoriesErrorCode(data.code || null);
+            } else if (data.stories && data.stories.length > 0) {
                 setStories(data.stories);
                 toast.success(t('storiesFound', { count: data.stories.length }));
             } else {
@@ -240,7 +244,7 @@ export default function InstagramStoryViewerPage() {
                                 className="px-6 py-3 bg-gradient-to-r from-purple-500 via-pink-500 to-orange-400 text-white font-bold rounded-xl hover:shadow-lg transition-all disabled:opacity-50 flex items-center gap-2"
                             >
                                 <Search className="w-5 h-5" />
-                                <span className="hidden sm:inline">Ara</span>
+                                <span className="hidden sm:inline">{t('searchButton')}</span>
                             </button>
                         </div>
                     </div>
@@ -347,6 +351,24 @@ export default function InstagramStoryViewerPage() {
                             )}
 
                             {/* Stories section */}
+                            {/* Blocked error (no session invalidation — just rate limited) */}
+                            {storiesErrorCode === 'INSTAGRAM_BLOCKED' && (
+                                <div className="bg-amber-50 dark:bg-amber-950/20 border border-amber-200 dark:border-amber-900/30 rounded-xl p-4 text-center mb-4">
+                                    <p className="text-sm text-amber-700 dark:text-amber-400 font-medium mb-3">
+                                        Instagram hikaye erişimini geçici olarak engelledi. Birkaç dakika sonra tekrar deneyin.
+                                    </p>
+                                    <a
+                                        href={`https://instagram.com/stories/${profile.username}/`}
+                                        target="_blank"
+                                        rel="noopener noreferrer"
+                                        className="inline-flex items-center gap-2 text-sm bg-gradient-to-r from-purple-500 to-pink-500 text-white font-bold px-4 py-2 rounded-xl hover:shadow-md transition-all"
+                                    >
+                                        <ExternalLink className="w-4 h-4" />
+                                        {t('viewOnInstagram')}
+                                    </a>
+                                </div>
+                            )}
+
                             {stories.length > 0 ? (
                                 <div>
                                     <p className="text-xs font-bold text-gray-500 dark:text-gray-400 uppercase tracking-wide mb-2 px-1">
@@ -380,26 +402,62 @@ export default function InstagramStoryViewerPage() {
                                     </div>
                                 </div>
                             ) : storiesError ? (
-                                <div className="bg-amber-50 dark:bg-amber-950/20 border border-amber-200 dark:border-amber-900/30 rounded-xl p-4 text-center">
-                                    <ImageIcon className="w-8 h-8 text-amber-400 mx-auto mb-2" />
-                                    <p className="text-sm text-amber-700 dark:text-amber-400 font-medium mb-3">
-                                        {storiesError}
-                                    </p>
-                                    <a
-                                        href={`https://instagram.com/stories/${profile.username}/`}
-                                        target="_blank"
-                                        rel="noopener noreferrer"
-                                        className="inline-flex items-center gap-2 text-sm bg-gradient-to-r from-purple-500 to-pink-500 text-white font-bold px-4 py-2 rounded-xl hover:shadow-md transition-all"
-                                    >
-                                        <ExternalLink className="w-4 h-4" />
-                                        {t('viewOnInstagram')}
-                                    </a>
-                                </div>
+                                storiesErrorCode === 'NO_SESSION' || storiesErrorCode === 'SESSION_EXPIRED' ? (
+                                    <div className="bg-blue-50 dark:bg-blue-950/20 border border-blue-200 dark:border-blue-800/50 rounded-xl p-5">
+                                        <div className="flex items-start gap-3 mb-3">
+                                            <span className="text-2xl">🔑</span>
+                                            <div>
+                                                <p className="text-sm font-bold text-blue-800 dark:text-blue-300 mb-1">
+                                                    {storiesErrorCode === 'SESSION_EXPIRED'
+                                                        ? 'Instagram oturumu süresi doldu'
+                                                        : 'Hikayeler için Instagram oturumu gerekiyor'}
+                                                </p>
+                                                <p className="text-xs text-blue-600 dark:text-blue-400 leading-relaxed">
+                                                    {storiesErrorCode === 'SESSION_EXPIRED'
+                                                        ? 'INSTAGRAM_SESSION_ID\'yi tarayıcıdan yeni session cookie alarak güncelle.'
+                                                        : '.env.local dosyasına INSTAGRAM_SESSION_ID ekle.'}
+                                                </p>
+                                            </div>
+                                        </div>
+                                        <div className="bg-blue-100 dark:bg-blue-900/30 rounded-lg p-3 text-xs font-mono text-blue-700 dark:text-blue-300 space-y-1">
+                                            <p className="font-bold text-blue-800 dark:text-blue-200">Nasıl alınır (tam cookie):</p>
+                                            <p>1. instagram.com'a giriş yap</p>
+                                            <p>2. F12 → Network → herhangi bir istek → Request Headers</p>
+                                            <p>3. <span className="bg-blue-200 dark:bg-blue-800 px-1 rounded">Cookie</span> başlığının tüm değerini kopyala</p>
+                                            <p>4. .env.local → <span className="bg-blue-200 dark:bg-blue-800 px-1 rounded">INSTAGRAM_COOKIES=&lt;yapıştır&gt;</span></p>
+                                        </div>
+                                        <a
+                                            href={`https://instagram.com/stories/${profile.username}/`}
+                                            target="_blank"
+                                            rel="noopener noreferrer"
+                                            className="mt-3 inline-flex items-center gap-2 text-xs text-blue-600 dark:text-blue-400 hover:underline"
+                                        >
+                                            <ExternalLink className="w-3 h-3" />
+                                            {t('viewOnInstagram')}
+                                        </a>
+                                    </div>
+                                ) : (
+                                    <div className="bg-amber-50 dark:bg-amber-950/20 border border-amber-200 dark:border-amber-900/30 rounded-xl p-4 text-center">
+                                        <ImageIcon className="w-8 h-8 text-amber-400 mx-auto mb-2" />
+                                        <p className="text-sm text-amber-700 dark:text-amber-400 font-medium mb-3">
+                                            {storiesError}
+                                        </p>
+                                        <a
+                                            href={`https://instagram.com/stories/${profile.username}/`}
+                                            target="_blank"
+                                            rel="noopener noreferrer"
+                                            className="inline-flex items-center gap-2 text-sm bg-gradient-to-r from-purple-500 to-pink-500 text-white font-bold px-4 py-2 rounded-xl hover:shadow-md transition-all"
+                                        >
+                                            <ExternalLink className="w-4 h-4" />
+                                            {t('viewOnInstagram')}
+                                        </a>
+                                    </div>
+                                )
                             ) : null}
 
                             {/* Search Again */}
                             <button
-                                onClick={() => { setProfile(null); setStories([]); setStoriesError(''); setPhase('idle'); setUsername(''); }}
+                                onClick={() => { setProfile(null); setStories([]); setStoriesError(''); setStoriesErrorCode(null); setPhase('idle'); setUsername(''); }}
                                 className="mt-4 text-sm text-gray-400 hover:text-purple-600 dark:hover:text-purple-400 transition-colors"
                             >
                                 {t('searchAgain')}

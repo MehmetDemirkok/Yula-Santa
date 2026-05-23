@@ -401,7 +401,8 @@
             "loadStepStory1": "Connexion à Instagram...",
             "loadStepStory2": "Récupération des stories...",
             "loadStepStory3": "Chargement des fichiers médias...",
-            "loadStepStory4": "Préparation..."
+            "loadStepStory4": "Préparation...",
+            "followers": "Abonnés"
         },
         "instagramStoryMeta": {
             "title": "📱 Visionneuse de Story Instagram | Anonyme - YulaSanta",

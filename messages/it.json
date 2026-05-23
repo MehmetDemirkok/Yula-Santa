@@ -422,7 +422,8 @@
             "loadStepStory1": "Connessione a Instagram...",
             "loadStepStory2": "Recupero storie...",
             "loadStepStory3": "Caricamento file multimediali...",
-            "loadStepStory4": "Preparazione..."
+            "loadStepStory4": "Preparazione...",
+            "followers": "Follower"
         },
         "instagramStoryMeta": {
             "title": "📱 Visualizzatore Storie Instagram | Anonimo - YulaSanta",

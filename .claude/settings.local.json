@@ -13,7 +13,9 @@
       "Bash(python3 *)",
       "Bash(grep -rn \">[A-Z][a-z]\\\\{4,\\\\}\" /Users/mehmetdemirkok/Downloads/Yula-Santa/app/\\\\[locale\\\\] --include=\"*.tsx\")",
       "Bash(grep -rn '>[A-ZÇĞİÖŞÜA-Za-zçğışöü][a-zA-ZçğışöüÇĞİÖŞÜ ]\\\\{5,\\\\}<' /Users/mehmetdemirkok/Downloads/Yula-Santa/app/\\\\[locale\\\\] --include=\"*.tsx\")",
-      "Bash(npx tsx *)"
+      "Bash(npx tsx *)",
+      "Bash(npm run *)",
+      "Bash(INSTAGRAM_USERNAME='' INSTAGRAM_PASSWORD='' curl -s -X POST http://localhost:3000/api/instagram/profile -H 'Content-Type: application/json' -d '{\"username\":\"nasa\"}')"
     ]
   }
 }

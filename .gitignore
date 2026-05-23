@@ -39,3 +39,6 @@ yarn-error.log*
 # typescript
 *.tsbuildinfo
 next-env.d.ts
+
+# Instagram session cache (otomatik oluşturulur, commit'leme)
+.ig-session-cache
