@@ -11,6 +11,16 @@ export async function POST(req: NextRequest) {
         );
     }
 
+    if (!process.env.APIFY_API_TOKEN) {
+        return NextResponse.json(
+            {
+                error: 'TikTok otomatik yorum çekme yapılandırılmamış. Lütfen yorumları "Manuel Ekle" ile yapıştırın veya yöneticiye APIFY_API_TOKEN eklemesini söyleyin.',
+                code: 'NO_APIFY_TOKEN',
+            },
+            { status: 503 }
+        );
+    }
+
     try {
         const { postLink } = await req.json();
 

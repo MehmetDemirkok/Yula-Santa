@@ -33,6 +33,10 @@ const localeRoutes = [
     { path: '/youtube', priority: 0.95, changeFrequency: 'daily' as const },
     { path: '/instagram', priority: 0.95, changeFrequency: 'daily' as const },
     { path: '/tiktok', priority: 0.95, changeFrequency: 'daily' as const },
+    { path: '/twitter', priority: 0.95, changeFrequency: 'daily' as const },
+    { path: '/raffle', priority: 0.95, changeFrequency: 'daily' as const },
+    { path: '/secret-santa', priority: 0.9, changeFrequency: 'weekly' as const },
+    { path: '/faq', priority: 0.6, changeFrequency: 'monthly' as const },
     { path: '/privacy', priority: 0.5, changeFrequency: 'weekly' as const },
     { path: '/legal', priority: 0.5, changeFrequency: 'weekly' as const },
     // About and Contact pages

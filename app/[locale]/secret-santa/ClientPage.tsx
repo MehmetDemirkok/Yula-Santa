@@ -8,12 +8,13 @@
 
 import { useState, useEffect, useRef } from "react";
 import { useRouter, useParams } from "next/navigation";
-import { Plus, Trash2, Gift, Sparkles, FileUp, Instagram, Youtube, Twitter, HelpCircle } from "lucide-react";
+import { Plus, Trash2, Gift, Sparkles, FileUp, Instagram, Youtube, HelpCircle } from "lucide-react";
 import { Button } from "@/components/ui/Button";
 import { Input } from "@/components/ui/Input";
 import { useTranslations } from 'next-intl';
 import { CountdownBanner } from "@/components/NewYearTheme";
 import { isNewYearThemeActive } from "@/components/NewYearTheme/config";
+import { secureShuffle } from "@/lib/random";
 import * as XLSX from "xlsx";
 
 export default function Home() {
@@ -125,15 +126,12 @@ export default function Home() {
                 return;
             }
 
-            const shuffled = [...currentParticipants];
+            let shuffled = [...currentParticipants];
             let isValid = false;
             let attempts = 0;
 
             while (!isValid && attempts < 1000) {
-                for (let i = shuffled.length - 1; i > 0; i--) {
-                    const j = Math.floor(Math.random() * (i + 1));
-                    [shuffled[i], shuffled[j]] = [shuffled[j], shuffled[i]];
-                }
+                shuffled = secureShuffle(currentParticipants);
 
                 isValid = true;
                 for (let i = 0; i < currentParticipants.length; i++) {
@@ -169,11 +167,7 @@ export default function Home() {
                 return;
             }
 
-            const shuffled = [...currentParticipants];
-            for (let i = shuffled.length - 1; i > 0; i--) {
-                const j = Math.floor(Math.random() * (i + 1));
-                [shuffled[i], shuffled[j]] = [shuffled[j], shuffled[i]];
-            }
+            const shuffled = secureShuffle(currentParticipants);
 
             const assignments: Record<string, string> = {};
             for (let i = 0; i < shuffled.length; i += 2) {
@@ -379,17 +373,6 @@ export default function Home() {
                             <span className="text-[10px] sm:text-xs font-bold text-gray-600 dark:text-gray-400 group-hover:text-red-600 dark:group-hover:text-red-400">YouTube</span>
                         </button>
 
-                        {/* Twitter/X */}
-                        <button
-                            onClick={() => router.push(`/${locale}/twitter`)}
-                            className="group flex flex-col items-center gap-1.5 sm:gap-2 p-3 sm:p-4 bg-white dark:bg-gray-800 rounded-xl sm:rounded-2xl border border-gray-100 dark:border-gray-700 hover:border-sky-200 dark:hover:border-sky-500/30 hover:shadow-lg hover:shadow-sky-100/50 dark:hover:shadow-sky-900/20 transition-all"
-                        >
-                            <div className="p-2 sm:p-3 bg-black dark:bg-gray-900 rounded-lg sm:rounded-xl group-hover:scale-110 transition-transform ring-1 ring-white/10">
-                                <Twitter className="w-5 h-5 sm:w-6 sm:h-6 text-white" />
-                            </div>
-                            <span className="text-[10px] sm:text-xs font-bold text-gray-600 dark:text-gray-400 group-hover:text-sky-600 dark:group-hover:text-sky-400">Twitter/X</span>
-                        </button>
-
                         {/* TikTok */}
                         <button
                             onClick={() => router.push(`/${locale}/tiktok`)}
@@ -401,6 +384,19 @@ export default function Home() {
                                 </svg>
                             </div>
                             <span className="text-[10px] sm:text-xs font-bold text-gray-600 dark:text-gray-400 group-hover:text-cyan-600 dark:group-hover:text-cyan-400">TikTok</span>
+                        </button>
+
+                        {/* Twitter/X */}
+                        <button
+                            onClick={() => router.push(`/${locale}/twitter`)}
+                            className="group flex flex-col items-center gap-1.5 sm:gap-2 p-3 sm:p-4 bg-white dark:bg-gray-800 rounded-xl sm:rounded-2xl border border-gray-100 dark:border-gray-700 hover:border-sky-200 dark:hover:border-sky-500/30 hover:shadow-lg hover:shadow-sky-100/50 dark:hover:shadow-sky-900/20 transition-all"
+                        >
+                            <div className="p-2 sm:p-3 bg-black dark:bg-gray-900 rounded-lg sm:rounded-xl group-hover:scale-110 transition-transform flex items-center justify-center ring-1 ring-white/10">
+                                <svg viewBox="0 0 24 24" className="w-5 h-5 sm:w-6 sm:h-6 text-white" fill="currentColor">
+                                    <path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z" />
+                                </svg>
+                            </div>
+                            <span className="text-[10px] sm:text-xs font-bold text-gray-600 dark:text-gray-400 group-hover:text-sky-600 dark:group-hover:text-sky-400">Twitter/X</span>
                         </button>
                     </div>
                 </div>

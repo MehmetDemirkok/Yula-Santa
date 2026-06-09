@@ -5,6 +5,7 @@ import Link from 'next/link';
 import { ArrowLeft, Shuffle, Plus, X } from 'lucide-react';
 import { useTranslations } from 'next-intl';
 import { useParams } from 'next/navigation';
+import { secureRandomInt } from '@/lib/random';
 
 export default function ShortStrawPage() {
     const t = useTranslations('tools.shortStrawContent');
@@ -37,12 +38,12 @@ export default function ShortStrawPage() {
 
         let count = 0;
         const interval = setInterval(() => {
-            const randomIndex = Math.floor(Math.random() * participants.length);
+            const randomIndex = secureRandomInt(participants.length);
             setLoser(participants[randomIndex]);
             count++;
             if (count > 15) {
                 clearInterval(interval);
-                const finalIndex = Math.floor(Math.random() * participants.length);
+                const finalIndex = secureRandomInt(participants.length);
                 setLoser(participants[finalIndex]);
                 setIsSelecting(false);
             }

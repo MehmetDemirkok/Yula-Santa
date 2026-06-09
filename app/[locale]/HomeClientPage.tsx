@@ -16,7 +16,8 @@ import {
     ShieldCheck,
     Zap,
     Users,
-    Aperture
+    Aperture,
+    Trophy
 } from "lucide-react";
 import { Button } from "@/components/ui/Button";
 import { useTranslations } from "next-intl";
@@ -59,12 +60,32 @@ export default function HomeClientPage() {
             shadow: "shadow-cyan-100 dark:shadow-cyan-500/20"
         },
         {
+            title: "Twitter (X)",
+            desc: t('giveaway.twitterDesc'),
+            icon: ({ className }: { className?: string }) => (
+                <svg viewBox="0 0 24 24" className={className} fill="currentColor">
+                    <path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z" />
+                </svg>
+            ),
+            href: `/${locale}/twitter`,
+            color: "bg-sky-500 from-sky-500 to-blue-600",
+            shadow: "shadow-sky-200 dark:shadow-sky-500/20"
+        },
+        {
             title: t('home.secretDraw').replace(' 🤫', ''),
             desc: t('meta.description').split('.')[0],
             icon: Gift,
             href: `/${locale}/secret-santa`,
             color: "bg-santa-red from-santa-red to-red-500",
             shadow: "shadow-red-200 dark:shadow-red-500/20"
+        },
+        {
+            title: ({ tr: "İsim Çekilişi", en: "Name Picker" } as Record<string, string>)[locale as string] || "Name Picker",
+            desc: ({ tr: "Listeden adil ve şeffaf kazanan seçin", en: "Pick fair winners from any list" } as Record<string, string>)[locale as string] || "Pick fair winners from any list",
+            icon: Trophy,
+            href: `/${locale}/raffle`,
+            color: "bg-amber-500 from-amber-500 to-orange-600",
+            shadow: "shadow-amber-200 dark:shadow-amber-500/20"
         }
     ];
 

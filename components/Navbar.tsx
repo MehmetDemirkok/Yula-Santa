@@ -18,7 +18,8 @@ import {
     Gamepad2,
     Wand2,
     Aperture,
-    Users
+    Users,
+    Trophy
 } from "lucide-react";
 import { LanguageSwitcher } from "./LanguageSwitcher";
 import { ThemeToggle } from "./ThemeToggle";
@@ -75,11 +76,29 @@ export function Navbar() {
             color: "from-black to-gray-800"
         },
         {
+            name: "Twitter (X)",
+            description: t('giveaway.twitterDesc'),
+            icon: ({ className }: { className?: string }) => (
+                <svg viewBox="0 0 24 24" className={className} fill="currentColor">
+                    <path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z" />
+                </svg>
+            ),
+            href: `/${locale}/twitter`,
+            color: "from-sky-500 to-blue-600"
+        },
+        {
             name: t('home.secretDraw').replace(' 🤫', ''),
             description: t('meta.description').split('.')[0],
             icon: Gift,
             href: `/${locale}/secret-santa`,
             color: "from-santa-red to-red-600"
+        },
+        {
+            name: ({ tr: "İsim Çekilişi", en: "Name Picker", de: "Namensauslosung", fr: "Tirage de noms", es: "Sorteo de nombres", it: "Estrazione nomi", pt: "Sorteio de nomes", ru: "Розыгрыш имён", ar: "سحب الأسماء", ja: "名前抽選", ko: "이름 추첨", zh: "姓名抽奖" } as Record<string, string>)[locale] || "Name Picker",
+            description: ({ tr: "Listeden adil kazanan seçin", en: "Pick fair winners from a list" } as Record<string, string>)[locale] || "Pick fair winners from a list",
+            icon: Trophy,
+            href: `/${locale}/raffle`,
+            color: "from-amber-500 to-orange-600"
         },
     ];
 

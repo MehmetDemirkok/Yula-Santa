@@ -24,6 +24,7 @@ import { useLanguage } from "@/lib/i18n/LanguageContext";
 import ShareModal from "@/components/ShareModal";
 import { useToast } from "@/lib/ToastContext";
 import { downloadWinnerCard } from "@/lib/downloadWinnerCard";
+import { secureShuffle, secureRandomInt } from "@/lib/random";
 
 // TikTok Icon Component
 const TikTokIcon = ({ className }: { className?: string }) => (
@@ -198,7 +199,13 @@ export default function TikTokGiveaway() {
             });
 
             if (!response.ok) {
-                const data = await response.json();
+                const data = await response.json().catch(() => ({}));
+                // Sunucu zaten kullanıcıya yönelik (manuel ekleme) bir mesaj verdiyse onu göster
+                if (data.code === 'NO_APIFY_TOKEN' && data.error) {
+                    setError(data.error);
+                    toast.error(data.error);
+                    return;
+                }
                 throw new Error(data.error || t.giveaway.fetchError);
             }
 
@@ -308,14 +315,14 @@ export default function TikTokGiveaway() {
 
         // Rolling animation
         const interval = setInterval(() => {
-            const randomIndex = Math.floor(Math.random() * participants.length);
+            const randomIndex = secureRandomInt(participants.length);
             setRollingParticipant(participants[randomIndex]);
         }, 80);
 
         setTimeout(() => {
             clearInterval(interval);
 
-            const shuffled = [...participants].sort(() => Math.random() - 0.5);
+            const shuffled = secureShuffle(participants);
             const selectedWinners = shuffled.slice(0, winnerCount).map(w => ({ ...w, isFollowing: 'checking' as const }));
             const selectedBackups = shuffled.slice(winnerCount, winnerCount + backupCount).map(b => ({ ...b, isFollowing: 'checking' as const }));
 

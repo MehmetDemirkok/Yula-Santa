@@ -5,6 +5,7 @@ import Link from 'next/link';
 import { ArrowLeft, Hash, Shuffle, Copy, Check } from 'lucide-react';
 import { useTranslations } from 'next-intl';
 import { useParams } from 'next/navigation';
+import { secureRandomIntInRange } from '@/lib/random';
 
 export default function RandomNumberPage() {
     const t = useTranslations('tools.randomNumberContent');
@@ -26,7 +27,7 @@ export default function RandomNumberPage() {
         setTimeout(() => {
             const numbers: number[] = [];
             for (let i = 0; i < count; i++) {
-                numbers.push(Math.floor(Math.random() * (max - min + 1)) + min);
+                numbers.push(secureRandomIntInRange(min, max));
             }
             setResults(numbers);
             setIsGenerating(false);

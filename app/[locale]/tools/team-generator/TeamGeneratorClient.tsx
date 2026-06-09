@@ -6,6 +6,7 @@ import { Button } from "@/components/ui/Button";
 import { ArrowLeft, Users, RefreshCw, Copy, Check, Plus, Edit3, X, List, Shuffle, Trash2 } from "lucide-react";
 import { useRouter } from "next/navigation";
 import confetti from "canvas-confetti";
+import { secureShuffle } from "@/lib/random";
 
 export function TeamGeneratorClient() {
     const t = useTranslations('tools.teamGeneratorContent');
@@ -59,8 +60,8 @@ export function TeamGeneratorClient() {
     const generateTeams = () => {
         if (namesList.length < 2) return;
 
-        // Shuffle
-        const shuffled = [...namesList].sort(() => Math.random() - 0.5);
+        // Shuffle (fair Fisher–Yates)
+        const shuffled = secureShuffle(namesList);
 
         // Distribute
         const newTeams: string[][] = Array.from({ length: teamCount }, () => []);

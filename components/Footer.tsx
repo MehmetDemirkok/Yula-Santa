@@ -180,6 +180,14 @@ export function Footer() {
                                 {t('legalInfo')}
                                 <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-santa-red transition-all group-hover:w-full rounded-full" />
                             </Link>
+                            <div className="w-1 h-1 sm:w-1.5 sm:h-1.5 rounded-full bg-gray-200 dark:bg-gray-700" />
+                            <Link
+                                href={`/${locale}/faq`}
+                                className="group relative text-xs sm:text-sm font-bold text-gray-500 dark:text-gray-400 hover:text-gray-900 dark:hover:text-white transition-colors"
+                            >
+                                {locale === 'tr' ? 'SSS' : 'FAQ'}
+                                <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-santa-red transition-all group-hover:w-full rounded-full" />
+                            </Link>
                         </nav>
                     </div>
 

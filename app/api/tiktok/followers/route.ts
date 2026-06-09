@@ -8,6 +8,13 @@ interface FollowerCheckRequest {
 }
 
 export async function POST(req: NextRequest) {
+    if (!process.env.APIFY_API_TOKEN) {
+        return NextResponse.json(
+            { error: 'Takip doğrulama yapılandırılmamış (APIFY_API_TOKEN yok).', code: 'NO_APIFY_TOKEN' },
+            { status: 503 }
+        );
+    }
+
     try {
         const { channelUsername, usernames }: FollowerCheckRequest = await req.json();
 

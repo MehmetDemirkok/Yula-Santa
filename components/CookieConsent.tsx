@@ -139,37 +139,36 @@ export function CookieConsent() {
     if (!showBanner) return null;
 
     return (
-        <div className="fixed bottom-0 left-0 right-0 z-50 p-4 animate-in slide-in-from-bottom duration-300">
-            <div className="max-w-2xl mx-auto bg-white/95 backdrop-blur-xl rounded-2xl shadow-2xl border border-gray-100 p-6">
-                <div className="flex items-start gap-4">
-                    <div className="bg-amber-50 p-3 rounded-xl shrink-0">
-                        <Cookie className="w-6 h-6 text-amber-600" />
+        <div className="fixed bottom-0 left-0 right-0 z-50 p-2 sm:p-3 animate-in slide-in-from-bottom duration-300 pointer-events-none">
+            <div className="max-w-3xl mx-auto pointer-events-auto bg-white/95 dark:bg-gray-900/95 backdrop-blur-xl rounded-xl shadow-2xl border border-gray-100 dark:border-white/10 px-3 py-2.5 sm:px-4 sm:py-3">
+                <div className="flex items-center gap-3">
+                    <div className="bg-amber-50 dark:bg-amber-500/15 p-2 rounded-lg shrink-0 hidden sm:block">
+                        <Cookie className="w-5 h-5 text-amber-600 dark:text-amber-400" />
                     </div>
-                    <div className="flex-1">
-                        <h3 className="font-bold text-gray-900 mb-1">{t.title}</h3>
-                        <p className="text-gray-600 text-sm mb-4">{t.description}</p>
-                        <div className="flex flex-wrap gap-2">
-                            <Button onClick={handleAccept} size="sm" className="bg-santa-red hover:bg-red-700">
-                                {t.accept}
-                            </Button>
-                            <Button onClick={handleDecline} variant="outline" size="sm">
-                                {t.decline}
-                            </Button>
-                            <Link
-                                href="/privacy"
-                                className="inline-flex items-center text-sm text-gray-500 hover:text-gray-700 underline px-2"
-                            >
+                    <div className="flex-1 min-w-0">
+                        <p className="text-gray-700 dark:text-gray-200 text-xs sm:text-sm leading-snug">
+                            <span className="font-bold">{t.title}</span>{' '}
+                            <span className="text-gray-500 dark:text-gray-400">{t.description}</span>{' '}
+                            <Link href="/privacy" className="text-santa-red hover:underline whitespace-nowrap">
                                 {t.learnMore}
                             </Link>
-                        </div>
+                        </p>
                     </div>
-                    <button
-                        onClick={handleDecline}
-                        className="text-gray-400 hover:text-gray-600 p-1"
-                        aria-label="Close"
-                    >
-                        <X className="w-5 h-5" />
-                    </button>
+                    <div className="flex items-center gap-2 shrink-0">
+                        <Button onClick={handleDecline} variant="outline" size="sm" className="hidden sm:inline-flex">
+                            {t.decline}
+                        </Button>
+                        <Button onClick={handleAccept} size="sm" className="bg-santa-red hover:bg-red-700 text-white">
+                            {t.accept}
+                        </Button>
+                        <button
+                            onClick={handleDecline}
+                            className="text-gray-400 hover:text-gray-600 dark:hover:text-gray-200 p-1 sm:hidden"
+                            aria-label="Close"
+                        >
+                            <X className="w-5 h-5" />
+                        </button>
+                    </div>
                 </div>
             </div>
         </div>

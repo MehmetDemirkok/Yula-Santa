@@ -6,6 +6,7 @@ import { Button } from "@/components/ui/Button";
 import { ArrowLeft, RefreshCw, Shuffle, SortAsc, Trash2, Plus, Edit3, X, List } from "lucide-react";
 import { useRouter } from "next/navigation";
 import confetti from "canvas-confetti";
+import { secureRandomInt, secureShuffle } from "@/lib/random";
 
 const COLORS = [
     "#F87171", "#FB923C", "#FBBF24", "#A3E635", "#34D399",
@@ -70,8 +71,8 @@ export function WheelClient() {
         setWinner(null);
         setIsSpinning(true);
 
-        // 1. First, randomly pick a winner (perfectly uniform distribution)
-        const winningIndex = Math.floor(Math.random() * segments.length);
+        // 1. First, randomly pick a winner (cryptographically uniform — no bias)
+        const winningIndex = secureRandomInt(segments.length);
 
         // 2. Calculate the angle to land the pointer on that segment
         //    SVG segments start from the right (3 o'clock / 0°) and go clockwise.
@@ -125,7 +126,7 @@ export function WheelClient() {
     };
 
     const shuffleSegments = () => {
-        setSegments([...segments].sort(() => Math.random() - 0.5));
+        setSegments(secureShuffle(segments));
     };
 
     const sortSegments = () => {
