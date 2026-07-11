@@ -62,7 +62,7 @@ export default async function FaqPage({ params }: Props) {
     };
 
     return (
-        <main className="min-h-screen py-16 sm:py-20 md:py-24 px-4 bg-gradient-to-b from-[#FFF5F5] to-white dark:from-gray-900 dark:to-gray-950">
+        <main className="ys-page-shell py-16 sm:py-20 md:py-24 px-4">
             <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }} />
             <div className="max-w-3xl mx-auto">
                 {/* Header */}
@@ -70,10 +70,10 @@ export default async function FaqPage({ params }: Props) {
                     <div className="inline-flex items-center justify-center w-16 h-16 rounded-2xl bg-red-50 dark:bg-red-500/15 text-santa-red mb-5 shadow-sm">
                         <HelpCircle className="w-8 h-8" />
                     </div>
-                    <h1 className="text-3xl sm:text-4xl md:text-5xl font-black text-gray-900 dark:text-white mb-3">
+                    <h1 className="font-heading text-headline-lg-mobile sm:text-headline-lg text-[var(--text-primary)] mb-3">
                         {title}
                     </h1>
-                    <p className="text-lg text-gray-500 dark:text-gray-400">{subtitle}</p>
+                    <p className="text-body-lg text-[var(--text-secondary)]">{subtitle}</p>
                 </div>
 
                 {/* FAQ Accordion (native details/summary — JS gerektirmez) */}
@@ -81,16 +81,16 @@ export default async function FaqPage({ params }: Props) {
                     {items.map((it, i) => (
                         <details
                             key={i}
-                            className="group bg-white/80 dark:bg-gray-800/50 backdrop-blur-xl rounded-2xl border border-gray-100 dark:border-white/10 shadow-sm overflow-hidden"
+                            className="group ys-card overflow-hidden"
                             {...(i === 0 ? { open: true } : {})}
                         >
-                            <summary className="flex items-center justify-between gap-4 cursor-pointer list-none p-5 sm:p-6 font-bold text-gray-900 dark:text-white">
+                            <summary className="flex items-center justify-between gap-4 cursor-pointer list-none p-5 sm:p-6 font-heading text-headline-md text-[var(--text-primary)]">
                                 <span>{it.q}</span>
-                                <span className="shrink-0 w-7 h-7 rounded-full bg-gray-100 dark:bg-gray-700 flex items-center justify-center text-gray-500 transition-transform group-open:rotate-45">
+                                <span className="shrink-0 w-7 h-7 rounded-full bg-[var(--surface-2)] flex items-center justify-center text-[var(--text-muted)] transition-transform group-open:rotate-45">
                                     +
                                 </span>
                             </summary>
-                            <div className="px-5 sm:px-6 pb-5 sm:pb-6 -mt-1 text-gray-600 dark:text-gray-300 leading-relaxed">
+                            <div className="px-5 sm:px-6 pb-5 sm:pb-6 -mt-1 text-body-md text-[var(--text-secondary)]">
                                 {it.a}
                             </div>
                         </details>
@@ -101,7 +101,7 @@ export default async function FaqPage({ params }: Props) {
                 <div className="text-center mt-12">
                     <Link
                         href={locale === 'tr' ? '/' : `/${locale}`}
-                        className="inline-flex items-center gap-2 px-6 py-3 bg-santa-red hover:bg-red-600 text-white font-bold rounded-full shadow-lg hover:shadow-xl transition-all hover:-translate-y-0.5"
+                        className="inline-flex items-center gap-2 px-6 py-3 bg-santa-red text-white font-bold rounded-lg shadow-[0_4px_16px_rgba(182,23,34,0.25)] hover:shadow-[0_8px_24px_rgba(182,23,34,0.32)] hover:brightness-110 transition-all"
                     >
                         <Home className="w-5 h-5" />
                         {title === PAGE_TITLE.tr ? 'Ana Sayfa' : 'Home'}

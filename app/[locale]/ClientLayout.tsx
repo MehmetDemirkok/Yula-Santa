@@ -21,6 +21,8 @@ import { Navbar } from "@/components/Navbar";
 import { ThemeProvider } from "@/lib/ThemeContext";
 import { ToastProvider } from "@/lib/ToastContext";
 import { ToastContainer } from "@/components/ToastContainer";
+import { AdWrapper, BannerAd } from "@/components/ads";
+import { AD_SLOTS } from "@/lib/ads/config";
 
 interface ClientLayoutProps {
     children: ReactNode;
@@ -48,7 +50,14 @@ export function ClientLayout({ children }: ClientLayoutProps) {
                     {children}
                 </div>
 
-                {/* Footer is part of the scrollable content or fixed? 
+                {/* Site geneli banner reklam - Footer'dan hemen önce, tüm sayfalarda görünür */}
+                <div className="w-full px-4">
+                    <AdWrapper position="bottom" className="max-w-4xl mx-auto">
+                        <BannerAd adSlot={AD_SLOTS.BANNER_BOTTOM} />
+                    </AdWrapper>
+                </div>
+
+                {/* Footer is part of the scrollable content or fixed?
                     Usually it's at the end of content. If it needs to be 'fixed' like Navbar, 
                     we would move it out. But here we keep it in the flex flow to scroll with content 
                     while Navbar stays fixed. This is the most professional 'sabit' layout. */}

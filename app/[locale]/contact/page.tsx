@@ -9,6 +9,8 @@ import { Metadata } from 'next';
 import { Mail, MapPin, Clock, MessageSquare, Send } from 'lucide-react';
 import { locales } from '@/i18n/config';
 import { getSEOMetadata, viewport } from '@/lib/seo';
+import { Button } from '@/components/ui/Button';
+import { Input } from '@/components/ui/Input';
 
 export { viewport };
 
@@ -42,89 +44,83 @@ export default async function ContactPage({ params }: Props) {
     ];
 
     return (
-        <main className="min-h-screen py-12 sm:py-16 md:py-20 px-4 bg-gradient-to-b from-[#FFF5F5] to-white dark:from-gray-900 dark:to-gray-950">
+        <main className="ys-page-shell py-12 sm:py-16 md:py-20 px-4">
             <div className="max-w-4xl mx-auto">
                 {/* Header */}
                 <div className="text-center mb-12 sm:mb-16">
                     <div className="inline-flex items-center justify-center w-16 h-16 bg-santa-red/10 dark:bg-santa-red/20 rounded-2xl mb-6">
                         <MessageSquare className="w-8 h-8 text-santa-red" />
                     </div>
-                    <h1 className="text-3xl sm:text-4xl md:text-5xl font-black text-gray-900 dark:text-white mb-4">
+                    <h1 className="font-heading text-headline-lg-mobile sm:text-headline-lg text-[var(--text-primary)] mb-4">
                         {t('title')}
                     </h1>
-                    <p className="text-lg sm:text-xl text-gray-600 dark:text-gray-400 max-w-2xl mx-auto leading-relaxed">
+                    <p className="text-body-lg text-[var(--text-secondary)] max-w-2xl mx-auto">
                         {t('subtitle')}
                     </p>
                 </div>
 
                 <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
                     {/* Contact Form */}
-                    <div className="bg-white/80 dark:bg-gray-800/50 backdrop-blur-xl rounded-3xl p-6 sm:p-8 shadow-xl border border-white/50 dark:border-white/10">
-                        <h2 className="text-xl sm:text-2xl font-bold text-gray-900 dark:text-white mb-6 flex items-center gap-3">
+                    <div className="ys-card p-6 sm:p-8">
+                        <h2 className="font-heading text-headline-md text-[var(--text-primary)] mb-6 flex items-center gap-3">
                             <span className="w-1.5 h-6 bg-santa-red rounded-full"></span>
                             {t('form.title')}
                         </h2>
 
                         <form action={`mailto:mehmetdemirkok@gmail.com`} method="post" encType="text/plain" className="space-y-5">
                             <div>
-                                <label className="block text-sm font-bold text-gray-700 dark:text-gray-300 mb-2">
+                                <label className="block text-label-md text-[var(--text-secondary)] mb-2">
                                     {t('form.name')}
                                 </label>
-                                <input
+                                <Input
                                     type="text"
                                     name="name"
                                     required
-                                    className="w-full px-4 py-3 rounded-xl border-2 border-gray-200 dark:border-gray-600 bg-white dark:bg-gray-700 text-gray-900 dark:text-white focus:border-santa-red dark:focus:border-gold focus:outline-none transition-colors"
                                     placeholder={t('form.namePlaceholder')}
                                 />
                             </div>
 
                             <div>
-                                <label className="block text-sm font-bold text-gray-700 dark:text-gray-300 mb-2">
+                                <label className="block text-label-md text-[var(--text-secondary)] mb-2">
                                     {t('form.email')}
                                 </label>
-                                <input
+                                <Input
                                     type="email"
                                     name="email"
                                     required
-                                    className="w-full px-4 py-3 rounded-xl border-2 border-gray-200 dark:border-gray-600 bg-white dark:bg-gray-700 text-gray-900 dark:text-white focus:border-santa-red dark:focus:border-gold focus:outline-none transition-colors"
                                     placeholder={t('form.emailPlaceholder')}
                                 />
                             </div>
 
                             <div>
-                                <label className="block text-sm font-bold text-gray-700 dark:text-gray-300 mb-2">
+                                <label className="block text-label-md text-[var(--text-secondary)] mb-2">
                                     {t('form.subject')}
                                 </label>
-                                <input
+                                <Input
                                     type="text"
                                     name="subject"
                                     required
-                                    className="w-full px-4 py-3 rounded-xl border-2 border-gray-200 dark:border-gray-600 bg-white dark:bg-gray-700 text-gray-900 dark:text-white focus:border-santa-red dark:focus:border-gold focus:outline-none transition-colors"
                                     placeholder={t('form.subjectPlaceholder')}
                                 />
                             </div>
 
                             <div>
-                                <label className="block text-sm font-bold text-gray-700 dark:text-gray-300 mb-2">
+                                <label className="block text-label-md text-[var(--text-secondary)] mb-2">
                                     {t('form.message')}
                                 </label>
                                 <textarea
                                     name="message"
                                     rows={5}
                                     required
-                                    className="w-full px-4 py-3 rounded-xl border-2 border-gray-200 dark:border-gray-600 bg-white dark:bg-gray-700 text-gray-900 dark:text-white focus:border-santa-red dark:focus:border-gold focus:outline-none transition-colors resize-none"
+                                    className="w-full px-4 sm:px-6 py-2 rounded-lg border-2 border-[var(--input-border)] bg-[var(--input-bg)] text-base sm:text-lg text-[var(--text-primary)] placeholder:text-[var(--text-muted)] focus:border-[var(--input-focus)] focus:outline-none transition-colors resize-none shadow-sm dark:shadow-none"
                                     placeholder={t('form.messagePlaceholder')}
                                 ></textarea>
                             </div>
 
-                            <button
-                                type="submit"
-                                className="w-full flex items-center justify-center gap-2 px-6 py-4 bg-santa-red hover:bg-red-600 text-white font-bold text-lg rounded-xl shadow-lg hover:shadow-xl transition-all"
-                            >
+                            <Button type="submit" variant="default" size="lg" className="w-full">
                                 <Send className="w-5 h-5" />
                                 {t('form.send')}
-                            </button>
+                            </Button>
                         </form>
                     </div>
 
@@ -133,17 +129,17 @@ export default async function ContactPage({ params }: Props) {
                         {contactInfo.map((info, index) => (
                             <div
                                 key={index}
-                                className="bg-white/80 dark:bg-gray-800/50 backdrop-blur-xl rounded-2xl p-6 shadow-lg border border-white/50 dark:border-white/10"
+                                className="ys-card p-6"
                             >
                                 <div className="flex items-start gap-4">
                                     <div className={`w-12 h-12 rounded-xl flex items-center justify-center flex-shrink-0 ${info.color}`}>
                                         <info.icon className="w-6 h-6" />
                                     </div>
                                     <div>
-                                        <h3 className="text-lg font-bold text-gray-900 dark:text-white mb-1">
+                                        <h3 className="text-lg font-bold text-[var(--text-primary)] mb-1">
                                             {t(info.titleKey)}
                                         </h3>
-                                        <p className="text-gray-600 dark:text-gray-400">
+                                        <p className="text-[var(--text-secondary)]">
                                             {t(info.valueKey)}
                                         </p>
                                     </div>

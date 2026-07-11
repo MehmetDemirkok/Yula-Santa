@@ -926,6 +926,24 @@
                         "desc": "Ailece yapılacak eğlenceli aktivite."
                     }
                 }
+            },
+            "ai": {
+                "badge": "Yapay Zeka Destekli",
+                "formTitle": "Birkaç detay ver, sana özel öneriler oluşturalım",
+                "relationshipLabel": "Kime hediye alıyorsun?",
+                "relationshipPlaceholder": "örn. kız arkadaşım, patronum, annem",
+                "budgetLabel": "Bütçe",
+                "budgetLow": "Ekonomik",
+                "budgetMedium": "Orta",
+                "budgetHigh": "Lüks",
+                "notesLabel": "İlgi alanları (opsiyonel)",
+                "notesPlaceholder": "örn. kahve, kitap, spor, teknoloji",
+                "generateButton": "Yapay Zeka ile Öner",
+                "regenerateButton": "Farklı Öneriler Getir",
+                "loadingText": "Senin için en iyi hediyeleri düşünüyor...",
+                "errorNotice": "Şu anda yapay zeka önerilerine ulaşılamıyor, senin için hazır önerileri gösteriyoruz.",
+                "changeSelection": "Seçimi Değiştir",
+                "poweredBy": "Google Gemini ile oluşturuldu"
             }
         },
         "giftSuggestionsMeta": {

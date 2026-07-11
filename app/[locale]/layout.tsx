@@ -13,7 +13,7 @@
  */
 
 import type { Metadata } from "next";
-import { Geist, Geist_Mono } from "next/font/google";
+import { Inter, Plus_Jakarta_Sans, Geist_Mono } from "next/font/google";
 import { NextIntlClientProvider } from 'next-intl';
 import { getMessages, setRequestLocale } from 'next-intl/server';
 import { notFound } from 'next/navigation';
@@ -24,9 +24,15 @@ import { locales, getDirection, type Locale } from '@/i18n/config';
 import { SITE_URL } from "@/lib/constants";
 import { ClientLayout } from "./ClientLayout";
 
-const geistSans = Geist({
-    variable: "--font-geist-sans",
+const inter = Inter({
+    variable: "--font-inter",
     subsets: ["latin"],
+});
+
+const plusJakartaSans = Plus_Jakarta_Sans({
+    variable: "--font-jakarta",
+    subsets: ["latin"],
+    weight: ["600", "700", "800"],
 });
 
 const geistMono = Geist_Mono({
@@ -242,14 +248,6 @@ function getJsonLd(locale: string, messages: Record<string, any>) {
             "availability": "https://schema.org/InStock"
         },
         "description": messages.meta?.description,
-        "aggregateRating": {
-            "@type": "AggregateRating",
-            "ratingValue": "4.9",
-            "bestRating": "5",
-            "worstRating": "1",
-            "ratingCount": "2847",
-            "reviewCount": "156"
-        },
         "author": {
             "@id": `${SITE_URL}/#organization`
         },
@@ -376,7 +374,7 @@ export default async function LocaleLayout({
                 />
             </head>
             <body
-                className={`${geistSans.variable} ${geistMono.variable} antialiased min-h-screen flex flex-col`}
+                className={`${inter.variable} ${plusJakartaSans.variable} ${geistMono.variable} antialiased min-h-screen flex flex-col`}
                 suppressHydrationWarning
             >
                 <NextIntlClientProvider messages={messages}>

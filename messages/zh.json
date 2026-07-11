@@ -920,6 +920,24 @@
                         "desc": "Fun activity for the family."
                     }
                 }
+            },
+            "ai": {
+                "badge": "AI 驱动",
+                "formTitle": "告诉我们一些细节,我们将为你量身定制建议",
+                "relationshipLabel": "你想为谁挑选礼物?",
+                "relationshipPlaceholder": "例如:我的女朋友、我的老板、我的妈妈",
+                "budgetLabel": "预算",
+                "budgetLow": "经济实惠",
+                "budgetMedium": "中等",
+                "budgetHigh": "高端",
+                "notesLabel": "兴趣爱好(可选)",
+                "notesPlaceholder": "例如:咖啡、书籍、运动、科技",
+                "generateButton": "用 AI 推荐",
+                "regenerateButton": "换一批建议",
+                "loadingText": "正在为你寻找最好的礼物...",
+                "errorNotice": "AI 建议暂时不可用,这里是我们精选的创意。",
+                "changeSelection": "更改选择",
+                "poweredBy": "由 Google Gemini 生成"
             }
         },
         "giftSuggestionsMeta": {

@@ -6,6 +6,8 @@ import { ArrowLeft, Shuffle, Plus, X } from 'lucide-react';
 import { useTranslations } from 'next-intl';
 import { useParams } from 'next/navigation';
 import { secureRandomInt } from '@/lib/random';
+import { Button } from '@/components/ui/Button';
+import { Input } from '@/components/ui/Input';
 
 export default function ShortStrawPage() {
     const t = useTranslations('tools.shortStrawContent');
@@ -55,49 +57,46 @@ export default function ShortStrawPage() {
     };
 
     return (
-        <div className="min-h-screen bg-gradient-to-br from-indigo-50 via-white to-violet-50 dark:from-gray-900 dark:via-gray-900 dark:to-gray-950 py-12 px-4 transition-colors duration-300">
+        <div className="ys-page-shell py-12 px-4 transition-colors duration-300">
             <div className="max-w-2xl mx-auto">
                 <div className="flex items-center gap-4 mb-8">
                     <Link
                         href={`/${locale}`}
-                        className="p-2 rounded-xl bg-white dark:bg-gray-800 shadow-sm border border-gray-100 dark:border-gray-700 hover:shadow-md transition-all"
+                        className="p-2 rounded-lg bg-[var(--card-bg)] shadow-sm border border-[var(--border-light)] hover:shadow-md transition-all"
                     >
-                        <ArrowLeft className="w-5 h-5 text-gray-600 dark:text-gray-400" />
+                        <ArrowLeft className="w-5 h-5 text-[var(--text-secondary)]" />
                     </Link>
                     <div>
-                        <h1 className="text-2xl md:text-3xl font-black text-gray-900 dark:text-white">
+                        <h1 className="font-heading text-headline-lg-mobile sm:text-headline-lg text-[var(--text-primary)]">
                             🎋 {t('title')}
                         </h1>
-                        <p className="text-sm text-gray-500 dark:text-gray-400 mt-1">{t('subtitle')}</p>
+                        <p className="text-body-md text-[var(--text-secondary)] mt-1">{t('subtitle')}</p>
                     </div>
                 </div>
 
-                <article className="bg-white dark:bg-gray-800 rounded-3xl shadow-xl border border-gray-100 dark:border-gray-700 p-6 md:p-8">
+                <article className="ys-card p-6 md:p-8">
                     <div className="mb-6">
-                        <label htmlFor="participant-name" className="block text-sm font-bold text-gray-700 dark:text-gray-300 mb-2">
+                        <label htmlFor="participant-name" className="block text-label-md text-[var(--text-secondary)] mb-2">
                             {t('label')}
                         </label>
                         <div className="flex gap-2">
-                            <input
+                            <Input
                                 id="participant-name"
                                 type="text"
                                 value={newName}
                                 onChange={(e) => setNewName(e.target.value)}
                                 onKeyPress={(e) => e.key === 'Enter' && addParticipant()}
                                 placeholder="Name..."
-                                className="flex-1 px-4 py-3 rounded-xl border border-gray-200 dark:border-gray-700 bg-white dark:bg-gray-900 focus:border-indigo-500 focus:ring-2 focus:ring-indigo-200 dark:focus:ring-indigo-500/20 outline-none transition-all dark:text-white"
+                                className="flex-1 focus:border-indigo-accent"
                             />
-                            <button
-                                onClick={addParticipant}
-                                className="px-6 py-3 bg-gradient-to-r from-indigo-500 to-violet-500 text-white font-bold rounded-xl hover:shadow-lg transition-all"
-                            >
+                            <Button onClick={addParticipant} className="shrink-0 aspect-square p-0 w-11">
                                 <Plus className="w-5 h-5" aria-hidden="true" />
-                            </button>
+                            </Button>
                         </div>
                     </div>
 
                     <div className="mb-6">
-                        <p className="text-sm font-bold text-gray-700 dark:text-gray-300 mb-3">
+                        <p className="text-label-md text-[var(--text-secondary)] mb-3">
                             {t('label')} ({participants.length})
                         </p>
                         {participants.length > 0 ? (
@@ -106,18 +105,18 @@ export default function ShortStrawPage() {
                                     <div
                                         key={name}
                                         role="listitem"
-                                        className={`flex items-center gap-2 px-4 py-2 rounded-xl border transition-all ${loser === name && !isSelecting
-                                            ? 'bg-gradient-to-r from-red-500 to-orange-500 text-white border-red-500 scale-110 shadow-lg'
+                                        className={`flex items-center gap-2 px-4 py-2 rounded-lg border transition-all ${loser === name && !isSelecting
+                                            ? 'bg-santa-red text-white border-santa-red scale-110 shadow-lg'
                                             : loser === name && isSelecting
-                                                ? 'bg-gradient-to-r from-indigo-500 to-violet-500 text-white border-indigo-500'
-                                                : 'bg-gray-50 dark:bg-gray-900 border-gray-200 dark:border-gray-700 dark:text-gray-200'
+                                                ? 'bg-indigo-accent text-white border-indigo-accent'
+                                                : 'bg-[var(--surface-2)] border-[var(--border-light)] text-[var(--text-secondary)]'
                                             }`}
                                     >
                                         <span className="font-medium">{name}</span>
                                         {!loser && (
                                             <button
                                                 onClick={() => removeParticipant(name)}
-                                                className="text-gray-400 hover:text-red-500 transition-colors"
+                                                className="text-[var(--text-muted)] hover:text-santa-red transition-colors"
                                             >
                                                 <X className="w-4 h-4" aria-hidden="true" />
                                             </button>
@@ -126,49 +125,49 @@ export default function ShortStrawPage() {
                                 ))}
                             </div>
                         ) : (
-                            <div className="text-center py-8 text-gray-400 dark:text-gray-600">
+                            <div className="text-center py-8 text-[var(--text-muted)]">
                                 <p>{t('noParticipants')}</p>
                             </div>
                         )}
                     </div>
 
                     {loser && !isSelecting && (
-                        <div className="bg-gradient-to-br from-red-50 to-orange-50 dark:from-red-950/20 dark:to-orange-950/20 rounded-2xl p-6 mb-6 border border-red-100 dark:border-red-900/30 animate-fade-in" aria-live="polite" aria-atomic="true">
-                            <div className="text-center">
-                                <div className="w-20 h-20 mx-auto mb-4 bg-gradient-to-br from-red-500 to-orange-500 rounded-full flex items-center justify-center shadow-xl">
-                                    <span className="text-4xl" role="img">😱</span>
-                                </div>
-                                <p className="text-sm text-gray-500 dark:text-gray-400 mb-2">{t('lost')}</p>
-                                <p className="text-3xl font-black text-red-600 dark:text-red-500">{loser}</p>
+                        <div className="ys-winner-reveal text-center p-6 mb-6 animate-fade-in" aria-live="polite" aria-atomic="true">
+                            <div className="w-20 h-20 mx-auto mb-4 bg-white/15 rounded-full flex items-center justify-center shadow-xl animate-float">
+                                <span className="text-4xl" role="img">😱</span>
                             </div>
+                            <p className="text-label-sm text-white/80 mb-2">{t('lost')}</p>
+                            <p className="text-3xl font-black text-white">{loser}</p>
                         </div>
                     )}
 
                     <div className="space-y-3">
-                        <button
+                        <Button
                             onClick={selectLoser}
                             disabled={isSelecting || participants.length < 2}
-                            className="w-full py-4 bg-gradient-to-r from-indigo-500 to-violet-500 hover:from-indigo-600 hover:to-violet-600 text-white font-bold text-lg rounded-2xl shadow-lg hover:shadow-xl transition-all disabled:opacity-50 disabled:cursor-not-allowed flex items-center justify-center gap-3"
+                            size="lg"
+                            className="w-full"
                         >
                             <Shuffle className={`w-5 h-5 ${isSelecting ? 'animate-spin' : ''}`} aria-hidden="true" />
                             {isSelecting ? t('selecting') : t('draw')}
-                        </button>
+                        </Button>
 
                         {loser && !isSelecting && (
-                            <button
+                            <Button
                                 onClick={reset}
-                                className="w-full py-3 bg-gray-100 dark:bg-gray-700 hover:bg-gray-200 dark:hover:bg-gray-600 text-gray-600 dark:text-gray-300 font-medium rounded-2xl transition-all flex items-center justify-center gap-2"
+                                variant="secondary"
+                                className="w-full"
                             >
                                 <Shuffle className="w-4 h-4" aria-hidden="true" />
                                 {t('reset')}
-                            </button>
+                            </Button>
                         )}
                     </div>
                 </article>
 
-                <section className="mt-8 bg-white/60 dark:bg-gray-800/60 backdrop-blur rounded-2xl p-6 border border-gray-100 dark:border-gray-700">
-                    <h2 className="text-lg font-bold text-gray-800 dark:text-white mb-3">{t('aboutTitle')}</h2>
-                    <p className="text-sm text-gray-600 dark:text-gray-400 leading-relaxed">
+                <section className="mt-8 ys-card p-6">
+                    <h2 className="font-heading text-headline-md text-[var(--text-primary)] mb-3">{t('aboutTitle')}</h2>
+                    <p className="text-body-md text-[var(--text-secondary)] leading-relaxed">
                         {t('aboutText')}
                     </p>
                 </section>

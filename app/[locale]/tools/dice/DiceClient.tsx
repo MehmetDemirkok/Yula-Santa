@@ -299,7 +299,7 @@ export default function DicePage() {
     const totalScore = results.reduce((a, b) => a + b, 0);
 
     return (
-        <div className="min-h-screen bg-gradient-to-br from-amber-50 via-orange-50/30 to-red-50/20 dark:from-gray-950 dark:via-gray-900 dark:to-slate-950 py-8 sm:py-12 px-4 transition-colors duration-300">
+        <div className="ys-page-shell py-4 sm:py-6 px-4 transition-colors duration-300">
 
             {/* Ambient blobs — matches coin-flip */}
             <div className="fixed inset-0 overflow-hidden pointer-events-none" aria-hidden="true">
@@ -311,23 +311,23 @@ export default function DicePage() {
             <div className="max-w-lg mx-auto relative">
 
                 {/* Header */}
-                <div className="flex items-center gap-4 mb-8">
-                    <Link href={`/${locale}`} className="p-2.5 rounded-2xl bg-white/80 dark:bg-gray-800/80 backdrop-blur shadow-md border border-white/60 dark:border-white/10 hover:shadow-lg hover:scale-105 transition-all duration-200">
-                        <ArrowLeft className="w-5 h-5 text-gray-600 dark:text-gray-400" />
+                <div className="flex items-center gap-4 mb-5 sm:mb-6">
+                    <Link href={`/${locale}`} className="p-2.5 rounded-2xl bg-[var(--card-bg)] backdrop-blur shadow-md border border-[var(--card-border)] hover:shadow-lg hover:scale-105 transition-all duration-200">
+                        <ArrowLeft className="w-5 h-5 text-[var(--text-secondary)]" />
                     </Link>
                     <div>
-                        <h1 className="text-2xl sm:text-3xl font-black text-gray-900 dark:text-white tracking-tight">
+                        <h1 className="font-heading text-headline-lg-mobile sm:text-headline-lg text-[var(--text-primary)] tracking-tight">
                             🎲 {t('title')}
                         </h1>
-                        <p className="text-xs sm:text-sm text-red-600 dark:text-red-400 mt-0.5 font-medium">{t('subtitle')}</p>
+                        <p className="text-label-sm text-santa-red mt-0.5">{t('subtitle')}</p>
                     </div>
                 </div>
 
                 {/* Main Card */}
-                <div className="bg-white/70 dark:bg-gray-800/70 backdrop-blur-xl rounded-3xl shadow-2xl border border-white/60 dark:border-white/10 overflow-hidden">
+                <div className="ys-card backdrop-blur-xl overflow-hidden">
 
                     {/* Dice count toggle — inline buttons like coin-flip style selector */}
-                    <div className="flex items-center justify-center gap-2 px-5 pt-5">
+                    <div className="flex items-center justify-center gap-2 px-4 pt-4">
                         {[1, 2].map(n => (
                             <button
                                 key={n}
@@ -335,8 +335,8 @@ export default function DicePage() {
                                 disabled={isRolling}
                                 className={`flex items-center gap-2 px-5 py-2 rounded-xl text-sm font-bold transition-all duration-200 border ${
                                     diceCount === n
-                                        ? 'bg-gradient-to-r from-red-600 to-rose-600 text-white border-red-500 shadow-lg shadow-red-500/20'
-                                        : 'bg-white/60 dark:bg-gray-700/40 text-gray-500 dark:text-gray-400 border-gray-200 dark:border-gray-700 hover:border-red-400'
+                                        ? 'bg-gradient-to-r from-santa-red to-[var(--santa-red-hover)] text-white border-santa-red shadow-lg shadow-santa-red/20'
+                                        : 'bg-[var(--card-bg)] text-[var(--text-secondary)] border-[var(--border-light)] hover:border-santa-red/50'
                                 }`}
                             >
                                 <span className="text-base">{n === 1 ? '🎲' : '🎲🎲'}</span>
@@ -345,12 +345,12 @@ export default function DicePage() {
                         ))}
                     </div>
 
-                    {/* 3D Canvas — dark slate with dot grid (identical to coin-flip) */}
-                    <div className="relative mt-4">
+                    {/* 3D Canvas — dark slate theatre backdrop, intentionally kept as-is (identical to coin-flip) */}
+                    <div className="relative mt-3">
                         <div className="absolute inset-0 rounded-none bg-gradient-to-b from-red-400/5 via-transparent to-transparent pointer-events-none z-10" />
                         <div
                             ref={canvasRef}
-                            className="relative bg-gradient-to-br from-slate-900 via-slate-800 to-slate-900 dark:from-gray-950 dark:via-gray-900 dark:to-gray-950 h-[270px] sm:h-[340px] w-full overflow-hidden"
+                            className="relative bg-gradient-to-br from-slate-900 via-slate-800 to-slate-900 dark:from-gray-950 dark:via-gray-900 dark:to-gray-950 h-[240px] sm:h-[300px] w-full overflow-hidden"
                         >
                             {/* Dot grid overlay — same as coin-flip */}
                             <div
@@ -379,23 +379,23 @@ export default function DicePage() {
                         </div>
                     </div>
 
-                    <div className="p-5 sm:p-7 space-y-4">
+                    <div className="p-4 sm:p-5 space-y-3">
 
                         {/* Roll stats — last roll result shown as large clean numbers */}
                         {results.length > 0 && (
                             <div className="grid grid-cols-2 gap-3 animate-zoom-in">
                                 {results.map((v, i) => (
-                                    <div key={i} className="rounded-2xl p-4 text-center border bg-red-50 dark:bg-red-900/15 border-red-100 dark:border-red-900/30">
-                                        <p className="text-5xl font-black tabular-nums text-red-600 dark:text-red-400">{v}</p>
-                                        <p className="text-xs font-bold uppercase tracking-widest mt-1 text-slate-500 dark:text-slate-400">
+                                    <div key={i} className="rounded-2xl p-4 text-center border bg-santa-red/8 dark:bg-santa-red/15 border-santa-red/15 dark:border-santa-red/25">
+                                        <p className="text-5xl font-black tabular-nums text-santa-red">{v}</p>
+                                        <p className="text-label-sm text-[var(--text-muted)] mt-1">
                                             {t('oneDie')} {i + 1}
                                         </p>
                                     </div>
                                 ))}
                                 {diceCount === 2 && results.length === 2 && (
-                                    <div className="col-span-2 rounded-2xl p-3 text-center border bg-slate-50 dark:bg-slate-800/50 border-slate-200 dark:border-slate-700">
-                                        <p className="text-2xl font-black text-slate-700 dark:text-slate-200">
-                                            {t('total')}: <span className="text-red-600 dark:text-red-400">{totalScore}</span>
+                                    <div className="col-span-2 rounded-2xl p-3 text-center border bg-[var(--surface-2)] border-[var(--border-light)]">
+                                        <p className="text-2xl font-black text-[var(--text-primary)]">
+                                            {t('total')}: <span className="text-santa-red">{totalScore}</span>
                                         </p>
                                     </div>
                                 )}
@@ -406,10 +406,10 @@ export default function DicePage() {
                         <button
                             onClick={rollDice}
                             disabled={isRolling}
-                            className={`w-full py-5 rounded-2xl font-black text-xl text-white shadow-xl transition-all duration-300 active:scale-[0.97] relative overflow-hidden group ${
+                            className={`w-full py-4 rounded-2xl font-black text-xl text-white shadow-xl transition-all duration-300 active:scale-[0.97] relative overflow-hidden group ${
                                 isRolling
-                                    ? 'bg-gray-400 dark:bg-gray-600 cursor-not-allowed'
-                                    : 'bg-gradient-to-r from-red-600 via-rose-600 to-red-600 hover:from-red-500 hover:via-rose-500 hover:to-red-500 shadow-red-400/40 dark:shadow-red-900/40 hover:shadow-2xl hover:scale-[1.02]'
+                                    ? 'bg-[var(--text-muted)] cursor-not-allowed'
+                                    : 'bg-gradient-to-r from-santa-red via-[var(--santa-red-hover)] to-santa-red hover:brightness-110 shadow-santa-red/30 hover:shadow-2xl hover:scale-[1.02]'
                             }`}
                         >
                             {!isRolling && (
@@ -425,7 +425,7 @@ export default function DicePage() {
                         {history.length > 0 && (
                             <button
                                 onClick={() => { setHistory([]); setResults([]); }}
-                                className="w-full py-3 bg-gray-50 dark:bg-gray-700/50 hover:bg-red-50 dark:hover:bg-red-900/20 text-gray-400 dark:text-gray-500 hover:text-red-500 dark:hover:text-red-400 font-semibold rounded-2xl transition-all duration-200 flex items-center justify-center gap-2 border border-gray-100 dark:border-gray-700 hover:border-red-200 dark:hover:border-red-900/50 group text-sm uppercase tracking-wide"
+                                className="w-full py-3 bg-[var(--surface-2)] hover:bg-santa-red/10 text-[var(--text-muted)] hover:text-santa-red font-semibold rounded-2xl transition-all duration-200 flex items-center justify-center gap-2 border border-[var(--border-light)] hover:border-santa-red/30 group text-sm uppercase tracking-wide"
                             >
                                 <RotateCcw className="w-4 h-4 group-hover:rotate-180 transition-transform duration-300" />
                                 {t('clear')}
@@ -436,31 +436,31 @@ export default function DicePage() {
 
                 {/* History — dice badge dots, mirrors coin-flip history style */}
                 {history.length > 0 && (
-                    <div className="mt-6 space-y-2">
-                        <p className="text-xs text-gray-400 dark:text-gray-500 font-medium uppercase tracking-wider px-1">
+                    <div className="mt-4 space-y-2">
+                        <p className="text-label-sm text-[var(--text-muted)] uppercase tracking-wider px-1">
                             {t('history')}
                         </p>
                         {history.map((roll, idx) => (
                             <div
                                 key={idx}
-                                className={`bg-white/50 dark:bg-gray-800/50 backdrop-blur-sm rounded-2xl px-4 py-3 flex items-center justify-between border text-sm ${
+                                className={`ys-zebra-row bg-[var(--card-bg)] backdrop-blur-sm rounded-2xl px-4 py-3 flex items-center justify-between border text-sm ${
                                     idx === 0
-                                        ? 'border-red-200 dark:border-red-800/40 animate-slide-up'
-                                        : 'border-white/40 dark:border-gray-700/50'
+                                        ? 'border-santa-red/30 animate-slide-up'
+                                        : 'border-[var(--border-light)]'
                                 }`}
                             >
                                 <div className="flex gap-1.5">
                                     {roll.dice.map((d, i) => (
                                         <div key={i} className={`w-9 h-9 rounded-full flex items-center justify-center text-sm font-black shadow-sm border transition-all ${
                                             idx === 0 && i === 0
-                                                ? 'bg-gradient-to-br from-red-500 to-rose-600 border-red-400 text-white ring-2 ring-amber-400 ring-offset-1 dark:ring-offset-gray-800 scale-110'
-                                                : 'bg-gradient-to-br from-red-500 to-rose-600 border-red-400 text-white opacity-70'
+                                                ? 'bg-gradient-to-br from-santa-red to-[var(--santa-red-hover)] border-santa-red text-white ring-2 ring-gold ring-offset-1 ring-offset-[var(--card-bg)] scale-110'
+                                                : 'bg-gradient-to-br from-santa-red to-[var(--santa-red-hover)] border-santa-red text-white opacity-70'
                                         }`}>
                                             {d}
                                         </div>
                                     ))}
                                 </div>
-                                <span className="font-bold text-gray-500 dark:text-gray-400 tabular-nums text-xs">
+                                <span className="font-bold text-[var(--text-secondary)] tabular-nums text-xs">
                                     {roll.dice.length > 1 ? `= ${roll.total}` : ''}
                                 </span>
                             </div>

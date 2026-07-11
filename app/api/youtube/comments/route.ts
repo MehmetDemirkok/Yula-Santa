@@ -1,6 +1,8 @@
 import { NextResponse } from 'next/server';
 import { rateLimit } from '@/lib/rateLimit';
 
+export const maxDuration = 60;
+
 export async function POST(request: Request) {
     const rl = rateLimit(request, 'youtube');
     if (!rl.allowed) {
@@ -50,7 +52,7 @@ export async function POST(request: Request) {
         let allParticipants: { name: string, comment: string, channelId: string, profileImageUrl?: string }[] = [];
         let nextPageToken = '';
         let pageCount = 0;
-        const MAX_PAGES = 100; // Limit pages to avoid timeouts
+        const MAX_PAGES = 35; // Sıralı sayfalama + 60s maxDuration sınırı içinde kalacak şekilde sınırlandı (~3.500 yorum)
 
         do {
             // Request 'snippet' for top-level and 'replies' for nested comments

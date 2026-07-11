@@ -942,6 +942,24 @@
                         "desc": "Fun activity for the family."
                     }
                 }
+            },
+            "ai": {
+                "badge": "Com IA",
+                "formTitle": "Conte-nos alguns detalhes e criaremos sugestões só para você",
+                "relationshipLabel": "Para quem é o presente?",
+                "relationshipPlaceholder": "ex. minha namorada, meu chefe, minha mãe",
+                "budgetLabel": "Orçamento",
+                "budgetLow": "Econômico",
+                "budgetMedium": "Médio",
+                "budgetHigh": "Premium",
+                "notesLabel": "Interesses (opcional)",
+                "notesPlaceholder": "ex. café, livros, esportes, tecnologia",
+                "generateButton": "Sugerir com IA",
+                "regenerateButton": "Ver outras ideias",
+                "loadingText": "Procurando os melhores presentes para você...",
+                "errorNotice": "As sugestões de IA não estão disponíveis agora, aqui estão nossas ideias selecionadas.",
+                "changeSelection": "Alterar seleção",
+                "poweredBy": "Gerado com Google Gemini"
             }
         },
         "giftSuggestionsMeta": {

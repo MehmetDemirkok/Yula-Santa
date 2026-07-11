@@ -25,6 +25,8 @@ import ShareModal from "@/components/ShareModal";
 import { useToast } from "@/lib/ToastContext";
 import { downloadWinnerCard } from "@/lib/downloadWinnerCard";
 import { secureShuffle, secureRandomInt } from "@/lib/random";
+import { AdWrapper, InArticleAd } from "@/components/ads";
+import { AD_SLOTS } from "@/lib/ads/config";
 
 // TikTok Icon Component
 const TikTokIcon = ({ className }: { className?: string }) => (
@@ -363,7 +365,7 @@ export default function TikTokGiveaway() {
     };
 
     return (
-        <main className="min-h-screen min-h-dvh flex flex-col items-center p-3 sm:p-4 pt-24 sm:pt-32 relative overflow-hidden bg-gradient-to-b from-cyan-50 via-red-50 to-white dark:from-gray-900 dark:via-gray-900 dark:to-gray-950 safe-area-inset-bottom transition-colors duration-300">
+        <main className="ys-page-shell flex flex-col items-center p-3 sm:p-4 pt-24 sm:pt-32 relative overflow-hidden safe-area-inset-bottom transition-colors duration-300">
             {/* Decorative BG */}
             <div className="absolute top-0 left-0 w-48 sm:w-72 md:w-96 h-48 sm:h-72 md:h-96 bg-cyan-200 dark:bg-cyan-500/20 rounded-full blur-[80px] sm:blur-[100px] md:blur-[120px] opacity-40 -translate-x-1/2 -translate-y-1/2" />
             <div className="absolute bottom-0 right-0 w-48 sm:w-72 md:w-96 h-48 sm:h-72 md:h-96 bg-red-200 dark:bg-red-500/20 rounded-full blur-[80px] sm:blur-[100px] md:blur-[120px] opacity-40 translate-x-1/3 translate-y-1/3" />
@@ -875,6 +877,10 @@ export default function TikTokGiveaway() {
                                                 ))}
                                             </div>
                                         )}
+
+                                        <AdWrapper position="inline">
+                                            <InArticleAd adSlot={AD_SLOTS.IN_ARTICLE} />
+                                        </AdWrapper>
 
                                         <div className="flex flex-wrap gap-2 pt-4">
                                             <Button onClick={copyResults} variant="secondary" className="flex-1 min-w-[120px]">{copied ? t.giveaway.copied : t.giveaway.copyResults}</Button>

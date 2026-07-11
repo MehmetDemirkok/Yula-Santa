@@ -11,6 +11,7 @@ import {
 import { useParams } from 'next/navigation';
 import { useTranslations } from 'next-intl';
 import { useToast } from '@/lib/ToastContext';
+import { Button } from '@/components/ui/Button';
 
 interface ProfileData {
     username: string;
@@ -189,32 +190,32 @@ export default function InstagramStoryViewerPage() {
     const isLoading = phase === 'loading-profile' || phase === 'loading-stories';
 
     return (
-        <div className="min-h-screen bg-gradient-to-br from-purple-50 via-white to-pink-50 dark:from-gray-900 dark:via-gray-900 dark:to-gray-950 py-12 px-4 transition-colors duration-300">
+        <div className="ys-page-shell py-12 px-4 transition-colors duration-300">
             <div className="max-w-2xl mx-auto">
 
                 {/* Header */}
                 <div className="flex items-center gap-4 mb-8">
                     <Link
                         href={`/${locale}/tools`}
-                        className="p-2 rounded-xl bg-white dark:bg-gray-800 shadow-sm border border-gray-100 dark:border-gray-700 hover:shadow-md transition-all"
+                        className="p-2 rounded-lg bg-[var(--card-bg)] shadow-sm border border-[var(--border-light)] hover:shadow-md transition-all"
                     >
-                        <ArrowLeft className="w-5 h-5 text-gray-600 dark:text-gray-400" />
+                        <ArrowLeft className="w-5 h-5 text-[var(--text-secondary)]" />
                     </Link>
                     <div>
-                        <h1 className="text-2xl md:text-3xl font-black text-gray-900 dark:text-white">
+                        <h1 className="font-heading text-headline-lg-mobile sm:text-headline-lg text-[var(--text-primary)]">
                             📱 {t('title')}
                         </h1>
-                        <p className="text-sm text-gray-500 dark:text-gray-400 mt-1">{t('subtitle')}</p>
+                        <p className="text-body-md text-[var(--text-secondary)] mt-1">{t('subtitle')}</p>
                     </div>
                 </div>
 
                 {/* Main Card */}
-                <div className="bg-white dark:bg-gray-800 rounded-3xl shadow-xl border border-gray-100 dark:border-gray-700 p-6 md:p-8 space-y-6">
+                <div className="ys-card p-6 md:p-8 space-y-6">
 
-                    {/* Hero Banner */}
+                    {/* Hero Banner — Instagram-brand gradient kept as platform icon identity */}
                     <div className="bg-gradient-to-r from-purple-500 via-pink-500 to-orange-400 rounded-2xl p-6 text-center text-white">
                         <Instagram className="w-12 h-12 mx-auto mb-3" />
-                        <h2 className="text-lg font-bold mb-1">{t('subtitle')}</h2>
+                        <h2 className="font-heading text-lg font-bold mb-1">{t('subtitle')}</h2>
                         <p className="text-white/80 text-sm">
                             {t('helper')}
                         </p>
@@ -222,12 +223,12 @@ export default function InstagramStoryViewerPage() {
 
                     {/* Search Input */}
                     <div>
-                        <label className="block text-sm font-bold text-gray-700 dark:text-gray-300 mb-2">
+                        <label className="block text-label-md text-[var(--text-secondary)] mb-2">
                             {t('searchLabel')}
                         </label>
                         <div className="flex gap-2">
                             <div className="relative flex-1">
-                                <span className="absolute left-4 top-1/2 -translate-y-1/2 text-gray-400 font-medium select-none">@</span>
+                                <span className="absolute left-4 top-1/2 -translate-y-1/2 text-[var(--text-muted)] font-medium select-none">@</span>
                                 <input
                                     type="text"
                                     value={username}
@@ -235,34 +236,30 @@ export default function InstagramStoryViewerPage() {
                                     onKeyDown={e => e.key === 'Enter' && !isLoading && handleSearch()}
                                     placeholder="kullaniciadi"
                                     disabled={isLoading}
-                                    className="w-full pl-10 pr-4 py-3 rounded-xl border border-gray-200 dark:border-gray-700 bg-white dark:bg-gray-900 focus:border-pink-500 focus:ring-2 focus:ring-pink-200 dark:focus:ring-pink-500/20 outline-none transition-all dark:text-white disabled:opacity-50"
+                                    className="w-full pl-10 pr-4 py-3 rounded-lg border-2 border-[var(--input-border)] bg-[var(--input-bg)] focus:border-[var(--input-focus)] focus:outline-none focus:ring-0 outline-none transition-colors text-[var(--text-primary)] disabled:opacity-50"
                                 />
                             </div>
-                            <button
-                                onClick={handleSearch}
-                                disabled={isLoading}
-                                className="px-6 py-3 bg-gradient-to-r from-purple-500 via-pink-500 to-orange-400 text-white font-bold rounded-xl hover:shadow-lg transition-all disabled:opacity-50 flex items-center gap-2"
-                            >
+                            <Button onClick={handleSearch} disabled={isLoading}>
                                 <Search className="w-5 h-5" />
                                 <span className="hidden sm:inline">{t('searchButton')}</span>
-                            </button>
+                            </Button>
                         </div>
                     </div>
 
                     {/* Loading State */}
                     {isLoading && (
-                        <div className="p-4 bg-pink-50 dark:bg-pink-950/20 border border-pink-200 dark:border-pink-800 rounded-xl animate-in fade-in">
+                        <div className="p-4 bg-[var(--surface-2)] border border-[var(--border-light)] rounded-xl animate-in fade-in">
                             <div className="flex items-center gap-3">
-                                <div className="w-5 h-5 border-2 border-pink-300 border-t-pink-600 rounded-full animate-spin flex-shrink-0" />
+                                <div className="w-5 h-5 border-2 border-[var(--border-medium)] border-t-indigo-accent rounded-full animate-spin flex-shrink-0" />
                                 <div>
-                                    <p className="text-sm font-semibold text-pink-700 dark:text-pink-400">{loadStep}</p>
-                                    <p className="text-xs text-pink-400 dark:text-pink-500 mt-0.5">
+                                    <p className="text-sm font-semibold text-[var(--text-primary)]">{loadStep}</p>
+                                    <p className="text-xs text-[var(--text-muted)] mt-0.5">
                                         {phase === 'loading-stories' ? t('loadingNote') : t('waitPlease')}
                                     </p>
                                 </div>
                             </div>
-                            <div className="mt-3 w-full bg-pink-100 dark:bg-pink-900/30 rounded-full h-1 overflow-hidden">
-                                <div className="h-full w-full bg-gradient-to-r from-pink-400 to-purple-400 rounded-full animate-pulse" />
+                            <div className="mt-3 w-full bg-[var(--border-light)] rounded-full h-1 overflow-hidden">
+                                <div className="h-full w-full bg-gradient-to-r from-santa-red to-indigo-accent rounded-full animate-pulse" />
                             </div>
                         </div>
                     )}
@@ -272,18 +269,18 @@ export default function InstagramStoryViewerPage() {
                         <div className="animate-in fade-in slide-in-from-bottom-4 duration-500">
 
                             {/* Profile Header */}
-                            <div className="flex items-center gap-4 p-4 bg-gray-50 dark:bg-gray-900 rounded-2xl mb-4">
+                            <div className="flex items-center gap-4 p-4 bg-[var(--surface-2)] rounded-2xl mb-4">
 
-                                {/* Story Ring + Profile Pic */}
+                                {/* Story Ring + Profile Pic — Instagram-brand gradient kept as platform icon identity */}
                                 <button
                                     onClick={() => stories.length > 0 && openViewer(0)}
                                     className={`relative flex-shrink-0 rounded-full ${stories.length > 0 ? 'cursor-pointer' : 'cursor-default'}`}
                                 >
                                     {/* Gradient ring (shows when stories exist) */}
-                                    <div className={`absolute inset-0 rounded-full ${stories.length > 0 ? 'bg-gradient-to-tr from-yellow-400 via-pink-500 to-purple-600 p-[2.5px]' : 'bg-gray-300 dark:bg-gray-600 p-[2px]'}`}>
-                                        <div className="w-full h-full rounded-full bg-white dark:bg-gray-800" />
+                                    <div className={`absolute inset-0 rounded-full ${stories.length > 0 ? 'bg-gradient-to-tr from-yellow-400 via-pink-500 to-purple-600 p-[2.5px]' : 'bg-[var(--border-medium)] p-[2px]'}`}>
+                                        <div className="w-full h-full rounded-full bg-[var(--card-bg)]" />
                                     </div>
-                                    <div className="relative w-16 h-16 rounded-full overflow-hidden border-2 border-white dark:border-gray-800 m-[3px]">
+                                    <div className="relative w-16 h-16 rounded-full overflow-hidden border-2 border-[var(--card-bg)] m-[3px]">
                                         {profile.profilePicUrl ? (
                                             <Image
                                                 src={`/api/proxy-image?url=${encodeURIComponent(profile.profilePicUrlHD || profile.profilePicUrl)}`}
@@ -299,7 +296,7 @@ export default function InstagramStoryViewerPage() {
                                         )}
                                     </div>
                                     {stories.length > 0 && (
-                                        <span className="absolute -bottom-1 -right-1 w-5 h-5 bg-pink-500 rounded-full flex items-center justify-center text-white text-[10px] font-bold border-2 border-white dark:border-gray-800">
+                                        <span className="absolute -bottom-1 -right-1 w-5 h-5 bg-santa-red rounded-full flex items-center justify-center text-white text-[10px] font-bold border-2 border-[var(--card-bg)]">
                                             {stories.length}
                                         </span>
                                     )}
@@ -308,18 +305,18 @@ export default function InstagramStoryViewerPage() {
                                 {/* Profile Info */}
                                 <div className="flex-1 min-w-0">
                                     <div className="flex items-center gap-1.5 flex-wrap">
-                                        <span className="font-bold text-gray-900 dark:text-white text-base">@{profile.username}</span>
+                                        <span className="font-bold text-[var(--text-primary)] text-base">@{profile.username}</span>
                                         {profile.isVerified && <CheckCircle className="w-4 h-4 text-blue-500 fill-blue-500 flex-shrink-0" />}
-                                        {profile.isPrivate && <Lock className="w-4 h-4 text-gray-400 flex-shrink-0" />}
+                                        {profile.isPrivate && <Lock className="w-4 h-4 text-[var(--text-muted)] flex-shrink-0" />}
                                     </div>
                                     {profile.fullName && (
-                                        <p className="text-sm text-gray-500 dark:text-gray-400 truncate">{profile.fullName}</p>
+                                        <p className="text-sm text-[var(--text-secondary)] truncate">{profile.fullName}</p>
                                     )}
                                     <a
                                         href={`https://instagram.com/${profile.username}`}
                                         target="_blank"
                                         rel="noopener noreferrer"
-                                        className="inline-flex items-center gap-1 text-xs text-purple-500 hover:underline mt-0.5"
+                                        className="inline-flex items-center gap-1 text-xs text-indigo-accent hover:underline mt-0.5"
                                     >
                                         <ExternalLink className="w-3 h-3" />
                                         {t('viewProfile')}
@@ -328,26 +325,26 @@ export default function InstagramStoryViewerPage() {
                             </div>
 
                             {/* Stats Row */}
-                            <div className="flex justify-around py-3 border border-gray-100 dark:border-gray-700 rounded-xl mb-4">
+                            <div className="flex justify-around py-3 border border-[var(--border-light)] rounded-xl mb-4">
                                 <div className="text-center">
-                                    <Grid3X3 className="w-4 h-4 mx-auto mb-1 text-gray-400" />
-                                    <p className="font-bold text-gray-900 dark:text-white text-sm">{formatCount(profile.postsCount)}</p>
-                                    <p className="text-[11px] text-gray-400">{t('posts')}</p>
+                                    <Grid3X3 className="w-4 h-4 mx-auto mb-1 text-[var(--text-muted)]" />
+                                    <p className="font-bold text-[var(--text-primary)] text-sm">{formatCount(profile.postsCount)}</p>
+                                    <p className="text-[11px] text-[var(--text-muted)]">{t('posts')}</p>
                                 </div>
                                 <div className="text-center">
-                                    <Users className="w-4 h-4 mx-auto mb-1 text-gray-400" />
-                                    <p className="font-bold text-gray-900 dark:text-white text-sm">{formatCount(profile.followersCount)}</p>
-                                    <p className="text-[11px] text-gray-400">{t('followers')}</p>
+                                    <Users className="w-4 h-4 mx-auto mb-1 text-[var(--text-muted)]" />
+                                    <p className="font-bold text-[var(--text-primary)] text-sm">{formatCount(profile.followersCount)}</p>
+                                    <p className="text-[11px] text-[var(--text-muted)]">{t('followers')}</p>
                                 </div>
                                 <div className="text-center">
-                                    <User className="w-4 h-4 mx-auto mb-1 text-gray-400" />
-                                    <p className="font-bold text-gray-900 dark:text-white text-sm">{formatCount(profile.followsCount)}</p>
-                                    <p className="text-[11px] text-gray-400">{t('followingLabel')}</p>
+                                    <User className="w-4 h-4 mx-auto mb-1 text-[var(--text-muted)]" />
+                                    <p className="font-bold text-[var(--text-primary)] text-sm">{formatCount(profile.followsCount)}</p>
+                                    <p className="text-[11px] text-[var(--text-muted)]">{t('followingLabel')}</p>
                                 </div>
                             </div>
 
                             {profile.biography && (
-                                <p className="text-sm text-gray-600 dark:text-gray-400 px-1 mb-4 whitespace-pre-line">{profile.biography}</p>
+                                <p className="text-sm text-[var(--text-secondary)] px-1 mb-4 whitespace-pre-line">{profile.biography}</p>
                             )}
 
                             {/* Stories section */}
@@ -361,7 +358,7 @@ export default function InstagramStoryViewerPage() {
                                         href={`https://instagram.com/stories/${profile.username}/`}
                                         target="_blank"
                                         rel="noopener noreferrer"
-                                        className="inline-flex items-center gap-2 text-sm bg-gradient-to-r from-purple-500 to-pink-500 text-white font-bold px-4 py-2 rounded-xl hover:shadow-md transition-all"
+                                        className="inline-flex items-center gap-2 text-sm bg-santa-red text-white font-bold px-4 py-2 rounded-lg hover:shadow-md transition-all"
                                     >
                                         <ExternalLink className="w-4 h-4" />
                                         {t('viewOnInstagram')}
@@ -371,7 +368,7 @@ export default function InstagramStoryViewerPage() {
 
                             {stories.length > 0 ? (
                                 <div>
-                                    <p className="text-xs font-bold text-gray-500 dark:text-gray-400 uppercase tracking-wide mb-2 px-1">
+                                    <p className="text-label-sm text-[var(--text-muted)] uppercase mb-2 px-1">
                                         {t('storiesTitle')} ({stories.length})
                                     </p>
                                     <div className="flex gap-3 overflow-x-auto pb-2 -mx-1 px-1 custom-scrollbar">
@@ -379,10 +376,10 @@ export default function InstagramStoryViewerPage() {
                                             <button
                                                 key={s.id}
                                                 onClick={() => openViewer(i)}
-                                                className="flex-shrink-0 w-16 h-24 rounded-xl overflow-hidden relative border-2 border-pink-400 shadow-md hover:scale-105 transition-transform"
+                                                className="flex-shrink-0 w-16 h-24 rounded-xl overflow-hidden relative border-2 border-santa-red shadow-md hover:scale-105 transition-transform"
                                             >
                                                 {s.type === 'video' ? (
-                                                    <div className="w-full h-full bg-gray-900 flex items-center justify-center">
+                                                    <div className="w-full h-full bg-black/80 flex items-center justify-center">
                                                         <Play className="w-6 h-6 text-white" />
                                                     </div>
                                                 ) : (
@@ -403,34 +400,34 @@ export default function InstagramStoryViewerPage() {
                                 </div>
                             ) : storiesError ? (
                                 storiesErrorCode === 'NO_SESSION' || storiesErrorCode === 'SESSION_EXPIRED' ? (
-                                    <div className="bg-blue-50 dark:bg-blue-950/20 border border-blue-200 dark:border-blue-800/50 rounded-xl p-5">
+                                    <div className="bg-indigo-accent/10 border border-indigo-accent/25 rounded-xl p-5">
                                         <div className="flex items-start gap-3 mb-3">
                                             <span className="text-2xl">🔑</span>
                                             <div>
-                                                <p className="text-sm font-bold text-blue-800 dark:text-blue-300 mb-1">
+                                                <p className="text-sm font-bold text-indigo-accent mb-1">
                                                     {storiesErrorCode === 'SESSION_EXPIRED'
                                                         ? 'Instagram oturumu süresi doldu'
                                                         : 'Hikayeler için Instagram oturumu gerekiyor'}
                                                 </p>
-                                                <p className="text-xs text-blue-600 dark:text-blue-400 leading-relaxed">
+                                                <p className="text-xs text-[var(--text-secondary)] leading-relaxed">
                                                     {storiesErrorCode === 'SESSION_EXPIRED'
                                                         ? 'INSTAGRAM_SESSION_ID\'yi tarayıcıdan yeni session cookie alarak güncelle.'
                                                         : '.env.local dosyasına INSTAGRAM_SESSION_ID ekle.'}
                                                 </p>
                                             </div>
                                         </div>
-                                        <div className="bg-blue-100 dark:bg-blue-900/30 rounded-lg p-3 text-xs font-mono text-blue-700 dark:text-blue-300 space-y-1">
-                                            <p className="font-bold text-blue-800 dark:text-blue-200">Nasıl alınır (tam cookie):</p>
-                                            <p>1. instagram.com'a giriş yap</p>
+                                        <div className="bg-[var(--surface-2)] rounded-lg p-3 text-xs font-mono text-[var(--text-secondary)] space-y-1">
+                                            <p className="font-bold text-[var(--text-primary)]">Nasıl alınır (tam cookie):</p>
+                                            <p>1. instagram.com&apos;a giriş yap</p>
                                             <p>2. F12 → Network → herhangi bir istek → Request Headers</p>
-                                            <p>3. <span className="bg-blue-200 dark:bg-blue-800 px-1 rounded">Cookie</span> başlığının tüm değerini kopyala</p>
-                                            <p>4. .env.local → <span className="bg-blue-200 dark:bg-blue-800 px-1 rounded">INSTAGRAM_COOKIES=&lt;yapıştır&gt;</span></p>
+                                            <p>3. <span className="bg-indigo-accent/15 px-1 rounded">Cookie</span> başlığının tüm değerini kopyala</p>
+                                            <p>4. .env.local → <span className="bg-indigo-accent/15 px-1 rounded">INSTAGRAM_COOKIES=&lt;yapıştır&gt;</span></p>
                                         </div>
                                         <a
                                             href={`https://instagram.com/stories/${profile.username}/`}
                                             target="_blank"
                                             rel="noopener noreferrer"
-                                            className="mt-3 inline-flex items-center gap-2 text-xs text-blue-600 dark:text-blue-400 hover:underline"
+                                            className="mt-3 inline-flex items-center gap-2 text-xs text-indigo-accent hover:underline"
                                         >
                                             <ExternalLink className="w-3 h-3" />
                                             {t('viewOnInstagram')}
@@ -438,7 +435,7 @@ export default function InstagramStoryViewerPage() {
                                     </div>
                                 ) : (
                                     <div className="bg-amber-50 dark:bg-amber-950/20 border border-amber-200 dark:border-amber-900/30 rounded-xl p-4 text-center">
-                                        <ImageIcon className="w-8 h-8 text-amber-400 mx-auto mb-2" />
+                                        <ImageIcon className="w-8 h-8 text-amber-500 mx-auto mb-2" />
                                         <p className="text-sm text-amber-700 dark:text-amber-400 font-medium mb-3">
                                             {storiesError}
                                         </p>
@@ -446,7 +443,7 @@ export default function InstagramStoryViewerPage() {
                                             href={`https://instagram.com/stories/${profile.username}/`}
                                             target="_blank"
                                             rel="noopener noreferrer"
-                                            className="inline-flex items-center gap-2 text-sm bg-gradient-to-r from-purple-500 to-pink-500 text-white font-bold px-4 py-2 rounded-xl hover:shadow-md transition-all"
+                                            className="inline-flex items-center gap-2 text-sm bg-santa-red text-white font-bold px-4 py-2 rounded-lg hover:shadow-md transition-all"
                                         >
                                             <ExternalLink className="w-4 h-4" />
                                             {t('viewOnInstagram')}
@@ -458,7 +455,7 @@ export default function InstagramStoryViewerPage() {
                             {/* Search Again */}
                             <button
                                 onClick={() => { setProfile(null); setStories([]); setStoriesError(''); setStoriesErrorCode(null); setPhase('idle'); setUsername(''); }}
-                                className="mt-4 text-sm text-gray-400 hover:text-purple-600 dark:hover:text-purple-400 transition-colors"
+                                className="mt-4 text-sm text-[var(--text-muted)] hover:text-indigo-accent transition-colors"
                             >
                                 {t('searchAgain')}
                             </button>
@@ -467,27 +464,27 @@ export default function InstagramStoryViewerPage() {
 
                     {/* Info Box (shown only when idle) */}
                     {phase === 'idle' && (
-                        <div className="bg-gray-50 dark:bg-gray-900 rounded-xl p-4 border border-gray-100 dark:border-gray-700">
-                            <p className="text-xs font-bold text-gray-500 dark:text-gray-400 uppercase tracking-wide mb-2">{t('howItWorks')}</p>
-                            <ul className="space-y-1.5 text-sm text-gray-600 dark:text-gray-400">
-                                <li className="flex items-start gap-2"><span className="text-pink-500 mt-0.5">①</span> {t('howStep1')}</li>
-                                <li className="flex items-start gap-2"><span className="text-pink-500 mt-0.5">②</span> {t('howStep2')}</li>
-                                <li className="flex items-start gap-2"><span className="text-pink-500 mt-0.5">③</span> {t('howStep3')}</li>
+                        <div className="bg-[var(--surface-2)] rounded-xl p-4 border border-[var(--border-light)]">
+                            <p className="text-label-sm text-[var(--text-muted)] uppercase mb-2">{t('howItWorks')}</p>
+                            <ul className="space-y-1.5 text-sm text-[var(--text-secondary)]">
+                                <li className="flex items-start gap-2"><span className="text-santa-red mt-0.5">①</span> {t('howStep1')}</li>
+                                <li className="flex items-start gap-2"><span className="text-santa-red mt-0.5">②</span> {t('howStep2')}</li>
+                                <li className="flex items-start gap-2"><span className="text-santa-red mt-0.5">③</span> {t('howStep3')}</li>
                             </ul>
                         </div>
                     )}
                 </div>
 
                 {/* About */}
-                <section className="mt-6 bg-white/60 dark:bg-gray-800/60 backdrop-blur rounded-2xl p-6 border border-gray-100 dark:border-gray-700">
-                    <h2 className="text-base font-bold text-gray-800 dark:text-white mb-2">{t('aboutTitle')}</h2>
-                    <p className="text-sm text-gray-600 dark:text-gray-400 leading-relaxed">
+                <section className="mt-6 ys-card p-6">
+                    <h2 className="font-heading text-headline-md text-[var(--text-primary)] mb-2">{t('aboutTitle')}</h2>
+                    <p className="text-body-md text-[var(--text-secondary)] leading-relaxed">
                         {t('aboutText')}
                     </p>
                 </section>
             </div>
 
-            {/* Story Viewer Modal */}
+            {/* Story Viewer Modal — fullscreen overlay chrome intentionally stays on black regardless of theme */}
             {viewerOpen && stories.length > 0 && (
                 <div
                     className="fixed inset-0 z-50 bg-black flex items-center justify-center"

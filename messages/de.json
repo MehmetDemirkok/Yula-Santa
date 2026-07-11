@@ -951,6 +951,24 @@
                         "desc": "Fun activity for the family."
                     }
                 }
+            },
+            "ai": {
+                "badge": "KI-gestützt",
+                "formTitle": "Gib uns ein paar Details, damit wir passende Vorschläge erstellen können",
+                "relationshipLabel": "Für wen suchst du ein Geschenk?",
+                "relationshipPlaceholder": "z. B. meine Freundin, mein Chef, meine Mutter",
+                "budgetLabel": "Budget",
+                "budgetLow": "Günstig",
+                "budgetMedium": "Mittel",
+                "budgetHigh": "Hochwertig",
+                "notesLabel": "Interessen (optional)",
+                "notesPlaceholder": "z. B. Kaffee, Bücher, Sport, Technik",
+                "generateButton": "Mit KI vorschlagen",
+                "regenerateButton": "Andere Ideen anzeigen",
+                "loadingText": "Wir suchen die besten Geschenke für dich...",
+                "errorNotice": "KI-Vorschläge sind gerade nicht verfügbar, hier sind stattdessen unsere ausgewählten Ideen.",
+                "changeSelection": "Auswahl ändern",
+                "poweredBy": "Erstellt mit Google Gemini"
             }
         },
         "giftSuggestionsMeta": {

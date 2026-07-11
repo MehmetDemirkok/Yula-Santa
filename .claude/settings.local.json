@@ -21,7 +21,10 @@
       "Bash(node -e 'let d=\"\";process.stdin.on\\(\"data\",c=>d+=c\\);process.stdin.on\\(\"end\",\\(\\)=>{try{const j=JSON.parse\\(d\\);if\\(j.participants\\){console.log\\(\"OK katılımcı sayısı:\",j.participants.length\\);console.log\\(\"ilk 5:\",j.participants.slice\\(0,5\\).map\\(p=>p.name\\).join\\(\", \"\\)\\);}else console.log\\(\"HATA:\",j.error\\);}catch\\(e\\){console.log\\(\"raw:\",d.slice\\(0,200\\)\\);}}\\)')",
       "Bash(node -e 'let d=\"\";process.stdin.on\\(\"data\",c=>d+=c\\);process.stdin.on\\(\"end\",\\(\\)=>{const j=JSON.parse\\(d\\);console.log\\(j.participants?\\(\"OK \"+j.participants.length+\" katılımcı\"\\):\\(\"HATA: \"+j.error\\)\\)}\\)')",
       "mcp__playwright__browser_resize",
-      "mcp__playwright__browser_navigate"
+      "mcp__playwright__browser_navigate",
+      "WebSearch",
+      "Bash(identify public/icon-512.png)",
+      "Bash(sips -g pixelWidth -g pixelHeight public/icon-512.png)"
     ]
   }
 }

@@ -24,6 +24,7 @@ import { useTranslations } from "next-intl";
 import { cn } from "@/lib/utils";
 import { CountdownBanner } from "@/components/NewYearTheme/CountdownBanner";
 import { isNewYearThemeActive } from "@/components/NewYearTheme/config";
+import { Reveal } from "@/components/Reveal";
 
 export default function HomeClientPage() {
     const router = useRouter();
@@ -71,22 +72,32 @@ export default function HomeClientPage() {
             color: "bg-sky-500 from-sky-500 to-blue-600",
             shadow: "shadow-sky-200 dark:shadow-sky-500/20"
         },
+    ];
+
+    const raffleTools = [
         {
             title: t('home.secretDraw').replace(' 🤫', ''),
             desc: t('meta.description').split('.')[0],
             icon: Gift,
             href: `/${locale}/secret-santa`,
-            color: "bg-santa-red from-santa-red to-red-500",
-            shadow: "shadow-red-200 dark:shadow-red-500/20"
+            iconBg: "bg-santa-red text-white",
+            accent: "text-santa-red"
         },
         {
             title: ({ tr: "İsim Çekilişi", en: "Name Picker" } as Record<string, string>)[locale as string] || "Name Picker",
             desc: ({ tr: "Listeden adil ve şeffaf kazanan seçin", en: "Pick fair winners from any list" } as Record<string, string>)[locale as string] || "Pick fair winners from any list",
             icon: Trophy,
             href: `/${locale}/raffle`,
-            color: "bg-amber-500 from-amber-500 to-orange-600",
-            shadow: "shadow-amber-200 dark:shadow-amber-500/20"
+            iconBg: "bg-foreground text-background",
+            accent: "text-foreground"
         }
+    ];
+
+    const features = [
+        { label: t('home.secure'), icon: ShieldCheck, color: "bg-success-green/10 text-success-green" },
+        { label: t('home.fast'), icon: Zap, color: "bg-indigo-accent/10 text-indigo-accent" },
+        { label: t('home.noPassword'), icon: CheckCircle2, color: "bg-santa-red/10 text-santa-red" },
+        { label: t('home.noRegistration'), icon: Users, color: "bg-foreground/5 dark:bg-foreground/10 text-foreground" },
     ];
 
     const tools = [
@@ -99,145 +110,171 @@ export default function HomeClientPage() {
     ];
 
     return (
-        <main className="min-h-screen bg-white dark:bg-gray-950 overflow-hidden transition-colors duration-300">
+        <main className="ys-page-shell overflow-hidden transition-colors duration-300">
             {/* Hero Section */}
-            <section className="relative pt-32 pb-20 lg:pt-48 lg:pb-32 overflow-hidden">
+            <section className="relative pt-24 pb-10 lg:pt-28 lg:pb-14 overflow-hidden">
                 {/* Background Decoration */}
                 <div className="absolute top-0 left-1/2 -translate-x-1/2 w-full max-w-7xl h-full -z-10">
                     <div className="absolute top-[-10%] right-[-10%] w-[500px] h-[500px] bg-red-100/50 dark:bg-red-500/20 rounded-full blur-[120px] animate-pulse"></div>
-                    <div className="absolute bottom-[-10%] left-[-10%] w-[500px] h-[500px] bg-blue-100/50 dark:bg-blue-500/20 rounded-full blur-[120px]"></div>
+                    <div className="absolute bottom-[-10%] left-[-10%] w-[500px] h-[500px] bg-indigo-100/40 dark:bg-indigo-500/20 rounded-full blur-[120px]"></div>
                 </div>
 
-                <div className="container mx-auto px-4 text-center">
-                    {isNewYearThemeActive() && (
-                        <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-red-50 dark:bg-red-500/20 text-santa-red text-sm font-bold mb-8 animate-bounce">
-                            <Sparkles className="w-4 h-4" />
-                            <span>{t('home.happyNewYear')}</span>
-                        </div>
-                    )}
+                <div className="container mx-auto px-4">
+                    <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-12 items-center">
+                        {/* Text Column */}
+                        <Reveal className="order-1 text-center lg:text-left">
+                            {isNewYearThemeActive() && (
+                                <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-santa-red/10 text-santa-red text-sm font-bold mb-6 animate-bounce">
+                                    <Sparkles className="w-4 h-4" />
+                                    <span>{t('home.happyNewYear')}</span>
+                                </div>
+                            )}
 
-                    <h1 className="text-5xl lg:text-7xl font-black text-gray-900 dark:text-white tracking-tight mb-6 leading-tight">
-                        {t('meta.title').split('|')[0]}
-                    </h1>
-                    <p className="max-w-2xl mx-auto text-lg lg:text-xl text-gray-500 dark:text-gray-400 mb-8 leading-relaxed font-medium">
-                        {t('meta.description')}
-                    </p>
+                            <h1 className="font-heading text-headline-lg-mobile sm:text-headline-lg lg:text-display-lg text-foreground tracking-tight mb-4">
+                                {t('meta.title').split('|')[0]}
+                            </h1>
+                            <p className="max-w-xl mx-auto lg:mx-0 text-base lg:text-lg text-[var(--text-secondary)] mb-6 leading-relaxed font-medium">
+                                {t('meta.description')}
+                            </p>
 
-                    {isNewYearThemeActive() && (
-                        <div className="flex justify-center mb-10">
-                            <CountdownBanner />
-                        </div>
-                    )}
+                            {isNewYearThemeActive() && (
+                                <div className="flex justify-center lg:justify-start mb-8">
+                                    <CountdownBanner />
+                                </div>
+                            )}
 
-                    <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
-                        <Button
-                            onClick={() => router.push(`/${locale}/secret-santa`)}
-                            className="w-full sm:w-auto text-lg py-7 px-10 rounded-2xl shadow-xl shadow-red-200 dark:shadow-red-500/20 hover:scale-105 transition-all text-white font-bold"
-                        >
-                            {t('home.startDraw')} <ArrowRight className="ml-2 w-5 h-5" />
-                        </Button>
-                        <Button
-                            variant="ghost"
-                            onClick={() => document.getElementById('draws')?.scrollIntoView({ behavior: 'smooth' })}
-                            className="w-full sm:w-auto text-lg py-7 px-10 rounded-2xl border-2 border-gray-100 dark:border-gray-700 bg-white dark:bg-gray-800 hover:bg-gray-50 dark:hover:bg-gray-700 text-gray-700 dark:text-gray-200 font-bold"
-                        >
-                            {t('home.socialMediaGiveaways')}
-                        </Button>
+                            <div className="flex flex-col sm:flex-row items-center justify-center lg:justify-start gap-3">
+                                <Button
+                                    onClick={() => router.push(`/${locale}/secret-santa`)}
+                                    className="w-full sm:w-auto text-sm lg:text-base py-5 px-8 rounded-2xl shadow-xl shadow-red-200 dark:shadow-red-500/20 hover:scale-105 transition-all text-white font-bold"
+                                >
+                                    {t('home.startDraw')} <ArrowRight className="ml-2 w-5 h-5" />
+                                </Button>
+                                <Button
+                                    variant="ghost"
+                                    onClick={() => document.getElementById('draws')?.scrollIntoView({ behavior: 'smooth' })}
+                                    className="w-full sm:w-auto text-sm lg:text-base py-5 px-8 rounded-2xl border-2 border-[var(--card-border)] bg-[var(--card-bg)] hover:bg-[var(--surface-2)] text-[var(--text-secondary)] font-bold"
+                                >
+                                    {t('home.socialMediaGiveaways')}
+                                </Button>
+                            </div>
+                        </Reveal>
+
+                        {/* Mascot Column */}
+                        <Reveal delay={150} className="order-2 flex justify-center items-center">
+                            <div className="relative w-40 sm:w-56 lg:w-full lg:max-w-sm aspect-square">
+                                <div className="absolute inset-0 bg-santa-red/5 rounded-full blur-3xl"></div>
+                                <img
+                                    alt="YulaSanta Mascot"
+                                    className="relative z-10 w-full h-full object-contain animate-float drop-shadow-xl"
+                                    src="/yula-mascot.png"
+                                />
+                            </div>
+                        </Reveal>
                     </div>
 
-                    {/* Stats or Features */}
-                    <div className="mt-20 grid grid-cols-2 lg:grid-cols-4 gap-8 max-w-4xl mx-auto">
-                        <div className="flex flex-col items-center">
-                            <div className="w-12 h-12 rounded-2xl bg-green-50 dark:bg-green-500/20 flex items-center justify-center text-green-600 dark:text-green-400 mb-3">
-                                <ShieldCheck className="w-6 h-6" />
-                            </div>
-                            <span className="text-sm font-bold text-gray-900 dark:text-white">{t('home.secure')}</span>
-                        </div>
-                        <div className="flex flex-col items-center">
-                            <div className="w-12 h-12 rounded-2xl bg-blue-50 dark:bg-blue-500/20 flex items-center justify-center text-blue-600 dark:text-blue-400 mb-3">
-                                <Zap className="w-6 h-6" />
-                            </div>
-                            <span className="text-sm font-bold text-gray-900 dark:text-white">{t('home.fast')}</span>
-                        </div>
-                        <div className="flex flex-col items-center">
-                            <div className="w-12 h-12 rounded-2xl bg-purple-50 dark:bg-purple-500/20 flex items-center justify-center text-purple-600 dark:text-purple-400 mb-3">
-                                <Users className="w-6 h-6" />
-                            </div>
-                            <span className="text-sm font-bold text-gray-900 dark:text-white">{t('home.noPassword')}</span>
-                        </div>
-                        <div className="flex flex-col items-center">
-                            <div className="w-12 h-12 rounded-2xl bg-orange-50 dark:bg-orange-500/20 flex items-center justify-center text-orange-600 dark:text-orange-400 mb-3">
-                                <CheckCircle2 className="w-6 h-6" />
-                            </div>
-                            <span className="text-sm font-bold text-gray-900 dark:text-white">{t('home.noRegistration')}</span>
-                        </div>
+                    {/* Feature Row */}
+                    <div className="mt-10 lg:mt-14 grid grid-cols-2 lg:grid-cols-4 gap-3 lg:gap-6">
+                        {features.map((feature, i) => (
+                            <Reveal key={feature.label} delay={i * 80}>
+                                <div className="bento-card flex flex-col items-center text-center gap-2.5 bg-[var(--card-bg)] p-4 lg:p-5 rounded-2xl border border-[var(--card-border)] shadow-sm h-full">
+                                    <div className={cn("w-10 h-10 rounded-xl flex items-center justify-center", feature.color)}>
+                                        <feature.icon className="w-5 h-5" />
+                                    </div>
+                                    <span className="text-xs lg:text-sm font-bold text-foreground">{feature.label}</span>
+                                </div>
+                            </Reveal>
+                        ))}
                     </div>
                 </div>
             </section>
 
             {/* Social Media Giveaways Section */}
-            <section id="draws" className="py-24 bg-gray-50 dark:bg-gray-900/50">
+            <section id="draws" className="py-16 lg:py-20 bg-[var(--surface-2)]">
                 <div className="container mx-auto px-4">
-                    <div className="text-center mb-16">
-                        <h2 className="text-3xl lg:text-4xl font-black text-gray-900 dark:text-white mb-4">{t('home.socialMediaGiveaways')}</h2>
-                        <p className="text-gray-500 dark:text-gray-400 font-medium">{t('home.socialDesc')}</p>
+                    <Reveal className="text-center mb-10 lg:mb-12">
+                        <h2 className="font-heading text-headline-lg-mobile sm:text-headline-lg text-foreground mb-3">{t('home.socialMediaGiveaways')}</h2>
+                        <p className="text-[var(--text-secondary)] font-medium">{t('home.socialDesc')}</p>
+                    </Reveal>
+
+                    <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5 lg:gap-6">
+                        {giveaways.map((item, i) => (
+                            <Reveal key={item.title} delay={i * 90}>
+                                <div className="bento-card group relative bg-[var(--card-bg)] rounded-3xl p-6 lg:p-7 shadow-sm hover:shadow-2xl dark:hover:shadow-xl transition-shadow duration-300 border border-[var(--card-border)] flex flex-col h-full text-left">
+                                    <div className={cn(
+                                        "w-14 h-14 rounded-2xl bg-gradient-to-br flex items-center justify-center text-white mb-5 shadow-lg group-hover:scale-110 transition-transform",
+                                        item.color
+                                    )}>
+                                        <item.icon className="w-7 h-7" />
+                                    </div>
+                                    <h3 className="font-heading text-lg font-bold text-foreground mb-2">{item.title}</h3>
+                                    <p className="text-sm text-[var(--text-secondary)] mb-6 leading-relaxed line-clamp-2 flex-grow">{item.desc}</p>
+                                    <Button
+                                        onClick={() => router.push(item.href)}
+                                        className={cn("mt-auto w-full py-5 rounded-xl font-bold transition-all", item.color, "text-white opacity-90 hover:opacity-100 hover:shadow-lg", item.shadow)}
+                                    >
+                                        {t('home.startNow')} <ArrowRight className="ml-2 w-4 h-4" />
+                                    </Button>
+                                </div>
+                            </Reveal>
+                        ))}
                     </div>
 
-                    <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-                        {giveaways.map((item) => (
-                            <div
-                                key={item.title}
-                                className="group relative bg-white dark:bg-gray-800 rounded-[32px] p-8 shadow-sm hover:shadow-2xl dark:hover:shadow-xl hover:-translate-y-2 transition-all duration-300 border border-gray-100 dark:border-gray-700 flex flex-col items-start text-left"
-                            >
-                                <div className={cn(
-                                    "w-16 h-16 rounded-2xl bg-gradient-to-br flex items-center justify-center text-white mb-6 shadow-lg group-hover:scale-110 transition-transform",
-                                    item.color
-                                )}>
-                                    <item.icon className="w-8 h-8" />
+                    {/* Raffle Tools */}
+                    <div className="grid grid-cols-1 md:grid-cols-2 gap-5 lg:gap-6 mt-5 lg:mt-6">
+                        {raffleTools.map((item, i) => (
+                            <Reveal key={item.title} delay={i * 90}>
+                                <div className="bento-card group bg-[var(--card-bg)] p-6 lg:p-7 rounded-3xl border border-[var(--card-border)] shadow-sm hover:shadow-2xl dark:hover:shadow-xl transition-shadow duration-300 flex items-center gap-5 sm:gap-6 h-full">
+                                    <div className={cn("w-16 h-16 sm:w-20 sm:h-20 rounded-3xl flex items-center justify-center flex-shrink-0", item.iconBg)}>
+                                        <item.icon className="w-8 h-8" />
+                                    </div>
+                                    <div className="min-w-0">
+                                        <h3 className={cn("font-heading text-lg font-bold mb-1.5", item.accent)}>{item.title}</h3>
+                                        <p className="text-sm text-[var(--text-secondary)] mb-3 leading-relaxed">{item.desc}</p>
+                                        <button
+                                            onClick={() => router.push(item.href)}
+                                            className={cn("font-bold text-sm flex items-center gap-1 group-hover:gap-2 transition-all", item.accent)}
+                                        >
+                                            {t('home.startNow')} <ArrowRight className="w-4 h-4" />
+                                        </button>
+                                    </div>
                                 </div>
-                                <h3 className="text-2xl font-black text-gray-900 dark:text-white mb-3">{item.title}</h3>
-                                <p className="text-gray-500 dark:text-gray-400 mb-8 leading-relaxed line-clamp-2">{item.desc}</p>
-                                <Button
-                                    onClick={() => router.push(item.href)}
-                                    className={cn("mt-auto w-full py-6 rounded-2xl font-bold transition-all", item.color, "text-white opacity-90 hover:opacity-100 hover:shadow-lg", item.shadow)}
-                                >
-                                    {t('home.startNow')} <ArrowRight className="ml-2 w-4 h-4" />
-                                </Button>
-                            </div>
+                            </Reveal>
                         ))}
                     </div>
                 </div>
             </section>
 
             {/* Tools Section */}
-            <section className="py-24 bg-white dark:bg-gray-950">
+            <section className="py-16 lg:py-20 bg-[var(--background)]">
                 <div className="container mx-auto px-4">
-                    <div className="flex flex-col lg:flex-row items-end justify-between mb-12 gap-6">
+                    <Reveal className="flex flex-col lg:flex-row items-end justify-between mb-8 lg:mb-10 gap-6">
                         <div className="max-w-xl text-left">
-                            <h2 className="text-3xl lg:text-4xl font-black text-gray-900 dark:text-white mb-4">{t('tools.title')}</h2>
-                            <p className="text-gray-500 dark:text-gray-400 font-medium">{t('home.toolsDesc')}</p>
+                            <h2 className="font-heading text-headline-lg-mobile sm:text-headline-lg text-foreground mb-3">{t('tools.title')}</h2>
+                            <p className="text-[var(--text-secondary)] font-medium">{t('home.toolsDesc')}</p>
                         </div>
                         <Button
                             variant="ghost"
                             onClick={() => router.push(`/${locale}/tools/dice`)}
-                            className="bg-gray-100 dark:bg-gray-800 hover:bg-gray-200 dark:hover:bg-gray-700 rounded-full font-bold px-6 text-gray-700 dark:text-gray-200"
+                            className="bg-[var(--surface-2)] hover:bg-[var(--border-medium)] rounded-full font-bold px-6 text-[var(--text-secondary)]"
                         >
                             {t('home.viewAll')}
                         </Button>
-                    </div>
+                    </Reveal>
 
-                    <div className="grid grid-cols-2 lg:grid-cols-4 gap-6">
-                        {tools.map((tool) => (
-                            <button
-                                key={tool.name}
-                                onClick={() => router.push(tool.href)}
-                                className="group flex flex-col items-center p-8 bg-white dark:bg-gray-800 rounded-[32px] border border-gray-100 dark:border-gray-700 hover:border-indigo-100 dark:hover:border-indigo-500/30 hover:bg-gray-50/50 dark:hover:bg-gray-700/50 hover:shadow-xl transition-all"
-                            >
-                                <div className={cn("w-16 h-16 rounded-2xl flex items-center justify-center text-white mb-4 group-hover:scale-110 transition-transform", tool.color)}>
-                                    <tool.icon className="w-8 h-8" />
-                                </div>
-                                <h4 className="text-lg font-black text-gray-900 dark:text-white">{tool.name}</h4>
-                            </button>
+                    <div className="grid grid-cols-2 lg:grid-cols-6 gap-3 lg:gap-5">
+                        {tools.map((tool, i) => (
+                            <Reveal key={tool.name} delay={i * 60}>
+                                <button
+                                    onClick={() => router.push(tool.href)}
+                                    className="bento-card group flex flex-col items-center text-center gap-3 p-5 w-full bg-[var(--card-bg)] rounded-2xl border border-[var(--card-border)] hover:border-indigo-100 dark:hover:border-indigo-500/30 hover:shadow-xl transition-shadow"
+                                >
+                                    <div className={cn("w-11 h-11 rounded-xl flex items-center justify-center text-white group-hover:scale-110 transition-transform", tool.color)}>
+                                        <tool.icon className="w-5 h-5" />
+                                    </div>
+                                    <h4 className="text-xs lg:text-sm font-bold text-foreground">{tool.name}</h4>
+                                </button>
+                            </Reveal>
                         ))}
                     </div>
                 </div>

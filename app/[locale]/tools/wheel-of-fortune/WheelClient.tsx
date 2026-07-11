@@ -3,6 +3,7 @@
 import { useState, useEffect, useRef } from "react";
 import { useTranslations } from "next-intl";
 import { Button } from "@/components/ui/Button";
+import { Input } from "@/components/ui/Input";
 import { ArrowLeft, RefreshCw, Shuffle, SortAsc, Trash2, Plus, Edit3, X, List } from "lucide-react";
 import { useRouter } from "next/navigation";
 import confetti from "canvas-confetti";
@@ -141,8 +142,8 @@ export function WheelClient() {
     };
 
     return (
-        <div className="min-h-screen bg-gray-50 dark:bg-gray-950 py-12 px-4 sm:px-6 lg:px-8">
-            <div className="max-w-7xl mx-auto">
+        <div className="ys-page-shell py-8 px-4 sm:px-6 lg:px-8">
+            <div className="max-w-6xl mx-auto">
                 <Button
                     variant="ghost"
                     onClick={() => router.back()}
@@ -152,29 +153,29 @@ export function WheelClient() {
                     Back
                 </Button>
 
-                <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
+                <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
                     {/* Controls Section */}
                     <div className="lg:col-span-1 space-y-6">
-                        <div className="bg-white dark:bg-gray-900 rounded-2xl p-6 shadow-sm border border-gray-100 dark:border-gray-800 flex flex-col h-[600px]">
-                            <h2 className="text-xl font-bold mb-4 text-gray-900 dark:text-white flex items-center justify-between">
+                        <div className="ys-card p-6 flex flex-col h-[480px]">
+                            <h2 className="font-heading text-headline-md text-[var(--text-primary)] mb-4 flex items-center justify-between">
                                 <span className="flex items-center gap-2">🎡 {t('title')}</span>
-                                <span className="text-xs font-normal text-gray-500 bg-gray-100 dark:bg-gray-800 px-2 py-1 rounded-full">
+                                <span className="ys-chip ys-chip-indigo">
                                     {segments.length}
                                 </span>
                             </h2>
 
                             {/* Mode Toggle */}
-                            <div className="flex bg-gray-100 dark:bg-gray-800 p-1 rounded-xl mb-4">
+                            <div className="flex bg-[var(--surface-2)] p-1 rounded-lg mb-4">
                                 <button
                                     onClick={() => setIsBulkMode(false)}
-                                    className={`flex-1 py-1.5 text-sm font-medium rounded-lg transition-all ${!isBulkMode ? 'bg-white dark:bg-gray-700 shadow-sm text-indigo-600 dark:text-white' : 'text-gray-500 hover:text-gray-700 dark:hover:text-gray-300'}`}
+                                    className={`flex-1 py-1.5 text-sm font-medium rounded-md transition-all ${!isBulkMode ? 'bg-[var(--card-bg)] shadow-sm text-indigo-accent' : 'text-[var(--text-muted)] hover:text-[var(--text-secondary)]'}`}
                                 >
                                     <List className="w-4 h-4 inline-block mr-1.5" />
                                     {t('listMode')}
                                 </button>
                                 <button
                                     onClick={() => setIsBulkMode(true)}
-                                    className={`flex-1 py-1.5 text-sm font-medium rounded-lg transition-all ${isBulkMode ? 'bg-white dark:bg-gray-700 shadow-sm text-indigo-600 dark:text-white' : 'text-gray-500 hover:text-gray-700 dark:hover:text-gray-300'}`}
+                                    className={`flex-1 py-1.5 text-sm font-medium rounded-md transition-all ${isBulkMode ? 'bg-[var(--card-bg)] shadow-sm text-indigo-accent' : 'text-[var(--text-muted)] hover:text-[var(--text-secondary)]'}`}
                                 >
                                     <Edit3 className="w-4 h-4 inline-block mr-1.5" />
                                     {t('bulkMode')}
@@ -189,9 +190,9 @@ export function WheelClient() {
                                             value={bulkText}
                                             onChange={(e) => setBulkText(e.target.value)}
                                             placeholder={t('placeholder')}
-                                            className="flex-1 w-full p-4 rounded-xl border border-gray-200 dark:border-gray-700 bg-gray-50 dark:bg-gray-800 focus:ring-2 focus:ring-indigo-500 focus:border-transparent resize-none font-medium mb-4 text-sm leading-relaxed"
+                                            className="flex-1 w-full p-4 rounded-lg border-2 border-[var(--input-border)] bg-[var(--input-bg)] text-[var(--text-primary)] focus:ring-0 focus:border-indigo-accent focus:outline-none resize-none font-medium mb-4 text-sm leading-relaxed"
                                         />
-                                        <Button onClick={saveBulk} className="w-full bg-indigo-600 hover:bg-indigo-700 text-white">
+                                        <Button onClick={saveBulk} variant="secondary" className="w-full">
                                             Apply Changes
                                         </Button>
                                     </div>
@@ -199,35 +200,35 @@ export function WheelClient() {
                                     <>
                                         {/* Add Name Input */}
                                         <div className="flex gap-2 mb-4">
-                                            <input
+                                            <Input
                                                 type="text"
                                                 value={newName}
                                                 onChange={(e) => setNewName(e.target.value)}
                                                 onKeyDown={handleKeyDown}
                                                 placeholder={t('addName')}
-                                                className="flex-1 px-4 py-2 rounded-xl border border-gray-200 dark:border-gray-700 bg-gray-50 dark:bg-gray-800 focus:ring-2 focus:ring-indigo-500 focus:border-transparent outline-none"
+                                                className="flex-1 h-auto py-2 focus:border-indigo-accent"
                                             />
-                                            <Button onClick={handleAddName} className="shrink-0 bg-indigo-600 hover:bg-indigo-700 text-white rounded-xl w-10 h-10 p-0 flex items-center justify-center">
+                                            <Button onClick={handleAddName} className="shrink-0 aspect-square p-0 w-10 h-10">
                                                 <Plus className="w-5 h-5" />
                                             </Button>
                                         </div>
 
                                         {/* Name List */}
-                                        <div className="flex-1 overflow-y-auto pr-2 space-y-2 mb-4 scrollbar-thin scrollbar-thumb-gray-200 dark:scrollbar-thumb-gray-700">
+                                        <div className="flex-1 overflow-y-auto pr-2 space-y-2 mb-4 custom-scrollbar">
                                             {segments.length === 0 ? (
-                                                <div className="text-center text-gray-400 py-8 text-sm italic">
+                                                <div className="text-center text-[var(--text-muted)] py-8 text-sm italic">
                                                     {t('placeholder')}
                                                 </div>
                                             ) : (
                                                 segments.map((segment, idx) => (
-                                                    <div key={idx} className="group flex items-center justify-between bg-gray-50 dark:bg-gray-800/50 p-3 rounded-xl border border-gray-100 dark:border-gray-800 hover:border-indigo-200 dark:hover:border-indigo-500/30 transition-colors">
-                                                        <span className="font-medium text-gray-700 dark:text-gray-300 truncate mr-2 text-sm">
+                                                    <div key={idx} className="group flex items-center justify-between bg-[var(--surface-2)] p-3 rounded-lg border border-[var(--border-light)] hover:border-indigo-accent/30 transition-colors">
+                                                        <span className="font-medium text-[var(--text-secondary)] truncate mr-2 text-sm">
                                                             <span className="inline-block w-2 h-2 rounded-full mr-2" style={{ backgroundColor: COLORS[idx % COLORS.length] }}></span>
                                                             {segment}
                                                         </span>
                                                         <button
                                                             onClick={() => removeSegment(idx)}
-                                                            className="text-gray-400 hover:text-red-500 p-1 opacity-100 lg:opacity-0 group-hover:opacity-100 transition-opacity"
+                                                            className="text-[var(--text-muted)] hover:text-santa-red p-1 opacity-100 lg:opacity-0 group-hover:opacity-100 transition-opacity"
                                                         >
                                                             <X className="w-4 h-4" />
                                                         </button>
@@ -240,7 +241,7 @@ export function WheelClient() {
                             </div>
 
                             {/* Footer Actions */}
-                            <div className="pt-4 mt-auto border-t border-gray-100 dark:border-gray-800 grid grid-cols-2 gap-2">
+                            <div className="pt-4 mt-auto border-t border-[var(--border-light)] grid grid-cols-2 gap-2">
                                 <Button onClick={shuffleSegments} variant="outline" size="sm" className="w-full">
                                     <Shuffle className="w-3 h-3 mr-2" />
                                     {t('shuffle')}
@@ -253,7 +254,7 @@ export function WheelClient() {
                                     onClick={() => setSegments([])}
                                     variant="outline"
                                     size="sm"
-                                    className="col-span-2 text-red-500 hover:text-red-600 hover:bg-red-50 dark:hover:bg-red-900/10 border-red-100 dark:border-red-900/20"
+                                    className="col-span-2 text-santa-red hover:text-santa-red hover:bg-santa-red/10 border-santa-red/20"
                                 >
                                     <Trash2 className="w-3 h-3 mr-2" />
                                     {t('clear')}
@@ -263,12 +264,12 @@ export function WheelClient() {
                     </div>
 
                     {/* Wheel Section */}
-                    <div className="lg:col-span-2 flex flex-col items-center justify-center min-h-[600px] bg-white dark:bg-gray-900 rounded-2xl p-8 shadow-sm border border-gray-100 dark:border-gray-800 relative overflow-hidden">
+                    <div className="lg:col-span-2 flex flex-col items-center justify-center min-h-[480px] ys-card p-6 relative overflow-hidden">
                         {segments.length > 1 ? (
-                            <div className="relative w-[300px] h-[300px] sm:w-[400px] sm:h-[400px] md:w-[500px] md:h-[500px]">
+                            <div className="relative w-[220px] h-[220px] sm:w-[280px] sm:h-[280px] md:w-[340px] md:h-[340px] lg:w-[400px] lg:h-[400px]">
                                 {/* Pointer */}
                                 <div className="absolute top-1/2 right-[-20px] -translate-y-1/2 z-20 w-10 h-10 flex items-center justify-center pointer-events-none">
-                                    <div className="w-0 h-0 border-t-[10px] border-t-transparent border-b-[10px] border-b-transparent border-r-[20px] border-r-gray-800 dark:border-r-white drop-shadow-md"></div>
+                                    <div className="w-0 h-0 border-t-[10px] border-t-transparent border-b-[10px] border-b-transparent border-r-[20px] border-r-[var(--text-primary)] drop-shadow-md"></div>
                                 </div>
 
                                 {/* Wheel SVG */}
@@ -312,29 +313,28 @@ export function WheelClient() {
                                     })}
                                 </svg>
                                 {/* Center decoration */}
-                                <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-16 h-16 bg-white dark:bg-gray-800 rounded-full shadow-lg z-10 flex items-center justify-center border-4 border-indigo-500">
-                                    <div className="w-8 h-8 rounded-full bg-indigo-500"></div>
+                                <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-12 h-12 sm:w-14 sm:h-14 bg-[var(--card-bg)] rounded-full shadow-lg z-10 flex items-center justify-center border-4 border-indigo-accent">
+                                    <div className="w-6 h-6 sm:w-7 sm:h-7 rounded-full bg-indigo-accent"></div>
                                 </div>
                             </div>
                         ) : (
-                            <div className="text-center p-12 text-gray-400">
+                            <div className="text-center p-12 text-[var(--text-muted)]">
                                 <RefreshCw className="w-16 h-16 mx-auto mb-4 opacity-20" />
                                 <p className="text-lg font-medium">{t('placeholder')}</p>
                             </div>
                         )}
 
-                        <div className="mt-12 flex flex-col items-center gap-4 z-10">
+                        <div className="mt-8 flex flex-col items-center gap-4 z-10">
                             {winner ? (
                                 <div className="text-center animate-in fade-in slide-in-from-bottom-4 duration-700">
-                                    <div className="text-lg text-gray-500 dark:text-gray-400 font-medium mb-1">{t('congrats')}</div>
-                                    <div className="text-5xl font-black text-transparent bg-clip-text bg-gradient-to-r from-indigo-500 to-purple-600 mb-6 drop-shadow-sm">
+                                    <div className="text-body-lg text-[var(--text-secondary)] font-medium mb-1">{t('congrats')}</div>
+                                    <div className="text-4xl sm:text-5xl font-black text-transparent bg-clip-text bg-gradient-to-r from-santa-red to-indigo-accent mb-6 drop-shadow-sm">
                                         {winner}
                                     </div>
                                     <div className="flex gap-4">
                                         <Button
                                             onClick={spinWheel}
                                             size="lg"
-                                            className="bg-indigo-600 hover:bg-indigo-700 text-white font-bold py-6 px-8 rounded-2xl shadow-xl shadow-indigo-200 dark:shadow-indigo-900/20 text-lg"
                                         >
                                             <RefreshCw className="mr-2 w-5 h-5" />
                                             {t('spin')}
@@ -343,7 +343,6 @@ export function WheelClient() {
                                             onClick={removeWinner}
                                             variant="secondary"
                                             size="lg"
-                                            className="bg-gray-100 hover:bg-gray-200 dark:bg-gray-800 dark:hover:bg-gray-700 text-gray-900 dark:text-white font-bold py-6 px-6 rounded-2xl"
                                         >
                                             <Trash2 className="mr-2 w-5 h-5" />
                                             {t('removeWinner')}
@@ -354,7 +353,8 @@ export function WheelClient() {
                                 <Button
                                     onClick={spinWheel}
                                     disabled={isSpinning || segments.length < 2}
-                                    className="bg-indigo-600 hover:bg-indigo-700 text-white font-bold py-8 px-12 text-2xl rounded-2xl shadow-xl shadow-indigo-200 dark:shadow-indigo-900/20 disabled:opacity-50 disabled:cursor-not-allowed hover:scale-105 transition-all"
+                                    size="lg"
+                                    className="hover:scale-105 transition-transform"
                                 >
                                     {isSpinning ? t('spin') + '...' : t('spin')}
                                 </Button>
@@ -365,21 +365,21 @@ export function WheelClient() {
 
                 {/* Instructions & About Section */}
                 <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 mt-12">
-                    <div className="bg-white dark:bg-gray-900 rounded-2xl p-8 border border-gray-100 dark:border-gray-800">
-                        <h3 className="text-xl font-bold text-gray-900 dark:text-white mb-4">{t('howToTitle')}</h3>
+                    <div className="ys-card p-8">
+                        <h3 className="font-heading text-headline-md text-[var(--text-primary)] mb-4">{t('howToTitle')}</h3>
                         <ul className="space-y-3">
                             {(t.raw('howToText') as string[]).map((step, i) => (
-                                <li key={i} className="flex items-start text-gray-500 dark:text-gray-400">
-                                    <span className="mr-2 mt-1.5 w-1.5 h-1.5 bg-indigo-500 rounded-full shrink-0"></span>
+                                <li key={i} className="flex items-start text-[var(--text-secondary)]">
+                                    <span className="mr-2 mt-1.5 w-1.5 h-1.5 bg-indigo-accent rounded-full shrink-0"></span>
                                     <span>{step}</span>
                                 </li>
                             ))}
                         </ul>
                     </div>
 
-                    <div className="bg-white dark:bg-gray-900 rounded-2xl p-8 border border-gray-100 dark:border-gray-800">
-                        <h3 className="text-xl font-bold text-gray-900 dark:text-white mb-4">{t('aboutTitle')}</h3>
-                        <p className="text-gray-500 dark:text-gray-400 leading-relaxed text-lg">{t('aboutText')}</p>
+                    <div className="ys-card p-8">
+                        <h3 className="font-heading text-headline-md text-[var(--text-primary)] mb-4">{t('aboutTitle')}</h3>
+                        <p className="text-body-lg text-[var(--text-secondary)] leading-relaxed">{t('aboutText')}</p>
                     </div>
                 </div>
             </div>

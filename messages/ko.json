@@ -919,6 +919,24 @@
                         "desc": "Fun activity for the family."
                     }
                 }
+            },
+            "ai": {
+                "badge": "AI 기반",
+                "formTitle": "몇 가지 정보를 알려주시면 맞춤 선물을 추천해드릴게요",
+                "relationshipLabel": "누구를 위한 선물인가요?",
+                "relationshipPlaceholder": "예: 여자친구, 상사, 어머니",
+                "budgetLabel": "예산",
+                "budgetLow": "알뜰형",
+                "budgetMedium": "중간",
+                "budgetHigh": "프리미엄",
+                "notesLabel": "관심사 (선택 사항)",
+                "notesPlaceholder": "예: 커피, 책, 운동, 기술",
+                "generateButton": "AI로 추천받기",
+                "regenerateButton": "다른 아이디어 보기",
+                "loadingText": "당신을 위한 최고의 선물을 찾는 중...",
+                "errorNotice": "현재 AI 추천을 이용할 수 없어 엄선된 추천을 대신 보여드립니다.",
+                "changeSelection": "선택 변경",
+                "poweredBy": "Google Gemini로 생성됨"
             }
         },
         "giftSuggestionsMeta": {

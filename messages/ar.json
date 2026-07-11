@@ -943,6 +943,24 @@
                         "desc": "Fun activity for the family."
                     }
                 }
+            },
+            "ai": {
+                "badge": "مدعوم بالذكاء الاصطناعي",
+                "formTitle": "أخبرنا ببعض التفاصيل وسنقترح عليك هدايا خاصة بك",
+                "relationshipLabel": "لمن تبحث عن هدية؟",
+                "relationshipPlaceholder": "مثال: صديقتي، مديري، أمي",
+                "budgetLabel": "الميزانية",
+                "budgetLow": "اقتصادية",
+                "budgetMedium": "متوسطة",
+                "budgetHigh": "فاخرة",
+                "notesLabel": "الاهتمامات (اختياري)",
+                "notesPlaceholder": "مثال: القهوة، الكتب، الرياضة، التقنية",
+                "generateButton": "اقترح بالذكاء الاصطناعي",
+                "regenerateButton": "أظهر أفكارًا أخرى",
+                "loadingText": "نبحث عن أفضل الهدايا لك...",
+                "errorNotice": "اقتراحات الذكاء الاصطناعي غير متاحة حاليًا، إليك أفكارنا المختارة بدلاً من ذلك.",
+                "changeSelection": "تغيير الاختيار",
+                "poweredBy": "تم الإنشاء باستخدام Google Gemini"
             }
         },
         "giftSuggestionsMeta": {

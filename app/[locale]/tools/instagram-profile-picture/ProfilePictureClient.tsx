@@ -6,6 +6,7 @@ import Image from 'next/image';
 import { ArrowLeft, Search, AlertCircle, ImageIcon, Download, User, Users, Grid3X3, CheckCircle, Lock, ExternalLink } from 'lucide-react';
 import { useTranslations } from 'next-intl';
 import { useParams } from 'next/navigation';
+import { Button } from '@/components/ui/Button';
 
 interface ProfileData {
     username: string;
@@ -105,43 +106,44 @@ export default function InstagramProfilePicturePage() {
     };
 
     return (
-        <div className="min-h-screen bg-gradient-to-br from-pink-50 via-white to-purple-50 dark:from-gray-900 dark:via-gray-900 dark:to-gray-950 py-12 px-4 transition-colors duration-300">
+        <div className="ys-page-shell py-12 px-4 transition-colors duration-300">
             <div className="max-w-2xl mx-auto">
                 <div className="flex items-center gap-4 mb-8">
                     <Link
                         href={`/${locale}`}
-                        className="p-2 rounded-xl bg-white dark:bg-gray-800 shadow-sm border border-gray-100 dark:border-gray-700 hover:shadow-md transition-all"
+                        className="p-2 rounded-lg bg-[var(--card-bg)] shadow-sm border border-[var(--border-light)] hover:shadow-md transition-all"
                     >
-                        <ArrowLeft className="w-5 h-5 text-gray-600 dark:text-gray-400" />
+                        <ArrowLeft className="w-5 h-5 text-[var(--text-secondary)]" />
                     </Link>
                     <div>
-                        <h1 className="text-2xl md:text-3xl font-black text-gray-900 dark:text-white">
+                        <h1 className="font-heading text-headline-lg-mobile sm:text-headline-lg text-[var(--text-primary)]">
                             🖼️ {t('title')}
                         </h1>
-                        <p className="text-sm text-gray-500 dark:text-gray-400 mt-1">{t('subtitle')}</p>
+                        <p className="text-body-md text-[var(--text-secondary)] mt-1">{t('subtitle')}</p>
                     </div>
                 </div>
 
-                <article className="bg-white dark:bg-gray-800 rounded-3xl shadow-xl border border-gray-100 dark:border-gray-700 p-6 md:p-8">
+                <article className="ys-card p-6 md:p-8">
                     {!profileData ? (
                         <>
+                            {/* Instagram-brand hero banner — gradient kept as platform icon identity */}
                             <div className="bg-gradient-to-r from-pink-500 to-purple-600 rounded-2xl p-6 mb-8 text-center text-white">
                                 <div className="w-20 h-20 mx-auto mb-4 rounded-full bg-white/20 flex items-center justify-center">
                                     <ImageIcon className="w-10 h-10" aria-hidden="true" />
                                 </div>
-                                <h2 className="text-xl font-bold mb-2">{t('title')}</h2>
+                                <h2 className="font-heading text-xl font-bold mb-2">{t('title')}</h2>
                                 <p className="text-white/80 text-sm">
                                     {t('helper')}
                                 </p>
                             </div>
 
                             <div className="mb-6">
-                                <label htmlFor="instagram-profile-username" className="block text-sm font-bold text-gray-700 dark:text-gray-300 mb-2">
+                                <label htmlFor="instagram-profile-username" className="block text-label-md text-[var(--text-secondary)] mb-2">
                                     {t('usernameLabel') || 'Username'}
                                 </label>
                                 <div className="flex gap-2">
                                     <div className="relative flex-1">
-                                        <span className="absolute left-4 top-1/2 -translate-y-1/2 text-gray-400 dark:text-gray-500 font-medium" aria-hidden="true">@</span>
+                                        <span className="absolute left-4 top-1/2 -translate-y-1/2 text-[var(--text-muted)] font-medium" aria-hidden="true">@</span>
                                         <input
                                             id="instagram-profile-username"
                                             type="text"
@@ -153,26 +155,22 @@ export default function InstagramProfilePicturePage() {
                                             onKeyPress={(e) => e.key === 'Enter' && handleSearch()}
                                             placeholder={t('placeholder')}
                                             disabled={isLoading}
-                                            className="w-full pl-10 pr-4 py-3 rounded-xl border border-gray-200 dark:border-gray-700 bg-white dark:bg-gray-900 focus:border-purple-500 focus:ring-2 focus:ring-purple-200 dark:focus:ring-purple-500/20 outline-none transition-all dark:text-white disabled:opacity-50"
+                                            className="w-full pl-10 pr-4 py-3 rounded-lg border-2 border-[var(--input-border)] bg-[var(--input-bg)] focus:border-[var(--input-focus)] focus:outline-none focus:ring-0 outline-none transition-colors text-[var(--text-primary)] disabled:opacity-50"
                                         />
                                     </div>
-                                    <button
-                                        onClick={handleSearch}
-                                        disabled={isLoading}
-                                        className="px-6 py-3 bg-gradient-to-r from-pink-500 to-purple-600 text-white font-bold rounded-xl hover:shadow-lg transition-all disabled:opacity-50 flex items-center gap-2"
-                                    >
+                                    <Button onClick={handleSearch} disabled={isLoading}>
                                         <Search className="w-5 h-5" aria-hidden="true" />
                                         <span className="hidden sm:inline">{t('searchButton') || 'Search'}</span>
-                                    </button>
+                                    </Button>
                                 </div>
                             </div>
                         </>
                     ) : (
                         <div className="text-center">
-                            {/* Profile Picture */}
+                            {/* Profile Picture — Instagram-brand ring gradient kept as platform icon identity */}
                             <div className="relative w-48 h-48 md:w-64 md:h-64 mx-auto mb-6">
                                 <div className="absolute inset-0 bg-gradient-to-br from-pink-500 via-purple-500 to-orange-500 rounded-full p-1">
-                                    <div className="w-full h-full rounded-full overflow-hidden bg-white dark:bg-gray-800 p-1">
+                                    <div className="w-full h-full rounded-full overflow-hidden bg-[var(--card-bg)] p-1">
                                         <Image
                                             src={`/api/proxy-image?url=${encodeURIComponent(profileData.profilePicUrlHD || profileData.profilePicUrl)}`}
                                             alt={`${profileData.username} profile picture`}
@@ -189,23 +187,23 @@ export default function InstagramProfilePicturePage() {
                             {/* Profile Info */}
                             <div className="mb-6">
                                 <div className="flex items-center justify-center gap-2 mb-2">
-                                    <h2 className="text-2xl font-bold text-gray-900 dark:text-white">
+                                    <h2 className="font-heading text-headline-md text-[var(--text-primary)]">
                                         @{profileData.username}
                                     </h2>
                                     {profileData.isVerified && (
                                         <CheckCircle className="w-6 h-6 text-blue-500 fill-blue-500" />
                                     )}
                                     {profileData.isPrivate && (
-                                        <Lock className="w-5 h-5 text-gray-400" />
+                                        <Lock className="w-5 h-5 text-[var(--text-muted)]" />
                                     )}
                                 </div>
                                 {profileData.fullName && (
-                                    <p className="text-lg text-gray-600 dark:text-gray-400 mb-2">
+                                    <p className="text-body-lg text-[var(--text-secondary)] mb-2">
                                         {profileData.fullName}
                                     </p>
                                 )}
                                 {profileData.biography && (
-                                    <p className="text-sm text-gray-500 dark:text-gray-500 max-w-md mx-auto mb-4 line-clamp-3">
+                                    <p className="text-body-md text-[var(--text-muted)] max-w-md mx-auto mb-4 line-clamp-3">
                                         {profileData.biography}
                                     </p>
                                 )}
@@ -214,44 +212,38 @@ export default function InstagramProfilePicturePage() {
                             {/* Stats */}
                             <div className="flex justify-center gap-8 mb-8">
                                 <div className="text-center">
-                                    <Grid3X3 className="w-5 h-5 mx-auto mb-1 text-gray-400" />
-                                    <p className="text-xl font-bold text-gray-900 dark:text-white">
+                                    <Grid3X3 className="w-5 h-5 mx-auto mb-1 text-[var(--text-muted)]" />
+                                    <p className="text-xl font-bold text-[var(--text-primary)]">
                                         {formatNumber(profileData.postsCount)}
                                     </p>
-                                    <p className="text-xs text-gray-500 dark:text-gray-400">{t('posts') || 'Posts'}</p>
+                                    <p className="text-label-sm text-[var(--text-muted)]">{t('posts') || 'Posts'}</p>
                                 </div>
                                 <div className="text-center">
-                                    <Users className="w-5 h-5 mx-auto mb-1 text-gray-400" />
-                                    <p className="text-xl font-bold text-gray-900 dark:text-white">
+                                    <Users className="w-5 h-5 mx-auto mb-1 text-[var(--text-muted)]" />
+                                    <p className="text-xl font-bold text-[var(--text-primary)]">
                                         {formatNumber(profileData.followersCount)}
                                     </p>
-                                    <p className="text-xs text-gray-500 dark:text-gray-400">{t('followers') || 'Followers'}</p>
+                                    <p className="text-label-sm text-[var(--text-muted)]">{t('followers') || 'Followers'}</p>
                                 </div>
                                 <div className="text-center">
-                                    <User className="w-5 h-5 mx-auto mb-1 text-gray-400" />
-                                    <p className="text-xl font-bold text-gray-900 dark:text-white">
+                                    <User className="w-5 h-5 mx-auto mb-1 text-[var(--text-muted)]" />
+                                    <p className="text-xl font-bold text-[var(--text-primary)]">
                                         {formatNumber(profileData.followsCount)}
                                     </p>
-                                    <p className="text-xs text-gray-500 dark:text-gray-400">{t('following') || 'Following'}</p>
+                                    <p className="text-label-sm text-[var(--text-muted)]">{t('following') || 'Following'}</p>
                                 </div>
                             </div>
 
                             {/* Download Buttons */}
                             <div className="flex flex-col sm:flex-row gap-3 justify-center mb-6">
-                                <button
-                                    onClick={() => handleDownload(true)}
-                                    className="flex items-center justify-center gap-2 px-6 py-3 bg-gradient-to-r from-pink-500 to-purple-600 text-white font-bold rounded-xl hover:shadow-lg transition-all"
-                                >
+                                <Button onClick={() => handleDownload(true)}>
                                     <Download className="w-5 h-5" />
                                     {t('downloadHD') || 'Download HD'}
-                                </button>
-                                <button
-                                    onClick={() => handleDownload(false)}
-                                    className="flex items-center justify-center gap-2 px-6 py-3 bg-gray-100 dark:bg-gray-700 text-gray-700 dark:text-gray-300 font-medium rounded-xl hover:bg-gray-200 dark:hover:bg-gray-600 transition-all"
-                                >
+                                </Button>
+                                <Button onClick={() => handleDownload(false)} variant="secondary">
                                     <Download className="w-5 h-5" />
                                     {t('downloadNormal') || 'Download Normal'}
-                                </button>
+                                </Button>
                             </div>
 
                             {/* Open in Instagram */}
@@ -259,17 +251,17 @@ export default function InstagramProfilePicturePage() {
                                 href={`https://instagram.com/${profileData.username}`}
                                 target="_blank"
                                 rel="noopener noreferrer"
-                                className="inline-flex items-center gap-2 text-sm text-purple-600 dark:text-purple-400 hover:underline mb-6"
+                                className="inline-flex items-center gap-2 text-sm text-indigo-accent hover:underline mb-6"
                             >
                                 <ExternalLink className="w-4 h-4" />
                                 {t('openInInstagram') || 'Open in Instagram'}
                             </a>
 
                             {/* Search Again */}
-                            <div className="pt-4 border-t border-gray-100 dark:border-gray-700">
+                            <div className="pt-4 border-t border-[var(--border-light)]">
                                 <button
                                     onClick={handleReset}
-                                    className="text-sm text-gray-500 dark:text-gray-400 hover:text-purple-600 dark:hover:text-purple-400 transition-colors"
+                                    className="text-sm text-[var(--text-secondary)] hover:text-indigo-accent transition-colors"
                                 >
                                     {t('searchAnother') || '← Search another profile'}
                                 </button>
@@ -279,8 +271,8 @@ export default function InstagramProfilePicturePage() {
 
                     {isLoading && (
                         <div className="text-center py-8" aria-live="polite">
-                            <div className="w-16 h-16 border-4 border-purple-200 dark:border-purple-900 border-t-purple-500 rounded-full animate-spin mx-auto mb-4" role="status" />
-                            <p className="text-gray-500 dark:text-gray-400">{t('loading') || 'Fetching profile...'}</p>
+                            <div className="w-16 h-16 border-4 border-[var(--border-medium)] border-t-indigo-accent rounded-full animate-spin mx-auto mb-4" role="status" />
+                            <p className="text-[var(--text-secondary)]">{t('loading') || 'Fetching profile...'}</p>
                         </div>
                     )}
 
@@ -298,9 +290,9 @@ export default function InstagramProfilePicturePage() {
                     )}
                 </article>
 
-                <section className="mt-8 bg-white/60 dark:bg-gray-800/60 backdrop-blur rounded-2xl p-6 border border-gray-100 dark:border-gray-700">
-                    <h2 className="text-lg font-bold text-gray-800 dark:text-white mb-3">{t('aboutTitle')}</h2>
-                    <p className="text-sm text-gray-600 dark:text-gray-400 leading-relaxed">
+                <section className="mt-8 ys-card p-6">
+                    <h2 className="font-heading text-headline-md text-[var(--text-primary)] mb-3">{t('aboutTitle')}</h2>
+                    <p className="text-body-md text-[var(--text-secondary)] leading-relaxed">
                         {t('aboutText')}
                     </p>
                 </section>

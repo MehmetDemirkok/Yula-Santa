@@ -28,6 +28,8 @@ import ShareModal from "@/components/ShareModal";
 import { useToast } from "@/lib/ToastContext";
 import { downloadWinnerCard } from "@/lib/downloadWinnerCard";
 import { secureShuffle, secureRandomInt } from "@/lib/random";
+import { AdWrapper, InArticleAd } from "@/components/ads";
+import { AD_SLOTS } from "@/lib/ads/config";
 
 type TabType = 'links' | 'rules' | 'participants';
 type DrawType = 'comments' | 'likes' | 'subscribers';
@@ -322,7 +324,7 @@ export default function YouTubeGiveaway() {
     };
 
     return (
-        <main className="min-h-screen min-h-dvh flex flex-col items-center p-3 sm:p-4 pt-24 sm:pt-32 relative overflow-hidden bg-gradient-to-b from-red-50 via-gray-50 to-white dark:from-gray-900 dark:via-gray-900 dark:to-gray-950 safe-area-inset-bottom transition-colors duration-300">
+        <main className="ys-page-shell flex flex-col items-center p-3 sm:p-4 pt-24 sm:pt-32 relative overflow-hidden safe-area-inset-bottom transition-colors duration-300">
             <div className="absolute top-0 left-0 w-48 sm:w-72 md:w-96 h-48 sm:h-72 md:h-96 bg-red-200 dark:bg-red-500/20 rounded-full blur-[80px] sm:blur-[100px] md:blur-[120px] opacity-40 -translate-x-1/2 -translate-y-1/2" />
             <div className="absolute bottom-0 right-0 w-48 sm:w-72 md:w-96 h-48 sm:h-72 md:h-96 bg-gray-200 dark:bg-gray-500/20 rounded-full blur-[80px] sm:blur-[100px] md:blur-[120px] opacity-40 translate-x-1/3 translate-y-1/3" />
 
@@ -332,23 +334,23 @@ export default function YouTubeGiveaway() {
                     <div className="inline-flex items-center justify-center p-3 sm:p-4 bg-red-600 rounded-xl sm:rounded-2xl shadow-lg">
                         <Youtube className="w-8 h-8 sm:w-10 sm:h-10 text-white" strokeWidth={1.5} />
                     </div>
-                    <h1 className="text-2xl sm:text-3xl md:text-4xl font-black text-gray-900 dark:text-white tracking-tight">
+                    <h1 className="font-heading text-headline-lg-mobile sm:text-headline-lg text-[var(--text-primary)] tracking-tight">
                         {t.giveaway.youtubeTitle}
                     </h1>
-                    <p className="text-gray-500 dark:text-gray-400 max-w-lg mx-auto text-sm sm:text-base px-2">
+                    <p className="text-[var(--text-secondary)] text-body-md max-w-lg mx-auto px-2">
                         {t.giveaway.youtubeDesc}
                     </p>
                 </div>
 
                 {/* Main Card */}
-                <div className="bg-white/90 dark:bg-gray-800/90 backdrop-blur-xl rounded-2xl sm:rounded-3xl shadow-xl dark:shadow-2xl border border-white/50 dark:border-white/10 overflow-hidden min-h-[400px]">
+                <div className="ys-card backdrop-blur-xl overflow-hidden min-h-[400px]">
                     {/* Tab Navigation */}
-                    <div className={`flex border-b border-gray-100 ${isRolling ? 'opacity-50 pointer-events-none' : ''}`}>
+                    <div className={`flex border-b border-[var(--border-light)] ${isRolling ? 'opacity-50 pointer-events-none' : ''}`}>
                         <button
                             onClick={() => setActiveTab('links')}
                             className={`flex-1 py-3 sm:py-4 px-2 sm:px-6 font-bold text-xs sm:text-sm flex items-center justify-center gap-1 sm:gap-2 transition-all border-b-2 ${activeTab === 'links'
-                                ? 'text-red-600 border-red-500 bg-red-50/50'
-                                : 'text-gray-400 border-transparent hover:text-gray-600'
+                                ? 'text-santa-red border-santa-red bg-santa-red/5'
+                                : 'text-[var(--text-muted)] border-transparent hover:text-[var(--text-secondary)]'
                                 }`}
                         >
                             <Link2 className="w-3.5 h-3.5 sm:w-4 sm:h-4" />
@@ -357,8 +359,8 @@ export default function YouTubeGiveaway() {
                         <button
                             onClick={() => setActiveTab('rules')}
                             className={`flex-1 py-3 sm:py-4 px-2 sm:px-6 font-bold text-xs sm:text-sm flex items-center justify-center gap-1 sm:gap-2 transition-all border-b-2 ${activeTab === 'rules'
-                                ? 'text-red-600 border-red-500 bg-red-50/50'
-                                : 'text-gray-400 border-transparent hover:text-gray-600'
+                                ? 'text-santa-red border-santa-red bg-santa-red/5'
+                                : 'text-[var(--text-muted)] border-transparent hover:text-[var(--text-secondary)]'
                                 }`}
                         >
                             <Settings className="w-3.5 h-3.5 sm:w-4 sm:h-4" />
@@ -367,14 +369,14 @@ export default function YouTubeGiveaway() {
                         <button
                             onClick={() => setActiveTab('participants')}
                             className={`flex-1 py-3 sm:py-4 px-2 sm:px-6 font-bold text-xs sm:text-sm flex items-center justify-center gap-1 sm:gap-2 transition-all border-b-2 ${activeTab === 'participants'
-                                ? 'text-red-600 border-red-500 bg-red-50/50'
-                                : 'text-gray-400 border-transparent hover:text-gray-600'
+                                ? 'text-santa-red border-santa-red bg-santa-red/5'
+                                : 'text-[var(--text-muted)] border-transparent hover:text-[var(--text-secondary)]'
                                 }`}
                         >
                             <Users className="w-3.5 h-3.5 sm:w-4 sm:h-4" />
                             <span className="hidden xs:inline sm:inline">{t.giveaway.participants}</span>
                             {participants.length > 0 && (
-                                <span className="ml-1 sm:ml-2 bg-red-500 text-white text-[10px] sm:text-xs px-1.5 sm:px-2 py-0.5 rounded-full">
+                                <span className="ml-1 sm:ml-2 bg-santa-red text-white text-[10px] sm:text-xs px-1.5 sm:px-2 py-0.5 rounded-full">
                                     {participants.length}
                                 </span>
                             )}
@@ -386,15 +388,15 @@ export default function YouTubeGiveaway() {
                         {isRolling && (
                             <div className="flex flex-col items-center justify-center py-12 space-y-6 animate-in fade-in duration-300">
                                 <div className="text-center space-y-2">
-                                    <h3 className="text-xl font-bold text-gray-500">{t.giveaway.fetching || "Rolling..."}</h3>
-                                    <div className="text-4xl sm:text-5xl font-black text-red-600 tracking-tight transition-all scale-110">
+                                    <h3 className="text-xl font-bold text-[var(--text-secondary)]">{t.giveaway.fetching || "Rolling..."}</h3>
+                                    <div className="font-heading text-4xl sm:text-5xl font-black text-santa-red tracking-tight transition-all scale-110">
                                         {rollingParticipant?.name}
                                     </div>
-                                    <p className="text-sm text-gray-400 max-w-sm mx-auto truncate px-4">
+                                    <p className="text-sm text-[var(--text-muted)] max-w-sm mx-auto truncate px-4">
                                         {rollingParticipant?.comment}
                                     </p>
                                 </div>
-                                <Loader2 className="w-8 h-8 text-red-400 animate-spin" />
+                                <Loader2 className="w-8 h-8 text-santa-red animate-spin" />
                             </div>
                         )}
 
@@ -406,20 +408,20 @@ export default function YouTubeGiveaway() {
                                     <div className="space-y-6 animate-in fade-in slide-in-from-bottom-4">
                                         <div className="space-y-3">
                                             <div className="flex gap-2">
-                                                <div className="flex-1 flex items-center gap-2 bg-gray-50 rounded-xl p-4 border-2 border-dashed border-gray-200 focus-within:border-red-300 transition-colors">
+                                                <div className="flex-1 flex items-center gap-2 bg-[var(--input-bg)] rounded-xl p-4 border-2 border-dashed border-[var(--input-border)] focus-within:border-santa-red transition-colors">
                                                     <Youtube className="w-5 h-5 text-red-500" />
                                                     <input
                                                         type="text"
                                                         placeholder={t.giveaway.linkInputPlaceholder}
                                                         value={videoLink}
                                                         onChange={(e) => setVideoLink(e.target.value)}
-                                                        className="flex-1 bg-transparent outline-none text-gray-700 placeholder:text-gray-400"
+                                                        className="flex-1 bg-transparent outline-none text-[var(--text-primary)] placeholder:text-[var(--text-muted)]"
                                                     />
                                                 </div>
                                                 <Button
                                                     onClick={fetchComments}
                                                     disabled={loading || !videoLink}
-                                                    className="h-auto px-6 bg-red-600 hover:bg-red-700 text-white shadow-lg whitespace-nowrap"
+                                                    className="h-auto px-6 whitespace-nowrap"
                                                 >
                                                     {loading ? (
                                                         <div className="flex items-center gap-2">
@@ -434,32 +436,32 @@ export default function YouTubeGiveaway() {
                                                     )}
                                                 </Button>
                                             </div>
-                                            <p className="text-xs text-gray-400 text-center">
+                                            <p className="text-label-sm text-[var(--text-muted)] text-center">
                                                 {t.giveaway.youtubeDesc}
                                             </p>
                                             {loading && (
-                                                <div className="p-4 bg-red-50 border border-red-200 rounded-xl animate-in fade-in">
+                                                <div className="p-4 bg-santa-red/5 border border-santa-red/20 rounded-xl animate-in fade-in">
                                                     <div className="flex items-center gap-3">
-                                                        <div className="w-5 h-5 border-2 border-red-300 border-t-red-600 rounded-full animate-spin flex-shrink-0" />
+                                                        <div className="w-5 h-5 border-2 border-santa-red/30 border-t-santa-red rounded-full animate-spin flex-shrink-0" />
                                                         <div className="flex-1 min-w-0">
-                                                            <p className="text-sm font-semibold text-red-700">{loadingStep}</p>
-                                                            <p className="text-xs text-red-400 mt-0.5">Bu işlem 10-30 saniye sürebilir, lütfen bekleyin</p>
+                                                            <p className="text-sm font-semibold text-santa-red">{loadingStep}</p>
+                                                            <p className="text-xs text-[var(--text-muted)] mt-0.5">Bu işlem 10-30 saniye sürebilir, lütfen bekleyin</p>
                                                         </div>
                                                     </div>
-                                                    <div className="mt-3 w-full bg-red-100 rounded-full h-1 overflow-hidden">
-                                                        <div className="h-full w-full bg-gradient-to-r from-red-400 to-red-600 rounded-full origin-left animate-[pulse_2s_ease-in-out_infinite]" />
+                                                    <div className="mt-3 w-full bg-santa-red/15 rounded-full h-1 overflow-hidden">
+                                                        <div className="h-full w-full bg-gradient-to-r from-santa-red/70 to-santa-red rounded-full origin-left animate-[pulse_2s_ease-in-out_infinite]" />
                                                     </div>
                                                 </div>
                                             )}
 
                                             {error && !loading && (
-                                                <div className="p-3 bg-red-50 border border-red-200 text-red-600 rounded-xl text-sm flex items-start gap-2 animate-in slide-in-from-top-2">
+                                                <div className="p-3 bg-santa-red/5 border border-santa-red/20 text-santa-red rounded-xl text-sm flex items-start gap-2 animate-in slide-in-from-top-2">
                                                     <span className="text-lg leading-none">⚠️</span>
                                                     <span>{error}</span>
                                                 </div>
                                             )}
 
-                                            <div className="bg-blue-50 border border-blue-200 rounded-xl p-4 text-sm text-blue-700 space-y-2">
+                                            <div className="bg-indigo-accent/10 border border-indigo-accent/25 rounded-xl p-4 text-sm text-indigo-accent space-y-2">
                                                 <h4 className="font-bold flex items-center gap-2">
                                                     <span className="text-xl">ℹ️</span>
                                                     {t.giveaway.youtubeLimitNote}
@@ -474,33 +476,32 @@ export default function YouTubeGiveaway() {
                                             <button
                                                 onClick={() => setDrawType('comments')}
                                                 className={`flex items-center gap-2 px-5 py-3 rounded-full font-medium transition-all ${drawType === 'comments'
-                                                    ? 'bg-white border-2 border-red-400 text-red-600 shadow-md'
-                                                    : 'bg-gray-100 text-gray-500 hover:bg-gray-200'
+                                                    ? 'bg-[var(--card-bg)] border-2 border-santa-red text-santa-red shadow-md'
+                                                    : 'bg-[var(--surface-2)] text-[var(--text-secondary)] hover:bg-[var(--border-medium)]'
                                                     }`}
                                             >
                                                 <MessageCircle className="w-4 h-4" />
                                                 {t.giveaway.comments}
                                             </button>
                                             <div className="relative opacity-50 cursor-not-allowed" title={t.giveaway.comingSoon}>
-                                                <div className="flex items-center gap-2 px-5 py-3 rounded-full font-medium bg-gray-100 text-gray-400 select-none">
+                                                <div className="flex items-center gap-2 px-5 py-3 rounded-full font-medium bg-[var(--surface-2)] text-[var(--text-muted)] select-none">
                                                     <ThumbsUp className="w-4 h-4" />
                                                     {t.giveaway.likes}
                                                 </div>
-                                                <span className="absolute -top-2 -right-2 text-[10px] font-bold bg-gray-400 text-white px-1.5 py-0.5 rounded-full leading-none">{t.giveaway.comingSoon}</span>
+                                                <span className="absolute -top-2 -right-2 text-[10px] font-bold bg-[var(--text-muted)] text-white px-1.5 py-0.5 rounded-full leading-none">{t.giveaway.comingSoon}</span>
                                             </div>
                                             <div className="relative opacity-50 cursor-not-allowed" title={t.giveaway.comingSoon}>
-                                                <div className="flex items-center gap-2 px-5 py-3 rounded-full font-medium bg-gray-100 text-gray-400 select-none">
+                                                <div className="flex items-center gap-2 px-5 py-3 rounded-full font-medium bg-[var(--surface-2)] text-[var(--text-muted)] select-none">
                                                     <Bell className="w-4 h-4" />
                                                     {t.giveaway.subscribers}
                                                 </div>
-                                                <span className="absolute -top-2 -right-2 text-[10px] font-bold bg-gray-400 text-white px-1.5 py-0.5 rounded-full leading-none">{t.giveaway.comingSoon}</span>
+                                                <span className="absolute -top-2 -right-2 text-[10px] font-bold bg-[var(--text-muted)] text-white px-1.5 py-0.5 rounded-full leading-none">{t.giveaway.comingSoon}</span>
                                             </div>
                                         </div>
 
                                         <div className="pt-4 flex justify-end">
                                             <Button
                                                 onClick={() => setActiveTab('rules')}
-                                                className="bg-red-600 hover:bg-red-700 text-white shadow-lg"
                                             >
                                                 {t.giveaway.rules} <Settings className="w-4 h-4 ml-2" />
                                             </Button>
@@ -512,7 +513,7 @@ export default function YouTubeGiveaway() {
                                 {activeTab === 'rules' && !showResults && (
                                     <div className="space-y-6 animate-in fade-in slide-in-from-bottom-4">
                                         <div className="text-center space-y-2">
-                                            <label className="text-sm font-bold text-gray-600 flex items-center justify-center gap-1">
+                                            <label className="text-label-md text-[var(--text-secondary)] flex items-center justify-center gap-1">
                                                 {t.giveaway.giveawayName}
                                             </label>
                                             <input
@@ -520,72 +521,72 @@ export default function YouTubeGiveaway() {
                                                 placeholder="Giveaway"
                                                 value={giveawayName}
                                                 onChange={(e) => setGiveawayName(e.target.value)}
-                                                className="w-full max-w-md mx-auto block text-center py-3 px-4 rounded-xl border-2 border-gray-200 focus:border-red-400 outline-none transition-colors"
+                                                className="w-full max-w-md mx-auto block text-center py-3 px-4 rounded-xl border-2 border-[var(--input-border)] bg-[var(--input-bg)] text-[var(--text-primary)] focus:border-santa-red outline-none transition-colors"
                                             />
                                         </div>
 
                                         <div className="flex justify-center gap-8">
                                             <div className="text-center space-y-2">
-                                                <label className="text-sm font-bold text-gray-600 flex items-center justify-center gap-1">
+                                                <label className="text-label-md text-[var(--text-secondary)] flex items-center justify-center gap-1">
                                                     {t.giveaway.winnerCount}
                                                 </label>
-                                                <div className="flex items-center gap-3 bg-gray-50 rounded-xl p-2">
-                                                    <button onClick={() => setWinnerCount(Math.max(1, winnerCount - 1))} className="w-10 h-10 rounded-lg bg-red-100 text-red-600 hover:bg-red-200 flex items-center justify-center transition-colors"><Minus className="w-4 h-4" /></button>
-                                                    <span className="w-12 text-center font-bold text-xl">{winnerCount}</span>
-                                                    <button onClick={() => setWinnerCount(winnerCount + 1)} className="w-10 h-10 rounded-lg bg-red-100 text-red-600 hover:bg-red-200 flex items-center justify-center transition-colors"><Plus className="w-4 h-4" /></button>
+                                                <div className="flex items-center gap-3 bg-[var(--surface-2)] rounded-xl p-2">
+                                                    <button onClick={() => setWinnerCount(Math.max(1, winnerCount - 1))} className="w-10 h-10 rounded-lg bg-santa-red/10 text-santa-red hover:bg-santa-red/20 flex items-center justify-center transition-colors"><Minus className="w-4 h-4" /></button>
+                                                    <span className="w-12 text-center font-bold text-xl text-[var(--text-primary)]">{winnerCount}</span>
+                                                    <button onClick={() => setWinnerCount(winnerCount + 1)} className="w-10 h-10 rounded-lg bg-santa-red/10 text-santa-red hover:bg-santa-red/20 flex items-center justify-center transition-colors"><Plus className="w-4 h-4" /></button>
                                                 </div>
                                             </div>
                                             <div className="text-center space-y-2">
-                                                <label className="text-sm font-bold text-gray-600 flex items-center justify-center gap-1">
+                                                <label className="text-label-md text-[var(--text-secondary)] flex items-center justify-center gap-1">
                                                     {t.giveaway.backupCount}
                                                 </label>
-                                                <div className="flex items-center gap-3 bg-gray-50 rounded-xl p-2">
-                                                    <button onClick={() => setBackupCount(Math.max(0, backupCount - 1))} className="w-10 h-10 rounded-lg bg-gray-200 text-gray-600 hover:bg-gray-300 flex items-center justify-center transition-colors"><Minus className="w-4 h-4" /></button>
-                                                    <span className="w-12 text-center font-bold text-xl">{backupCount}</span>
-                                                    <button onClick={() => setBackupCount(backupCount + 1)} className="w-10 h-10 rounded-lg bg-gray-200 text-gray-600 hover:bg-gray-300 flex items-center justify-center transition-colors"><Plus className="w-4 h-4" /></button>
+                                                <div className="flex items-center gap-3 bg-[var(--surface-2)] rounded-xl p-2">
+                                                    <button onClick={() => setBackupCount(Math.max(0, backupCount - 1))} className="w-10 h-10 rounded-lg bg-[var(--border-light)] text-[var(--text-secondary)] hover:bg-[var(--border-medium)] flex items-center justify-center transition-colors"><Minus className="w-4 h-4" /></button>
+                                                    <span className="w-12 text-center font-bold text-xl text-[var(--text-primary)]">{backupCount}</span>
+                                                    <button onClick={() => setBackupCount(backupCount + 1)} className="w-10 h-10 rounded-lg bg-[var(--border-light)] text-[var(--text-secondary)] hover:bg-[var(--border-medium)] flex items-center justify-center transition-colors"><Plus className="w-4 h-4" /></button>
                                                 </div>
                                             </div>
                                         </div>
 
                                         <div className="space-y-3 max-w-md mx-auto">
-                                            <label className="flex items-center justify-between p-3 bg-gray-50 rounded-xl cursor-pointer hover:bg-gray-100 transition-colors">
-                                                <span className="text-sm font-medium text-gray-700 flex items-center gap-2">
+                                            <label className="flex items-center justify-between p-3 bg-[var(--surface-2)] rounded-xl cursor-pointer hover:bg-[var(--border-light)] transition-colors">
+                                                <span className="text-sm font-medium text-[var(--text-secondary)] flex items-center gap-2">
                                                     <Bell className="w-4 h-4 text-red-500" />
                                                     {t.giveaway.requireSubscription}
                                                 </span>
-                                                <button onClick={() => setRequireSubscription(!requireSubscription)} className={`w-12 h-7 rounded-full transition-colors relative ${requireSubscription ? 'bg-red-500' : 'bg-gray-300'}`}>
+                                                <button onClick={() => setRequireSubscription(!requireSubscription)} className={`w-12 h-7 rounded-full transition-colors relative ${requireSubscription ? 'bg-santa-red' : 'bg-[var(--border-medium)]'}`}>
                                                     <span className={`absolute top-1 w-5 h-5 rounded-full bg-white shadow transition-transform ${requireSubscription ? 'right-1' : 'left-1'}`} />
                                                 </button>
                                             </label>
-                                            <label className="flex items-center justify-between p-3 bg-gray-50 rounded-xl cursor-pointer hover:bg-gray-100 transition-colors">
-                                                <span className="text-sm font-medium text-gray-700 flex items-center gap-2">
+                                            <label className="flex items-center justify-between p-3 bg-[var(--surface-2)] rounded-xl cursor-pointer hover:bg-[var(--border-light)] transition-colors">
+                                                <span className="text-sm font-medium text-[var(--text-secondary)] flex items-center gap-2">
                                                     🔔 {t.giveaway.requireNotification}
                                                 </span>
-                                                <button onClick={() => setRequireNotification(!requireNotification)} className={`w-12 h-7 rounded-full transition-colors relative ${requireNotification ? 'bg-red-500' : 'bg-gray-300'}`}>
+                                                <button onClick={() => setRequireNotification(!requireNotification)} className={`w-12 h-7 rounded-full transition-colors relative ${requireNotification ? 'bg-santa-red' : 'bg-[var(--border-medium)]'}`}>
                                                     <span className={`absolute top-1 w-5 h-5 rounded-full bg-white shadow transition-transform ${requireNotification ? 'right-1' : 'left-1'}`} />
                                                 </button>
                                             </label>
-                                            <label className="flex items-center justify-between p-3 bg-gray-50 rounded-xl cursor-pointer hover:bg-gray-100 transition-colors">
-                                                <span className="text-sm font-medium text-gray-700 flex items-center gap-2">
+                                            <label className="flex items-center justify-between p-3 bg-[var(--surface-2)] rounded-xl cursor-pointer hover:bg-[var(--border-light)] transition-colors">
+                                                <span className="text-sm font-medium text-[var(--text-secondary)] flex items-center gap-2">
                                                     {t.giveaway.countUserOnce}
                                                 </span>
-                                                <button onClick={() => setCountUserOnce(!countUserOnce)} className={`w-12 h-7 rounded-full transition-colors relative ${countUserOnce ? 'bg-red-500' : 'bg-gray-300'}`}>
+                                                <button onClick={() => setCountUserOnce(!countUserOnce)} className={`w-12 h-7 rounded-full transition-colors relative ${countUserOnce ? 'bg-santa-red' : 'bg-[var(--border-medium)]'}`}>
                                                     <span className={`absolute top-1 w-5 h-5 rounded-full bg-white shadow transition-transform ${countUserOnce ? 'right-1' : 'left-1'}`} />
                                                 </button>
                                             </label>
                                         </div>
 
                                         <div className="pt-4 flex justify-between items-center gap-4">
-                                            <Button onClick={() => setActiveTab('links')} variant="ghost" className="text-gray-500">← {t.common.cancel}</Button>
+                                            <Button onClick={() => setActiveTab('links')} variant="ghost">← {t.common.cancel}</Button>
                                             <div className="flex gap-4">
-                                                <Button onClick={() => setActiveTab('participants')} variant="secondary" className="text-gray-600">{t.giveaway.participants} ({participants.length})</Button>
-                                                <Button onClick={startGiveaway} disabled={participants.length < winnerCount + backupCount} className="bg-red-600 hover:bg-red-700 text-white shadow-lg shadow-red-200">
+                                                <Button onClick={() => setActiveTab('participants')} variant="secondary">{t.giveaway.participants} ({participants.length})</Button>
+                                                <Button onClick={startGiveaway} disabled={participants.length < winnerCount + backupCount}>
                                                     <Play className="w-5 h-5 mr-2" /> {t.giveaway.startGiveaway}
                                                 </Button>
                                             </div>
                                         </div>
                                         {participants.length < winnerCount + backupCount && (
-                                            <p className="text-center text-sm text-red-500 font-medium">⚠️ {t.home.notEnoughPeople}</p>
+                                            <p className="text-center text-sm text-santa-red font-medium">⚠️ {t.home.notEnoughPeople}</p>
                                         )}
                                     </div>
                                 )}
@@ -799,6 +800,10 @@ export default function YouTubeGiveaway() {
                                                 ))}
                                             </div>
                                         )}
+
+                                        <AdWrapper position="inline">
+                                            <InArticleAd adSlot={AD_SLOTS.IN_ARTICLE} />
+                                        </AdWrapper>
 
                                         <div className="flex flex-wrap gap-2 pt-4">
                                             <Button onClick={copyResults} variant="secondary" className="flex-1 min-w-[120px]">

@@ -18,6 +18,8 @@ import { Input } from "@/components/ui/Input";
 import { useLanguage } from "@/lib/i18n/LanguageContext";
 import { useToast } from "@/lib/ToastContext";
 import { secureShuffle, secureRandomInt } from "@/lib/random";
+import { AdWrapper, InArticleAd } from "@/components/ads";
+import { AD_SLOTS } from "@/lib/ads/config";
 
 interface RaffleBoardProps {
     title: string;
@@ -147,33 +149,33 @@ export default function RaffleBoard({
     };
 
     const Stepper = ({ label, value, set, min }: { label: string; value: number; set: (n: number) => void; min: number }) => (
-        <div className="flex-1 bg-gray-50 dark:bg-gray-900/50 rounded-xl p-3 text-center">
-            <p className="text-xs font-bold text-gray-500 dark:text-gray-400 mb-2">{label}</p>
+        <div className="flex-1 bg-[var(--surface-2)] rounded-md p-3 text-center">
+            <p className="text-label-sm text-[var(--text-muted)] mb-2">{label}</p>
             <div className="flex items-center justify-center gap-3">
-                <button onClick={() => set(Math.max(min, value - 1))} className="w-8 h-8 rounded-lg bg-white dark:bg-gray-700 border border-gray-200 dark:border-gray-600 font-bold text-gray-600 dark:text-gray-200 hover:border-santa-red">−</button>
-                <span className="w-8 text-xl font-black text-gray-900 dark:text-white tabular-nums">{value}</span>
-                <button onClick={() => set(value + 1)} className="w-8 h-8 rounded-lg bg-white dark:bg-gray-700 border border-gray-200 dark:border-gray-600 font-bold text-gray-600 dark:text-gray-200 hover:border-santa-red">+</button>
+                <button onClick={() => set(Math.max(min, value - 1))} className="w-8 h-8 rounded-sm bg-[var(--card-bg)] border border-[var(--border-medium)] font-bold text-[var(--text-secondary)] hover:border-santa-red">−</button>
+                <span className="w-8 text-xl font-black text-[var(--text-primary)] tabular-nums">{value}</span>
+                <button onClick={() => set(value + 1)} className="w-8 h-8 rounded-sm bg-[var(--card-bg)] border border-[var(--border-medium)] font-bold text-[var(--text-secondary)] hover:border-santa-red">+</button>
             </div>
         </div>
     );
 
     return (
-        <main className="min-h-screen min-h-dvh flex flex-col items-center pt-24 sm:pt-32 px-3 sm:px-4 pb-16 relative overflow-hidden bg-gradient-to-b from-[#FFF5F5] to-white dark:from-gray-950 dark:to-gray-900 transition-colors duration-300">
+        <main className="ys-page-shell flex flex-col items-center pt-24 sm:pt-32 px-3 sm:px-4 pb-16 relative overflow-hidden transition-colors duration-300">
             <div className={`absolute top-0 left-0 w-64 h-64 ${accentGlow} rounded-full blur-[90px] opacity-40 -translate-x-1/3 -translate-y-1/3`} />
             <div className={`absolute bottom-0 right-0 w-72 h-72 ${accentGlow} rounded-full blur-[90px] opacity-30 translate-x-1/3 translate-y-1/3`} />
 
             <div className="z-10 w-full max-w-lg space-y-5">
                 {/* Header */}
                 <div className="text-center space-y-3">
-                    <div className={`inline-flex items-center justify-center w-16 h-16 rounded-2xl text-white shadow-lg ${accentBox}`}>
+                    <div className={`inline-flex items-center justify-center w-16 h-16 rounded-lg text-white shadow-lg ${accentBox}`}>
                         {icon}
                     </div>
-                    <h1 className="text-2xl sm:text-3xl font-black text-gray-900 dark:text-white tracking-tight">{title}</h1>
-                    <p className="text-gray-500 dark:text-gray-400 text-sm sm:text-base max-w-md mx-auto">{subtitle}</p>
+                    <h1 className="font-heading text-headline-lg-mobile sm:text-headline-lg text-[var(--text-primary)] tracking-tight">{title}</h1>
+                    <p className="text-[var(--text-secondary)] text-body-md max-w-md mx-auto">{subtitle}</p>
                 </div>
 
                 {/* Card */}
-                <div className="bg-white/90 dark:bg-gray-800/90 backdrop-blur-xl p-4 sm:p-6 rounded-3xl shadow-xl border border-white/50 dark:border-white/10 space-y-5">
+                <div className="ys-card backdrop-blur-xl p-4 sm:p-6 space-y-5">
                     {!showResults && (
                         <>
                             {/* Add input */}
@@ -193,7 +195,7 @@ export default function RaffleBoard({
                             {/* Bulk toggle */}
                             <button
                                 onClick={() => setShowBulk((v) => !v)}
-                                className="text-xs font-bold text-gray-500 dark:text-gray-400 hover:text-santa-red transition-colors"
+                                className="text-label-sm text-[var(--text-muted)] hover:text-santa-red transition-colors"
                             >
                                 {showBulk ? "▲" : "▼"} {t.giveaway.bulkAdd}
                             </button>
@@ -204,7 +206,7 @@ export default function RaffleBoard({
                                         onChange={(e) => setBulk(e.target.value)}
                                         rows={4}
                                         placeholder={`${placeholder}\n${placeholder}\n...`}
-                                        className="w-full p-3 rounded-xl border border-gray-200 dark:border-gray-700 bg-white/50 dark:bg-gray-900/50 text-sm text-gray-800 dark:text-white resize-y"
+                                        className="w-full p-3 rounded-md border-2 border-[var(--input-border)] bg-[var(--input-bg)] text-sm text-[var(--text-primary)] resize-y focus:border-[var(--input-focus)] focus:outline-none"
                                     />
                                     <Button onClick={addBulk} variant="secondary" size="sm" className="w-full">
                                         {t.giveaway.parse}
@@ -214,26 +216,26 @@ export default function RaffleBoard({
 
                             {/* List */}
                             <div className="flex items-center justify-between">
-                                <span className="text-xs font-bold text-gray-400 dark:text-gray-500 flex items-center gap-1.5">
+                                <span className="text-label-sm text-[var(--text-muted)] flex items-center gap-1.5">
                                     <Users className="w-3.5 h-3.5" /> {participants.length}
                                 </span>
                                 {participants.length > 0 && (
-                                    <button onClick={() => setParticipants([])} className="text-xs text-gray-400 hover:text-red-500">
+                                    <button onClick={() => setParticipants([])} className="text-label-sm text-[var(--text-muted)] hover:text-santa-red">
                                         {t.giveaway.clearAll}
                                     </button>
                                 )}
                             </div>
-                            <div className="space-y-1.5 max-h-[28vh] overflow-y-auto pr-1 custom-scrollbar">
+                            <div className="rounded-md overflow-hidden border border-[var(--border-light)] max-h-[28vh] overflow-y-auto custom-scrollbar">
                                 {participants.length === 0 && (
-                                    <div className="text-center py-8 text-gray-400 dark:text-gray-500 border-2 border-dashed border-gray-200 dark:border-gray-700 rounded-xl">
+                                    <div className="text-center py-8 text-[var(--text-muted)] border-2 border-dashed border-[var(--border-medium)] rounded-md">
                                         <Sparkles className="w-6 h-6 mx-auto mb-2 opacity-50" />
                                         <p className="text-sm">{t.home.noParticipants}</p>
                                     </div>
                                 )}
                                 {participants.map((p, i) => (
-                                    <div key={i} className="group flex items-center justify-between px-3 py-2 bg-white dark:bg-gray-900 rounded-xl border border-gray-100 dark:border-gray-800">
-                                        <span className="font-medium text-gray-700 dark:text-gray-200 text-sm truncate mr-2">{p}</span>
-                                        <button onClick={() => remove(i)} className="p-1 text-gray-300 dark:text-gray-600 hover:text-red-500 shrink-0">
+                                    <div key={i} className="ys-zebra-row group flex items-center justify-between px-3 py-2">
+                                        <span className="font-medium text-[var(--text-secondary)] text-sm truncate mr-2">{p}</span>
+                                        <button onClick={() => remove(i)} className="p-1 text-[var(--text-muted)] hover:text-santa-red shrink-0">
                                             <Trash2 className="w-4 h-4" />
                                         </button>
                                     </div>
@@ -264,18 +266,18 @@ export default function RaffleBoard({
                     {/* Results */}
                     {showResults && (
                         <div className="space-y-5 animate-in zoom-in duration-500">
-                            <div className="text-center">
-                                <Trophy className="w-10 h-10 mx-auto text-gold mb-1" />
-                                <p className="text-sm font-bold text-gray-400 dark:text-gray-500 uppercase tracking-wider">{t.giveaway.results}</p>
+                            <div className="ys-winner-reveal text-center py-6 px-4">
+                                <Trophy className="w-10 h-10 mx-auto text-white/90 mb-1 animate-float" />
+                                <p className="text-label-sm text-white/80 uppercase">{t.giveaway.results}</p>
                             </div>
 
                             <div>
-                                <p className="text-xs font-bold text-gray-500 mb-2">🏆 {t.giveaway.winners}</p>
+                                <p className="text-label-sm text-[var(--text-muted)] mb-2">🏆 {t.giveaway.winners}</p>
                                 <div className="space-y-2">
                                     {winners.map((w, i) => (
-                                        <div key={i} className="flex items-center gap-3 p-3 bg-gradient-to-r from-yellow-50 to-amber-50 dark:from-yellow-500/10 dark:to-amber-500/10 rounded-xl border border-yellow-200 dark:border-yellow-500/20">
+                                        <div key={i} className="flex items-center gap-3 p-3 bg-[color-mix(in_srgb,var(--success-green)_10%,transparent)] rounded-md border border-[color-mix(in_srgb,var(--success-green)_25%,transparent)]">
                                             <span className="w-7 h-7 rounded-full bg-gold text-white font-bold text-sm flex items-center justify-center shrink-0">{i + 1}</span>
-                                            <span className="font-bold text-gray-900 dark:text-white">{w}</span>
+                                            <span className="font-bold text-[var(--text-primary)]">{w}</span>
                                         </div>
                                     ))}
                                 </div>
@@ -283,17 +285,21 @@ export default function RaffleBoard({
 
                             {backups.length > 0 && (
                                 <div>
-                                    <p className="text-xs font-bold text-gray-500 mb-2">🔄 {t.giveaway.backups}</p>
-                                    <div className="space-y-1.5">
+                                    <p className="text-label-sm text-[var(--text-muted)] mb-2">🔄 {t.giveaway.backups}</p>
+                                    <div className="rounded-md overflow-hidden border border-[var(--border-light)]">
                                         {backups.map((b, i) => (
-                                            <div key={i} className="flex items-center gap-3 px-3 py-2 bg-gray-50 dark:bg-gray-900/50 rounded-lg border border-gray-100 dark:border-gray-700">
-                                                <span className="w-6 h-6 rounded-full bg-gray-300 dark:bg-gray-600 text-white text-xs font-bold flex items-center justify-center shrink-0">{i + 1}</span>
-                                                <span className="text-gray-700 dark:text-gray-200 text-sm">{b}</span>
+                                            <div key={i} className="ys-zebra-row flex items-center gap-3 px-3 py-2">
+                                                <span className="w-6 h-6 rounded-full bg-[var(--text-muted)] text-white text-xs font-bold flex items-center justify-center shrink-0">{i + 1}</span>
+                                                <span className="text-[var(--text-secondary)] text-sm">{b}</span>
                                             </div>
                                         ))}
                                     </div>
                                 </div>
                             )}
+
+                            <AdWrapper position="inline">
+                                <InArticleAd adSlot={AD_SLOTS.IN_ARTICLE} />
+                            </AdWrapper>
 
                             <div className="flex gap-2 pt-2">
                                 <Button onClick={copyResults} variant="secondary" className="flex-1">

@@ -941,6 +941,24 @@
                         "desc": "Fun activity for the family."
                     }
                 }
+            },
+            "ai": {
+                "badge": "На основе ИИ",
+                "formTitle": "Расскажите немного, и мы подберём подарки специально для вас",
+                "relationshipLabel": "Кому вы ищете подарок?",
+                "relationshipPlaceholder": "напр. девушке, начальнику, маме",
+                "budgetLabel": "Бюджет",
+                "budgetLow": "Экономный",
+                "budgetMedium": "Средний",
+                "budgetHigh": "Премиум",
+                "notesLabel": "Интересы (необязательно)",
+                "notesPlaceholder": "напр. кофе, книги, спорт, техника",
+                "generateButton": "Предложить с ИИ",
+                "regenerateButton": "Показать другие идеи",
+                "loadingText": "Подбираем для вас лучшие подарки...",
+                "errorNotice": "Сейчас предложения ИИ недоступны, вот наши подобранные идеи.",
+                "changeSelection": "Изменить выбор",
+                "poweredBy": "Создано с помощью Google Gemini"
             }
         },
         "giftSuggestionsMeta": {

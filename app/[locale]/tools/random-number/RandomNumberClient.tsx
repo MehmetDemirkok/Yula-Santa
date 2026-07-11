@@ -6,6 +6,8 @@ import { ArrowLeft, Hash, Shuffle, Copy, Check } from 'lucide-react';
 import { useTranslations } from 'next-intl';
 import { useParams } from 'next/navigation';
 import { secureRandomIntInRange } from '@/lib/random';
+import { Button } from '@/components/ui/Button';
+import { Input } from '@/components/ui/Input';
 
 export default function RandomNumberPage() {
     const t = useTranslations('tools.randomNumberContent');
@@ -41,56 +43,56 @@ export default function RandomNumberPage() {
     };
 
     return (
-        <div className="min-h-screen bg-gradient-to-br from-green-50 via-white to-emerald-50 dark:from-gray-900 dark:to-gray-950 py-12 px-4 transition-colors duration-300">
+        <div className="ys-page-shell py-12 px-4 transition-colors duration-300">
             <div className="max-w-2xl mx-auto">
                 <div className="flex items-center gap-4 mb-8">
                     <Link
                         href={`/${locale}`}
-                        className="p-2 rounded-xl bg-white dark:bg-gray-800 shadow-sm border border-gray-100 dark:border-gray-700 hover:shadow-md transition-all"
+                        className="p-2 rounded-lg bg-[var(--card-bg)] shadow-sm border border-[var(--border-light)] hover:shadow-md transition-all"
                     >
-                        <ArrowLeft className="w-5 h-5 text-gray-600 dark:text-gray-400" />
+                        <ArrowLeft className="w-5 h-5 text-[var(--text-secondary)]" />
                     </Link>
                     <div>
-                        <h1 className="text-2xl md:text-3xl font-black text-gray-900 dark:text-white">
+                        <h1 className="font-heading text-headline-lg-mobile sm:text-headline-lg text-[var(--text-primary)]">
                             🔢 {t('title')}
                         </h1>
-                        <p className="text-sm text-gray-500 dark:text-gray-400 mt-1">{t('subtitle')}</p>
+                        <p className="text-body-md text-[var(--text-secondary)] mt-1">{t('subtitle')}</p>
                     </div>
                 </div>
 
-                <article className="bg-white dark:bg-gray-800 rounded-3xl shadow-xl border border-gray-100 dark:border-gray-700 p-6 md:p-8">
+                <article className="ys-card p-6 md:p-8">
                     <div className="grid grid-cols-1 md:grid-cols-3 gap-4 mb-8">
                         <div>
-                            <label htmlFor="min-value" className="block text-sm font-bold text-gray-700 dark:text-gray-300 mb-2">
+                            <label htmlFor="min-value" className="block text-label-md text-[var(--text-secondary)] mb-2">
                                 {t('min')}
                             </label>
-                            <input
+                            <Input
                                 id="min-value"
                                 type="number"
                                 value={min}
                                 onChange={(e) => setMin(parseInt(e.target.value) || 0)}
-                                className="w-full px-4 py-3 rounded-xl border border-gray-200 dark:border-gray-700 bg-white dark:bg-gray-900 focus:border-green-500 focus:ring-2 focus:ring-green-200 dark:focus:ring-green-500/20 outline-none transition-all text-lg font-medium dark:text-white"
+                                className="text-lg font-medium focus:border-success-green"
                                 aria-label="Minimum"
                             />
                         </div>
                         <div>
-                            <label htmlFor="max-value" className="block text-sm font-bold text-gray-700 dark:text-gray-300 mb-2">
+                            <label htmlFor="max-value" className="block text-label-md text-[var(--text-secondary)] mb-2">
                                 {t('max')}
                             </label>
-                            <input
+                            <Input
                                 id="max-value"
                                 type="number"
                                 value={max}
                                 onChange={(e) => setMax(parseInt(e.target.value) || 0)}
-                                className="w-full px-4 py-3 rounded-xl border border-gray-200 dark:border-gray-700 bg-white dark:bg-gray-900 focus:border-green-500 focus:ring-2 focus:ring-green-200 dark:focus:ring-green-500/20 outline-none transition-all text-lg font-medium dark:text-white"
+                                className="text-lg font-medium focus:border-success-green"
                                 aria-label="Maximum"
                             />
                         </div>
                         <div>
-                            <label htmlFor="count-value" className="block text-sm font-bold text-gray-700 dark:text-gray-300 mb-2">
+                            <label htmlFor="count-value" className="block text-label-md text-[var(--text-secondary)] mb-2">
                                 {t('countLabel')}
                             </label>
-                            <input
+                            <Input
                                 id="count-value"
                                 type="number"
                                 value={count}
@@ -101,19 +103,19 @@ export default function RandomNumberPage() {
                                 }}
                                 min="1"
                                 max="1000"
-                                className="w-full px-4 py-3 rounded-xl border border-gray-200 dark:border-gray-700 bg-white dark:bg-gray-900 focus:border-green-500 focus:ring-2 focus:ring-green-200 dark:focus:ring-green-500/20 outline-none transition-all text-lg font-medium dark:text-white"
+                                className="text-lg font-medium focus:border-success-green"
                                 aria-label="Count"
                             />
                         </div>
                     </div>
 
-                    <div className="min-h-[150px] bg-gradient-to-br from-green-50 to-emerald-50 dark:from-gray-900 dark:to-emerald-950/20 rounded-2xl p-6 mb-8 border border-green-100 dark:border-green-900/30" aria-live="polite" aria-atomic="true">
+                    <div className="min-h-[150px] bg-[var(--surface-2)] rounded-xl p-6 mb-8 border border-[var(--border-light)]" aria-live="polite" aria-atomic="true">
                         {results.length > 0 ? (
                             <div className="flex flex-wrap gap-3 justify-center">
                                 {results.map((num, index) => (
                                     <div
                                         key={index}
-                                        className="w-16 h-16 bg-gradient-to-br from-green-500 to-emerald-500 rounded-xl shadow-lg flex items-center justify-center animate-fade-in"
+                                        className="w-16 h-16 bg-success-green rounded-xl shadow-lg flex items-center justify-center animate-fade-in"
                                         style={{ animationDelay: `${index * 50}ms` }}
                                     >
                                         <span className="text-xl font-black text-white">{num}</span>
@@ -121,7 +123,7 @@ export default function RandomNumberPage() {
                                 ))}
                             </div>
                         ) : (
-                            <div className="flex items-center justify-center h-full text-gray-400 dark:text-gray-600">
+                            <div className="flex items-center justify-center h-full text-[var(--text-muted)]">
                                 <div className="text-center">
                                     <Hash className="w-12 h-12 mx-auto mb-2 opacity-50" aria-hidden="true" />
                                     <p>{t('placeholder')}</p>
@@ -131,30 +133,32 @@ export default function RandomNumberPage() {
                     </div>
 
                     <div className="space-y-3">
-                        <button
+                        <Button
                             onClick={generateNumbers}
                             disabled={isGenerating || min >= max}
-                            className="w-full py-4 bg-gradient-to-r from-green-500 to-emerald-500 hover:from-green-600 hover:to-emerald-600 text-white font-bold text-lg rounded-2xl shadow-lg hover:shadow-xl transition-all disabled:opacity-50 disabled:cursor-not-allowed flex items-center justify-center gap-3"
+                            size="lg"
+                            className="w-full"
                         >
                             <Shuffle className={`w-5 h-5 ${isGenerating ? 'animate-spin' : ''}`} aria-hidden="true" />
                             {isGenerating ? t('rolling') : t('generate')}
-                        </button>
+                        </Button>
 
                         {results.length > 0 && (
-                            <button
+                            <Button
                                 onClick={copyResults}
-                                className="w-full py-3 bg-gray-100 dark:bg-gray-700 hover:bg-gray-200 dark:hover:bg-gray-600 text-gray-600 dark:text-gray-300 font-medium rounded-2xl transition-all flex items-center justify-center gap-2"
+                                variant="secondary"
+                                className="w-full"
                             >
                                 {copied ? <Check className="w-4 h-4" aria-hidden="true" /> : <Copy className="w-4 h-4" aria-hidden="true" />}
                                 {copied ? 'OK!' : t('result')}
-                            </button>
+                            </Button>
                         )}
                     </div>
                 </article>
 
-                <section className="mt-8 bg-white/60 dark:bg-gray-800/60 backdrop-blur rounded-2xl p-6 border border-gray-100 dark:border-gray-700">
-                    <h2 className="text-lg font-bold text-gray-800 dark:text-white mb-3">{t('aboutTitle')}</h2>
-                    <p className="text-sm text-gray-600 dark:text-gray-400 leading-relaxed">
+                <section className="mt-8 ys-card p-6">
+                    <h2 className="font-heading text-headline-md text-[var(--text-primary)] mb-3">{t('aboutTitle')}</h2>
+                    <p className="text-body-md text-[var(--text-secondary)] leading-relaxed">
                         {t('aboutText')}
                     </p>
                 </section>

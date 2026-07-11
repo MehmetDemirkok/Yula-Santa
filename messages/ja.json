@@ -919,6 +919,24 @@
                         "desc": "Fun activity for the family."
                     }
                 }
+            },
+            "ai": {
+                "badge": "AI搭載",
+                "formTitle": "いくつか詳細を教えてください。あなたにぴったりの提案を作成します",
+                "relationshipLabel": "誰へのギフトですか?",
+                "relationshipPlaceholder": "例: 彼女、上司、母",
+                "budgetLabel": "予算",
+                "budgetLow": "リーズナブル",
+                "budgetMedium": "普通",
+                "budgetHigh": "プレミアム",
+                "notesLabel": "興味・関心(任意)",
+                "notesPlaceholder": "例: コーヒー、本、スポーツ、テクノロジー",
+                "generateButton": "AIで提案する",
+                "regenerateButton": "他の案を見る",
+                "loadingText": "あなたにぴったりのギフトを考えています...",
+                "errorNotice": "現在AIの提案はご利用いただけないため、厳選したアイデアをご紹介します。",
+                "changeSelection": "選択を変更",
+                "poweredBy": "Google Geminiで生成"
             }
         },
         "giftSuggestionsMeta": {

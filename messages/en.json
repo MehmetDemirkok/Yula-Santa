@@ -955,6 +955,24 @@
                         "desc": "Fun activity for the family."
                     }
                 }
+            },
+            "ai": {
+                "badge": "AI-Powered",
+                "formTitle": "Give us a few details and we'll craft suggestions just for you",
+                "relationshipLabel": "Who are you shopping for?",
+                "relationshipPlaceholder": "e.g. my girlfriend, my boss, my mom",
+                "budgetLabel": "Budget",
+                "budgetLow": "Budget-friendly",
+                "budgetMedium": "Medium",
+                "budgetHigh": "Premium",
+                "notesLabel": "Interests (optional)",
+                "notesPlaceholder": "e.g. coffee, books, sports, tech",
+                "generateButton": "Suggest with AI",
+                "regenerateButton": "Get Different Ideas",
+                "loadingText": "Thinking of the best gifts for you...",
+                "errorNotice": "AI suggestions aren't available right now, so here are our curated picks instead.",
+                "changeSelection": "Change Selection",
+                "poweredBy": "Generated with Google Gemini"
             }
         },
         "giftSuggestionsMeta": {
