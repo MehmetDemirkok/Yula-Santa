@@ -326,7 +326,7 @@ export default function YouTubeGiveaway() {
     return (
         <main className="ys-page-shell flex flex-col items-center p-3 sm:p-4 pt-24 sm:pt-32 relative overflow-hidden safe-area-inset-bottom transition-colors duration-300">
             <div className="absolute top-0 left-0 w-48 sm:w-72 md:w-96 h-48 sm:h-72 md:h-96 bg-red-200 dark:bg-red-500/20 rounded-full blur-[80px] sm:blur-[100px] md:blur-[120px] opacity-40 -translate-x-1/2 -translate-y-1/2" />
-            <div className="absolute bottom-0 right-0 w-48 sm:w-72 md:w-96 h-48 sm:h-72 md:h-96 bg-gray-200 dark:bg-gray-500/20 rounded-full blur-[80px] sm:blur-[100px] md:blur-[120px] opacity-40 translate-x-1/3 translate-y-1/3" />
+            <div className="absolute bottom-0 right-0 w-48 sm:w-72 md:w-96 h-48 sm:h-72 md:h-96 bg-[var(--surface-2)] dark:bg-[var(--card-bg)] rounded-full blur-[80px] sm:blur-[100px] md:blur-[120px] opacity-40 translate-x-1/3 translate-y-1/3" />
 
             <div className="z-10 w-full max-w-2xl space-y-4 sm:space-y-6">
                 {/* Header */}
@@ -596,7 +596,7 @@ export default function YouTubeGiveaway() {
                                     <div className="space-y-6 animate-in fade-in slide-in-from-bottom-4">
                                         <div className="space-y-2">
                                             <div className="flex items-center justify-between">
-                                                <label className="text-sm font-bold text-gray-600">
+                                                <label className="text-sm font-bold text-[var(--text-secondary)]">
                                                     {t.giveaway.participants} ({participants.length})
                                                 </label>
                                                 <div className="flex gap-2 relative">
@@ -612,14 +612,14 @@ export default function YouTubeGiveaway() {
                                                     {showManualEntry && (
                                                         <div
                                                             ref={dropdownRef}
-                                                            className="absolute top-full right-0 mt-2 w-80 bg-white rounded-xl shadow-2xl border border-gray-100 z-50 p-4 animate-in fade-in zoom-in-95 duration-200 origin-top-right transform"
+                                                            className="absolute top-full right-0 mt-2 w-80 bg-white rounded-xl shadow-2xl border border-[var(--border-light)] z-50 p-4 animate-in fade-in zoom-in-95 duration-200 origin-top-right transform"
                                                         >
                                                             <div className="space-y-4">
                                                                 <div className="space-y-2">
-                                                                    <label className="text-xs font-bold text-gray-500 uppercase tracking-wide">{t.giveaway.addParticipant}</label>
+                                                                    <label className="text-xs font-bold text-[var(--text-muted)] uppercase tracking-wide">{t.giveaway.addParticipant}</label>
                                                                     <div className="flex gap-2">
-                                                                        <div className="flex-1 flex items-center gap-2 bg-gray-50 rounded-lg px-2 border border-gray-200 focus-within:border-red-300 transition-colors">
-                                                                            <AtSign className="w-3.5 h-3.5 text-gray-400" />
+                                                                        <div className="flex-1 flex items-center gap-2 bg-[var(--surface-2)] rounded-lg px-2 border border-[var(--border-medium)] focus-within:border-red-300 transition-colors">
+                                                                            <AtSign className="w-3.5 h-3.5 text-[var(--text-muted)]" />
                                                                             <input
                                                                                 autoFocus
                                                                                 type="text"
@@ -627,7 +627,7 @@ export default function YouTubeGiveaway() {
                                                                                 value={newParticipant}
                                                                                 onChange={(e) => setNewParticipant(e.target.value)}
                                                                                 onKeyDown={(e) => e.key === 'Enter' && addParticipant()}
-                                                                                className="flex-1 bg-transparent outline-none py-2 text-sm text-gray-700 placeholder:text-gray-400"
+                                                                                className="flex-1 bg-transparent outline-none py-2 text-sm text-[var(--text-secondary)] placeholder:text-[var(--text-muted)]"
                                                                             />
                                                                         </div>
                                                                         <Button onClick={addParticipant} size="sm" className="bg-red-500 hover:bg-red-600 h-9 w-9 p-0 rounded-lg">
@@ -637,8 +637,8 @@ export default function YouTubeGiveaway() {
                                                                 </div>
 
                                                                 <div className="relative">
-                                                                    <div className="absolute inset-0 flex items-center"><span className="w-full border-t border-gray-100"></span></div>
-                                                                    <div className="relative flex justify-center text-[10px] uppercase font-bold"><span className="bg-white px-2 text-gray-400">{t.common.or || "OR"} {t.giveaway.bulkAdd || "BULK"}</span></div>
+                                                                    <div className="absolute inset-0 flex items-center"><span className="w-full border-t border-[var(--border-light)]"></span></div>
+                                                                    <div className="relative flex justify-center text-[10px] uppercase font-bold"><span className="bg-white px-2 text-[var(--text-muted)]">{t.common.or || "OR"} {t.giveaway.bulkAdd || "BULK"}</span></div>
                                                                 </div>
 
                                                                 <div className="space-y-2">
@@ -646,7 +646,7 @@ export default function YouTubeGiveaway() {
                                                                         placeholder="User1&#10;User2&#10;User3"
                                                                         value={bulkInput}
                                                                         onChange={(e) => setBulkInput(e.target.value)}
-                                                                        className="w-full h-24 p-3 text-sm rounded-lg border border-gray-200 focus:border-red-300 outline-none resize-none bg-gray-50"
+                                                                        className="w-full h-24 p-3 text-sm rounded-lg border border-[var(--border-medium)] focus:border-red-300 outline-none resize-none bg-[var(--surface-2)]"
                                                                     />
                                                                     <Button onClick={handleBulkAdd} variant="secondary" size="sm" className="w-full text-xs h-8">
                                                                         {t.giveaway.bulkAdd}
@@ -659,7 +659,7 @@ export default function YouTubeGiveaway() {
                                                     {participants.length > 0 && (
                                                         <button
                                                             onClick={() => setParticipants([])}
-                                                            className="text-xs text-gray-400 hover:text-red-500 font-medium px-2"
+                                                            className="text-xs text-[var(--text-muted)] hover:text-red-500 font-medium px-2"
                                                         >
                                                             {t.giveaway.clearAll}
                                                         </button>
@@ -667,15 +667,15 @@ export default function YouTubeGiveaway() {
                                                 </div>
                                             </div>
 
-                                            <div className="min-h-[200px] max-h-[50vh] overflow-y-auto space-y-2 pr-2 custom-scrollbar border-2 border-dashed border-gray-100 rounded-xl p-2 bg-gray-50/30">
+                                            <div className="min-h-[200px] max-h-[50vh] overflow-y-auto space-y-2 pr-2 custom-scrollbar border-2 border-dashed border-[var(--border-light)] rounded-xl p-2 bg-[var(--surface-2)]">
                                                 {participants.length === 0 ? (
-                                                    <div className="h-full flex flex-col items-center justify-center text-gray-400 py-10 gap-3">
+                                                    <div className="h-full flex flex-col items-center justify-center text-[var(--text-muted)] py-10 gap-3">
                                                         <div className="p-4 bg-red-50 rounded-2xl">
                                                             <Users className="w-10 h-10 text-red-200" />
                                                         </div>
                                                         <div className="text-center space-y-1">
-                                                            <p className="text-sm font-semibold text-gray-500">{t.giveaway.noParticipantsYet}</p>
-                                                            <p className="text-xs text-gray-400 max-w-[200px] mx-auto">{t.giveaway.youtubeNoParticipantsHint}</p>
+                                                            <p className="text-sm font-semibold text-[var(--text-muted)]">{t.giveaway.noParticipantsYet}</p>
+                                                            <p className="text-xs text-[var(--text-muted)] max-w-[200px] mx-auto">{t.giveaway.youtubeNoParticipantsHint}</p>
                                                         </div>
                                                         <button
                                                             onClick={() => setActiveTab('links')}
@@ -686,18 +686,18 @@ export default function YouTubeGiveaway() {
                                                     </div>
                                                 ) : (
                                                     participants.map((p, i) => (
-                                                        <div key={i} className="flex flex-col p-3 bg-white rounded-xl shadow-sm border border-gray-100 group hover:border-red-200 transition-colors">
+                                                        <div key={i} className="flex flex-col p-3 bg-white rounded-xl shadow-sm border border-[var(--border-light)] group hover:border-red-200 transition-colors">
                                                             <div className="flex items-center justify-between">
-                                                                <span className="font-medium text-gray-700">{p.name}</span>
+                                                                <span className="font-medium text-[var(--text-secondary)]">{p.name}</span>
                                                                 <button
                                                                     onClick={() => removeParticipant(i)}
-                                                                    className="p-1 text-gray-300 hover:text-red-500 rounded-lg transition-colors opacity-0 group-hover:opacity-100"
+                                                                    className="p-1 text-[var(--text-muted)] hover:text-red-500 rounded-lg transition-colors opacity-0 group-hover:opacity-100"
                                                                 >
                                                                     <Trash2 className="w-4 h-4" />
                                                                 </button>
                                                             </div>
                                                             {p.comment && (
-                                                                <p className="text-xs text-gray-400 mt-1 line-clamp-2">{p.comment}</p>
+                                                                <p className="text-xs text-[var(--text-muted)] mt-1 line-clamp-2">{p.comment}</p>
                                                             )}
                                                         </div>
                                                     ))
@@ -705,7 +705,7 @@ export default function YouTubeGiveaway() {
                                             </div>
                                         </div>
 
-                                        <div className="pt-4 border-t border-gray-100 flex justify-end">
+                                        <div className="pt-4 border-t border-[var(--border-light)] flex justify-end">
                                             <Button
                                                 onClick={() => setActiveTab('rules')}
                                                 className="bg-red-600 hover:bg-red-700 text-white shadow-lg"
@@ -723,13 +723,13 @@ export default function YouTubeGiveaway() {
                                             <div className="inline-flex items-center justify-center p-3 bg-gradient-to-br from-yellow-400 to-red-500 rounded-xl">
                                                 <Trophy className="w-8 h-8 text-white" />
                                             </div>
-                                            <h2 className="text-2xl font-black text-gray-900">
+                                            <h2 className="text-2xl font-black text-[var(--text-primary)]">
                                                 🎉 {giveawayName || t.giveaway.youtubeTitle} {t.giveaway.results}
                                             </h2>
                                         </div>
 
                                         <div className="space-y-3">
-                                            <h3 className="font-bold text-gray-700 flex items-center gap-2">
+                                            <h3 className="font-bold text-[var(--text-secondary)] flex items-center gap-2">
                                                 <Trophy className="w-5 h-5 text-yellow-500" />
                                                 {t.giveaway.winners}
                                             </h3>
@@ -741,11 +741,11 @@ export default function YouTubeGiveaway() {
                                                                 <span className="w-8 h-8 rounded-full bg-gradient-to-br from-red-500 to-red-600 text-white flex items-center justify-center font-bold text-sm flex-shrink-0">
                                                                     {i + 1}
                                                                 </span>
-                                                                <span className="font-bold text-gray-800 text-lg">{winner.name}</span>
+                                                                <span className="font-bold text-[var(--text-primary)] text-lg">{winner.name}</span>
                                                             </div>
                                                             {/* Subscription Status Badge */}
                                                             {videoOwnerChannelId && (
-                                                                <div className="flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-bold shadow-sm bg-white border border-gray-100">
+                                                                <div className="flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-bold shadow-sm bg-white border border-[var(--border-light)]">
                                                                     {winner.isSubscribed === true && (
                                                                         <>
                                                                             <span className="w-2 h-2 bg-green-500 rounded-full animate-pulse" />
@@ -766,15 +766,15 @@ export default function YouTubeGiveaway() {
                                                                     )}
                                                                     {(winner.isSubscribed === undefined || winner.isSubscribed === null) && (
                                                                         <>
-                                                                            <Loader2 className="w-3 h-3 text-gray-400 animate-spin" />
-                                                                            <span className="text-gray-400">{t.giveaway.checkingSubscription}</span>
+                                                                            <Loader2 className="w-3 h-3 text-[var(--text-muted)] animate-spin" />
+                                                                            <span className="text-[var(--text-muted)]">{t.giveaway.checkingSubscription}</span>
                                                                         </>
                                                                     )}
                                                                 </div>
                                                             )}
                                                         </div>
                                                         {winner.comment && (
-                                                            <div className="ml-11 p-3 bg-white/60 rounded-lg text-sm text-gray-600 italic border-l-4 border-red-300">
+                                                            <div className="ml-11 p-3 bg-white/60 rounded-lg text-sm text-[var(--text-secondary)] italic border-l-4 border-red-300">
                                                                 &quot;{winner.comment}&quot;
                                                             </div>
                                                         )}
@@ -784,18 +784,18 @@ export default function YouTubeGiveaway() {
                                         </div>
 
                                         {backups.length > 0 && (
-                                            <div className="space-y-3 pt-4 border-t border-gray-100">
-                                                <h3 className="font-bold text-gray-500 flex items-center gap-2">
+                                            <div className="space-y-3 pt-4 border-t border-[var(--border-light)]">
+                                                <h3 className="font-bold text-[var(--text-muted)] flex items-center gap-2">
                                                     <Users className="w-5 h-5" />
                                                     {t.giveaway.backups}
                                                 </h3>
                                                 {backups.map((backup, i) => (
-                                                    <div key={i} className="px-4 py-3 bg-gray-50 rounded-lg flex flex-col justify-between text-gray-600 animate-in slide-in-from-bottom duration-500" style={{ animationDelay: `${(winners.length + i) * 100}ms` }}>
+                                                    <div key={i} className="px-4 py-3 bg-[var(--surface-2)] rounded-lg flex flex-col justify-between text-[var(--text-secondary)] animate-in slide-in-from-bottom duration-500" style={{ animationDelay: `${(winners.length + i) * 100}ms` }}>
                                                         <div className="flex items-center justify-between">
                                                             <span>{i + 1}. {backup.name}</span>
-                                                            <span className="text-xs font-medium bg-gray-200 px-2 py-0.5 rounded text-gray-500">{t.giveaway.backups.slice(0, -1)}</span>
+                                                            <span className="text-xs font-medium bg-[var(--surface-2)] px-2 py-0.5 rounded text-[var(--text-muted)]">{t.giveaway.backups.slice(0, -1)}</span>
                                                         </div>
-                                                        {backup.comment && <p className="text-xs text-gray-400 mt-1 truncate pl-4">&quot;{backup.comment}&quot;</p>}
+                                                        {backup.comment && <p className="text-xs text-[var(--text-muted)] mt-1 truncate pl-4">&quot;{backup.comment}&quot;</p>}
                                                     </div>
                                                 ))}
                                             </div>
@@ -854,7 +854,7 @@ export default function YouTubeGiveaway() {
                     <Button
                         onClick={backToHome}
                         variant="ghost"
-                        className="text-gray-400 hover:text-gray-600"
+                        className="text-[var(--text-muted)] hover:text-[var(--text-secondary)]"
                     >
                         <Home className="w-4 h-4 mr-2" />
                         {t.result.backToHome}

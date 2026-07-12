@@ -981,7 +981,11 @@
         "privacyPolicy": "プライバシーポリシー",
         "legalInfo": "法的情報",
         "copyright": "© 2025 YulaSanta. All rights reserved.",
-        "cookieDisclaimer": "このサイトではUX向上のためにクッキーを使用しています。"
+        "cookieDisclaimer": "このサイトではUX向上のためにクッキーを使用しています。",
+        "raffleTools": "抽選ツール",
+        "socialGiveaways": "SNSキャンペーン",
+        "secretSanta": "シークレットサンタ",
+        "namePicker": "名前抽選"
     },
     "privacy": {
         "title": "プライバシーポリシー",

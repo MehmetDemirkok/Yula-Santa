@@ -982,7 +982,11 @@
         "privacyPolicy": "Confidentialité",
         "legalInfo": "Mentions Légales",
         "copyright": "© 2025 YulaSanta. Tous droits réservés.",
-        "cookieDisclaimer": "Ce site utilise des cookies pour améliorer votre expérience."
+        "cookieDisclaimer": "Ce site utilise des cookies pour améliorer votre expérience.",
+        "raffleTools": "Outils de Tirage",
+        "socialGiveaways": "Concours sur les Réseaux Sociaux",
+        "secretSanta": "Père Noël Secret",
+        "namePicker": "Tirage au Sort"
     },
     "privacy": {
         "title": "Confidentialité",

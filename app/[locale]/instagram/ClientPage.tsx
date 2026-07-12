@@ -331,37 +331,37 @@ export default function InstagramGiveaway() {
                     <div className="inline-flex items-center justify-center p-3 sm:p-4 bg-gradient-to-tr from-yellow-400 via-red-500 to-purple-600 rounded-xl sm:rounded-2xl shadow-lg">
                         <Instagram className="w-8 h-8 sm:w-10 sm:h-10 text-white" strokeWidth={1.5} />
                     </div>
-                    <h1 className="text-2xl sm:text-3xl md:text-4xl font-black text-gray-900 dark:text-white tracking-tight">
+                    <h1 className="text-2xl sm:text-3xl md:text-4xl font-black text-[var(--text-primary)] dark:text-white tracking-tight">
                         {t.giveaway.instagramTitle}
                     </h1>
-                    <p className="text-gray-500 dark:text-gray-400 max-w-lg mx-auto text-sm sm:text-base px-2">
+                    <p className="text-[var(--text-muted)] dark:text-[var(--text-muted)] max-w-lg mx-auto text-sm sm:text-base px-2">
                         {t.giveaway.instagramDesc}
                     </p>
                     <div className="grid gap-3 sm:grid-cols-3 mt-6 text-sm text-left sm:text-center">
-                        <div className="rounded-3xl bg-white/90 dark:bg-white/5 border border-gray-200 dark:border-white/10 p-4 shadow-sm">
+                        <div className="rounded-3xl bg-white/90 dark:bg-white/5 border border-[var(--border-medium)] dark:border-white/10 p-4 shadow-sm">
                             <span className="inline-flex items-center justify-center w-8 h-8 rounded-full bg-pink-100 text-pink-700 font-bold">1</span>
-                            <p className="mt-3 text-gray-600 dark:text-gray-300">Instagram gönderi linkini yapıştır veya manuel ekle.</p>
+                            <p className="mt-3 text-[var(--text-secondary)] dark:text-[var(--text-muted)]">Instagram gönderi linkini yapıştır veya manuel ekle.</p>
                         </div>
-                        <div className="rounded-3xl bg-white/90 dark:bg-white/5 border border-gray-200 dark:border-white/10 p-4 shadow-sm">
+                        <div className="rounded-3xl bg-white/90 dark:bg-white/5 border border-[var(--border-medium)] dark:border-white/10 p-4 shadow-sm">
                             <span className="inline-flex items-center justify-center w-8 h-8 rounded-full bg-pink-100 text-pink-700 font-bold">2</span>
-                            <p className="mt-3 text-gray-600 dark:text-gray-300">Katılımcıları topla, gereksinimleri ayarla, adil bir çekiliş yap.</p>
+                            <p className="mt-3 text-[var(--text-secondary)] dark:text-[var(--text-muted)]">Katılımcıları topla, gereksinimleri ayarla, adil bir çekiliş yap.</p>
                         </div>
-                        <div className="rounded-3xl bg-white/90 dark:bg-white/5 border border-gray-200 dark:border-white/10 p-4 shadow-sm">
+                        <div className="rounded-3xl bg-white/90 dark:bg-white/5 border border-[var(--border-medium)] dark:border-white/10 p-4 shadow-sm">
                             <span className="inline-flex items-center justify-center w-8 h-8 rounded-full bg-pink-100 text-pink-700 font-bold">3</span>
-                            <p className="mt-3 text-gray-600 dark:text-gray-300">Kazananları anında seç ve sonuçları paylaş.</p>
+                            <p className="mt-3 text-[var(--text-secondary)] dark:text-[var(--text-muted)]">Kazananları anında seç ve sonuçları paylaş.</p>
                         </div>
                     </div>
                 </div>
 
                 {/* Main Card */}
-                <div className="bg-white/90 dark:bg-gray-800/90 backdrop-blur-xl rounded-2xl sm:rounded-3xl shadow-xl dark:shadow-2xl border border-white/50 dark:border-white/10 overflow-hidden min-h-[400px]">
+                <div className="bg-white/90 dark:bg-[var(--card-bg)] backdrop-blur-xl rounded-2xl sm:rounded-3xl shadow-xl dark:shadow-2xl border border-white/50 dark:border-white/10 overflow-hidden min-h-[400px]">
                     {/* Tab Navigation */}
-                    <div className={`flex border-b border-gray-100 ${isRolling ? 'opacity-50 pointer-events-none' : ''}`}>
+                    <div className={`flex border-b border-[var(--border-light)] ${isRolling ? 'opacity-50 pointer-events-none' : ''}`}>
                         <button
                             onClick={() => setActiveTab('links')}
                             className={`flex-1 py-3 sm:py-4 px-2 sm:px-6 font-bold text-xs sm:text-sm flex items-center justify-center gap-1 sm:gap-2 transition-all border-b-2 ${activeTab === 'links'
                                 ? 'text-pink-600 border-pink-500 bg-pink-50/50'
-                                : 'text-gray-400 border-transparent hover:text-gray-600'
+                                : 'text-[var(--text-muted)] border-transparent hover:text-[var(--text-secondary)]'
                                 }`}
                         >
                             <Link2 className="w-3.5 h-3.5 sm:w-4 sm:h-4" />
@@ -371,7 +371,7 @@ export default function InstagramGiveaway() {
                             onClick={() => setActiveTab('rules')}
                             className={`flex-1 py-3 sm:py-4 px-2 sm:px-6 font-bold text-xs sm:text-sm flex items-center justify-center gap-1 sm:gap-2 transition-all border-b-2 ${activeTab === 'rules'
                                 ? 'text-pink-600 border-pink-500 bg-pink-50/50'
-                                : 'text-gray-400 border-transparent hover:text-gray-600'
+                                : 'text-[var(--text-muted)] border-transparent hover:text-[var(--text-secondary)]'
                                 }`}
                         >
                             <Settings className="w-3.5 h-3.5 sm:w-4 sm:h-4" />
@@ -381,7 +381,7 @@ export default function InstagramGiveaway() {
                             onClick={() => setActiveTab('participants')}
                             className={`flex-1 py-3 sm:py-4 px-2 sm:px-6 font-bold text-xs sm:text-sm flex items-center justify-center gap-1 sm:gap-2 transition-all border-b-2 ${activeTab === 'participants'
                                 ? 'text-pink-600 border-pink-500 bg-pink-50/50'
-                                : 'text-gray-400 border-transparent hover:text-gray-600'
+                                : 'text-[var(--text-muted)] border-transparent hover:text-[var(--text-secondary)]'
                                 }`}
                         >
                             <Users className="w-3.5 h-3.5 sm:w-4 sm:h-4" />
@@ -399,11 +399,11 @@ export default function InstagramGiveaway() {
                         {isRolling && (
                             <div className="flex flex-col items-center justify-center py-12 space-y-6 animate-in fade-in duration-300">
                                 <div className="text-center space-y-2">
-                                    <h3 className="text-xl font-bold text-gray-500">{t.giveaway.fetching || "Rolling..."}</h3>
+                                    <h3 className="text-xl font-bold text-[var(--text-muted)]">{t.giveaway.fetching || "Rolling..."}</h3>
                                     <div className="text-4xl sm:text-5xl font-black text-pink-600 tracking-tight transition-all scale-110">
                                         @{rollingParticipant?.name}
                                     </div>
-                                    <p className="text-sm text-gray-400 max-w-sm mx-auto truncate px-4">
+                                    <p className="text-sm text-[var(--text-muted)] max-w-sm mx-auto truncate px-4">
                                         {rollingParticipant?.comment}
                                     </p>
                                 </div>
@@ -428,8 +428,8 @@ export default function InstagramGiveaway() {
                                                     <div className="p-4 bg-white rounded-full shadow-lg mb-4 text-pink-600">
                                                         <Users className="w-8 h-8" />
                                                     </div>
-                                                    <h3 className="font-bold text-lg text-gray-900 mb-2">{t.giveaway.manualMode}</h3>
-                                                    <p className="text-sm text-gray-500 text-center">{t.giveaway.manualDesc}</p>
+                                                    <h3 className="font-bold text-lg text-[var(--text-primary)] mb-2">{t.giveaway.manualMode}</h3>
+                                                    <p className="text-sm text-[var(--text-muted)] text-center">{t.giveaway.manualDesc}</p>
                                                 </button>
 
                                                 <button
@@ -439,14 +439,14 @@ export default function InstagramGiveaway() {
                                                     <div className="p-4 bg-white rounded-full shadow-lg mb-4 text-pink-600">
                                                         <Instagram className="w-8 h-8" />
                                                     </div>
-                                                    <h3 className="font-bold text-lg text-gray-900 mb-2">{t.giveaway.autoMode}</h3>
-                                                    <p className="text-sm text-gray-500 text-center">{t.giveaway.autoDesc}</p>
+                                                    <h3 className="font-bold text-lg text-[var(--text-primary)] mb-2">{t.giveaway.autoMode}</h3>
+                                                    <p className="text-sm text-[var(--text-muted)] text-center">{t.giveaway.autoDesc}</p>
                                                 </button>
                                             </div>
                                         ) : (
                                             // Selected Mode UI
                                             <div className="space-y-4 animate-in fade-in slide-in-from-bottom-4">
-                                                <button onClick={() => setMode(null)} className="text-sm text-gray-400 hover:text-gray-600 flex items-center gap-1 mb-2">
+                                                <button onClick={() => setMode(null)} className="text-sm text-[var(--text-muted)] hover:text-[var(--text-secondary)] flex items-center gap-1 mb-2">
                                                     ← Back to selection
                                                 </button>
 
@@ -456,7 +456,7 @@ export default function InstagramGiveaway() {
                                                             value={manualPaste}
                                                             onChange={(e) => setManualPaste(e.target.value)}
                                                             placeholder={t.giveaway.pasteComments}
-                                                            className="w-full h-48 p-4 rounded-xl border-2 border-dashed border-gray-300 focus:border-pink-300 outline-none resize-none bg-gray-50/50"
+                                                            className="w-full h-48 p-4 rounded-xl border-2 border-dashed border-[var(--border-medium)] focus:border-pink-300 outline-none resize-none bg-[var(--surface-2)]"
                                                         />
                                                         <Button onClick={handleManualParse} disabled={!manualPaste.trim()} className="w-full bg-pink-600 hover:bg-pink-700">
                                                             {t.giveaway.parse}
@@ -467,14 +467,14 @@ export default function InstagramGiveaway() {
                                                         {/* Post Link Input */}
                                                         <div className="space-y-3">
                                                             <div className="flex gap-2">
-                                                                <div className="flex-1 flex items-center gap-2 bg-gray-50 rounded-xl p-4 border-2 border-dashed border-gray-200 focus-within:border-pink-300 transition-colors">
+                                                                <div className="flex-1 flex items-center gap-2 bg-[var(--surface-2)] rounded-xl p-4 border-2 border-dashed border-[var(--border-medium)] focus-within:border-pink-300 transition-colors">
                                                                     <Instagram className="w-5 h-5 text-pink-500" />
                                                                     <input
                                                                         type="text"
                                                                         placeholder={t.giveaway.linkInputPlaceholder}
                                                                         value={postLink}
                                                                         onChange={(e) => setPostLink(e.target.value)}
-                                                                        className="flex-1 bg-transparent outline-none text-gray-700 placeholder:text-gray-400"
+                                                                        className="flex-1 bg-transparent outline-none text-[var(--text-secondary)] placeholder:text-[var(--text-muted)]"
                                                                     />
                                                                 </div>
                                                                 <Button
@@ -534,18 +534,18 @@ export default function InstagramGiveaway() {
                                                                 onClick={() => setDrawType('comments')}
                                                                 className={`flex items-center gap-2 px-5 py-3 rounded-full font-medium transition-all ${drawType === 'comments'
                                                                     ? 'bg-pink-100 border border-pink-300 text-pink-600 shadow-sm'
-                                                                    : 'bg-white border border-gray-200 text-gray-600 hover:bg-pink-50'
+                                                                    : 'bg-white border border-[var(--border-medium)] text-[var(--text-secondary)] hover:bg-pink-50'
                                                                     }`}
                                                             >
                                                                 <MessageCircle className="w-4 h-4 text-pink-600" />
                                                                 {t.giveaway.comments}
                                                             </button>
                                                             <div className="relative opacity-60 cursor-not-allowed max-w-full sm:max-w-max">
-                                                                <div className="flex items-center gap-2 px-5 py-3 rounded-full font-medium bg-gray-100 text-gray-400 select-none">
+                                                                <div className="flex items-center gap-2 px-5 py-3 rounded-full font-medium bg-[var(--surface-2)] text-[var(--text-muted)] select-none">
                                                                     <Heart className="w-4 h-4" />
                                                                     {t.giveaway.likes}
                                                                 </div>
-                                                                <span className="absolute -top-2 -right-2 text-[10px] font-bold bg-gray-400 text-white px-1.5 py-0.5 rounded-full leading-none">{t.giveaway.comingSoon}</span>
+                                                                <span className="absolute -top-2 -right-2 text-[10px] font-bold bg-[var(--text-muted)] text-white px-1.5 py-0.5 rounded-full leading-none">{t.giveaway.comingSoon}</span>
                                                             </div>
                                                         </div>
 
@@ -570,62 +570,62 @@ export default function InstagramGiveaway() {
                                     <div className="space-y-6 animate-in fade-in slide-in-from-bottom-4">
                                         {/* Giveaway Name */}
                                         <div className="text-center space-y-2">
-                                            <label className="text-sm font-bold text-gray-600">{t.giveaway.giveawayName}</label>
+                                            <label className="text-sm font-bold text-[var(--text-secondary)]">{t.giveaway.giveawayName}</label>
                                             <input
                                                 type="text"
                                                 placeholder="Instagram Giveaway"
                                                 value={giveawayName}
                                                 onChange={(e) => setGiveawayName(e.target.value)}
-                                                className="w-full max-w-md mx-auto block text-center py-3 px-4 rounded-xl border-2 border-gray-200 focus:border-pink-400 outline-none transition-colors"
+                                                className="w-full max-w-md mx-auto block text-center py-3 px-4 rounded-xl border-2 border-[var(--border-medium)] focus:border-pink-400 outline-none transition-colors"
                                             />
                                         </div>
 
                                         {/* Winner Counts */}
                                         <div className="flex justify-center gap-8">
                                             <div className="text-center space-y-2">
-                                                <label className="text-sm font-bold text-gray-600">{t.giveaway.winnerCount}</label>
-                                                <div className="flex items-center gap-3 bg-gray-50 rounded-xl p-2">
+                                                <label className="text-sm font-bold text-[var(--text-secondary)]">{t.giveaway.winnerCount}</label>
+                                                <div className="flex items-center gap-3 bg-[var(--surface-2)] rounded-xl p-2">
                                                     <button onClick={() => setWinnerCount(Math.max(1, winnerCount - 1))} className="w-10 h-10 rounded-lg bg-pink-100 text-pink-600 flex items-center justify-center"><Minus className="w-4 h-4" /></button>
                                                     <span className="w-12 text-center font-bold text-xl">{winnerCount}</span>
                                                     <button onClick={() => setWinnerCount(winnerCount + 1)} className="w-10 h-10 rounded-lg bg-pink-100 text-pink-600 flex items-center justify-center"><Plus className="w-4 h-4" /></button>
                                                 </div>
                                             </div>
                                             <div className="text-center space-y-2">
-                                                <label className="text-sm font-bold text-gray-600">{t.giveaway.backupCount}</label>
-                                                <div className="flex items-center gap-3 bg-gray-50 rounded-xl p-2">
-                                                    <button onClick={() => setBackupCount(Math.max(0, backupCount - 1))} className="w-10 h-10 rounded-lg bg-gray-200 text-gray-600 flex items-center justify-center"><Minus className="w-4 h-4" /></button>
+                                                <label className="text-sm font-bold text-[var(--text-secondary)]">{t.giveaway.backupCount}</label>
+                                                <div className="flex items-center gap-3 bg-[var(--surface-2)] rounded-xl p-2">
+                                                    <button onClick={() => setBackupCount(Math.max(0, backupCount - 1))} className="w-10 h-10 rounded-lg bg-[var(--surface-2)] text-[var(--text-secondary)] flex items-center justify-center"><Minus className="w-4 h-4" /></button>
                                                     <span className="w-12 text-center font-bold text-xl">{backupCount}</span>
-                                                    <button onClick={() => setBackupCount(backupCount + 1)} className="w-10 h-10 rounded-lg bg-gray-200 text-gray-600 flex items-center justify-center"><Plus className="w-4 h-4" /></button>
+                                                    <button onClick={() => setBackupCount(backupCount + 1)} className="w-10 h-10 rounded-lg bg-[var(--surface-2)] text-[var(--text-secondary)] flex items-center justify-center"><Plus className="w-4 h-4" /></button>
                                                 </div>
                                             </div>
                                         </div>
 
                                         {/* Toggles */}
                                         <div className="space-y-3 max-w-md mx-auto">
-                                            <label className="flex items-center justify-between p-3 bg-gray-50 rounded-xl cursor-pointer hover:bg-gray-100 transition-colors">
-                                                <span className="text-sm font-medium text-gray-700 flex items-center gap-2">
+                                            <label className="flex items-center justify-between p-3 bg-[var(--surface-2)] rounded-xl cursor-pointer hover:bg-[var(--surface-2)] transition-colors">
+                                                <span className="text-sm font-medium text-[var(--text-secondary)] flex items-center gap-2">
                                                     <Users className="w-4 h-4 text-pink-500" />
                                                     {t.giveaway.requireFollow}
                                                 </span>
-                                                <button onClick={() => setRequireFollow(!requireFollow)} className={`w-12 h-7 rounded-full transition-colors relative ${requireFollow ? 'bg-pink-500' : 'bg-gray-300'}`}>
+                                                <button onClick={() => setRequireFollow(!requireFollow)} className={`w-12 h-7 rounded-full transition-colors relative ${requireFollow ? 'bg-pink-500' : 'bg-[var(--text-muted)]'}`}>
                                                     <span className={`absolute top-1 w-5 h-5 rounded-full bg-white shadow transition-transform ${requireFollow ? 'right-1' : 'left-1'}`} />
                                                 </button>
                                             </label>
-                                            <label className="flex items-center justify-between p-3 bg-gray-50 rounded-xl cursor-pointer hover:bg-gray-100 transition-colors">
-                                                <span className="text-sm font-medium text-gray-700 flex items-center gap-2">
+                                            <label className="flex items-center justify-between p-3 bg-[var(--surface-2)] rounded-xl cursor-pointer hover:bg-[var(--surface-2)] transition-colors">
+                                                <span className="text-sm font-medium text-[var(--text-secondary)] flex items-center gap-2">
                                                     {t.giveaway.countUserOnce}
                                                 </span>
-                                                <button onClick={() => setCountUserOnce(!countUserOnce)} className={`w-12 h-7 rounded-full transition-colors relative ${countUserOnce ? 'bg-pink-500' : 'bg-gray-300'}`}>
+                                                <button onClick={() => setCountUserOnce(!countUserOnce)} className={`w-12 h-7 rounded-full transition-colors relative ${countUserOnce ? 'bg-pink-500' : 'bg-[var(--text-muted)]'}`}>
                                                     <span className={`absolute top-1 w-5 h-5 rounded-full bg-white shadow transition-transform ${countUserOnce ? 'right-1' : 'left-1'}`} />
                                                 </button>
                                             </label>
                                         </div>
 
                                         <div className="pt-4 flex justify-between items-center gap-4">
-                                            <Button onClick={() => setActiveTab('links')} variant="ghost" className="text-gray-500">← {t.common.cancel}</Button>
+                                            <Button onClick={() => setActiveTab('links')} variant="ghost" className="text-[var(--text-muted)]">← {t.common.cancel}</Button>
 
                                             <div className="flex gap-4">
-                                                <Button onClick={() => setActiveTab('participants')} variant="secondary" className="text-gray-600">
+                                                <Button onClick={() => setActiveTab('participants')} variant="secondary" className="text-[var(--text-secondary)]">
                                                     {t.giveaway.participants} ({participants.length})
                                                 </Button>
 
@@ -648,7 +648,7 @@ export default function InstagramGiveaway() {
                                         {/* List */}
                                         <div className="space-y-2">
                                             <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-3">
-                                                <label className="text-sm font-bold text-gray-600">{t.giveaway.participants} ({participants.length})</label>
+                                                <label className="text-sm font-bold text-[var(--text-secondary)]">{t.giveaway.participants} ({participants.length})</label>
                                                 <div className="flex flex-wrap gap-2 items-center relative">
                                                     <button
                                                         onClick={() => setShowManualEntry(!showManualEntry)}
@@ -663,14 +663,14 @@ export default function InstagramGiveaway() {
                                                     {showManualEntry && (
                                                         <div
                                                             ref={dropdownRef}
-                                                            className="absolute top-full right-0 mt-2 w-80 bg-white rounded-xl shadow-2xl border border-gray-100 z-50 p-4 animate-in fade-in zoom-in-95 duration-200 origin-top-right transform"
+                                                            className="absolute top-full right-0 mt-2 w-80 bg-white rounded-xl shadow-2xl border border-[var(--border-light)] z-50 p-4 animate-in fade-in zoom-in-95 duration-200 origin-top-right transform"
                                                         >
                                                             <div className="space-y-4">
                                                                 <div className="space-y-2">
-                                                                    <label className="text-xs font-bold text-gray-500 uppercase tracking-wide">{t.giveaway.addParticipant}</label>
+                                                                    <label className="text-xs font-bold text-[var(--text-muted)] uppercase tracking-wide">{t.giveaway.addParticipant}</label>
                                                                     <div className="flex gap-2">
-                                                                        <div className="flex-1 flex items-center gap-2 bg-gray-50 rounded-lg px-2 border border-gray-200 focus-within:border-pink-300 transition-colors">
-                                                                            <AtSign className="w-3.5 h-3.5 text-gray-400" />
+                                                                        <div className="flex-1 flex items-center gap-2 bg-[var(--surface-2)] rounded-lg px-2 border border-[var(--border-medium)] focus-within:border-pink-300 transition-colors">
+                                                                            <AtSign className="w-3.5 h-3.5 text-[var(--text-muted)]" />
                                                                             <input
                                                                                 autoFocus
                                                                                 type="text"
@@ -678,7 +678,7 @@ export default function InstagramGiveaway() {
                                                                                 value={newParticipant}
                                                                                 onChange={(e) => setNewParticipant(e.target.value)}
                                                                                 onKeyDown={(e) => e.key === 'Enter' && addParticipant()}
-                                                                                className="flex-1 bg-transparent outline-none py-2 text-sm text-gray-700 placeholder:text-gray-400"
+                                                                                className="flex-1 bg-transparent outline-none py-2 text-sm text-[var(--text-secondary)] placeholder:text-[var(--text-muted)]"
                                                                             />
                                                                         </div>
                                                                         <Button onClick={addParticipant} size="sm" className="bg-pink-500 hover:bg-pink-600 h-9 w-9 p-0 rounded-lg">
@@ -688,8 +688,8 @@ export default function InstagramGiveaway() {
                                                                 </div>
 
                                                                 <div className="relative">
-                                                                    <div className="absolute inset-0 flex items-center"><span className="w-full border-t border-gray-100"></span></div>
-                                                                    <div className="relative flex justify-center text-[10px] uppercase font-bold"><span className="bg-white px-2 text-gray-400">{t.common.or || "OR"} {t.giveaway.bulkAdd || "BULK"}</span></div>
+                                                                    <div className="absolute inset-0 flex items-center"><span className="w-full border-t border-[var(--border-light)]"></span></div>
+                                                                    <div className="relative flex justify-center text-[10px] uppercase font-bold"><span className="bg-white px-2 text-[var(--text-muted)]">{t.common.or || "OR"} {t.giveaway.bulkAdd || "BULK"}</span></div>
                                                                 </div>
 
                                                                 <div className="space-y-2">
@@ -697,7 +697,7 @@ export default function InstagramGiveaway() {
                                                                         placeholder="User1&#10;User2&#10;User3"
                                                                         value={bulkInput}
                                                                         onChange={(e) => setBulkInput(e.target.value)}
-                                                                        className="w-full h-24 p-3 text-sm rounded-lg border border-gray-200 focus:border-pink-300 outline-none resize-none bg-gray-50"
+                                                                        className="w-full h-24 p-3 text-sm rounded-lg border border-[var(--border-medium)] focus:border-pink-300 outline-none resize-none bg-[var(--surface-2)]"
                                                                     />
                                                                     <Button onClick={handleBulkAdd} variant="secondary" size="sm" className="w-full text-xs h-8">
                                                                         {t.giveaway.bulkAdd}
@@ -710,7 +710,7 @@ export default function InstagramGiveaway() {
                                                     {participants.length > 0 && (
                                                         <button
                                                             onClick={() => setParticipants([])}
-                                                            className="text-xs text-gray-400 hover:text-red-500 font-medium px-2"
+                                                            className="text-xs text-[var(--text-muted)] hover:text-red-500 font-medium px-2"
                                                         >
                                                             {t.giveaway.clearAll}
                                                         </button>
@@ -718,15 +718,15 @@ export default function InstagramGiveaway() {
                                                 </div>
                                             </div>
 
-                                            <div className="min-h-[200px] max-h-[50vh] overflow-y-auto space-y-2 pr-2 custom-scrollbar border-2 border-dashed border-gray-100 rounded-xl p-2 bg-gray-50/30">
+                                            <div className="min-h-[200px] max-h-[50vh] overflow-y-auto space-y-2 pr-2 custom-scrollbar border-2 border-dashed border-[var(--border-light)] rounded-xl p-2 bg-[var(--surface-2)]">
                                                 {participants.length === 0 ? (
-                                                    <div className="h-full flex flex-col items-center justify-center text-gray-400 py-10 gap-3">
+                                                    <div className="h-full flex flex-col items-center justify-center text-[var(--text-muted)] py-10 gap-3">
                                                         <div className="p-4 bg-pink-50 rounded-2xl">
                                                             <Users className="w-10 h-10 text-pink-200" />
                                                         </div>
                                                         <div className="text-center space-y-1">
-                                                            <p className="text-sm font-semibold text-gray-500">{t.giveaway.noParticipantsYet}</p>
-                                                            <p className="text-xs text-gray-400 max-w-[200px] mx-auto">{t.giveaway.instagramNoParticipantsHint}</p>
+                                                            <p className="text-sm font-semibold text-[var(--text-muted)]">{t.giveaway.noParticipantsYet}</p>
+                                                            <p className="text-xs text-[var(--text-muted)] max-w-[200px] mx-auto">{t.giveaway.instagramNoParticipantsHint}</p>
                                                         </div>
                                                         <button
                                                             onClick={() => setActiveTab('links')}
@@ -737,18 +737,18 @@ export default function InstagramGiveaway() {
                                                     </div>
                                                 ) : (
                                                     participants.map((p, i) => (
-                                                        <div key={i} className="flex flex-col p-3 bg-white rounded-xl shadow-sm border border-gray-100 group hover:border-pink-200 transition-colors">
+                                                        <div key={i} className="flex flex-col p-3 bg-white rounded-xl shadow-sm border border-[var(--border-light)] group hover:border-pink-200 transition-colors">
                                                             <div className="flex items-center justify-between">
-                                                                <span className="font-medium text-gray-700">@{p.name}</span>
+                                                                <span className="font-medium text-[var(--text-secondary)]">@{p.name}</span>
                                                                 <button
                                                                     onClick={() => removeParticipant(i)}
-                                                                    className="p-1 text-gray-300 hover:text-red-500 rounded-lg transition-colors opacity-0 group-hover:opacity-100"
+                                                                    className="p-1 text-[var(--text-muted)] hover:text-red-500 rounded-lg transition-colors opacity-0 group-hover:opacity-100"
                                                                 >
                                                                     <Trash2 className="w-4 h-4" />
                                                                 </button>
                                                             </div>
                                                             {p.comment && (
-                                                                <p className="text-xs text-gray-400 mt-1 line-clamp-2">{p.comment}</p>
+                                                                <p className="text-xs text-[var(--text-muted)] mt-1 line-clamp-2">{p.comment}</p>
                                                             )}
                                                         </div>
                                                     ))
@@ -756,7 +756,7 @@ export default function InstagramGiveaway() {
                                             </div>
                                         </div>
 
-                                        <div className="pt-4 border-t border-gray-100 flex justify-end">
+                                        <div className="pt-4 border-t border-[var(--border-light)] flex justify-end">
                                             <Button onClick={() => setActiveTab('rules')} className="bg-pink-600 hover:bg-pink-700 text-white shadow-lg">
                                                 {t.giveaway.rules} <Settings className="w-4 h-4 ml-2" />
                                             </Button>
@@ -771,7 +771,7 @@ export default function InstagramGiveaway() {
                                             <div className="inline-flex items-center justify-center p-3 bg-gradient-to-br from-yellow-400 to-pink-500 rounded-xl">
                                                 <Trophy className="w-8 h-8 text-white" />
                                             </div>
-                                            <h2 className="text-2xl font-black text-gray-900">
+                                            <h2 className="text-2xl font-black text-[var(--text-primary)]">
                                                 🎉 {giveawayName || t.giveaway.instagramTitle} {t.giveaway.results}
                                             </h2>
                                         </div>
@@ -786,9 +786,9 @@ export default function InstagramGiveaway() {
                                                                     {i + 1}
                                                                 </span>
                                                                 <div>
-                                                                    <p className="font-bold text-gray-900 text-lg">@{winner.name}</p>
+                                                                    <p className="font-bold text-[var(--text-primary)] text-lg">@{winner.name}</p>
                                                                     {winner.comment && (
-                                                                        <p className="text-sm text-gray-500 mt-1 line-clamp-2">"{winner.comment}"</p>
+                                                                        <p className="text-sm text-[var(--text-muted)] mt-1 line-clamp-2">"{winner.comment}"</p>
                                                                     )}
                                                                 </div>
                                                             </div>
@@ -803,18 +803,18 @@ export default function InstagramGiveaway() {
                                         </div>
 
                                         {backups.length > 0 && (
-                                            <div className="space-y-3 pt-4 border-t border-gray-100">
-                                                <h3 className="font-bold text-gray-500 flex items-center gap-2">
+                                            <div className="space-y-3 pt-4 border-t border-[var(--border-light)]">
+                                                <h3 className="font-bold text-[var(--text-muted)] flex items-center gap-2">
                                                     <Users className="w-5 h-5" />
                                                     {t.giveaway.backups}
                                                 </h3>
                                                 {backups.map((backup, i) => (
-                                                    <div key={i} className="px-4 py-3 bg-gray-50 rounded-lg flex flex-col justify-between text-gray-600 animate-in slide-in-from-bottom duration-500" style={{ animationDelay: `${(winners.length + i) * 100}ms` }}>
+                                                    <div key={i} className="px-4 py-3 bg-[var(--surface-2)] rounded-lg flex flex-col justify-between text-[var(--text-secondary)] animate-in slide-in-from-bottom duration-500" style={{ animationDelay: `${(winners.length + i) * 100}ms` }}>
                                                         <div className="flex items-center justify-between">
                                                             <span>{i + 1}. @{backup.name}</span>
-                                                            <span className="text-xs font-medium bg-gray-200 px-2 py-0.5 rounded text-gray-500">{t.giveaway.backups.slice(0, -1)}</span>
+                                                            <span className="text-xs font-medium bg-[var(--surface-2)] px-2 py-0.5 rounded text-[var(--text-muted)]">{t.giveaway.backups.slice(0, -1)}</span>
                                                         </div>
-                                                        {backup.comment && <p className="text-xs text-gray-400 mt-1 truncate pl-4">&quot;{backup.comment}&quot;</p>}
+                                                        {backup.comment && <p className="text-xs text-[var(--text-muted)] mt-1 truncate pl-4">&quot;{backup.comment}&quot;</p>}
                                                     </div>
                                                 ))}
                                             </div>
@@ -868,7 +868,7 @@ export default function InstagramGiveaway() {
                     <Button
                         onClick={() => router.push(`/${locale}`)}
                         variant="ghost"
-                        className="text-gray-400 hover:text-gray-600"
+                        className="text-[var(--text-muted)] hover:text-[var(--text-secondary)]"
                     >
                         <Home className="w-4 h-4 mr-2" />
                         {t.result.backToHome}

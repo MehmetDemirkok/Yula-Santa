@@ -475,7 +475,7 @@ export default function CoinFlipPage() {
     const tailsPercent = total > 0 ? Math.round((flipCount.tails / total) * 100) : 50;
 
     return (
-        <div className="min-h-screen bg-gradient-to-br from-amber-50 via-yellow-50 to-orange-50 dark:from-gray-950 dark:via-gray-900 dark:to-slate-950 py-8 sm:py-12 px-4 transition-colors duration-300">
+        <div className="ys-page-shell py-8 sm:py-12 px-4 transition-colors duration-300">
             {/* Decorative blobs */}
             <div className="fixed inset-0 overflow-hidden pointer-events-none" aria-hidden="true">
                 <div className="absolute -top-40 -right-40 w-96 h-96 rounded-full bg-amber-200/30 dark:bg-amber-900/10 blur-3xl" />
@@ -486,17 +486,17 @@ export default function CoinFlipPage() {
             <div className="max-w-lg mx-auto relative">
                 {/* Header */}
                 <div className="flex items-center gap-4 mb-8">
-                    <Link href={`/${locale}`} className="p-2.5 rounded-2xl bg-white/80 dark:bg-gray-800/80 backdrop-blur shadow-md border border-white/60 dark:border-white/10 hover:shadow-lg hover:scale-105 transition-all duration-200" aria-label="Geri">
-                        <ArrowLeft className="w-5 h-5 text-gray-600 dark:text-gray-400" />
+                    <Link href={`/${locale}`} className="p-2.5 rounded-lg bg-[var(--card-bg)] backdrop-blur shadow-md border border-[var(--card-border)] hover:shadow-lg hover:scale-105 transition-all duration-200" aria-label="Geri">
+                        <ArrowLeft className="w-5 h-5 text-[var(--text-secondary)]" />
                     </Link>
                     <div>
-                        <h1 className="text-2xl sm:text-3xl font-black text-gray-900 dark:text-white tracking-tight">🪙 {t('title')}</h1>
+                        <h1 className="font-heading text-headline-lg-mobile sm:text-headline-lg text-[var(--text-primary)] tracking-tight">🪙 {t('title')}</h1>
                         <p className="text-xs sm:text-sm text-amber-600 dark:text-amber-400 mt-0.5 font-medium">{t('subtitle')}</p>
                     </div>
                 </div>
 
                 {/* Main Card */}
-                <div className="bg-white/70 dark:bg-gray-800/70 backdrop-blur-xl rounded-3xl shadow-2xl border border-white/60 dark:border-white/10 overflow-hidden">
+                <div className="ys-card backdrop-blur-xl overflow-hidden">
 
                     {/* Style Selector — sits above canvas */}
                     <div className="flex items-center justify-center gap-2 px-5 pt-4">
@@ -506,20 +506,20 @@ export default function CoinFlipPage() {
                             className={`flex items-center gap-2 px-4 py-2 rounded-xl text-sm font-bold transition-all duration-200 border ${
                                 coinStyle === 'classic'
                                     ? 'bg-slate-700 text-white border-slate-600 shadow-lg shadow-slate-500/20'
-                                    : 'bg-white/60 dark:bg-gray-700/40 text-gray-500 dark:text-gray-400 border-gray-200 dark:border-gray-700 hover:border-slate-400'
+                                    : 'bg-[var(--surface-2)] text-[var(--text-secondary)] border-[var(--border-medium)] hover:border-slate-400'
                             }`}
                         >
                             <span className="text-base">🪙</span>
                             <span>{t('classic')}</span>
                         </button>
-                        <div className="text-gray-300 dark:text-gray-600 font-light select-none">|</div>
+                        <div className="text-[var(--text-muted)] font-light select-none">|</div>
                         <button
                             onClick={() => setCoinStyle('gold')}
                             disabled={isFlipping}
                             className={`flex items-center gap-2 px-4 py-2 rounded-xl text-sm font-bold transition-all duration-200 border ${
                                 coinStyle === 'gold'
                                     ? 'bg-gradient-to-r from-amber-500 to-yellow-500 text-white border-amber-400 shadow-lg shadow-amber-400/30'
-                                    : 'bg-white/60 dark:bg-gray-700/40 text-gray-500 dark:text-gray-400 border-gray-200 dark:border-gray-700 hover:border-amber-400'
+                                    : 'bg-[var(--surface-2)] text-[var(--text-secondary)] border-[var(--border-medium)] hover:border-amber-400'
                             }`}
                         >
                             <span className="text-base">✨</span>
@@ -543,12 +543,12 @@ export default function CoinFlipPage() {
                                 <>
                                     {result === 'edge' ? (
                                         <div className="absolute inset-0 z-30 flex flex-col items-center justify-center p-6 bg-black/40 backdrop-blur-sm animate-fade-in">
-                                            <div className="bg-white dark:bg-gray-800 p-6 rounded-3xl shadow-2xl max-w-xs w-full border-4 border-amber-400 text-center">
+                                            <div className="bg-[var(--card-bg)] p-6 rounded-xl shadow-2xl max-w-xs w-full border-4 border-amber-400 text-center">
                                                 <div className="w-24 h-24 mx-auto mb-3 rounded-full overflow-hidden border-4 border-amber-200 shadow-inner">
                                                     <img src="/yula.jpeg" alt="Yula" className="w-full h-full object-cover" />
                                                 </div>
                                                 <h3 className="text-lg font-black text-amber-600 dark:text-amber-400 mb-1">🎲 OOPS!</h3>
-                                                <p className="text-gray-700 dark:text-gray-200 text-sm font-medium">{t('edge')}</p>
+                                                <p className="text-[var(--text-secondary)] text-sm font-medium">{t('edge')}</p>
                                             </div>
                                         </div>
                                     ) : (
@@ -601,11 +601,11 @@ export default function CoinFlipPage() {
                         {/* Progress Bar */}
                         {total > 0 && (
                             <div className="space-y-1.5">
-                                <div className="flex justify-between items-center text-xs text-gray-500 dark:text-gray-400 font-medium px-0.5">
+                                <div className="flex justify-between items-center text-xs text-[var(--text-muted)] font-medium px-0.5">
                                     <span className="flex items-center gap-1"><TrendingUp className="w-3 h-3" />{total} atış</span>
                                     <span>{headsPercent}% / {tailsPercent}%</span>
                                 </div>
-                                <div className="h-2 bg-gray-100 dark:bg-gray-700 rounded-full overflow-hidden flex">
+                                <div className="h-2 bg-[var(--surface-2)] rounded-full overflow-hidden flex">
                                     <div className="h-full bg-slate-600 dark:bg-slate-500 transition-all duration-700 ease-out rounded-l-full" style={{ width: `${headsPercent}%` }} />
                                     <div className="h-full bg-gradient-to-r from-red-500 to-rose-500 transition-all duration-700 ease-out rounded-r-full" style={{ width: `${tailsPercent}%` }} />
                                 </div>
@@ -615,12 +615,12 @@ export default function CoinFlipPage() {
                         {/* History */}
                         {history.length > 0 && (
                             <div className="space-y-2">
-                                <p className="text-xs text-gray-400 dark:text-gray-500 font-medium uppercase tracking-wider">{t('history')}</p>
+                                <p className="text-xs text-[var(--text-muted)] font-medium uppercase tracking-wider">{t('history')}</p>
                                 <div className="flex gap-1.5 flex-wrap">
                                     {history.map((h, i) => (
                                         <div key={i} className={`w-8 h-8 rounded-full flex items-center justify-center text-xs font-black shadow-sm border transition-all duration-300 ${
                                             h === 'heads' ? 'bg-slate-700 border-slate-600 text-white' : 'bg-gradient-to-br from-red-500 to-rose-600 border-red-400 text-white'
-                                        } ${i === 0 ? 'ring-2 ring-amber-400 ring-offset-1 dark:ring-offset-gray-800 scale-110' : 'opacity-75'}`}>
+                                        } ${i === 0 ? 'ring-2 ring-amber-400 ring-offset-1 ring-offset-[var(--card-bg)] scale-110' : 'opacity-75'}`}>
                                             {h === 'heads' ? 'Y' : 'T'}
                                         </div>
                                     ))}
@@ -634,7 +634,7 @@ export default function CoinFlipPage() {
                             disabled={isFlipping}
                             className={`w-full py-5 rounded-2xl font-black text-xl text-white shadow-xl transition-all duration-300 active:scale-[0.97] relative overflow-hidden group ${
                                 isFlipping
-                                    ? 'bg-gray-400 dark:bg-gray-600 cursor-not-allowed'
+                                    ? 'bg-[var(--text-muted)] cursor-not-allowed'
                                     : 'bg-gradient-to-r from-amber-500 via-yellow-500 to-amber-500 hover:from-amber-400 hover:via-yellow-400 hover:to-amber-400 shadow-amber-300/50 dark:shadow-amber-900/50 hover:shadow-2xl hover:scale-[1.02]'
                             }`}
                         >
@@ -647,7 +647,7 @@ export default function CoinFlipPage() {
 
                         {/* Reset */}
                         {total > 0 && (
-                            <button onClick={resetStats} className="w-full py-3 bg-gray-50 dark:bg-gray-700/50 hover:bg-red-50 dark:hover:bg-red-900/20 text-gray-400 dark:text-gray-500 hover:text-red-500 dark:hover:text-red-400 font-semibold rounded-2xl transition-all duration-200 flex items-center justify-center gap-2 border border-gray-100 dark:border-gray-700 hover:border-red-200 dark:hover:border-red-900/50 group">
+                            <button onClick={resetStats} className="w-full py-3 bg-[var(--surface-2)] hover:bg-red-50 dark:hover:bg-red-900/20 text-[var(--text-muted)] hover:text-red-500 dark:hover:text-red-400 font-semibold rounded-lg transition-all duration-200 flex items-center justify-center gap-2 border border-[var(--border-light)] hover:border-red-200 dark:hover:border-red-900/50 group">
                                 <RotateCcw className="w-4 h-4 group-hover:rotate-180 transition-transform duration-300" aria-hidden="true" />
                                 <span className="text-sm uppercase tracking-wide">{t('reset')}</span>
                             </button>
@@ -656,12 +656,12 @@ export default function CoinFlipPage() {
                 </div>
 
                 {/* About */}
-                <section className="mt-6 bg-white/40 dark:bg-gray-800/40 backdrop-blur rounded-2xl p-5 sm:p-6 border border-white/50 dark:border-white/5 shadow-sm">
-                    <h2 className="text-base font-bold text-gray-900 dark:text-white mb-2 flex items-center gap-2">
+                <section className="mt-6 ys-card p-5 sm:p-6">
+                    <h2 className="text-headline-md text-[var(--text-primary)] mb-2 flex items-center gap-2">
                         <span className="w-1 h-5 bg-amber-500 rounded-full inline-block" />
                         {t('aboutTitle')}
                     </h2>
-                    <p className="text-sm text-gray-600 dark:text-gray-400 leading-relaxed">{t('aboutText')}</p>
+                    <p className="text-body-md text-[var(--text-secondary)]">{t('aboutText')}</p>
                 </section>
             </div>
         </div>

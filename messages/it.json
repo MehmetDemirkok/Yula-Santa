@@ -981,7 +981,11 @@
         "privacyPolicy": "Privacy",
         "legalInfo": "Note Legali",
         "copyright": "© 2025 YulaSanta. Tutti i diritti riservati.",
-        "cookieDisclaimer": "Questo sito utilizza i cookie per migliorare la tua esperienza."
+        "cookieDisclaimer": "Questo sito utilizza i cookie per migliorare la tua esperienza.",
+        "raffleTools": "Strumenti di Sorteggio",
+        "socialGiveaways": "Concorsi sui Social Media",
+        "secretSanta": "Babbo Natale Segreto",
+        "namePicker": "Selettore di Nomi"
     },
     "privacy": {
         "title": "Privacy",

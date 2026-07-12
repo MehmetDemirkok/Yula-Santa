@@ -991,7 +991,11 @@
         "privacyPolicy": "Datenschutz",
         "legalInfo": "Impressum",
         "copyright": "© 2025 YulaSanta. Alle Rechte vorbehalten.",
-        "cookieDisclaimer": "Diese Website verwendet Cookies, um Ihnen die bestmögliche Erfahrung zu bieten."
+        "cookieDisclaimer": "Diese Website verwendet Cookies, um Ihnen die bestmögliche Erfahrung zu bieten.",
+        "raffleTools": "Verlosungs-Tools",
+        "socialGiveaways": "Social-Media-Gewinnspiele",
+        "secretSanta": "Wichteln",
+        "namePicker": "Namensauswahl"
     },
     "privacy": {
         "title": "Datenschutz",

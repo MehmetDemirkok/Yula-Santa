@@ -982,7 +982,11 @@
         "privacyPolicy": "Privacidade",
         "legalInfo": "Informações Legais",
         "copyright": "© 2025 YulaSanta. Todos os direitos reservados.",
-        "cookieDisclaimer": "Este site usa cookies para melhorar sua experiência."
+        "cookieDisclaimer": "Este site usa cookies para melhorar sua experiência.",
+        "raffleTools": "Ferramentas de Sorteio",
+        "socialGiveaways": "Sorteios nas Redes Sociais",
+        "secretSanta": "Amigo Secreto",
+        "namePicker": "Sorteador de Nomes"
     },
     "privacy": {
         "title": "Privacidade",

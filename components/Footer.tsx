@@ -10,8 +10,30 @@ import {
     Dice1,
     Coins,
     Hash,
-    Shuffle
+    Shuffle,
+    Aperture,
+    Users,
+    PartyPopper,
+    Youtube,
+    Trophy
 } from 'lucide-react';
+
+// Custom brand icons (not available in lucide-react)
+function TikTokIcon({ className }: { className?: string }) {
+    return (
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512" className={className} fill="currentColor">
+            <path d="M448 209.91a210.06 210.06 0 0 1-122.77-39.25V349.38A162.55 162.55 0 1 1 185 188.31V278.2a74.62 74.62 0 1 0 52.23 71.18V0l88 0a121.18 121.18 0 0 0 1.86 22.17h0A122.18 122.18 0 0 0 381 102.39a121.43 121.43 0 0 0 67 20.14z" />
+        </svg>
+    );
+}
+
+function TwitterIcon({ className }: { className?: string }) {
+    return (
+        <svg viewBox="0 0 24 24" className={className} fill="currentColor">
+            <path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z" />
+        </svg>
+    );
+}
 
 export function Footer() {
     const t = useTranslations('footer');
@@ -39,14 +61,6 @@ export function Footer() {
             iconBg: 'bg-emerald-500',
             hoverBorder: 'hover:border-emerald-200 dark:hover:border-emerald-500/30',
             hoverShadow: 'hover:shadow-emerald-100/50 dark:hover:shadow-emerald-500/20'
-        },
-        {
-            key: 'onlineGiveaway',
-            href: `/${locale}`,
-            icon: Gift,
-            iconBg: 'bg-red-500',
-            hoverBorder: 'hover:border-red-200 dark:hover:border-red-500/30',
-            hoverShadow: 'hover:shadow-red-100/50 dark:hover:shadow-red-500/20'
         },
         {
             key: 'dice',
@@ -80,6 +94,82 @@ export function Footer() {
             hoverBorder: 'hover:border-indigo-200 dark:hover:border-indigo-500/30',
             hoverShadow: 'hover:shadow-indigo-100/50 dark:hover:shadow-indigo-500/20'
         },
+        {
+            key: 'wheelOfFortune',
+            href: `/${locale}/tools/wheel-of-fortune`,
+            icon: Aperture,
+            iconBg: 'bg-pink-500',
+            hoverBorder: 'hover:border-pink-200 dark:hover:border-pink-500/30',
+            hoverShadow: 'hover:shadow-pink-100/50 dark:hover:shadow-pink-500/20'
+        },
+        {
+            key: 'teamGenerator',
+            href: `/${locale}/tools/team-generator`,
+            icon: Users,
+            iconBg: 'bg-sky-500',
+            hoverBorder: 'hover:border-sky-200 dark:hover:border-sky-500/30',
+            hoverShadow: 'hover:shadow-sky-100/50 dark:hover:shadow-sky-500/20'
+        },
+        {
+            key: 'giftSuggestions',
+            href: `/${locale}/tools/gift-suggestions`,
+            icon: PartyPopper,
+            iconBg: 'bg-fuchsia-500',
+            hoverBorder: 'hover:border-fuchsia-200 dark:hover:border-fuchsia-500/30',
+            hoverShadow: 'hover:shadow-fuchsia-100/50 dark:hover:shadow-fuchsia-500/20'
+        },
+    ];
+
+    // Social media giveaway tools (per-platform winner pickers)
+    const giveaways = [
+        {
+            label: 'Instagram',
+            href: `/${locale}/instagram`,
+            icon: Instagram,
+            iconBg: 'bg-gradient-to-br from-purple-500 via-pink-500 to-orange-400',
+            hoverBorder: 'hover:border-pink-200 dark:hover:border-pink-500/30',
+            hoverShadow: 'hover:shadow-pink-100/50 dark:hover:shadow-pink-500/20'
+        },
+        {
+            label: 'YouTube',
+            href: `/${locale}/youtube`,
+            icon: Youtube,
+            iconBg: 'bg-red-600',
+            hoverBorder: 'hover:border-red-200 dark:hover:border-red-500/30',
+            hoverShadow: 'hover:shadow-red-100/50 dark:hover:shadow-red-500/20'
+        },
+        {
+            label: 'TikTok',
+            href: `/${locale}/tiktok`,
+            icon: TikTokIcon,
+            iconBg: 'bg-black',
+            hoverBorder: 'hover:border-gray-300 dark:hover:border-white/20',
+            hoverShadow: 'hover:shadow-gray-200/50 dark:hover:shadow-white/10'
+        },
+        {
+            label: 'Twitter (X)',
+            href: `/${locale}/twitter`,
+            icon: TwitterIcon,
+            iconBg: 'bg-black',
+            hoverBorder: 'hover:border-gray-300 dark:hover:border-white/20',
+            hoverShadow: 'hover:shadow-gray-200/50 dark:hover:shadow-white/10'
+        },
+        {
+            label: t('secretSanta'),
+            href: `/${locale}/secret-santa`,
+            icon: Gift,
+            iconBg: 'bg-santa-red',
+            hoverBorder: 'hover:border-red-200 dark:hover:border-red-500/30',
+            hoverShadow: 'hover:shadow-red-100/50 dark:hover:shadow-red-500/20'
+        },
+        {
+            label: t('namePicker'),
+            href: `/${locale}/raffle`,
+            icon: Trophy,
+            iconBg: 'bg-foreground',
+            hoverBorder: 'hover:border-gray-300 dark:hover:border-white/20',
+            hoverShadow: 'hover:shadow-gray-200/50 dark:hover:shadow-white/10'
+        },
     ];
 
     return (
@@ -111,10 +201,11 @@ export function Footer() {
                     </div>
 
                     {/* ═══════════════════════════════════════════════════════════════════ */}
-                    {/* Tools Section - Hide on Home Page to avoid duplication */}
+                    {/* Tools + Giveaways Section - Hide on Home Page to avoid duplication */}
                     {/* ═══════════════════════════════════════════════════════════════════ */}
                     {!isHomePage && (
-                        <div className="w-full">
+                        <div className="w-full grid grid-cols-1 lg:grid-cols-2 gap-4 sm:gap-6">
+                            {/* Tools */}
                             <div className="ys-card p-4 sm:p-6 md:p-8">
                                 {/* Section Title */}
                                 <div className="flex items-center gap-2 sm:gap-3 mb-4 sm:mb-6">
@@ -138,6 +229,36 @@ export function Footer() {
                                             </div>
                                             <span className="text-sm sm:text-base text-[var(--text-secondary)] group-hover:text-foreground font-medium transition-colors truncate">
                                                 {tTools(tool.key as keyof typeof tool)}
+                                            </span>
+                                        </Link>
+                                    ))}
+                                </div>
+                            </div>
+
+                            {/* Giveaways */}
+                            <div className="ys-card p-4 sm:p-6 md:p-8">
+                                {/* Section Title */}
+                                <div className="flex items-center gap-2 sm:gap-3 mb-4 sm:mb-6">
+                                    <div className="w-1 sm:w-1.5 h-6 sm:h-8 bg-santa-red rounded-full" />
+                                    <h3 className="text-base sm:text-lg md:text-xl font-bold text-foreground tracking-wide">
+                                        {t('socialGiveaways')}
+                                    </h3>
+                                </div>
+
+                                {/* Giveaways Grid - 2 columns */}
+                                <div className="grid grid-cols-1 sm:grid-cols-2 gap-2 sm:gap-3">
+                                    {giveaways.map((item) => (
+                                        <Link
+                                            key={item.href}
+                                            href={item.href}
+                                            title={`${item.label} - YulaSanta`}
+                                            className={`group flex items-center gap-3 p-3 sm:p-4 rounded-xl sm:rounded-2xl bg-[var(--card-bg)] border border-[var(--card-border)] dark:border-white/5 ${item.hoverBorder} hover:shadow-lg ${item.hoverShadow} transition-all duration-300`}
+                                        >
+                                            <div className={`p-2 sm:p-2.5 rounded-lg sm:rounded-xl ${item.iconBg} shadow-lg flex-shrink-0 group-hover:scale-110 transition-transform`}>
+                                                <item.icon className="w-4 h-4 sm:w-5 sm:h-5 text-white" />
+                                            </div>
+                                            <span className="text-sm sm:text-base text-[var(--text-secondary)] group-hover:text-foreground font-medium transition-colors truncate">
+                                                {item.label}
                                             </span>
                                         </Link>
                                     ))}

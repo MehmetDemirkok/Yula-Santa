@@ -112,14 +112,14 @@ export default function HomeClientPage() {
     return (
         <main className="ys-page-shell overflow-hidden transition-colors duration-300">
             {/* Hero Section */}
-            <section className="relative pt-24 pb-10 lg:pt-28 lg:pb-14 overflow-hidden">
+            <section className="relative pt-20 pb-8 lg:pt-24 lg:pb-12 overflow-hidden">
                 {/* Background Decoration */}
                 <div className="absolute top-0 left-1/2 -translate-x-1/2 w-full max-w-7xl h-full -z-10">
                     <div className="absolute top-[-10%] right-[-10%] w-[500px] h-[500px] bg-red-100/50 dark:bg-red-500/20 rounded-full blur-[120px] animate-pulse"></div>
                     <div className="absolute bottom-[-10%] left-[-10%] w-[500px] h-[500px] bg-indigo-100/40 dark:bg-indigo-500/20 rounded-full blur-[120px]"></div>
                 </div>
 
-                <div className="container mx-auto px-4">
+                <div className="max-w-6xl mx-auto px-4">
                     <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-12 items-center">
                         {/* Text Column */}
                         <Reveal className="order-1 text-center lg:text-left">
@@ -174,7 +174,7 @@ export default function HomeClientPage() {
                     </div>
 
                     {/* Feature Row */}
-                    <div className="mt-10 lg:mt-14 grid grid-cols-2 lg:grid-cols-4 gap-3 lg:gap-6">
+                    <div className="mt-8 lg:mt-10 grid grid-cols-2 lg:grid-cols-4 gap-3 lg:gap-5">
                         {features.map((feature, i) => (
                             <Reveal key={feature.label} delay={i * 80}>
                                 <div className="bento-card flex flex-col items-center text-center gap-2.5 bg-[var(--card-bg)] p-4 lg:p-5 rounded-2xl border border-[var(--card-border)] shadow-sm h-full">
@@ -190,9 +190,9 @@ export default function HomeClientPage() {
             </section>
 
             {/* Social Media Giveaways Section */}
-            <section id="draws" className="py-16 lg:py-20 bg-[var(--surface-2)]">
-                <div className="container mx-auto px-4">
-                    <Reveal className="text-center mb-10 lg:mb-12">
+            <section id="draws" className="py-12 lg:py-14 bg-[var(--surface-2)]">
+                <div className="max-w-6xl mx-auto px-4">
+                    <Reveal className="text-center mb-8 lg:mb-10">
                         <h2 className="font-heading text-headline-lg-mobile sm:text-headline-lg text-foreground mb-3">{t('home.socialMediaGiveaways')}</h2>
                         <p className="text-[var(--text-secondary)] font-medium">{t('home.socialDesc')}</p>
                     </Reveal>
@@ -200,18 +200,18 @@ export default function HomeClientPage() {
                     <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5 lg:gap-6">
                         {giveaways.map((item, i) => (
                             <Reveal key={item.title} delay={i * 90}>
-                                <div className="bento-card group relative bg-[var(--card-bg)] rounded-3xl p-6 lg:p-7 shadow-sm hover:shadow-2xl dark:hover:shadow-xl transition-shadow duration-300 border border-[var(--card-border)] flex flex-col h-full text-left">
+                                <div className="bento-card group relative bg-[var(--card-bg)] rounded-3xl p-5 lg:p-6 shadow-sm hover:shadow-2xl dark:hover:shadow-xl transition-shadow duration-300 border border-[var(--card-border)] flex flex-col h-full text-left">
                                     <div className={cn(
-                                        "w-14 h-14 rounded-2xl bg-gradient-to-br flex items-center justify-center text-white mb-5 shadow-lg group-hover:scale-110 transition-transform",
+                                        "w-12 h-12 rounded-2xl bg-gradient-to-br flex items-center justify-center text-white mb-4 shadow-lg group-hover:scale-110 transition-transform",
                                         item.color
                                     )}>
-                                        <item.icon className="w-7 h-7" />
+                                        <item.icon className="w-6 h-6" />
                                     </div>
                                     <h3 className="font-heading text-lg font-bold text-foreground mb-2">{item.title}</h3>
-                                    <p className="text-sm text-[var(--text-secondary)] mb-6 leading-relaxed line-clamp-2 flex-grow">{item.desc}</p>
+                                    <p className="text-sm text-[var(--text-secondary)] mb-5 leading-relaxed line-clamp-2 flex-grow">{item.desc}</p>
                                     <Button
                                         onClick={() => router.push(item.href)}
-                                        className={cn("mt-auto w-full py-5 rounded-xl font-bold transition-all", item.color, "text-white opacity-90 hover:opacity-100 hover:shadow-lg", item.shadow)}
+                                        className={cn("mt-auto w-full py-3.5 rounded-xl font-bold transition-all", item.color, "text-white opacity-90 hover:opacity-100 hover:shadow-lg", item.shadow)}
                                     >
                                         {t('home.startNow')} <ArrowRight className="ml-2 w-4 h-4" />
                                     </Button>
@@ -224,9 +224,9 @@ export default function HomeClientPage() {
                     <div className="grid grid-cols-1 md:grid-cols-2 gap-5 lg:gap-6 mt-5 lg:mt-6">
                         {raffleTools.map((item, i) => (
                             <Reveal key={item.title} delay={i * 90}>
-                                <div className="bento-card group bg-[var(--card-bg)] p-6 lg:p-7 rounded-3xl border border-[var(--card-border)] shadow-sm hover:shadow-2xl dark:hover:shadow-xl transition-shadow duration-300 flex items-center gap-5 sm:gap-6 h-full">
-                                    <div className={cn("w-16 h-16 sm:w-20 sm:h-20 rounded-3xl flex items-center justify-center flex-shrink-0", item.iconBg)}>
-                                        <item.icon className="w-8 h-8" />
+                                <div className="bento-card group bg-[var(--card-bg)] p-5 lg:p-6 rounded-3xl border border-[var(--card-border)] shadow-sm hover:shadow-2xl dark:hover:shadow-xl transition-shadow duration-300 flex items-center gap-4 sm:gap-5 h-full">
+                                    <div className={cn("w-14 h-14 sm:w-16 sm:h-16 rounded-3xl flex items-center justify-center flex-shrink-0", item.iconBg)}>
+                                        <item.icon className="w-7 h-7" />
                                     </div>
                                     <div className="min-w-0">
                                         <h3 className={cn("font-heading text-lg font-bold mb-1.5", item.accent)}>{item.title}</h3>
@@ -246,9 +246,9 @@ export default function HomeClientPage() {
             </section>
 
             {/* Tools Section */}
-            <section className="py-16 lg:py-20 bg-[var(--background)]">
-                <div className="container mx-auto px-4">
-                    <Reveal className="flex flex-col lg:flex-row items-end justify-between mb-8 lg:mb-10 gap-6">
+            <section className="py-12 lg:py-14 bg-[var(--background)]">
+                <div className="max-w-6xl mx-auto px-4">
+                    <Reveal className="flex flex-col lg:flex-row items-end justify-between mb-6 lg:mb-8 gap-6">
                         <div className="max-w-xl text-left">
                             <h2 className="font-heading text-headline-lg-mobile sm:text-headline-lg text-foreground mb-3">{t('tools.title')}</h2>
                             <p className="text-[var(--text-secondary)] font-medium">{t('home.toolsDesc')}</p>
@@ -267,7 +267,7 @@ export default function HomeClientPage() {
                             <Reveal key={tool.name} delay={i * 60}>
                                 <button
                                     onClick={() => router.push(tool.href)}
-                                    className="bento-card group flex flex-col items-center text-center gap-3 p-5 w-full bg-[var(--card-bg)] rounded-2xl border border-[var(--card-border)] hover:border-indigo-100 dark:hover:border-indigo-500/30 hover:shadow-xl transition-shadow"
+                                    className="bento-card group flex flex-col items-center text-center gap-2.5 p-4 w-full bg-[var(--card-bg)] rounded-2xl border border-[var(--card-border)] hover:border-indigo-100 dark:hover:border-indigo-500/30 hover:shadow-xl transition-shadow"
                                 >
                                     <div className={cn("w-11 h-11 rounded-xl flex items-center justify-center text-white group-hover:scale-110 transition-transform", tool.color)}>
                                         <tool.icon className="w-5 h-5" />

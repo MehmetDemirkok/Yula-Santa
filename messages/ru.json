@@ -981,7 +981,11 @@
         "privacyPolicy": "Приватность",
         "legalInfo": "Юридическая информация",
         "copyright": "© 2025 YulaSanta. Все права защищены.",
-        "cookieDisclaimer": "Этот сайт использует куки для улучшения работы."
+        "cookieDisclaimer": "Этот сайт использует куки для улучшения работы.",
+        "raffleTools": "Инструменты розыгрыша",
+        "socialGiveaways": "Розыгрыши в соцсетях",
+        "secretSanta": "Тайный Санта",
+        "namePicker": "Выбор имени"
     },
     "privacy": {
         "title": "Приватность",

@@ -995,7 +995,11 @@
         "privacyPolicy": "Privacy Policy",
         "legalInfo": "Legal Information",
         "copyright": "© 2025 YulaSanta. All rights reserved.",
-        "cookieDisclaimer": "When you visit and interact with our website, services or tools, we or our service providers may use cookies for storing information to help provide you with a better, faster and safer experience and for marketing purposes."
+        "cookieDisclaimer": "When you visit and interact with our website, services or tools, we or our service providers may use cookies for storing information to help provide you with a better, faster and safer experience and for marketing purposes.",
+        "raffleTools": "Raffle Tools",
+        "socialGiveaways": "Social Media Giveaways",
+        "secretSanta": "Secret Santa",
+        "namePicker": "Name Picker"
     },
     "privacy": {
         "title": "Privacy Policy",

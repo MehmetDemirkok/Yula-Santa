@@ -996,7 +996,11 @@
         "privacyPolicy": "Gizlilik Koşulları",
         "legalInfo": "Yasal Bilgiler",
         "copyright": "© 2025 YulaSanta. Tüm hakları saklıdır.",
-        "cookieDisclaimer": "Web sayfamımızı, hizmetlerimizi veya araçlarımızı ziyaret ettiğinizde ve bunlarla etkileşim kurduğunuzda, biz veya hizmet sağlayıcılarımız, size daha iyi, daha hızlı ve daha güvenli bir deneyim sunmaya yardımcı olmak ve pazarlama amaçlarıyla bilgi depolamak için çerezleri kullanabiliriz."
+        "cookieDisclaimer": "Web sayfamımızı, hizmetlerimizi veya araçlarımızı ziyaret ettiğinizde ve bunlarla etkileşim kurduğunuzda, biz veya hizmet sağlayıcılarımız, size daha iyi, daha hızlı ve daha güvenli bir deneyim sunmaya yardımcı olmak ve pazarlama amaçlarıyla bilgi depolamak için çerezleri kullanabiliriz.",
+        "raffleTools": "Çekiliş Araçları",
+        "socialGiveaways": "Sosyal Medya Çekilişleri",
+        "secretSanta": "Yılbaşı Çekilişi",
+        "namePicker": "İsim Çekilişi"
     },
     "privacy": {
         "title": "Gizlilik Koşulları",

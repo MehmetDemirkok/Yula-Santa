@@ -983,7 +983,11 @@
         "privacyPolicy": "سياسة الخصوصية",
         "legalInfo": "معلومات قانونية",
         "copyright": "© 2025 YulaSanta. جميع الحقوق محفوظة.",
-        "cookieDisclaimer": "يستخدم هذا الموقع ملفات تعريف الارتباط لتحسين تجربتك."
+        "cookieDisclaimer": "يستخدم هذا الموقع ملفات تعريف الارتباط لتحسين تجربتك.",
+        "raffleTools": "أدوات السحب",
+        "socialGiveaways": "مسابقات وسائل التواصل",
+        "secretSanta": "بابا نويل السري",
+        "namePicker": "اختيار الأسماء"
     },
     "privacy": {
         "title": "سياسة الخصوصية",

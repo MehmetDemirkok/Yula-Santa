@@ -24,7 +24,11 @@
       "mcp__playwright__browser_navigate",
       "WebSearch",
       "Bash(identify public/icon-512.png)",
-      "Bash(sips -g pixelWidth -g pixelHeight public/icon-512.png)"
+      "Bash(sips -g pixelWidth -g pixelHeight public/icon-512.png)",
+      "Bash(echo \"=== exit: $? ===\")",
+      "Bash(echo \"=== tsc exit: $? ===\")",
+      "Bash(echo \"exit $?\")",
+      "Bash(lsof -i :3000 -sTCP:LISTEN -n -P)"
     ]
   }
 }

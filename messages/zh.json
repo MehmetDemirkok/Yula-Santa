@@ -982,7 +982,11 @@
         "privacyPolicy": "隐私政策",
         "legalInfo": "法律信息",
         "copyright": "© 2025 YulaSanta. 版权所有。",
-        "cookieDisclaimer": "本网站使用 Cookie 以提升您的体验。"
+        "cookieDisclaimer": "本网站使用 Cookie 以提升您的体验。",
+        "raffleTools": "抽奖工具",
+        "socialGiveaways": "社交媒体抽奖",
+        "secretSanta": "神秘圣诞老人",
+        "namePicker": "姓名抽取"
     },
     "privacy": {
         "title": "隐私政策",

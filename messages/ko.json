@@ -981,7 +981,11 @@
         "privacyPolicy": "개인정보처리방침",
         "legalInfo": "법적 고지",
         "copyright": "© 2025 YulaSanta. All rights reserved.",
-        "cookieDisclaimer": "이 사이트는 사용자 경험 개선을 위해 쿠키를 사용합니다."
+        "cookieDisclaimer": "이 사이트는 사용자 경험 개선을 위해 쿠키를 사용합니다.",
+        "raffleTools": "추첨 도구",
+        "socialGiveaways": "소셜 미디어 추첨",
+        "secretSanta": "시크릿 산타",
+        "namePicker": "이름 추첨"
     },
     "privacy": {
         "title": "개인정보처리방침",

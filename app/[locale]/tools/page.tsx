@@ -118,17 +118,17 @@ export default async function ToolsPage({ params }: Props) {
     ];
 
     return (
-        <main className="min-h-screen py-12 sm:py-16 md:py-20 px-4 bg-gradient-to-b from-[#FFF5F5] to-white dark:from-gray-900 dark:to-gray-950">
+        <main className="ys-page-shell py-12 sm:py-16 md:py-20 px-4">
             <div className="max-w-6xl mx-auto">
                 {/* Header */}
                 <div className="text-center mb-12 sm:mb-16">
                     <div className="inline-flex items-center justify-center w-16 h-16 bg-gradient-to-br from-santa-red to-red-600 rounded-2xl mb-6 shadow-lg">
                         <Wrench className="w-8 h-8 text-white" />
                     </div>
-                    <h1 className="text-3xl sm:text-4xl md:text-5xl font-black text-gray-900 dark:text-white mb-4">
+                    <h1 className="text-3xl sm:text-4xl md:text-5xl font-black text-[var(--text-primary)] dark:text-white mb-4">
                         {t('title')}
                     </h1>
-                    <p className="text-lg sm:text-xl text-gray-600 dark:text-gray-400 max-w-2xl mx-auto leading-relaxed">
+                    <p className="text-lg sm:text-xl text-[var(--text-secondary)] dark:text-[var(--text-muted)] max-w-2xl mx-auto leading-relaxed">
                         {t('meta.description')}
                     </p>
                 </div>
@@ -139,7 +139,7 @@ export default async function ToolsPage({ params }: Props) {
                         <Link
                             key={index}
                             href={tool.href}
-                            className="group relative bg-white/80 dark:bg-gray-800/50 backdrop-blur-xl rounded-2xl p-6 shadow-lg border border-white/50 dark:border-white/10 hover:shadow-2xl transition-all duration-300 hover:-translate-y-2 overflow-hidden"
+                            className="group relative bg-white/80 dark:bg-[var(--card-bg)] backdrop-blur-xl rounded-2xl p-6 shadow-lg border border-white/50 dark:border-white/10 hover:shadow-2xl transition-all duration-300 hover:-translate-y-2 overflow-hidden"
                         >
                             {/* Gradient Background on Hover */}
                             <div className={`absolute inset-0 bg-gradient-to-br ${tool.gradient} opacity-0 group-hover:opacity-5 transition-opacity duration-300`} />
@@ -149,11 +149,11 @@ export default async function ToolsPage({ params }: Props) {
                                     <tool.icon className="w-7 h-7 text-white" />
                                 </div>
 
-                                <h2 className="text-xl font-bold text-gray-900 dark:text-white mb-2 group-hover:text-santa-red dark:group-hover:text-gold transition-colors">
+                                <h2 className="text-xl font-bold text-[var(--text-primary)] dark:text-white mb-2 group-hover:text-santa-red dark:group-hover:text-gold transition-colors">
                                     {tool.name}
                                 </h2>
 
-                                <p className="text-gray-600 dark:text-gray-400 text-sm leading-relaxed">
+                                <p className="text-[var(--text-secondary)] dark:text-[var(--text-muted)] text-sm leading-relaxed">
                                     {tool.description}
                                 </p>
 
