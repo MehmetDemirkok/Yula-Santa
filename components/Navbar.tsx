@@ -13,8 +13,6 @@ import {
     Dice5,
     Coins,
     Hash,
-    Eye,
-    UserCircle,
     Gamepad2,
     Wand2,
     Aperture,
@@ -107,8 +105,6 @@ export function Navbar() {
         { name: t('tools.coinFlip'), description: t('tools.coinFlipContent.subtitle'), icon: Coins, href: `/${locale}/tools/coin-flip`, color: "bg-amber-500" },
         { name: t('tools.randomNumber'), description: t('tools.randomNumberContent.subtitle'), icon: Hash, href: `/${locale}/tools/random-number`, color: "bg-emerald-500" },
         { name: t('tools.shortStraw'), description: t('tools.shortStrawContent.subtitle'), icon: Wand2, href: `/${locale}/tools/short-straw`, color: "bg-rose-500" },
-        { name: t('tools.instagramStoryViewer'), description: t('tools.instagramStoryContent.subtitle'), icon: Eye, href: `/${locale}/tools/instagram-story-viewer`, color: "bg-blue-500" },
-        { name: t('tools.instagramProfilePicture'), description: t('tools.instagramProfileContent.subtitle'), icon: UserCircle, href: `/${locale}/tools/instagram-profile-picture`, color: "bg-cyan-500" },
         { name: t('tools.wheelOfFortune'), description: t('tools.wheelOfFortuneContent.subtitle'), icon: Aperture, href: `/${locale}/tools/wheel-of-fortune`, color: "bg-pink-500" },
         { name: t('tools.teamGenerator'), description: t('tools.teamGeneratorContent.subtitle'), icon: Users, href: `/${locale}/tools/team-generator`, color: "bg-purple-500" },
     ];

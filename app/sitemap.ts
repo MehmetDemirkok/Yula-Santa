@@ -50,8 +50,6 @@ const localeRoutes = [
     { path: '/tools/short-straw', priority: 0.9, changeFrequency: 'daily' as const },
     { path: '/tools/wheel-of-fortune', priority: 0.9, changeFrequency: 'daily' as const },
     { path: '/tools/team-generator', priority: 0.9, changeFrequency: 'daily' as const },
-    { path: '/tools/instagram-story-viewer', priority: 0.95, changeFrequency: 'daily' as const },
-    { path: '/tools/instagram-profile-picture', priority: 0.95, changeFrequency: 'daily' as const },
     { path: '/tools/gift-suggestions', priority: 0.95, changeFrequency: 'daily' as const },
 ];
 

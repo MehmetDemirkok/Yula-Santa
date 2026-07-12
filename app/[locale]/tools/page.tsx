@@ -11,7 +11,7 @@ import { setRequestLocale, getTranslations } from 'next-intl/server';
 import { Metadata } from 'next';
 import Link from 'next/link';
 import {
-    Dice5, Coins, Hash, Wand2, Eye, UserCircle,
+    Dice5, Coins, Hash, Wand2,
     Aperture, Users, Gift, Wrench
 } from 'lucide-react';
 import { getSEOMetadata, viewport } from '@/lib/seo';
@@ -74,22 +74,6 @@ export default async function ToolsPage({ params }: Props) {
             href: `/${locale}/tools/short-straw`,
             color: 'bg-rose-500',
             gradient: 'from-rose-500 to-pink-600'
-        },
-        {
-            name: t('instagramStoryViewer'),
-            description: t('instagramStoryContent.subtitle'),
-            icon: Eye,
-            href: `/${locale}/tools/instagram-story-viewer`,
-            color: 'bg-blue-500',
-            gradient: 'from-blue-500 to-cyan-600'
-        },
-        {
-            name: t('instagramProfilePicture'),
-            description: t('instagramProfileContent.subtitle'),
-            icon: UserCircle,
-            href: `/${locale}/tools/instagram-profile-picture`,
-            color: 'bg-cyan-500',
-            gradient: 'from-cyan-500 to-blue-600'
         },
         {
             name: t('wheelOfFortune'),

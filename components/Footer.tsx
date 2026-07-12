@@ -5,7 +5,6 @@ import Link from 'next/link';
 import { useParams, usePathname } from 'next/navigation';
 import {
     Instagram,
-    ImageIcon,
     Gift,
     Dice1,
     Coins,
@@ -46,22 +45,6 @@ export function Footer() {
     const isHomePage = pathname === `/${locale}` || pathname === `/${locale}/`;
 
     const tools = [
-        {
-            key: 'instagramStoryViewer',
-            href: `/${locale}/tools/instagram-story-viewer`,
-            icon: Instagram,
-            iconBg: 'bg-gradient-to-br from-purple-500 via-pink-500 to-orange-400',
-            hoverBorder: 'hover:border-pink-200 dark:hover:border-pink-500/30',
-            hoverShadow: 'hover:shadow-pink-100/50 dark:hover:shadow-pink-500/20'
-        },
-        {
-            key: 'instagramProfilePicture',
-            href: `/${locale}/tools/instagram-profile-picture`,
-            icon: ImageIcon,
-            iconBg: 'bg-emerald-500',
-            hoverBorder: 'hover:border-emerald-200 dark:hover:border-emerald-500/30',
-            hoverShadow: 'hover:shadow-emerald-100/50 dark:hover:shadow-emerald-500/20'
-        },
         {
             key: 'dice',
             href: `/${locale}/tools/dice`,
