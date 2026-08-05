@@ -11,6 +11,22 @@ export const viewport: Viewport = {
     themeColor: '#EF4444',
 };
 
+/** Open Graph locale tags (language_TERRITORY) */
+export const OG_LOCALES: Record<string, string> = {
+    tr: 'tr_TR',
+    en: 'en_US',
+    de: 'de_DE',
+    fr: 'fr_FR',
+    es: 'es_ES',
+    it: 'it_IT',
+    pt: 'pt_BR',
+    ru: 'ru_RU',
+    ar: 'ar_SA',
+    ja: 'ja_JP',
+    ko: 'ko_KR',
+    zh: 'zh_CN',
+};
+
 interface SEOProps {
     locale: string;
     path: string; // e.g., '', '/youtube', '/instagram'
@@ -99,7 +115,7 @@ export async function getSEOMetadata({
             title,
             description,
             url: canonicalUrl,
-            locale: locale,
+            locale: OG_LOCALES[locale] || locale,
             siteName: 'YulaSanta',
             type: 'website',
             images: [

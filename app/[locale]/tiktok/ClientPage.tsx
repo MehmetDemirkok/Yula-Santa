@@ -454,24 +454,24 @@ export default function TikTokGiveaway() {
                                             <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                                                 <button
                                                     onClick={() => setMode('manual')}
-                                                    className="flex flex-col items-center justify-center p-6 bg-[var(--surface-2)] hover:bg-cyan-50 border-2 border-dashed border-[var(--border-medium)] hover:border-cyan-300 rounded-2xl transition-all group"
+                                                    className="flex flex-col items-center justify-center p-6 bg-[var(--surface-2)] hover:bg-cyan-50 dark:hover:bg-cyan-950/40 border-2 border-dashed border-[var(--border-medium)] hover:border-cyan-300 dark:hover:border-cyan-500/50 rounded-2xl transition-all group"
                                                 >
-                                                    <div className="p-4 bg-white rounded-full shadow-sm mb-4 group-hover:scale-110 transition-transform text-cyan-500">
+                                                    <div className="p-4 bg-white dark:bg-white/10 rounded-full shadow-sm mb-4 group-hover:scale-110 transition-transform text-cyan-500">
                                                         <Users className="w-8 h-8" />
                                                     </div>
                                                     <h3 className="font-bold text-lg text-[var(--text-primary)] mb-2">{t.giveaway.manualMode}</h3>
-                                                    <p className="text-sm text-[var(--text-muted)] text-center">{t.giveaway.manualDesc}</p>
+                                                    <p className="text-sm text-[var(--text-secondary)] text-center">{t.giveaway.manualDesc}</p>
                                                 </button>
 
                                                 <button
                                                     onClick={() => setMode('auto')}
-                                                    className="flex flex-col items-center justify-center p-6 bg-[var(--surface-2)] hover:bg-cyan-50 border-2 border-dashed border-[var(--border-medium)] hover:border-cyan-300 rounded-2xl transition-all group"
+                                                    className="flex flex-col items-center justify-center p-6 bg-[var(--surface-2)] hover:bg-cyan-50 dark:hover:bg-cyan-950/40 border-2 border-dashed border-[var(--border-medium)] hover:border-cyan-300 dark:hover:border-cyan-500/50 rounded-2xl transition-all group"
                                                 >
-                                                    <div className="p-4 bg-white rounded-full shadow-sm mb-4 group-hover:scale-110 transition-transform text-cyan-500">
+                                                    <div className="p-4 bg-white dark:bg-white/10 rounded-full shadow-sm mb-4 group-hover:scale-110 transition-transform text-cyan-500">
                                                         <TikTokIcon className="w-8 h-8" />
                                                     </div>
                                                     <h3 className="font-bold text-lg text-[var(--text-primary)] mb-2">{t.giveaway.autoMode}</h3>
-                                                    <p className="text-sm text-[var(--text-muted)] text-center">{t.giveaway.autoDesc}</p>
+                                                    <p className="text-sm text-[var(--text-secondary)] text-center">{t.giveaway.autoDesc}</p>
                                                 </button>
                                             </div>
                                         ) : (

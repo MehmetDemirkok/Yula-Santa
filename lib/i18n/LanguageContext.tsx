@@ -53,7 +53,7 @@ export const LOCALE_FLAGS: Record<Locale, string> = {
     fr: '🇫🇷',
     es: '🇪🇸',
     it: '🇮🇹',
-    pt: '🇵🇹',
+    pt: '🇧🇷',
     ru: '🇷🇺',
     ar: '🇸🇦',
     ja: '🇯🇵',

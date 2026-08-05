@@ -139,25 +139,23 @@
                 ]
             },
             "tiktok": {
-                "title": "TikTok Giveaway Tool | Free TikTok Raffle - YulaSanta",
-                "description": "Run giveaways from comments on your TikTok videos. Fast and fair raffle results with our TikTok giveaway site.",
+                "title": "TikTok抽奖工具 | 免费评论抽奖 - YulaSanta",
+                "description": "从TikTok视频评论中公平抽取获奖者。快速公正的免费TikTok抽奖网站。",
                 "keywords": [
-                    "tiktok giveaway",
-                    "tiktok raffle",
-                    "tiktok comment picker",
-                    "tiktok giveaway tool",
-                    "tiktok contest"
+                    "tiktok抽奖",
+                    "抖音抽奖",
+                    "tiktok评论抽奖",
+                    "免费tiktok抽奖"
                 ]
             },
             "twitter": {
-                "title": "Twitter (X) Giveaway Tool | Retweet & Like Picker - YulaSanta",
-                "description": "Easily manage your Twitter (X) giveaways. Pick winners from retweets and likes. Free Twitter giveaway site.",
+                "title": "Twitter (X) 抽奖工具 | 转推与点赞 - YulaSanta",
+                "description": "轻松管理 Twitter (X) 抽奖，从转推和点赞中选出获奖者。",
                 "keywords": [
-                    "twitter giveaway",
-                    "x giveaway",
-                    "retweet giveaway",
-                    "twitter raffle",
-                    "twitter contest"
+                    "twitter抽奖",
+                    "x抽奖",
+                    "转推抽奖",
+                    "推特抽奖"
                 ]
             }
         },
@@ -202,7 +200,8 @@
         "subscribed": "已订阅",
         "notSubscribed": "未订阅",
         "subscribedPrivate": "私密",
-        "checkingSubscription": "检查中..."
+        "checkingSubscription": "检查中...",
+        "seo": {}
     },
     "support": {
         "button": "支持",

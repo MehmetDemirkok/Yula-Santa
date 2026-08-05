@@ -504,6 +504,25 @@ img, video, iframe { max-width: 100%; height: auto; }
 }
 
 /* ═══════════════════════════════════════════════════════════════════════════
+   NEW YEAR SEASON — soft crimson/gold atmosphere (html.ys-new-year)
+═══════════════════════════════════════════════════════════════════════════ */
+html.ys-new-year body {
+  --ys-season-glow: color-mix(in srgb, var(--santa-red) 14%, transparent);
+}
+
+html.ys-new-year .ys-page-shell {
+  background-image:
+    radial-gradient(ellipse 80% 50% at 100% -10%, var(--ys-season-glow), transparent 55%),
+    radial-gradient(ellipse 60% 40% at 0% 100%, color-mix(in srgb, var(--gold) 8%, transparent), transparent 50%);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html.ys-new-year .ys-page-shell {
+    background-image: none;
+  }
+}
+
+/* ═══════════════════════════════════════════════════════════════════════════
    FOCUS RING — consistent across all interactive elements
 ═══════════════════════════════════════════════════════════════════════════ */
 .focus-ring {

@@ -423,24 +423,24 @@ export default function InstagramGiveaway() {
                                             <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                                                 <button
                                                     onClick={() => setMode('manual')}
-                                                    className="flex flex-col items-center justify-center p-6 bg-gradient-to-br from-pink-50 via-white to-purple-50 border border-pink-200 rounded-3xl shadow-sm transition-all hover:-translate-y-0.5 hover:shadow-md"
+                                                    className="flex flex-col items-center justify-center p-6 bg-gradient-to-br from-pink-50 via-white to-purple-50 dark:from-pink-950/50 dark:via-[var(--card-bg)] dark:to-purple-950/40 border border-pink-200 dark:border-pink-500/30 rounded-3xl shadow-sm transition-all hover:-translate-y-0.5 hover:shadow-md"
                                                 >
-                                                    <div className="p-4 bg-white rounded-full shadow-lg mb-4 text-pink-600">
+                                                    <div className="p-4 bg-white dark:bg-white/10 rounded-full shadow-lg mb-4 text-pink-600 dark:text-pink-400">
                                                         <Users className="w-8 h-8" />
                                                     </div>
-                                                    <h3 className="font-bold text-lg text-[var(--text-primary)] mb-2">{t.giveaway.manualMode}</h3>
-                                                    <p className="text-sm text-[var(--text-muted)] text-center">{t.giveaway.manualDesc}</p>
+                                                    <h3 className="font-bold text-lg text-gray-900 dark:text-white mb-2">{t.giveaway.manualMode}</h3>
+                                                    <p className="text-sm text-gray-600 dark:text-gray-300 text-center">{t.giveaway.manualDesc}</p>
                                                 </button>
 
                                                 <button
                                                     onClick={() => setMode('auto')}
-                                                    className="flex flex-col items-center justify-center p-6 bg-gradient-to-br from-pink-50 via-white to-purple-50 border border-pink-200 rounded-3xl shadow-sm transition-all hover:-translate-y-0.5 hover:shadow-md"
+                                                    className="flex flex-col items-center justify-center p-6 bg-gradient-to-br from-pink-50 via-white to-purple-50 dark:from-pink-950/50 dark:via-[var(--card-bg)] dark:to-purple-950/40 border border-pink-200 dark:border-pink-500/30 rounded-3xl shadow-sm transition-all hover:-translate-y-0.5 hover:shadow-md"
                                                 >
-                                                    <div className="p-4 bg-white rounded-full shadow-lg mb-4 text-pink-600">
+                                                    <div className="p-4 bg-white dark:bg-white/10 rounded-full shadow-lg mb-4 text-pink-600 dark:text-pink-400">
                                                         <Instagram className="w-8 h-8" />
                                                     </div>
-                                                    <h3 className="font-bold text-lg text-[var(--text-primary)] mb-2">{t.giveaway.autoMode}</h3>
-                                                    <p className="text-sm text-[var(--text-muted)] text-center">{t.giveaway.autoDesc}</p>
+                                                    <h3 className="font-bold text-lg text-gray-900 dark:text-white mb-2">{t.giveaway.autoMode}</h3>
+                                                    <p className="text-sm text-gray-600 dark:text-gray-300 text-center">{t.giveaway.autoDesc}</p>
                                                 </button>
                                             </div>
                                         ) : (
@@ -778,7 +778,7 @@ export default function InstagramGiveaway() {
 
                                         <div className="space-y-3">
                                             {winners.map((winner, i) => (
-                                                <div key={i} className="p-4 bg-gradient-to-r from-pink-50 to-purple-50 rounded-3xl border border-pink-200 shadow-sm transform transition-all duration-300 hover:-translate-y-1 hover:shadow-lg" style={{ animationDelay: `${i * 100}ms` }}>
+                                                <div key={i} className="p-4 bg-gradient-to-r from-pink-50 to-purple-50 dark:from-pink-950/40 dark:to-purple-950/30 rounded-3xl border border-pink-200 dark:border-pink-500/30 shadow-sm transform transition-all duration-300 hover:-translate-y-1 hover:shadow-lg" style={{ animationDelay: `${i * 100}ms` }}>
                                                     <div className="flex flex-col gap-4">
                                                         <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-3">
                                                             <div className="flex items-center gap-3">
@@ -786,13 +786,13 @@ export default function InstagramGiveaway() {
                                                                     {i + 1}
                                                                 </span>
                                                                 <div>
-                                                                    <p className="font-bold text-[var(--text-primary)] text-lg">@{winner.name}</p>
+                                                                    <p className="font-bold text-gray-900 dark:text-white text-lg">@{winner.name}</p>
                                                                     {winner.comment && (
-                                                                        <p className="text-sm text-[var(--text-muted)] mt-1 line-clamp-2">"{winner.comment}"</p>
+                                                                        <p className="text-sm text-gray-600 dark:text-gray-300 mt-1 line-clamp-2">"{winner.comment}"</p>
                                                                     )}
                                                                 </div>
                                                             </div>
-                                                            <span className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-white/90 text-pink-600 text-xs font-semibold border border-pink-100">
+                                                            <span className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-white/90 dark:bg-white/10 text-pink-600 dark:text-pink-300 text-xs font-semibold border border-pink-100 dark:border-pink-500/30">
                                                                 <Trophy className="w-3.5 h-3.5" />
                                                                 Winner
                                                             </span>

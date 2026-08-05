@@ -138,25 +138,23 @@
                 ]
             },
             "tiktok": {
-                "title": "TikTok Giveaway Tool | Free TikTok Raffle - YulaSanta",
-                "description": "Run giveaways from comments on your TikTok videos. Fast and fair raffle results with our TikTok giveaway site.",
+                "title": "TikTok抽選ツール | 無料コメント抽選 - YulaSanta",
+                "description": "TikTok動画のコメントから公平に当選者を選びます。無料のTikTok抽選サイト。",
                 "keywords": [
-                    "tiktok giveaway",
-                    "tiktok raffle",
-                    "tiktok comment picker",
-                    "tiktok giveaway tool",
-                    "tiktok contest"
+                    "tiktok 抽選",
+                    "tiktok コメント抽選",
+                    "tiktok ギブアウェイ",
+                    "ティックトック 抽選"
                 ]
             },
             "twitter": {
-                "title": "Twitter (X) Giveaway Tool | Retweet & Like Picker - YulaSanta",
-                "description": "Easily manage your Twitter (X) giveaways. Pick winners from retweets and likes. Free Twitter giveaway site.",
+                "title": "Twitter (X) 抽選ツール | リツイート＆いいね - YulaSanta",
+                "description": "Twitter (X) のリツイートといいねから当選者を選ぶ無料抽選サイト。",
                 "keywords": [
-                    "twitter giveaway",
-                    "x giveaway",
-                    "retweet giveaway",
-                    "twitter raffle",
-                    "twitter contest"
+                    "twitter 抽選",
+                    "x 抽選",
+                    "リツイート 抽選",
+                    "ツイッター ギブアウェイ"
                 ]
             }
         },
@@ -201,7 +199,8 @@
         "subscribed": "登録済み",
         "notSubscribed": "未登録",
         "subscribedPrivate": "非公開",
-        "checkingSubscription": "確認中..."
+        "checkingSubscription": "確認中...",
+        "seo": {}
     },
     "support": {
         "button": "サポート",

@@ -107,7 +107,11 @@ export async function generateMetadata({
 
         openGraph: {
             type: "website",
-            locale: locale === 'tr' ? 'tr_TR' : locale === 'en' ? 'en_US' : `${locale}_${locale.toUpperCase()}`,
+            locale: ({
+                tr: 'tr_TR', en: 'en_US', de: 'de_DE', fr: 'fr_FR', es: 'es_ES',
+                it: 'it_IT', pt: 'pt_BR', ru: 'ru_RU', ar: 'ar_SA', ja: 'ja_JP',
+                ko: 'ko_KR', zh: 'zh_CN',
+            } as Record<string, string>)[locale] || 'en_US',
             url: locale === 'tr' ? `${SITE_URL}` : `${SITE_URL}/${locale}`,
             title: meta.title,
             description: meta.description,
@@ -268,33 +272,23 @@ function getJsonLd(locale: string, messages: Record<string, any>) {
         "screenshot": `${SITE_URL}/opengraph-image.png`
     };
 
-    // FAQ Schema - Helps with rich snippets
+    // FAQ Schema - Helps with rich snippets (include every qN/aN pair present)
     const faq = messages.meta?.faq ?? {};
+    const faqEntities = [];
+    for (let i = 1; i <= 20; i++) {
+        const q = faq[`q${i}`];
+        const a = faq[`a${i}`];
+        if (!q || !a) break;
+        faqEntities.push({
+            "@type": "Question",
+            "name": q,
+            "acceptedAnswer": { "@type": "Answer", "text": a }
+        });
+    }
     const faqSchema = {
         "@type": "FAQPage",
         "@id": `${SITE_URL}/${locale === 'tr' ? '' : locale + '/'}#faq`,
-        "mainEntity": [
-            {
-                "@type": "Question",
-                "name": faq.q1,
-                "acceptedAnswer": { "@type": "Answer", "text": faq.a1 }
-            },
-            {
-                "@type": "Question",
-                "name": faq.q2,
-                "acceptedAnswer": { "@type": "Answer", "text": faq.a2 }
-            },
-            {
-                "@type": "Question",
-                "name": faq.q3,
-                "acceptedAnswer": { "@type": "Answer", "text": faq.a3 }
-            },
-            {
-                "@type": "Question",
-                "name": faq.q4,
-                "acceptedAnswer": { "@type": "Answer", "text": faq.a4 }
-            }
-        ]
+        "mainEntity": faqEntities
     };
 
     // BreadcrumbList Schema

@@ -139,25 +139,23 @@
                 ]
             },
             "tiktok": {
-                "title": "TikTok Giveaway Tool | Free TikTok Raffle - YulaSanta",
-                "description": "Run giveaways from comments on your TikTok videos. Fast and fair raffle results with our TikTok giveaway site.",
+                "title": "Outil de tirage TikTok | Tirage commentaires TikTok gratuit - YulaSanta",
+                "description": "Tirez au sort parmi les commentaires de vos vidéos TikTok. Résultats rapides et équitables.",
                 "keywords": [
-                    "tiktok giveaway",
-                    "tiktok raffle",
-                    "tiktok comment picker",
-                    "tiktok giveaway tool",
-                    "tiktok contest"
+                    "tirage tiktok",
+                    "concours tiktok",
+                    "tirage commentaires tiktok",
+                    "giveaway tiktok"
                 ]
             },
             "twitter": {
-                "title": "Twitter (X) Giveaway Tool | Retweet & Like Picker - YulaSanta",
-                "description": "Easily manage your Twitter (X) giveaways. Pick winners from retweets and likes. Free Twitter giveaway site.",
+                "title": "Outil de tirage Twitter (X) | Retweet & likes - YulaSanta",
+                "description": "Gérez vos tirages Twitter (X). Choisissez les gagnants parmi les retweets et likes.",
                 "keywords": [
-                    "twitter giveaway",
-                    "x giveaway",
-                    "retweet giveaway",
-                    "twitter raffle",
-                    "twitter contest"
+                    "tirage twitter",
+                    "concours twitter",
+                    "tirage retweet",
+                    "giveaway twitter"
                 ]
             }
         },
@@ -202,7 +200,8 @@
         "subscribed": "Abonné",
         "notSubscribed": "Non abonné",
         "subscribedPrivate": "Privé",
-        "checkingSubscription": "Vérification..."
+        "checkingSubscription": "Vérification...",
+        "seo": {}
     },
     "support": {
         "button": "Support",

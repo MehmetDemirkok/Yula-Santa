@@ -46,8 +46,12 @@ export default async function FaqPage({ params }: Props) {
     setRequestLocale(locale);
     const t = await getTranslations({ locale, namespace: 'meta.faq' });
 
-    // meta.faq içinde q1..q4 / a1..a4 mevcut (tüm diller)
-    const items = [1, 2, 3, 4].map((i) => ({ q: t(`q${i}`), a: t(`a${i}`) }));
+    // meta.faq içinde q1..qN / a1..aN (TR/EN ve öncelikli dillerde q5–q8 de var)
+    const items: Array<{ q: string; a: string }> = [];
+    for (let i = 1; i <= 20; i++) {
+        if (!t.has(`q${i}`) || !t.has(`a${i}`)) break;
+        items.push({ q: t(`q${i}`), a: t(`a${i}`) });
+    }
     const title = PAGE_TITLE[locale] || PAGE_TITLE.en;
     const subtitle = PAGE_SUBTITLE[locale] || PAGE_SUBTITLE.en;
 

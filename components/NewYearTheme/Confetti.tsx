@@ -1,124 +1,95 @@
 /**
- * ═══════════════════════════════════════════════════════════════════════════
- * Confetti Animation Component
- * ═══════════════════════════════════════════════════════════════════════════
+ * Festive paper confetti — only for New Year celebration (Jan 1–9).
+ * Brand palette: crimson, gold, cream, evergreen.
  */
 
 "use client";
 
 import { useEffect, useState } from "react";
 
-interface ConfettiPiece {
-  id: number;
-  x: number;
-  color: string;
-  size: number;
-  rotation: number;
-  animationDuration: number;
-  animationDelay: number;
-  shape: "rect" | "circle";
+interface Piece {
+    id: number;
+    x: number;
+    color: string;
+    w: number;
+    h: number;
+    duration: number;
+    delay: number;
+    rotate: number;
 }
 
-const colors = [
-  "#FFFFFF", // Pure White
-  "#E0F2FE", // Light Blue
-  "#F8FAFC", // Ghost White
-  "#BAE6FD", // Sky Blue tint
-];
+const COLORS = ["#B61722", "#E09600", "#F5E6C8", "#1A3A2A", "#FFFFFF"];
 
 export function Confetti() {
-  const [confetti, setConfetti] = useState<ConfettiPiece[]>([]);
+    const [pieces, setPieces] = useState<Piece[]>([]);
+    const [reducedMotion, setReducedMotion] = useState(false);
 
-  useEffect(() => {
-    const pieces: ConfettiPiece[] = [];
-    const pieceCount = 30; // Reduced from 80 for a more subtle effect
+    useEffect(() => {
+        const mq = window.matchMedia("(prefers-reduced-motion: reduce)");
+        setReducedMotion(mq.matches);
+        const onChange = () => setReducedMotion(mq.matches);
+        mq.addEventListener("change", onChange);
 
-    for (let i = 0; i < pieceCount; i++) {
-      pieces.push({
-        id: i,
-        x: Math.random() * 100,
-        color: colors[Math.floor(Math.random() * colors.length)],
-        size: Math.random() * 12 + 6, // Slightly larger flakes
-        rotation: Math.random() * 360,
-        animationDuration: Math.random() * 6 + 10, // Slower fall
-        animationDelay: Math.random() * -15,
-        shape: "circle", // Circles looks better for soft snow
-      });
-    }
+        if (mq.matches) return () => mq.removeEventListener("change", onChange);
 
-    setConfetti(pieces);
-  }, []);
+        const count = window.innerWidth < 640 ? 16 : 28;
+        setPieces(
+            Array.from({ length: count }, (_, i) => ({
+                id: i,
+                x: Math.random() * 100,
+                color: COLORS[i % COLORS.length],
+                w: Math.random() * 6 + 4,
+                h: Math.random() * 10 + 6,
+                duration: Math.random() * 5 + 8,
+                delay: Math.random() * -12,
+                rotate: Math.random() * 360,
+            }))
+        );
 
-  return (
-    <div className="fixed inset-0 pointer-events-none z-30 overflow-hidden">
-      <style jsx>{`
-        @keyframes confetti-fall {
-          0% {
-            transform: translateY(-20px) rotate(0deg) scale(0.8);
-            opacity: 0;
-          }
-          10% {
-            opacity: 0.8;
-          }
-          90% {
-            opacity: 0.8;
-          }
-          100% {
-            transform: translateY(100vh) rotate(360deg) scale(1.2);
-            opacity: 0;
-          }
-        }
-        
-        @keyframes confetti-sway {
-          0%, 100% {
-            transform: translateX(0);
-          }
-          25% {
-            transform: translateX(50px);
-          }
-          75% {
-            transform: translateX(-50px);
-          }
-        }
-        
-        .confetti-piece {
-          position: absolute;
-          top: -20px;
-          animation: confetti-fall linear infinite;
-        }
-        
-        .confetti-inner {
-          animation: confetti-sway 4s ease-in-out infinite;
-          display: flex;
-          items-center: center;
-          justify-content: center;
-          color: white;
-          text-shadow: 0 0 8px rgba(255, 255, 255, 0.4);
-        }
-      `}</style>
+        return () => mq.removeEventListener("change", onChange);
+    }, []);
 
-      {confetti.map((piece) => (
-        <div
-          key={piece.id}
-          className="confetti-piece"
-          style={{
-            left: `${piece.x}%`,
-            animationDuration: `${piece.animationDuration}s`,
-            animationDelay: `${piece.animationDelay}s`,
-          }}
-        >
-          <div
-            className="confetti-inner"
-            style={{
-              fontSize: `${piece.size}px`,
-              opacity: 0.6,
-              transform: `rotate(${piece.rotation}deg)`,
-            }}
-          >
-            ❄
-          </div>
+    if (reducedMotion || pieces.length === 0) return null;
+
+    return (
+        <div className="fixed inset-0 pointer-events-none z-30 overflow-hidden" aria-hidden>
+            <style jsx>{`
+                @keyframes ys-confetti-fall {
+                    0% {
+                        transform: translateY(-10vh) rotate(0deg);
+                        opacity: 0;
+                    }
+                    10% {
+                        opacity: 0.9;
+                    }
+                    100% {
+                        transform: translateY(110vh) rotate(720deg);
+                        opacity: 0;
+                    }
+                }
+                .ys-confetti {
+                    position: absolute;
+                    top: 0;
+                    border-radius: 1px;
+                    animation: ys-confetti-fall linear infinite;
+                    will-change: transform, opacity;
+                }
+            `}</style>
+            {pieces.map((p) => (
+                <span
+                    key={p.id}
+                    className="ys-confetti"
+                    style={{
+                        left: `${p.x}%`,
+                        width: p.w,
+                        height: p.h,
+                        backgroundColor: p.color,
+                        animationDuration: `${p.duration}s`,
+                        animationDelay: `${p.delay}s`,
+                        transform: `rotate(${p.rotate}deg)`,
+                    }}
+                />
+            ))}
         </div>
-      ))}
-    </div>
-  );
+    );
 }

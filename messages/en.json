@@ -28,6 +28,8 @@
             "social media giveaway"
         ],
         "faq": {
+            "title": "Frequently Asked Questions | YulaSanta",
+            "description": "Answers to common questions about Instagram giveaways, Secret Santa, and social media raffle tools.",
             "breadcrumbHome": "Home",
             "q1": "What is YulaSanta?",
             "a1": "YulaSanta is a free online giveaway and Secret Santa platform. You can run Instagram, YouTube, TikTok, and Twitter giveaways, and organize Secret Santa gift exchanges.",
@@ -36,7 +38,15 @@
             "q3": "Which social media platforms do you support?",
             "a3": "You can run giveaways from Instagram, YouTube, TikTok, and Twitter (X) using comments and likes.",
             "q4": "How does Secret Santa work?",
-            "a4": "Add participant names, start the draw. Each person randomly picks someone and can only see their own match. Privacy is protected!"
+            "a4": "Add participant names, start the draw. Each person randomly picks someone and can only see their own match. Privacy is protected!",
+            "q5": "How do I run an Instagram comment giveaway?",
+            "a5": "Paste your Instagram post link into YulaSanta, fetch or manually add comments, set the winner count, and start the draw. Winners and backups are selected in seconds.",
+            "q6": "Is the Instagram giveaway tool safe?",
+            "a6": "Yes, YulaSanta works without passwords or login. You never need to enter your Instagram credentials. All draws use a fair random algorithm.",
+            "q7": "How many winners can I pick?",
+            "a7": "You can set any number of winners and backup winners — from single-winner draws to multi-winner campaigns.",
+            "q8": "Can the same person win twice in a comment giveaway?",
+            "a8": "No. With the 'Count each user once' option, multiple comments from the same user count as a single entry."
         }
     },
     "home": {
@@ -75,7 +85,22 @@
         "startNow": "Start Now",
         "socialDesc": "Run your giveaways easily on all platforms",
         "toolsDesc": "Mini tools and fun games to make your daily life easier.",
-        "viewAll": "View All"
+        "viewAll": "View All",
+        "seo": {
+            "title": "Free Online Giveaway & Secret Santa Platform",
+            "paragraphs": [
+                "YulaSanta is a free Instagram, YouTube, TikTok, and Twitter giveaway tool. Run comment raffles in seconds — no signup, no password. Pick winners and backups fairly from your post comments.",
+                "Organize Secret Santa draws, name raffles, dice rolls, coin flips, and more. Manage social campaigns and friend-group events from one place."
+            ],
+            "featuresTitle": "Why YulaSanta?",
+            "features": [
+                "Completely free — no hidden fees",
+                "No registration or password required",
+                "Automatic participant fetch from Instagram comments",
+                "Winner and backup winner support",
+                "12 language support"
+            ]
+        }
     },
     "result": {
         "whoGetsGift": "Who Do I Buy a Gift For?",
@@ -215,7 +240,73 @@
         "subscribed": "Subscribed",
         "notSubscribed": "Not Subscribed",
         "subscribedPrivate": "Private",
-        "checkingSubscription": "Checking..."
+        "checkingSubscription": "Checking...",
+        "seo": {
+            "instagram": {
+                "contentTitle": "Free Instagram Giveaway Tool — Comment Picker",
+                "contentParagraphs": [
+                    "YulaSanta is a free Instagram giveaway tool and comment picker. Fairly select winners from your post comments in seconds — no signup, no Instagram password.",
+                    "Built for creators, brands, and anyone running comment, like, or tag giveaways. Winner and backup selection, duplicate-user filtering, and result sharing are all free."
+                ],
+                "howToTitle": "How to Run an Instagram Comment Giveaway",
+                "howToSteps": [
+                    "Paste your Instagram post link into YulaSanta or add participants manually.",
+                    "Set winner and backup counts, and rules like follow requirement or count-user-once.",
+                    "Start the giveaway — winners are chosen with a fair random algorithm and you can share results instantly."
+                ],
+                "faqTitle": "Instagram Giveaway FAQ",
+                "faq": [
+                    {
+                        "q": "Is the Instagram giveaway tool free?",
+                        "a": "Yes. YulaSanta is completely free. Run unlimited giveaways with all features and no registration."
+                    },
+                    {
+                        "q": "Do I need to log into Instagram?",
+                        "a": "No. YulaSanta works without passwords. Paste the post link or add comments manually."
+                    },
+                    {
+                        "q": "Can I pick backup winners?",
+                        "a": "Yes. Set any number of main and backup winners."
+                    },
+                    {
+                        "q": "Do multiple comments from the same person count?",
+                        "a": "No. With 'Count each user once', each person is entered only once."
+                    }
+                ]
+            },
+            "tiktok": {
+                "contentTitle": "TikTok Giveaway Tool — Free Comment Raffle",
+                "contentParagraphs": [
+                    "YulaSanta is a free TikTok giveaway site. Pick fair winners from video comments in seconds — no signup, no password.",
+                    "Built for creators and brands: comment raffles, winners and backups, duplicate filtering, and result sharing — all free."
+                ],
+                "howToTitle": "How to Run a TikTok Comment Giveaway",
+                "howToSteps": [
+                    "Paste your TikTok video link into YulaSanta or add participants manually.",
+                    "Set winner and backup counts and participation rules.",
+                    "Start the giveaway — share results instantly."
+                ],
+                "faqTitle": "TikTok Giveaway FAQ",
+                "faq": [
+                    {
+                        "q": "Is the TikTok giveaway tool free?",
+                        "a": "Yes. YulaSanta is completely free with unlimited giveaways and no registration."
+                    },
+                    {
+                        "q": "Do I need to log into TikTok?",
+                        "a": "No. Paste the video link or add comments manually — no password required."
+                    },
+                    {
+                        "q": "Can I pick backup winners?",
+                        "a": "Yes. Set any number of main and backup winners."
+                    },
+                    {
+                        "q": "Do multiple comments from the same person count?",
+                        "a": "No. With count-user-once, each person enters only once."
+                    }
+                ]
+            }
+        }
     },
     "support": {
         "button": "Support",

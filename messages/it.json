@@ -138,25 +138,23 @@
                 ]
             },
             "tiktok": {
-                "title": "TikTok Giveaway Tool | Free TikTok Raffle - YulaSanta",
-                "description": "Run giveaways from comments on your TikTok videos. Fast and fair raffle results with our TikTok giveaway site.",
+                "title": "Strumento Giveaway TikTok | Estrazione commenti gratis - YulaSanta",
+                "description": "Estrai vincitori dai commenti dei tuoi video TikTok. Risultati rapidi e corretti.",
                 "keywords": [
-                    "tiktok giveaway",
-                    "tiktok raffle",
-                    "tiktok comment picker",
-                    "tiktok giveaway tool",
-                    "tiktok contest"
+                    "giveaway tiktok",
+                    "estrazione tiktok",
+                    "commenti tiktok",
+                    "concorso tiktok"
                 ]
             },
             "twitter": {
-                "title": "Twitter (X) Giveaway Tool | Retweet & Like Picker - YulaSanta",
-                "description": "Easily manage your Twitter (X) giveaways. Pick winners from retweets and likes. Free Twitter giveaway site.",
+                "title": "Strumento Giveaway Twitter (X) | Retweet e like - YulaSanta",
+                "description": "Gestisci i giveaway su Twitter (X). Scegli i vincitori tra retweet e like.",
                 "keywords": [
-                    "twitter giveaway",
-                    "x giveaway",
+                    "giveaway twitter",
+                    "estrazione twitter",
                     "retweet giveaway",
-                    "twitter raffle",
-                    "twitter contest"
+                    "concorso twitter"
                 ]
             }
         },
@@ -201,7 +199,8 @@
         "subscribed": "Iscritto",
         "notSubscribed": "Non iscritto",
         "subscribedPrivate": "Privato",
-        "checkingSubscription": "Verifica in corso..."
+        "checkingSubscription": "Verifica in corso...",
+        "seo": {}
     },
     "support": {
         "button": "Supporto",

@@ -6,6 +6,10 @@
             "online çekiliş",
             "çekiliş yap",
             "ücretsiz çekiliş",
+            "insta çekiliş",
+            "insta çekiliş sitesi",
+            "insta yorum çekiliş",
+            "insta yorum çekiliş sitesi",
             "yılbaşı çekilişi",
             "secret santa",
             "secret santa 2025",
@@ -13,6 +17,7 @@
             "hediye çekilişi",
             "yılbaşı hediyesi",
             "instagram çekiliş",
+            "instagram çekiliş sitesi",
             "instagram yorum çekilişi",
             "youtube çekiliş",
             "youtube yorum çekilişi",
@@ -30,6 +35,8 @@
             "sosyal medya çekilişi"
         ],
         "faq": {
+            "title": "Sıkça Sorulan Sorular | YulaSanta",
+            "description": "Instagram çekiliş, Secret Santa ve sosyal medya çekiliş araçları hakkında merak edilen soruların cevapları.",
             "breadcrumbHome": "Ana Sayfa",
             "q1": "YulaSanta nedir?",
             "a1": "YulaSanta, ücretsiz online çekiliş ve yılbaşı hediye eşleştirme platformudur. Instagram, YouTube, TikTok ve Twitter çekilişleri yapabilir, Secret Santa organizasyonları düzenleyebilirsiniz.",
@@ -38,7 +45,15 @@
             "q3": "Hangi sosyal medya platformlarını destekliyorsunuz?",
             "a3": "Instagram, YouTube, TikTok ve Twitter (X) platformlarından yorum ve beğeni çekilişleri yapabilirsiniz.",
             "q4": "Secret Santa nasıl çalışır?",
-            "a4": "Katılımcı isimlerini ekleyin, çekilişi başlatın. Her kişi rastgele birini çeker ve sadece kendi eşleşmesini görebilir. Gizlilik korunur!"
+            "a4": "Katılımcı isimlerini ekleyin, çekilişi başlatın. Her kişi rastgele birini çeker ve sadece kendi eşleşmesini görebilir. Gizlilik korunur!",
+            "q5": "Instagram yorum çekilişi nasıl yapılır?",
+            "a5": "Instagram gönderi linkinizi YulaSanta'ya yapıştırın, yorumları otomatik çekin veya manuel ekleyin, kazanan sayısını belirleyin ve çekilişi başlatın. Asil ve yedek kazananlar saniyeler içinde belirlenir.",
+            "q6": "Insta çekiliş sitesi güvenli mi?",
+            "a6": "Evet, YulaSanta şifresiz ve kayıtsız çalışır. Instagram hesabınıza giriş yapmanız gerekmez. Tüm çekilişler adil rastgele algoritma ile yapılır.",
+            "q7": "Kaç kazanan seçebilirim?",
+            "a7": "İstediğiniz kadar asil ve yedek kazanan belirleyebilirsiniz. Tek kazananlı çekilişlerden çoklu kazananlı kampanyalara kadar tüm senaryolar desteklenir.",
+            "q8": "Yorum çekilişinde aynı kişi birden fazla kez kazanabilir mi?",
+            "a8": "Hayır, 'Her kullanıcıyı bir kez say' seçeneği ile aynı kişinin birden fazla yorum yapması durumunda yalnızca bir kez katılımcı olarak sayılır."
         }
     },
     "home": {
@@ -77,7 +92,22 @@
         "startNow": "Hemen Başla",
         "socialDesc": "Tüm platformlarda çekilişlerinizi kolayca yapın",
         "toolsDesc": "Günlük işlerinizi kolaylaştıracak minik araçlar ve eğlenceli oyunlar.",
-        "viewAll": "Tümünü Gör"
+        "viewAll": "Tümünü Gör",
+        "seo": {
+            "title": "Türkiye'nin Ücretsiz Online Çekiliş Platformu",
+            "paragraphs": [
+                "YulaSanta, Instagram, YouTube, TikTok ve Twitter çekilişlerinizi saniyeler içinde yapmanızı sağlayan ücretsiz bir insta çekiliş sitesidir. Kayıt olmadan, şifre girmeden yorum çekilişi yapabilir, asil ve yedek kazananları adil bir şekilde belirleyebilirsiniz.",
+                "Secret Santa yılbaşı çekilişi, isim çekilişi, zar atma, yazı tura ve daha birçok ücretsiz araç ile hem sosyal medya kampanyalarınızı hem de arkadaş gruplarınızdaki organizasyonları kolayca yönetin."
+            ],
+            "featuresTitle": "Neden YulaSanta?",
+            "features": [
+                "Tamamen ücretsiz — gizli ücret yok",
+                "Kayıtsız ve şifresiz kullanım",
+                "Instagram yorum seçici ile otomatik katılımcı çekme",
+                "Asil ve yedek kazanan desteği",
+                "12 dil desteği"
+            ]
+        }
     },
     "result": {
         "whoGetsGift": "Kime Hediye Alacağım?",
@@ -132,10 +162,15 @@
         "tiktokDesc": "TikTok çekiliş aracı ile videolarınızdaki yorumlar arasından kolayca çekiliş yapın. Ücretsiz ve şifresiz TikTok kura çek!",
         "meta": {
             "instagram": {
-                "title": "Ücretsiz Instagram Çekiliş Aracı | Yorum Çekilişi Yap - YulaSanta",
-                "description": "Instagram çekilişlerinizi YulaSanta ile ücretsiz ve şifresiz yapın. Instagram yorum seçici ile asil ve yedek kazananları anında belirleyin.",
+                "title": "Insta Çekiliş Sitesi | Ücretsiz Instagram Yorum Çekilişi - YulaSanta",
+                "description": "Insta çekiliş ve Instagram yorum çekilişi yapın — ücretsiz, şifresiz, kayıtsız. YulaSanta ile yorumlar arasından asil ve yedek kazananları anında belirleyin.",
                 "keywords": [
+                    "insta çekiliş",
+                    "insta çekiliş sitesi",
+                    "insta yorum çekiliş",
+                    "insta yorum çekiliş sitesi",
                     "instagram çekiliş",
+                    "instagram çekiliş sitesi",
                     "ücretsiz instagram çekiliş",
                     "instagram yorum çekilişi",
                     "instagram çekiliş yap",
@@ -173,6 +208,72 @@
                     "retweet çekilişi",
                     "twitter kura",
                     "twitter giveaway"
+                ]
+            }
+        },
+        "seo": {
+            "instagram": {
+                "contentTitle": "Insta Çekiliş Sitesi — Ücretsiz Instagram Yorum Çekilişi",
+                "contentParagraphs": [
+                    "YulaSanta, Türkiye'nin en popüler ücretsiz insta çekiliş sitesidir. Instagram gönderilerinizdeki yorumlar arasından adil ve şeffaf bir şekilde kazanan belirlemenizi sağlar. Kayıt olmadan, Instagram şifrenizi girmeden saniyeler içinde çekiliş yapabilirsiniz.",
+                    "Influencer'lar, markalar ve bireysel kullanıcılar için tasarlanmış bu araç; yorum çekilişi, beğeni çekilişi ve etiket çekilişi gibi tüm Instagram kampanya türlerini destekler. Asil ve yedek kazanan seçimi, tekrarlayan kullanıcı filtreleme ve sonuç paylaşımı gibi profesyonel özellikler tamamen ücretsizdir."
+                ],
+                "howToTitle": "Instagram Yorum Çekilişi Nasıl Yapılır?",
+                "howToSteps": [
+                    "Instagram gönderinizin linkini kopyalayıp YulaSanta'ya yapıştırın veya katılımcıları manuel olarak ekleyin.",
+                    "Kazanan ve yedek sayısını belirleyin, katılım kurallarını (takip şartı, tekrarlayan yorum filtresi) ayarlayın.",
+                    "Çekilişi başlatın — kazananlar rastgele algoritma ile belirlenir ve sonuçları anında paylaşabilirsiniz."
+                ],
+                "faqTitle": "Instagram Çekiliş Hakkında Sık Sorulan Sorular",
+                "faq": [
+                    {
+                        "q": "Insta çekiliş sitesi ücretsiz mi?",
+                        "a": "Evet, YulaSanta tamamen ücretsizdir. Sınırsız çekiliş yapabilir, tüm özellikleri kayıt olmadan kullanabilirsiniz."
+                    },
+                    {
+                        "q": "Instagram hesabıma giriş yapmam gerekiyor mu?",
+                        "a": "Hayır. YulaSanta şifresiz çalışır. Gönderi linkini yapıştırmanız veya yorumları manuel eklemeniz yeterlidir."
+                    },
+                    {
+                        "q": "Yedek kazanan seçebilir miyim?",
+                        "a": "Evet. İstediğiniz sayıda asil ve yedek kazanan belirleyebilirsiniz."
+                    },
+                    {
+                        "q": "Aynı kişinin birden fazla yorumu sayılır mı?",
+                        "a": "Hayır. 'Her kullanıcıyı bir kez say' seçeneği ile her katılımcı yalnızca bir kez listeye eklenir."
+                    }
+                ]
+            },
+            "tiktok": {
+                "contentTitle": "TikTok Çekiliş Aracı — Ücretsiz TikTok Yorum Çekilişi",
+                "contentParagraphs": [
+                    "YulaSanta ücretsiz TikTok çekiliş sitesi ile videolarınızdaki yorumlar arasından adil kazanan seçimi yapın. Kayıt ve şifre olmadan saniyeler içinde kura çekin.",
+                    "İçerik üreticileri ve markalar için tasarlandı: yorum çekilişi, asil/yedek kazanan, tekrarlayan kullanıcı filtresi ve sonuç paylaşımı tamamen ücretsizdir."
+                ],
+                "howToTitle": "TikTok Yorum Çekilişi Nasıl Yapılır?",
+                "howToSteps": [
+                    "TikTok video linkinizi YulaSanta'ya yapıştırın veya katılımcıları manuel ekleyin.",
+                    "Kazanan ve yedek sayısını belirleyin, katılım kurallarını ayarlayın.",
+                    "Çekilişi başlatın — sonuçları anında paylaşabilirsiniz."
+                ],
+                "faqTitle": "TikTok Çekiliş SSS",
+                "faq": [
+                    {
+                        "q": "TikTok çekiliş aracı ücretsiz mi?",
+                        "a": "Evet. YulaSanta tamamen ücretsizdir; kayıt olmadan sınırsız çekiliş yapabilirsiniz."
+                    },
+                    {
+                        "q": "TikTok hesabıma giriş gerekir mi?",
+                        "a": "Hayır. Şifresiz çalışır; link yapıştırmanız veya yorum eklemeniz yeterlidir."
+                    },
+                    {
+                        "q": "Yedek kazanan seçebilir miyim?",
+                        "a": "Evet. İstediğiniz sayıda asil ve yedek kazanan belirleyebilirsiniz."
+                    },
+                    {
+                        "q": "Aynı kişinin birden fazla yorumu sayılır mı?",
+                        "a": "Hayır. 'Her kullanıcıyı bir kez say' ile her kişi yalnızca bir kez katılır."
+                    }
                 ]
             }
         },

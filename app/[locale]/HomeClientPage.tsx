@@ -25,6 +25,7 @@ import { cn } from "@/lib/utils";
 import { CountdownBanner } from "@/components/NewYearTheme/CountdownBanner";
 import { isNewYearThemeActive } from "@/components/NewYearTheme/config";
 import { Reveal } from "@/components/Reveal";
+import { localePath } from '@/lib/localePath';
 
 export default function HomeClientPage() {
     const router = useRouter();
@@ -36,7 +37,7 @@ export default function HomeClientPage() {
             title: "Instagram",
             desc: t('giveaway.instagramDesc'),
             icon: Instagram,
-            href: `/${locale}/instagram`,
+            href: localePath(locale, '/instagram'),
             color: "bg-purple-500 from-purple-500 via-pink-500 to-orange-500",
             shadow: "shadow-pink-200 dark:shadow-pink-500/20"
         },
@@ -44,7 +45,7 @@ export default function HomeClientPage() {
             title: "YouTube",
             desc: t('giveaway.youtubeDesc'),
             icon: Youtube,
-            href: `/${locale}/youtube`,
+            href: localePath(locale, '/youtube'),
             color: "bg-red-600 from-red-600 to-red-500",
             shadow: "shadow-red-200 dark:shadow-red-500/20"
         },
@@ -56,7 +57,7 @@ export default function HomeClientPage() {
                     <path d="M448 209.91a210.06 210.06 0 0 1-122.77-39.25V349.38A162.55 162.55 0 1 1 185 188.31V278.2a74.62 74.62 0 1 0 52.23 71.18V0l88 0a121.18 121.18 0 0 0 1.86 22.17h0A122.18 122.18 0 0 0 381 102.39a121.43 121.43 0 0 0 67 20.14z" />
                 </svg>
             ),
-            href: `/${locale}/tiktok`,
+            href: localePath(locale, '/tiktok'),
             color: "bg-black from-black to-gray-800",
             shadow: "shadow-cyan-100 dark:shadow-cyan-500/20"
         },
@@ -68,7 +69,7 @@ export default function HomeClientPage() {
                     <path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z" />
                 </svg>
             ),
-            href: `/${locale}/twitter`,
+            href: localePath(locale, '/twitter'),
             color: "bg-sky-500 from-sky-500 to-blue-600",
             shadow: "shadow-sky-200 dark:shadow-sky-500/20"
         },
@@ -79,7 +80,7 @@ export default function HomeClientPage() {
             title: t('home.secretDraw').replace(' 🤫', ''),
             desc: t('meta.description').split('.')[0],
             icon: Gift,
-            href: `/${locale}/secret-santa`,
+            href: localePath(locale, '/secret-santa'),
             iconBg: "bg-santa-red text-white",
             accent: "text-santa-red"
         },
@@ -87,7 +88,7 @@ export default function HomeClientPage() {
             title: ({ tr: "İsim Çekilişi", en: "Name Picker" } as Record<string, string>)[locale as string] || "Name Picker",
             desc: ({ tr: "Listeden adil ve şeffaf kazanan seçin", en: "Pick fair winners from any list" } as Record<string, string>)[locale as string] || "Pick fair winners from any list",
             icon: Trophy,
-            href: `/${locale}/raffle`,
+            href: localePath(locale, '/raffle'),
             iconBg: "bg-foreground text-background",
             accent: "text-foreground"
         }
@@ -101,12 +102,12 @@ export default function HomeClientPage() {
     ];
 
     const tools = [
-        { name: t('tools.dice'), icon: Dice5, href: `/${locale}/tools/dice`, color: "bg-indigo-500", desc: "Zar atın" },
-        { name: t('tools.coinFlip'), icon: Coins, href: `/${locale}/tools/coin-flip`, color: "bg-amber-500", desc: "Yazı tura" },
-        { name: t('tools.randomNumber'), icon: Hash, href: `/${locale}/tools/random-number`, color: "bg-emerald-500", desc: "Sayı seç" },
-        { name: t('tools.shortStraw'), icon: Sparkles, href: `/${locale}/tools/short-straw`, color: "bg-rose-500", desc: "Şansını dene" },
-        { name: t('tools.wheelOfFortune'), icon: Aperture, href: `/${locale}/tools/wheel-of-fortune`, color: "bg-pink-500", desc: "Çarkıfelek" },
-        { name: t('tools.teamGenerator'), icon: Users, href: `/${locale}/tools/team-generator`, color: "bg-blue-500", desc: "Takım kur" },
+        { name: t('tools.dice'), icon: Dice5, href: localePath(locale, '/tools/dice'), color: "bg-indigo-500", desc: "Zar atın" },
+        { name: t('tools.coinFlip'), icon: Coins, href: localePath(locale, '/tools/coin-flip'), color: "bg-amber-500", desc: "Yazı tura" },
+        { name: t('tools.randomNumber'), icon: Hash, href: localePath(locale, '/tools/random-number'), color: "bg-emerald-500", desc: "Sayı seç" },
+        { name: t('tools.shortStraw'), icon: Sparkles, href: localePath(locale, '/tools/short-straw'), color: "bg-rose-500", desc: "Şansını dene" },
+        { name: t('tools.wheelOfFortune'), icon: Aperture, href: localePath(locale, '/tools/wheel-of-fortune'), color: "bg-pink-500", desc: "Çarkıfelek" },
+        { name: t('tools.teamGenerator'), icon: Users, href: localePath(locale, '/tools/team-generator'), color: "bg-blue-500", desc: "Takım kur" },
     ];
 
     return (
@@ -124,8 +125,8 @@ export default function HomeClientPage() {
                         {/* Text Column */}
                         <Reveal className="order-1 text-center lg:text-left">
                             {isNewYearThemeActive() && (
-                                <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-santa-red/10 text-santa-red text-sm font-bold mb-6 animate-bounce">
-                                    <Sparkles className="w-4 h-4" />
+                                <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full border border-[color-mix(in_srgb,var(--gold)_40%,transparent)] bg-[color-mix(in_srgb,var(--santa-red)_10%,transparent)] text-santa-red text-xs sm:text-sm font-bold mb-5 tracking-wide">
+                                    <span className="text-gold" aria-hidden>✦</span>
                                     <span>{t('home.happyNewYear')}</span>
                                 </div>
                             )}
@@ -145,7 +146,7 @@ export default function HomeClientPage() {
 
                             <div className="flex flex-col sm:flex-row items-center justify-center lg:justify-start gap-3">
                                 <Button
-                                    onClick={() => router.push(`/${locale}/secret-santa`)}
+                                    onClick={() => router.push(localePath(locale, '/secret-santa'))}
                                     className="w-full sm:w-auto text-sm lg:text-base py-5 px-8 rounded-2xl shadow-xl shadow-red-200 dark:shadow-red-500/20 hover:scale-105 transition-all text-white font-bold"
                                 >
                                     {t('home.startDraw')} <ArrowRight className="ml-2 w-5 h-5" />
@@ -255,7 +256,7 @@ export default function HomeClientPage() {
                         </div>
                         <Button
                             variant="ghost"
-                            onClick={() => router.push(`/${locale}/tools/dice`)}
+                            onClick={() => router.push(localePath(locale, '/tools/dice'))}
                             className="bg-[var(--surface-2)] hover:bg-[var(--border-medium)] rounded-full font-bold px-6 text-[var(--text-secondary)]"
                         >
                             {t('home.viewAll')}

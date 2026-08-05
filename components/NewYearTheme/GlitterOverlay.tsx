@@ -1,7 +1,5 @@
 /**
- * ═══════════════════════════════════════════════════════════════════════════
- * Glitter Overlay Animation Component
- * ═══════════════════════════════════════════════════════════════════════════
+ * Sparse gold twinkles — quiet sparkle, not a glitter storm.
  */
 
 "use client";
@@ -13,85 +11,87 @@ interface Sparkle {
     x: number;
     y: number;
     size: number;
-    animationDuration: number;
-    animationDelay: number;
+    duration: number;
+    delay: number;
 }
 
 export function GlitterOverlay() {
     const [sparkles, setSparkles] = useState<Sparkle[]>([]);
+    const [reducedMotion, setReducedMotion] = useState(false);
 
     useEffect(() => {
-        const particles: Sparkle[] = [];
-        const particleCount = 30;
+        const mq = window.matchMedia("(prefers-reduced-motion: reduce)");
+        setReducedMotion(mq.matches);
+        const onChange = () => setReducedMotion(mq.matches);
+        mq.addEventListener("change", onChange);
 
-        for (let i = 0; i < particleCount; i++) {
-            particles.push({
+        if (mq.matches) return () => mq.removeEventListener("change", onChange);
+
+        const count = 12;
+        setSparkles(
+            Array.from({ length: count }, (_, i) => ({
                 id: i,
                 x: Math.random() * 100,
-                y: Math.random() * 100,
-                size: Math.random() * 4 + 2,
-                animationDuration: Math.random() * 2 + 1,
-                animationDelay: Math.random() * 2,
-            });
-        }
+                y: Math.random() * 70 + 5,
+                size: Math.random() * 3 + 2,
+                duration: Math.random() * 3 + 2.5,
+                delay: Math.random() * 4,
+            }))
+        );
 
-        setSparkles(particles);
+        return () => mq.removeEventListener("change", onChange);
     }, []);
 
-    return (
-        <div className="fixed inset-0 pointer-events-none z-20 overflow-hidden">
-            <style jsx>{`
-        @keyframes sparkle {
-          0%, 100% {
-            opacity: 0;
-            transform: scale(0);
-          }
-          50% {
-            opacity: 1;
-            transform: scale(1);
-          }
-        }
-        
-        .sparkle {
-          position: absolute;
-          animation: sparkle ease-in-out infinite;
-        }
-        
-        .sparkle::before,
-        .sparkle::after {
-          content: "";
-          position: absolute;
-          background: linear-gradient(45deg, #FFD700, #FFF);
-        }
-        
-        .sparkle::before {
-          width: 100%;
-          height: 2px;
-          top: 50%;
-          left: 0;
-          transform: translateY(-50%);
-        }
-        
-        .sparkle::after {
-          width: 2px;
-          height: 100%;
-          left: 50%;
-          top: 0;
-          transform: translateX(-50%);
-        }
-      `}</style>
+    if (reducedMotion || sparkles.length === 0) return null;
 
-            {sparkles.map((sparkle) => (
-                <div
-                    key={sparkle.id}
-                    className="sparkle"
+    return (
+        <div className="fixed inset-0 pointer-events-none z-20 overflow-hidden" aria-hidden>
+            <style jsx>{`
+                @keyframes ys-twinkle {
+                    0%,
+                    100% {
+                        opacity: 0;
+                        transform: scale(0.4) rotate(0deg);
+                    }
+                    50% {
+                        opacity: 0.85;
+                        transform: scale(1) rotate(45deg);
+                    }
+                }
+                .ys-spark {
+                    position: absolute;
+                    animation: ys-twinkle ease-in-out infinite;
+                }
+                .ys-spark::before,
+                .ys-spark::after {
+                    content: "";
+                    position: absolute;
+                    background: linear-gradient(90deg, transparent, var(--gold), transparent);
+                    left: 50%;
+                    top: 50%;
+                }
+                .ys-spark::before {
+                    width: 100%;
+                    height: 1.5px;
+                    transform: translate(-50%, -50%);
+                }
+                .ys-spark::after {
+                    width: 1.5px;
+                    height: 100%;
+                    transform: translate(-50%, -50%);
+                }
+            `}</style>
+            {sparkles.map((s) => (
+                <span
+                    key={s.id}
+                    className="ys-spark"
                     style={{
-                        left: `${sparkle.x}%`,
-                        top: `${sparkle.y}%`,
-                        width: `${sparkle.size}px`,
-                        height: `${sparkle.size}px`,
-                        animationDuration: `${sparkle.animationDuration}s`,
-                        animationDelay: `${sparkle.animationDelay}s`,
+                        left: `${s.x}%`,
+                        top: `${s.y}%`,
+                        width: s.size,
+                        height: s.size,
+                        animationDuration: `${s.duration}s`,
+                        animationDelay: `${s.delay}s`,
                     }}
                 />
             ))}

@@ -3,6 +3,7 @@
 import { useTranslations } from 'next-intl';
 import Link from 'next/link';
 import { useParams, usePathname } from 'next/navigation';
+import { localePath } from '@/lib/localePath';
 import {
     Instagram,
     Gift,
@@ -42,12 +43,12 @@ export function Footer() {
     const locale = params.locale as string;
 
     // Check if we are on the home page
-    const isHomePage = pathname === `/${locale}` || pathname === `/${locale}/`;
+    const isHomePage = pathname === localePath(locale) || pathname === `${localePath(locale)}/`;
 
     const tools = [
         {
             key: 'dice',
-            href: `/${locale}/tools/dice`,
+            href: localePath(locale, '/tools/dice'),
             icon: Dice1,
             iconBg: 'bg-blue-500',
             hoverBorder: 'hover:border-blue-200 dark:hover:border-blue-500/30',
@@ -55,7 +56,7 @@ export function Footer() {
         },
         {
             key: 'coinFlip',
-            href: `/${locale}/tools/coin-flip`,
+            href: localePath(locale, '/tools/coin-flip'),
             icon: Coins,
             iconBg: 'bg-amber-500',
             hoverBorder: 'hover:border-amber-200 dark:hover:border-amber-500/30',
@@ -63,7 +64,7 @@ export function Footer() {
         },
         {
             key: 'randomNumber',
-            href: `/${locale}/tools/random-number`,
+            href: localePath(locale, '/tools/random-number'),
             icon: Hash,
             iconBg: 'bg-teal-500',
             hoverBorder: 'hover:border-teal-200 dark:hover:border-teal-500/30',
@@ -71,7 +72,7 @@ export function Footer() {
         },
         {
             key: 'shortStraw',
-            href: `/${locale}/tools/short-straw`,
+            href: localePath(locale, '/tools/short-straw'),
             icon: Shuffle,
             iconBg: 'bg-indigo-500',
             hoverBorder: 'hover:border-indigo-200 dark:hover:border-indigo-500/30',
@@ -79,7 +80,7 @@ export function Footer() {
         },
         {
             key: 'wheelOfFortune',
-            href: `/${locale}/tools/wheel-of-fortune`,
+            href: localePath(locale, '/tools/wheel-of-fortune'),
             icon: Aperture,
             iconBg: 'bg-pink-500',
             hoverBorder: 'hover:border-pink-200 dark:hover:border-pink-500/30',
@@ -87,7 +88,7 @@ export function Footer() {
         },
         {
             key: 'teamGenerator',
-            href: `/${locale}/tools/team-generator`,
+            href: localePath(locale, '/tools/team-generator'),
             icon: Users,
             iconBg: 'bg-sky-500',
             hoverBorder: 'hover:border-sky-200 dark:hover:border-sky-500/30',
@@ -95,7 +96,7 @@ export function Footer() {
         },
         {
             key: 'giftSuggestions',
-            href: `/${locale}/tools/gift-suggestions`,
+            href: localePath(locale, '/tools/gift-suggestions'),
             icon: PartyPopper,
             iconBg: 'bg-fuchsia-500',
             hoverBorder: 'hover:border-fuchsia-200 dark:hover:border-fuchsia-500/30',
@@ -107,7 +108,7 @@ export function Footer() {
     const giveaways = [
         {
             label: 'Instagram',
-            href: `/${locale}/instagram`,
+            href: localePath(locale, '/instagram'),
             icon: Instagram,
             iconBg: 'bg-gradient-to-br from-purple-500 via-pink-500 to-orange-400',
             hoverBorder: 'hover:border-pink-200 dark:hover:border-pink-500/30',
@@ -115,7 +116,7 @@ export function Footer() {
         },
         {
             label: 'YouTube',
-            href: `/${locale}/youtube`,
+            href: localePath(locale, '/youtube'),
             icon: Youtube,
             iconBg: 'bg-red-600',
             hoverBorder: 'hover:border-red-200 dark:hover:border-red-500/30',
@@ -123,7 +124,7 @@ export function Footer() {
         },
         {
             label: 'TikTok',
-            href: `/${locale}/tiktok`,
+            href: localePath(locale, '/tiktok'),
             icon: TikTokIcon,
             iconBg: 'bg-black',
             hoverBorder: 'hover:border-gray-300 dark:hover:border-white/20',
@@ -131,7 +132,7 @@ export function Footer() {
         },
         {
             label: 'Twitter (X)',
-            href: `/${locale}/twitter`,
+            href: localePath(locale, '/twitter'),
             icon: TwitterIcon,
             iconBg: 'bg-black',
             hoverBorder: 'hover:border-gray-300 dark:hover:border-white/20',
@@ -139,7 +140,7 @@ export function Footer() {
         },
         {
             label: t('secretSanta'),
-            href: `/${locale}/secret-santa`,
+            href: localePath(locale, '/secret-santa'),
             icon: Gift,
             iconBg: 'bg-santa-red',
             hoverBorder: 'hover:border-red-200 dark:hover:border-red-500/30',
@@ -147,7 +148,7 @@ export function Footer() {
         },
         {
             label: t('namePicker'),
-            href: `/${locale}/raffle`,
+            href: localePath(locale, '/raffle'),
             icon: Trophy,
             iconBg: 'bg-foreground',
             hoverBorder: 'hover:border-gray-300 dark:hover:border-white/20',
@@ -165,7 +166,7 @@ export function Footer() {
 
                     {/* Brand Logo */}
                     <div className="w-full flex justify-center">
-                        <Link href={`/${locale}`} className="group flex items-center gap-3 sm:gap-4 transition-transform hover:scale-105 active:scale-95 duration-200">
+                        <Link href={localePath(locale)} className="group flex items-center gap-3 sm:gap-4 transition-transform hover:scale-105 active:scale-95 duration-200">
                             <div className="relative">
                                 <div className="absolute inset-0 bg-red-100 dark:bg-red-500/20 blur-xl opacity-0 group-hover:opacity-40 transition-opacity rounded-full" />
                                 <div className="relative w-10 h-10 sm:w-12 sm:h-12 p-1.5 sm:p-2 bg-[var(--card-bg)] rounded-xl sm:rounded-2xl shadow-[0_8px_30px_rgb(0,0,0,0.04)] dark:shadow-[0_8px_30px_rgb(0,0,0,0.3)] border border-[var(--card-border)] flex items-center justify-center">
@@ -254,7 +255,7 @@ export function Footer() {
                     <div className="flex flex-col items-center space-y-4 sm:space-y-6">
                         <nav className="flex flex-wrap justify-center items-center gap-x-6 sm:gap-x-8 gap-y-3 sm:gap-y-4">
                             <Link
-                                href={`/${locale}/about`}
+                                href={localePath(locale, '/about')}
                                 className="group relative text-xs sm:text-sm font-bold text-[var(--text-secondary)] hover:text-foreground transition-colors"
                             >
                                 {t('about')}
@@ -262,7 +263,7 @@ export function Footer() {
                             </Link>
                             <div className="w-1 h-1 sm:w-1.5 sm:h-1.5 rounded-full bg-[var(--border-medium)]" />
                             <Link
-                                href={`/${locale}/contact`}
+                                href={localePath(locale, '/contact')}
                                 className="group relative text-xs sm:text-sm font-bold text-[var(--text-secondary)] hover:text-foreground transition-colors"
                             >
                                 {t('contact')}
@@ -270,7 +271,7 @@ export function Footer() {
                             </Link>
                             <div className="w-1 h-1 sm:w-1.5 sm:h-1.5 rounded-full bg-[var(--border-medium)]" />
                             <Link
-                                href={`/${locale}/privacy`}
+                                href={localePath(locale, '/privacy')}
                                 className="group relative text-xs sm:text-sm font-bold text-[var(--text-secondary)] hover:text-foreground transition-colors"
                             >
                                 {t('privacyPolicy')}
@@ -278,7 +279,7 @@ export function Footer() {
                             </Link>
                             <div className="w-1 h-1 sm:w-1.5 sm:h-1.5 rounded-full bg-[var(--border-medium)]" />
                             <Link
-                                href={`/${locale}/legal`}
+                                href={localePath(locale, '/legal')}
                                 className="group relative text-xs sm:text-sm font-bold text-[var(--text-secondary)] hover:text-foreground transition-colors"
                             >
                                 {t('legalInfo')}
@@ -286,7 +287,7 @@ export function Footer() {
                             </Link>
                             <div className="w-1 h-1 sm:w-1.5 sm:h-1.5 rounded-full bg-[var(--border-medium)]" />
                             <Link
-                                href={`/${locale}/faq`}
+                                href={localePath(locale, '/faq')}
                                 className="group relative text-xs sm:text-sm font-bold text-[var(--text-secondary)] hover:text-foreground transition-colors"
                             >
                                 {locale === 'tr' ? 'SSS' : 'FAQ'}

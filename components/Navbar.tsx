@@ -23,6 +23,7 @@ import { LanguageSwitcher } from "./LanguageSwitcher";
 import { ThemeToggle } from "./ThemeToggle";
 import { useTranslations } from "next-intl";
 import { cn } from "@/lib/utils";
+import { localePath } from '@/lib/localePath';
 
 export function Navbar() {
     const router = useRouter();
@@ -52,14 +53,14 @@ export function Navbar() {
             name: "Instagram",
             description: t('giveaway.instagramDesc'),
             icon: Instagram,
-            href: `/${locale}/instagram`,
+            href: localePath(locale, '/instagram'),
             color: "from-purple-500 via-pink-500 to-orange-400"
         },
         {
             name: "YouTube",
             description: t('giveaway.youtubeDesc'),
             icon: Youtube,
-            href: `/${locale}/youtube`,
+            href: localePath(locale, '/youtube'),
             color: "from-red-600 to-red-500"
         },
         {
@@ -70,7 +71,7 @@ export function Navbar() {
                     <path d="M448 209.91a210.06 210.06 0 0 1-122.77-39.25V349.38A162.55 162.55 0 1 1 185 188.31V278.2a74.62 74.62 0 1 0 52.23 71.18V0l88 0a121.18 121.18 0 0 0 1.86 22.17h0A122.18 122.18 0 0 0 381 102.39a121.43 121.43 0 0 0 67 20.14z" />
                 </svg>
             ),
-            href: `/${locale}/tiktok`,
+            href: localePath(locale, '/tiktok'),
             color: "from-black to-gray-800"
         },
         {
@@ -81,32 +82,32 @@ export function Navbar() {
                     <path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z" />
                 </svg>
             ),
-            href: `/${locale}/twitter`,
+            href: localePath(locale, '/twitter'),
             color: "from-sky-500 to-blue-600"
         },
         {
             name: t('home.secretDraw').replace(' 🤫', ''),
             description: t('meta.description').split('.')[0],
             icon: Gift,
-            href: `/${locale}/secret-santa`,
+            href: localePath(locale, '/secret-santa'),
             color: "from-santa-red to-red-600"
         },
         {
             name: ({ tr: "İsim Çekilişi", en: "Name Picker", de: "Namensauslosung", fr: "Tirage de noms", es: "Sorteo de nombres", it: "Estrazione nomi", pt: "Sorteio de nomes", ru: "Розыгрыш имён", ar: "سحب الأسماء", ja: "名前抽選", ko: "이름 추첨", zh: "姓名抽奖" } as Record<string, string>)[locale] || "Name Picker",
             description: ({ tr: "Listeden adil kazanan seçin", en: "Pick fair winners from a list" } as Record<string, string>)[locale] || "Pick fair winners from a list",
             icon: Trophy,
-            href: `/${locale}/raffle`,
+            href: localePath(locale, '/raffle'),
             color: "from-amber-500 to-orange-600"
         },
     ];
 
     const toolLinks = [
-        { name: t('tools.dice'), description: t('tools.diceContent.subtitle'), icon: Dice5, href: `/${locale}/tools/dice`, color: "bg-indigo-500" },
-        { name: t('tools.coinFlip'), description: t('tools.coinFlipContent.subtitle'), icon: Coins, href: `/${locale}/tools/coin-flip`, color: "bg-amber-500" },
-        { name: t('tools.randomNumber'), description: t('tools.randomNumberContent.subtitle'), icon: Hash, href: `/${locale}/tools/random-number`, color: "bg-emerald-500" },
-        { name: t('tools.shortStraw'), description: t('tools.shortStrawContent.subtitle'), icon: Wand2, href: `/${locale}/tools/short-straw`, color: "bg-rose-500" },
-        { name: t('tools.wheelOfFortune'), description: t('tools.wheelOfFortuneContent.subtitle'), icon: Aperture, href: `/${locale}/tools/wheel-of-fortune`, color: "bg-pink-500" },
-        { name: t('tools.teamGenerator'), description: t('tools.teamGeneratorContent.subtitle'), icon: Users, href: `/${locale}/tools/team-generator`, color: "bg-purple-500" },
+        { name: t('tools.dice'), description: t('tools.diceContent.subtitle'), icon: Dice5, href: localePath(locale, '/tools/dice'), color: "bg-indigo-500" },
+        { name: t('tools.coinFlip'), description: t('tools.coinFlipContent.subtitle'), icon: Coins, href: localePath(locale, '/tools/coin-flip'), color: "bg-amber-500" },
+        { name: t('tools.randomNumber'), description: t('tools.randomNumberContent.subtitle'), icon: Hash, href: localePath(locale, '/tools/random-number'), color: "bg-emerald-500" },
+        { name: t('tools.shortStraw'), description: t('tools.shortStrawContent.subtitle'), icon: Wand2, href: localePath(locale, '/tools/short-straw'), color: "bg-rose-500" },
+        { name: t('tools.wheelOfFortune'), description: t('tools.wheelOfFortuneContent.subtitle'), icon: Aperture, href: localePath(locale, '/tools/wheel-of-fortune'), color: "bg-pink-500" },
+        { name: t('tools.teamGenerator'), description: t('tools.teamGeneratorContent.subtitle'), icon: Users, href: localePath(locale, '/tools/team-generator'), color: "bg-purple-500" },
     ];
 
     return (
@@ -123,7 +124,7 @@ export function Navbar() {
                     <nav className="flex items-center justify-between">
                         {/* Logo */}
                         <button
-                            onClick={() => router.push(`/${locale}`)}
+                            onClick={() => router.push(localePath(locale))}
                             className="flex items-center gap-2 group relative z-10"
                         >
                             <div className="p-1.5 bg-[var(--card-bg)] rounded-xl shadow-sm border border-[var(--card-border)] group-hover:scale-110 transition-transform duration-300 ring-1 ring-[var(--card-border)]">
@@ -199,7 +200,7 @@ export function Navbar() {
 
                             {/* Gift Suggestions - Standalone */}
                             <button
-                                onClick={() => router.push(`/${locale}/tools/gift-suggestions`)}
+                                onClick={() => router.push(localePath(locale, '/tools/gift-suggestions'))}
                                 className="flex items-center gap-1.5 px-5 py-2.5 text-sm font-bold text-[var(--text-secondary)] hover:text-santa-red dark:hover:text-santa-red transition-all rounded-full hover:bg-santa-red/5 dark:hover:bg-santa-red/10"
                             >
                                 <Gift className="w-4 h-4" />
@@ -246,7 +247,7 @@ export function Navbar() {
 
                     {/* Gift Suggestions - Standalone Mobile */}
                     <button
-                        onClick={() => router.push(`/${locale}/tools/gift-suggestions`)}
+                        onClick={() => router.push(localePath(locale, '/tools/gift-suggestions'))}
                         className="w-full flex items-center gap-4 p-4 bg-gradient-to-r from-pink-500/10 to-purple-500/10 dark:from-pink-500/20 dark:to-purple-500/20 rounded-2xl hover:bg-pink-50 dark:hover:bg-pink-500/30 transition-all border border-pink-100 dark:border-pink-500/20 active:scale-[0.98]"
                     >
                         <div className="w-12 h-12 flex-shrink-0 flex items-center justify-center rounded-xl bg-pink-500 text-white shadow-md">

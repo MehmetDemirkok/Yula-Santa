@@ -3,6 +3,7 @@ import { getSEOMetadata, viewport } from '@/lib/seo';
 import { locales } from '@/i18n/config';
 export { viewport };
 import HomeClientPage from './HomeClientPage';
+import HomeSeoSection from '@/components/seo/HomeSeoSection';
 
 // Generate static paths for all locales
 export function generateStaticParams() {
@@ -14,6 +15,12 @@ export async function generateMetadata({ params }: { params: Promise<{ locale: s
     return getSEOMetadata({ locale, path: '', translationKey: 'home' });
 }
 
-export default async function Page() {
-    return <HomeClientPage />;
+export default async function Page({ params }: { params: Promise<{ locale: string }> }) {
+    const { locale } = await params;
+    return (
+        <>
+            <HomeClientPage />
+            <HomeSeoSection locale={locale} />
+        </>
+    );
 }

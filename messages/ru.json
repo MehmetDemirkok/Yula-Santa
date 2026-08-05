@@ -138,25 +138,23 @@
                 ]
             },
             "tiktok": {
-                "title": "TikTok Giveaway Tool | Free TikTok Raffle - YulaSanta",
-                "description": "Run giveaways from comments on your TikTok videos. Fast and fair raffle results with our TikTok giveaway site.",
+                "title": "Розыгрыш TikTok | Бесплатный выбор из комментариев - YulaSanta",
+                "description": "Проводите розыгрыши среди комментариев к видео TikTok. Быстрые и честные результаты.",
                 "keywords": [
-                    "tiktok giveaway",
-                    "tiktok raffle",
-                    "tiktok comment picker",
-                    "tiktok giveaway tool",
-                    "tiktok contest"
+                    "розыгрыш тикток",
+                    "тикток розыгрыш",
+                    "комментарии тикток",
+                    "конкурс тикток"
                 ]
             },
             "twitter": {
-                "title": "Twitter (X) Giveaway Tool | Retweet & Like Picker - YulaSanta",
-                "description": "Easily manage your Twitter (X) giveaways. Pick winners from retweets and likes. Free Twitter giveaway site.",
+                "title": "Розыгрыш Twitter (X) | Ретвиты и лайки - YulaSanta",
+                "description": "Управляйте розыгрышами в Twitter (X). Выбирайте победителей из ретвитов и лайков.",
                 "keywords": [
-                    "twitter giveaway",
-                    "x giveaway",
-                    "retweet giveaway",
-                    "twitter raffle",
-                    "twitter contest"
+                    "розыгрыш твиттер",
+                    "розыгрыш x",
+                    "ретвит розыгрыш",
+                    "конкурс твиттер"
                 ]
             }
         },
@@ -201,7 +199,8 @@
         "subscribed": "Подписан",
         "notSubscribed": "Не подписан",
         "subscribedPrivate": "Приватный",
-        "checkingSubscription": "Проверка..."
+        "checkingSubscription": "Проверка...",
+        "seo": {}
     },
     "support": {
         "button": "Поддержка",

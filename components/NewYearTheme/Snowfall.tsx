@@ -1,7 +1,5 @@
 /**
- * ═══════════════════════════════════════════════════════════════════════════
- * Snowfall Animation Component
- * ═══════════════════════════════════════════════════════════════════════════
+ * Soft winter snowfall — CSS particles, brand-neutral, respects reduced motion.
  */
 
 "use client";
@@ -9,84 +7,91 @@
 import { useEffect, useState } from "react";
 
 interface Snowflake {
-  id: number;
-  x: number;
-  size: number;
-  animationDuration: number;
-  animationDelay: number;
-  opacity: number;
+    id: number;
+    x: number;
+    size: number;
+    duration: number;
+    delay: number;
+    opacity: number;
+    drift: number;
 }
 
 export function Snowfall() {
-  const [snowflakes, setSnowflakes] = useState<Snowflake[]>([]);
+    const [flakes, setFlakes] = useState<Snowflake[]>([]);
+    const [reducedMotion, setReducedMotion] = useState(false);
 
-  useEffect(() => {
-    const flakes: Snowflake[] = [];
-    const flakeCount = 20; // Reduced from 50 for a more balanced look
+    useEffect(() => {
+        const mq = window.matchMedia("(prefers-reduced-motion: reduce)");
+        setReducedMotion(mq.matches);
+        const onChange = () => setReducedMotion(mq.matches);
+        mq.addEventListener("change", onChange);
 
-    for (let i = 0; i < flakeCount; i++) {
-      flakes.push({
-        id: i,
-        x: Math.random() * 100,
-        size: Math.random() * 6 + 3, // Slightly smaller flakes
-        animationDuration: Math.random() * 10 + 12, // Even slower
-        animationDelay: Math.random() * -20,
-        opacity: Math.random() * 0.4 + 0.3,
-      });
-    }
+        if (mq.matches) return () => mq.removeEventListener("change", onChange);
 
-    setSnowflakes(flakes);
-  }, []);
+        const count = window.innerWidth < 640 ? 14 : 22;
+        setFlakes(
+            Array.from({ length: count }, (_, i) => ({
+                id: i,
+                x: Math.random() * 100,
+                size: Math.random() * 3.5 + 2,
+                duration: Math.random() * 12 + 14,
+                delay: Math.random() * -24,
+                opacity: Math.random() * 0.35 + 0.25,
+                drift: (Math.random() - 0.5) * 40,
+            }))
+        );
 
-  return (
-    <div className="fixed inset-0 pointer-events-none z-10 overflow-hidden">
-      <style jsx>{`
-        @keyframes snowfall {
-          0% {
-            transform: translateY(-20px) rotate(0deg);
-          }
-          100% {
-            transform: translateY(100vh) rotate(360deg);
-          }
-        }
-        
-        @keyframes sway {
-          0%, 100% {
-            transform: translateX(0);
-          }
-          50% {
-            transform: translateX(20px);
-          }
-        }
-        
-        .snowflake {
-          position: absolute;
-          top: -20px;
-          color: white;
-          text-shadow: 0 0 10px rgba(255, 255, 255, 0.8);
-          animation: snowfall linear infinite;
-        }
-        
-        .snowflake-inner {
-          animation: sway 3s ease-in-out infinite;
-        }
-      `}</style>
+        return () => mq.removeEventListener("change", onChange);
+    }, []);
 
-      {snowflakes.map((flake) => (
-        <div
-          key={flake.id}
-          className="snowflake"
-          style={{
-            left: `${flake.x}%`,
-            fontSize: `${flake.size}px`,
-            opacity: flake.opacity,
-            animationDuration: `${flake.animationDuration}s`,
-            animationDelay: `${flake.animationDelay}s`,
-          }}
-        >
-          <div className="snowflake-inner">❄</div>
+    if (reducedMotion || flakes.length === 0) return null;
+
+    return (
+        <div className="fixed inset-0 pointer-events-none z-10 overflow-hidden" aria-hidden>
+            <style jsx>{`
+                @keyframes ys-snow-fall {
+                    0% {
+                        transform: translate3d(0, -8vh, 0);
+                        opacity: 0;
+                    }
+                    8% {
+                        opacity: 1;
+                    }
+                    92% {
+                        opacity: 1;
+                    }
+                    100% {
+                        transform: translate3d(var(--drift), 105vh, 0);
+                        opacity: 0;
+                    }
+                }
+                .ys-flake {
+                    position: absolute;
+                    top: 0;
+                    border-radius: 50%;
+                    background: radial-gradient(circle at 30% 30%, #fff, rgba(255, 255, 255, 0.55));
+                    box-shadow: 0 0 4px rgba(255, 255, 255, 0.35);
+                    animation: ys-snow-fall linear infinite;
+                    will-change: transform, opacity;
+                }
+            `}</style>
+            {flakes.map((f) => (
+                <span
+                    key={f.id}
+                    className="ys-flake"
+                    style={
+                        {
+                            left: `${f.x}%`,
+                            width: f.size,
+                            height: f.size,
+                            opacity: f.opacity,
+                            animationDuration: `${f.duration}s`,
+                            animationDelay: `${f.delay}s`,
+                            ["--drift" as string]: `${f.drift}px`,
+                        } as React.CSSProperties
+                    }
+                />
+            ))}
         </div>
-      ))}
-    </div>
-  );
+    );
 }

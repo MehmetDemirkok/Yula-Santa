@@ -1,22 +1,12 @@
 /**
- * ═══════════════════════════════════════════════════════════════════════════
- * New Year Theme - Main Component
- * ═══════════════════════════════════════════════════════════════════════════
- * 
- * Bu bileşen tüm yılbaşı dekorasyon ve efektlerini bir araya getirir.
- * 
- * KULLANIM:
- * - components/NewYearTheme/config.ts dosyasında ENABLE_NEW_YEAR_THEME = true/false
- *   ile temayı açıp kapatabilirsiniz.
- * - NEW_YEAR_THEME_END_DATE ile temanın otomatik kapanacağı tarihi belirleyebilirsiniz.
- * 
- * ═══════════════════════════════════════════════════════════════════════════
+ * New Year Theme — YulaSanta winter season pack.
+ * Active: Nov 30 → Jan 10 (config.ts). Brand: crimson + gold + evergreen.
  */
 
 "use client";
 
 import { useState, useEffect } from "react";
-import { isNewYearThemeActive } from "./config";
+import { getTimeUntilNewYear, isNewYearThemeActive } from "./config";
 import { Snowfall } from "./Snowfall";
 import { Fireworks } from "./Fireworks";
 import { Confetti } from "./Confetti";
@@ -24,51 +14,59 @@ import { CountdownBanner } from "./CountdownBanner";
 import { GlitterOverlay } from "./GlitterOverlay";
 
 interface NewYearThemeProps {
-    // Kar yağışı göster
     showSnowfall?: boolean;
-    // Havai fişek göster
     showFireworks?: boolean;
-    // Konfeti göster
     showConfetti?: boolean;
-    // Geri sayım banner göster
     showCountdown?: boolean;
-    // Parıltı overlay göster
     showGlitter?: boolean;
 }
 
 export function NewYearTheme({
     showSnowfall = true,
-    showFireworks = false,
+    showFireworks = true,
     showConfetti = true,
-    showCountdown = true,
+    showCountdown = false,
     showGlitter = true,
 }: NewYearThemeProps) {
     const [isActive, setIsActive] = useState(false);
+    const [isCelebration, setIsCelebration] = useState(false);
     const [mounted, setMounted] = useState(false);
 
     useEffect(() => {
         setMounted(true);
-        setIsActive(isNewYearThemeActive());
+
+        const sync = () => {
+            const active = isNewYearThemeActive();
+            setIsActive(active);
+            setIsCelebration(active && getTimeUntilNewYear().isNewYear);
+            document.documentElement.classList.toggle("ys-new-year", active);
+        };
+
+        sync();
+        const interval = setInterval(sync, 60_000);
+        return () => {
+            clearInterval(interval);
+            document.documentElement.classList.remove("ys-new-year");
+        };
     }, []);
 
-    // SSR'da ve tema aktif değilse hiçbir şey render etme
     if (!mounted || !isActive) return null;
 
     return (
         <>
             {showSnowfall && <Snowfall />}
-            {showFireworks && <Fireworks />}
-            {showConfetti && <Confetti />}
             {showGlitter && <GlitterOverlay />}
+            {/* Paper confetti + fireworks only after midnight Jan 1 */}
+            {showConfetti && isCelebration && <Confetti />}
+            {showFireworks && isCelebration && <Fireworks />}
             {showCountdown && <CountdownBanner />}
         </>
     );
 }
 
-// Export all components for individual use
 export { Snowfall } from "./Snowfall";
 export { Fireworks } from "./Fireworks";
 export { Confetti } from "./Confetti";
 export { CountdownBanner } from "./CountdownBanner";
 export { GlitterOverlay } from "./GlitterOverlay";
-export { isNewYearThemeActive, ENABLE_NEW_YEAR_THEME, NEW_YEAR_THEME_END_DATE, TARGET_YEAR } from "./config";
+export { isNewYearThemeActive, getTargetYear, getTimeUntilNewYear, TARGET_YEAR } from "./config";

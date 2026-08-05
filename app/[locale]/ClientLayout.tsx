@@ -32,10 +32,10 @@ export function ClientLayout({ children }: ClientLayoutProps) {
     return (
         <ThemeProvider>
         <ToastProvider>
-            {/* Yılbaşı Teması - Kar, Konfeti (Countdown ayrı olarak sayfalarda gösterilecek) */}
+            {/* Yılbaşı Teması — kar + altın twinkle; kutlama efektleri 1 Ocak'tan sonra */}
             <NewYearTheme
                 showSnowfall={true}
-                showFireworks={false}
+                showFireworks={true}
                 showConfetti={true}
                 showCountdown={false}
                 showGlitter={true}

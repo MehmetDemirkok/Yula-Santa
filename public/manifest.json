@@ -2,7 +2,7 @@
   "name": "YulaSanta - Online Çekiliş & Secret Santa",
   "short_name": "YulaSanta",
   "description": "Ücretsiz online çekiliş ve Secret Santa platformu. Instagram, YouTube, TikTok, Twitter çekilişleri yapın. Zar atma, yazı tura ve daha fazla araç!",
-  "start_url": "/tr",
+  "start_url": "/",
   "scope": "/",
   "display": "standalone",
   "orientation": "portrait-primary",
@@ -59,7 +59,7 @@
       "name": "Instagram Çekiliş",
       "short_name": "Instagram",
       "description": "Instagram çekilişi yap",
-      "url": "/tr/instagram",
+      "url": "/instagram",
       "icons": [
         {
           "src": "/icon-192.png",
@@ -71,7 +71,7 @@
       "name": "YouTube Çekiliş",
       "short_name": "YouTube",
       "description": "YouTube çekilişi yap",
-      "url": "/tr/youtube",
+      "url": "/youtube",
       "icons": [
         {
           "src": "/icon-192.png",
@@ -83,7 +83,7 @@
       "name": "Zar At",
       "short_name": "Zar",
       "description": "Online zar atma oyunu",
-      "url": "/tr/tools/dice",
+      "url": "/tools/dice",
       "icons": [
         {
           "src": "/icon-192.png",
@@ -95,7 +95,7 @@
       "name": "Yazı Tura",
       "short_name": "Coin Flip",
       "description": "Online yazı tura",
-      "url": "/tr/tools/coin-flip",
+      "url": "/tools/coin-flip",
       "icons": [
         {
           "src": "/icon-192.png",

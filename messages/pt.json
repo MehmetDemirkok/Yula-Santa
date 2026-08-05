@@ -29,7 +29,17 @@
             "q3": "Quais plataformas de mídia social vocês suportam?",
             "a3": "Você pode organizar sorteios no Instagram, YouTube, TikTok e Twitter (X) usando comentários e curtidas.",
             "q4": "Como funciona o Secret Santa?",
-            "a4": "Adicione os nomes dos participantes, inicie o sorteio. Cada pessoa sorteia alguém aleatoriamente e só pode ver seu próprio par. A privacidade é protegida!"
+            "a4": "Adicione os nomes dos participantes, inicie o sorteio. Cada pessoa sorteia alguém aleatoriamente e só pode ver seu próprio par. A privacidade é protegida!",
+            "title": "Perguntas frequentes | YulaSanta",
+            "description": "Respostas sobre sorteio Instagram, amigo secreto e ferramentas de sorteio nas redes.",
+            "q5": "Como faço um sorteio de comentários no Instagram?",
+            "a5": "Cole o link da publicação no YulaSanta, busque ou adicione comentários, defina o número de ganhadores e inicie. Ganhadores e reservas em segundos.",
+            "q6": "O sorteio Instagram é seguro?",
+            "a6": "Sim. Funciona sem senha ou login. Você não digita credenciais do Instagram. Todos os sorteios usam algoritmo aleatório justo.",
+            "q7": "Quantos ganhadores posso escolher?",
+            "a7": "Qualquer número de ganhadores e reservas — de um único ganhador a campanhas com vários.",
+            "q8": "A mesma pessoa pode ganhar duas vezes?",
+            "a8": "Não. Com «Contar cada usuário uma vez», vários comentários da mesma pessoa contam como uma só entrada."
         }
     },
     "home": {
@@ -68,7 +78,22 @@
         "startNow": "Começar Agora",
         "socialDesc": "Realize seus sorteios facilmente em todas as plataformas",
         "toolsDesc": "Ferramentas e jogos divertidos para o seu dia a dia.",
-        "viewAll": "Ver Tudo"
+        "viewAll": "Ver Tudo",
+        "seo": {
+            "title": "Plataforma gratuita de sorteios online e amigo secreto",
+            "paragraphs": [
+                "YulaSanta é uma ferramenta gratuita de sorteio Instagram, YouTube, TikTok e Twitter. Faça sorteios de comentários em segundos — sem cadastro nem senha. Escolha ganhadores e reservas de forma justa.",
+                "Organize amigo secreto, sorteio de nomes, dados e cara ou coroa. Gerencie campanhas nas redes e eventos com amigos em um só lugar."
+            ],
+            "featuresTitle": "Por que YulaSanta?",
+            "features": [
+                "Totalmente grátis — sem taxas ocultas",
+                "Sem cadastro ou senha",
+                "Busca automática de comentários do Instagram",
+                "Suporte a ganhadores e reservas",
+                "Suporte a 12 idiomas"
+            ]
+        }
     },
     "result": {
         "whoGetsGift": "Para quem vou comprar um presente?",
@@ -123,11 +148,14 @@
         "tiktokDesc": "Faça sorteios entre os comentários dos seus vídeos do TikTok grátis.",
         "meta": {
             "instagram": {
-                "title": "Sorteio Instagram Grátis | YulaSanta",
-                "description": "Faça seus sorteios do Instagram grátis e sem senha com YulaSanta.",
+                "title": "Sorteio Instagram Grátis | Seletor de Comentários - YulaSanta",
+                "description": "Faça sorteio Instagram grátis e sem senha. Escolha ganhadores e reservas nos comentários na hora com YulaSanta.",
                 "keywords": [
                     "sorteio instagram",
-                    "comentários instagram"
+                    "sorteio comentários instagram",
+                    "sorteador instagram grátis",
+                    "sorteio instagram grátis",
+                    "seletor comentários instagram"
                 ]
             },
             "youtube": {
@@ -139,25 +167,24 @@
                 ]
             },
             "tiktok": {
-                "title": "TikTok Giveaway Tool | Free TikTok Raffle - YulaSanta",
-                "description": "Run giveaways from comments on your TikTok videos. Fast and fair raffle results with our TikTok giveaway site.",
+                "title": "Sorteio TikTok | Sorteador de comentários TikTok grátis - YulaSanta",
+                "description": "Faça sorteios nos comentários dos seus vídeos do TikTok. Resultados rápidos e justos no nosso site de sorteio TikTok.",
                 "keywords": [
-                    "tiktok giveaway",
-                    "tiktok raffle",
-                    "tiktok comment picker",
-                    "tiktok giveaway tool",
-                    "tiktok contest"
+                    "sorteio tiktok",
+                    "sorteador tiktok",
+                    "sorteio comentários tiktok",
+                    "concurso tiktok",
+                    "tiktok sorteio grátis"
                 ]
             },
             "twitter": {
-                "title": "Twitter (X) Giveaway Tool | Retweet & Like Picker - YulaSanta",
-                "description": "Easily manage your Twitter (X) giveaways. Pick winners from retweets and likes. Free Twitter giveaway site.",
+                "title": "Sorteio Twitter (X) | Retweet e curtidas - YulaSanta",
+                "description": "Gerencie sorteios no Twitter (X). Escolha ganhadores de retweets e curtidas. Site de sorteio Twitter grátis.",
                 "keywords": [
-                    "twitter giveaway",
-                    "x giveaway",
-                    "retweet giveaway",
-                    "twitter raffle",
-                    "twitter contest"
+                    "sorteio twitter",
+                    "sorteio x",
+                    "sorteio retweet",
+                    "concurso twitter"
                 ]
             }
         },
@@ -202,7 +229,73 @@
         "subscribed": "Inscrito",
         "notSubscribed": "Não inscrito",
         "subscribedPrivate": "Privado",
-        "checkingSubscription": "Verificando..."
+        "checkingSubscription": "Verificando...",
+        "seo": {
+            "instagram": {
+                "contentTitle": "Sorteio Instagram grátis — Seletor de comentários",
+                "contentParagraphs": [
+                    "YulaSanta é um sorteador Instagram grátis. Escolha ganhadores nos comentários da sua publicação em segundos — sem cadastro nem senha do Instagram.",
+                    "Para influenciadores, marcas e criadores: sorteios de comentários, curtidas e marcações. Ganhadores, reservas, filtro de duplicados e compartilhamento — tudo grátis."
+                ],
+                "howToTitle": "Como fazer um sorteio de comentários no Instagram",
+                "howToSteps": [
+                    "Cole o link da publicação do Instagram no YulaSanta ou adicione participantes manualmente.",
+                    "Defina ganhadores e reservas, e regras como seguir obrigatório ou contar usuário uma vez.",
+                    "Inicie o sorteio — os ganhadores são escolhidos de forma aleatória e justa e você pode compartilhar na hora."
+                ],
+                "faqTitle": "Perguntas frequentes do sorteio Instagram",
+                "faq": [
+                    {
+                        "q": "O sorteio Instagram é grátis?",
+                        "a": "Sim. YulaSanta é totalmente grátis. Sorteios ilimitados sem cadastro."
+                    },
+                    {
+                        "q": "Preciso entrar no Instagram?",
+                        "a": "Não. Funciona sem senha. Cole o link ou adicione comentários manualmente."
+                    },
+                    {
+                        "q": "Posso escolher reservas?",
+                        "a": "Sim. Defina quantos ganhadores e reservas quiser."
+                    },
+                    {
+                        "q": "Vários comentários da mesma pessoa contam?",
+                        "a": "Não. Com «Contar cada usuário uma vez», cada pessoa entra só uma vez."
+                    }
+                ]
+            },
+            "tiktok": {
+                "contentTitle": "Sorteio TikTok — Sorteador de comentários grátis",
+                "contentParagraphs": [
+                    "YulaSanta é um site de sorteio TikTok grátis. Escolha ganhadores nos comentários do vídeo em segundos — sem cadastro nem senha.",
+                    "Para criadores e marcas: sorteios de comentários, ganhadores e reservas, filtro de duplicados e compartilhamento — tudo grátis."
+                ],
+                "howToTitle": "Como fazer um sorteio de comentários no TikTok",
+                "howToSteps": [
+                    "Cole o link do vídeo do TikTok ou adicione participantes manualmente.",
+                    "Defina ganhadores, reservas e regras de participação.",
+                    "Inicie o sorteio e compartilhe o resultado na hora."
+                ],
+                "faqTitle": "Perguntas frequentes do sorteio TikTok",
+                "faq": [
+                    {
+                        "q": "O sorteio TikTok é grátis?",
+                        "a": "Sim. Totalmente grátis, sorteios ilimitados sem cadastro."
+                    },
+                    {
+                        "q": "Preciso entrar no TikTok?",
+                        "a": "Não. Cole o link ou adicione comentários manualmente."
+                    },
+                    {
+                        "q": "Posso escolher reservas?",
+                        "a": "Sim. Quantos ganhadores e reservas quiser."
+                    },
+                    {
+                        "q": "Vários comentários da mesma pessoa contam?",
+                        "a": "Não. Com contar usuário uma vez, cada pessoa entra só uma vez."
+                    }
+                ]
+            }
+        }
     },
     "support": {
         "button": "Suporte",
