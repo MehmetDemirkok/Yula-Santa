@@ -634,7 +634,26 @@
                     "Veriler hazırlanıyor..."
                 ]
             }
-        }
+        },
+        "keywordLabel": "Yorumda zorunlu kelime / hashtag",
+        "keywordPlaceholder": "Örn: katılıyorum veya #çekiliş",
+        "preview": "{eligible} / {total} uygun katılımcı",
+        "previewHint": "Kelime filtresi ve “her kullanıcı bir kez” kuralı uygulandıktan sonra",
+        "proofTitle": "Çekiliş kanıtı",
+        "proofSeed": "Seed",
+        "proofDrawnAt": "Çekilme zamanı",
+        "proofEligible": "Uygun / toplam",
+        "proofAlgorithm": "Algoritma",
+        "proofCopy": "Kanıtı kopyala",
+        "proofCopied": "Kanıt kopyalandı!",
+        "proofOpenLink": "Kanıt sayfasını aç",
+        "proofKeyword": "Kelime",
+        "proofDedupeOn": "tekil kullanıcı açık",
+        "proofDedupeOff": "tekil kullanıcı kapalı",
+        "proofPageTitle": "Çekiliş kanıtı",
+        "proofPageInvalid": "Bu kanıt linki geçersiz veya bozuk.",
+        "proofPageSubtitle": "Bu sonuç YulaSanta adil rastgele motoru ile üretildi.",
+        "notEnoughEligible": "Filtrelere uyan yeterli katılımcı yok"
     },
     "support": {
         "button": "Destek",

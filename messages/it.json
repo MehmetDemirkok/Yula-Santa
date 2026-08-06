@@ -516,7 +516,26 @@
                     "Preparazione dei dati in corso..."
                 ]
             }
-        }
+        },
+        "keywordLabel": "Required keyword / hashtag in comment",
+        "keywordPlaceholder": "e.g. enter or #giveaway",
+        "preview": "{eligible} / {total} eligible participants",
+        "previewHint": "After keyword filter and count-each-user-once",
+        "proofTitle": "Draw proof",
+        "proofSeed": "Seed",
+        "proofDrawnAt": "Drawn at",
+        "proofEligible": "Eligible / total",
+        "proofAlgorithm": "Algorithm",
+        "proofCopy": "Copy proof",
+        "proofCopied": "Proof copied!",
+        "proofOpenLink": "Open proof page",
+        "proofKeyword": "Keyword",
+        "proofDedupeOn": "dedupe on",
+        "proofDedupeOff": "dedupe off",
+        "proofPageTitle": "Draw proof",
+        "proofPageInvalid": "This proof link is invalid or corrupted.",
+        "proofPageSubtitle": "This result was produced by YulaSanta’s fair random engine.",
+        "notEnoughEligible": "Not enough participants match the filters"
     },
     "support": {
         "button": "Supporto",

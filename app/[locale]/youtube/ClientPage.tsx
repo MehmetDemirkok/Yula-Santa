@@ -1,8 +1,8 @@
 "use client";
 
-import { useState, useRef, useEffect } from "react";
+import { useState, useRef, useEffect, useMemo } from "react";
 import confetti from "canvas-confetti";
-import { useTranslations } from "next-intl";
+import { useLocale, useTranslations } from "next-intl";
 import { useRouter } from "@/i18n/navigation";
 import {
     Youtube,
@@ -42,6 +42,10 @@ import ShareModal from "@/components/ShareModal";
 import { useToast } from "@/lib/ToastContext";
 import { downloadWinnerCard } from "@/lib/downloadWinnerCard";
 import { secureShuffle, secureRandomInt } from "@/lib/random";
+import { applyGiveawayFilters } from "@/lib/giveawayFilters";
+import { buildDrawProof, type DrawProof } from "@/lib/giveawayProof";
+import { FilterRulesPanel } from "@/components/giveaway/FilterRulesPanel";
+import { DrawProofPanel } from "@/components/giveaway/DrawProofPanel";
 import { AdWrapper, InArticleAd } from "@/components/ads";
 import { AD_SLOTS } from "@/lib/ads/config";
 import { Reveal } from "@/components/Reveal";
@@ -66,8 +70,10 @@ const TRUST_ICONS = [Shield, Zap, Filter, Users, BadgeCheck] as const;
 
 export default function YouTubeGiveaway() {
     const router = useRouter();
+    const locale = useLocale();
     const { t } = useLanguage();
     const tl = useTranslations("giveaway.landing.youtube");
+    const tg = useTranslations("giveaway");
     const { toast } = useToast();
 
     const [phase, setPhase] = useState<Phase>("input");
@@ -82,6 +88,8 @@ export default function YouTubeGiveaway() {
     const [requireSubscription, setRequireSubscription] = useState(true);
     const [requireNotification, setRequireNotification] = useState(false);
     const [countUserOnce, setCountUserOnce] = useState(true);
+    const [keywordFilter, setKeywordFilter] = useState("");
+    const [drawProof, setDrawProof] = useState<DrawProof | null>(null);
     const [videoOwnerChannelId, setVideoOwnerChannelId] = useState<string | null>(null);
 
     const [participants, setParticipants] = useState<Participant[]>([]);
@@ -124,7 +132,38 @@ export default function YouTubeGiveaway() {
         });
     };
 
+    const { eligible: eligibleParticipants, stats: filterStats } = useMemo(
+        () =>
+            applyGiveawayFilters(participants, {
+                countUserOnce,
+                keyword: keywordFilter,
+            }),
+        [participants, countUserOnce, keywordFilter]
+    );
+
+    const filterLabels = {
+        keywordLabel: tg("keywordLabel"),
+        keywordPlaceholder: tg("keywordPlaceholder"),
+        preview: tg.raw("preview") as string,
+        previewHint: tg("previewHint"),
+    };
+
+    const proofLabels = {
+        title: tg("proofTitle"),
+        seed: tg("proofSeed"),
+        drawnAt: tg("proofDrawnAt"),
+        eligible: tg("proofEligible"),
+        algorithm: tg("proofAlgorithm"),
+        copy: tg("proofCopy"),
+        copied: tg("proofCopied"),
+        openLink: tg("proofOpenLink"),
+        keyword: tg("proofKeyword"),
+        dedupeOn: tg("proofDedupeOn"),
+        dedupeOff: tg("proofDedupeOff"),
+    };
+
     const extractVideoId = (url: string) => {
+
         const regExp = /^.*((youtu.be\/)|(v\/)|(\/u\/\w\/)|(embed\/)|(watch\?)|(shorts\/))\??v?=?([^#&?]*).*/;
         const match = url.match(regExp);
         return match && match[8].length === 11 ? match[8] : null;
@@ -314,29 +353,42 @@ export default function YouTubeGiveaway() {
     };
 
     const startGiveaway = () => {
-        if (participants.length < winnerCount + backupCount) {
-            toast.warning(t.home.notEnoughPeople);
+        if (eligibleParticipants.length < winnerCount + backupCount) {
+            toast.warning(t.giveaway.notEnoughEligible || t.home.notEnoughPeople);
             return;
         }
 
         setIsRolling(true);
         setPhase("results");
+        setDrawProof(null);
 
         const interval = setInterval(() => {
-            const randomIndex = secureRandomInt(participants.length);
-            setRollingParticipant(participants[randomIndex]);
+            const randomIndex = secureRandomInt(eligibleParticipants.length);
+            setRollingParticipant(eligibleParticipants[randomIndex]);
         }, 80);
 
         setTimeout(() => {
             clearInterval(interval);
 
-            const shuffled = secureShuffle(participants);
+            const shuffled = secureShuffle(eligibleParticipants);
             const selectedWinners = shuffled.slice(0, winnerCount);
             const selectedBackups = shuffled.slice(winnerCount, winnerCount + backupCount);
 
             setWinners(selectedWinners);
             setBackups(selectedBackups);
             setIsRolling(false);
+            setDrawProof(
+                buildDrawProof({
+                    platform: "youtube",
+                    title: giveawayName || t.giveaway.youtubeTitle,
+                    total: filterStats.total,
+                    eligible: filterStats.eligible,
+                    keyword: keywordFilter,
+                    countUserOnce,
+                    winners: selectedWinners,
+                    backups: selectedBackups,
+                })
+            );
             triggerConfetti();
 
             if (videoOwnerChannelId) {
@@ -359,6 +411,7 @@ export default function YouTubeGiveaway() {
     const resetGiveaway = () => {
         setWinners([]);
         setBackups([]);
+        setDrawProof(null);
         setPhase("input");
         setIsRolling(false);
         scrollToTool();
@@ -543,6 +596,17 @@ export default function YouTubeGiveaway() {
                                             </div>
                                         ))}
                                     </div>
+                                )}
+
+                                {drawProof && (
+                                    <DrawProofPanel
+                                        proof={drawProof}
+                                        locale={locale}
+                                        accentClass="text-[#FF0000]"
+                                        buttonClass="bg-[#FF0000] hover:bg-[#cc0000]"
+                                        labels={proofLabels}
+                                        onToast={(msg) => toast.success(msg)}
+                                    />
                                 )}
 
                                 <AdWrapper position="inline">
@@ -854,6 +918,15 @@ export default function YouTubeGiveaway() {
                                                     <span className={`absolute top-1 h-5 w-5 rounded-full bg-white shadow transition-transform ${countUserOnce ? "right-1" : "left-1"}`} />
                                                 </span>
                                             </button>
+                                            <FilterRulesPanel
+                                                keyword={keywordFilter}
+                                                onKeywordChange={setKeywordFilter}
+                                                total={filterStats.total}
+                                                eligible={filterStats.eligible}
+                                                accentClass="text-[#FF0000]"
+                                                inputFocusClass="focus:border-[#FF0000] focus:ring-red-500/10"
+                                                labels={filterLabels}
+                                            />
                                         </div>
                                     </div>
 
@@ -945,13 +1018,13 @@ export default function YouTubeGiveaway() {
                                     <button
                                         type="button"
                                         onClick={startGiveaway}
-                                        disabled={participants.length < winnerCount + backupCount}
+                                        disabled={eligibleParticipants.length < winnerCount + backupCount}
                                         className={`inline-flex w-full min-h-[56px] items-center justify-center gap-2 rounded-2xl px-6 text-lg font-bold text-white shadow-[0_10px_30px_rgba(255,0,0,0.35)] transition hover:-translate-y-0.5 hover:shadow-[0_14px_36px_rgba(255,0,0,0.45)] disabled:pointer-events-none disabled:opacity-50 ${YT_PRIMARY}`}
                                     >
                                         <Play className="h-5 w-5 fill-current" /> {t.giveaway.startGiveaway}
                                     </button>
-                                    {participants.length < winnerCount + backupCount && (
-                                        <p className="text-center text-sm font-medium text-red-500">{t.home.notEnoughPeople}</p>
+                                    {eligibleParticipants.length < winnerCount + backupCount && (
+                                        <p className="text-center text-sm font-medium text-red-500">{t.giveaway.notEnoughEligible || t.home.notEnoughPeople}</p>
                                     )}
                                 </div>
                             </div>

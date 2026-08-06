@@ -1,8 +1,8 @@
 "use client";
 
-import { useState, useRef, useEffect } from "react";
+import { useState, useRef, useEffect, useMemo } from "react";
 import confetti from "canvas-confetti";
-import { useTranslations } from "next-intl";
+import { useLocale, useTranslations } from "next-intl";
 import { useRouter } from "@/i18n/navigation";
 import {
     Instagram,
@@ -42,6 +42,10 @@ import ShareModal from "@/components/ShareModal";
 import { useToast } from "@/lib/ToastContext";
 import { downloadWinnerCard } from "@/lib/downloadWinnerCard";
 import { secureShuffle, secureRandomInt } from "@/lib/random";
+import { applyGiveawayFilters } from "@/lib/giveawayFilters";
+import { buildDrawProof, type DrawProof } from "@/lib/giveawayProof";
+import { FilterRulesPanel } from "@/components/giveaway/FilterRulesPanel";
+import { DrawProofPanel } from "@/components/giveaway/DrawProofPanel";
 import { AdWrapper, InArticleAd } from "@/components/ads";
 import { AD_SLOTS } from "@/lib/ads/config";
 import { Reveal } from "@/components/Reveal";
@@ -63,8 +67,10 @@ const TRUST_ICONS = [Shield, Zap, Filter, Users, BadgeCheck] as const;
 
 export default function InstagramGiveaway() {
     const router = useRouter();
+    const locale = useLocale();
     const { t } = useLanguage();
     const tl = useTranslations("giveaway.landing.instagram");
+    const tg = useTranslations("giveaway");
     const { toast } = useToast();
 
     const [phase, setPhase] = useState<Phase>("input");
@@ -78,6 +84,8 @@ export default function InstagramGiveaway() {
     const [backupCount, setBackupCount] = useState(0);
     const [requireFollow, setRequireFollow] = useState(true);
     const [countUserOnce, setCountUserOnce] = useState(true);
+    const [keywordFilter, setKeywordFilter] = useState("");
+    const [drawProof, setDrawProof] = useState<DrawProof | null>(null);
 
     const [participants, setParticipants] = useState<Participant[]>([]);
     const [newParticipant, setNewParticipant] = useState("");
@@ -117,6 +125,36 @@ export default function InstagramGiveaway() {
         requestAnimationFrame(() => {
             configureRef.current?.scrollIntoView({ behavior: "smooth", block: "start" });
         });
+    };
+
+    const { eligible: eligibleParticipants, stats: filterStats } = useMemo(
+        () =>
+            applyGiveawayFilters(participants, {
+                countUserOnce,
+                keyword: keywordFilter,
+            }),
+        [participants, countUserOnce, keywordFilter]
+    );
+
+    const filterLabels = {
+        keywordLabel: tg("keywordLabel"),
+        keywordPlaceholder: tg("keywordPlaceholder"),
+        preview: tg.raw("preview") as string,
+        previewHint: tg("previewHint"),
+    };
+
+    const proofLabels = {
+        title: tg("proofTitle"),
+        seed: tg("proofSeed"),
+        drawnAt: tg("proofDrawnAt"),
+        eligible: tg("proofEligible"),
+        algorithm: tg("proofAlgorithm"),
+        copy: tg("proofCopy"),
+        copied: tg("proofCopied"),
+        openLink: tg("proofOpenLink"),
+        keyword: tg("proofKeyword"),
+        dedupeOn: tg("proofDedupeOn"),
+        dedupeOff: tg("proofDedupeOff"),
     };
 
     const addParticipant = () => {
@@ -295,27 +333,40 @@ export default function InstagramGiveaway() {
     };
 
     const startGiveaway = () => {
-        if (participants.length < winnerCount + backupCount) {
-            toast.warning(t.home.notEnoughPeople);
+        if (eligibleParticipants.length < winnerCount + backupCount) {
+            toast.warning(t.giveaway.notEnoughEligible || t.home.notEnoughPeople);
             return;
         }
 
         setIsRolling(true);
         setPhase("results");
+        setDrawProof(null);
 
         const interval = setInterval(() => {
-            const randomIndex = secureRandomInt(participants.length);
-            setRollingParticipant(participants[randomIndex]);
+            const randomIndex = secureRandomInt(eligibleParticipants.length);
+            setRollingParticipant(eligibleParticipants[randomIndex]);
         }, 80);
 
         setTimeout(() => {
             clearInterval(interval);
-            const shuffled = secureShuffle(participants);
+            const shuffled = secureShuffle(eligibleParticipants);
             const selectedWinners = shuffled.slice(0, winnerCount);
             const selectedBackups = shuffled.slice(winnerCount, winnerCount + backupCount);
             setWinners(selectedWinners);
             setBackups(selectedBackups);
             setIsRolling(false);
+            setDrawProof(
+                buildDrawProof({
+                    platform: "instagram",
+                    title: giveawayName || t.giveaway.instagramTitle,
+                    total: filterStats.total,
+                    eligible: filterStats.eligible,
+                    keyword: keywordFilter,
+                    countUserOnce,
+                    winners: selectedWinners,
+                    backups: selectedBackups,
+                })
+            );
             triggerConfetti();
         }, 3000);
     };
@@ -323,6 +374,7 @@ export default function InstagramGiveaway() {
     const resetGiveaway = () => {
         setWinners([]);
         setBackups([]);
+        setDrawProof(null);
         setPhase("input");
         setIsRolling(false);
         scrollToTool();
@@ -479,6 +531,15 @@ export default function InstagramGiveaway() {
                                             </div>
                                         ))}
                                     </div>
+                                )}
+
+                                {drawProof && (
+                                    <DrawProofPanel
+                                        proof={drawProof}
+                                        locale={locale}
+                                        labels={proofLabels}
+                                        onToast={(msg) => toast.success(msg)}
+                                    />
                                 )}
 
                                 <AdWrapper position="inline">
@@ -770,6 +831,13 @@ export default function InstagramGiveaway() {
                                                     <span className={`absolute top-1 h-5 w-5 rounded-full bg-white shadow transition-transform ${countUserOnce ? "right-1" : "left-1"}`} />
                                                 </span>
                                             </button>
+                                            <FilterRulesPanel
+                                                keyword={keywordFilter}
+                                                onKeywordChange={setKeywordFilter}
+                                                total={filterStats.total}
+                                                eligible={filterStats.eligible}
+                                                labels={filterLabels}
+                                            />
                                         </div>
                                     </div>
 
@@ -860,13 +928,13 @@ export default function InstagramGiveaway() {
                                     <button
                                         type="button"
                                         onClick={startGiveaway}
-                                        disabled={participants.length < winnerCount + backupCount}
+                                        disabled={eligibleParticipants.length < winnerCount + backupCount}
                                         className={`inline-flex w-full min-h-[56px] items-center justify-center gap-2 rounded-2xl px-6 text-lg font-bold text-white shadow-[0_10px_30px_rgba(225,48,108,0.35)] transition hover:-translate-y-0.5 hover:shadow-[0_14px_36px_rgba(225,48,108,0.45)] disabled:pointer-events-none disabled:opacity-50 ${IG_GRADIENT}`}
                                     >
                                         <Play className="h-5 w-5 fill-current" /> {t.giveaway.startGiveaway}
                                     </button>
-                                    {participants.length < winnerCount + backupCount && (
-                                        <p className="text-center text-sm font-medium text-red-500">{t.home.notEnoughPeople}</p>
+                                    {eligibleParticipants.length < winnerCount + backupCount && (
+                                        <p className="text-center text-sm font-medium text-red-500">{t.giveaway.notEnoughEligible || t.home.notEnoughPeople}</p>
                                     )}
                                 </div>
                             </div>
