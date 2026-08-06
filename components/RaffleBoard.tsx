@@ -35,7 +35,7 @@ interface RaffleBoardProps {
     placeholder: string;
     /** localStorage taslak anahtarı (sayfaya özel) */
     storageKey: string;
-    /** Sonuç metnine eklenecek imza, ör. "🎰 www.yulasanta.com" */
+    /** Sonuç metnine eklenecek imza, ör. "🎰 www.yulasanta.com.tr" */
     shareSuffix?: string;
 }
 

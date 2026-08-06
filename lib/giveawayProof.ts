@@ -3,6 +3,8 @@
  * Encodes a compact JSON payload into a URL-safe token for /proof?d=...
  */
 
+import { SITE_HOST } from "@/lib/constants";
+
 export type DrawProof = {
     v: 1;
     platform: "instagram" | "youtube" | "tiktok" | "raffle";
@@ -87,7 +89,7 @@ export function proofPath(locale: string, token: string): string {
     return `${prefix}/proof?d=${encodeURIComponent(token)}`;
 }
 
-export function formatProofText(proof: DrawProof, site = "www.yulasanta.com.tr"): string {
+export function formatProofText(proof: DrawProof, site = SITE_HOST): string {
     const when = new Date(proof.at).toLocaleString();
     const winners = proof.winners.map((w, i) => `${i + 1}. @${w.name}`).join("\n");
     const backups =

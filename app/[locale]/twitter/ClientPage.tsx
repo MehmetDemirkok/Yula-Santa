@@ -20,7 +20,7 @@ export default function TwitterClient() {
             accentGlow="bg-sky-200 dark:bg-sky-500/20"
             placeholder="@kullanici"
             storageKey="twitter_raffle_draft"
-            shareSuffix="🎰 www.yulasanta.com"
+            shareSuffix="🎰 www.yulasanta.com.tr"
         />
     );
 }

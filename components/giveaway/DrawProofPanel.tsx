@@ -4,7 +4,7 @@ import { useState } from "react";
 import { Check, Copy, ExternalLink, ShieldCheck } from "lucide-react";
 import type { DrawProof } from "@/lib/giveawayProof";
 import { encodeProofToken, formatProofText, proofPath } from "@/lib/giveawayProof";
-import { SITE_URL } from "@/lib/constants";
+import { SITE_HOST, SITE_URL } from "@/lib/constants";
 
 type Props = {
     proof: DrawProof;
@@ -41,7 +41,7 @@ export function DrawProofPanel({
     const absoluteUrl = `${SITE_URL.replace(/\/$/, "")}${path.startsWith("/") ? path : `/${path}`}`;
 
     const copyProof = async () => {
-        const text = formatProofText(proof, SITE_URL.replace(/^https?:\/\//, ""));
+        const text = formatProofText(proof, SITE_HOST);
         await navigator.clipboard.writeText(`${text}\n\n${absoluteUrl}`);
         setCopied(true);
         onToast?.(labels.copied);

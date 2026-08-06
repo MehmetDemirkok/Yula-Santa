@@ -39,7 +39,7 @@ export default function RaffleClient() {
             accentGlow="bg-red-200 dark:bg-red-500/20"
             placeholder={locale === "tr" ? "İsim ekle" : "Add a name"}
             storageKey="generic_raffle_draft"
-            shareSuffix="🎰 www.yulasanta.com"
+            shareSuffix="🎰 www.yulasanta.com.tr"
         />
     );
 }

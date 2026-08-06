@@ -42,10 +42,11 @@ import ShareModal from "@/components/ShareModal";
 import { useToast } from "@/lib/ToastContext";
 import { downloadWinnerCard } from "@/lib/downloadWinnerCard";
 import { secureShuffle, secureRandomInt } from "@/lib/random";
-import { applyGiveawayFilters } from "@/lib/giveawayFilters";
+import { applyGiveawayFilters, extractOwnerFromSocialUrl } from "@/lib/giveawayFilters";
 import { buildDrawProof, type DrawProof } from "@/lib/giveawayProof";
 import { FilterRulesPanel } from "@/components/giveaway/FilterRulesPanel";
 import { DrawProofPanel } from "@/components/giveaway/DrawProofPanel";
+import { SITE_SHARE_SUFFIX } from "@/lib/constants";
 import { AdWrapper, InArticleAd } from "@/components/ads";
 import { AD_SLOTS } from "@/lib/ads/config";
 import { Reveal } from "@/components/Reveal";
@@ -85,6 +86,8 @@ export default function InstagramGiveaway() {
     const [requireFollow, setRequireFollow] = useState(true);
     const [countUserOnce, setCountUserOnce] = useState(true);
     const [keywordFilter, setKeywordFilter] = useState("");
+    const [excludeOwner, setExcludeOwner] = useState(true);
+    const [ownerUsername, setOwnerUsername] = useState("");
     const [drawProof, setDrawProof] = useState<DrawProof | null>(null);
 
     const [participants, setParticipants] = useState<Participant[]>([]);
@@ -127,13 +130,19 @@ export default function InstagramGiveaway() {
         });
     };
 
+    useEffect(() => {
+        const extracted = extractOwnerFromSocialUrl(postLink);
+        if (extracted) setOwnerUsername(extracted);
+    }, [postLink]);
+
     const { eligible: eligibleParticipants, stats: filterStats } = useMemo(
         () =>
             applyGiveawayFilters(participants, {
                 countUserOnce,
                 keyword: keywordFilter,
+                excludeNames: excludeOwner && ownerUsername.trim() ? [ownerUsername] : [],
             }),
-        [participants, countUserOnce, keywordFilter]
+        [participants, countUserOnce, keywordFilter, excludeOwner, ownerUsername]
     );
 
     const filterLabels = {
@@ -141,6 +150,11 @@ export default function InstagramGiveaway() {
         keywordPlaceholder: tg("keywordPlaceholder"),
         preview: tg.raw("preview") as string,
         previewHint: tg("previewHint"),
+        excludeOwner: tg("excludeOwner"),
+        eligibleWillEnter: tg.raw("eligibleWillEnter") as string,
+        eligibleListTitle: tg("eligibleListTitle"),
+        eligibleEmpty: tg("eligibleEmpty"),
+        ownerUsernamePlaceholder: tg("ownerUsernamePlaceholder"),
     };
 
     const proofLabels = {
@@ -389,7 +403,7 @@ export default function InstagramGiveaway() {
     };
 
     const getShareText = () => {
-        return `🎉 ${giveawayName || t.giveaway.instagramTitle} ${t.giveaway.results}\n\n🏆 ${t.giveaway.winners}:\n${winners.map((w, i) => `${i + 1}. @${w.name}`).join("\n")}${backups.length > 0 ? `\n\n🔄 ${t.giveaway.backups}:\n${backups.map((b, i) => `${i + 1}. @${b.name}`).join("\n")}` : ""}\n\n🎰 www.yulasanta.com.tr`;
+        return `🎉 ${giveawayName || t.giveaway.instagramTitle} ${t.giveaway.results}\n\n🏆 ${t.giveaway.winners}:\n${winners.map((w, i) => `${i + 1}. @${w.name}`).join("\n")}${backups.length > 0 ? `\n\n🔄 ${t.giveaway.backups}:\n${backups.map((b, i) => `${i + 1}. @${b.name}`).join("\n")}` : ""}\n\n${SITE_SHARE_SUFFIX}`;
     };
 
     const trustBadgeLabels = tl.raw("trustBadges") as string[];
@@ -836,6 +850,11 @@ export default function InstagramGiveaway() {
                                                 onKeywordChange={setKeywordFilter}
                                                 total={filterStats.total}
                                                 eligible={filterStats.eligible}
+                                                eligibleList={eligibleParticipants}
+                                                excludeOwner={excludeOwner}
+                                                onExcludeOwnerChange={setExcludeOwner}
+                                                ownerUsername={ownerUsername}
+                                                onOwnerUsernameChange={setOwnerUsername}
                                                 labels={filterLabels}
                                             />
                                         </div>

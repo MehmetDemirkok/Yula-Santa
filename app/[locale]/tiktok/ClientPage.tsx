@@ -1,8 +1,9 @@
 "use client";
 
-import { useState, useRef, useEffect } from "react";
-import { useRouter, useParams } from "next/navigation";
+import { useState, useRef, useEffect, useMemo } from "react";
+import { useRouter } from "next/navigation";
 import confetti from "canvas-confetti";
+import { useLocale, useTranslations } from "next-intl";
 import {
     MessageCircle,
     Plus,
@@ -25,6 +26,11 @@ import ShareModal from "@/components/ShareModal";
 import { useToast } from "@/lib/ToastContext";
 import { downloadWinnerCard } from "@/lib/downloadWinnerCard";
 import { secureShuffle, secureRandomInt } from "@/lib/random";
+import { applyGiveawayFilters, extractOwnerFromSocialUrl } from "@/lib/giveawayFilters";
+import { buildDrawProof, type DrawProof } from "@/lib/giveawayProof";
+import { FilterRulesPanel } from "@/components/giveaway/FilterRulesPanel";
+import { DrawProofPanel } from "@/components/giveaway/DrawProofPanel";
+import { SITE_SHARE_SUFFIX } from "@/lib/constants";
 import { AdWrapper, InArticleAd } from "@/components/ads";
 import { AD_SLOTS } from "@/lib/ads/config";
 
@@ -46,9 +52,9 @@ interface Participant {
 
 export default function TikTokGiveaway() {
     const router = useRouter();
-    const params = useParams();
-    const locale = params.locale as string;
+    const locale = useLocale();
     const { t } = useLanguage();
+    const tg = useTranslations("giveaway");
     const { toast } = useToast();
 
     // Tab state
@@ -66,6 +72,10 @@ export default function TikTokGiveaway() {
     const [backupCount, setBackupCount] = useState(0);
     const [requireFollow, setRequireFollow] = useState(true);
     const [countUserOnce, setCountUserOnce] = useState(true);
+    const [keywordFilter, setKeywordFilter] = useState("");
+    const [excludeOwner, setExcludeOwner] = useState(true);
+    const [ownerUsername, setOwnerUsername] = useState("");
+    const [drawProof, setDrawProof] = useState<DrawProof | null>(null);
 
     // Participants
     const [participants, setParticipants] = useState<Participant[]>([]);
@@ -307,24 +317,69 @@ export default function TikTokGiveaway() {
         }());
     };
 
+    useEffect(() => {
+        const extracted = extractOwnerFromSocialUrl(postLink);
+        if (extracted) {
+            setOwnerUsername(extracted);
+            if (!channelUsername) setChannelUsername(extracted);
+        }
+    }, [postLink]);
+
+    const { eligible: eligibleParticipants, stats: filterStats } = useMemo(
+        () =>
+            applyGiveawayFilters(participants, {
+                countUserOnce,
+                keyword: keywordFilter,
+                excludeNames: excludeOwner && ownerUsername.trim() ? [ownerUsername] : [],
+            }),
+        [participants, countUserOnce, keywordFilter, excludeOwner, ownerUsername]
+    );
+
+    const filterLabels = {
+        keywordLabel: tg("keywordLabel"),
+        keywordPlaceholder: tg("keywordPlaceholder"),
+        preview: tg.raw("preview") as string,
+        previewHint: tg("previewHint"),
+        excludeOwner: tg("excludeOwner"),
+        eligibleWillEnter: tg.raw("eligibleWillEnter") as string,
+        eligibleListTitle: tg("eligibleListTitle"),
+        eligibleEmpty: tg("eligibleEmpty"),
+        ownerUsernamePlaceholder: tg("ownerUsernamePlaceholder"),
+    };
+
+    const proofLabels = {
+        title: tg("proofTitle"),
+        seed: tg("proofSeed"),
+        drawnAt: tg("proofDrawnAt"),
+        eligible: tg("proofEligible"),
+        algorithm: tg("proofAlgorithm"),
+        copy: tg("proofCopy"),
+        copied: tg("proofCopied"),
+        openLink: tg("proofOpenLink"),
+        keyword: tg("proofKeyword"),
+        dedupeOn: tg("proofDedupeOn"),
+        dedupeOff: tg("proofDedupeOff"),
+    };
+
     const startGiveaway = () => {
-        if (participants.length < winnerCount + backupCount) {
-            toast.warning(t.home.notEnoughPeople || "Yeterli katılımcı yok");
+        if (eligibleParticipants.length < winnerCount + backupCount) {
+            toast.warning(tg("notEnoughEligible") || t.home.notEnoughPeople || "Yeterli katılımcı yok");
             return;
         }
 
         setIsRolling(true);
+        setDrawProof(null);
 
         // Rolling animation
         const interval = setInterval(() => {
-            const randomIndex = secureRandomInt(participants.length);
-            setRollingParticipant(participants[randomIndex]);
+            const randomIndex = secureRandomInt(eligibleParticipants.length);
+            setRollingParticipant(eligibleParticipants[randomIndex]);
         }, 80);
 
         setTimeout(() => {
             clearInterval(interval);
 
-            const shuffled = secureShuffle(participants);
+            const shuffled = secureShuffle(eligibleParticipants);
             const selectedWinners = shuffled.slice(0, winnerCount).map(w => ({ ...w, isFollowing: 'checking' as const }));
             const selectedBackups = shuffled.slice(winnerCount, winnerCount + backupCount).map(b => ({ ...b, isFollowing: 'checking' as const }));
 
@@ -332,6 +387,16 @@ export default function TikTokGiveaway() {
             setBackups(selectedBackups);
             setIsRolling(false);
             setShowResults(true);
+            setDrawProof(buildDrawProof({
+                platform: "tiktok",
+                title: giveawayName || t.giveaway.tiktokTitle,
+                total: filterStats.total,
+                eligible: filterStats.eligible,
+                keyword: keywordFilter,
+                countUserOnce,
+                winners: selectedWinners,
+                backups: selectedBackups,
+            }));
             triggerConfetti();
 
             // Check follower status if requireFollow is enabled and channelUsername is provided
@@ -348,6 +413,7 @@ export default function TikTokGiveaway() {
     const resetGiveaway = () => {
         setWinners([]);
         setBackups([]);
+        setDrawProof(null);
         setShowResults(false);
         setActiveTab('links');
     };
@@ -361,7 +427,7 @@ export default function TikTokGiveaway() {
     };
 
     const getShareText = () => {
-        return `🎉 ${giveawayName || t.giveaway.tiktokTitle} ${t.giveaway.results}\n\n🏆 ${t.giveaway.winners}:\n${winners.map((w, i) => `${i + 1}. @${w.name}`).join('\n')}${backups.length > 0 ? `\n\n🔄 ${t.giveaway.backups}:\n${backups.map((b, i) => `${i + 1}. @${b.name}`).join('\n')}` : ''}\n\n🎰 www.yulasanta.com.tr`;
+        return `🎉 ${giveawayName || t.giveaway.tiktokTitle} ${t.giveaway.results}\n\n🏆 ${t.giveaway.winners}:\n${winners.map((w, i) => `${i + 1}. @${w.name}`).join('\n')}${backups.length > 0 ? `\n\n🔄 ${t.giveaway.backups}:\n${backups.map((b, i) => `${i + 1}. @${b.name}`).join('\n')}` : ''}\n\n${SITE_SHARE_SUFFIX}`;
     };
 
     return (
@@ -630,6 +696,21 @@ export default function TikTokGiveaway() {
                                                     <span className={`absolute top-1 w-5 h-5 rounded-full bg-white shadow transition-transform ${countUserOnce ? 'right-1' : 'left-1'}`} />
                                                 </button>
                                             </label>
+                                            <FilterRulesPanel
+                                                keyword={keywordFilter}
+                                                onKeywordChange={setKeywordFilter}
+                                                total={filterStats.total}
+                                                eligible={filterStats.eligible}
+                                                eligibleList={eligibleParticipants}
+                                                excludeOwner={excludeOwner}
+                                                onExcludeOwnerChange={setExcludeOwner}
+                                                ownerUsername={ownerUsername}
+                                                onOwnerUsernameChange={setOwnerUsername}
+                                                accentClass="text-cyan-600"
+                                                toggleOnClass="bg-cyan-500"
+                                                inputFocusClass="focus:border-cyan-500 focus:ring-cyan-500/10"
+                                                labels={filterLabels}
+                                            />
                                         </div>
 
                                         {/* Channel Username for Follower Check */}
@@ -663,14 +744,14 @@ export default function TikTokGiveaway() {
                                                     {t.giveaway.participants} ({participants.length})
                                                 </Button>
 
-                                                <Button onClick={startGiveaway} disabled={participants.length < winnerCount + backupCount} className="bg-cyan-600 hover:bg-cyan-700 text-white shadow-lg shadow-cyan-200">
+                                                <Button onClick={startGiveaway} disabled={eligibleParticipants.length < winnerCount + backupCount} className="bg-cyan-600 hover:bg-cyan-700 text-white shadow-lg shadow-cyan-200">
                                                     <Play className="w-5 h-5 mr-2" /> {t.giveaway.startGiveaway}
                                                 </Button>
                                             </div>
                                         </div>
-                                        {participants.length < winnerCount + backupCount && (
+                                        {eligibleParticipants.length < winnerCount + backupCount && (
                                             <p className="text-center text-sm text-red-500 font-medium bg-red-50 py-2 rounded-lg mt-2">
-                                                ⚠️ {t.home.notEnoughPeople}
+                                                ⚠️ {tg("notEnoughEligible") || t.home.notEnoughPeople}
                                             </p>
                                         )}
                                     </div>
@@ -878,6 +959,16 @@ export default function TikTokGiveaway() {
                                             </div>
                                         )}
 
+                                        {drawProof && (
+                                            <DrawProofPanel
+                                                proof={drawProof}
+                                                locale={locale}
+                                                accentClass="text-cyan-600"
+                                                buttonClass="bg-cyan-600 hover:bg-cyan-700"
+                                                labels={proofLabels}
+                                                onToast={(msg) => toast.success(msg)}
+                                            />
+                                        )}
                                         <AdWrapper position="inline">
                                             <InArticleAd adSlot={AD_SLOTS.IN_ARTICLE} />
                                         </AdWrapper>

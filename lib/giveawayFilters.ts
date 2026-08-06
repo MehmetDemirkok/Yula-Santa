@@ -6,6 +6,7 @@
 export type GiveawayEntry = {
     name: string;
     comment?: string;
+    channelId?: string;
 };
 
 export type GiveawayFilterOptions = {
@@ -15,6 +16,8 @@ export type GiveawayFilterOptions = {
     keyword?: string;
     /** Usernames to exclude (owner, blocked). Normalized the same way as names. */
     excludeNames?: string[];
+    /** Channel / platform IDs to exclude (YouTube owner, etc.). */
+    excludeChannelIds?: string[];
 };
 
 export type FilterStats = {
@@ -25,8 +28,24 @@ export type FilterStats = {
     eligible: number;
 };
 
-function normalizeName(name: string): string {
+export function normalizeGiveawayName(name: string): string {
     return name.trim().replace(/^@+/, "").toLocaleLowerCase("tr-TR");
+}
+
+/** Best-effort owner handle from Instagram / TikTok URLs. */
+export function extractOwnerFromSocialUrl(url: string): string | null {
+    const raw = url.trim();
+    if (!raw) return null;
+
+    const tiktok = raw.match(/tiktok\.com\/@([^/?#]+)/i);
+    if (tiktok?.[1]) return normalizeGiveawayName(decodeURIComponent(tiktok[1]));
+
+    const igUserPath = raw.match(/instagram\.com\/([^/?#]+)\/(?:p|reel|reels|tv)\//i);
+    if (igUserPath?.[1] && !["p", "reel", "reels", "tv", "stories", "explore"].includes(igUserPath[1].toLowerCase())) {
+        return normalizeGiveawayName(decodeURIComponent(igUserPath[1]));
+    }
+
+    return null;
 }
 
 export function applyGiveawayFilters<T extends GiveawayEntry>(
@@ -47,7 +66,7 @@ export function applyGiveawayFilters<T extends GiveawayEntry>(
     if (options.countUserOnce) {
         const seen = new Set<string>();
         list = list.filter((e) => {
-            const key = normalizeName(e.name);
+            const key = normalizeGiveawayName(e.name);
             if (!key || seen.has(key)) return false;
             seen.add(key);
             return true;
@@ -55,9 +74,17 @@ export function applyGiveawayFilters<T extends GiveawayEntry>(
     }
     const afterDedupe = list.length;
 
-    const exclude = new Set((options.excludeNames ?? []).map(normalizeName).filter(Boolean));
-    if (exclude.size > 0) {
-        list = list.filter((e) => !exclude.has(normalizeName(e.name)));
+    const excludeNames = new Set((options.excludeNames ?? []).map(normalizeGiveawayName).filter(Boolean));
+    const excludeChannels = new Set(
+        (options.excludeChannelIds ?? []).map((id) => id.trim()).filter(Boolean)
+    );
+
+    if (excludeNames.size > 0 || excludeChannels.size > 0) {
+        list = list.filter((e) => {
+            if (excludeNames.has(normalizeGiveawayName(e.name))) return false;
+            if (e.channelId && excludeChannels.has(e.channelId)) return false;
+            return true;
+        });
     }
     const afterExclude = list.length;
 

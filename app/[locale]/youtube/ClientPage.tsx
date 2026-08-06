@@ -46,6 +46,7 @@ import { applyGiveawayFilters } from "@/lib/giveawayFilters";
 import { buildDrawProof, type DrawProof } from "@/lib/giveawayProof";
 import { FilterRulesPanel } from "@/components/giveaway/FilterRulesPanel";
 import { DrawProofPanel } from "@/components/giveaway/DrawProofPanel";
+import { SITE_SHARE_SUFFIX } from "@/lib/constants";
 import { AdWrapper, InArticleAd } from "@/components/ads";
 import { AD_SLOTS } from "@/lib/ads/config";
 import { Reveal } from "@/components/Reveal";
@@ -89,6 +90,7 @@ export default function YouTubeGiveaway() {
     const [requireNotification, setRequireNotification] = useState(false);
     const [countUserOnce, setCountUserOnce] = useState(true);
     const [keywordFilter, setKeywordFilter] = useState("");
+    const [excludeOwner, setExcludeOwner] = useState(true);
     const [drawProof, setDrawProof] = useState<DrawProof | null>(null);
     const [videoOwnerChannelId, setVideoOwnerChannelId] = useState<string | null>(null);
 
@@ -137,8 +139,9 @@ export default function YouTubeGiveaway() {
             applyGiveawayFilters(participants, {
                 countUserOnce,
                 keyword: keywordFilter,
+                excludeChannelIds: excludeOwner && videoOwnerChannelId ? [videoOwnerChannelId] : [],
             }),
-        [participants, countUserOnce, keywordFilter]
+        [participants, countUserOnce, keywordFilter, excludeOwner, videoOwnerChannelId]
     );
 
     const filterLabels = {
@@ -146,6 +149,11 @@ export default function YouTubeGiveaway() {
         keywordPlaceholder: tg("keywordPlaceholder"),
         preview: tg.raw("preview") as string,
         previewHint: tg("previewHint"),
+        excludeOwner: tg("excludeOwner"),
+        eligibleWillEnter: tg.raw("eligibleWillEnter") as string,
+        eligibleListTitle: tg("eligibleListTitle"),
+        eligibleEmpty: tg("eligibleEmpty"),
+        ownerUsernamePlaceholder: tg("ownerUsernamePlaceholder"),
     };
 
     const proofLabels = {
@@ -426,7 +434,7 @@ export default function YouTubeGiveaway() {
     };
 
     const getShareText = () => {
-        return `🎉 ${giveawayName || t.giveaway.youtubeTitle} ${t.giveaway.results}\n\n🏆 ${t.giveaway.winners}:\n${winners.map((w, i) => `${i + 1}. ${w.name}`).join("\n")}${backups.length > 0 ? `\n\n🔄 ${t.giveaway.backups}:\n${backups.map((b, i) => `${i + 1}. ${b.name}`).join("\n")}` : ""}\n\n🎰 www.yulasanta.com.tr`;
+        return `🎉 ${giveawayName || t.giveaway.youtubeTitle} ${t.giveaway.results}\n\n🏆 ${t.giveaway.winners}:\n${winners.map((w, i) => `${i + 1}. ${w.name}`).join("\n")}${backups.length > 0 ? `\n\n🔄 ${t.giveaway.backups}:\n${backups.map((b, i) => `${i + 1}. ${b.name}`).join("\n")}` : ""}\n\n${SITE_SHARE_SUFFIX}`;
     };
 
     const trustBadgeLabels = tl.raw("trustBadges") as string[];
@@ -923,7 +931,12 @@ export default function YouTubeGiveaway() {
                                                 onKeywordChange={setKeywordFilter}
                                                 total={filterStats.total}
                                                 eligible={filterStats.eligible}
+                                                eligibleList={eligibleParticipants}
+                                                excludeOwner={excludeOwner}
+                                                onExcludeOwnerChange={setExcludeOwner}
+                                                showExcludeOwner={Boolean(videoOwnerChannelId)}
                                                 accentClass="text-[#FF0000]"
+                                                toggleOnClass="bg-[#FF0000]"
                                                 inputFocusClass="focus:border-[#FF0000] focus:ring-red-500/10"
                                                 labels={filterLabels}
                                             />
