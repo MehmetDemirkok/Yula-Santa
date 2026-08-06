@@ -417,7 +417,7 @@ export default function ShortStrawPage() {
                               revealed={revealed}
                             />
                             {active && (
-                              <span className="absolute -right-9 top-1/3 rounded-md bg-santa-red px-1.5 py-0.5 text-[9px] font-black uppercase tracking-wide text-white shadow-lg">
+                              <span className="absolute -right-12 top-1/3 z-20 whitespace-nowrap rounded-full bg-santa-red px-2.5 py-1 text-[10px] font-black uppercase tracking-wider text-white shadow-lg">
                                 {t("shortStraw")}
                               </span>
                             )}
