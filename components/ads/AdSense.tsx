@@ -1,10 +1,10 @@
 "use client";
 
-import { useEffect } from 'react';
+import { useEffect, useRef } from 'react';
 
 declare global {
     interface Window {
-        adsbygoogle: any[];
+        adsbygoogle: unknown[];
     }
 }
 
@@ -16,13 +16,21 @@ interface AdSenseProps {
     className?: string;
 }
 
+function hasAdLoaded(el: HTMLElement): boolean {
+    // AdSense marks filled units; also guard if an iframe was already injected.
+    return (
+        el.getAttribute('data-adsbygoogle-status') === 'done' ||
+        el.getAttribute('data-ad-status') === 'filled' ||
+        el.dataset.adInitialized === 'true' ||
+        el.querySelector('iframe') !== null
+    );
+}
+
 /**
  * Google AdSense Ad Component
- * 
- * Usage:
- * <AdSense adSlot="1234567890" adFormat="auto" />
- * 
- * Note: Replace 'ca-pub-XXXXXXXXXXXXXXXX' in layout.tsx with your actual AdSense Publisher ID
+ *
+ * Pushes a fill request once per <ins> element. Guards against React Strict Mode
+ * double-effects and client navigations that remount the same slot.
  */
 export function AdSense({
     adSlot,
@@ -31,20 +39,42 @@ export function AdSense({
     style,
     className = ''
 }: AdSenseProps) {
+    const insRef = useRef<HTMLModElement>(null);
+    const pushedRef = useRef(false);
+
     useEffect(() => {
+        const el = insRef.current;
+        if (!el || pushedRef.current || hasAdLoaded(el)) {
+            return;
+        }
+
+        // Mark before push so a Strict Mode re-run / concurrent effect won't double-fill.
+        el.dataset.adInitialized = 'true';
+        pushedRef.current = true;
+
         try {
-            // Push ad only if adsbygoogle is available
-            if (typeof window !== 'undefined' && window.adsbygoogle) {
-                (window.adsbygoogle = window.adsbygoogle || []).push({});
-            }
+            if (typeof window === 'undefined') return;
+            window.adsbygoogle = window.adsbygoogle || [];
+            window.adsbygoogle.push({});
         } catch (error) {
+            // Allow a later remount with a fresh <ins> to retry if this push failed.
+            pushedRef.current = false;
+            delete el.dataset.adInitialized;
+
+            const message = error instanceof Error ? error.message : String(error);
+            // Benign when every visible unit is already filled (common in Strict Mode / HMR).
+            if (/already have ads/i.test(message)) {
+                return;
+            }
             console.error('AdSense error:', error);
         }
-    }, []);
+    }, [adSlot]);
 
     return (
         <div className={`adsense-container ${className}`} style={style}>
             <ins
+                ref={insRef}
+                key={adSlot}
                 className="adsbygoogle"
                 style={{
                     display: 'block',

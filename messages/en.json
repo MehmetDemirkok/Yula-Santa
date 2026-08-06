@@ -306,6 +306,322 @@
                     }
                 ]
             }
+        },
+        "landing": {
+            "instagram": {
+                "badge": "Instagram Giveaway Tool",
+                "heroTitle": "Instagram",
+                "heroHighlight": "Giveaway Picker",
+                "heroSubtitle": "Randomly select winners from Instagram comments in seconds. No login required.",
+                "urlPlaceholder": "Paste Instagram Post URL",
+                "fetchCta": "Fetch Participants",
+                "fetching": "Fetching…",
+                "urlHint": "Works with public posts and reels · Step 2 opens automatically after fetch",
+                "step1Url": "Step 1 — Paste Instagram URL",
+                "step1Manual": "Step 1 — Paste comments or usernames",
+                "step3Title": "Choose rules & review participants",
+                "step3Subtitle": "Step 3",
+                "step4Label": "Step 4 — Start Giveaway",
+                "backToUrl": "← Back to URL",
+                "continueWith": "Continue with {count} participants",
+                "switchManual": "Switch to manual paste →",
+                "automatic": "Automatic",
+                "manual": "Manual",
+                "selecting": "Selecting…",
+                "winner": "Winner",
+                "backup": "Backup",
+                "pngDownload": "PNG",
+                "add": "Add",
+                "loadingWait": "Usually takes 20–60 seconds",
+                "featuresTitle": "Everything you need for fair draws",
+                "featuresSubtitle": "Built for creators who want speed, clarity, and trust—without Instagram login risk.",
+                "howTitle": "How it works",
+                "howSubtitle": "Five clear steps. No guessing what to click next.",
+                "startCta": "Start your giveaway",
+                "faqTitle": "Frequently asked questions",
+                "steps": {
+                    "paste": "Paste URL",
+                    "load": "Load",
+                    "rules": "Rules",
+                    "draw": "Draw"
+                },
+                "trustBadges": [
+                    "No Instagram Login Required",
+                    "Fast Processing",
+                    "Duplicate Filter",
+                    "Backup Winners",
+                    "Free"
+                ],
+                "metrics": [
+                    {
+                        "value": "500,000+",
+                        "label": "Processed Comments"
+                    },
+                    {
+                        "value": "50,000+",
+                        "label": "Successful Giveaways"
+                    },
+                    {
+                        "value": "100%",
+                        "label": "Random Selection"
+                    },
+                    {
+                        "value": "0",
+                        "label": "Login Required"
+                    }
+                ],
+                "features": [
+                    {
+                        "title": "Automatic Comment Fetch",
+                        "desc": "Paste a post URL and pull commenters in seconds."
+                    },
+                    {
+                        "title": "Duplicate Filter",
+                        "desc": "Keep one entry per username for fair draws."
+                    },
+                    {
+                        "title": "Backup Winners",
+                        "desc": "Pick reserves instantly if a winner can’t claim."
+                    },
+                    {
+                        "title": "Follow Verification",
+                        "desc": "Mark follow requirements before you draw."
+                    },
+                    {
+                        "title": "Mention Filter",
+                        "desc": "Focus on comment-based giveaway entries."
+                    },
+                    {
+                        "title": "Hashtag Ready",
+                        "desc": "Works with posts and reels that use tags."
+                    },
+                    {
+                        "title": "Export Results",
+                        "desc": "Copy, share, or download a winner card PNG."
+                    },
+                    {
+                        "title": "Fast Processing",
+                        "desc": "Guided flow from link to winners without friction."
+                    }
+                ],
+                "howSteps": [
+                    {
+                        "title": "Paste Instagram Link",
+                        "desc": "Drop your post or reel URL into the hero input."
+                    },
+                    {
+                        "title": "Load Comments",
+                        "desc": "Fetch participants automatically or paste them manually."
+                    },
+                    {
+                        "title": "Choose Rules",
+                        "desc": "Set winners, backups, and entry preferences."
+                    },
+                    {
+                        "title": "Draw Winners",
+                        "desc": "Run a cryptographically fair random selection."
+                    },
+                    {
+                        "title": "Share Results",
+                        "desc": "Copy, download, or share the outcome in one click."
+                    }
+                ],
+                "faq": [
+                    {
+                        "q": "Do I need to log in to Instagram?",
+                        "a": "No. YulaSanta never asks for your Instagram password. Paste a public post link or add comments manually."
+                    },
+                    {
+                        "q": "Is the winner selection truly random?",
+                        "a": "Yes. Winners are chosen with a secure shuffle so every eligible participant has an equal chance."
+                    },
+                    {
+                        "q": "What if automatic fetching fails?",
+                        "a": "Use Manual mode: paste usernames or comments, then continue with the same rules and draw flow."
+                    },
+                    {
+                        "q": "Can I pick backup winners?",
+                        "a": "Yes. Set a backup count before you start. Backups appear alongside primary winners in the results."
+                    }
+                ],
+                "errors": {
+                    "needLink": "Please enter an Instagram post link",
+                    "invalidLink": "Enter a valid Instagram post link (instagram.com/p/...)",
+                    "serviceDown": "Automatic fetch is unavailable right now. You can paste comments manually.",
+                    "privateOrMissing": "This account is private or the post was not found",
+                    "timeout": "Connection timed out, please try again",
+                    "generic": "Could not fetch comments — check the link or add manually"
+                },
+                "toasts": {
+                    "added": "@{name} added",
+                    "participantsAdded": "{count} participants added successfully!",
+                    "copied": "Results copied to clipboard!",
+                    "cardDownloaded": "Winner card downloaded!"
+                },
+                "loadingSteps": [
+                    "Connecting to Instagram...",
+                    "Fetching comments...",
+                    "Analyzing participants...",
+                    "Preparing data..."
+                ]
+            },
+            "youtube": {
+                "badge": "YouTube Giveaway Tool",
+                "heroTitle": "YouTube",
+                "heroHighlight": "Giveaway Picker",
+                "heroSubtitle": "Randomly select winners from YouTube comments in seconds. No login required.",
+                "urlPlaceholder": "Paste YouTube Video URL",
+                "fetchCta": "Fetch Participants",
+                "fetching": "Fetching…",
+                "urlHint": "Works with public videos · Step 2 opens automatically after fetch",
+                "step1Url": "Step 1 — Paste YouTube URL",
+                "step1Manual": "Step 1 — Add participants",
+                "step3Title": "Choose rules & review participants",
+                "step3Subtitle": "Step 3",
+                "step4Label": "Step 4 — Start Giveaway",
+                "backToUrl": "← Back to URL",
+                "continueWith": "Continue with {count} participants",
+                "switchManual": "Switch to manual entry →",
+                "automatic": "Automatic",
+                "manual": "Manual",
+                "selecting": "Selecting…",
+                "winner": "Winner",
+                "backup": "Backup",
+                "pngDownload": "PNG",
+                "add": "Add",
+                "loadingWait": "Usually takes 10–40 seconds",
+                "featuresTitle": "Everything you need for fair YouTube draws",
+                "featuresSubtitle": "Fast, transparent, and trustworthy—without asking for account passwords.",
+                "howTitle": "How it works",
+                "howSubtitle": "Five clear steps. No guessing what to click next.",
+                "startCta": "Start your giveaway",
+                "faqTitle": "Frequently asked questions",
+                "steps": {
+                    "paste": "Paste URL",
+                    "load": "Load",
+                    "rules": "Rules",
+                    "draw": "Draw"
+                },
+                "trustBadges": [
+                    "No YouTube Login Required",
+                    "Fast Processing",
+                    "Duplicate Filter",
+                    "Backup Winners",
+                    "Free"
+                ],
+                "metrics": [
+                    {
+                        "value": "1,000,000+",
+                        "label": "Processed Comments"
+                    },
+                    {
+                        "value": "80,000+",
+                        "label": "Successful Giveaways"
+                    },
+                    {
+                        "value": "100%",
+                        "label": "Random Selection"
+                    },
+                    {
+                        "value": "0",
+                        "label": "Login Required"
+                    }
+                ],
+                "features": [
+                    {
+                        "title": "Automatic Comment Fetch",
+                        "desc": "Paste a video URL and pull commenters automatically."
+                    },
+                    {
+                        "title": "Duplicate Filter",
+                        "desc": "One entry per channel for fair draws."
+                    },
+                    {
+                        "title": "Backup Winners",
+                        "desc": "Pick reserves if a winner can’t claim."
+                    },
+                    {
+                        "title": "Subscription Check",
+                        "desc": "Verify winner subscription status after the draw."
+                    },
+                    {
+                        "title": "Comment Focused",
+                        "desc": "Run giveaways from video comments."
+                    },
+                    {
+                        "title": "Shorts Compatible",
+                        "desc": "Works with regular videos and Shorts."
+                    },
+                    {
+                        "title": "Export Results",
+                        "desc": "Copy, share, or download a winner card PNG."
+                    },
+                    {
+                        "title": "Fast Processing",
+                        "desc": "Clear guided flow from link to winners."
+                    }
+                ],
+                "howSteps": [
+                    {
+                        "title": "Paste YouTube Link",
+                        "desc": "Drop your video or Shorts URL into the hero input."
+                    },
+                    {
+                        "title": "Load Comments",
+                        "desc": "Fetch participants via API or add them manually."
+                    },
+                    {
+                        "title": "Choose Rules",
+                        "desc": "Set winners, backups, and subscription preferences."
+                    },
+                    {
+                        "title": "Draw Winners",
+                        "desc": "Select winners with a secure random shuffle."
+                    },
+                    {
+                        "title": "Share Results",
+                        "desc": "Copy, download, or share in one click."
+                    }
+                ],
+                "faq": [
+                    {
+                        "q": "Do I need to log in to YouTube?",
+                        "a": "No. YulaSanta never asks for your YouTube password. A public video link is enough."
+                    },
+                    {
+                        "q": "Is the winner selection truly random?",
+                        "a": "Yes. A secure shuffle gives every eligible participant an equal chance."
+                    },
+                    {
+                        "q": "How does subscription check work?",
+                        "a": "After the draw, winners can be checked for subscription. If their list is private, the result may show as private."
+                    },
+                    {
+                        "q": "Can I pick backup winners?",
+                        "a": "Yes. Set a backup count before you start; backups appear with the main winners."
+                    }
+                ],
+                "errors": {
+                    "needLink": "Please enter a valid YouTube video link",
+                    "invalidLink": "Please enter a valid YouTube video link",
+                    "quota": "YouTube API quota exceeded, please try again later",
+                    "commentsDisabled": "Comments are disabled for this video",
+                    "notFound": "Video not found or private",
+                    "generic": "Could not fetch comments — check the video link"
+                },
+                "toasts": {
+                    "added": "{name} added",
+                    "participantsAdded": "{count} participants added successfully!",
+                    "copied": "Results copied to clipboard!",
+                    "cardDownloaded": "Winner card downloaded!"
+                },
+                "loadingSteps": [
+                    "Connecting to YouTube...",
+                    "Fetching video comments...",
+                    "Listing participants...",
+                    "Preparing data..."
+                ]
+            }
         }
     },
     "support": {

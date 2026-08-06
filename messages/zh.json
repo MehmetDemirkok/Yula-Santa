@@ -201,7 +201,323 @@
         "notSubscribed": "未订阅",
         "subscribedPrivate": "私密",
         "checkingSubscription": "检查中...",
-        "seo": {}
+        "seo": {},
+        "landing": {
+            "instagram": {
+                "badge": "Instagram 抽奖工具",
+                "heroTitle": "Instagram",
+                "heroHighlight": "抽奖选择器",
+                "heroSubtitle": "几秒钟内从 Instagram 评论中随机抽取中奖者。无需登录。",
+                "urlPlaceholder": "粘贴 Instagram 帖子链接",
+                "fetchCta": "获取参与者",
+                "fetching": "正在获取…",
+                "urlHint": "适用于公开帖子和 Reels · 获取后将自动进入第 2 步",
+                "step1Url": "第 1 步 — 粘贴 Instagram 链接",
+                "step1Manual": "第 1 步 — 粘贴评论或用户名",
+                "step3Title": "选择规则并检查参与者",
+                "step3Subtitle": "第 3 步",
+                "step4Label": "第 4 步 — 开始抽奖",
+                "backToUrl": "← 返回链接",
+                "continueWith": "使用 {count} 名参与者继续",
+                "switchManual": "切换到手动粘贴 →",
+                "automatic": "自动",
+                "manual": "手动",
+                "selecting": "正在抽取…",
+                "winner": "中奖者",
+                "backup": "候补",
+                "pngDownload": "PNG",
+                "add": "添加",
+                "loadingWait": "通常需要 20–60 秒",
+                "featuresTitle": "公平抽奖所需的一切",
+                "featuresSubtitle": "快速、透明且安全 — 无需承担 Instagram 登录风险。",
+                "howTitle": "工作原理",
+                "howSubtitle": "清晰的五个步骤，无需繁琐操作。",
+                "startCta": "开始抽奖",
+                "faqTitle": "常见问题",
+                "steps": {
+                    "paste": "粘贴链接",
+                    "load": "加载评论",
+                    "rules": "设置规则",
+                    "draw": "开始抽奖"
+                },
+                "trustBadges": [
+                    "无需登录 Instagram",
+                    "快速处理",
+                    "重复过滤",
+                    "候补中奖者",
+                    "免费"
+                ],
+                "metrics": [
+                    {
+                        "value": "500.000+",
+                        "label": "已处理评论"
+                    },
+                    {
+                        "value": "50.000+",
+                        "label": "成功抽奖"
+                    },
+                    {
+                        "value": "%100",
+                        "label": "随机抽取"
+                    },
+                    {
+                        "value": "0",
+                        "label": "无需登录"
+                    }
+                ],
+                "features": [
+                    {
+                        "title": "自动提取评论",
+                        "desc": "粘贴帖子链接，几秒钟内即可获取参与者。"
+                    },
+                    {
+                        "title": "重复项过滤",
+                        "desc": "每位用户仅限一次参与，确保抽奖公平。"
+                    },
+                    {
+                        "title": "候补中奖者",
+                        "desc": "若无法联系到中奖者，可立即选择候补人员。"
+                    },
+                    {
+                        "title": "关注要求",
+                        "desc": "抽奖前检查关注规则。"
+                    },
+                    {
+                        "title": "提及/艾特筛选",
+                        "desc": "专注于基于评论的抽奖活动。"
+                    },
+                    {
+                        "title": "话题标签兼容",
+                        "desc": "适用于带有标签的帖子和 Reels。"
+                    },
+                    {
+                        "title": "导出结果",
+                        "desc": "一键复制、分享或下载中奖者 PNG 卡片。"
+                    },
+                    {
+                        "title": "高效处理",
+                        "desc": "从链接到生成中奖者，流程顺畅无阻。"
+                    }
+                ],
+                "howSteps": [
+                    {
+                        "title": "粘贴 Instagram 链接",
+                        "desc": "将帖子或 Reels URL 粘贴到输入框中。"
+                    },
+                    {
+                        "title": "加载评论",
+                        "desc": "自动获取参与者或手动粘贴评论。"
+                    },
+                    {
+                        "title": "选择规则",
+                        "desc": "设置中奖人数、候补人数及参与条件。"
+                    },
+                    {
+                        "title": "抽取中奖者",
+                        "desc": "进行加密级公平的随机抽取。"
+                    },
+                    {
+                        "title": "分享结果",
+                        "desc": "一键复制、下载或分享结果。"
+                    }
+                ],
+                "faq": [
+                    {
+                        "q": "我需要登录 Instagram 吗？",
+                        "a": "不需要。YulaSanta 不会索要您的 Instagram 密码。只需粘贴公开帖子链接或手动添加评论即可。"
+                    },
+                    {
+                        "q": "抽奖结果真的随机吗？",
+                        "a": "是的。中奖者通过安全的随机打乱算法选出，每位符合条件的参与者中奖概率均等。"
+                    },
+                    {
+                        "q": "如果自动提取失败怎么办？",
+                        "a": "可切换至手动模式：粘贴用户名或评论，继续使用相同的规则和抽奖流程。"
+                    },
+                    {
+                        "q": "我可以选择候补中奖者吗？",
+                        "a": "可以。开始前设置候补人数即可。候补人员将与正式中奖者一同显示在结果中。"
+                    }
+                ],
+                "errors": {
+                    "needLink": "请输入 Instagram 帖子链接",
+                    "invalidLink": "请输入有效的 Instagram 帖子链接 (instagram.com/p/...)",
+                    "serviceDown": "自动提取暂时不可用。您可以手动粘贴评论。",
+                    "privateOrMissing": "该账号为私密账号或帖子不存在",
+                    "timeout": "连接超时，请重试",
+                    "generic": "无法提取评论 — 请检查链接或手动添加"
+                },
+                "toasts": {
+                    "added": "已添加 @{name}",
+                    "participantsAdded": "成功添加 {count} 名参与者！",
+                    "copied": "结果已复制到剪贴板！",
+                    "cardDownloaded": "中奖者卡片已下载！"
+                },
+                "loadingSteps": [
+                    "正在连接到 Instagram...",
+                    "正在提取评论...",
+                    "正在分析参与者...",
+                    "正在准备数据..."
+                ]
+            },
+            "youtube": {
+                "badge": "YouTube 抽奖工具",
+                "heroTitle": "YouTube",
+                "heroHighlight": "抽奖选择器",
+                "heroSubtitle": "几秒钟内从 YouTube 评论中随机抽取中奖者。无需登录。",
+                "urlPlaceholder": "粘贴 YouTube 视频链接",
+                "fetchCta": "获取参与者",
+                "fetching": "正在获取…",
+                "urlHint": "适用于公开视频 · 获取后将自动进入第 2 步",
+                "step1Url": "第 1 步 — 粘贴 YouTube 链接",
+                "step1Manual": "第 1 步 — 添加参与者",
+                "step3Title": "选择规则并检查参与者",
+                "step3Subtitle": "第 3 步",
+                "step4Label": "第 4 步 — 开始抽奖",
+                "backToUrl": "← 返回链接",
+                "continueWith": "使用 {count} 名参与者继续",
+                "switchManual": "切换到手动添加 →",
+                "automatic": "自动",
+                "manual": "手动",
+                "selecting": "正在抽取…",
+                "winner": "中奖者",
+                "backup": "候补",
+                "pngDownload": "PNG",
+                "add": "添加",
+                "loadingWait": "通常需要 10–40 秒",
+                "featuresTitle": "公平 YouTube 抽奖所需的一切",
+                "featuresSubtitle": "快速、透明且可靠 — 无需输入账号密码。",
+                "howTitle": "工作原理",
+                "howSubtitle": "清晰的五个步骤，无需繁琐操作。",
+                "startCta": "开始抽奖",
+                "faqTitle": "常见问题",
+                "steps": {
+                    "paste": "粘贴链接",
+                    "load": "加载评论",
+                    "rules": "设置规则",
+                    "draw": "开始抽奖"
+                },
+                "trustBadges": [
+                    "无需登录 YouTube",
+                    "快速处理",
+                    "重复过滤",
+                    "候补中奖者",
+                    "免费"
+                ],
+                "metrics": [
+                    {
+                        "value": "1.000.000+",
+                        "label": "已处理评论"
+                    },
+                    {
+                        "value": "80.000+",
+                        "label": "成功抽奖"
+                    },
+                    {
+                        "value": "%100",
+                        "label": "随机抽取"
+                    },
+                    {
+                        "value": "0",
+                        "label": "无需登录"
+                    }
+                ],
+                "features": [
+                    {
+                        "title": "自动提取评论",
+                        "desc": "粘贴视频链接，自动获取评论者。"
+                    },
+                    {
+                        "title": "重复项过滤",
+                        "desc": "每个频道仅限一次参与，确保抽奖公平。"
+                    },
+                    {
+                        "title": "候补中奖者",
+                        "desc": "为无法联系到的中奖者选择候补人员。"
+                    },
+                    {
+                        "title": "订阅状态检查",
+                        "desc": "检查中奖者的订阅状态。"
+                    },
+                    {
+                        "title": "基于评论",
+                        "desc": "基于视频评论进行抽奖。"
+                    },
+                    {
+                        "title": "Shorts 兼容",
+                        "desc": "适用于普通视频和 Shorts 链接。"
+                    },
+                    {
+                        "title": "导出结果",
+                        "desc": "一键复制、分享或下载中奖者 PNG 卡片。"
+                    },
+                    {
+                        "title": "高效处理",
+                        "desc": "从链接到生成中奖者，流程简洁高效。"
+                    }
+                ],
+                "howSteps": [
+                    {
+                        "title": "粘贴 YouTube 链接",
+                        "desc": "将视频或 Shorts URL 粘贴到输入框中。"
+                    },
+                    {
+                        "title": "加载评论",
+                        "desc": "通过 API 获取参与者或手动添加。"
+                    },
+                    {
+                        "title": "选择规则",
+                        "desc": "设置中奖人数、候补人数及订阅选项。"
+                    },
+                    {
+                        "title": "抽取中奖者",
+                        "desc": "通过安全的随机算法确定中奖者。"
+                    },
+                    {
+                        "title": "分享结果",
+                        "desc": "一键复制、下载或分享结果。"
+                    }
+                ],
+                "faq": [
+                    {
+                        "q": "我需要登录 YouTube 吗？",
+                        "a": "不需要。YulaSanta 不会索要您的 YouTube 密码。只需公开视频链接即可。"
+                    },
+                    {
+                        "q": "抽奖结果真的随机吗？",
+                        "a": "是的。通过安全的随机打乱算法，每位符合条件的参与者中奖概率均等。"
+                    },
+                    {
+                        "q": "订阅状态检查是如何工作的？",
+                        "a": "抽奖后会检查中奖者的订阅状态。如果其订阅列表设为私密，结果可能会显示为“私密”。"
+                    },
+                    {
+                        "q": "我可以选择候补中奖者吗？",
+                        "a": "可以。开始前设置候补人数，候补结果将一同列出。"
+                    }
+                ],
+                "errors": {
+                    "needLink": "请输入有效的 YouTube 视频链接",
+                    "invalidLink": "请输入有效的 YouTube 视频链接",
+                    "quota": "YouTube API 配额已满，请稍后再试",
+                    "commentsDisabled": "此视频已禁用评论",
+                    "notFound": "未找到视频或视频已设为私密",
+                    "generic": "无法提取评论 — 请检查视频链接"
+                },
+                "toasts": {
+                    "added": "已添加 {name}",
+                    "participantsAdded": "成功添加 {count} 名参与者！",
+                    "copied": "结果已复制到剪贴板！",
+                    "cardDownloaded": "中奖者卡片已下载！"
+                },
+                "loadingSteps": [
+                    "正在连接到 YouTube...",
+                    "正在提取视频评论...",
+                    "正在列出参与者...",
+                    "正在准备数据..."
+                ]
+            }
+        }
     },
     "support": {
         "button": "支持",

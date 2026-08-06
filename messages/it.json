@@ -200,7 +200,323 @@
         "notSubscribed": "Non iscritto",
         "subscribedPrivate": "Privato",
         "checkingSubscription": "Verifica in corso...",
-        "seo": {}
+        "seo": {},
+        "landing": {
+            "instagram": {
+                "badge": "Strumento per Giveaway Instagram",
+                "heroTitle": "Instagram",
+                "heroHighlight": "Estrattore di Giveaway",
+                "heroSubtitle": "Scegli un vincitore casuale dai commenti di Instagram in pochi secondi. Nessun login richiesto.",
+                "urlPlaceholder": "Incolla il link del post Instagram",
+                "fetchCta": "Recupera Partecipanti",
+                "fetching": "Recupero in corso…",
+                "urlHint": "Funziona con post e Reel pubblici · Il passaggio 2 si apre automaticamente dopo il recupero",
+                "step1Url": "Passaggio 1 — Incolla il link Instagram",
+                "step1Manual": "Passaggio 1 — Incolla commenti o nomi utente",
+                "step3Title": "Scegli le regole e controlla i partecipanti",
+                "step3Subtitle": "Passaggio 3",
+                "step4Label": "Passaggio 4 — Avvia l'estrazione",
+                "backToUrl": "← Torna al link",
+                "continueWith": "Continua con {count} partecipanti",
+                "switchManual": "Passa all'inserimento manuale →",
+                "automatic": "Automatico",
+                "manual": "Manuale",
+                "selecting": "Estrazione in corso…",
+                "winner": "Vincitore",
+                "backup": "Riserva",
+                "pngDownload": "PNG",
+                "add": "Aggiungi",
+                "loadingWait": "Di solito richiede 20–60 secondi",
+                "featuresTitle": "Tutto ciò di cui hai bisogno per un'estrazione equa",
+                "featuresSubtitle": "Velocità, chiarezza e affidabilità — senza rischiare il login di Instagram.",
+                "howTitle": "Come funziona?",
+                "howSubtitle": "Cinque semplici passaggi. Non dovrai pensare a cosa cliccare.",
+                "startCta": "Avvia l'estrazione",
+                "faqTitle": "Domande frequenti",
+                "steps": {
+                    "paste": "Incolla link",
+                    "load": "Carica",
+                    "rules": "Regole",
+                    "draw": "Estrazione"
+                },
+                "trustBadges": [
+                    "Nessun login Instagram richiesto",
+                    "Processo rapido",
+                    "Filtro duplicati",
+                    "Vincitori di riserva",
+                    "Gratuito"
+                ],
+                "metrics": [
+                    {
+                        "value": "500.000+",
+                        "label": "Commenti elaborati"
+                    },
+                    {
+                        "value": "50.000+",
+                        "label": "Estrazioni con successo"
+                    },
+                    {
+                        "value": "100%",
+                        "label": "Selezione casuale"
+                    },
+                    {
+                        "value": "0",
+                        "label": "Login richiesti"
+                    }
+                ],
+                "features": [
+                    {
+                        "title": "Estrazione automatica dei commenti",
+                        "desc": "Incolla il link del post e ottieni i partecipanti in pochi secondi."
+                    },
+                    {
+                        "title": "Filtro duplicati",
+                        "desc": "Una sola voce per utente per un'estrazione equa."
+                    },
+                    {
+                        "title": "Vincitori di riserva",
+                        "desc": "Seleziona istantaneamente i sostituti se il vincitore non è raggiungibile."
+                    },
+                    {
+                        "title": "Requisito di follow",
+                        "desc": "Spunta la regola di follow prima dell'estrazione."
+                    },
+                    {
+                        "title": "Focus sulle menzioni",
+                        "desc": "Concentrati sui giveaway basati sui commenti."
+                    },
+                    {
+                        "title": "Compatibile con gli hashtag",
+                        "desc": "Funziona con post e Reel con hashtag."
+                    },
+                    {
+                        "title": "Esportazione dei risultati",
+                        "desc": "Copia, condividi o scarica la scheda del vincitore in PNG."
+                    },
+                    {
+                        "title": "Processo rapido",
+                        "desc": "Dal link ai vincitori senza intoppi."
+                    }
+                ],
+                "howSteps": [
+                    {
+                        "title": "Incolla il link Instagram",
+                        "desc": "Trascina l'URL del post o del Reel nella sezione principale."
+                    },
+                    {
+                        "title": "Carica i commenti",
+                        "desc": "Recupera i partecipanti automaticamente o incollali manualmente."
+                    },
+                    {
+                        "title": "Scegli le regole",
+                        "desc": "Imposta i vincitori, le riserve e le preferenze di partecipazione."
+                    },
+                    {
+                        "title": "Estrai i vincitori",
+                        "desc": "Esegui una selezione casuale crittograficamente equa."
+                    },
+                    {
+                        "title": "Condividi i risultati",
+                        "desc": "Copia, scarica o condividi con un solo clic."
+                    }
+                ],
+                "faq": [
+                    {
+                        "q": "Devo accedere a Instagram?",
+                        "a": "No. YulaSanta non richiede la tua password di Instagram. Incolla un link a un post pubblico o aggiungi i commenti manualmente."
+                    },
+                    {
+                        "q": "La selezione del vincitore è davvero casuale?",
+                        "a": "Sì. I vincitori vengono scelti tramite un mescolamento sicuro; ogni partecipante idoneo ha le stesse possibilità."
+                    },
+                    {
+                        "q": "Cosa succede se l'estrazione automatica non funziona?",
+                        "a": "Passa alla modalità manuale: incolla i nomi utente o i commenti e prosegui con le stesse regole e il medesimo flusso di estrazione."
+                    },
+                    {
+                        "q": "Posso scegliere vincitori di riserva?",
+                        "a": "Sì. Imposta il numero di riserve prima di iniziare. Le riserve appariranno nei risultati insieme ai vincitori principali."
+                    }
+                ],
+                "errors": {
+                    "needLink": "Inserisci un link a un post di Instagram",
+                    "invalidLink": "Inserisci un link valido a un post di Instagram (instagram.com/p/...)",
+                    "serviceDown": "L'estrazione automatica non è al momento disponibile. Puoi incollare i commenti manualmente.",
+                    "privateOrMissing": "Questo account è privato o il post non è stato trovato",
+                    "timeout": "Connessione scaduta, riprova",
+                    "generic": "Impossibile recuperare i commenti — controlla il link o aggiungili manualmente"
+                },
+                "toasts": {
+                    "added": "@{name} aggiunto",
+                    "participantsAdded": "{count} partecipanti aggiunti con successo!",
+                    "copied": "Risultati copiati negli appunti!",
+                    "cardDownloaded": "Scheda del vincitore scaricata!"
+                },
+                "loadingSteps": [
+                    "Connessione a Instagram in corso...",
+                    "Recupero dei commenti in corso...",
+                    "Analisi dei partecipanti in corso...",
+                    "Preparazione dei dati in corso..."
+                ]
+            },
+            "youtube": {
+                "badge": "Strumento per Giveaway YouTube",
+                "heroTitle": "YouTube",
+                "heroHighlight": "Estrattore di Giveaway",
+                "heroSubtitle": "Scegli un vincitore casuale dai commenti di YouTube in pochi secondi. Nessun login richiesto.",
+                "urlPlaceholder": "Incolla il link del video di YouTube",
+                "fetchCta": "Recupera Partecipanti",
+                "fetching": "Recupero in corso…",
+                "urlHint": "Funziona con i video pubblici · Il passaggio 2 si apre automaticamente dopo il recupero",
+                "step1Url": "Passaggio 1 — Incolla il link YouTube",
+                "step1Manual": "Passaggio 1 — Aggiungi partecipanti",
+                "step3Title": "Scegli le regole e controlla i partecipanti",
+                "step3Subtitle": "Passaggio 3",
+                "step4Label": "Passaggio 4 — Avvia l'estrazione",
+                "backToUrl": "← Torna al link",
+                "continueWith": "Continua con {count} partecipanti",
+                "switchManual": "Passa all'inserimento manuale →",
+                "automatic": "Automatico",
+                "manual": "Manuale",
+                "selecting": "Estrazione in corso…",
+                "winner": "Vincitore",
+                "backup": "Riserva",
+                "pngDownload": "PNG",
+                "add": "Aggiungi",
+                "loadingWait": "Di solito richiede 10–40 secondi",
+                "featuresTitle": "Tutto per giveaway YouTube equi",
+                "featuresSubtitle": "Veloce, trasparente e affidabile — senza richiedere la password del tuo account.",
+                "howTitle": "Come funciona?",
+                "howSubtitle": "Cinque semplici passaggi. Non dovrai pensare a cosa cliccare.",
+                "startCta": "Avvia l'estrazione",
+                "faqTitle": "Domande frequenti",
+                "steps": {
+                    "paste": "Incolla link",
+                    "load": "Carica",
+                    "rules": "Regole",
+                    "draw": "Estrazione"
+                },
+                "trustBadges": [
+                    "Nessun login YouTube richiesto",
+                    "Processo rapido",
+                    "Filtro duplicati",
+                    "Vincitori di riserva",
+                    "Gratuito"
+                ],
+                "metrics": [
+                    {
+                        "value": "1.000.000+",
+                        "label": "Commenti elaborati"
+                    },
+                    {
+                        "value": "80.000+",
+                        "label": "Estrazioni con successo"
+                    },
+                    {
+                        "value": "100%",
+                        "label": "Selezione casuale"
+                    },
+                    {
+                        "value": "0",
+                        "label": "Login richiesti"
+                    }
+                ],
+                "features": [
+                    {
+                        "title": "Estrazione automatica dei commenti",
+                        "desc": "Incolla il link del video e ottieni i commentatori automaticamente."
+                    },
+                    {
+                        "title": "Filtro duplicati",
+                        "desc": "Una sola partecipazione per canale per un'estrazione equa."
+                    },
+                    {
+                        "title": "Vincitori di riserva",
+                        "desc": "Seleziona le riserve per i vincitori non raggiungibili."
+                    },
+                    {
+                        "title": "Verifica iscrizione",
+                        "desc": "Verifica lo stato di iscrizione dei vincitori."
+                    },
+                    {
+                        "title": "Focus sui commenti",
+                        "desc": "Esegui estrazioni basate sui commenti dei video."
+                    },
+                    {
+                        "title": "Compatibile con Shorts",
+                        "desc": "Funziona con i link di video normali e Shorts."
+                    },
+                    {
+                        "title": "Esportazione dei risultati",
+                        "desc": "Copia, condividi o scarica la scheda del vincitore in PNG."
+                    },
+                    {
+                        "title": "Processo rapido",
+                        "desc": "Un flusso chiaro e breve dal link ai vincitori."
+                    }
+                ],
+                "howSteps": [
+                    {
+                        "title": "Incolla il link YouTube",
+                        "desc": "Trascina l'URL del video o dello Short nella sezione principale."
+                    },
+                    {
+                        "title": "Carica i commenti",
+                        "desc": "Recupera i partecipanti tramite API o aggiungili manualmente."
+                    },
+                    {
+                        "title": "Scegli le regole",
+                        "desc": "Imposta i vincitori, le riserve e le preferenze sugli iscritti."
+                    },
+                    {
+                        "title": "Estrai i vincitori",
+                        "desc": "Determina i vincitori tramite una selezione casuale sicura."
+                    },
+                    {
+                        "title": "Condividi i risultati",
+                        "desc": "Copia, scarica o condividi con un solo clic."
+                    }
+                ],
+                "faq": [
+                    {
+                        "q": "Devo accedere a YouTube?",
+                        "a": "No. YulaSanta non richiede la tua password di YouTube. Un link a un video pubblico è sufficiente."
+                    },
+                    {
+                        "q": "La selezione del vincitore è davvero casuale?",
+                        "a": "Sì. Con il mescolamento sicuro, ogni partecipante idoneo ha le stesse possibilità."
+                    },
+                    {
+                        "q": "Come funziona il controllo delle iscrizioni?",
+                        "a": "Lo stato di iscrizione dei vincitori viene verificato dopo l'estrazione. Se l'elenco è privato, il risultato potrebbe apparire come 'privato'."
+                    },
+                    {
+                        "q": "Posso scegliere vincitori di riserva?",
+                        "a": "Sì. Imposta il numero di riserve prima di iniziare; verranno elencate insieme nei risultati."
+                    }
+                ],
+                "errors": {
+                    "needLink": "Inserisci un link valido a un video di YouTube",
+                    "invalidLink": "Inserisci un link valido a un video di YouTube",
+                    "quota": "Quota API di YouTube esaurita, riprova più tardi",
+                    "commentsDisabled": "I commenti sono disattivati per questo video",
+                    "notFound": "Video non trovato o privato",
+                    "generic": "Impossibile recuperare i commenti — controlla il link del video"
+                },
+                "toasts": {
+                    "added": "{name} aggiunto",
+                    "participantsAdded": "{count} partecipanti aggiunti con successo!",
+                    "copied": "Risultati copiati negli appunti!",
+                    "cardDownloaded": "Scheda del vincitore scaricata!"
+                },
+                "loadingSteps": [
+                    "Connessione a YouTube in corso...",
+                    "Recupero dei commenti del video in corso...",
+                    "Elenco dei partecipanti in corso...",
+                    "Preparazione dei dati in corso..."
+                ]
+            }
+        }
     },
     "support": {
         "button": "Supporto",

@@ -16,7 +16,7 @@
 "use client";
 
 import { useState, useRef, useEffect, useTransition } from 'react';
-import { useParams } from 'next/navigation';
+import { useLocale } from 'next-intl';
 import { useRouter, usePathname } from '@/i18n/navigation';
 import { Globe, ChevronDown } from 'lucide-react';
 import { locales, localeNames, localeFlags, type Locale } from '@/i18n/config';
@@ -25,13 +25,15 @@ export function LanguageSwitcher() {
     const [isOpen, setIsOpen] = useState(false);
     const [isPending, startTransition] = useTransition();
     const dropdownRef = useRef<HTMLDivElement>(null);
-    const params = useParams();
     const router = useRouter();
     const pathname = usePathname();
-
-    const currentLocale = (params.locale as Locale) || 'tr';
+    const currentLocale = useLocale() as Locale;
 
     const handleLocaleChange = (newLocale: Locale) => {
+        if (newLocale === currentLocale) {
+            setIsOpen(false);
+            return;
+        }
         setIsOpen(false);
         // Set cookie BEFORE navigation to ensure middleware reads the correct value
         document.cookie = `NEXT_LOCALE=${newLocale}; path=/; max-age=31536000; SameSite=Lax`;

@@ -211,7 +211,323 @@
         "subscribed": "Abonniert",
         "notSubscribed": "Nicht abonniert",
         "subscribedPrivate": "Privat",
-        "checkingSubscription": "Wird überprüft..."
+        "checkingSubscription": "Wird überprüft...",
+        "landing": {
+            "instagram": {
+                "badge": "Instagram-Gewinnspiel-Tool",
+                "heroTitle": "Instagram",
+                "heroHighlight": "Gewinner-Picker",
+                "heroSubtitle": "Wähle in Sekundenschnelle einen zufälligen Gewinner aus den Instagram-Kommentaren. Kein Login erforderlich.",
+                "urlPlaceholder": "Instagram-Beitrags-Link einfügen",
+                "fetchCta": "Teilnehmer abrufen",
+                "fetching": "Wird abgerufen…",
+                "urlHint": "Funktioniert mit öffentlichen Beiträgen & Reels · Schritt 2 öffnet sich automatisch",
+                "step1Url": "Schritt 1 — Instagram-Link einfügen",
+                "step1Manual": "Schritt 1 — Kommentare oder Benutzernamen einfügen",
+                "step3Title": "Regeln festlegen & Teilnehmer prüfen",
+                "step3Subtitle": "Schritt 3",
+                "step4Label": "Schritt 4 — Auslosung starten",
+                "backToUrl": "← Zurück zum Link",
+                "continueWith": "Mit {count} Teilnehmern fortfahren",
+                "switchManual": "Zu manuellem Einfügen wechseln →",
+                "automatic": "Automatisch",
+                "manual": "Manuell",
+                "selecting": "Wird ausgewählt…",
+                "winner": "Gewinner",
+                "backup": "Ersatzgewinner",
+                "pngDownload": "PNG",
+                "add": "Hinzufügen",
+                "loadingWait": "Dauert in der Regel 20–60 Sekunden",
+                "featuresTitle": "Alles, was du für ein faires Gewinnspiel brauchst",
+                "featuresSubtitle": "Schnell, transparent und sicher — ganz ohne Instagram-Login.",
+                "howTitle": "Wie funktioniert es?",
+                "howSubtitle": "Fünf einfache Schritte. Kein langes Nachdenken nötig.",
+                "startCta": "Gewinnspiel starten",
+                "faqTitle": "Häufig gestellte Fragen",
+                "steps": {
+                    "paste": "Link einfügen",
+                    "load": "Laden",
+                    "rules": "Regeln",
+                    "draw": "Auslosung"
+                },
+                "trustBadges": [
+                    "Kein Instagram-Login nötig",
+                    "Schnelle Abwicklung",
+                    "Doppelgänger-Filter",
+                    "Ersatzgewinner",
+                    "Kostenlos"
+                ],
+                "metrics": [
+                    {
+                        "value": "500.000+",
+                        "label": "Verarbeitete Kommentare"
+                    },
+                    {
+                        "value": "50.000+",
+                        "label": "Erfolgreiche Auslosungen"
+                    },
+                    {
+                        "value": "100 %",
+                        "label": "Zufällige Auswahl"
+                    },
+                    {
+                        "value": "0",
+                        "label": "Login erforderlich"
+                    }
+                ],
+                "features": [
+                    {
+                        "title": "Automatischer Kommentar-Import",
+                        "desc": "Beitrags-Link einfügen und Teilnehmer in Sekundenschnelle abrufen."
+                    },
+                    {
+                        "title": "Duplikate-Filter",
+                        "desc": "Ein Eintrag pro Nutzer für ein faires Gewinnspiel."
+                    },
+                    {
+                        "title": "Ersatzgewinner",
+                        "desc": "Ersatzgewinner sofort auslosen, falls der Hauptgewinner nicht erreichbar ist."
+                    },
+                    {
+                        "title": "Follower-Bedingung",
+                        "desc": "Follow-Bedingung vor der Auslosung festlegen."
+                    },
+                    {
+                        "title": "Erwähnungs-Fokus",
+                        "desc": "Perfekt für Gewinnspiele basierend auf Erwähnungen in Kommentaren."
+                    },
+                    {
+                        "title": "Hashtag-Kompatibel",
+                        "desc": "Funktioniert mit Beiträgen und Reels mit Hashtags."
+                    },
+                    {
+                        "title": "Ergebnis-Export",
+                        "desc": "Kopieren, teilen oder die Gewinnerkarte als PNG herunterladen."
+                    },
+                    {
+                        "title": "Schnelle Abwicklung",
+                        "desc": "Reibungsloser Ablauf vom Link bis zum Gewinner."
+                    }
+                ],
+                "howSteps": [
+                    {
+                        "title": "Instagram-Link einfügen",
+                        "desc": "Füge die Beitrags- oder Reel-URL in das Eingabefeld ein."
+                    },
+                    {
+                        "title": "Kommentare laden",
+                        "desc": "Teilnehmer automatisch abrufen oder manuell einfügen."
+                    },
+                    {
+                        "title": "Regeln festlegen",
+                        "desc": "Anzahl der Gewinner, Ersatzgewinner und Regeln einstellen."
+                    },
+                    {
+                        "title": "Gewinner auslosen",
+                        "desc": "Eine kryptografisch faire, zufällige Auswahl durchführen."
+                    },
+                    {
+                        "title": "Ergebnisse teilen",
+                        "desc": "Mit einem Klick kopieren, herunterladen oder teilen."
+                    }
+                ],
+                "faq": [
+                    {
+                        "q": "Muss ich mich bei Instagram anmelden?",
+                        "a": "Nein. YulaSanta fordert niemals dein Instagram-Passwort an. Füge einfach einen öffentlichen Beitrags-Link ein oder trage die Kommentare manuell ein."
+                    },
+                    {
+                        "q": "Ist die Gewinnerauswahl wirklich zufällig?",
+                        "a": "Ja. Die Gewinner werden durch ein sicheres Zufallsverfahren ermittelt; jeder berechtigte Teilnehmer hat dieselbe Chance."
+                    },
+                    {
+                        "q": "Was passiert, wenn der automatische Import nicht funktioniert?",
+                        "a": "Wechsle in den manuellen Modus: Füge Benutzernamen oder Kommentare ein und fahre mit denselben Regeln und demselben Auslosungsablauf fort."
+                    },
+                    {
+                        "q": "Kann ich Ersatzgewinner auswählen?",
+                        "a": "Ja. Lege vor dem Start die Anzahl der Ersatzgewinner fest. Sie werden zusammen mit den Hauptgewinnern in den Ergebnissen angezeigt."
+                    }
+                ],
+                "errors": {
+                    "needLink": "Bitte gib einen Instagram-Beitrags-Link ein",
+                    "invalidLink": "Bitte gib einen gültigen Instagram-Beitrags-Link ein (instagram.com/p/...)",
+                    "serviceDown": "Der automatische Import ist derzeit nicht verfügbar. Du kannst die Kommentare manuell einfügen.",
+                    "privateOrMissing": "Dieses Konto ist privat oder der Beitrag wurde nicht gefunden",
+                    "timeout": "Zeitüberschreitung der Verbindung, bitte versuche es erneut",
+                    "generic": "Kommentare konnten nicht abgerufen werden — prüfe den Link oder füge sie manuell hinzu"
+                },
+                "toasts": {
+                    "added": "@{name} hinzugefügt",
+                    "participantsAdded": "{count} Teilnehmer erfolgreich hinzugefügt!",
+                    "copied": "Ergebnisse in die Zwischenablage kopiert!",
+                    "cardDownloaded": "Gewinnerkarte heruntergeladen!"
+                },
+                "loadingSteps": [
+                    "Verbindung zu Instagram wird hergestellt...",
+                    "Kommentare werden abgerufen...",
+                    "Teilnehmer werden analysiert...",
+                    "Daten werden vorbereitet..."
+                ]
+            },
+            "youtube": {
+                "badge": "YouTube-Gewinnspiel-Tool",
+                "heroTitle": "YouTube",
+                "heroHighlight": "Gewinner-Picker",
+                "heroSubtitle": "Wähle in Sekundenschnelle einen zufälligen Gewinner aus den YouTube-Kommentaren. Kein Login erforderlich.",
+                "urlPlaceholder": "YouTube-Video-Link einfügen",
+                "fetchCta": "Teilnehmer abrufen",
+                "fetching": "Wird abgerufen…",
+                "urlHint": "Funktioniert mit öffentlichen Videos · Schritt 2 öffnet sich automatisch",
+                "step1Url": "Schritt 1 — YouTube-Link einfügen",
+                "step1Manual": "Schritt 1 — Teilnehmer hinzufügen",
+                "step3Title": "Regeln festlegen & Teilnehmer prüfen",
+                "step3Subtitle": "Schritt 3",
+                "step4Label": "Schritt 4 — Auslosung starten",
+                "backToUrl": "← Zurück zum Link",
+                "continueWith": "Mit {count} Teilnehmern fortfahren",
+                "switchManual": "Zu manuellem Hinzufügen wechseln →",
+                "automatic": "Automatisch",
+                "manual": "Manuell",
+                "selecting": "Wird ausgewählt…",
+                "winner": "Gewinner",
+                "backup": "Ersatzgewinner",
+                "pngDownload": "PNG",
+                "add": "Hinzufügen",
+                "loadingWait": "Dauert in der Regel 10–40 Sekunden",
+                "featuresTitle": "Alles für faire YouTube-Gewinnspiele",
+                "featuresSubtitle": "Schnell, transparent und zuverlässig — ohne Passwortabfrage.",
+                "howTitle": "Wie funktioniert es?",
+                "howSubtitle": "Fünf einfache Schritte. Kein langes Nachdenken nötig.",
+                "startCta": "Gewinnspiel starten",
+                "faqTitle": "Häufig gestellte Fragen",
+                "steps": {
+                    "paste": "Link einfügen",
+                    "load": "Laden",
+                    "rules": "Regeln",
+                    "draw": "Auslosung"
+                },
+                "trustBadges": [
+                    "Kein YouTube-Login nötig",
+                    "Schnelle Abwicklung",
+                    "Doppelgänger-Filter",
+                    "Ersatzgewinner",
+                    "Kostenlos"
+                ],
+                "metrics": [
+                    {
+                        "value": "1.000.000+",
+                        "label": "Verarbeitete Kommentare"
+                    },
+                    {
+                        "value": "80.000+",
+                        "label": "Erfolgreiche Auslosungen"
+                    },
+                    {
+                        "value": "100 %",
+                        "label": "Zufällige Auswahl"
+                    },
+                    {
+                        "value": "0",
+                        "label": "Login erforderlich"
+                    }
+                ],
+                "features": [
+                    {
+                        "title": "Automatischer Kommentar-Import",
+                        "desc": "Video-Link einfügen und Kommentatoren automatisch abrufen."
+                    },
+                    {
+                        "title": "Duplikate-Filter",
+                        "desc": "Faires Gewinnspiel durch nur einen Eintrag pro Kanal."
+                    },
+                    {
+                        "title": "Ersatzgewinner",
+                        "desc": "Ersatzgewinner für nicht erreichbare Gewinner auswählen."
+                    },
+                    {
+                        "title": "Abonnenten-Prüfung",
+                        "desc": "Abo-Status der Gewinner überprüfen."
+                    },
+                    {
+                        "title": "Kommentar-Fokus",
+                        "desc": "Gewinnspiele basierend auf Videokommentaren durchführen."
+                    },
+                    {
+                        "title": "Shorts-Kompatibel",
+                        "desc": "Funktioniert mit normalen Video- und Shorts-Links."
+                    },
+                    {
+                        "title": "Ergebnis-Export",
+                        "desc": "Kopieren, teilen oder die Gewinnerkarte als PNG herunterladen."
+                    },
+                    {
+                        "title": "Schnelle Abwicklung",
+                        "desc": "Klarer, kurzer Ablauf vom Link bis zum Gewinner."
+                    }
+                ],
+                "howSteps": [
+                    {
+                        "title": "YouTube-Link einfügen",
+                        "desc": "Füge die Video- oder Shorts-URL in das Eingabefeld ein."
+                    },
+                    {
+                        "title": "Kommentare laden",
+                        "desc": "Teilnehmer über die API abrufen oder manuell hinzufügen."
+                    },
+                    {
+                        "title": "Regeln festlegen",
+                        "desc": "Gewinner, Ersatzgewinner und Abonnenten-Einstellungen anpassen."
+                    },
+                    {
+                        "title": "Gewinner auslosen",
+                        "desc": "Gewinner durch sichere Zufallsauswahl ermitteln."
+                    },
+                    {
+                        "title": "Ergebnisse teilen",
+                        "desc": "Mit einem Klick kopieren, herunterladen oder teilen."
+                    }
+                ],
+                "faq": [
+                    {
+                        "q": "Muss ich mich bei YouTube anmelden?",
+                        "a": "Nein. YulaSanta fordert niemals dein YouTube-Passwort an. Ein öffentlicher Video-Link reicht aus."
+                    },
+                    {
+                        "q": "Ist die Gewinnerauswahl wirklich zufällig?",
+                        "a": "Ja. Durch ein sicheres Zufallsverfahren hat jeder berechtigte Teilnehmer die gleiche Chance."
+                    },
+                    {
+                        "q": "Wie funktioniert die Abonnenten-Prüfung?",
+                        "a": "Nach der Auslosung wird der Abo-Status der Gewinner geprüft. Ist das Abo-Profil privat, wird das Ergebnis eventuell als 'privat' angezeigt."
+                    },
+                    {
+                        "q": "Kann ich Ersatzgewinner auswählen?",
+                        "a": "Ja. Lege vor dem Start die Anzahl der Ersatzgewinner fest; sie werden zusammen in den Ergebnissen aufgelistet."
+                    }
+                ],
+                "errors": {
+                    "needLink": "Bitte gib einen gültigen YouTube-Video-Link ein",
+                    "invalidLink": "Bitte gib einen gültigen YouTube-Video-Link ein",
+                    "quota": "YouTube API-Kontingent überschritten, bitte versuche es später erneut",
+                    "commentsDisabled": "Kommentare sind für dieses Video deaktiviert",
+                    "notFound": "Video nicht gefunden oder privat",
+                    "generic": "Kommentare konnten nicht abgerufen werden — bitte überprüfe den Video-Link"
+                },
+                "toasts": {
+                    "added": "{name} hinzugefügt",
+                    "participantsAdded": "{count} Teilnehmer erfolgreich hinzugefügt!",
+                    "copied": "Ergebnisse in die Zwischenablage kopiert!",
+                    "cardDownloaded": "Gewinnerkarte heruntergeladen!"
+                },
+                "loadingSteps": [
+                    "Verbindung zu YouTube wird hergestellt...",
+                    "Videokommentare werden abgerufen...",
+                    "Teilnehmer werden aufgelistet...",
+                    "Daten werden vorbereitet..."
+                ]
+            }
+        }
     },
     "support": {
         "button": "Support",

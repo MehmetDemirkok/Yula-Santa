@@ -318,7 +318,323 @@
         "subscribed": "Abone",
         "notSubscribed": "Abone Değil",
         "subscribedPrivate": "Gizli",
-        "checkingSubscription": "Kontrol Ediliyor..."
+        "checkingSubscription": "Kontrol Ediliyor...",
+        "landing": {
+            "instagram": {
+                "badge": "Instagram Çekiliş Aracı",
+                "heroTitle": "Instagram",
+                "heroHighlight": "Çekiliş Seçici",
+                "heroSubtitle": "Instagram yorumları arasından saniyeler içinde rastgele kazanan seçin. Giriş gerekmez.",
+                "urlPlaceholder": "Instagram gönderi linkini yapıştırın",
+                "fetchCta": "Katılımcıları Getir",
+                "fetching": "Getiriliyor…",
+                "urlHint": "Herkese açık gönderi ve reel’lerle çalışır · Getirdikten sonra 2. adım otomatik açılır",
+                "step1Url": "Adım 1 — Instagram linkini yapıştır",
+                "step1Manual": "Adım 1 — Yorum veya kullanıcı adlarını yapıştır",
+                "step3Title": "Kuralları seç ve katılımcıları kontrol et",
+                "step3Subtitle": "Adım 3",
+                "step4Label": "Adım 4 — Çekilişi Başlat",
+                "backToUrl": "← Linke dön",
+                "continueWith": "{count} katılımcıyla devam et",
+                "switchManual": "Manuel yapıştırmaya geç →",
+                "automatic": "Otomatik",
+                "manual": "Manuel",
+                "selecting": "Seçiliyor…",
+                "winner": "Kazanan",
+                "backup": "Yedek",
+                "pngDownload": "PNG",
+                "add": "Ekle",
+                "loadingWait": "Genelde 20–60 saniye sürer",
+                "featuresTitle": "Adil çekiliş için ihtiyacınız olan her şey",
+                "featuresSubtitle": "Hız, netlik ve güven — Instagram girişi riski olmadan.",
+                "howTitle": "Nasıl çalışır?",
+                "howSubtitle": "Beş net adım. Ne tıklayacağınızı düşünmenize gerek yok.",
+                "startCta": "Çekilişe başla",
+                "faqTitle": "Sık sorulan sorular",
+                "steps": {
+                    "paste": "Link yapıştır",
+                    "load": "Yükle",
+                    "rules": "Kurallar",
+                    "draw": "Çekiliş"
+                },
+                "trustBadges": [
+                    "Instagram girişi gerekmez",
+                    "Hızlı işlem",
+                    "Tekrar filtresi",
+                    "Yedek kazanan",
+                    "Ücretsiz"
+                ],
+                "metrics": [
+                    {
+                        "value": "500.000+",
+                        "label": "İşlenen yorum"
+                    },
+                    {
+                        "value": "50.000+",
+                        "label": "Başarılı çekiliş"
+                    },
+                    {
+                        "value": "%100",
+                        "label": "Rastgele seçim"
+                    },
+                    {
+                        "value": "0",
+                        "label": "Giriş gerekir"
+                    }
+                ],
+                "features": [
+                    {
+                        "title": "Otomatik yorum çekme",
+                        "desc": "Gönderi linkini yapıştırın, katılımcıları saniyeler içinde alın."
+                    },
+                    {
+                        "title": "Tekrar filtresi",
+                        "desc": "Adil çekiliş için kullanıcı başına tek katılım."
+                    },
+                    {
+                        "title": "Yedek kazananlar",
+                        "desc": "Kazanan ulaşılmazsa yedekleri anında seçin."
+                    },
+                    {
+                        "title": "Takip şartı",
+                        "desc": "Çekilişten önce takip kuralını işaretleyin."
+                    },
+                    {
+                        "title": "Mention odaklı",
+                        "desc": "Yorum tabanlı çekilişlere odaklanın."
+                    },
+                    {
+                        "title": "Hashtag uyumlu",
+                        "desc": "Etiketli gönderi ve reel’lerle çalışır."
+                    },
+                    {
+                        "title": "Sonuç dışa aktarma",
+                        "desc": "Kopyala, paylaş veya kazanan kartı PNG indir."
+                    },
+                    {
+                        "title": "Hızlı işlem",
+                        "desc": "Linkten kazananlara sürtünmesiz akış."
+                    }
+                ],
+                "howSteps": [
+                    {
+                        "title": "Instagram linkini yapıştır",
+                        "desc": "Gönderi veya reel URL’sini hero alana bırakın."
+                    },
+                    {
+                        "title": "Yorumları yükle",
+                        "desc": "Katılımcıları otomatik getirin veya manuel yapıştırın."
+                    },
+                    {
+                        "title": "Kuralları seç",
+                        "desc": "Kazanan, yedek ve katılım tercihlerini ayarlayın."
+                    },
+                    {
+                        "title": "Kazananları çek",
+                        "desc": "Kriptografik olarak adil rastgele seçim yapın."
+                    },
+                    {
+                        "title": "Sonuçları paylaş",
+                        "desc": "Tek tıkla kopyala, indir veya paylaş."
+                    }
+                ],
+                "faq": [
+                    {
+                        "q": "Instagram’a giriş yapmam gerekir mi?",
+                        "a": "Hayır. YulaSanta Instagram şifresi istemez. Herkese açık gönderi linki yapıştırın veya yorumları manuel ekleyin."
+                    },
+                    {
+                        "q": "Kazanan seçimi gerçekten rastgele mi?",
+                        "a": "Evet. Kazananlar güvenli karıştırma ile seçilir; her uygun katılımcının şansı eşittir."
+                    },
+                    {
+                        "q": "Otomatik çekme çalışmazsa ne olur?",
+                        "a": "Manuel moda geçin: kullanıcı adı veya yorumları yapıştırın, aynı kurallar ve çekiliş akışıyla devam edin."
+                    },
+                    {
+                        "q": "Yedek kazanan seçebilir miyim?",
+                        "a": "Evet. Başlamadan önce yedek sayısını ayarlayın. Yedekler sonuçlarda asil kazananlarla birlikte görünür."
+                    }
+                ],
+                "errors": {
+                    "needLink": "Lütfen bir Instagram gönderi linki girin",
+                    "invalidLink": "Geçerli bir Instagram gönderi linki giriniz (instagram.com/p/...)",
+                    "serviceDown": "Otomatik çekme şu an kullanılamıyor. Yorumları manuel yapıştırabilirsiniz.",
+                    "privateOrMissing": "Bu hesap gizli veya gönderi bulunamadı",
+                    "timeout": "Bağlantı zaman aşımına uğradı, lütfen tekrar deneyin",
+                    "generic": "Yorumlar çekilemedi — linki kontrol edin veya manuel ekleyin"
+                },
+                "toasts": {
+                    "added": "@{name} eklendi",
+                    "participantsAdded": "{count} katılımcı başarıyla eklendi!",
+                    "copied": "Sonuçlar panoya kopyalandı!",
+                    "cardDownloaded": "Kazanan kartı indirildi!"
+                },
+                "loadingSteps": [
+                    "Instagram’a bağlanılıyor...",
+                    "Yorumlar çekiliyor...",
+                    "Katılımcılar analiz ediliyor...",
+                    "Veriler hazırlanıyor..."
+                ]
+            },
+            "youtube": {
+                "badge": "YouTube Çekiliş Aracı",
+                "heroTitle": "YouTube",
+                "heroHighlight": "Çekiliş Seçici",
+                "heroSubtitle": "YouTube yorumları arasından saniyeler içinde rastgele kazanan seçin. Giriş gerekmez.",
+                "urlPlaceholder": "YouTube video linkini yapıştırın",
+                "fetchCta": "Katılımcıları Getir",
+                "fetching": "Getiriliyor…",
+                "urlHint": "Herkese açık videolarla çalışır · Getirdikten sonra 2. adım otomatik açılır",
+                "step1Url": "Adım 1 — YouTube linkini yapıştır",
+                "step1Manual": "Adım 1 — Katılımcı ekle",
+                "step3Title": "Kuralları seç ve katılımcıları kontrol et",
+                "step3Subtitle": "Adım 3",
+                "step4Label": "Adım 4 — Çekilişi Başlat",
+                "backToUrl": "← Linke dön",
+                "continueWith": "{count} katılımcıyla devam et",
+                "switchManual": "Manuel eklemeye geç →",
+                "automatic": "Otomatik",
+                "manual": "Manuel",
+                "selecting": "Seçiliyor…",
+                "winner": "Kazanan",
+                "backup": "Yedek",
+                "pngDownload": "PNG",
+                "add": "Ekle",
+                "loadingWait": "Genelde 10–40 saniye sürer",
+                "featuresTitle": "Adil YouTube çekilişleri için her şey",
+                "featuresSubtitle": "Hızlı, şeffaf ve güvenilir — hesap şifresi istemeden.",
+                "howTitle": "Nasıl çalışır?",
+                "howSubtitle": "Beş net adım. Ne tıklayacağınızı düşünmenize gerek yok.",
+                "startCta": "Çekilişe başla",
+                "faqTitle": "Sık sorulan sorular",
+                "steps": {
+                    "paste": "Link yapıştır",
+                    "load": "Yükle",
+                    "rules": "Kurallar",
+                    "draw": "Çekiliş"
+                },
+                "trustBadges": [
+                    "YouTube girişi gerekmez",
+                    "Hızlı işlem",
+                    "Tekrar filtresi",
+                    "Yedek kazanan",
+                    "Ücretsiz"
+                ],
+                "metrics": [
+                    {
+                        "value": "1.000.000+",
+                        "label": "İşlenen yorum"
+                    },
+                    {
+                        "value": "80.000+",
+                        "label": "Başarılı çekiliş"
+                    },
+                    {
+                        "value": "%100",
+                        "label": "Rastgele seçim"
+                    },
+                    {
+                        "value": "0",
+                        "label": "Giriş gerekir"
+                    }
+                ],
+                "features": [
+                    {
+                        "title": "Otomatik yorum çekme",
+                        "desc": "Video linkini yapıştırın, yorumcuları otomatik alın."
+                    },
+                    {
+                        "title": "Tekrar filtresi",
+                        "desc": "Kanal başına tek katılım ile adil çekiliş."
+                    },
+                    {
+                        "title": "Yedek kazananlar",
+                        "desc": "Ulaşılamayan kazananlar için yedek seçin."
+                    },
+                    {
+                        "title": "Abone kontrolü",
+                        "desc": "Kazananlarda abone durumunu kontrol edin."
+                    },
+                    {
+                        "title": "Yorum odaklı",
+                        "desc": "Video yorumları üzerinden çekiliş yapın."
+                    },
+                    {
+                        "title": "Shorts uyumlu",
+                        "desc": "Normal video ve Shorts linkleriyle çalışır."
+                    },
+                    {
+                        "title": "Sonuç dışa aktarma",
+                        "desc": "Kopyala, paylaş veya kazanan kartı PNG indir."
+                    },
+                    {
+                        "title": "Hızlı işlem",
+                        "desc": "Linkten kazananlara net, kısa akış."
+                    }
+                ],
+                "howSteps": [
+                    {
+                        "title": "YouTube linkini yapıştır",
+                        "desc": "Video veya Shorts URL’sini hero alana bırakın."
+                    },
+                    {
+                        "title": "Yorumları yükle",
+                        "desc": "Katılımcıları API ile getirin veya elle ekleyin."
+                    },
+                    {
+                        "title": "Kuralları seç",
+                        "desc": "Kazanan, yedek ve abone tercihlerini ayarlayın."
+                    },
+                    {
+                        "title": "Kazananları çek",
+                        "desc": "Güvenli rastgele seçimle kazanan belirleyin."
+                    },
+                    {
+                        "title": "Sonuçları paylaş",
+                        "desc": "Tek tıkla kopyala, indir veya paylaş."
+                    }
+                ],
+                "faq": [
+                    {
+                        "q": "YouTube’a giriş yapmam gerekir mi?",
+                        "a": "Hayır. YulaSanta YouTube şifresi istemez. Herkese açık video linki yeterlidir."
+                    },
+                    {
+                        "q": "Kazanan seçimi gerçekten rastgele mi?",
+                        "a": "Evet. Güvenli karıştırma ile her uygun katılımcının şansı eşittir."
+                    },
+                    {
+                        "q": "Abone kontrolü nasıl çalışır?",
+                        "a": "Çekiliş sonrası kazananların abone durumu kontrol edilir. Liste gizliyse sonuç ‘gizli’ görünebilir."
+                    },
+                    {
+                        "q": "Yedek kazanan seçebilir miyim?",
+                        "a": "Evet. Başlamadan önce yedek sayısını ayarlayın; sonuçlarda birlikte listelenir."
+                    }
+                ],
+                "errors": {
+                    "needLink": "Geçerli bir YouTube video linki giriniz",
+                    "invalidLink": "Geçerli bir YouTube video linki giriniz",
+                    "quota": "YouTube API kotası doldu, lütfen daha sonra deneyin",
+                    "commentsDisabled": "Bu video için yorumlar kapalı",
+                    "notFound": "Video bulunamadı veya gizli",
+                    "generic": "Yorumlar çekilemedi — video linkini kontrol edin"
+                },
+                "toasts": {
+                    "added": "{name} eklendi",
+                    "participantsAdded": "{count} katılımcı başarıyla eklendi!",
+                    "copied": "Sonuçlar panoya kopyalandı!",
+                    "cardDownloaded": "Kazanan kartı indirildi!"
+                },
+                "loadingSteps": [
+                    "YouTube’a bağlanılıyor...",
+                    "Video yorumları çekiliyor...",
+                    "Katılımcılar listeleniyor...",
+                    "Veriler hazırlanıyor..."
+                ]
+            }
+        }
     },
     "support": {
         "button": "Destek",

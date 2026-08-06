@@ -295,6 +295,322 @@
                     }
                 ]
             }
+        },
+        "landing": {
+            "instagram": {
+                "badge": "Herramienta de Sorteos de Instagram",
+                "heroTitle": "Instagram",
+                "heroHighlight": "Seleccionador de Sorteos",
+                "heroSubtitle": "Elige un ganador al azar entre los comentarios de Instagram en segundos. Sin necesidad de iniciar sesión.",
+                "urlPlaceholder": "Pega el enlace de la publicación de Instagram",
+                "fetchCta": "Obtener participantes",
+                "fetching": "Obteniendo…",
+                "urlHint": "Funciona con publicaciones públicas y Reels · El paso 2 se abre automáticamente tras obtenerlos",
+                "step1Url": "Paso 1 — Pega el enlace de Instagram",
+                "step1Manual": "Paso 1 — Pega nombres de usuario o comentarios",
+                "step3Title": "Elige las reglas y revisa los participantes",
+                "step3Subtitle": "Paso 3",
+                "step4Label": "Paso 4 — Iniciar Sorteo",
+                "backToUrl": "← Volver al enlace",
+                "continueWith": "Continuar con {count} participantes",
+                "switchManual": "Cambiar a pegado manual →",
+                "automatic": "Automático",
+                "manual": "Manual",
+                "selecting": "Seleccionando…",
+                "winner": "Ganador",
+                "backup": "Suplente",
+                "pngDownload": "PNG",
+                "add": "Añadir",
+                "loadingWait": "Suele tardar entre 20 y 60 segundos",
+                "featuresTitle": "Todo lo que necesitas para un sorteo justo",
+                "featuresSubtitle": "Rapidez, claridad y confianza — sin riesgos de iniciar sesión en Instagram.",
+                "howTitle": "¿Cómo funciona?",
+                "howSubtitle": "Cinco pasos claros. Sin tener que pensar qué pulsar.",
+                "startCta": "Iniciar sorteo",
+                "faqTitle": "Preguntas frecuentes",
+                "steps": {
+                    "paste": "Pegar enlace",
+                    "load": "Cargar",
+                    "rules": "Reglas",
+                    "draw": "Sorteo"
+                },
+                "trustBadges": [
+                    "Sin iniciar sesión en Instagram",
+                    "Proceso rápido",
+                    "Filtro de duplicados",
+                    "Ganadores suplentes",
+                    "Gratis"
+                ],
+                "metrics": [
+                    {
+                        "value": "500.000+",
+                        "label": "Comentarios procesados"
+                    },
+                    {
+                        "value": "50.000+",
+                        "label": "Sorteos con éxito"
+                    },
+                    {
+                        "value": "100%",
+                        "label": "Selección aleatoria"
+                    },
+                    {
+                        "value": "0",
+                        "label": "Inicio de sesión requerido"
+                    }
+                ],
+                "features": [
+                    {
+                        "title": "Extracción automática de comentarios",
+                        "desc": "Pega el enlace de la publicación y obtén los participantes en segundos."
+                    },
+                    {
+                        "title": "Filtro de duplicados",
+                        "desc": "Una sola participación por usuario para un sorteo justo."
+                    },
+                    {
+                        "title": "Ganadores suplentes",
+                        "desc": "Selecciona suplentes al instante si no se puede contactar al ganador."
+                    },
+                    {
+                        "title": "Requisito de seguimiento",
+                        "desc": "Marca la regla de seguimiento antes del sorteo."
+                    },
+                    {
+                        "title": "Enfocado en menciones",
+                        "desc": "Concéntrate en sorteos basados en comentarios."
+                    },
+                    {
+                        "title": "Compatible con hashtags",
+                        "desc": "Funciona con publicaciones y Reels etiquetados."
+                    },
+                    {
+                        "title": "Exportar resultados",
+                        "desc": "Copia, comparte o descarga la tarjeta del ganador en PNG."
+                    },
+                    {
+                        "title": "Proceso rápido",
+                        "desc": "Flujo fluido desde el enlace hasta los ganadores."
+                    }
+                ],
+                "howSteps": [
+                    {
+                        "title": "Pega el enlace de Instagram",
+                        "desc": "Suelta la URL de la publicación o Reel en el área principal."
+                    },
+                    {
+                        "title": "Carga los comentarios",
+                        "desc": "Obtén los participantes automáticamente o pégalos manualmente."
+                    },
+                    {
+                        "title": "Elige las reglas",
+                        "desc": "Ajusta las preferencias de ganadores, suplentes y participación."
+                    },
+                    {
+                        "title": "Realiza el sorteo",
+                        "desc": "Haz una selección aleatoria criptográficamente justa."
+                    },
+                    {
+                        "title": "Comparte los resultados",
+                        "desc": "Copia, descarga o comparte con un solo clic."
+                    }
+                ],
+                "faq": [
+                    {
+                        "q": "¿Necesito iniciar sesión en Instagram?",
+                        "a": "No. YulaSanta no solicita tu contraseña de Instagram. Pega un enlace de una publicación pública o añade comentarios manualmente."
+                    },
+                    {
+                        "q": "¿La selección del ganador es realmente aleatoria?",
+                        "a": "Sí. Los ganadores se eligen mediante una mezcla segura; cada participante elegible tiene las mismas posibilidades."
+                    },
+                    {
+                        "q": "¿Qué pasa si la extracción automática no funciona?",
+                        "a": "Cambia al modo manual: pega los nombres de usuario o comentarios y continúa con las mismas reglas y flujo de sorteo."
+                    },
+                    {
+                        "q": "¿Puedo elegir ganadores suplentes?",
+                        "a": "Sí. Configura la cantidad de suplentes antes de empezar. Los suplentes aparecerán junto a los ganadores principales en los resultados."
+                    }
+                ],
+                "errors": {
+                    "needLink": "Por favor, introduce un enlace de publicación de Instagram",
+                    "invalidLink": "Por favor, introduce un enlace válido de publicación de Instagram (instagram.com/p/...)",
+                    "serviceDown": "La extracción automática no está disponible en este momento. Puedes pegar los comentarios manualmente.",
+                    "privateOrMissing": "Esta cuenta es privada o no se encontró la publicación",
+                    "timeout": "La conexión ha expirado, por favor inténtalo de nuevo",
+                    "generic": "No se pudieron obtener los comentarios — comprueba el enlace o añádelos manualmente"
+                },
+                "toasts": {
+                    "added": "@{name} añadido",
+                    "participantsAdded": "¡{count} participantes añadidos con éxito!",
+                    "copied": "¡Resultados copiados al portapapeles!",
+                    "cardDownloaded": "¡Tarjeta del ganador descargada!"
+                },
+                "loadingSteps": [
+                    "Conectando a Instagram...",
+                    "Obteniendo comentarios...",
+                    "Analizando participantes...",
+                    "Preparando datos..."
+                ]
+            },
+            "youtube": {
+                "badge": "Herramienta de Sorteos de YouTube",
+                "heroTitle": "YouTube",
+                "heroHighlight": "Seleccionador de Sorteos",
+                "heroSubtitle": "Elige un ganador al azar entre los comentarios de YouTube en segundos. Sin necesidad de iniciar sesión.",
+                "urlPlaceholder": "Pega el enlace del vídeo de YouTube",
+                "fetchCta": "Obtener participantes",
+                "fetching": "Obteniendo…",
+                "urlHint": "Funciona con vídeos públicos · El paso 2 se abre automáticamente tras obtenerlos",
+                "step1Url": "Paso 1 — Pega el enlace de YouTube",
+                "step1Manual": "Paso 1 — Añadir participantes",
+                "step3Title": "Elige las reglas y revisa los participantes",
+                "step3Subtitle": "Paso 3",
+                "step4Label": "Paso 4 — Iniciar Sorteo",
+                "backToUrl": "← Volver al enlace",
+                "continueWith": "Continuar con {count} participantes",
+                "switchManual": "Cambiar a adición manual →",
+                "automatic": "Automático",
+                "manual": "Manual",
+                "selecting": "Seleccionando…",
+                "winner": "Ganador",
+                "backup": "Suplente",
+                "pngDownload": "PNG",
+                "add": "Añadir",
+                "loadingWait": "Suele tardar entre 10 y 40 segundos",
+                "featuresTitle": "Todo lo necesario para sorteos justos en YouTube",
+                "featuresSubtitle": "Rápido, transparente y confiable — sin pedir contraseña de cuenta.",
+                "howTitle": "¿Cómo funciona?",
+                "howSubtitle": "Cinco pasos claros. Sin tener que pensar qué pulsar.",
+                "startCta": "Iniciar sorteo",
+                "faqTitle": "Preguntas frecuentes",
+                "steps": {
+                    "paste": "Pegar enlace",
+                    "load": "Cargar",
+                    "rules": "Reglas",
+                    "draw": "Sorteo"
+                },
+                "trustBadges": [
+                    "Sin iniciar sesión en YouTube",
+                    "Proceso rápido",
+                    "Filtro de duplicados",
+                    "Ganadores suplentes",
+                    "Gratis"
+                ],
+                "metrics": [
+                    {
+                        "value": "1.000.000+",
+                        "label": "Comentarios procesados"
+                    },
+                    {
+                        "value": "80.000+",
+                        "label": "Sorteos con éxito"
+                    },
+                    {
+                        "value": "100%",
+                        "label": "Selección aleatoria"
+                    },
+                    {
+                        "value": "0",
+                        "label": "Inicio de sesión requerido"
+                    }
+                ],
+                "features": [
+                    {
+                        "title": "Extracción automática de comentarios",
+                        "desc": "Pega el enlace del vídeo y obtén a los comentaristas automáticamente."
+                    },
+                    {
+                        "title": "Filtro de duplicados",
+                        "desc": "Una sola participación por canal para un sorteo justo."
+                    },
+                    {
+                        "title": "Ganadores suplentes",
+                        "desc": "Elige suplentes para los ganadores a los que no se pueda contactar."
+                    },
+                    {
+                        "title": "Verificación de suscripción",
+                        "desc": "Comprueba el estado de suscripción de los ganadores."
+                    },
+                    {
+                        "title": "Enfocado en comentarios",
+                        "desc": "Realiza sorteos a través de los comentarios del vídeo."
+                    },
+                    {
+                        "title": "Compatible con Shorts",
+                        "desc": "Funciona con enlaces de vídeos normales y Shorts."
+                    },
+                    {
+                        "title": "Exportar resultados",
+                        "desc": "Copia, comparte o descarga la tarjeta del ganador en PNG."
+                    },
+                    {
+                        "title": "Proceso rápido",
+                        "desc": "Flujo claro y corto desde el enlace hasta los ganadores."
+                    }
+                ],
+                "howSteps": [
+                    {
+                        "title": "Pega el enlace de YouTube",
+                        "desc": "Suelta la URL del vídeo o Shorts en el área principal."
+                    },
+                    {
+                        "title": "Carga los comentarios",
+                        "desc": "Obtén participantes mediante la API o añádelos manualmente."
+                    },
+                    {
+                        "title": "Elige las reglas",
+                        "desc": "Ajusta las preferencias de ganadores, suplentes y suscripción."
+                    },
+                    {
+                        "title": "Realiza el sorteo",
+                        "desc": "Determina los ganadores con una selección aleatoria segura."
+                    },
+                    {
+                        "title": "Comparte los resultados",
+                        "desc": "Copia, descarga o comparte con un solo clic."
+                    }
+                ],
+                "faq": [
+                    {
+                        "q": "¿Necesito iniciar sesión en YouTube?",
+                        "a": "No. YulaSanta no solicita tu contraseña de YouTube. Un enlace de un vídeo público es suficiente."
+                    },
+                    {
+                        "q": "¿La selección del ganador es realmente aleatoria?",
+                        "a": "Sí. Con una mezcla segura, cada participante elegible tiene las mismas posibilidades."
+                    },
+                    {
+                        "q": "¿Cómo funciona la verificación de suscripción?",
+                        "a": "Tras el sorteo, se verifica el estado de suscripción de los ganadores. Si la lista es privada, el resultado puede mostrarse como 'privada'."
+                    },
+                    {
+                        "q": "¿Puedo elegir ganadores suplentes?",
+                        "a": "Sí. Configura la cantidad de suplentes antes de empezar; se listarán junto a los ganadores en los resultados."
+                    }
+                ],
+                "errors": {
+                    "needLink": "Por favor, introduce un enlace de vídeo de YouTube válido",
+                    "invalidLink": "Por favor, introduce un enlace válido de vídeo de YouTube",
+                    "quota": "Se ha agotado la cuota de la API de YouTube, por favor inténtalo más tarde",
+                    "commentsDisabled": "Los comentarios están desactivados para este vídeo",
+                    "notFound": "Vídeo no encontrado o privado",
+                    "generic": "No se pudieron obtener los comentarios — comprueba el enlace del vídeo"
+                },
+                "toasts": {
+                    "added": "{name} añadido",
+                    "participantsAdded": "¡{count} participantes añadidos con éxito!",
+                    "copied": "¡Resultados copiados al portapapeles!",
+                    "cardDownloaded": "¡Tarjeta del ganador descargada!"
+                },
+                "loadingSteps": [
+                    "Conectando a YouTube...",
+                    "Obteniendo comentarios del vídeo...",
+                    "Listando participantes...",
+                    "Preparando datos..."
+                ]
+            }
         }
     },
     "support": {

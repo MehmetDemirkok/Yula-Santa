@@ -201,7 +201,323 @@
         "notSubscribed": "Non abonné",
         "subscribedPrivate": "Privé",
         "checkingSubscription": "Vérification...",
-        "seo": {}
+        "seo": {},
+        "landing": {
+            "instagram": {
+                "badge": "Outil de Tirage au Sort Instagram",
+                "heroTitle": "Instagram",
+                "heroHighlight": "Sélecteur de Gagnant",
+                "heroSubtitle": "Sélectionnez un gagnant aléatoire parmi vos commentaires Instagram en quelques secondes. Aucune connexion requise.",
+                "urlPlaceholder": "Collez le lien de la publication Instagram",
+                "fetchCta": "Obtenir les participants",
+                "fetching": "Chargement…",
+                "urlHint": "Fonctionne avec les publications et reels publics · Étape 2 automatique après le chargement",
+                "step1Url": "Étape 1 — Coller le lien Instagram",
+                "step1Manual": "Étape 1 — Coller les commentaires ou noms d'utilisateur",
+                "step3Title": "Sélectionner les règles et vérifier les participants",
+                "step3Subtitle": "Étape 3",
+                "step4Label": "Étape 4 — Lancer le tirage au sort",
+                "backToUrl": "← Retour au lien",
+                "continueWith": "Continuer avec {count} participants",
+                "switchManual": "Passer au collage manuel →",
+                "automatic": "Automatique",
+                "manual": "Manuel",
+                "selecting": "Sélection en cours…",
+                "winner": "Gagnant",
+                "backup": "Suppléant",
+                "pngDownload": "PNG",
+                "add": "Ajouter",
+                "loadingWait": "Prend généralement 20 à 60 secondes",
+                "featuresTitle": "Tout ce dont vous avez besoin pour un tirage au sort équitable",
+                "featuresSubtitle": "Rapidité, clarté et sécurité — sans risque de connexion à Instagram.",
+                "howTitle": "Comment ça marche ?",
+                "howSubtitle": "Cinq étapes simples. Pas besoin de réfléchir à où cliquer.",
+                "startCta": "Commencer le tirage",
+                "faqTitle": "Foire aux questions",
+                "steps": {
+                    "paste": "Coller le lien",
+                    "load": "Charger",
+                    "rules": "Règles",
+                    "draw": "Tirage"
+                },
+                "trustBadges": [
+                    "Aucune connexion Instagram requise",
+                    "Traitement rapide",
+                    "Filtre de doublons",
+                    "Gagnants suppléants",
+                    "Gratuit"
+                ],
+                "metrics": [
+                    {
+                        "value": "500 000+",
+                        "label": "Commentaires traités"
+                    },
+                    {
+                        "value": "50 000+",
+                        "label": "Tirages réussis"
+                    },
+                    {
+                        "value": "100 %",
+                        "label": "Sélection aléatoire"
+                    },
+                    {
+                        "value": "0",
+                        "label": "Connexion requise"
+                    }
+                ],
+                "features": [
+                    {
+                        "title": "Extraction automatique de commentaires",
+                        "desc": "Collez le lien de la publication et obtenez les participants en quelques secondes."
+                    },
+                    {
+                        "title": "Filtre de doublons",
+                        "desc": "Une seule participation par utilisateur pour un tirage équitable."
+                    },
+                    {
+                        "title": "Gagnants suppléants",
+                        "desc": "Sélectionnez instantanément des suppléants si le gagnant est injoignable."
+                    },
+                    {
+                        "title": "Condition d'abonnement",
+                        "desc": "Cochez la règle de suivi avant d'effectuer le tirage."
+                    },
+                    {
+                        "title": "Axé sur les mentions",
+                        "desc": "Concentrez-vous sur les tirages basés sur les commentaires."
+                    },
+                    {
+                        "title": "Compatible avec les hashtags",
+                        "desc": "Fonctionne avec les publications et reels avec hashtags."
+                    },
+                    {
+                        "title": "Exportation des résultats",
+                        "desc": "Copiez, partagez ou téléchargez la carte du gagnant en PNG."
+                    },
+                    {
+                        "title": "Traitement rapide",
+                        "desc": "Un flux fluide du lien jusqu'aux gagnants."
+                    }
+                ],
+                "howSteps": [
+                    {
+                        "title": "Coller le lien Instagram",
+                        "desc": "Déposez l'URL de la publication ou du reel dans la zone principale."
+                    },
+                    {
+                        "title": "Charger les commentaires",
+                        "desc": "Obtenez les participants automatiquement ou collez-les manuellement."
+                    },
+                    {
+                        "title": "Sélectionner les règles",
+                        "desc": "Définissez vos préférences pour les gagnants, suppléants et participations."
+                    },
+                    {
+                        "title": "Tirer au sort les gagnants",
+                        "desc": "Effectuez une sélection aléatoire cryptographiquement équitable."
+                    },
+                    {
+                        "title": "Partager les résultats",
+                        "desc": "Copiez, téléchargez ou partagez en un seul clic."
+                    }
+                ],
+                "faq": [
+                    {
+                        "q": "Dois-je me connecter à Instagram ?",
+                        "a": "Non. YulaSanta ne demande jamais votre mot de passe Instagram. Collez simplement un lien de publication publique ou ajoutez manuellement les commentaires."
+                    },
+                    {
+                        "q": "La sélection du gagnant est-elle vraiment aléatoire ?",
+                        "a": "Oui. Les gagnants sont choisis avec un mélange sécurisé ; chaque participant éligible a la même chance."
+                    },
+                    {
+                        "q": "Que faire si l'extraction automatique ne fonctionne pas ?",
+                        "a": "Passez en mode manuel : collez les noms d'utilisateur ou les commentaires, et continuez avec les mêmes règles et le même déroulement."
+                    },
+                    {
+                        "q": "Puis-je choisir des gagnants suppléants ?",
+                        "a": "Oui. Définissez le nombre de suppléants avant de commencer. Ils apparaîtront à côté des gagnants principaux dans les résultats."
+                    }
+                ],
+                "errors": {
+                    "needLink": "Veuillez entrer un lien de publication Instagram",
+                    "invalidLink": "Veuillez entrer un lien de publication Instagram valide (instagram.com/p/...)",
+                    "serviceDown": "L'extraction automatique est indisponible pour le moment. Vous pouvez coller les commentaires manuellement.",
+                    "privateOrMissing": "Ce compte est privé ou la publication est introuvable",
+                    "timeout": "La connexion a expiré, veuillez réessayer",
+                    "generic": "Impossible d'extraire les commentaires — vérifiez le lien ou ajoutez-les manuellement"
+                },
+                "toasts": {
+                    "added": "@{name} ajouté",
+                    "participantsAdded": "{count} participants ajoutés avec succès !",
+                    "copied": "Résultats copiés dans le presse-papiers !",
+                    "cardDownloaded": "Carte du gagnant téléchargée !"
+                },
+                "loadingSteps": [
+                    "Connexion à Instagram...",
+                    "Extraction des commentaires...",
+                    "Analyse des participants...",
+                    "Préparation des données..."
+                ]
+            },
+            "youtube": {
+                "badge": "Outil de Tirage au Sort YouTube",
+                "heroTitle": "YouTube",
+                "heroHighlight": "Sélecteur de Gagnant",
+                "heroSubtitle": "Sélectionnez un gagnant aléatoire parmi vos commentaires YouTube en quelques secondes. Aucune connexion requise.",
+                "urlPlaceholder": "Collez le lien de la vidéo YouTube",
+                "fetchCta": "Obtenir les participants",
+                "fetching": "Chargement…",
+                "urlHint": "Fonctionne avec les vidéos publiques · Étape 2 automatique après le chargement",
+                "step1Url": "Étape 1 — Coller le lien YouTube",
+                "step1Manual": "Étape 1 — Ajouter des participants",
+                "step3Title": "Sélectionner les règles et vérifier les participants",
+                "step3Subtitle": "Étape 3",
+                "step4Label": "Étape 4 — Lancer le tirage au sort",
+                "backToUrl": "← Retour au lien",
+                "continueWith": "Continuer avec {count} participants",
+                "switchManual": "Passer à l'ajout manuel →",
+                "automatic": "Automatique",
+                "manual": "Manuel",
+                "selecting": "Sélection en cours…",
+                "winner": "Gagnant",
+                "backup": "Suppléant",
+                "pngDownload": "PNG",
+                "add": "Ajouter",
+                "loadingWait": "Prend généralement 10 à 40 secondes",
+                "featuresTitle": "Tout ce dont vous avez besoin pour des tirages au sort YouTube équitables",
+                "featuresSubtitle": "Rapide, transparent et fiable — sans demander de mot de passe.",
+                "howTitle": "Comment ça marche ?",
+                "howSubtitle": "Cinq étapes simples. Pas besoin de réfléchir à où cliquer.",
+                "startCta": "Commencer le tirage",
+                "faqTitle": "Foire aux questions",
+                "steps": {
+                    "paste": "Coller le lien",
+                    "load": "Charger",
+                    "rules": "Règles",
+                    "draw": "Tirage"
+                },
+                "trustBadges": [
+                    "Aucune connexion YouTube requise",
+                    "Traitement rapide",
+                    "Filtre de doublons",
+                    "Gagnants suppléants",
+                    "Gratuit"
+                ],
+                "metrics": [
+                    {
+                        "value": "1 000 000+",
+                        "label": "Commentaires traités"
+                    },
+                    {
+                        "value": "80 000+",
+                        "label": "Tirages réussis"
+                    },
+                    {
+                        "value": "100 %",
+                        "label": "Sélection aléatoire"
+                    },
+                    {
+                        "value": "0",
+                        "label": "Connexion requise"
+                    }
+                ],
+                "features": [
+                    {
+                        "title": "Extraction automatique de commentaires",
+                        "desc": "Collez le lien de la vidéo et récupérez automatiquement les commentateurs."
+                    },
+                    {
+                        "title": "Filtre de doublons",
+                        "desc": "Une seule participation par chaîne pour un tirage équitable."
+                    },
+                    {
+                        "title": "Gagnants suppléants",
+                        "desc": "Choisissez des suppléants pour les gagnants injoignables."
+                    },
+                    {
+                        "title": "Vérification des abonnements",
+                        "desc": "Vérifiez le statut d'abonnement des gagnants."
+                    },
+                    {
+                        "title": "Axé sur les commentaires",
+                        "desc": "Organisez des tirages basés sur les commentaires de vidéos."
+                    },
+                    {
+                        "title": "Compatible avec les Shorts",
+                        "desc": "Fonctionne avec les liens de vidéos classiques et Shorts."
+                    },
+                    {
+                        "title": "Exportation des résultats",
+                        "desc": "Copiez, partagez ou téléchargez la carte du gagnant en PNG."
+                    },
+                    {
+                        "title": "Traitement rapide",
+                        "desc": "Un parcours clair et court du lien jusqu'aux gagnants."
+                    }
+                ],
+                "howSteps": [
+                    {
+                        "title": "Coller le lien YouTube",
+                        "desc": "Déposez l'URL de la vidéo ou du Short dans la zone principale."
+                    },
+                    {
+                        "title": "Charger les commentaires",
+                        "desc": "Récupérez les participants via l'API ou ajoutez-les manuellement."
+                    },
+                    {
+                        "title": "Sélectionner les règles",
+                        "desc": "Définissez vos préférences pour les gagnants, suppléants et abonnements."
+                    },
+                    {
+                        "title": "Tirer au sort les gagnants",
+                        "desc": "Désignez le gagnant grâce à une sélection aléatoire sécurisée."
+                    },
+                    {
+                        "title": "Partager les résultats",
+                        "desc": "Copiez, téléchargez ou partagez en un seul clic."
+                    }
+                ],
+                "faq": [
+                    {
+                        "q": "Dois-je me connecter à YouTube ?",
+                        "a": "Non. YulaSanta ne demande pas de mot de passe YouTube. Un lien de vidéo publique suffit."
+                    },
+                    {
+                        "q": "La sélection du gagnant est-elle vraiment aléatoire ?",
+                        "a": "Oui. Grâce à un mélange sécurisé, chaque participant éligible a la même chance."
+                    },
+                    {
+                        "q": "Comment fonctionne la vérification des abonnements ?",
+                        "a": "Après le tirage, le statut d'abonnement des gagnants est vérifié. Si la liste est privée, le résultat peut afficher « privé »."
+                    },
+                    {
+                        "q": "Puis-je choisir des gagnants suppléants ?",
+                        "a": "Oui. Ajustez le nombre de suppléants avant de commencer ; ils seront affichés ensemble dans les résultats."
+                    }
+                ],
+                "errors": {
+                    "needLink": "Veuillez entrer un lien de vidéo YouTube valide",
+                    "invalidLink": "Veuillez entrer un lien de vidéo YouTube valide",
+                    "quota": "Le quota de l'API YouTube est dépassé, veuillez réessayer plus tard",
+                    "commentsDisabled": "Les commentaires sont désactivés pour cette vidéo",
+                    "notFound": "Vidéo introuvable ou privée",
+                    "generic": "Impossible d'extraire les commentaires — vérifiez le lien de la vidéo"
+                },
+                "toasts": {
+                    "added": "{name} ajouté",
+                    "participantsAdded": "{count} participants ajoutés avec succès !",
+                    "copied": "Résultats copiés dans le presse-papiers !",
+                    "cardDownloaded": "Carte du gagnant téléchargée !"
+                },
+                "loadingSteps": [
+                    "Connexion à YouTube...",
+                    "Extraction des commentaires de la vidéo...",
+                    "Listing des participants...",
+                    "Préparation des données..."
+                ]
+            }
+        }
     },
     "support": {
         "button": "Support",

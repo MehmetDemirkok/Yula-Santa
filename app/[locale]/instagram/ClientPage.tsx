@@ -1,16 +1,15 @@
 "use client";
 
 import { useState, useRef, useEffect } from "react";
-import { useRouter, useParams } from "next/navigation";
 import confetti from "canvas-confetti";
+import { useTranslations } from "next-intl";
+import { useRouter } from "@/i18n/navigation";
 import {
     Instagram,
     MessageCircle,
     Heart,
     Plus,
     Minus,
-    Settings,
-    Link2,
     Users,
     AtSign,
     Play,
@@ -19,7 +18,23 @@ import {
     Loader2,
     Trophy,
     X,
-    ChevronDown
+    ChevronDown,
+    ChevronUp,
+    Check,
+    Shield,
+    Zap,
+    Filter,
+    UserCheck,
+    Hash,
+    Download,
+    Share2,
+    Link2,
+    ClipboardPaste,
+    ArrowRight,
+    Sparkles,
+    Clock,
+    BadgeCheck,
+    Shuffle,
 } from "lucide-react";
 import { Button } from "@/components/ui/Button";
 import { useLanguage } from "@/lib/i18n/LanguageContext";
@@ -29,46 +44,60 @@ import { downloadWinnerCard } from "@/lib/downloadWinnerCard";
 import { secureShuffle, secureRandomInt } from "@/lib/random";
 import { AdWrapper, InArticleAd } from "@/components/ads";
 import { AD_SLOTS } from "@/lib/ads/config";
+import { Reveal } from "@/components/Reveal";
 
-type TabType = 'links' | 'rules' | 'participants';
-type DrawType = 'comments' | 'likes' | 'tags';
+type Phase = "input" | "configure" | "results";
+type DrawType = "comments" | "likes" | "tags";
+type EntryMode = "auto" | "manual";
 
 interface Participant {
     name: string;
     comment: string;
 }
 
+const IG_GRADIENT = "bg-gradient-to-r from-[#FCAF45] via-[#E1306C] to-[#833AB4]";
+const IG_GRADIENT_SOFT = "bg-gradient-to-br from-[#FCAF45]/15 via-[#E1306C]/10 to-[#833AB4]/15";
+
+const FEATURE_ICONS = [MessageCircle, Filter, Users, UserCheck, AtSign, Hash, Download, Clock] as const;
+const TRUST_ICONS = [Shield, Zap, Filter, Users, BadgeCheck] as const;
+
 export default function InstagramGiveaway() {
     const router = useRouter();
-    const params = useParams();
-    const locale = params.locale as string;
     const { t } = useLanguage();
+    const tl = useTranslations("giveaway.landing.instagram");
     const { toast } = useToast();
 
-    // Tab state
-    const [activeTab, setActiveTab] = useState<TabType>('links');
-
-    // Link & Draw settings
-    const [mode, setMode] = useState<'manual' | 'auto' | null>(null);
+    const [phase, setPhase] = useState<Phase>("input");
+    const [entryMode, setEntryMode] = useState<EntryMode>("auto");
     const [manualPaste, setManualPaste] = useState("");
     const [postLink, setPostLink] = useState("");
-    const [drawType, setDrawType] = useState<DrawType>('comments');
+    const [drawType, setDrawType] = useState<DrawType>("comments");
 
-    // Rules/Settings
     const [giveawayName, setGiveawayName] = useState("");
     const [winnerCount, setWinnerCount] = useState(1);
     const [backupCount, setBackupCount] = useState(0);
     const [requireFollow, setRequireFollow] = useState(true);
     const [countUserOnce, setCountUserOnce] = useState(true);
 
-    // Participants
     const [participants, setParticipants] = useState<Participant[]>([]);
     const [newParticipant, setNewParticipant] = useState("");
     const [bulkInput, setBulkInput] = useState("");
     const [showManualEntry, setShowManualEntry] = useState(false);
     const dropdownRef = useRef<HTMLDivElement>(null);
+    const toolRef = useRef<HTMLDivElement>(null);
+    const configureRef = useRef<HTMLDivElement>(null);
 
-    // Close dropdown on click outside
+    const [isRolling, setIsRolling] = useState(false);
+    const [rollingParticipant, setRollingParticipant] = useState<Participant | null>(null);
+    const [winners, setWinners] = useState<Participant[]>([]);
+    const [backups, setBackups] = useState<Participant[]>([]);
+    const [copied, setCopied] = useState(false);
+    const [loading, setLoading] = useState(false);
+    const [loadingStep, setLoadingStep] = useState("");
+    const [error, setError] = useState<string | null>(null);
+    const [showShareModal, setShowShareModal] = useState(false);
+    const [openFaq, setOpenFaq] = useState<number | null>(0);
+
     useEffect(() => {
         function handleClickOutside(event: MouseEvent) {
             if (dropdownRef.current && !dropdownRef.current.contains(event.target as Node)) {
@@ -79,28 +108,27 @@ export default function InstagramGiveaway() {
         return () => document.removeEventListener("mousedown", handleClickOutside);
     }, []);
 
-    // Animation & Results
-    const [isRolling, setIsRolling] = useState(false);
-    const [rollingParticipant, setRollingParticipant] = useState<Participant | null>(null);
-    const [winners, setWinners] = useState<Participant[]>([]);
-    const [backups, setBackups] = useState<Participant[]>([]);
-    const [showResults, setShowResults] = useState(false);
-    const [copied, setCopied] = useState(false);
-    const [loading, setLoading] = useState(false);
-    const [loadingStep, setLoadingStep] = useState("");
-    const [error, setError] = useState<string | null>(null);
-    const [showShareModal, setShowShareModal] = useState(false);
+    const scrollToTool = () => {
+        toolRef.current?.scrollIntoView({ behavior: "smooth", block: "start" });
+    };
+
+    const goToConfigure = () => {
+        setPhase("configure");
+        requestAnimationFrame(() => {
+            configureRef.current?.scrollIntoView({ behavior: "smooth", block: "start" });
+        });
+    };
 
     const addParticipant = () => {
         if (!newParticipant.trim()) return;
-        const name = newParticipant.trim().replace(/^@/, '');
-        if (participants.some(p => p.name === name)) {
-            toast.warning(t.home.nameExists || "Bu kullanıcı zaten listede");
+        const name = newParticipant.trim().replace(/^@/, "");
+        if (participants.some((p) => p.name === name)) {
+            toast.warning(t.home.nameExists);
             return;
         }
-        setParticipants([...participants, { name, comment: 'Manual Entry' }]);
+        setParticipants([...participants, { name, comment: "" }]);
         setNewParticipant("");
-        toast.success(`@${name} eklendi`);
+        toast.success(tl("toasts.added", { name }));
     };
 
     const removeParticipant = (index: number) => {
@@ -111,15 +139,15 @@ export default function InstagramGiveaway() {
         if (!bulkInput.trim()) return;
         const names = bulkInput
             .split(/[\n,;]+/)
-            .map(n => n.trim().replace(/^@/, ''))
-            .filter(n => n.length > 0);
+            .map((n) => n.trim().replace(/^@/, ""))
+            .filter((n) => n.length > 0);
 
-        const existingNames = new Set(participants.map(p => p.name));
+        const existingNames = new Set(participants.map((p) => p.name));
         const unique = [...participants];
 
-        names.forEach(name => {
+        names.forEach((name) => {
             if (!existingNames.has(name)) {
-                unique.push({ name, comment: 'Manual Entry' });
+                unique.push({ name, comment: "" });
                 existingNames.add(name);
             }
         });
@@ -132,25 +160,28 @@ export default function InstagramGiveaway() {
     const handleManualParse = () => {
         if (!manualPaste.trim()) return;
 
-        const lines = manualPaste.split('\n');
+        const lines = manualPaste.split("\n");
         const extracted: Participant[] = [];
 
-        lines.forEach(line => {
+        lines.forEach((line) => {
             const trimmed = line.trim();
             if (!trimmed) return;
 
-            let possibleName = trimmed.split(':')[0].trim();
-            possibleName = possibleName.replace(/^@/, '');
+            let possibleName = trimmed.split(":")[0].trim();
+            possibleName = possibleName.replace(/^@/, "");
 
-            if (possibleName.length > 0 && possibleName.length <= 30 && !possibleName.includes(' ')) {
-                extracted.push({ name: possibleName, comment: trimmed.substring(possibleName.length + 1).trim() || 'Manual Entry' });
+            if (possibleName.length > 0 && possibleName.length <= 30 && !possibleName.includes(" ")) {
+                extracted.push({
+                    name: possibleName,
+                    comment: trimmed.substring(possibleName.length + 1).trim() || "",
+                });
             }
         });
 
-        const existingNames = new Set(participants.map(p => p.name));
+        const existingNames = new Set(participants.map((p) => p.name));
         const unique = [...participants];
 
-        extracted.forEach(p => {
+        extracted.forEach((p) => {
             if (!existingNames.has(p.name)) {
                 unique.push(p);
                 existingNames.add(p.name);
@@ -159,27 +190,23 @@ export default function InstagramGiveaway() {
 
         setParticipants(unique);
         setManualPaste("");
-        setActiveTab('rules');
+        toast.success(tl("toasts.participantsAdded", { count: extracted.length }));
+        goToConfigure();
     };
 
     const fetchInstagramComments = async () => {
         setError(null);
         if (!postLink.trim()) {
-            toast.warning("Lütfen bir Instagram post linki girin");
+            toast.warning(tl("errors.needLink"));
             return;
         }
-        if (!postLink.includes('instagram.com')) {
-            toast.error("Geçerli bir Instagram post linki giriniz (instagram.com/p/...)");
+        if (!postLink.includes("instagram.com")) {
+            toast.error(tl("errors.invalidLink"));
             return;
         }
 
         setLoading(true);
-        const steps = [
-            "Instagram'a bağlanılıyor...",
-            "Yorumlar çekiliyor...",
-            "Katılımcılar analiz ediliyor...",
-            "Veriler hazırlanıyor...",
-        ];
+        const steps = tl.raw("loadingSteps") as string[];
         let stepIdx = 0;
         setLoadingStep(steps[0]);
         const stepInterval = setInterval(() => {
@@ -188,16 +215,16 @@ export default function InstagramGiveaway() {
         }, 5000);
 
         try {
-            const response = await fetch('/api/instagram/comments', {
-                method: 'POST',
-                headers: { 'Content-Type': 'application/json' },
+            const response = await fetch("/api/instagram/comments", {
+                method: "POST",
+                headers: { "Content-Type": "application/json" },
                 body: JSON.stringify({ postLink }),
             });
 
             const text = await response.text();
             let data;
             try {
-                const normalized = text.replace(/^\s*for\s*\(\s*;\s*;\s*\)\s*;?\s*/i, '');
+                const normalized = text.replace(/^\s*for\s*\(\s*;\s*;\s*\)\s*;?\s*/i, "");
                 data = JSON.parse(normalized);
             } catch {
                 throw new Error(text || t.giveaway.fetchError);
@@ -208,10 +235,10 @@ export default function InstagramGiveaway() {
             }
 
             const newParticipants = data.participants as Participant[];
-            const existingNames = new Set(participants.map(p => p.name));
+            const existingNames = new Set(participants.map((p) => p.name));
             const unique = [...participants];
 
-            newParticipants.forEach(p => {
+            newParticipants.forEach((p) => {
                 if (!existingNames.has(p.name)) {
                     unique.push(p);
                     existingNames.add(p.name);
@@ -219,18 +246,21 @@ export default function InstagramGiveaway() {
             });
 
             setParticipants(unique);
-            setActiveTab('rules');
-            toast.success(`${newParticipants.length} katılımcı başarıyla eklendi!`);
+            toast.success(tl("toasts.participantsAdded", { count: newParticipants.length }));
+            goToConfigure();
         } catch (err) {
-            console.error('Fetch error:', err);
+            console.error("Fetch error:", err);
             const raw = err instanceof Error ? err.message : String(err);
-            const friendly = raw.includes('token') || raw.includes('API') || raw.includes('configuration')
-                ? 'Servis şu anda kullanılamıyor, lütfen daha sonra deneyin'
-                : raw.includes('private') || raw.includes('not found') || raw.includes('404')
-                ? 'Bu hesap gizli veya post bulunamadı'
-                : raw.includes('timeout') || raw.includes('ETIMEDOUT') || raw.includes('network')
-                ? 'Bağlantı zaman aşımına uğradı, lütfen tekrar deneyin'
-                : 'Yorumlar çekilemedi — post linkini kontrol edin';
+            const friendly =
+                raw.includes("token") || raw.includes("API") || raw.includes("configuration") || raw.includes("Apify") || raw.includes("limit")
+                    ? tl("errors.serviceDown")
+                    : raw.includes("private") || raw.includes("not found") || raw.includes("404")
+                      ? tl("errors.privateOrMissing")
+                      : raw.includes("timeout") || raw.includes("ETIMEDOUT") || raw.includes("network")
+                        ? tl("errors.timeout")
+                        : raw.length < 120
+                          ? raw
+                          : tl("errors.generic");
             setError(friendly);
             toast.error(friendly);
         } finally {
@@ -243,8 +273,7 @@ export default function InstagramGiveaway() {
     const triggerConfetti = () => {
         const duration = 3000;
         const end = Date.now() + duration;
-
-        const colors = ['#C13584', '#E1306C', '#FD1D1D', '#F56040'];
+        const colors = ["#C13584", "#E1306C", "#FD1D1D", "#F56040", "#833AB4"];
 
         (function frame() {
             confetti({
@@ -252,31 +281,28 @@ export default function InstagramGiveaway() {
                 angle: 60,
                 spread: 55,
                 origin: { x: 0 },
-                colors: colors
+                colors,
             });
             confetti({
                 particleCount: 5,
                 angle: 120,
                 spread: 55,
                 origin: { x: 1 },
-                colors: colors
+                colors,
             });
-
-            if (Date.now() < end) {
-                requestAnimationFrame(frame);
-            }
-        }());
+            if (Date.now() < end) requestAnimationFrame(frame);
+        })();
     };
 
     const startGiveaway = () => {
         if (participants.length < winnerCount + backupCount) {
-            toast.warning(t.home.notEnoughPeople || "Yeterli katılımcı yok");
+            toast.warning(t.home.notEnoughPeople);
             return;
         }
 
         setIsRolling(true);
+        setPhase("results");
 
-        // Rolling animation
         const interval = setInterval(() => {
             const randomIndex = secureRandomInt(participants.length);
             setRollingParticipant(participants[randomIndex]);
@@ -284,15 +310,12 @@ export default function InstagramGiveaway() {
 
         setTimeout(() => {
             clearInterval(interval);
-
             const shuffled = secureShuffle(participants);
             const selectedWinners = shuffled.slice(0, winnerCount);
             const selectedBackups = shuffled.slice(winnerCount, winnerCount + backupCount);
-
             setWinners(selectedWinners);
             setBackups(selectedBackups);
             setIsRolling(false);
-            setShowResults(true);
             triggerConfetti();
         }, 3000);
     };
@@ -300,580 +323,689 @@ export default function InstagramGiveaway() {
     const resetGiveaway = () => {
         setWinners([]);
         setBackups([]);
-        setShowResults(false);
-        setActiveTab('links');
+        setPhase("input");
+        setIsRolling(false);
+        scrollToTool();
     };
 
     const copyResults = () => {
-        const text = `🎉 ${giveawayName || t.giveaway.instagramTitle} ${t.giveaway.results}\n\n🏆 ${t.giveaway.winners}:\n${winners.map((w, i) => `${i + 1}. @${w.name} - "${w.comment}"`).join('\n')}${backups.length > 0 ? `\n\n🔄 ${t.giveaway.backups}:\n${backups.map((b, i) => `${i + 1}. @${b.name}`).join('\n')}` : ''}`;
+        const text = `🎉 ${giveawayName || t.giveaway.instagramTitle} ${t.giveaway.results}\n\n🏆 ${t.giveaway.winners}:\n${winners.map((w, i) => `${i + 1}. @${w.name} - "${w.comment}"`).join("\n")}${backups.length > 0 ? `\n\n🔄 ${t.giveaway.backups}:\n${backups.map((b, i) => `${i + 1}. @${b.name}`).join("\n")}` : ""}`;
         navigator.clipboard.writeText(text);
         setCopied(true);
-        toast.success("Sonuçlar panoya kopyalandı!");
+        toast.success(tl("toasts.copied"));
         setTimeout(() => setCopied(false), 2000);
     };
 
     const getShareText = () => {
-        return `🎉 ${giveawayName || t.giveaway.instagramTitle} ${t.giveaway.results}\n\n🏆 ${t.giveaway.winners}:\n${winners.map((w, i) => `${i + 1}. @${w.name}`).join('\n')}${backups.length > 0 ? `\n\n🔄 ${t.giveaway.backups}:\n${backups.map((b, i) => `${i + 1}. @${b.name}`).join('\n')}` : ''}\n\n🎰 www.yulasanta.com.tr`;
+        return `🎉 ${giveawayName || t.giveaway.instagramTitle} ${t.giveaway.results}\n\n🏆 ${t.giveaway.winners}:\n${winners.map((w, i) => `${i + 1}. @${w.name}`).join("\n")}${backups.length > 0 ? `\n\n🔄 ${t.giveaway.backups}:\n${backups.map((b, i) => `${i + 1}. @${b.name}`).join("\n")}` : ""}\n\n🎰 www.yulasanta.com.tr`;
     };
 
+    const trustBadgeLabels = tl.raw("trustBadges") as string[];
+    const metrics = tl.raw("metrics") as Array<{ value: string; label: string }>;
+    const featuresData = tl.raw("features") as Array<{ title: string; desc: string }>;
+    const howSteps = tl.raw("howSteps") as Array<{ title: string; desc: string }>;
+    const faqItems = tl.raw("faq") as Array<{ q: string; a: string }>;
+
+    const progressSteps = [
+        { n: 1, label: tl("steps.paste") },
+        { n: 2, label: tl("steps.load") },
+        { n: 3, label: tl("steps.rules") },
+        { n: 4, label: tl("steps.draw") },
+    ];
+
+    const stepIndex = phase === "input" ? 1 : phase === "configure" ? 3 : 4;
+
     return (
-        <main className="ys-page-shell flex flex-col items-center p-3 sm:p-4 pt-24 sm:pt-32 relative overflow-hidden safe-area-inset-bottom transition-colors duration-300">
-            {/* Decorative BG */}
-            <div className="absolute top-0 left-0 w-48 sm:w-72 md:w-96 h-48 sm:h-72 md:h-96 bg-purple-200 dark:bg-purple-500/20 rounded-full blur-[80px] sm:blur-[100px] md:blur-[120px] opacity-40 -translate-x-1/2 -translate-y-1/2" />
-            <div className="absolute bottom-0 right-0 w-48 sm:w-72 md:w-96 h-48 sm:h-72 md:h-96 bg-pink-200 dark:bg-pink-500/20 rounded-full blur-[80px] sm:blur-[100px] md:blur-[120px] opacity-40 translate-x-1/3 translate-y-1/3" />
+        <main className="ig-page relative min-h-screen bg-[#fafafa] dark:bg-[var(--background)] text-[var(--text-primary)] overflow-x-hidden">
+            <div className="pointer-events-none absolute inset-0 overflow-hidden" aria-hidden>
+                <div className="absolute -top-32 left-1/2 h-[520px] w-[900px] -translate-x-1/2 rounded-full bg-[radial-gradient(ellipse_at_center,rgba(225,48,108,0.12),transparent_70%)]" />
+                <div className="absolute top-40 -left-24 h-72 w-72 rounded-full bg-[#FCAF45]/10 blur-3xl" />
+                <div className="absolute top-80 -right-20 h-80 w-80 rounded-full bg-[#833AB4]/10 blur-3xl" />
+            </div>
 
-            {/* Manual Entry Modal */}
-
-
-            <div className="z-10 w-full max-w-2xl space-y-4 sm:space-y-6">
-                {/* Header */}
-                <div className="text-center space-y-3 sm:space-y-4 pt-4 sm:pt-8">
-                    <div className="inline-flex items-center justify-center p-3 sm:p-4 bg-gradient-to-tr from-yellow-400 via-red-500 to-purple-600 rounded-xl sm:rounded-2xl shadow-lg">
-                        <Instagram className="w-8 h-8 sm:w-10 sm:h-10 text-white" strokeWidth={1.5} />
+            <section ref={toolRef} className="relative z-10 mx-auto max-w-5xl px-4 pb-16 pt-24 sm:px-6 sm:pt-32 lg:pb-24">
+                <div className="mx-auto max-w-3xl text-center">
+                    <div className="mb-6 inline-flex items-center gap-2 rounded-full border border-pink-200/80 bg-white/80 px-3 py-1.5 text-xs font-semibold text-[#E1306C] shadow-sm backdrop-blur dark:border-pink-500/20 dark:bg-white/5">
+                        <Instagram className="h-3.5 w-3.5" strokeWidth={2} />
+                        {tl("badge")}
                     </div>
-                    <h1 className="text-2xl sm:text-3xl md:text-4xl font-black text-[var(--text-primary)] dark:text-white tracking-tight">
-                        {t.giveaway.instagramTitle}
+
+                    <h1 className="font-heading text-[2.25rem] leading-[1.1] tracking-tight text-[var(--text-primary)] sm:text-5xl md:text-[3.5rem]">
+                        {tl("heroTitle")}{" "}
+                        <span className="bg-gradient-to-r from-[#FCAF45] via-[#E1306C] to-[#833AB4] bg-clip-text text-transparent">
+                            {tl("heroHighlight")}
+                        </span>
                     </h1>
-                    <p className="text-[var(--text-muted)] dark:text-[var(--text-muted)] max-w-lg mx-auto text-sm sm:text-base px-2">
-                        {t.giveaway.instagramDesc}
+
+                    <p className="mx-auto mt-5 max-w-xl text-base leading-relaxed text-[var(--text-secondary)] sm:text-lg">
+                        {tl("heroSubtitle")}
                     </p>
-                    <div className="grid gap-3 sm:grid-cols-3 mt-6 text-sm text-left sm:text-center">
-                        <div className="rounded-3xl bg-white/90 dark:bg-white/5 border border-[var(--border-medium)] dark:border-white/10 p-4 shadow-sm">
-                            <span className="inline-flex items-center justify-center w-8 h-8 rounded-full bg-pink-100 text-pink-700 font-bold">1</span>
-                            <p className="mt-3 text-[var(--text-secondary)] dark:text-[var(--text-muted)]">Instagram gönderi linkini yapıştır veya manuel ekle.</p>
-                        </div>
-                        <div className="rounded-3xl bg-white/90 dark:bg-white/5 border border-[var(--border-medium)] dark:border-white/10 p-4 shadow-sm">
-                            <span className="inline-flex items-center justify-center w-8 h-8 rounded-full bg-pink-100 text-pink-700 font-bold">2</span>
-                            <p className="mt-3 text-[var(--text-secondary)] dark:text-[var(--text-muted)]">Katılımcıları topla, gereksinimleri ayarla, adil bir çekiliş yap.</p>
-                        </div>
-                        <div className="rounded-3xl bg-white/90 dark:bg-white/5 border border-[var(--border-medium)] dark:border-white/10 p-4 shadow-sm">
-                            <span className="inline-flex items-center justify-center w-8 h-8 rounded-full bg-pink-100 text-pink-700 font-bold">3</span>
-                            <p className="mt-3 text-[var(--text-secondary)] dark:text-[var(--text-muted)]">Kazananları anında seç ve sonuçları paylaş.</p>
-                        </div>
-                    </div>
                 </div>
 
-                {/* Main Card */}
-                <div className="bg-white/90 dark:bg-[var(--card-bg)] backdrop-blur-xl rounded-2xl sm:rounded-3xl shadow-xl dark:shadow-2xl border border-white/50 dark:border-white/10 overflow-hidden min-h-[400px]">
-                    {/* Tab Navigation */}
-                    <div className={`flex border-b border-[var(--border-light)] ${isRolling ? 'opacity-50 pointer-events-none' : ''}`}>
-                        <button
-                            onClick={() => setActiveTab('links')}
-                            className={`flex-1 py-3 sm:py-4 px-2 sm:px-6 font-bold text-xs sm:text-sm flex items-center justify-center gap-1 sm:gap-2 transition-all border-b-2 ${activeTab === 'links'
-                                ? 'text-pink-600 border-pink-500 bg-pink-50/50'
-                                : 'text-[var(--text-muted)] border-transparent hover:text-[var(--text-secondary)]'
-                                }`}
-                        >
-                            <Link2 className="w-3.5 h-3.5 sm:w-4 sm:h-4" />
-                            <span className="hidden xs:inline sm:inline">{t.giveaway.links}</span>
-                        </button>
-                        <button
-                            onClick={() => setActiveTab('rules')}
-                            className={`flex-1 py-3 sm:py-4 px-2 sm:px-6 font-bold text-xs sm:text-sm flex items-center justify-center gap-1 sm:gap-2 transition-all border-b-2 ${activeTab === 'rules'
-                                ? 'text-pink-600 border-pink-500 bg-pink-50/50'
-                                : 'text-[var(--text-muted)] border-transparent hover:text-[var(--text-secondary)]'
-                                }`}
-                        >
-                            <Settings className="w-3.5 h-3.5 sm:w-4 sm:h-4" />
-                            <span className="hidden xs:inline sm:inline">{t.giveaway.rules}</span>
-                        </button>
-                        <button
-                            onClick={() => setActiveTab('participants')}
-                            className={`flex-1 py-3 sm:py-4 px-2 sm:px-6 font-bold text-xs sm:text-sm flex items-center justify-center gap-1 sm:gap-2 transition-all border-b-2 ${activeTab === 'participants'
-                                ? 'text-pink-600 border-pink-500 bg-pink-50/50'
-                                : 'text-[var(--text-muted)] border-transparent hover:text-[var(--text-secondary)]'
-                                }`}
-                        >
-                            <Users className="w-3.5 h-3.5 sm:w-4 sm:h-4" />
-                            <span className="hidden xs:inline sm:inline">{t.giveaway.participants}</span>
-                            {participants.length > 0 && (
-                                <span className="ml-1 sm:ml-2 bg-pink-500 text-white text-[10px] sm:text-xs px-1.5 sm:px-2 py-0.5 rounded-full">
-                                    {participants.length}
-                                </span>
-                            )}
-                        </button>
-                    </div>
-
-                    <div className="p-4 sm:p-6">
-                        {/* ROLLING ANIMATION UI */}
-                        {isRolling && (
-                            <div className="flex flex-col items-center justify-center py-12 space-y-6 animate-in fade-in duration-300">
-                                <div className="text-center space-y-2">
-                                    <h3 className="text-xl font-bold text-[var(--text-muted)]">{t.giveaway.fetching || "Rolling..."}</h3>
-                                    <div className="text-4xl sm:text-5xl font-black text-pink-600 tracking-tight transition-all scale-110">
-                                        @{rollingParticipant?.name}
+                <nav aria-label="Giveaway steps" className="mx-auto mt-10 max-w-3xl">
+                    <ol className="flex flex-wrap items-center justify-center gap-2 sm:gap-3">
+                        {progressSteps.map((s, i) => {
+                            const active = stepIndex >= s.n || (phase === "configure" && s.n <= 3) || (phase === "results" && s.n <= 4);
+                            const current =
+                                (phase === "input" && s.n === 1) ||
+                                (phase === "configure" && s.n === 3) ||
+                                (phase === "results" && s.n === 4);
+                            return (
+                                <li key={s.n} className="flex items-center gap-2 sm:gap-3">
+                                    {i > 0 && <div className={`hidden h-px w-6 sm:block ${active ? "bg-[#E1306C]/40" : "bg-[var(--border-medium)]"}`} />}
+                                    <div
+                                        className={`flex items-center gap-2 rounded-full px-3 py-1.5 text-xs font-semibold transition-all sm:text-sm ${
+                                            current
+                                                ? "bg-gradient-to-r from-[#FCAF45] via-[#E1306C] to-[#833AB4] text-white shadow-md"
+                                                : active
+                                                  ? "bg-pink-50 text-[#E1306C] dark:bg-pink-500/10"
+                                                  : "bg-white text-[var(--text-muted)] ring-1 ring-[var(--border-light)] dark:bg-white/5"
+                                        }`}
+                                    >
+                                        <span className="flex h-5 w-5 items-center justify-center rounded-full bg-black/10 text-[10px] sm:h-6 sm:w-6 sm:text-xs">
+                                            {active && !current ? <Check className="h-3 w-3" strokeWidth={3} /> : s.n}
+                                        </span>
+                                        <span>{s.label}</span>
                                     </div>
-                                    <p className="text-sm text-[var(--text-muted)] max-w-sm mx-auto truncate px-4">
-                                        {rollingParticipant?.comment}
-                                    </p>
-                                </div>
-                                <Loader2 className="w-8 h-8 text-pink-400 animate-spin" />
+                                </li>
+                            );
+                        })}
+                    </ol>
+                </nav>
+
+                <div className="mx-auto mt-8 max-w-3xl">
+                    <div className="overflow-hidden rounded-[20px] border border-[var(--border-light)] bg-white shadow-[0_8px_40px_rgba(17,24,39,0.06)] dark:border-white/10 dark:bg-[var(--card-bg)]">
+                        {isRolling && (
+                            <div className="flex flex-col items-center justify-center space-y-6 px-6 py-16">
+                                <p className="text-sm font-medium uppercase tracking-widest text-[var(--text-muted)]">{tl("selecting")}</p>
+                                <div className="text-4xl font-black tracking-tight text-[#E1306C] sm:text-5xl">@{rollingParticipant?.name}</div>
+                                <p className="max-w-sm truncate px-4 text-sm text-[var(--text-muted)]">{rollingParticipant?.comment}</p>
+                                <Loader2 className="h-8 w-8 animate-spin text-[#E1306C]" />
                             </div>
                         )}
 
-                        {/* NORMAL TABS */}
-                        {!isRolling && (
-                            <>
-                                {/* Links/Method Tab */}
-                                {activeTab === 'links' && !showResults && (
-                                    <div className="space-y-6 animate-in fade-in slide-in-from-bottom-4">
+                        {!isRolling && phase === "results" && (
+                            <div className="space-y-6 p-5 sm:p-8 animate-in fade-in zoom-in-95 duration-500">
+                                <div className="text-center space-y-3">
+                                    <div className={`mx-auto inline-flex rounded-2xl p-3 ${IG_GRADIENT} shadow-lg`}>
+                                        <Trophy className="h-8 w-8 text-white" strokeWidth={1.75} />
+                                    </div>
+                                    <h2 className="text-2xl font-bold tracking-tight sm:text-3xl">
+                                        {giveawayName || t.giveaway.instagramTitle} {t.giveaway.results}
+                                    </h2>
+                                </div>
 
-                                        {!mode ? (
-                                            // Mode Selection
-                                            <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-                                                <button
-                                                    onClick={() => setMode('manual')}
-                                                    className="flex flex-col items-center justify-center p-6 bg-gradient-to-br from-pink-50 via-white to-purple-50 dark:from-pink-950/50 dark:via-[var(--card-bg)] dark:to-purple-950/40 border border-pink-200 dark:border-pink-500/30 rounded-3xl shadow-sm transition-all hover:-translate-y-0.5 hover:shadow-md"
-                                                >
-                                                    <div className="p-4 bg-white dark:bg-white/10 rounded-full shadow-lg mb-4 text-pink-600 dark:text-pink-400">
-                                                        <Users className="w-8 h-8" />
+                                <div className="space-y-3">
+                                    {winners.map((winner, i) => (
+                                        <div
+                                            key={`${winner.name}-${i}`}
+                                            className={`rounded-2xl border border-pink-200/70 p-4 shadow-sm transition hover:-translate-y-0.5 hover:shadow-md dark:border-pink-500/20 ${IG_GRADIENT_SOFT}`}
+                                            style={{ animationDelay: `${i * 80}ms` }}
+                                        >
+                                            <div className="flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-between">
+                                                <div className="flex items-center gap-3">
+                                                    <span className={`flex h-10 w-10 shrink-0 items-center justify-center rounded-full text-sm font-bold text-white ${IG_GRADIENT}`}>
+                                                        {i + 1}
+                                                    </span>
+                                                    <div>
+                                                        <p className="text-lg font-bold">@{winner.name}</p>
+                                                        {winner.comment && (
+                                                            <p className="mt-0.5 line-clamp-2 text-sm text-[var(--text-secondary)]">&quot;{winner.comment}&quot;</p>
+                                                        )}
                                                     </div>
-                                                    <h3 className="font-bold text-lg text-gray-900 dark:text-white mb-2">{t.giveaway.manualMode}</h3>
-                                                    <p className="text-sm text-gray-600 dark:text-gray-300 text-center">{t.giveaway.manualDesc}</p>
-                                                </button>
+                                                </div>
+                                                <span className="inline-flex items-center gap-1.5 self-start rounded-full border border-pink-200 bg-white/90 px-3 py-1 text-xs font-semibold text-[#E1306C] dark:border-pink-500/30 dark:bg-white/5">
+                                                    <Trophy className="h-3.5 w-3.5" /> {tl("winner")}
+                                                </span>
+                                            </div>
+                                        </div>
+                                    ))}
+                                </div>
 
+                                {backups.length > 0 && (
+                                    <div className="space-y-3 border-t border-[var(--border-light)] pt-4">
+                                        <h3 className="flex items-center gap-2 font-semibold text-[var(--text-muted)]">
+                                            <Users className="h-5 w-5" /> {t.giveaway.backups}
+                                        </h3>
+                                        {backups.map((backup, i) => (
+                                            <div key={`${backup.name}-b-${i}`} className="rounded-xl bg-[var(--surface-2)] px-4 py-3">
+                                                <div className="flex items-center justify-between text-[var(--text-secondary)]">
+                                                    <span>
+                                                        {i + 1}. @{backup.name}
+                                                    </span>
+                                                    <span className="rounded bg-white/80 px-2 py-0.5 text-xs text-[var(--text-muted)] dark:bg-white/5">{tl("backup")}</span>
+                                                </div>
+                                                {backup.comment && <p className="mt-1 truncate pl-4 text-xs text-[var(--text-muted)]">&quot;{backup.comment}&quot;</p>}
+                                            </div>
+                                        ))}
+                                    </div>
+                                )}
+
+                                <AdWrapper position="inline">
+                                    <InArticleAd adSlot={AD_SLOTS.IN_ARTICLE} />
+                                </AdWrapper>
+
+                                <div className="flex flex-wrap gap-2 pt-2">
+                                    <Button onClick={copyResults} variant="secondary" className="min-w-[120px] flex-1 rounded-2xl">
+                                        {copied ? t.giveaway.copied : t.giveaway.copyResults}
+                                    </Button>
+                                    <Button
+                                        onClick={() => {
+                                            downloadWinnerCard({
+                                                giveawayName: giveawayName || t.giveaway.instagramTitle,
+                                                winners,
+                                                backups,
+                                                platform: "instagram",
+                                            });
+                                            toast.success(tl("toasts.cardDownloaded"));
+                                        }}
+                                        variant="secondary"
+                                        className="min-w-[120px] flex-1 rounded-2xl border-pink-200 text-[#E1306C] hover:bg-pink-50"
+                                    >
+                                        <Download className="mr-1.5 h-4 w-4" /> {tl("pngDownload")}
+                                    </Button>
+                                    <Button
+                                        onClick={() => setShowShareModal(true)}
+                                        className={`min-w-[120px] flex-1 rounded-2xl text-white shadow-lg ${IG_GRADIENT} hover:brightness-110`}
+                                    >
+                                        <Share2 className="mr-2 h-4 w-4" /> {t.giveaway.shareResults}
+                                    </Button>
+                                    <Button onClick={resetGiveaway} className="min-w-[120px] flex-1 rounded-2xl bg-[#E1306C] text-white hover:bg-[#c4275c]">
+                                        {t.giveaway.newGiveaway}
+                                    </Button>
+                                </div>
+
+                                <ShareModal
+                                    isOpen={showShareModal}
+                                    onClose={() => setShowShareModal(false)}
+                                    shareText={getShareText()}
+                                    t={{
+                                        shareResults: t.giveaway.copyLink,
+                                        shareTitle: t.giveaway.shareTitle,
+                                        shareDesc: t.giveaway.shareDesc,
+                                        close: t.giveaway.shareCopied || t.giveaway.copied,
+                                    }}
+                                />
+                            </div>
+                        )}
+
+                        {!isRolling && phase === "input" && (
+                            <div className="p-5 sm:p-8">
+                                <div className="mb-6 flex gap-2 rounded-2xl bg-[var(--surface-2)] p-1.5">
+                                    <button
+                                        type="button"
+                                        onClick={() => setEntryMode("auto")}
+                                        className={`flex flex-1 items-center justify-center gap-2 rounded-xl px-4 py-3 text-sm font-semibold transition ${
+                                            entryMode === "auto"
+                                                ? "bg-white text-[var(--text-primary)] shadow-sm dark:bg-white/10"
+                                                : "text-[var(--text-muted)] hover:text-[var(--text-secondary)]"
+                                        }`}
+                                    >
+                                        <Link2 className="h-4 w-4" /> {tl("automatic")}
+                                    </button>
+                                    <button
+                                        type="button"
+                                        onClick={() => setEntryMode("manual")}
+                                        className={`flex flex-1 items-center justify-center gap-2 rounded-xl px-4 py-3 text-sm font-semibold transition ${
+                                            entryMode === "manual"
+                                                ? "bg-white text-[var(--text-primary)] shadow-sm dark:bg-white/10"
+                                                : "text-[var(--text-muted)] hover:text-[var(--text-secondary)]"
+                                        }`}
+                                    >
+                                        <ClipboardPaste className="h-4 w-4" /> {tl("manual")}
+                                    </button>
+                                </div>
+
+                                {entryMode === "auto" ? (
+                                    <div className="space-y-5">
+                                        <div>
+                                            <label htmlFor="ig-url" className="mb-2 block text-sm font-semibold text-[var(--text-secondary)]">
+                                                {tl("step1Url")}
+                                            </label>
+                                            <div className="flex flex-col gap-3 sm:flex-row">
+                                                <div className="flex flex-1 items-center gap-3 rounded-2xl border border-[var(--border-medium)] bg-[var(--surface-2)] px-4 py-3.5 transition focus-within:border-[#E1306C] focus-within:ring-4 focus-within:ring-pink-500/10">
+                                                    <Instagram className="h-5 w-5 shrink-0 text-[#E1306C]" strokeWidth={1.75} />
+                                                    <input
+                                                        id="ig-url"
+                                                        type="url"
+                                                        inputMode="url"
+                                                        autoComplete="url"
+                                                        placeholder={tl("urlPlaceholder")}
+                                                        value={postLink}
+                                                        onChange={(e) => setPostLink(e.target.value)}
+                                                        onKeyDown={(e) => e.key === "Enter" && fetchInstagramComments()}
+                                                        className="w-full bg-transparent text-base outline-none placeholder:text-[var(--text-muted)]"
+                                                        aria-describedby="ig-url-hint"
+                                                    />
+                                                </div>
                                                 <button
-                                                    onClick={() => setMode('auto')}
-                                                    className="flex flex-col items-center justify-center p-6 bg-gradient-to-br from-pink-50 via-white to-purple-50 dark:from-pink-950/50 dark:via-[var(--card-bg)] dark:to-purple-950/40 border border-pink-200 dark:border-pink-500/30 rounded-3xl shadow-sm transition-all hover:-translate-y-0.5 hover:shadow-md"
+                                                    type="button"
+                                                    onClick={fetchInstagramComments}
+                                                    disabled={loading}
+                                                    className={`group relative inline-flex min-h-[52px] items-center justify-center gap-2 overflow-hidden rounded-2xl px-7 text-base font-bold text-white shadow-[0_8px_24px_rgba(225,48,108,0.35)] transition hover:-translate-y-0.5 hover:shadow-[0_12px_28px_rgba(225,48,108,0.45)] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#E1306C] focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-60 ${IG_GRADIENT}`}
                                                 >
-                                                    <div className="p-4 bg-white dark:bg-white/10 rounded-full shadow-lg mb-4 text-pink-600 dark:text-pink-400">
-                                                        <Instagram className="w-8 h-8" />
-                                                    </div>
-                                                    <h3 className="font-bold text-lg text-gray-900 dark:text-white mb-2">{t.giveaway.autoMode}</h3>
-                                                    <p className="text-sm text-gray-600 dark:text-gray-300 text-center">{t.giveaway.autoDesc}</p>
+                                                    <span className="absolute inset-0 -translate-x-full bg-white/20 transition group-hover:translate-x-0" aria-hidden />
+                                                    {loading ? (
+                                                        <>
+                                                            <Loader2 className="h-5 w-5 animate-spin" /> {tl("fetching")}
+                                                        </>
+                                                    ) : (
+                                                        <>
+                                                            <Sparkles className="h-5 w-5" /> {tl("fetchCta")}
+                                                        </>
+                                                    )}
                                                 </button>
                                             </div>
-                                        ) : (
-                                            // Selected Mode UI
-                                            <div className="space-y-4 animate-in fade-in slide-in-from-bottom-4">
-                                                <button onClick={() => setMode(null)} className="text-sm text-[var(--text-muted)] hover:text-[var(--text-secondary)] flex items-center gap-1 mb-2">
-                                                    ← Back to selection
-                                                </button>
+                                            <p id="ig-url-hint" className="mt-2 text-xs text-[var(--text-muted)]">
+                                                {tl("urlHint")}
+                                            </p>
+                                        </div>
 
-                                                {mode === 'manual' ? (
-                                                    <div className="space-y-3">
-                                                        <textarea
-                                                            value={manualPaste}
-                                                            onChange={(e) => setManualPaste(e.target.value)}
-                                                            placeholder={t.giveaway.pasteComments}
-                                                            className="w-full h-48 p-4 rounded-xl border-2 border-dashed border-[var(--border-medium)] focus:border-pink-300 outline-none resize-none bg-[var(--surface-2)]"
-                                                        />
-                                                        <Button onClick={handleManualParse} disabled={!manualPaste.trim()} className="w-full bg-pink-600 hover:bg-pink-700">
-                                                            {t.giveaway.parse}
-                                                        </Button>
+                                        {loading && (
+                                            <div className="rounded-2xl border border-pink-200 bg-pink-50/80 p-4 dark:border-pink-500/20 dark:bg-pink-500/10" role="status" aria-live="polite">
+                                                <div className="flex items-center gap-3">
+                                                    <Loader2 className="h-5 w-5 shrink-0 animate-spin text-[#E1306C]" />
+                                                    <div>
+                                                        <p className="text-sm font-semibold text-[#E1306C]">{loadingStep}</p>
+                                                        <p className="text-xs text-pink-500/80">{tl("loadingWait")}</p>
                                                     </div>
-                                                ) : (
-                                                    <div className="space-y-6">
-                                                        {/* Post Link Input */}
+                                                </div>
+                                                <div className="mt-3 h-1.5 overflow-hidden rounded-full bg-pink-100 dark:bg-pink-500/20">
+                                                    <div className={`h-full w-1/2 animate-pulse rounded-full ${IG_GRADIENT}`} />
+                                                </div>
+                                            </div>
+                                        )}
+
+                                        {error && !loading && (
+                                            <div className="flex items-start gap-2 rounded-2xl border border-red-200 bg-red-50 p-3 text-sm text-red-700 dark:border-red-500/30 dark:bg-red-500/10 dark:text-red-300" role="alert">
+                                                <X className="mt-0.5 h-4 w-4 shrink-0" />
+                                                <div>
+                                                    <p>{error}</p>
+                                                    <button type="button" onClick={() => setEntryMode("manual")} className="mt-2 font-semibold underline-offset-2 hover:underline">
+                                                        {tl("switchManual")}
+                                                    </button>
+                                                </div>
+                                            </div>
+                                        )}
+
+                                        <div className="flex flex-wrap gap-2">
+                                            <button
+                                                type="button"
+                                                onClick={() => setDrawType("comments")}
+                                                className={`inline-flex items-center gap-2 rounded-full px-4 py-2 text-sm font-medium transition ${
+                                                    drawType === "comments"
+                                                        ? "bg-pink-100 text-[#E1306C] ring-1 ring-pink-300 dark:bg-pink-500/15"
+                                                        : "bg-white text-[var(--text-secondary)] ring-1 ring-[var(--border-medium)] dark:bg-white/5"
+                                                }`}
+                                            >
+                                                <MessageCircle className="h-4 w-4" /> {t.giveaway.comments}
+                                            </button>
+                                            <div className="relative cursor-not-allowed opacity-55">
+                                                <div className="inline-flex items-center gap-2 rounded-full bg-[var(--surface-2)] px-4 py-2 text-sm text-[var(--text-muted)]">
+                                                    <Heart className="h-4 w-4" /> {t.giveaway.likes}
+                                                </div>
+                                                <span className="absolute -right-1 -top-2 rounded-full bg-[var(--text-muted)] px-1.5 py-0.5 text-[10px] font-bold text-white">
+                                                    {t.giveaway.comingSoon}
+                                                </span>
+                                            </div>
+                                        </div>
+
+                                        <p className="rounded-2xl border border-blue-100 bg-blue-50/70 px-4 py-3 text-sm text-blue-800 dark:border-blue-500/20 dark:bg-blue-500/10 dark:text-blue-200">
+                                            {t.giveaway.instagramLimitNote} — {t.giveaway.participantLimitDetails}
+                                        </p>
+
+                                        {participants.length > 0 && (
+                                            <button
+                                                type="button"
+                                                onClick={goToConfigure}
+                                                className="inline-flex w-full items-center justify-center gap-2 rounded-2xl bg-[var(--text-primary)] px-5 py-3.5 text-sm font-bold text-white transition hover:opacity-90"
+                                            >
+                                                {tl("continueWith", { count: participants.length })} <ArrowRight className="h-4 w-4" />
+                                            </button>
+                                        )}
+                                    </div>
+                                ) : (
+                                    <div className="space-y-4">
+                                        <label htmlFor="ig-manual" className="mb-2 block text-sm font-semibold text-[var(--text-secondary)]">
+                                            {tl("step1Manual")}
+                                        </label>
+                                        <textarea
+                                            id="ig-manual"
+                                            value={manualPaste}
+                                            onChange={(e) => setManualPaste(e.target.value)}
+                                            placeholder={t.giveaway.pasteComments}
+                                            className="h-48 w-full resize-none rounded-2xl border border-dashed border-[var(--border-medium)] bg-[var(--surface-2)] p-4 outline-none transition focus:border-[#E1306C] focus:ring-4 focus:ring-pink-500/10"
+                                        />
+                                        <button
+                                            type="button"
+                                            onClick={handleManualParse}
+                                            disabled={!manualPaste.trim()}
+                                            className={`inline-flex w-full min-h-[52px] items-center justify-center gap-2 rounded-2xl px-6 text-base font-bold text-white shadow-lg transition hover:-translate-y-0.5 disabled:opacity-50 ${IG_GRADIENT}`}
+                                        >
+                                            {t.giveaway.parse} <ArrowRight className="h-4 w-4" />
+                                        </button>
+                                    </div>
+                                )}
+                            </div>
+                        )}
+
+                        {!isRolling && phase === "configure" && (
+                            <div ref={configureRef} className="space-y-8 p-5 sm:p-8 animate-in fade-in slide-in-from-bottom-2 duration-400">
+                                <div className="flex flex-wrap items-center justify-between gap-3">
+                                    <div>
+                                        <p className="text-xs font-semibold uppercase tracking-wider text-[#E1306C]">{tl("step3Subtitle")}</p>
+                                        <h2 className="text-xl font-bold tracking-tight sm:text-2xl">{tl("step3Title")}</h2>
+                                    </div>
+                                    <button
+                                        type="button"
+                                        onClick={() => setPhase("input")}
+                                        className="text-sm font-medium text-[var(--text-muted)] hover:text-[var(--text-secondary)]"
+                                    >
+                                        {tl("backToUrl")}
+                                    </button>
+                                </div>
+
+                                <div className="grid gap-6 lg:grid-cols-2">
+                                    <div className="space-y-5">
+                                        <div>
+                                            <label className="mb-2 block text-sm font-semibold">{t.giveaway.giveawayName}</label>
+                                            <input
+                                                type="text"
+                                                placeholder={t.giveaway.instagramTitle}
+                                                value={giveawayName}
+                                                onChange={(e) => setGiveawayName(e.target.value)}
+                                                className="w-full rounded-2xl border border-[var(--border-medium)] bg-[var(--surface-2)] px-4 py-3 outline-none transition focus:border-[#E1306C] focus:ring-4 focus:ring-pink-500/10"
+                                            />
+                                        </div>
+
+                                        <div className="grid grid-cols-2 gap-4">
+                                            <div className="rounded-2xl border border-[var(--border-light)] bg-[var(--surface-2)] p-4">
+                                                <label className="mb-3 block text-center text-sm font-semibold">{t.giveaway.winnerCount}</label>
+                                                <div className="flex items-center justify-center gap-3">
+                                                    <button type="button" aria-label="Decrease winners" onClick={() => setWinnerCount(Math.max(1, winnerCount - 1))} className="flex h-10 w-10 items-center justify-center rounded-xl bg-pink-100 text-[#E1306C]">
+                                                        <Minus className="h-4 w-4" />
+                                                    </button>
+                                                    <span className="w-10 text-center text-xl font-bold">{winnerCount}</span>
+                                                    <button type="button" aria-label="Increase winners" onClick={() => setWinnerCount(winnerCount + 1)} className="flex h-10 w-10 items-center justify-center rounded-xl bg-pink-100 text-[#E1306C]">
+                                                        <Plus className="h-4 w-4" />
+                                                    </button>
+                                                </div>
+                                            </div>
+                                            <div className="rounded-2xl border border-[var(--border-light)] bg-[var(--surface-2)] p-4">
+                                                <label className="mb-3 block text-center text-sm font-semibold">{t.giveaway.backupCount}</label>
+                                                <div className="flex items-center justify-center gap-3">
+                                                    <button type="button" aria-label="Decrease backups" onClick={() => setBackupCount(Math.max(0, backupCount - 1))} className="flex h-10 w-10 items-center justify-center rounded-xl bg-white text-[var(--text-secondary)] dark:bg-white/10">
+                                                        <Minus className="h-4 w-4" />
+                                                    </button>
+                                                    <span className="w-10 text-center text-xl font-bold">{backupCount}</span>
+                                                    <button type="button" aria-label="Increase backups" onClick={() => setBackupCount(backupCount + 1)} className="flex h-10 w-10 items-center justify-center rounded-xl bg-white text-[var(--text-secondary)] dark:bg-white/10">
+                                                        <Plus className="h-4 w-4" />
+                                                    </button>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <div className="space-y-2">
+                                            <button
+                                                type="button"
+                                                onClick={() => setRequireFollow(!requireFollow)}
+                                                className="flex w-full items-center justify-between rounded-2xl border border-[var(--border-light)] bg-[var(--surface-2)] px-4 py-3 text-left transition hover:border-pink-200"
+                                            >
+                                                <span className="flex items-center gap-2 text-sm font-medium">
+                                                    <UserCheck className="h-4 w-4 text-[#E1306C]" /> {t.giveaway.requireFollow}
+                                                </span>
+                                                <span className={`relative h-7 w-12 rounded-full transition-colors ${requireFollow ? "bg-[#E1306C]" : "bg-[var(--text-muted)]"}`}>
+                                                    <span className={`absolute top-1 h-5 w-5 rounded-full bg-white shadow transition-transform ${requireFollow ? "right-1" : "left-1"}`} />
+                                                </span>
+                                            </button>
+                                            <button
+                                                type="button"
+                                                onClick={() => setCountUserOnce(!countUserOnce)}
+                                                className="flex w-full items-center justify-between rounded-2xl border border-[var(--border-light)] bg-[var(--surface-2)] px-4 py-3 text-left transition hover:border-pink-200"
+                                            >
+                                                <span className="flex items-center gap-2 text-sm font-medium">
+                                                    <Filter className="h-4 w-4 text-[#E1306C]" /> {t.giveaway.countUserOnce}
+                                                </span>
+                                                <span className={`relative h-7 w-12 rounded-full transition-colors ${countUserOnce ? "bg-[#E1306C]" : "bg-[var(--text-muted)]"}`}>
+                                                    <span className={`absolute top-1 h-5 w-5 rounded-full bg-white shadow transition-transform ${countUserOnce ? "right-1" : "left-1"}`} />
+                                                </span>
+                                            </button>
+                                        </div>
+                                    </div>
+
+                                    <div className="flex flex-col rounded-2xl border border-[var(--border-light)] bg-[var(--surface-2)] p-4">
+                                        <div className="mb-3 flex items-center justify-between gap-2">
+                                            <h3 className="text-sm font-bold">
+                                                {t.giveaway.participants}{" "}
+                                                <span className="rounded-full bg-[#E1306C] px-2 py-0.5 text-xs text-white">{participants.length}</span>
+                                            </h3>
+                                            <div className="relative flex items-center gap-2" ref={dropdownRef}>
+                                                <button
+                                                    type="button"
+                                                    onClick={() => setShowManualEntry(!showManualEntry)}
+                                                    className="inline-flex items-center gap-1 rounded-full bg-pink-50 px-3 py-1.5 text-xs font-bold text-[#E1306C] transition hover:bg-pink-100 dark:bg-pink-500/10"
+                                                >
+                                                    <Plus className="h-3.5 w-3.5" /> {tl("add")}
+                                                    {showManualEntry ? <X className="h-3 w-3" /> : <ChevronDown className="h-3 w-3" />}
+                                                </button>
+                                                {participants.length > 0 && (
+                                                    <button type="button" onClick={() => setParticipants([])} className="text-xs font-medium text-[var(--text-muted)] hover:text-red-500">
+                                                        {t.giveaway.clearAll}
+                                                    </button>
+                                                )}
+
+                                                {showManualEntry && (
+                                                    <div className="absolute right-0 top-full z-50 mt-2 w-72 origin-top-right rounded-2xl border border-[var(--border-light)] bg-white p-4 shadow-2xl animate-in fade-in zoom-in-95 dark:bg-[var(--card-bg)]">
                                                         <div className="space-y-3">
                                                             <div className="flex gap-2">
-                                                                <div className="flex-1 flex items-center gap-2 bg-[var(--surface-2)] rounded-xl p-4 border-2 border-dashed border-[var(--border-medium)] focus-within:border-pink-300 transition-colors">
-                                                                    <Instagram className="w-5 h-5 text-pink-500" />
+                                                                <div className="flex flex-1 items-center gap-2 rounded-xl border border-[var(--border-medium)] bg-[var(--surface-2)] px-2">
+                                                                    <AtSign className="h-3.5 w-3.5 text-[var(--text-muted)]" />
                                                                     <input
+                                                                        autoFocus
                                                                         type="text"
-                                                                        placeholder={t.giveaway.linkInputPlaceholder}
-                                                                        value={postLink}
-                                                                        onChange={(e) => setPostLink(e.target.value)}
-                                                                        className="flex-1 bg-transparent outline-none text-[var(--text-secondary)] placeholder:text-[var(--text-muted)]"
+                                                                        placeholder={t.giveaway.channelUsername}
+                                                                        value={newParticipant}
+                                                                        onChange={(e) => setNewParticipant(e.target.value)}
+                                                                        onKeyDown={(e) => e.key === "Enter" && addParticipant()}
+                                                                        className="w-full bg-transparent py-2 text-sm outline-none"
                                                                     />
                                                                 </div>
-                                                                <Button
-                                                                    onClick={fetchInstagramComments}
-                                                                    disabled={loading}
-                                                                    className="h-auto px-6 bg-pink-600 hover:bg-pink-700 text-white shadow-lg whitespace-nowrap"
-                                                                >
-                                                                    {loading ? (
-                                                                        <div className="flex items-center gap-2">
-                                                                            <div className="w-4 h-4 border-2 border-white/30 border-t-white rounded-full animate-spin" />
-                                                                            {t.giveaway.fetching}
-                                                                        </div>
-                                                                    ) : (
-                                                                        <>
-                                                                            <MessageCircle className="w-4 h-4 mr-2" />
-                                                                            {t.giveaway.fetchComments}
-                                                                        </>
-                                                                    )}
+                                                                <Button onClick={addParticipant} size="sm" className="h-9 w-9 rounded-xl bg-[#E1306C] p-0 hover:bg-[#c4275c]">
+                                                                    <Plus className="h-4 w-4" />
                                                                 </Button>
                                                             </div>
-                                                        </div>
-                                                        {loading && (
-                                                            <div className="p-4 bg-pink-50 border border-pink-200 rounded-xl animate-in fade-in">
-                                                                <div className="flex items-center gap-3">
-                                                                    <div className="w-5 h-5 border-2 border-pink-300 border-t-pink-600 rounded-full animate-spin flex-shrink-0" />
-                                                                    <div className="flex-1 min-w-0">
-                                                                        <p className="text-sm font-semibold text-pink-700">{loadingStep}</p>
-                                                                        <p className="text-xs text-pink-400 mt-0.5">Bu işlem 20-60 saniye sürebilir, lütfen bekleyin</p>
-                                                                    </div>
-                                                                </div>
-                                                                <div className="mt-3 w-full bg-pink-100 rounded-full h-1 overflow-hidden">
-                                                                    <div className="h-full w-full bg-gradient-to-r from-pink-400 to-purple-400 rounded-full origin-left animate-[pulse_2s_ease-in-out_infinite]" />
-                                                                </div>
-                                                            </div>
-                                                        )}
-
-                                                        {error && !loading && (
-                                                            <div className="p-3 bg-red-50 border border-red-200 text-red-600 rounded-xl text-sm flex items-start gap-2 animate-in slide-in-from-top-2">
-                                                                <span className="text-lg leading-none">⚠️</span>
-                                                                <span>{error}</span>
-                                                            </div>
-                                                        )}
-
-                                                        <div className="bg-blue-50 border border-blue-200 rounded-xl p-4 text-sm text-blue-700 space-y-2">
-                                                            <h4 className="font-bold flex items-center gap-2">
-                                                                <span className="text-xl">ℹ️</span>
-                                                                {t.giveaway.instagramLimitNote}
-                                                            </h4>
-                                                            <p className="opacity-90">
-                                                                {t.giveaway.participantLimitDetails}
-                                                            </p>
-                                                        </div>
-
-                                                        {/* Draw Type Selection */}
-                                                        <div className="flex flex-col sm:flex-row flex-wrap gap-3 justify-center">
-                                                            <button
-                                                                onClick={() => setDrawType('comments')}
-                                                                className={`flex items-center gap-2 px-5 py-3 rounded-full font-medium transition-all ${drawType === 'comments'
-                                                                    ? 'bg-pink-100 border border-pink-300 text-pink-600 shadow-sm'
-                                                                    : 'bg-white border border-[var(--border-medium)] text-[var(--text-secondary)] hover:bg-pink-50'
-                                                                    }`}
-                                                            >
-                                                                <MessageCircle className="w-4 h-4 text-pink-600" />
-                                                                {t.giveaway.comments}
-                                                            </button>
-                                                            <div className="relative opacity-60 cursor-not-allowed max-w-full sm:max-w-max">
-                                                                <div className="flex items-center gap-2 px-5 py-3 rounded-full font-medium bg-[var(--surface-2)] text-[var(--text-muted)] select-none">
-                                                                    <Heart className="w-4 h-4" />
-                                                                    {t.giveaway.likes}
-                                                                </div>
-                                                                <span className="absolute -top-2 -right-2 text-[10px] font-bold bg-[var(--text-muted)] text-white px-1.5 py-0.5 rounded-full leading-none">{t.giveaway.comingSoon}</span>
-                                                            </div>
-                                                        </div>
-
-                                                        <div className="pt-4 flex justify-end">
-                                                            <Button
-                                                                onClick={() => setActiveTab('rules')}
-                                                                className="bg-pink-600 hover:bg-pink-700 text-white shadow-lg"
-                                                            >
-                                                                {t.giveaway.rules} <Settings className="w-4 h-4 ml-2" />
+                                                            <textarea
+                                                                placeholder={"User1\nUser2\nUser3"}
+                                                                value={bulkInput}
+                                                                onChange={(e) => setBulkInput(e.target.value)}
+                                                                className="h-24 w-full resize-none rounded-xl border border-[var(--border-medium)] bg-[var(--surface-2)] p-3 text-sm outline-none"
+                                                            />
+                                                            <Button onClick={handleBulkAdd} variant="secondary" size="sm" className="w-full rounded-xl text-xs">
+                                                                {t.giveaway.bulkAdd}
                                                             </Button>
                                                         </div>
                                                     </div>
                                                 )}
                                             </div>
-                                        )}
-                                    </div>
-                                )}
-
-
-                                {/* Rules Tab */}
-                                {activeTab === 'rules' && !showResults && (
-                                    <div className="space-y-6 animate-in fade-in slide-in-from-bottom-4">
-                                        {/* Giveaway Name */}
-                                        <div className="text-center space-y-2">
-                                            <label className="text-sm font-bold text-[var(--text-secondary)]">{t.giveaway.giveawayName}</label>
-                                            <input
-                                                type="text"
-                                                placeholder="Instagram Giveaway"
-                                                value={giveawayName}
-                                                onChange={(e) => setGiveawayName(e.target.value)}
-                                                className="w-full max-w-md mx-auto block text-center py-3 px-4 rounded-xl border-2 border-[var(--border-medium)] focus:border-pink-400 outline-none transition-colors"
-                                            />
                                         </div>
 
-                                        {/* Winner Counts */}
-                                        <div className="flex justify-center gap-8">
-                                            <div className="text-center space-y-2">
-                                                <label className="text-sm font-bold text-[var(--text-secondary)]">{t.giveaway.winnerCount}</label>
-                                                <div className="flex items-center gap-3 bg-[var(--surface-2)] rounded-xl p-2">
-                                                    <button onClick={() => setWinnerCount(Math.max(1, winnerCount - 1))} className="w-10 h-10 rounded-lg bg-pink-100 text-pink-600 flex items-center justify-center"><Minus className="w-4 h-4" /></button>
-                                                    <span className="w-12 text-center font-bold text-xl">{winnerCount}</span>
-                                                    <button onClick={() => setWinnerCount(winnerCount + 1)} className="w-10 h-10 rounded-lg bg-pink-100 text-pink-600 flex items-center justify-center"><Plus className="w-4 h-4" /></button>
-                                                </div>
-                                            </div>
-                                            <div className="text-center space-y-2">
-                                                <label className="text-sm font-bold text-[var(--text-secondary)]">{t.giveaway.backupCount}</label>
-                                                <div className="flex items-center gap-3 bg-[var(--surface-2)] rounded-xl p-2">
-                                                    <button onClick={() => setBackupCount(Math.max(0, backupCount - 1))} className="w-10 h-10 rounded-lg bg-[var(--surface-2)] text-[var(--text-secondary)] flex items-center justify-center"><Minus className="w-4 h-4" /></button>
-                                                    <span className="w-12 text-center font-bold text-xl">{backupCount}</span>
-                                                    <button onClick={() => setBackupCount(backupCount + 1)} className="w-10 h-10 rounded-lg bg-[var(--surface-2)] text-[var(--text-secondary)] flex items-center justify-center"><Plus className="w-4 h-4" /></button>
-                                                </div>
-                                            </div>
-                                        </div>
-
-                                        {/* Toggles */}
-                                        <div className="space-y-3 max-w-md mx-auto">
-                                            <label className="flex items-center justify-between p-3 bg-[var(--surface-2)] rounded-xl cursor-pointer hover:bg-[var(--surface-2)] transition-colors">
-                                                <span className="text-sm font-medium text-[var(--text-secondary)] flex items-center gap-2">
-                                                    <Users className="w-4 h-4 text-pink-500" />
-                                                    {t.giveaway.requireFollow}
-                                                </span>
-                                                <button onClick={() => setRequireFollow(!requireFollow)} className={`w-12 h-7 rounded-full transition-colors relative ${requireFollow ? 'bg-pink-500' : 'bg-[var(--text-muted)]'}`}>
-                                                    <span className={`absolute top-1 w-5 h-5 rounded-full bg-white shadow transition-transform ${requireFollow ? 'right-1' : 'left-1'}`} />
-                                                </button>
-                                            </label>
-                                            <label className="flex items-center justify-between p-3 bg-[var(--surface-2)] rounded-xl cursor-pointer hover:bg-[var(--surface-2)] transition-colors">
-                                                <span className="text-sm font-medium text-[var(--text-secondary)] flex items-center gap-2">
-                                                    {t.giveaway.countUserOnce}
-                                                </span>
-                                                <button onClick={() => setCountUserOnce(!countUserOnce)} className={`w-12 h-7 rounded-full transition-colors relative ${countUserOnce ? 'bg-pink-500' : 'bg-[var(--text-muted)]'}`}>
-                                                    <span className={`absolute top-1 w-5 h-5 rounded-full bg-white shadow transition-transform ${countUserOnce ? 'right-1' : 'left-1'}`} />
-                                                </button>
-                                            </label>
-                                        </div>
-
-                                        <div className="pt-4 flex justify-between items-center gap-4">
-                                            <Button onClick={() => setActiveTab('links')} variant="ghost" className="text-[var(--text-muted)]">← {t.common.cancel}</Button>
-
-                                            <div className="flex gap-4">
-                                                <Button onClick={() => setActiveTab('participants')} variant="secondary" className="text-[var(--text-secondary)]">
-                                                    {t.giveaway.participants} ({participants.length})
-                                                </Button>
-
-                                                <Button onClick={startGiveaway} disabled={participants.length < winnerCount + backupCount} className="bg-pink-600 hover:bg-pink-700 text-white shadow-lg shadow-pink-200">
-                                                    <Play className="w-5 h-5 mr-2" /> {t.giveaway.startGiveaway}
-                                                </Button>
-                                            </div>
-                                        </div>
-                                        {participants.length < winnerCount + backupCount && (
-                                            <p className="text-center text-sm text-red-500 font-medium bg-red-50 py-2 rounded-lg mt-2">
-                                                ⚠️ {t.home.notEnoughPeople}
-                                            </p>
-                                        )}
-                                    </div>
-                                )}
-
-                                {/* Participants Tab */}
-                                {activeTab === 'participants' && !showResults && (
-                                    <div className="space-y-6 animate-in fade-in slide-in-from-bottom-4">
-                                        {/* List */}
-                                        <div className="space-y-2">
-                                            <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-3">
-                                                <label className="text-sm font-bold text-[var(--text-secondary)]">{t.giveaway.participants} ({participants.length})</label>
-                                                <div className="flex flex-wrap gap-2 items-center relative">
-                                                    <button
-                                                        onClick={() => setShowManualEntry(!showManualEntry)}
-                                                        className="w-full sm:w-auto text-xs bg-pink-50 text-pink-600 font-bold px-4 py-2 rounded-full hover:bg-pink-100 transition-colors flex items-center gap-2 justify-center active:scale-95 duration-75"
-                                                    >
-                                                        <Plus className="w-3.5 h-3.5" />
-                                                        {t.giveaway.addParticipant || "Katılımcı Ekle"}
-                                                        {showManualEntry ? <X className="w-3 h-3" /> : <ChevronDown className="w-3 h-3" />}
+                                        <div className="custom-scrollbar min-h-[220px] max-h-[320px] flex-1 space-y-2 overflow-y-auto pr-1">
+                                            {participants.length === 0 ? (
+                                                <div className="flex h-full flex-col items-center justify-center gap-3 py-10 text-center text-[var(--text-muted)]">
+                                                    <Users className="h-10 w-10 text-pink-200" />
+                                                    <p className="text-sm font-semibold">{t.giveaway.noParticipantsYet}</p>
+                                                    <button type="button" onClick={() => setPhase("input")} className="rounded-xl bg-[#E1306C] px-4 py-2 text-xs font-bold text-white">
+                                                        {t.giveaway.fetchFromPost}
                                                     </button>
-
-                                                    {/* Dropdown Menu */}
-                                                    {showManualEntry && (
-                                                        <div
-                                                            ref={dropdownRef}
-                                                            className="absolute top-full right-0 mt-2 w-80 bg-white rounded-xl shadow-2xl border border-[var(--border-light)] z-50 p-4 animate-in fade-in zoom-in-95 duration-200 origin-top-right transform"
-                                                        >
-                                                            <div className="space-y-4">
-                                                                <div className="space-y-2">
-                                                                    <label className="text-xs font-bold text-[var(--text-muted)] uppercase tracking-wide">{t.giveaway.addParticipant}</label>
-                                                                    <div className="flex gap-2">
-                                                                        <div className="flex-1 flex items-center gap-2 bg-[var(--surface-2)] rounded-lg px-2 border border-[var(--border-medium)] focus-within:border-pink-300 transition-colors">
-                                                                            <AtSign className="w-3.5 h-3.5 text-[var(--text-muted)]" />
-                                                                            <input
-                                                                                autoFocus
-                                                                                type="text"
-                                                                                placeholder="Username"
-                                                                                value={newParticipant}
-                                                                                onChange={(e) => setNewParticipant(e.target.value)}
-                                                                                onKeyDown={(e) => e.key === 'Enter' && addParticipant()}
-                                                                                className="flex-1 bg-transparent outline-none py-2 text-sm text-[var(--text-secondary)] placeholder:text-[var(--text-muted)]"
-                                                                            />
-                                                                        </div>
-                                                                        <Button onClick={addParticipant} size="sm" className="bg-pink-500 hover:bg-pink-600 h-9 w-9 p-0 rounded-lg">
-                                                                            <Plus className="w-4 h-4" />
-                                                                        </Button>
-                                                                    </div>
-                                                                </div>
-
-                                                                <div className="relative">
-                                                                    <div className="absolute inset-0 flex items-center"><span className="w-full border-t border-[var(--border-light)]"></span></div>
-                                                                    <div className="relative flex justify-center text-[10px] uppercase font-bold"><span className="bg-white px-2 text-[var(--text-muted)]">{t.common.or || "OR"} {t.giveaway.bulkAdd || "BULK"}</span></div>
-                                                                </div>
-
-                                                                <div className="space-y-2">
-                                                                    <textarea
-                                                                        placeholder="User1&#10;User2&#10;User3"
-                                                                        value={bulkInput}
-                                                                        onChange={(e) => setBulkInput(e.target.value)}
-                                                                        className="w-full h-24 p-3 text-sm rounded-lg border border-[var(--border-medium)] focus:border-pink-300 outline-none resize-none bg-[var(--surface-2)]"
-                                                                    />
-                                                                    <Button onClick={handleBulkAdd} variant="secondary" size="sm" className="w-full text-xs h-8">
-                                                                        {t.giveaway.bulkAdd}
-                                                                    </Button>
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                    )}
-
-                                                    {participants.length > 0 && (
-                                                        <button
-                                                            onClick={() => setParticipants([])}
-                                                            className="text-xs text-[var(--text-muted)] hover:text-red-500 font-medium px-2"
-                                                        >
-                                                            {t.giveaway.clearAll}
-                                                        </button>
-                                                    )}
                                                 </div>
-                                            </div>
-
-                                            <div className="min-h-[200px] max-h-[50vh] overflow-y-auto space-y-2 pr-2 custom-scrollbar border-2 border-dashed border-[var(--border-light)] rounded-xl p-2 bg-[var(--surface-2)]">
-                                                {participants.length === 0 ? (
-                                                    <div className="h-full flex flex-col items-center justify-center text-[var(--text-muted)] py-10 gap-3">
-                                                        <div className="p-4 bg-pink-50 rounded-2xl">
-                                                            <Users className="w-10 h-10 text-pink-200" />
+                                            ) : (
+                                                participants.map((p, i) => (
+                                                    <div key={`${p.name}-${i}`} className="group flex items-start justify-between gap-2 rounded-xl border border-transparent bg-white p-3 shadow-sm transition hover:border-pink-200 dark:bg-white/5">
+                                                        <div className="min-w-0">
+                                                            <p className="truncate font-medium">@{p.name}</p>
+                                                            {p.comment && <p className="mt-0.5 line-clamp-2 text-xs text-[var(--text-muted)]">{p.comment}</p>}
                                                         </div>
-                                                        <div className="text-center space-y-1">
-                                                            <p className="text-sm font-semibold text-[var(--text-muted)]">{t.giveaway.noParticipantsYet}</p>
-                                                            <p className="text-xs text-[var(--text-muted)] max-w-[200px] mx-auto">{t.giveaway.instagramNoParticipantsHint}</p>
-                                                        </div>
-                                                        <button
-                                                            onClick={() => setActiveTab('links')}
-                                                            className="text-xs bg-pink-500 text-white font-bold px-4 py-2 rounded-lg hover:bg-pink-600 transition-colors"
-                                                        >
-                                                            {t.giveaway.fetchFromPost}
+                                                        <button type="button" aria-label={`Remove ${p.name}`} onClick={() => removeParticipant(i)} className="rounded-lg p-1 text-[var(--text-muted)] opacity-100 transition hover:text-red-500 sm:opacity-0 sm:group-hover:opacity-100">
+                                                            <Trash2 className="h-4 w-4" />
                                                         </button>
                                                     </div>
-                                                ) : (
-                                                    participants.map((p, i) => (
-                                                        <div key={i} className="flex flex-col p-3 bg-white rounded-xl shadow-sm border border-[var(--border-light)] group hover:border-pink-200 transition-colors">
-                                                            <div className="flex items-center justify-between">
-                                                                <span className="font-medium text-[var(--text-secondary)]">@{p.name}</span>
-                                                                <button
-                                                                    onClick={() => removeParticipant(i)}
-                                                                    className="p-1 text-[var(--text-muted)] hover:text-red-500 rounded-lg transition-colors opacity-0 group-hover:opacity-100"
-                                                                >
-                                                                    <Trash2 className="w-4 h-4" />
-                                                                </button>
-                                                            </div>
-                                                            {p.comment && (
-                                                                <p className="text-xs text-[var(--text-muted)] mt-1 line-clamp-2">{p.comment}</p>
-                                                            )}
-                                                        </div>
-                                                    ))
-                                                )}
-                                            </div>
-                                        </div>
-
-                                        <div className="pt-4 border-t border-[var(--border-light)] flex justify-end">
-                                            <Button onClick={() => setActiveTab('rules')} className="bg-pink-600 hover:bg-pink-700 text-white shadow-lg">
-                                                {t.giveaway.rules} <Settings className="w-4 h-4 ml-2" />
-                                            </Button>
+                                                ))
+                                            )}
                                         </div>
                                     </div>
-                                )}
+                                </div>
 
-                                {/* Results */}
-                                {showResults && (
-                                    <div className="space-y-6 animate-in zoom-in duration-500">
-                                        <div className="text-center space-y-2">
-                                            <div className="inline-flex items-center justify-center p-3 bg-gradient-to-br from-yellow-400 to-pink-500 rounded-xl">
-                                                <Trophy className="w-8 h-8 text-white" />
-                                            </div>
-                                            <h2 className="text-2xl font-black text-[var(--text-primary)]">
-                                                🎉 {giveawayName || t.giveaway.instagramTitle} {t.giveaway.results}
-                                            </h2>
-                                        </div>
-
-                                        <div className="space-y-3">
-                                            {winners.map((winner, i) => (
-                                                <div key={i} className="p-4 bg-gradient-to-r from-pink-50 to-purple-50 dark:from-pink-950/40 dark:to-purple-950/30 rounded-3xl border border-pink-200 dark:border-pink-500/30 shadow-sm transform transition-all duration-300 hover:-translate-y-1 hover:shadow-lg" style={{ animationDelay: `${i * 100}ms` }}>
-                                                    <div className="flex flex-col gap-4">
-                                                        <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-3">
-                                                            <div className="flex items-center gap-3">
-                                                                <span className="w-10 h-10 rounded-full bg-gradient-to-br from-pink-500 to-purple-500 text-white flex items-center justify-center font-bold text-sm flex-shrink-0">
-                                                                    {i + 1}
-                                                                </span>
-                                                                <div>
-                                                                    <p className="font-bold text-gray-900 dark:text-white text-lg">@{winner.name}</p>
-                                                                    {winner.comment && (
-                                                                        <p className="text-sm text-gray-600 dark:text-gray-300 mt-1 line-clamp-2">"{winner.comment}"</p>
-                                                                    )}
-                                                                </div>
-                                                            </div>
-                                                            <span className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-white/90 dark:bg-white/10 text-pink-600 dark:text-pink-300 text-xs font-semibold border border-pink-100 dark:border-pink-500/30">
-                                                                <Trophy className="w-3.5 h-3.5" />
-                                                                Winner
-                                                            </span>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            ))}
-                                        </div>
-
-                                        {backups.length > 0 && (
-                                            <div className="space-y-3 pt-4 border-t border-[var(--border-light)]">
-                                                <h3 className="font-bold text-[var(--text-muted)] flex items-center gap-2">
-                                                    <Users className="w-5 h-5" />
-                                                    {t.giveaway.backups}
-                                                </h3>
-                                                {backups.map((backup, i) => (
-                                                    <div key={i} className="px-4 py-3 bg-[var(--surface-2)] rounded-lg flex flex-col justify-between text-[var(--text-secondary)] animate-in slide-in-from-bottom duration-500" style={{ animationDelay: `${(winners.length + i) * 100}ms` }}>
-                                                        <div className="flex items-center justify-between">
-                                                            <span>{i + 1}. @{backup.name}</span>
-                                                            <span className="text-xs font-medium bg-[var(--surface-2)] px-2 py-0.5 rounded text-[var(--text-muted)]">{t.giveaway.backups.slice(0, -1)}</span>
-                                                        </div>
-                                                        {backup.comment && <p className="text-xs text-[var(--text-muted)] mt-1 truncate pl-4">&quot;{backup.comment}&quot;</p>}
-                                                    </div>
-                                                ))}
-                                            </div>
-                                        )}
-
-                                        <AdWrapper position="inline">
-                                            <InArticleAd adSlot={AD_SLOTS.IN_ARTICLE} />
-                                        </AdWrapper>
-
-                                        <div className="flex flex-wrap gap-2 pt-4">
-                                            <Button onClick={copyResults} variant="secondary" className="flex-1 min-w-[120px]">{copied ? t.giveaway.copied : t.giveaway.copyResults}</Button>
-                                            <Button
-                                                onClick={() => {
-                                                    downloadWinnerCard({ giveawayName: giveawayName || t.giveaway.instagramTitle, winners, backups, platform: "instagram" });
-                                                    toast.success("Kazanan kartı indirildi!");
-                                                }}
-                                                variant="secondary"
-                                                className="flex-1 min-w-[120px] border-pink-200 text-pink-600 hover:bg-pink-50"
-                                            >
-                                                <svg className="w-4 h-4 mr-1.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}><path strokeLinecap="round" strokeLinejoin="round" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4" /></svg>
-                                                PNG İndir
-                                            </Button>
-                                            <Button onClick={() => setShowShareModal(true)} className="flex-1 min-w-[120px] bg-gradient-to-r from-purple-500 to-pink-500 hover:from-purple-600 hover:to-pink-600 text-white shadow-lg">
-                                                <svg className="w-4 h-4 mr-2" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
-                                                    <path strokeLinecap="round" strokeLinejoin="round" d="M8.684 13.342C8.886 12.938 9 12.482 9 12c0-.482-.114-.938-.316-1.342m0 2.684a3 3 0 110-2.684m0 2.684l6.632 3.316m-6.632-6l6.632-3.316m0 0a3 3 0 105.367-2.684 3 3 0 00-5.367 2.684zm0 9.316a3 3 0 105.368 2.684 3 3 0 00-5.368-2.684z" />
-                                                </svg>
-                                                {t.giveaway.shareResults || "Paylaş"}
-                                            </Button>
-                                            <Button onClick={resetGiveaway} className="flex-1 min-w-[120px] bg-pink-600 hover:bg-pink-700">{t.giveaway.newGiveaway}</Button>
-                                        </div>
-
-                                        <ShareModal
-                                            isOpen={showShareModal}
-                                            onClose={() => setShowShareModal(false)}
-                                            shareText={getShareText()}
-                                            t={{
-                                                shareResults: t.giveaway.copyLink || "Linki Kopyala",
-                                                shareTitle: t.giveaway.shareTitle || "Sonuçları Paylaş",
-                                                shareDesc: t.giveaway.shareDesc || "Çekiliş sonuçlarını sosyal medyada paylaşın",
-                                                close: t.giveaway.shareCopied || t.giveaway.copied || "Kopyalandı!"
-                                            }}
-                                        />
-                                    </div>
-                                )}
-                            </>
+                                <div className="sticky bottom-4 z-20 space-y-3 rounded-2xl border border-[var(--border-light)] bg-white/95 p-4 shadow-lg backdrop-blur dark:bg-[var(--card-bg)]/95">
+                                    <p className="text-xs font-semibold uppercase tracking-wider text-[#E1306C]">{tl("step4Label")}</p>
+                                    <button
+                                        type="button"
+                                        onClick={startGiveaway}
+                                        disabled={participants.length < winnerCount + backupCount}
+                                        className={`inline-flex w-full min-h-[56px] items-center justify-center gap-2 rounded-2xl px-6 text-lg font-bold text-white shadow-[0_10px_30px_rgba(225,48,108,0.35)] transition hover:-translate-y-0.5 hover:shadow-[0_14px_36px_rgba(225,48,108,0.45)] disabled:pointer-events-none disabled:opacity-50 ${IG_GRADIENT}`}
+                                    >
+                                        <Play className="h-5 w-5 fill-current" /> {t.giveaway.startGiveaway}
+                                    </button>
+                                    {participants.length < winnerCount + backupCount && (
+                                        <p className="text-center text-sm font-medium text-red-500">{t.home.notEnoughPeople}</p>
+                                    )}
+                                </div>
+                            </div>
                         )}
                     </div>
                 </div>
-                {/* Back to Home */}
-                <div className="text-center pb-8">
-                    <Button
-                        onClick={() => router.push(`/${locale}`)}
-                        variant="ghost"
-                        className="text-[var(--text-muted)] hover:text-[var(--text-secondary)]"
-                    >
-                        <Home className="w-4 h-4 mr-2" />
-                        {t.result.backToHome}
-                    </Button>
+
+                {phase === "input" && (
+                    <ul className="mx-auto mt-8 flex max-w-3xl flex-wrap items-center justify-center gap-2 sm:gap-3">
+                        {trustBadgeLabels.map((label, i) => {
+                            const Icon = TRUST_ICONS[i] ?? BadgeCheck;
+                            return (
+                                <li
+                                    key={label}
+                                    className="inline-flex items-center gap-1.5 rounded-full border border-[var(--border-light)] bg-white/90 px-3 py-1.5 text-xs font-medium text-[var(--text-secondary)] shadow-sm dark:bg-white/5"
+                                >
+                                    <Check className="h-3.5 w-3.5 text-emerald-500" strokeWidth={2.5} />
+                                    <Icon className="hidden h-3.5 w-3.5 text-[#E1306C] sm:block" strokeWidth={2} />
+                                    {label}
+                                </li>
+                            );
+                        })}
+                    </ul>
+                )}
+            </section>
+
+            <section className="relative z-10 border-y border-[var(--border-light)] bg-white/70 py-14 dark:bg-white/[0.02]">
+                <div className="mx-auto grid max-w-5xl grid-cols-2 gap-6 px-4 sm:grid-cols-4 sm:gap-8 sm:px-6">
+                    {metrics.map((m) => (
+                        <Reveal key={m.label}>
+                            <div className="text-center">
+                                <p className="bg-gradient-to-r from-[#FCAF45] via-[#E1306C] to-[#833AB4] bg-clip-text text-3xl font-black tracking-tight text-transparent sm:text-4xl">{m.value}</p>
+                                <p className="mt-2 text-sm text-[var(--text-muted)]">{m.label}</p>
+                            </div>
+                        </Reveal>
+                    ))}
                 </div>
+            </section>
+
+            <section className="relative z-10 mx-auto max-w-5xl px-4 py-16 sm:px-6 sm:py-20">
+                <Reveal>
+                    <div className="mx-auto mb-12 max-w-2xl text-center">
+                        <h2 className="text-3xl font-bold tracking-tight sm:text-[2rem]">{tl("featuresTitle")}</h2>
+                        <p className="mt-3 text-base text-[var(--text-secondary)]">{tl("featuresSubtitle")}</p>
+                    </div>
+                </Reveal>
+                <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
+                    {featuresData.map((f, i) => {
+                        const Icon = FEATURE_ICONS[i] ?? MessageCircle;
+                        return (
+                            <Reveal key={f.title}>
+                                <article className="group h-full rounded-[18px] border border-[var(--border-light)] bg-gradient-to-b from-white to-[#fafafa] p-5 shadow-[0_4px_20px_rgba(17,24,39,0.04)] transition hover:-translate-y-1 hover:shadow-[0_12px_32px_rgba(17,24,39,0.08)] dark:from-[var(--card-bg)] dark:to-[var(--card-bg)] dark:border-white/10">
+                                    <div className={`mb-4 inline-flex rounded-2xl p-3 text-white shadow-md ${IG_GRADIENT}`}>
+                                        <Icon className="h-5 w-5" strokeWidth={1.75} />
+                                    </div>
+                                    <h3 className="text-lg font-semibold tracking-tight">{f.title}</h3>
+                                    <p className="mt-2 text-sm leading-relaxed text-[var(--text-secondary)]">{f.desc}</p>
+                                </article>
+                            </Reveal>
+                        );
+                    })}
+                </div>
+            </section>
+
+            <section className="relative z-10 border-t border-[var(--border-light)] bg-white py-16 dark:bg-white/[0.02] sm:py-20">
+                <div className="mx-auto max-w-3xl px-4 sm:px-6">
+                    <Reveal>
+                        <div className="mb-12 text-center">
+                            <h2 className="text-3xl font-bold tracking-tight sm:text-[2rem]">{tl("howTitle")}</h2>
+                            <p className="mt-3 text-base text-[var(--text-secondary)]">{tl("howSubtitle")}</p>
+                        </div>
+                    </Reveal>
+                    <ol className="relative space-y-0">
+                        {howSteps.map((s, i) => (
+                            <Reveal key={s.title} delay={i * 60}>
+                                <li className="relative flex gap-4 pb-10 last:pb-0">
+                                    {i < howSteps.length - 1 && (
+                                        <div className="absolute left-[19px] top-10 h-[calc(100%-2.5rem)] w-px bg-gradient-to-b from-[#E1306C]/50 to-transparent" aria-hidden />
+                                    )}
+                                    <div className={`relative z-10 flex h-10 w-10 shrink-0 items-center justify-center rounded-full text-sm font-bold text-white shadow-md ${IG_GRADIENT}`}>
+                                        {i + 1}
+                                    </div>
+                                    <div className="rounded-2xl border border-[var(--border-light)] bg-[#fafafa] p-4 pt-2 dark:bg-white/5 sm:flex-1">
+                                        <h3 className="text-lg font-semibold">{s.title}</h3>
+                                        <p className="mt-1 text-sm text-[var(--text-secondary)]">{s.desc}</p>
+                                    </div>
+                                </li>
+                            </Reveal>
+                        ))}
+                    </ol>
+                    <div className="mt-10 text-center">
+                        <button
+                            type="button"
+                            onClick={scrollToTool}
+                            className={`inline-flex items-center gap-2 rounded-2xl px-6 py-3.5 text-sm font-bold text-white shadow-lg transition hover:-translate-y-0.5 ${IG_GRADIENT}`}
+                        >
+                            <Shuffle className="h-4 w-4" /> {tl("startCta")}
+                        </button>
+                    </div>
+                </div>
+            </section>
+
+            <section className="relative z-10 mx-auto max-w-3xl px-4 py-16 sm:px-6 sm:py-20">
+                <Reveal>
+                    <h2 className="mb-8 text-center text-3xl font-bold tracking-tight sm:text-[2rem]">{tl("faqTitle")}</h2>
+                </Reveal>
+                <div className="space-y-3">
+                    {faqItems.map((item, i) => {
+                        const open = openFaq === i;
+                        return (
+                            <Reveal key={item.q} delay={i * 40}>
+                                <div className="overflow-hidden rounded-[18px] border border-[var(--border-light)] bg-white shadow-sm dark:bg-[var(--card-bg)] dark:border-white/10">
+                                    <button
+                                        type="button"
+                                        aria-expanded={open}
+                                        onClick={() => setOpenFaq(open ? null : i)}
+                                        className="flex w-full items-center justify-between gap-4 px-5 py-4 text-left"
+                                    >
+                                        <span className="font-heading text-base font-semibold sm:text-lg">{item.q}</span>
+                                        <span className={`flex h-8 w-8 shrink-0 items-center justify-center rounded-full bg-[var(--surface-2)] text-[var(--text-muted)] transition ${open ? "rotate-180" : ""}`}>
+                                            <ChevronUp className="h-4 w-4" />
+                                        </span>
+                                    </button>
+                                    <div className={`grid transition-all duration-300 ease-out ${open ? "grid-rows-[1fr] opacity-100" : "grid-rows-[0fr] opacity-0"}`}>
+                                        <div className="overflow-hidden">
+                                            <p className="px-5 pb-5 text-sm leading-relaxed text-[var(--text-secondary)] sm:text-base">{item.a}</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </Reveal>
+                        );
+                    })}
+                </div>
+            </section>
+
+            <div className="relative z-10 pb-12 text-center">
+                <Button onClick={() => router.push("/")} variant="ghost" className="rounded-2xl text-[var(--text-muted)]">
+                    <Home className="mr-2 h-4 w-4" /> {t.result.backToHome}
+                </Button>
             </div>
         </main>
     );
