@@ -92,6 +92,7 @@ export default function HomeClientPage() {
         { name: t("tools.shortStraw"), icon: Sparkles, href: localePath(locale, "/tools/short-straw"), color: "bg-rose-500" },
         { name: t("tools.wheelOfFortune"), icon: Aperture, href: localePath(locale, "/tools/wheel-of-fortune"), color: "bg-pink-500" },
         { name: t("tools.teamGenerator"), icon: Users, href: localePath(locale, "/tools/team-generator"), color: "bg-purple-500" },
+        { name: t("tools.giftSuggestions"), icon: Gift, href: localePath(locale, "/tools/gift-suggestions"), color: "bg-fuchsia-500" },
     ];
 
     return (

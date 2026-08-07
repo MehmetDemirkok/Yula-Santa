@@ -15,7 +15,8 @@ import {
     Trophy,
     Wand2,
     Aperture,
-    Users
+    Users,
+    PartyPopper,
 } from "lucide-react";
 import { LanguageSwitcher } from "./LanguageSwitcher";
 import { ThemeToggle } from "./ThemeToggle";
@@ -52,13 +53,6 @@ export function Navbar() {
     }, [pathname]);
 
     const toolLinks = [
-        {
-            name: t("footer.namePicker"),
-            description: t("home.namePickerDesc"),
-            icon: Trophy,
-            href: localePath(locale, "/raffle"),
-            color: "bg-amber-500",
-        },
         {
             name: t("tools.dice"),
             description: t("tools.diceContent.subtitle"),
@@ -121,6 +115,18 @@ export function Navbar() {
             href: localePath(locale, "/secret-santa"),
             icon: Gift,
             active: pathname?.includes("/secret-santa"),
+        },
+        {
+            name: t("footer.namePicker"),
+            href: localePath(locale, "/raffle"),
+            icon: Trophy,
+            active: pathname?.includes("/raffle"),
+        },
+        {
+            name: t("tools.giftSuggestions"),
+            href: localePath(locale, "/tools/gift-suggestions"),
+            icon: PartyPopper,
+            active: pathname?.includes("/tools/gift-suggestions"),
         },
     ];
 
