@@ -1,48 +1,47 @@
 {
     "meta": {
-        "title": "YulaSanta - Kostenloses Online-Gewinnspielsystem der nächsten Generation",
-        "description": "Erstellen Sie mit YulaSanta kostenloses Online-Wichteln (Secret Santa). Führen Sie Ihre Instagram, YouTube, TikTok und Twitter Gewinnspiele in Sekunden durch. Würfeln, Münzwurf, Zufallszahlengenerator und weitere kostenlose Tools!",
+        "title": "YulaSanta — YouTube & TikTok Comment Giveaways, Secret Santa",
+        "description": "Pick fair winners from YouTube and TikTok comments. Free Secret Santa, name picker, dice, coin flip, wheel of fortune and more — no signup, no password.",
         "keywords": [
-            "online wichteln",
-            "gewinnspiel machen",
-            "kostenloses gewinnspiel",
-            "weihnachtswichteln",
+            "youtube giveaway",
+            "youtube comment picker",
+            "tiktok giveaway",
+            "tiktok comment picker",
             "secret santa",
-            "secret santa 2025",
-            "weihnachtsziehung",
-            "geschenkaustausch",
-            "weihnachtsgeschenk",
-            "instagram gewinnspiel",
-            "instagram kommentar zieher",
-            "youtube gewinnspiel",
-            "youtube kommentar zieher",
-            "tiktok gewinnspiel",
-            "twitter gewinnspiel",
-            "kostenloses gewinnspiel tool",
-            "online weihnachtswichteln",
-            "secret santa online",
-            "freunde wichteln",
-            "würfeln",
-            "münzwurf",
-            "zufallszahl",
-            "strohhalm ziehen",
-            "gewinnspiel programm",
-            "social media gewinnspiel"
+            "name picker",
+            "online raffle",
+            "free giveaway",
+            "dice roller",
+            "coin flip",
+            "random number generator",
+            "short straw",
+            "wheel of fortune",
+            "team generator"
         ],
         "faq": {
-            "breadcrumbHome": "Startseite",
-            "q1": "Was ist YulaSanta?",
-            "a1": "YulaSanta ist eine kostenlose Online-Verlosungsplattform und Secret-Santa-Plattform. Sie können Instagram-, YouTube-, TikTok- und Twitter-Gewinnspiele veranstalten und Secret-Santa-Geschenkeaustausche organisieren.",
-            "q2": "Ist YulaSanta kostenlos?",
-            "a2": "Ja, YulaSanta ist völlig kostenlos. Sie können alle Funktionen ohne Anmeldung nutzen.",
-            "q3": "Welche Social-Media-Plattformen werden unterstützt?",
-            "a3": "Sie können Gewinnspiele von Instagram, YouTube, TikTok und Twitter (X) über Kommentare und Likes durchführen.",
-            "q4": "Wie funktioniert Secret Santa?",
-            "a4": "Füge Teilnehmernamen hinzu und starte die Auslosung. Jede Person wählt zufällig jemanden und kann nur ihre eigene Paarung sehen. Die Privatsphäre ist geschützt!"
+            "title": "Frequently Asked Questions | YulaSanta",
+            "description": "FAQ about YouTube, TikTok, Secret Santa and free raffle tools.",
+            "breadcrumbHome": "Home",
+            "q1": "What is YulaSanta?",
+            "a1": "YulaSanta is a free platform for YouTube and TikTok comment giveaways, Secret Santa gift exchanges, name picking, and tools like dice, coin flip, random numbers, short straw, wheel of fortune, and team generator.",
+            "q2": "Is YulaSanta free?",
+            "a2": "Yes. All core features are free — no registration or login required.",
+            "q3": "Which social platforms do you support?",
+            "a3": "You can run comment giveaways from YouTube and TikTok videos.",
+            "q4": "How does Secret Santa work?",
+            "a4": "Add participant names, start the draw. Each person is randomly matched and only sees their own recipient.",
+            "q5": "How do I run a YouTube comment giveaway?",
+            "a5": "Paste your YouTube video link, fetch or paste comments, set winner and backup counts, then start the draw.",
+            "q6": "How do I run a TikTok comment giveaway?",
+            "a6": "Paste your TikTok video link, collect comments, set winners, and start the raffle.",
+            "q7": "Do I need to log in?",
+            "a7": "No. YulaSanta never asks for your YouTube or TikTok password.",
+            "q8": "Can the same person win twice?",
+            "a8": "No. With “Count each user once”, multiple comments from the same account count as a single entry."
         }
     },
     "home": {
-        "title": "YulaSanta - Kostenloses Online-Gewinnspielsystem der nächsten Generation",
+        "title": "YulaSanta — YouTube & TikTok Comment Giveaways, Secret Santa",
         "subtitle": "Füge deine Freunde hinzu, starte die Ziehung!",
         "secretDraw": "Geheime Ziehung 🤫",
         "directMatch": "Direktes Matching 🤝",
@@ -51,7 +50,7 @@
         "uploadList": "Liste hochladen (Excel/PDF)",
         "uploading": "Hochladen...",
         "clearList": "Liste löschen",
-        "startDraw": "Neujahrsverlosung starten",
+        "startDraw": "Start a Giveaway",
         "match": "Zuordnen",
         "happyNewYear": "🎄 Frohes neues Jahr!",
         "minPeople3": "Mindestens 3 Personen hinzufügen",
@@ -69,15 +68,37 @@
         "directMatchMinError": "Zuordnung benötigt mindestens 2 Personen!",
         "directMatchEvenError": "Direktes Matching benötigt eine gerade Anzahl!",
         "drawError": "Ein Fehler ist aufgetreten, bitte erneut versuchen.",
-        "socialMediaGiveaways": "Social Media Verlosungen",
+        "socialMediaGiveaways": "Kommentar-Verlosungen",
         "secure": "100% Sicher",
         "fast": "Superschnell",
         "noPassword": "Ohne Passwort",
         "noRegistration": "Keine Anmeldung",
         "startNow": "Jetzt Starten",
-        "socialDesc": "Führen Sie Ihre Verlosungen einfach auf allen Plattformen durch",
-        "toolsDesc": "Kleine Tools und lustige Spiele, die Ihren Alltag erleichtern.",
-        "viewAll": "Alle ansehen"
+        "socialDesc": "Spezialisierte Tools für YouTube- und TikTok-Kommentar-Verlosungen.",
+        "toolsDesc": "Einfache kostenlose Tools für faire Auslosungen und Alltagentscheidungen.",
+        "viewAll": "Alle ansehen",
+        "heroTitle": "YouTube- & TikTok-Kommentar-Verlosungen",
+        "heroSubtitle": "Wählen Sie in Sekunden faire Gewinner aus Videokommentaren — kostenlos, ohne Anmeldung, ohne Passwort.",
+        "youtubeGiveaway": "YouTube-Verlosung",
+        "tiktokGiveaway": "TikTok-Verlosung",
+        "namePickerDesc": "Faire Gewinner aus jeder Liste wählen",
+        "seo": {
+            "title": "Free YouTube, TikTok & Secret Santa Platform",
+            "paragraphs": [
+                "Run YouTube and TikTok comment giveaways in seconds with YulaSanta — no signup, no password. Pick winners and backups fairly.",
+                "Organize Secret Santa draws, name raffles, dice rolls, coin flips, short straw, wheel of fortune, team generator, and gift suggestions in one place."
+            ],
+            "featuresTitle": "Why YulaSanta?",
+            "features": [
+                "Completely free — no hidden fees",
+                "No registration or password required",
+                "YouTube and TikTok comment giveaways",
+                "Secret Santa and name picker",
+                "Dice, coin flip, wheel and more tools",
+                "12 language support"
+            ]
+        },
+        "description": "Wählen Sie in Sekunden faire Gewinner aus YouTube- und TikTok-Kommentaren. Kostenlose Kommentar-Verlosungstools — keine Anmeldung, kein Passwort."
     },
     "result": {
         "whoGetsGift": "Für wen kaufe ich ein Geschenk?",
@@ -109,7 +130,6 @@
         "comments": "Kommentare",
         "likes": "Likes",
         "subscribers": "Abonnenten",
-        "retweets": "Retweets",
         "replies": "Antworten",
         "followers": "Follower",
         "tags": "Tags",
@@ -122,28 +142,14 @@
         "results": "Ergebnisse",
         "winners": "Gewinner",
         "backups": "Ersatzgewinner",
-        "youtubeTitle": "Kostenloses YouTube Gewinnspiel-Tool 2025",
-        "instagramTitle": "Instagram Gewinnspiel-Tool | Kostenloser Kommentar-Zieher",
-        "twitterTitle": "Twitter (X) Gewinnspiel-Tool | Retweet & Like Picker",
-        "youtubeDesc": "Nutzen Sie unser kostenloses YouTube-Gewinnspiel-Tool, um schnell Gewinner aus Kommentaren und Likes zu ziehen. Sicherer YouTube Kommentar-Zieher.",
-        "instagramDesc": "Ziehen Sie sofort Gewinner und Ersatzgewinner aus Ihren Instagram-Kommentaren. Die beste Instagram Kommentar-Zieher App.",
-        "twitterDesc": "Führen Sie Gewinnspiele aus Retweets und Likes auf Twitter (X) einfach durch. Kostenlose Twitter Verlosungsseite.",
+        "youtubeTitle": "Free YouTube Comment Giveaway Tool | YulaSanta",
+        "youtubeDesc": "Pick fair winners and backups from YouTube video comments. Free, password-free YouTube comment picker.",
         "tiktokTitle": "TikTok Gewinnspiel-Tool | Kostenloser TikTok Kommentar-Zieher",
         "tiktokDesc": "Führen Sie Gewinnspiele aus Kommentaren unter Ihren TikTok-Videos einfach durch. Gewinner kostenlos ziehen!",
         "meta": {
-            "instagram": {
-                "title": "Kostenloses Instagram Gewinnspiel-Tool | YulaSanta",
-                "description": "Führen Sie Ihre Instagram-Gewinnspiele kostenlos und ohne Passwort mit YulaSanta durch. Bestimmen Sie Gewinner sofort.",
-                "keywords": [
-                    "instagram gewinnspiel",
-                    "instagram kommentar zieher",
-                    "instagram verlosung",
-                    "instagram giveaway"
-                ]
-            },
             "youtube": {
-                "title": "Kostenloses YouTube Gewinnspiel-Tool | YulaSanta",
-                "description": "Führen Sie schnelle und zuverlässige Gewinnspiele für Ihre YouTube-Videos durch. Gewinner aus Kommentaren ziehen.",
+                "title": "Free YouTube Comment Giveaway Tool | Comment Picker - YulaSanta",
+                "description": "Run fast, fair YouTube comment giveaways. Pick random winners — no signup, no password.",
                 "keywords": [
                     "youtube gewinnspiel",
                     "youtube kommentar zieher",
@@ -159,21 +165,11 @@
                     "tiktok verlosung",
                     "tiktok giveaway"
                 ]
-            },
-            "twitter": {
-                "title": "Twitter (X) Gewinnspiel-Tool | Retweet Picker - YulaSanta",
-                "description": "Verwalten Sie Ihre Twitter (X) Gewinnspiele einfach. Gewinner aus Retweets und Likes ziehen.",
-                "keywords": [
-                    "twitter gewinnspiel",
-                    "x gewinnspiel",
-                    "retweet verlosung"
-                ]
             }
         },
         "requireSubscription": "Abonnement erforderlich",
         "requireNotification": "Benachrichtigung erforderlich",
         "requireFollow": "Folgen erforderlich",
-        "requireRetweet": "Retweet erforderlich",
         "requireLike": "Like erforderlich",
         "countUserOnce": "Benutzer nur einmal zählen",
         "inputError": "Bitte geben Sie einen gültigen Link ein!",
@@ -187,7 +183,6 @@
         "parse": "Kommentare analysieren",
         "parsed": "{count} Teilnehmer analysiert",
         "youtubeLimitNote": "Hinweis: Bis zu 1000 Kommentare können automatisch über die API abgerufen werden.",
-        "instagramLimitNote": "Hinweis: Bis zu 1000 Kommentare können automatisch über die API abgerufen werden.",
         "tiktokLimitNote": "Hinweis: Bis zu 100 Kommentare können automatisch über die API abgerufen werden.",
         "participantLimitDetails": "Um mehr Kommentare zu sehen, verwenden Sie den manuellen Eingabemodus.",
         "channelUsername": "Benutzername (Follower-Überprüfung)",
@@ -201,10 +196,8 @@
         "shareDesc": "Verlosungsergebnisse in sozialen Medien teilen",
         "shareCopied": "Kopiert!",
         "copyLink": "Link kopieren",
-        "comingSoon": "Demnächst",
         "noParticipantsYet": "Noch keine Teilnehmer",
         "youtubeNoParticipantsHint": "YouTube-Video-Link einfügen oder Benutzer manuell hinzufügen",
-        "instagramNoParticipantsHint": "Instagram-Post-Link einfügen oder Benutzer manuell hinzufügen",
         "tiktokNoParticipantsHint": "TikTok-Video-Link einfügen oder Benutzer manuell hinzufügen",
         "fetchFromVideo": "← Vom Video-Link laden",
         "fetchFromPost": "← Vom Post-Link laden",
@@ -213,163 +206,6 @@
         "subscribedPrivate": "Privat",
         "checkingSubscription": "Wird überprüft...",
         "landing": {
-            "instagram": {
-                "badge": "Instagram-Gewinnspiel-Tool",
-                "heroTitle": "Instagram",
-                "heroHighlight": "Gewinner-Picker",
-                "heroSubtitle": "Wähle in Sekundenschnelle einen zufälligen Gewinner aus den Instagram-Kommentaren. Kein Login erforderlich.",
-                "urlPlaceholder": "Instagram-Beitrags-Link einfügen",
-                "fetchCta": "Teilnehmer abrufen",
-                "fetching": "Wird abgerufen…",
-                "urlHint": "Funktioniert mit öffentlichen Beiträgen & Reels · Schritt 2 öffnet sich automatisch",
-                "step1Url": "Schritt 1 — Instagram-Link einfügen",
-                "step1Manual": "Schritt 1 — Kommentare oder Benutzernamen einfügen",
-                "step3Title": "Regeln festlegen & Teilnehmer prüfen",
-                "step3Subtitle": "Schritt 3",
-                "step4Label": "Schritt 4 — Auslosung starten",
-                "backToUrl": "← Zurück zum Link",
-                "continueWith": "Mit {count} Teilnehmern fortfahren",
-                "switchManual": "Zu manuellem Einfügen wechseln →",
-                "automatic": "Automatisch",
-                "manual": "Manuell",
-                "selecting": "Wird ausgewählt…",
-                "winner": "Gewinner",
-                "backup": "Ersatzgewinner",
-                "pngDownload": "PNG",
-                "add": "Hinzufügen",
-                "loadingWait": "Dauert in der Regel 20–60 Sekunden",
-                "featuresTitle": "Alles, was du für ein faires Gewinnspiel brauchst",
-                "featuresSubtitle": "Schnell, transparent und sicher — ganz ohne Instagram-Login.",
-                "howTitle": "Wie funktioniert es?",
-                "howSubtitle": "Fünf einfache Schritte. Kein langes Nachdenken nötig.",
-                "startCta": "Gewinnspiel starten",
-                "faqTitle": "Häufig gestellte Fragen",
-                "steps": {
-                    "paste": "Link einfügen",
-                    "load": "Laden",
-                    "rules": "Regeln",
-                    "draw": "Auslosung"
-                },
-                "trustBadges": [
-                    "Kein Instagram-Login nötig",
-                    "Schnelle Abwicklung",
-                    "Doppelgänger-Filter",
-                    "Ersatzgewinner",
-                    "Kostenlos"
-                ],
-                "metrics": [
-                    {
-                        "value": "500.000+",
-                        "label": "Verarbeitete Kommentare"
-                    },
-                    {
-                        "value": "50.000+",
-                        "label": "Erfolgreiche Auslosungen"
-                    },
-                    {
-                        "value": "100 %",
-                        "label": "Zufällige Auswahl"
-                    },
-                    {
-                        "value": "0",
-                        "label": "Login erforderlich"
-                    }
-                ],
-                "features": [
-                    {
-                        "title": "Automatischer Kommentar-Import",
-                        "desc": "Beitrags-Link einfügen und Teilnehmer in Sekundenschnelle abrufen."
-                    },
-                    {
-                        "title": "Duplikate-Filter",
-                        "desc": "Ein Eintrag pro Nutzer für ein faires Gewinnspiel."
-                    },
-                    {
-                        "title": "Ersatzgewinner",
-                        "desc": "Ersatzgewinner sofort auslosen, falls der Hauptgewinner nicht erreichbar ist."
-                    },
-                    {
-                        "title": "Follower-Bedingung",
-                        "desc": "Follow-Bedingung vor der Auslosung festlegen."
-                    },
-                    {
-                        "title": "Erwähnungs-Fokus",
-                        "desc": "Perfekt für Gewinnspiele basierend auf Erwähnungen in Kommentaren."
-                    },
-                    {
-                        "title": "Hashtag-Kompatibel",
-                        "desc": "Funktioniert mit Beiträgen und Reels mit Hashtags."
-                    },
-                    {
-                        "title": "Ergebnis-Export",
-                        "desc": "Kopieren, teilen oder die Gewinnerkarte als PNG herunterladen."
-                    },
-                    {
-                        "title": "Schnelle Abwicklung",
-                        "desc": "Reibungsloser Ablauf vom Link bis zum Gewinner."
-                    }
-                ],
-                "howSteps": [
-                    {
-                        "title": "Instagram-Link einfügen",
-                        "desc": "Füge die Beitrags- oder Reel-URL in das Eingabefeld ein."
-                    },
-                    {
-                        "title": "Kommentare laden",
-                        "desc": "Teilnehmer automatisch abrufen oder manuell einfügen."
-                    },
-                    {
-                        "title": "Regeln festlegen",
-                        "desc": "Anzahl der Gewinner, Ersatzgewinner und Regeln einstellen."
-                    },
-                    {
-                        "title": "Gewinner auslosen",
-                        "desc": "Eine kryptografisch faire, zufällige Auswahl durchführen."
-                    },
-                    {
-                        "title": "Ergebnisse teilen",
-                        "desc": "Mit einem Klick kopieren, herunterladen oder teilen."
-                    }
-                ],
-                "faq": [
-                    {
-                        "q": "Muss ich mich bei Instagram anmelden?",
-                        "a": "Nein. YulaSanta fordert niemals dein Instagram-Passwort an. Füge einfach einen öffentlichen Beitrags-Link ein oder trage die Kommentare manuell ein."
-                    },
-                    {
-                        "q": "Ist die Gewinnerauswahl wirklich zufällig?",
-                        "a": "Ja. Die Gewinner werden durch ein sicheres Zufallsverfahren ermittelt; jeder berechtigte Teilnehmer hat dieselbe Chance."
-                    },
-                    {
-                        "q": "Was passiert, wenn der automatische Import nicht funktioniert?",
-                        "a": "Wechsle in den manuellen Modus: Füge Benutzernamen oder Kommentare ein und fahre mit denselben Regeln und demselben Auslosungsablauf fort."
-                    },
-                    {
-                        "q": "Kann ich Ersatzgewinner auswählen?",
-                        "a": "Ja. Lege vor dem Start die Anzahl der Ersatzgewinner fest. Sie werden zusammen mit den Hauptgewinnern in den Ergebnissen angezeigt."
-                    }
-                ],
-                "errors": {
-                    "needLink": "Bitte gib einen Instagram-Beitrags-Link ein",
-                    "invalidLink": "Bitte gib einen gültigen Instagram-Beitrags-Link ein (instagram.com/p/...)",
-                    "serviceDown": "Der automatische Import ist derzeit nicht verfügbar. Du kannst die Kommentare manuell einfügen.",
-                    "privateOrMissing": "Dieses Konto ist privat oder der Beitrag wurde nicht gefunden",
-                    "timeout": "Zeitüberschreitung der Verbindung, bitte versuche es erneut",
-                    "generic": "Kommentare konnten nicht abgerufen werden — prüfe den Link oder füge sie manuell hinzu"
-                },
-                "toasts": {
-                    "added": "@{name} hinzugefügt",
-                    "participantsAdded": "{count} Teilnehmer erfolgreich hinzugefügt!",
-                    "copied": "Ergebnisse in die Zwischenablage kopiert!",
-                    "cardDownloaded": "Gewinnerkarte heruntergeladen!"
-                },
-                "loadingSteps": [
-                    "Verbindung zu Instagram wird hergestellt...",
-                    "Kommentare werden abgerufen...",
-                    "Teilnehmer werden analysiert...",
-                    "Daten werden vorbereitet..."
-                ]
-            },
             "youtube": {
                 "badge": "YouTube-Gewinnspiel-Tool",
                 "heroTitle": "YouTube",
@@ -592,8 +428,6 @@
     },
     "tools": {
         "title": "Werkzeuge",
-        "instagramStoryViewer": "Instagram Story Viewer",
-        "instagramProfilePicture": "Instagram Profilbild Viewer",
         "onlineGiveaway": "Online Gewinnspiel-Tool",
         "dice": "Würfelspiel",
         "coinFlip": "Münzwurf",
@@ -602,8 +436,8 @@
         "wheelOfFortune": "Glücksrad",
         "teamGenerator": "Team-Generator",
         "meta": {
-            "title": "Kostenlose Online-Tools | YulaSanta - Würfel, Münzwurf, Zufallszahl",
-            "description": "YulaSanta kostenlose Online-Tools: Würfelspiel, Münzwurf, Zufallszahlengenerator, Strohhalm ziehen, Instagram Story Viewer und Profilbild-Downloader."
+            "title": "Free Online Tools | Dice, Coin Flip, Wheel - YulaSanta",
+            "description": "Name picker, dice roller, coin flip, random number, short straw, wheel of fortune, team generator and gift suggestions — all free."
         },
         "diceMeta": {
             "title": "🎲 Würfelspiel | Kostenlos Online Würfeln - YulaSanta",
@@ -774,72 +608,6 @@
                 "fair selection"
             ]
         },
-        "instagramStoryContent": {
-            "title": "Instagram Story Viewer",
-            "subtitle": "Anonymer Story Viewer",
-            "placeholder": "Benutzername eingeben",
-            "view": "Stories ansehen",
-            "helper": "Stories anonym ansehen, ohne dass der Besitzer es merkt.",
-            "aboutTitle": "Über Story Viewer",
-            "aboutText": "Instagram Stories heimlich ansehen mit dem anonymen Viewer von YulaSanta.",
-            "searchLabel": "Instagram Benutzername",
-            "searchButton": "Suchen",
-            "loadingNote": "Dies kann 20-60 Sekunden dauern",
-            "waitPlease": "Bitte warten...",
-            "howItWorks": "Wie funktioniert es?",
-            "howStep1": "Benutzernamen eingeben und Suchen drücken",
-            "howStep2": "Profilinformationen und aktive Stories werden abgerufen",
-            "howStep3": "Stories anonym ansehen — niemand sieht es",
-            "storiesTitle": "Stories",
-            "viewOnInstagram": "Auf Instagram ansehen",
-            "viewProfile": "Auf Instagram ansehen",
-            "searchAgain": "← Anderes Profil suchen",
-            "posts": "Beiträge",
-            "followingLabel": "Folgend",
-            "noStoriesError": "Dieses Konto hat keine aktiven Stories oder die Stories sind privat.",
-            "enterUsername": "Bitte Benutzernamen eingeben",
-            "storiesFound": "{count} Stories gefunden!",
-            "loadStepProfile1": "Profilinfos abrufen...",
-            "loadStepProfile2": "Konto verifizieren...",
-            "loadStepProfile3": "Daten vorbereiten...",
-            "loadStepStory1": "Mit Instagram verbinden...",
-            "loadStepStory2": "Stories abrufen...",
-            "loadStepStory3": "Mediendateien laden...",
-            "loadStepStory4": "Vorbereiten...",
-            "followers": "Follower"
-        },
-        "instagramStoryMeta": {
-            "title": "📱 Instagram Story Viewer | Anonym Stories ansehen - YulaSanta",
-            "description": "Instagram Stories anonym ansehen. Privater Instagram Story Viewer ohne Login.",
-            "keywords": [
-                "instagram story",
-                "story viewer",
-                "anonymous story viewer",
-                "private story viewer"
-            ]
-        },
-        "instagramProfileContent": {
-            "title": "Instagram Profilbild",
-            "subtitle": "HD Profilbild Größe",
-            "placeholder": "Benutzername eingeben",
-            "usernameLabel": "Benutzername",
-            "view": "Profilbild ansehen",
-            "helper": "Profilfoto in voller Größe und HD ansehen.",
-            "aboutTitle": "Über Profilbild Viewer",
-            "aboutText": "Nutzen Sie unser kostenloses Tool, um Instagram-Profilbilder anzusehen und herunterzuladen.",
-            "searchButton": "Suchen",
-            "loading": "Profil wird geladen...",
-            "downloadHD": "HD Herunterladen",
-            "downloadNormal": "Normal Herunterladen",
-            "openInInstagram": "In Instagram öffnen",
-            "searchAnother": "← Anderes Profil suchen",
-            "tryAgain": "Erneut versuchen",
-            "posts": "Beiträge",
-            "followers": "Follower",
-            "following": "Folgt",
-            "errorEmptyUsername": "Bitte geben Sie einen Benutzernamen ein",
-            "errorGeneric": "Ein Fehler ist aufgetreten"
-        },
         "wheelOfFortuneContent": {
             "title": "Glücksrad",
             "subtitle": "Rad drehen - Zufallsauswahl",
@@ -887,16 +655,6 @@
             "bulkMode": "Massenbearbeitung",
             "listMode": "Listenansicht",
             "clear": "Alles löschen"
-        },
-        "instagramProfileMeta": {
-            "title": "🖼️ Instagram Profilbild Viewer | HD Downloader - YulaSanta",
-            "description": "Instagram Profilbilder in voller HD-Qualität ansehen und herunterladen.",
-            "keywords": [
-                "instagram profil",
-                "profilbild",
-                "profilbild vergrößern",
-                "hd profilbild"
-            ]
         },
         "wheelOfFortuneMeta": {
             "title": "🎡 Glücksrad | Online Drehen Kostenlos - YulaSanta",
@@ -1428,15 +1186,15 @@
     },
     "about": {
         "meta": {
-            "title": "Über uns | YulaSanta - Kostenlose Online-Gewinnspiel-Plattform",
-            "description": "Erfahren Sie mehr über YulaSanta. Die zuverlässigste Plattform für Online-Verlosungen."
+            "title": "About Us | YulaSanta — YouTube, TikTok & Secret Santa",
+            "description": "YulaSanta: YouTube & TikTok comment giveaways, Secret Santa, name picker and free online tools."
         },
         "title": "Über uns",
-        "subtitle": "YulaSanta ist eine kostenlose Plattform, die Gewinnspiele für jeden einfach macht.",
+        "subtitle": "YulaSanta is a free platform for YouTube and TikTok comment giveaways, Secret Santa, name picking and fun online tools.",
         "story": {
             "title": "Unsere Geschichte",
             "p1": "YulaSanta entstand 2024 aus der Frage: 'Warum ist es so schwer, ein Gewinnspiel zu machen?'",
-            "p2": "Unser Ziel war einfach: Gewinnspiele kostenlos, sicher und einfach für alle zu machen.",
+            "p2": "Unser Ziel ist einfach: Creatorn helfen, faire YouTube- und TikTok-Kommentar-Verlosungen kostenlos, sicher und ohne Passwort durchzuführen. Außerdem bieten wir einfache Tools wie Namensauslosung, Würfel, Münzwurf und Zufallszahlengenerator.",
             "p3": "Heute wählen Tausende von Nutzern YulaSanta für ihre Verlosungen."
         },
         "whyUs": {

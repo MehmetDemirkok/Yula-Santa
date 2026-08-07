@@ -142,17 +142,12 @@ export interface Translation {
         winners: string;
         backups: string;
         youtubeTitle: string;
-        instagramTitle: string;
-        twitterTitle: string;
         youtubeDesc: string;
-        instagramDesc: string;
-        twitterDesc: string;
         tiktokTitle: string;
         tiktokDesc: string;
         requireSubscription: string;
         requireNotification: string;
         requireFollow: string;
-        requireRetweet: string;
         requireLike: string;
         countUserOnce: string;
         inputError: string;
@@ -167,8 +162,8 @@ export interface Translation {
         parsed: string;
         participantLimitDetails: string;
         youtubeLimitNote: string;
-        instagramLimitNote: string;
         tiktokLimitNote: string;
+        notEnoughEligible: string;
         channelUsername: string;
         channelUsernameHint: string;
         following: string;
@@ -180,10 +175,8 @@ export interface Translation {
         shareDesc: string;
         shareCopied: string;
         copyLink: string;
-        comingSoon: string;
         noParticipantsYet: string;
         youtubeNoParticipantsHint: string;
-        instagramNoParticipantsHint: string;
         tiktokNoParticipantsHint: string;
         fetchFromVideo: string;
         fetchFromPost: string;

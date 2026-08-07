@@ -1,38 +1,47 @@
 {
     "meta": {
-        "title": "YulaSanta - 下一代免费在线赠品系统",
-        "description": "使用 YulaSanta 创建免费的在线秘密圣诞老人（Secret Santa）抽奖。在数秒内完成 Instagram、YouTube、TikTok 和 Twitter 的活动抽奖。骰子、掷硬币、随机数生成器等免费工具！",
+        "title": "YulaSanta — YouTube & TikTok Comment Giveaways, Secret Santa",
+        "description": "Pick fair winners from YouTube and TikTok comments. Free Secret Santa, name picker, dice, coin flip, wheel of fortune and more — no signup, no password.",
         "keywords": [
-            "在线抽奖",
-            "抽奖工具",
-            "免费抽奖",
-            "秘密圣诞老人",
+            "youtube giveaway",
+            "youtube comment picker",
+            "tiktok giveaway",
+            "tiktok comment picker",
             "secret santa",
-            "交换礼物",
-            "圣诞抽奖",
-            "Instagram 抽奖",
-            "YouTube 抽奖",
-            "TikTok 抽奖",
-            "Twitter 抽奖",
-            "免费活动工具",
-            "骰子",
-            "掷硬币",
-            "随机数"
+            "name picker",
+            "online raffle",
+            "free giveaway",
+            "dice roller",
+            "coin flip",
+            "random number generator",
+            "short straw",
+            "wheel of fortune",
+            "team generator"
         ],
         "faq": {
-            "breadcrumbHome": "首页",
-            "q1": "YulaSanta是什么？",
-            "a1": "YulaSanta是一个免费的在线抽奖和圣诞老人秘密平台。您可以在Instagram、YouTube、TikTok和Twitter上举办赠品活动，并组织圣诞老人秘密礼物交换。",
-            "q2": "YulaSanta免费吗？",
-            "a2": "是的，YulaSanta完全免费。您无需注册即可使用所有功能。",
-            "q3": "您支持哪些社交媒体平台？",
-            "a3": "您可以使用评论和点赞在Instagram、YouTube、TikTok和Twitter（X）上举办赠品活动。",
-            "q4": "圣诞老人秘密是如何工作的？",
-            "a4": "添加参与者姓名，开始抽签。每个人随机选择某人，只能看到自己的配对。隐私受到保护！"
+            "title": "Frequently Asked Questions | YulaSanta",
+            "description": "FAQ about YouTube, TikTok, Secret Santa and free raffle tools.",
+            "breadcrumbHome": "Home",
+            "q1": "What is YulaSanta?",
+            "a1": "YulaSanta is a free platform for YouTube and TikTok comment giveaways, Secret Santa gift exchanges, name picking, and tools like dice, coin flip, random numbers, short straw, wheel of fortune, and team generator.",
+            "q2": "Is YulaSanta free?",
+            "a2": "Yes. All core features are free — no registration or login required.",
+            "q3": "Which social platforms do you support?",
+            "a3": "You can run comment giveaways from YouTube and TikTok videos.",
+            "q4": "How does Secret Santa work?",
+            "a4": "Add participant names, start the draw. Each person is randomly matched and only sees their own recipient.",
+            "q5": "How do I run a YouTube comment giveaway?",
+            "a5": "Paste your YouTube video link, fetch or paste comments, set winner and backup counts, then start the draw.",
+            "q6": "How do I run a TikTok comment giveaway?",
+            "a6": "Paste your TikTok video link, collect comments, set winners, and start the raffle.",
+            "q7": "Do I need to log in?",
+            "a7": "No. YulaSanta never asks for your YouTube or TikTok password.",
+            "q8": "Can the same person win twice?",
+            "a8": "No. With “Count each user once”, multiple comments from the same account count as a single entry."
         }
     },
     "home": {
-        "title": "YulaSanta - 下一代免费在线赠品系统",
+        "title": "YulaSanta — YouTube & TikTok Comment Giveaways, Secret Santa",
         "subtitle": "添加好友，开始抽奖！",
         "secretDraw": "秘密抽奖 🤫",
         "directMatch": "直接配对 🤝",
@@ -41,7 +50,7 @@
         "uploadList": "上传列表 (Excel/PDF)",
         "uploading": "上传中...",
         "clearList": "清除列表",
-        "startDraw": "开始新年抽奖",
+        "startDraw": "Start a Giveaway",
         "match": "配对",
         "happyNewYear": "🎄 新年快乐！",
         "minPeople3": "请至少添加 3 人",
@@ -59,15 +68,36 @@
         "directMatchMinError": "配对至少需要 2 人！",
         "directMatchEvenError": "直接配对需要偶数人数！",
         "drawError": "发生错误，请重试。",
-        "socialMediaGiveaways": "社交媒体抽奖",
+        "socialMediaGiveaways": "Comment Giveaways",
         "secure": "100% 安全",
         "fast": "极速响应",
         "noPassword": "无需密码",
         "noRegistration": "无需注册",
         "startNow": "立即开始",
-        "socialDesc": "在所有平台上轻松进行抽奖活动",
-        "toolsDesc": "方便日常生活的实用小工具和有趣游戏。",
-        "viewAll": "查看全部"
+        "socialDesc": "Specialized tools for YouTube and TikTok comment raffles.",
+        "toolsDesc": "Simple free tools for fair picks and everyday decisions.",
+        "viewAll": "查看全部",
+        "heroTitle": "YouTube & TikTok Comment Giveaways",
+        "heroSubtitle": "Pick fair winners from video comments in seconds — free, no signup, no password.",
+        "youtubeGiveaway": "YouTube Giveaway",
+        "tiktokGiveaway": "TikTok Giveaway",
+        "namePickerDesc": "Pick fair winners from any list",
+        "seo": {
+            "title": "Free YouTube, TikTok & Secret Santa Platform",
+            "paragraphs": [
+                "Run YouTube and TikTok comment giveaways in seconds with YulaSanta — no signup, no password. Pick winners and backups fairly.",
+                "Organize Secret Santa draws, name raffles, dice rolls, coin flips, short straw, wheel of fortune, team generator, and gift suggestions in one place."
+            ],
+            "featuresTitle": "Why YulaSanta?",
+            "features": [
+                "Completely free — no hidden fees",
+                "No registration or password required",
+                "YouTube and TikTok comment giveaways",
+                "Secret Santa and name picker",
+                "Dice, coin flip, wheel and more tools",
+                "12 language support"
+            ]
+        }
     },
     "result": {
         "whoGetsGift": "我要给谁买礼物？",
@@ -99,7 +129,6 @@
         "comments": "评论",
         "likes": "点赞",
         "subscribers": "订阅者",
-        "retweets": "转发",
         "replies": "回复",
         "followers": "粉丝",
         "tags": "标签",
@@ -112,27 +141,14 @@
         "results": "结果",
         "winners": "中奖者",
         "backups": "候补中奖者",
-        "youtubeTitle": "免费 YouTube 抽奖工具 2025",
-        "instagramTitle": "Instagram 抽奖工具 | 免费评论筛选",
-        "twitterTitle": "Twitter (X) 抽奖工具 | 转发与点赞抽奖",
-        "youtubeDesc": "利用我们的免费工具从 YouTube 评论和点赞中快速筛选中奖者。",
-        "instagramDesc": "立即从 Instagram 评论中筛选中奖者和候补者。最佳的 Instagram 评论筛选应用。",
-        "twitterDesc": "轻松根据 Twitter (X) 的转发和点赞进行抽奖。免费的抽奖平台。",
+        "youtubeTitle": "Free YouTube Comment Giveaway Tool | YulaSanta",
+        "youtubeDesc": "Pick fair winners and backups from YouTube video comments. Free, password-free YouTube comment picker.",
         "tiktokTitle": "TikTok 抽奖工具 | 免费 TikTok 评论筛选",
         "tiktokDesc": "轻松从 TikTok 视频评论中进行抽奖。免费筛选中奖者！",
         "meta": {
-            "instagram": {
-                "title": "免费 Instagram 抽奖工具 | YulaSanta",
-                "description": "使用 YulaSanta 免费且无需密码进行 Instagram 抽奖。",
-                "keywords": [
-                    "Instagram 抽奖",
-                    "评论筛选",
-                    "抽奖工具"
-                ]
-            },
             "youtube": {
-                "title": "免费 YouTube 抽奖工具 | YulaSanta",
-                "description": "为您的 YouTube 视频提供快速、可靠的抽奖服务。",
+                "title": "Free YouTube Comment Giveaway Tool | Comment Picker - YulaSanta",
+                "description": "Run fast, fair YouTube comment giveaways. Pick random winners — no signup, no password.",
                 "keywords": [
                     "YouTube 抽奖",
                     "评论筛选"
@@ -147,22 +163,11 @@
                     "tiktok评论抽奖",
                     "免费tiktok抽奖"
                 ]
-            },
-            "twitter": {
-                "title": "Twitter (X) 抽奖工具 | 转推与点赞 - YulaSanta",
-                "description": "轻松管理 Twitter (X) 抽奖，从转推和点赞中选出获奖者。",
-                "keywords": [
-                    "twitter抽奖",
-                    "x抽奖",
-                    "转推抽奖",
-                    "推特抽奖"
-                ]
             }
         },
         "requireSubscription": "需要订阅",
         "requireNotification": "需要通知",
         "requireFollow": "需要关注",
-        "requireRetweet": "需要转发",
         "requireLike": "需要点赞",
         "countUserOnce": "每位用户仅计算一次",
         "inputError": "请输入有效的链接！",
@@ -176,7 +181,6 @@
         "parse": "解析评论",
         "parsed": "已解析 {count} 位参与者",
         "youtubeLimitNote": "注：API 最多可自动获取 1000 条评论。",
-        "instagramLimitNote": "注：API 最多可自动获取 1000 条评论。",
         "tiktokLimitNote": "注：API 最多可自动获取 100 条评论。",
         "participantLimitDetails": "要分析更多评论，请使用手动输入模式。",
         "channelUsername": "用户名 (粉丝检查)",
@@ -190,10 +194,8 @@
         "shareDesc": "在社交媒体上分享抽奖结果",
         "shareCopied": "已复制！",
         "copyLink": "复制链接",
-        "comingSoon": "即将推出",
         "noParticipantsYet": "暂无参与者",
         "youtubeNoParticipantsHint": "粘贴YouTube视频链接或手动添加用户",
-        "instagramNoParticipantsHint": "粘贴Instagram帖子链接或手动添加用户",
         "tiktokNoParticipantsHint": "粘贴TikTok视频链接或手动添加用户",
         "fetchFromVideo": "← 从视频链接获取",
         "fetchFromPost": "← 从帖子链接获取",
@@ -203,163 +205,6 @@
         "checkingSubscription": "检查中...",
         "seo": {},
         "landing": {
-            "instagram": {
-                "badge": "Instagram 抽奖工具",
-                "heroTitle": "Instagram",
-                "heroHighlight": "抽奖选择器",
-                "heroSubtitle": "几秒钟内从 Instagram 评论中随机抽取中奖者。无需登录。",
-                "urlPlaceholder": "粘贴 Instagram 帖子链接",
-                "fetchCta": "获取参与者",
-                "fetching": "正在获取…",
-                "urlHint": "适用于公开帖子和 Reels · 获取后将自动进入第 2 步",
-                "step1Url": "第 1 步 — 粘贴 Instagram 链接",
-                "step1Manual": "第 1 步 — 粘贴评论或用户名",
-                "step3Title": "选择规则并检查参与者",
-                "step3Subtitle": "第 3 步",
-                "step4Label": "第 4 步 — 开始抽奖",
-                "backToUrl": "← 返回链接",
-                "continueWith": "使用 {count} 名参与者继续",
-                "switchManual": "切换到手动粘贴 →",
-                "automatic": "自动",
-                "manual": "手动",
-                "selecting": "正在抽取…",
-                "winner": "中奖者",
-                "backup": "候补",
-                "pngDownload": "PNG",
-                "add": "添加",
-                "loadingWait": "通常需要 20–60 秒",
-                "featuresTitle": "公平抽奖所需的一切",
-                "featuresSubtitle": "快速、透明且安全 — 无需承担 Instagram 登录风险。",
-                "howTitle": "工作原理",
-                "howSubtitle": "清晰的五个步骤，无需繁琐操作。",
-                "startCta": "开始抽奖",
-                "faqTitle": "常见问题",
-                "steps": {
-                    "paste": "粘贴链接",
-                    "load": "加载评论",
-                    "rules": "设置规则",
-                    "draw": "开始抽奖"
-                },
-                "trustBadges": [
-                    "无需登录 Instagram",
-                    "快速处理",
-                    "重复过滤",
-                    "候补中奖者",
-                    "免费"
-                ],
-                "metrics": [
-                    {
-                        "value": "500.000+",
-                        "label": "已处理评论"
-                    },
-                    {
-                        "value": "50.000+",
-                        "label": "成功抽奖"
-                    },
-                    {
-                        "value": "%100",
-                        "label": "随机抽取"
-                    },
-                    {
-                        "value": "0",
-                        "label": "无需登录"
-                    }
-                ],
-                "features": [
-                    {
-                        "title": "自动提取评论",
-                        "desc": "粘贴帖子链接，几秒钟内即可获取参与者。"
-                    },
-                    {
-                        "title": "重复项过滤",
-                        "desc": "每位用户仅限一次参与，确保抽奖公平。"
-                    },
-                    {
-                        "title": "候补中奖者",
-                        "desc": "若无法联系到中奖者，可立即选择候补人员。"
-                    },
-                    {
-                        "title": "关注要求",
-                        "desc": "抽奖前检查关注规则。"
-                    },
-                    {
-                        "title": "提及/艾特筛选",
-                        "desc": "专注于基于评论的抽奖活动。"
-                    },
-                    {
-                        "title": "话题标签兼容",
-                        "desc": "适用于带有标签的帖子和 Reels。"
-                    },
-                    {
-                        "title": "导出结果",
-                        "desc": "一键复制、分享或下载中奖者 PNG 卡片。"
-                    },
-                    {
-                        "title": "高效处理",
-                        "desc": "从链接到生成中奖者，流程顺畅无阻。"
-                    }
-                ],
-                "howSteps": [
-                    {
-                        "title": "粘贴 Instagram 链接",
-                        "desc": "将帖子或 Reels URL 粘贴到输入框中。"
-                    },
-                    {
-                        "title": "加载评论",
-                        "desc": "自动获取参与者或手动粘贴评论。"
-                    },
-                    {
-                        "title": "选择规则",
-                        "desc": "设置中奖人数、候补人数及参与条件。"
-                    },
-                    {
-                        "title": "抽取中奖者",
-                        "desc": "进行加密级公平的随机抽取。"
-                    },
-                    {
-                        "title": "分享结果",
-                        "desc": "一键复制、下载或分享结果。"
-                    }
-                ],
-                "faq": [
-                    {
-                        "q": "我需要登录 Instagram 吗？",
-                        "a": "不需要。YulaSanta 不会索要您的 Instagram 密码。只需粘贴公开帖子链接或手动添加评论即可。"
-                    },
-                    {
-                        "q": "抽奖结果真的随机吗？",
-                        "a": "是的。中奖者通过安全的随机打乱算法选出，每位符合条件的参与者中奖概率均等。"
-                    },
-                    {
-                        "q": "如果自动提取失败怎么办？",
-                        "a": "可切换至手动模式：粘贴用户名或评论，继续使用相同的规则和抽奖流程。"
-                    },
-                    {
-                        "q": "我可以选择候补中奖者吗？",
-                        "a": "可以。开始前设置候补人数即可。候补人员将与正式中奖者一同显示在结果中。"
-                    }
-                ],
-                "errors": {
-                    "needLink": "请输入 Instagram 帖子链接",
-                    "invalidLink": "请输入有效的 Instagram 帖子链接 (instagram.com/p/...)",
-                    "serviceDown": "自动提取暂时不可用。您可以手动粘贴评论。",
-                    "privateOrMissing": "该账号为私密账号或帖子不存在",
-                    "timeout": "连接超时，请重试",
-                    "generic": "无法提取评论 — 请检查链接或手动添加"
-                },
-                "toasts": {
-                    "added": "已添加 @{name}",
-                    "participantsAdded": "成功添加 {count} 名参与者！",
-                    "copied": "结果已复制到剪贴板！",
-                    "cardDownloaded": "中奖者卡片已下载！"
-                },
-                "loadingSteps": [
-                    "正在连接到 Instagram...",
-                    "正在提取评论...",
-                    "正在分析参与者...",
-                    "正在准备数据..."
-                ]
-            },
             "youtube": {
                 "badge": "YouTube 抽奖工具",
                 "heroTitle": "YouTube",
@@ -582,8 +427,6 @@
     },
     "tools": {
         "title": "工具",
-        "instagramStoryViewer": "IG 动态查看器",
-        "instagramProfilePicture": "IG 头像查看器",
         "onlineGiveaway": "在线抽奖",
         "dice": "骰子游戏",
         "coinFlip": "掷硬币",
@@ -592,8 +435,8 @@
         "wheelOfFortune": "幸运转盘",
         "teamGenerator": "团队生成器",
         "meta": {
-            "title": "免费在线工具 | YulaSanta",
-            "description": "免费工具：骰子、掷硬币、随机数、抽签等。"
+            "title": "Free Online Tools | Dice, Coin Flip, Wheel - YulaSanta",
+            "description": "Name picker, dice roller, coin flip, random number, short straw, wheel of fortune, team generator and gift suggestions — all free."
         },
         "diceMeta": {
             "title": "🎲 骰子 | 免费在线掷骰子 - YulaSanta",
@@ -764,72 +607,6 @@
                 "fair selection"
             ]
         },
-        "instagramStoryContent": {
-            "title": "IG 动态查看器",
-            "subtitle": "匿名动态查看",
-            "placeholder": "输入用户名",
-            "view": "查看动态",
-            "helper": "匿名查看动态，不会留下足迹。",
-            "aboutTitle": "关于动态查看器",
-            "aboutText": "使用 YulaSanta 匿名查看器，秘密检查 Instagram 动态。",
-            "searchLabel": "Instagram用户名",
-            "searchButton": "搜索",
-            "loadingNote": "这可能需要20-60秒",
-            "waitPlease": "请稍候...",
-            "howItWorks": "如何使用？",
-            "howStep1": "输入用户名并按搜索",
-            "howStep2": "获取个人资料信息和活跃故事",
-            "howStep3": "匿名观看故事 — 没有人知道",
-            "storiesTitle": "故事",
-            "viewOnInstagram": "在Instagram上查看",
-            "viewProfile": "在Instagram上查看",
-            "searchAgain": "← 搜索其他个人资料",
-            "posts": "帖子",
-            "followingLabel": "关注中",
-            "noStoriesError": "该账号没有活跃的故事或故事是私密的。",
-            "enterUsername": "请输入用户名",
-            "storiesFound": "找到 {count} 个故事！",
-            "loadStepProfile1": "获取个人资料信息...",
-            "loadStepProfile2": "验证账号...",
-            "loadStepProfile3": "准备数据...",
-            "loadStepStory1": "连接Instagram...",
-            "loadStepStory2": "获取故事...",
-            "loadStepStory3": "加载媒体文件...",
-            "loadStepStory4": "准备中...",
-            "followers": "粉丝"
-        },
-        "instagramStoryMeta": {
-            "title": "📱 IG 动态查看器 | 匿名查看 - YulaSanta",
-            "description": "匿名查看 Instagram 动态。私密动态查看工具。",
-            "keywords": [
-                "instagram story",
-                "story viewer",
-                "anonymous story viewer",
-                "private story viewer"
-            ]
-        },
-        "instagramProfileContent": {
-            "title": "IG 头像查看器",
-            "subtitle": "高清头像尺寸",
-            "placeholder": "输入用户名",
-            "view": "查看头像",
-            "helper": "以全尺寸和高清格式显示头像照片。",
-            "aboutTitle": "关于头像查看器",
-            "aboutText": "使用我们的免费工具查看并下载高质量的 Instagram 用户头像。",
-            "usernameLabel": "用户名",
-            "searchButton": "搜索",
-            "loading": "正在加载个人资料...",
-            "downloadHD": "下载高清",
-            "downloadNormal": "下载普通",
-            "openInInstagram": "在Instagram中打开",
-            "searchAnother": "← 搜索其他资料",
-            "tryAgain": "重试",
-            "posts": "帖子",
-            "followers": "粉丝",
-            "following": "关注",
-            "errorEmptyUsername": "请输入用户名",
-            "errorGeneric": "发生错误"
-        },
         "wheelOfFortuneContent": {
             "title": "幸运转盘",
             "subtitle": "旋转转盘 - 随机选择器",
@@ -877,16 +654,6 @@
             "bulkMode": "批量编辑",
             "listMode": "列表视图",
             "clear": "全部清除"
-        },
-        "instagramProfileMeta": {
-            "title": "🖼️ IG 头像查看器 | 高清下载 - YulaSanta",
-            "description": "以高清质量查看并下载 Instagram 头像照片。",
-            "keywords": [
-                "instagram profile",
-                "profile picture viewer",
-                "HD profile picture",
-                "pp downloader"
-            ]
         },
         "giftSuggestions": "Gift Suggestions",
         "giftSuggestionsContent": {
@@ -1418,15 +1185,15 @@
     },
     "about": {
         "meta": {
-            "title": "关于我们 | YulaSanta - 免费抽奖平台",
-            "description": "了解更多关于 YulaSanta。最值得信赖的在线抽奖平台。"
+            "title": "About Us | YulaSanta — YouTube, TikTok & Secret Santa",
+            "description": "YulaSanta: YouTube & TikTok comment giveaways, Secret Santa, name picker and free online tools."
         },
         "title": "关于我们",
-        "subtitle": "YulaSanta 是一个免费平台，让每个人都能轻松进行抽奖。",
+        "subtitle": "YulaSanta is a free platform for YouTube and TikTok comment giveaways, Secret Santa, name picking and fun online tools.",
         "story": {
             "title": "我们的故事",
             "p1": "YulaSanta 成立于 2024 年，旨在解决抽奖过程繁琐的问题。",
-            "p2": "我们的目标很简单：为所有人提供免费、安全且简便的抽奖服务。",
+            "p2": "Our goal is simple: help creators run fair YouTube and TikTok comment giveaways for free — securely and without passwords. We also offer simple tools like a name picker, dice roller, coin flip, and random number generator.",
             "p3": "今天，成千上万的用户选择使用 YulaSanta。"
         },
         "whyUs": {

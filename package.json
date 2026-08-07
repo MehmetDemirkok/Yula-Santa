@@ -7,6 +7,7 @@
     "build": "next build",
     "start": "next start",
     "lint": "eslint",
+    "test": "tsx --test tests/**/*.test.ts",
     "theme:off": "bash scripts/theme-off.sh",
     "theme:on": "bash scripts/theme-on.sh",
     "i18n:check": "npx tsx scripts/check-translations.ts",

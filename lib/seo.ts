@@ -29,8 +29,8 @@ export const OG_LOCALES: Record<string, string> = {
 
 interface SEOProps {
     locale: string;
-    path: string; // e.g., '', '/youtube', '/instagram'
-    translationKey?: string; // Key in messages.json (e.g., 'giveaway.meta.instagram')
+    path: string; // e.g., '', '/youtube', '/tiktok'
+    translationKey?: string; // Key in messages.json (e.g., 'giveaway.meta.youtube')
     titleOverride?: string;
     descriptionOverride?: string;
     keywordsOverride?: string[];
@@ -61,7 +61,7 @@ export async function getSEOMetadata({
         description = descriptionOverride;
         keywords = keywordsOverride;
     } else if (translationKey) {
-        // Support nested keys like 'giveaway.meta.instagram'
+        // Support nested keys like 'giveaway.meta.youtube'
         const keys = translationKey.split('.');
         let current = messages;
         for (const key of keys) {
@@ -69,12 +69,12 @@ export async function getSEOMetadata({
         }
 
         title = current?.title || messages.meta?.title || 'YulaSanta';
-        description = current?.description || messages.meta?.description || 'Best Secret Santa App';
+        description = current?.description || messages.meta?.description || 'YouTube & TikTok comment giveaways, Secret Santa and free tools';
         keywords = current?.keywords || messages.meta?.keywords || [];
     } else {
         // Fallback to meta global
         title = messages.meta?.title || 'YulaSanta';
-        description = messages.meta?.description || 'Best Secret Santa App';
+        description = messages.meta?.description || 'YouTube & TikTok comment giveaways, Secret Santa and free tools';
         keywords = messages.meta?.keywords || [];
     }
 

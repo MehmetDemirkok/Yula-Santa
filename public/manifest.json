@@ -1,7 +1,7 @@
 {
-  "name": "YulaSanta - Online Çekiliş & Secret Santa",
+  "name": "YulaSanta — YouTube, TikTok & Gizli Çekiliş",
   "short_name": "YulaSanta",
-  "description": "Ücretsiz online çekiliş ve Secret Santa platformu. Instagram, YouTube, TikTok, Twitter çekilişleri yapın. Zar atma, yazı tura ve daha fazla araç!",
+  "description": "YouTube ve TikTok yorum çekilişi, gizli çekiliş, isim çekilişi, zar, yazı tura, çarkıfelek ve daha fazla ücretsiz araç.",
   "start_url": "/",
   "scope": "/",
   "display": "standalone",
@@ -56,52 +56,32 @@
   ],
   "shortcuts": [
     {
-      "name": "Instagram Çekiliş",
-      "short_name": "Instagram",
-      "description": "Instagram çekilişi yap",
-      "url": "/instagram",
-      "icons": [
-        {
-          "src": "/icon-192.png",
-          "sizes": "192x192"
-        }
-      ]
-    },
-    {
       "name": "YouTube Çekiliş",
       "short_name": "YouTube",
-      "description": "YouTube çekilişi yap",
+      "description": "YouTube yorum çekilişi yap",
       "url": "/youtube",
-      "icons": [
-        {
-          "src": "/icon-192.png",
-          "sizes": "192x192"
-        }
-      ]
+      "icons": [{ "src": "/icon-192.png", "sizes": "192x192" }]
     },
     {
-      "name": "Zar At",
-      "short_name": "Zar",
-      "description": "Online zar atma oyunu",
-      "url": "/tools/dice",
-      "icons": [
-        {
-          "src": "/icon-192.png",
-          "sizes": "192x192"
-        }
-      ]
+      "name": "TikTok Çekiliş",
+      "short_name": "TikTok",
+      "description": "TikTok yorum çekilişi yap",
+      "url": "/tiktok",
+      "icons": [{ "src": "/icon-192.png", "sizes": "192x192" }]
     },
     {
-      "name": "Yazı Tura",
-      "short_name": "Coin Flip",
-      "description": "Online yazı tura",
-      "url": "/tools/coin-flip",
-      "icons": [
-        {
-          "src": "/icon-192.png",
-          "sizes": "192x192"
-        }
-      ]
+      "name": "Gizli Çekiliş",
+      "short_name": "Secret Santa",
+      "description": "Secret Santa / gizli hediye eşleştirme",
+      "url": "/secret-santa",
+      "icons": [{ "src": "/icon-192.png", "sizes": "192x192" }]
+    },
+    {
+      "name": "İsim Çekilişi",
+      "short_name": "İsim",
+      "description": "Listeden adil kazanan seç",
+      "url": "/raffle",
+      "icons": [{ "src": "/icon-192.png", "sizes": "192x192" }]
     }
   ],
   "related_applications": [],

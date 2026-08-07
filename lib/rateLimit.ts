@@ -8,7 +8,6 @@ const store = new Map<string, RateLimitEntry>();
 const WINDOW_MS = 60_000; // 1 dakika
 const MAX_REQUESTS: Record<string, number> = {
     default: 10,
-    instagram: 5,
     youtube: 8,
     tiktok: 5,
 };

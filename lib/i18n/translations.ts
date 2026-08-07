@@ -118,17 +118,12 @@ export interface Translation {
         winners: string;
         backups: string;
         youtubeTitle: string;
-        instagramTitle: string;
-        twitterTitle: string;
         youtubeDesc: string;
-        instagramDesc: string;
-        twitterDesc: string;
         tiktokTitle: string;
         tiktokDesc: string;
         requireSubscription: string;
         requireNotification: string;
         requireFollow: string;
-        requireRetweet: string;
         requireLike: string;
         countUserOnce: string;
         inputError: string;
@@ -143,7 +138,6 @@ export interface Translation {
         parsed: string;
         participantLimitDetails: string;
         youtubeLimitNote: string;
-        instagramLimitNote: string;
         tiktokLimitNote: string;
     };
     // Support

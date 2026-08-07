@@ -7,7 +7,6 @@ import { useRouter } from "@/i18n/navigation";
 import {
     Youtube,
     MessageCircle,
-    ThumbsUp,
     Plus,
     Minus,
     Users,
@@ -776,22 +775,6 @@ export default function YouTubeGiveaway() {
                                             >
                                                 <MessageCircle className="h-4 w-4" /> {t.giveaway.comments}
                                             </button>
-                                            <div className="relative cursor-not-allowed opacity-55">
-                                                <div className="inline-flex items-center gap-2 rounded-full bg-[var(--surface-2)] px-4 py-2 text-sm text-[var(--text-muted)]">
-                                                    <ThumbsUp className="h-4 w-4" /> {t.giveaway.likes}
-                                                </div>
-                                                <span className="absolute -right-1 -top-2 rounded-full bg-[var(--text-muted)] px-1.5 py-0.5 text-[10px] font-bold text-white">
-                                                    {t.giveaway.comingSoon}
-                                                </span>
-                                            </div>
-                                            <div className="relative cursor-not-allowed opacity-55">
-                                                <div className="inline-flex items-center gap-2 rounded-full bg-[var(--surface-2)] px-4 py-2 text-sm text-[var(--text-muted)]">
-                                                    <Bell className="h-4 w-4" /> {t.giveaway.subscribers}
-                                                </div>
-                                                <span className="absolute -right-1 -top-2 rounded-full bg-[var(--text-muted)] px-1.5 py-0.5 text-[10px] font-bold text-white">
-                                                    {t.giveaway.comingSoon}
-                                                </span>
-                                            </div>
                                         </div>
 
                                         <p className="rounded-2xl border border-blue-100 bg-blue-50/70 px-4 py-3 text-sm text-blue-800 dark:border-blue-500/20 dark:bg-blue-500/10 dark:text-blue-200">

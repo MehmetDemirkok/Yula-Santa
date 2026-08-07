@@ -31,26 +31,22 @@ import { SITE_URL } from '@/lib/constants';
 const localeRoutes = [
     { path: '', priority: 1.0, changeFrequency: 'daily' as const },
     { path: '/youtube', priority: 0.95, changeFrequency: 'daily' as const },
-    { path: '/instagram', priority: 0.95, changeFrequency: 'daily' as const },
     { path: '/tiktok', priority: 0.95, changeFrequency: 'daily' as const },
-    { path: '/twitter', priority: 0.95, changeFrequency: 'daily' as const },
-    { path: '/raffle', priority: 0.95, changeFrequency: 'daily' as const },
+    { path: '/raffle', priority: 0.9, changeFrequency: 'daily' as const },
     { path: '/secret-santa', priority: 0.9, changeFrequency: 'weekly' as const },
-    { path: '/faq', priority: 0.6, changeFrequency: 'monthly' as const },
+    { path: '/faq', priority: 0.7, changeFrequency: 'monthly' as const },
     { path: '/privacy', priority: 0.5, changeFrequency: 'weekly' as const },
     { path: '/legal', priority: 0.5, changeFrequency: 'weekly' as const },
-    // About and Contact pages
     { path: '/about', priority: 0.6, changeFrequency: 'monthly' as const },
     { path: '/contact', priority: 0.6, changeFrequency: 'monthly' as const },
-    // Tools routes (high priority for indexing)
     { path: '/tools', priority: 0.85, changeFrequency: 'daily' as const },
-    { path: '/tools/dice', priority: 0.9, changeFrequency: 'daily' as const },
-    { path: '/tools/coin-flip', priority: 0.9, changeFrequency: 'daily' as const },
-    { path: '/tools/random-number', priority: 0.9, changeFrequency: 'daily' as const },
-    { path: '/tools/short-straw', priority: 0.9, changeFrequency: 'daily' as const },
-    { path: '/tools/wheel-of-fortune', priority: 0.9, changeFrequency: 'daily' as const },
-    { path: '/tools/team-generator', priority: 0.9, changeFrequency: 'daily' as const },
-    { path: '/tools/gift-suggestions', priority: 0.95, changeFrequency: 'daily' as const },
+    { path: '/tools/dice', priority: 0.85, changeFrequency: 'daily' as const },
+    { path: '/tools/coin-flip', priority: 0.85, changeFrequency: 'daily' as const },
+    { path: '/tools/random-number', priority: 0.85, changeFrequency: 'daily' as const },
+    { path: '/tools/short-straw', priority: 0.8, changeFrequency: 'weekly' as const },
+    { path: '/tools/wheel-of-fortune', priority: 0.8, changeFrequency: 'weekly' as const },
+    { path: '/tools/team-generator', priority: 0.8, changeFrequency: 'weekly' as const },
+    { path: '/tools/gift-suggestions', priority: 0.8, changeFrequency: 'weekly' as const },
 ];
 
 export default function sitemap(): MetadataRoute.Sitemap {

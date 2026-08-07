@@ -1,38 +1,47 @@
 {
     "meta": {
-        "title": "YulaSanta - Бесплатная онлайн-система розыгрышей нового поколения",
-        "description": "Создавайте бесплатные онлайн розыгрыши Secret Santa с YulaSanta. Проводите конкурсы в Instagram, YouTube, TikTok и Twitter за считанные секунды. Бросок кубика, орел или решка, генератор чисел и другие бесплатные инструменты!",
+        "title": "YulaSanta — YouTube & TikTok Comment Giveaways, Secret Santa",
+        "description": "Pick fair winners from YouTube and TikTok comments. Free Secret Santa, name picker, dice, coin flip, wheel of fortune and more — no signup, no password.",
         "keywords": [
-            "онлайн розыгрыш",
-            "провести конкурс",
-            "бесплатный розыгрыш",
-            "тайный санта",
+            "youtube giveaway",
+            "youtube comment picker",
+            "tiktok giveaway",
+            "tiktok comment picker",
             "secret santa",
-            "secret santa 2025",
-            "обмен подарками",
-            "розыгрыш инстаграм",
-            "розыгрыш ютуб",
-            "розыгрыш тикток",
-            "розыгрыш твиттер",
-            "инструмент для розыгрыша",
-            "бросить кубик",
-            "орел или решка",
-            "случайное число"
+            "name picker",
+            "online raffle",
+            "free giveaway",
+            "dice roller",
+            "coin flip",
+            "random number generator",
+            "short straw",
+            "wheel of fortune",
+            "team generator"
         ],
         "faq": {
-            "breadcrumbHome": "Главная",
-            "q1": "Что такое YulaSanta?",
-            "a1": "YulaSanta — это бесплатная платформа для онлайн-розыгрышей и Secret Santa. Вы можете проводить розыгрыши в Instagram, YouTube, TikTok и Twitter, а также организовывать обмен подарками Secret Santa.",
-            "q2": "YulaSanta бесплатный?",
-            "a2": "Да, YulaSanta полностью бесплатный. Вы можете использовать все функции без регистрации.",
-            "q3": "Какие платформы социальных сетей поддерживаются?",
-            "a3": "Вы можете проводить розыгрыши в Instagram, YouTube, TikTok и Twitter (X), используя комментарии и лайки.",
-            "q4": "Как работает Secret Santa?",
-            "a4": "Добавьте имена участников, запустите розыгрыш. Каждый человек случайно выбирает кого-то и может видеть только свою пару. Конфиденциальность защищена!"
+            "title": "Frequently Asked Questions | YulaSanta",
+            "description": "FAQ about YouTube, TikTok, Secret Santa and free raffle tools.",
+            "breadcrumbHome": "Home",
+            "q1": "What is YulaSanta?",
+            "a1": "YulaSanta is a free platform for YouTube and TikTok comment giveaways, Secret Santa gift exchanges, name picking, and tools like dice, coin flip, random numbers, short straw, wheel of fortune, and team generator.",
+            "q2": "Is YulaSanta free?",
+            "a2": "Yes. All core features are free — no registration or login required.",
+            "q3": "Which social platforms do you support?",
+            "a3": "You can run comment giveaways from YouTube and TikTok videos.",
+            "q4": "How does Secret Santa work?",
+            "a4": "Add participant names, start the draw. Each person is randomly matched and only sees their own recipient.",
+            "q5": "How do I run a YouTube comment giveaway?",
+            "a5": "Paste your YouTube video link, fetch or paste comments, set winner and backup counts, then start the draw.",
+            "q6": "How do I run a TikTok comment giveaway?",
+            "a6": "Paste your TikTok video link, collect comments, set winners, and start the raffle.",
+            "q7": "Do I need to log in?",
+            "a7": "No. YulaSanta never asks for your YouTube or TikTok password.",
+            "q8": "Can the same person win twice?",
+            "a8": "No. With “Count each user once”, multiple comments from the same account count as a single entry."
         }
     },
     "home": {
-        "title": "YulaSanta - Бесплатная онлайн-система розыгрышей нового поколения",
+        "title": "YulaSanta — YouTube & TikTok Comment Giveaways, Secret Santa",
         "subtitle": "Добавьте друзей, начните розыгрыш!",
         "secretDraw": "Тайный розыгрыш 🤫",
         "directMatch": "Прямое соответствие 🤝",
@@ -41,7 +50,7 @@
         "uploadList": "Загрузить список (Excel/PDF)",
         "uploading": "Загрузка...",
         "clearList": "Очистить список",
-        "startDraw": "Начать новогодний розыгрыш",
+        "startDraw": "Start a Giveaway",
         "match": "Сопоставить",
         "happyNewYear": "🎄 С Новым годом!",
         "minPeople3": "Добавьте минимум 3 человека",
@@ -59,15 +68,36 @@
         "directMatchMinError": "Для сопоставления нужно минимум 2 человека!",
         "directMatchEvenError": "Для прямого соответствия нужно четное количество людей!",
         "drawError": "Произошла ошибка, попробуйте снова.",
-        "socialMediaGiveaways": "Розыгрыши в соцсетях",
+        "socialMediaGiveaways": "Comment Giveaways",
         "secure": "100% Безопасно",
         "fast": "Супер быстро",
         "noPassword": "Без пароля",
         "noRegistration": "Без регистрации",
         "startNow": "Начать сейчас",
-        "socialDesc": "Проводите розыгрыши легко на всех платформах",
-        "toolsDesc": "Мини-инструменты и игры для повседневной жизни.",
-        "viewAll": "Посмотреть все"
+        "socialDesc": "Specialized tools for YouTube and TikTok comment raffles.",
+        "toolsDesc": "Simple free tools for fair picks and everyday decisions.",
+        "viewAll": "Посмотреть все",
+        "heroTitle": "YouTube & TikTok Comment Giveaways",
+        "heroSubtitle": "Pick fair winners from video comments in seconds — free, no signup, no password.",
+        "youtubeGiveaway": "YouTube Giveaway",
+        "tiktokGiveaway": "TikTok Giveaway",
+        "namePickerDesc": "Pick fair winners from any list",
+        "seo": {
+            "title": "Free YouTube, TikTok & Secret Santa Platform",
+            "paragraphs": [
+                "Run YouTube and TikTok comment giveaways in seconds with YulaSanta — no signup, no password. Pick winners and backups fairly.",
+                "Organize Secret Santa draws, name raffles, dice rolls, coin flips, short straw, wheel of fortune, team generator, and gift suggestions in one place."
+            ],
+            "featuresTitle": "Why YulaSanta?",
+            "features": [
+                "Completely free — no hidden fees",
+                "No registration or password required",
+                "YouTube and TikTok comment giveaways",
+                "Secret Santa and name picker",
+                "Dice, coin flip, wheel and more tools",
+                "12 language support"
+            ]
+        }
     },
     "result": {
         "whoGetsGift": "Кому я куплю подарок?",
@@ -99,7 +129,6 @@
         "comments": "Комментарии",
         "likes": "Лайки",
         "subscribers": "Подписчики",
-        "retweets": "Ретвиты",
         "replies": "Ответы",
         "followers": "Подписчики",
         "tags": "Теги",
@@ -112,26 +141,14 @@
         "results": "Результаты",
         "winners": "Победители",
         "backups": "Резервные",
-        "youtubeTitle": "Бесплатный розыгрыш в YouTube 2025",
-        "instagramTitle": "Розыгрыш в Instagram | Выбор из комментариев",
-        "twitterTitle": "Розыгрыш в Twitter (X) | По ретвитам и лайкам",
-        "youtubeDesc": "Используйте наш бесплатный инструмент для выбора победителей из комментариев YouTube.",
-        "instagramDesc": "Мгновенный выбор победителей и резервных из комментариев в Instagram.",
-        "twitterDesc": "Проводите розыгрыши по ретвитам и лайкам в Twitter (X) легко.",
+        "youtubeTitle": "Free YouTube Comment Giveaway Tool | YulaSanta",
+        "youtubeDesc": "Pick fair winners and backups from YouTube video comments. Free, password-free YouTube comment picker.",
         "tiktokTitle": "Розыгрыш в TikTok | Бесплатный выбор комментариев TikTok",
         "tiktokDesc": "Проводите розыгрыши по комментариям под видео в TikTok бесплатно.",
         "meta": {
-            "instagram": {
-                "title": "Бесплатный розыгрыш в Instagram | YulaSanta",
-                "description": "Проводите розыгрыши в Instagram бесплатно и без пароля с YulaSanta.",
-                "keywords": [
-                    "розыгрыш инстаграм",
-                    "комментарии инстаграм"
-                ]
-            },
             "youtube": {
-                "title": "Бесплатный розыгрыш в YouTube | YulaSanta",
-                "description": "Быстрые и надежные розыгрыши для ваших видео на YouTube.",
+                "title": "Free YouTube Comment Giveaway Tool | Comment Picker - YulaSanta",
+                "description": "Run fast, fair YouTube comment giveaways. Pick random winners — no signup, no password.",
                 "keywords": [
                     "розыгрыш ютуб",
                     "комментарии ютуб"
@@ -146,22 +163,11 @@
                     "комментарии тикток",
                     "конкурс тикток"
                 ]
-            },
-            "twitter": {
-                "title": "Розыгрыш Twitter (X) | Ретвиты и лайки - YulaSanta",
-                "description": "Управляйте розыгрышами в Twitter (X). Выбирайте победителей из ретвитов и лайков.",
-                "keywords": [
-                    "розыгрыш твиттер",
-                    "розыгрыш x",
-                    "ретвит розыгрыш",
-                    "конкурс твиттер"
-                ]
             }
         },
         "requireSubscription": "Нужна подписка",
         "requireNotification": "Нужны уведомления",
         "requireFollow": "Нужна подписка",
-        "requireRetweet": "Нужен ретвит",
         "requireLike": "Нужен лайк",
         "countUserOnce": "Считать пользователя один раз",
         "inputError": "Пожалуйста, введите корректную ссылку!",
@@ -175,7 +181,6 @@
         "parse": "Обработать",
         "parsed": "Обработано {count} участников",
         "youtubeLimitNote": "Прим.: Можно загрузить до 1000 комментариев автоматически.",
-        "instagramLimitNote": "Прим.: Можно загрузить до 1000 комментариев автоматически.",
         "tiktokLimitNote": "Прим.: Можно загрузить до 100 комментариев автоматически.",
         "participantLimitDetails": "Для обработки большего числа комментариев используйте ручной режим.",
         "channelUsername": "Имя пользователя (Проверка подписки)",
@@ -189,10 +194,8 @@
         "shareDesc": "Поделитесь результатами розыгрыша в социальных сетях",
         "shareCopied": "Скопировано!",
         "copyLink": "Копировать ссылку",
-        "comingSoon": "Скоро",
         "noParticipantsYet": "Пока нет участников",
         "youtubeNoParticipantsHint": "Вставьте ссылку на видео YouTube или добавьте пользователей вручную",
-        "instagramNoParticipantsHint": "Вставьте ссылку на пост Instagram или добавьте пользователей вручную",
         "tiktokNoParticipantsHint": "Вставьте ссылку на видео TikTok или добавьте пользователей вручную",
         "fetchFromVideo": "← Загрузить из ссылки на видео",
         "fetchFromPost": "← Загрузить из ссылки на пост",
@@ -202,163 +205,6 @@
         "checkingSubscription": "Проверка...",
         "seo": {},
         "landing": {
-            "instagram": {
-                "badge": "Инструмент для розыгрышей в Instagram",
-                "heroTitle": "Instagram",
-                "heroHighlight": "Рандомайзер",
-                "heroSubtitle": "Выберите случайного победителя среди комментариев в Instagram за считанные секунды. Вход не требуется.",
-                "urlPlaceholder": "Вставьте ссылку на публикацию Instagram",
-                "fetchCta": "Загрузить участников",
-                "fetching": "Загрузка…",
-                "urlHint": "Работает с публичными постами и Reels · Шаг 2 откроется автоматически после загрузки",
-                "step1Url": "Шаг 1 — Вставьте ссылку Instagram",
-                "step1Manual": "Шаг 1 — Вставьте комментарии или имена пользователей",
-                "step3Title": "Выберите правила и проверьте участников",
-                "step3Subtitle": "Шаг 3",
-                "step4Label": "Шаг 4 — Запустить розыгрыш",
-                "backToUrl": "← Вернуться к ссылке",
-                "continueWith": "Продолжить с {count} участниками",
-                "switchManual": "Перейти к ручному вводу →",
-                "automatic": "Автоматически",
-                "manual": "Вручную",
-                "selecting": "Выбор…",
-                "winner": "Победитель",
-                "backup": "Резерв",
-                "pngDownload": "PNG",
-                "add": "Добавить",
-                "loadingWait": "Обычно занимает 20–60 секунд",
-                "featuresTitle": "Всё необходимое для честного розыгрыша",
-                "featuresSubtitle": "Скорость, прозрачность и надежность — без риска входа в Instagram.",
-                "howTitle": "Как это работает?",
-                "howSubtitle": "Пять простых шагов. Ничего лишнего.",
-                "startCta": "Начать розыгрыш",
-                "faqTitle": "Часто задаваемые вопросы",
-                "steps": {
-                    "paste": "Вставить ссылку",
-                    "load": "Загрузить",
-                    "rules": "Правила",
-                    "draw": "Розыгрыш"
-                },
-                "trustBadges": [
-                    "Вход в Instagram не требуется",
-                    "Быстрая обработка",
-                    "Фильтр дубликатов",
-                    "Резервные победители",
-                    "Бесплатно"
-                ],
-                "metrics": [
-                    {
-                        "value": "500 000+",
-                        "label": "Обработанных комментариев"
-                    },
-                    {
-                        "value": "50 000+",
-                        "label": "Успешных розыгрышей"
-                    },
-                    {
-                        "value": "100%",
-                        "label": "Случайный выбор"
-                    },
-                    {
-                        "value": "0",
-                        "label": "Требуется входов"
-                    }
-                ],
-                "features": [
-                    {
-                        "title": "Автоматический сбор комментариев",
-                        "desc": "Вставьте ссылку на пост и получите участников за считанные секунды."
-                    },
-                    {
-                        "title": "Фильтр повторов",
-                        "desc": "Один участник — одна заявка для честного розыгрыша."
-                    },
-                    {
-                        "title": "Резервные победители",
-                        "desc": "Мгновенно выбирайте резервных победителей, если основной недоступен."
-                    },
-                    {
-                        "title": "Условие подписки",
-                        "desc": "Отметьте правило подписки перед проведением розыгрыша."
-                    },
-                    {
-                        "title": "Учет упоминаний",
-                        "desc": "Фокусируйтесь на розыгрышах через комментарии и упоминания."
-                    },
-                    {
-                        "title": "Поддержка хэштегов",
-                        "desc": "Работает с публикациями и Reels с хэштегами."
-                    },
-                    {
-                        "title": "Экспорт результатов",
-                        "desc": "Копируйте, делитесь или скачивайте карточку победителя в формате PNG."
-                    },
-                    {
-                        "title": "Быстрый процесс",
-                        "desc": "Простой путь от ссылки до определения победителей."
-                    }
-                ],
-                "howSteps": [
-                    {
-                        "title": "Вставьте ссылку Instagram",
-                        "desc": "Вставьте URL поста или Reels в поле ввода."
-                    },
-                    {
-                        "title": "Загрузите комментарии",
-                        "desc": "Получите участников автоматически или вставьте вручную."
-                    },
-                    {
-                        "title": "Выберите правила",
-                        "desc": "Настройте количество победителей, резервных мест и условия участия."
-                    },
-                    {
-                        "title": "Выберите победителей",
-                        "desc": "Проведите криптографически честный случайный выбор."
-                    },
-                    {
-                        "title": "Поделитесь результатами",
-                        "desc": "Копируйте, скачивайте или делитесь в один клик."
-                    }
-                ],
-                "faq": [
-                    {
-                        "q": "Нужно ли входить в Instagram?",
-                        "a": "Нет. YulaSanta не запрашивает пароль от Instagram. Просто вставьте ссылку на публичный пост или добавьте комментарии вручную."
-                    },
-                    {
-                        "q": "Действительно ли выбор победителя случаен?",
-                        "a": "Да. Победители выбираются с использованием надежного алгоритма случайного перемешивания; шансы у всех подходящих участников равны."
-                    },
-                    {
-                        "q": "Что делать, если автоматический сбор не сработает?",
-                        "a": "Перейдите в ручной режим: вставьте имена пользователей или комментарии и продолжите с теми же правилами и процессом розыгрыша."
-                    },
-                    {
-                        "q": "Могу ли я выбрать резервных победителей?",
-                        "a": "Да. Задайте количество резервных мест перед началом. Они отобразятся в результатах вместе с основными победителями."
-                    }
-                ],
-                "errors": {
-                    "needLink": "Пожалуйста, введите ссылку на публикацию Instagram",
-                    "invalidLink": "Введите корректную ссылку на публикацию Instagram (instagram.com/p/...)",
-                    "serviceDown": "Автоматический сбор временно недоступен. Вы можете вставить комментарии вручную.",
-                    "privateOrMissing": "Этот аккаунт закрыт или публикация не найдена",
-                    "timeout": "Время ожидания соединения истекло, попробуйте еще раз",
-                    "generic": "Не удалось загрузить комментарии — проверьте ссылку или добавьте вручную"
-                },
-                "toasts": {
-                    "added": "@{name} добавлен",
-                    "participantsAdded": "Успешно добавлено участников: {count}!",
-                    "copied": "Результаты скопированы в буфер обмена!",
-                    "cardDownloaded": "Карточка победителя скачана!"
-                },
-                "loadingSteps": [
-                    "Подключение к Instagram...",
-                    "Сбор комментариев...",
-                    "Анализ участников...",
-                    "Подготовка данных..."
-                ]
-            },
             "youtube": {
                 "badge": "Инструмент для розыгрышей в YouTube",
                 "heroTitle": "YouTube",
@@ -581,8 +427,6 @@
     },
     "tools": {
         "title": "Инструменты",
-        "instagramStoryViewer": "Instagram Story Viewer",
-        "instagramProfilePicture": "Просмотр фото профиля",
         "onlineGiveaway": "Онлайн розыгрыш",
         "dice": "Игральная кость",
         "coinFlip": "Орел или Решка",
@@ -591,8 +435,8 @@
         "wheelOfFortune": "Колесо Фортуны",
         "teamGenerator": "Генератор Команд",
         "meta": {
-            "title": "Бесплатные инструменты онлайн | YulaSanta",
-            "description": "Инструменты: кубик, монетка, случайные числа и др."
+            "title": "Free Online Tools | Dice, Coin Flip, Wheel - YulaSanta",
+            "description": "Name picker, dice roller, coin flip, random number, short straw, wheel of fortune, team generator and gift suggestions — all free."
         },
         "diceMeta": {
             "title": "🎲 Кость | Бросить кубик онлайн - YulaSanta",
@@ -785,72 +629,6 @@
                 "fair selection"
             ]
         },
-        "instagramStoryContent": {
-            "title": "Instagram Story Viewer",
-            "subtitle": "Анонимный просмотр историй",
-            "placeholder": "Введите имя пользователя",
-            "view": "Смотреть истории",
-            "helper": "Смотрите истории анонимно, чтобы владелец не узнал об этом.",
-            "aboutTitle": "О Story Viewer",
-            "aboutText": "Скрытно просматривайте истории Instagram с помощью анонимного просмотрщика YulaSanta.",
-            "searchLabel": "Имя пользователя Instagram",
-            "searchButton": "Поиск",
-            "loadingNote": "Это может занять 20-60 секунд",
-            "waitPlease": "Пожалуйста, подождите...",
-            "howItWorks": "Как это работает?",
-            "howStep1": "Введите имя пользователя и нажмите Поиск",
-            "howStep2": "Информация профиля и активные истории загружаются",
-            "howStep3": "Смотрите истории анонимно — никто не узнает",
-            "storiesTitle": "Истории",
-            "viewOnInstagram": "Просмотреть в Instagram",
-            "viewProfile": "Просмотреть в Instagram",
-            "searchAgain": "← Искать другой профиль",
-            "posts": "Публикации",
-            "followingLabel": "Подписки",
-            "noStoriesError": "У этого аккаунта нет активных историй или истории приватные.",
-            "enterUsername": "Пожалуйста, введите имя пользователя",
-            "storiesFound": "Найдено историй: {count}!",
-            "loadStepProfile1": "Загрузка информации профиля...",
-            "loadStepProfile2": "Проверка аккаунта...",
-            "loadStepProfile3": "Подготовка данных...",
-            "loadStepStory1": "Подключение к Instagram...",
-            "loadStepStory2": "Загрузка историй...",
-            "loadStepStory3": "Загрузка медиафайлов...",
-            "loadStepStory4": "Подготовка...",
-            "followers": "Подписчики"
-        },
-        "instagramStoryMeta": {
-            "title": "📱 Просмотр историй Instagram | Анонимно - YulaSanta",
-            "description": "Просматривайте истории Instagram анонимно. Приватный просмотрщик историй.",
-            "keywords": [
-                "instagram story",
-                "story viewer",
-                "anonymous story viewer",
-                "private story viewer"
-            ]
-        },
-        "instagramProfileContent": {
-            "title": "Фото профиля Instagram",
-            "subtitle": "Размер фото HD",
-            "placeholder": "Введите имя пользователя",
-            "view": "Смотреть фото",
-            "helper": "Просматривайте фото профиля в полном размере и HD качестве.",
-            "aboutTitle": "О PP Viewer",
-            "aboutText": "Используйте наш бесплатный инструмент для просмотра и скачивания фото профиля Instagram в высоком качестве.",
-            "usernameLabel": "Имя пользователя",
-            "searchButton": "Поиск",
-            "loading": "Загрузка профиля...",
-            "downloadHD": "Скачать HD",
-            "downloadNormal": "Скачать обычное",
-            "openInInstagram": "Открыть в Instagram",
-            "searchAnother": "← Искать другой профиль",
-            "tryAgain": "Попробовать снова",
-            "posts": "Публикации",
-            "followers": "Подписчики",
-            "following": "Подписки",
-            "errorEmptyUsername": "Пожалуйста, введите имя пользователя",
-            "errorGeneric": "Произошла ошибка"
-        },
         "wheelOfFortuneContent": {
             "title": "Колесо Фортуны",
             "subtitle": "Крутить Колесо - Рандомайзер",
@@ -898,16 +676,6 @@
             "bulkMode": "Массовое редактирование",
             "listMode": "Просмотр списка",
             "clear": "Очистить все"
-        },
-        "instagramProfileMeta": {
-            "title": "🖼️ Фото профиля Instagram | Скачать в HD - YulaSanta",
-            "description": "Просматривайте и скачивайте фото профиля Instagram в HD качестве.",
-            "keywords": [
-                "instagram profile",
-                "profile picture viewer",
-                "HD profile picture",
-                "pp downloader"
-            ]
         },
         "giftSuggestions": "Gift Suggestions",
         "giftSuggestionsContent": {
@@ -1417,15 +1185,15 @@
     },
     "about": {
         "meta": {
-            "title": "О нас | YulaSanta - Платформа для розыгрышей",
-            "description": "Узнайте больше о YulaSanta. Самая надежная платформа."
+            "title": "About Us | YulaSanta — YouTube, TikTok & Secret Santa",
+            "description": "YulaSanta: YouTube & TikTok comment giveaways, Secret Santa, name picker and free online tools."
         },
         "title": "О нас",
-        "subtitle": "YulaSanta - это бесплатная платформа для проведения розыгрышей.",
+        "subtitle": "YulaSanta is a free platform for YouTube and TikTok comment giveaways, Secret Santa, name picking and fun online tools.",
         "story": {
             "title": "Наша история",
             "p1": "YulaSanta родилась в 2024 году, чтобы упростить проведение розыгрышей.",
-            "p2": "Наша цель: бесплатные, безопасные и простые розыгрыши для всех.",
+            "p2": "Our goal is simple: help creators run fair YouTube and TikTok comment giveaways for free — securely and without passwords. We also offer simple tools like a name picker, dice roller, coin flip, and random number generator.",
             "p3": "Сегодня тысячи пользователей выбирают YulaSanta."
         },
         "whyUs": {

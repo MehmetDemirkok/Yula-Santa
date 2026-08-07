@@ -1,48 +1,47 @@
 {
     "meta": {
-        "title": "YulaSanta - نظام الهدايا المجاني عبر الإنترنت من الجيل التالي",
-        "description": "قم بإجراء سحوبات سانتا السري (Secret Santa) عبر الإنترنت مجانًا مع YulaSanta. قم بإجراء مسابقاتك على انستقرام ويوتيوب وتيك توك وتويتر في ثوانٍ. رمي النرد، ملك أم كتابة، مولد أرقام عشوائية والمزيد من الأدوات المجانية!",
+        "title": "YulaSanta — YouTube & TikTok Comment Giveaways, Secret Santa",
+        "description": "Pick fair winners from YouTube and TikTok comments. Free Secret Santa, name picker, dice, coin flip, wheel of fortune and more — no signup, no password.",
         "keywords": [
-            "سحب قرعة",
-            "سحب اون لاين",
-            "قرعة مجانية",
-            "سانتا السري",
-            "سحب العيد",
-            "تبادل هدايا",
-            "سحب انستقرام",
-            "سحب يوتيوب",
-            "سحب تيك توك",
-            "سحب تويتر",
-            "أدوات سحب مجانية",
-            "رمي النرد",
-            "ملك أم كتابة",
-            "رقم عشوائي",
-            "سحب القش"
+            "youtube giveaway",
+            "youtube comment picker",
+            "tiktok giveaway",
+            "tiktok comment picker",
+            "secret santa",
+            "name picker",
+            "online raffle",
+            "free giveaway",
+            "dice roller",
+            "coin flip",
+            "random number generator",
+            "short straw",
+            "wheel of fortune",
+            "team generator"
         ],
         "faq": {
-            "breadcrumbHome": "الرئيسية",
-            "q1": "ما هو YulaSanta؟",
-            "a1": "YulaSanta هو منصة مجانية للسحوبات الإلكترونية وSecret Santa. يمكنك إجراء سحوبات على Instagram وYouTube وTikTok وTwitter، وتنظيم تبادل الهدايا.",
-            "q2": "هل YulaSanta مجاني؟",
-            "a2": "نعم، YulaSanta مجاني تماماً. يمكنك استخدام جميع الميزات دون تسجيل.",
-            "q3": "ما منصات التواصل الاجتماعي التي تدعمونها؟",
-            "a3": "يمكنك إجراء سحوبات من Instagram وYouTube وTikTok وTwitter (X) باستخدام التعليقات والإعجابات.",
-            "q4": "كيف يعمل Secret Santa؟",
-            "a4": "أضف أسماء المشاركين وابدأ السحب. يختار كل شخص شخصاً بشكل عشوائي ويمكنه فقط رؤية مطابقته. الخصوصية محمية!",
-            "title": "الأسئلة الشائعة | YulaSanta",
-            "description": "إجابات عن سحب انستقرام وسانتا السري وأدوات المسابقات على التواصل الاجتماعي.",
-            "q5": "كيف أُجري سحب تعليقات انستقرام؟",
-            "a5": "الصق رابط منشور انستقرام في يولاسانتا، اجلب التعليقات أو أضفها يدوياً، حدد عدد الفائزين وابدأ السحب. يُختار الفائزون والاحتياطيون خلال ثوانٍ.",
-            "q6": "هل موقع سحب انستقرام آمن؟",
-            "a6": "نعم. يعمل بدون كلمة مرور أو تسجيل دخول. لا تحتاج لإدخال بيانات انستقرام. جميع السحوبات بعدالة عشوائية.",
-            "q7": "كم فائزاً يمكنني اختياره؟",
-            "a7": "أي عدد من الفائزين والاحتياطيين — من فائز واحد إلى حملات متعددة الفائزين.",
-            "q8": "هل يمكن لنفس الشخص الفوز أكثر من مرة؟",
-            "a8": "لا. مع خيار «عدّ كل مستخدم مرة واحدة» تُحسب تعليقات الشخص مرة واحدة فقط."
+            "title": "Frequently Asked Questions | YulaSanta",
+            "description": "FAQ about YouTube, TikTok, Secret Santa and free raffle tools.",
+            "breadcrumbHome": "Home",
+            "q1": "What is YulaSanta?",
+            "a1": "YulaSanta is a free platform for YouTube and TikTok comment giveaways, Secret Santa gift exchanges, name picking, and tools like dice, coin flip, random numbers, short straw, wheel of fortune, and team generator.",
+            "q2": "Is YulaSanta free?",
+            "a2": "Yes. All core features are free — no registration or login required.",
+            "q3": "Which social platforms do you support?",
+            "a3": "You can run comment giveaways from YouTube and TikTok videos.",
+            "q4": "How does Secret Santa work?",
+            "a4": "Add participant names, start the draw. Each person is randomly matched and only sees their own recipient.",
+            "q5": "How do I run a YouTube comment giveaway?",
+            "a5": "Paste your YouTube video link, fetch or paste comments, set winner and backup counts, then start the draw.",
+            "q6": "How do I run a TikTok comment giveaway?",
+            "a6": "Paste your TikTok video link, collect comments, set winners, and start the raffle.",
+            "q7": "Do I need to log in?",
+            "a7": "No. YulaSanta never asks for your YouTube or TikTok password.",
+            "q8": "Can the same person win twice?",
+            "a8": "No. With “Count each user once”, multiple comments from the same account count as a single entry."
         }
     },
     "home": {
-        "title": "YulaSanta - نظام الهدايا المجاني عبر الإنترنت من الجيل التالي",
+        "title": "YulaSanta — YouTube & TikTok Comment Giveaways, Secret Santa",
         "subtitle": "أضف أصدقاءك، ابدأ القرعة!",
         "secretDraw": "قرعة سرية 🤫",
         "directMatch": "مطابقة مباشرة 🤝",
@@ -51,7 +50,7 @@
         "uploadList": "تحميل القائمة (Excel/PDF)",
         "uploading": "جارٍ التحميل...",
         "clearList": "مسح القائمة",
-        "startDraw": "ابدأ سحب العام الجديد",
+        "startDraw": "Start a Giveaway",
         "match": "مطابقة",
         "happyNewYear": "🎄 سنة جديدة سعيدة!",
         "minPeople3": "أضف 3 أشخاص على الأقل",
@@ -69,30 +68,36 @@
         "directMatchMinError": "تتطلب المطابقة شخصين على الأقل!",
         "directMatchEvenError": "تتطلب المطابقة المباشرة عدداً زوجياً من الأشخاص!",
         "drawError": "حدث خطأ، يرجى المحاولة مرة أخرى.",
-        "socialMediaGiveaways": "مسابقات وسائل التواصل الاجتماعي",
+        "socialMediaGiveaways": "Comment Giveaways",
         "secure": "آمن بنسبة 100%",
         "fast": "سريع جداً",
         "noPassword": "بدون كلمة مرور",
         "noRegistration": "بدون تسجيل",
         "startNow": "ابدأ الآن",
-        "socialDesc": "قم بإجراء سحوباتك بسهولة على جميع المنصات",
-        "toolsDesc": "أدوات مصغرة وألعاب ممتعة لتسهيل حياتك اليومية.",
+        "socialDesc": "Specialized tools for YouTube and TikTok comment raffles.",
+        "toolsDesc": "Simple free tools for fair picks and everyday decisions.",
         "viewAll": "عرض الكل",
         "seo": {
-            "title": "منصة سحب مجانية أونلاين للمسابقات وسانتا السري",
+            "title": "Free YouTube, TikTok & Secret Santa Platform",
             "paragraphs": [
-                "يولاسانتا أداة سحب انستقرام ويوتيوب وتيك توك وتويتر مجانية. أنشئ مسابقة تعليقات خلال ثوانٍ — بدون تسجيل أو كلمة مرور. اختر الفائزين والاحتياطيين بعدالة من تعليقات منشورك.",
-                "نظّم سحوبات سانتا السري، سحب الأسماء، النرد، وقلب العملة. أدِر حملاتك على التواصل الاجتماعي وفعاليات الأصدقاء من مكان واحد."
+                "Run YouTube and TikTok comment giveaways in seconds with YulaSanta — no signup, no password. Pick winners and backups fairly.",
+                "Organize Secret Santa draws, name raffles, dice rolls, coin flips, short straw, wheel of fortune, team generator, and gift suggestions in one place."
             ],
-            "featuresTitle": "لماذا يولاسانتا؟",
+            "featuresTitle": "Why YulaSanta?",
             "features": [
-                "مجاني بالكامل — بدون رسوم خفية",
-                "بدون تسجيل أو كلمة مرور",
-                "جلب تلقائي لمشاركي تعليقات انستقرام",
-                "دعم الفائز والاحتياطي",
-                "دعم 12 لغة"
+                "Completely free — no hidden fees",
+                "No registration or password required",
+                "YouTube and TikTok comment giveaways",
+                "Secret Santa and name picker",
+                "Dice, coin flip, wheel and more tools",
+                "12 language support"
             ]
-        }
+        },
+        "heroTitle": "YouTube & TikTok Comment Giveaways",
+        "heroSubtitle": "Pick fair winners from video comments in seconds — free, no signup, no password.",
+        "youtubeGiveaway": "YouTube Giveaway",
+        "tiktokGiveaway": "TikTok Giveaway",
+        "namePickerDesc": "Pick fair winners from any list"
     },
     "result": {
         "whoGetsGift": "لمن سأشتري هدية؟",
@@ -124,7 +129,6 @@
         "comments": "التعليقات",
         "likes": "الإعجابات",
         "subscribers": "المشتركون",
-        "retweets": "إعادة التغريد",
         "replies": "الردود",
         "followers": "المتابعون",
         "tags": "الوسوم",
@@ -137,30 +141,14 @@
         "results": "النتائج",
         "winners": "الفائزون",
         "backups": "الاحتياطيون",
-        "youtubeTitle": "أداة سحب يوتيوب المجانية 2025",
-        "instagramTitle": "أداة سحب انستقرام | سحب تعليقات مجاني",
-        "twitterTitle": "أداة سحب تويتر (X) | سحب ريتويت وإعجابات",
-        "youtubeDesc": "استخدم أداتنا المجانية لسحب الفائزين من التعليقات والإعجابات على يوتيوب بسرعة وأمان.",
-        "instagramDesc": "اسحب الفائزين والاحتياطيين من تعليقات انستقرام فوراً. أفضل تطبيق لسحب تعليقات انستقرام.",
-        "twitterDesc": "قم بإجراء سحوبات من الريتويت والإعجابات على تويتر بسهولة. موقع سحب تويتر مجاني.",
+        "youtubeTitle": "Free YouTube Comment Giveaway Tool | YulaSanta",
+        "youtubeDesc": "Pick fair winners and backups from YouTube video comments. Free, password-free YouTube comment picker.",
         "tiktokTitle": "أداة سحب تيك توك | سحب تعليقات تيك توك مجاني",
         "tiktokDesc": "قم بإجراء سحوبات من التعليقات على تيك توك بسهولة. اسحب الفائزين مجاناً!",
         "meta": {
-            "instagram": {
-                "title": "موقع سحب انستقرام مجاني | سحب تعليقات انستقرام - YulaSanta",
-                "description": "أنشئ مسابقة انستقرام مجاناً وبدون كلمة مرور. اختر الفائزين والاحتياطيين من تعليقات منشورك فوراً مع يولاسانتا.",
-                "keywords": [
-                    "سحب انستقرام",
-                    "موقع سحب انستقرام",
-                    "سحب تعليقات انستقرام",
-                    "مسابقة انستقرام مجانية",
-                    "سحب انستا",
-                    "أداة سحب انستقرام"
-                ]
-            },
             "youtube": {
-                "title": "أداة سحب يوتيوب مجانية | YulaSanta",
-                "description": "سحوبات سريعة وموثوقة لفيديوهات يوتيوب الخاصة بك.",
+                "title": "Free YouTube Comment Giveaway Tool | Comment Picker - YulaSanta",
+                "description": "Run fast, fair YouTube comment giveaways. Pick random winners — no signup, no password.",
                 "keywords": [
                     "سحب يوتيوب",
                     "سحب تعليقات يوتيوب"
@@ -175,22 +163,11 @@
                     "سحب تعليقات تيك توك",
                     "أداة سحب تيك توك"
                 ]
-            },
-            "twitter": {
-                "title": "أداة سحب تويتر (X) | سحب ريتويت وإعجابات - YulaSanta",
-                "description": "أدِر سحوبات تويتر بسهولة. اختر الفائزين من الريتويت والإعجابات. موقع سحب تويتر مجاني.",
-                "keywords": [
-                    "سحب تويتر",
-                    "سحب إكس",
-                    "سحب ريتويت",
-                    "مسابقة تويتر"
-                ]
             }
         },
         "requireSubscription": "يتطلب الاشتراك",
         "requireNotification": "يتطلب الإشعارات",
         "requireFollow": "يتطلب المتابعة",
-        "requireRetweet": "يتطلب إعادة التغريد",
         "requireLike": "يتطلب الإعجاب",
         "countUserOnce": "احسب المستخدم مرة واحدة",
         "inputError": "الرجاء إدخال رابط صالح!",
@@ -204,7 +181,6 @@
         "parse": "تحليل التعليقات",
         "parsed": "تم تحليل {count} مشارك",
         "youtubeLimitNote": "ملاحظة: يمكن جلب ما يصل إلى 1000 تعليق تلقائياً من API.",
-        "instagramLimitNote": "ملاحظة: يمكن جلب ما يصل إلى 1000 تعليق تلقائياً من API.",
         "tiktokLimitNote": "ملاحظة: يمكن جلب ما يصل إلى 100 تعليق تلقائياً من API.",
         "participantLimitDetails": "لمشاهدة المزيد من التعليقات، استخدم وضع الإدخال اليدوي.",
         "channelUsername": "اسم المستخدم (التحقق من المتابعين)",
@@ -218,10 +194,8 @@
         "shareDesc": "شارك نتائج السحب على وسائل التواصل الاجتماعي",
         "shareCopied": "تم النسخ!",
         "copyLink": "نسخ الرابط",
-        "comingSoon": "قريباً",
         "noParticipantsYet": "لا يوجد مشاركون بعد",
         "youtubeNoParticipantsHint": "الصق رابط فيديو يوتيوب أو أضف مستخدمين يدوياً",
-        "instagramNoParticipantsHint": "الصق رابط منشور إنستغرام أو أضف مستخدمين يدوياً",
         "tiktokNoParticipantsHint": "الصق رابط فيديو تيك توك أو أضف مستخدمين يدوياً",
         "fetchFromVideo": "← جلب من رابط الفيديو",
         "fetchFromPost": "← جلب من رابط المنشور",
@@ -230,38 +204,6 @@
         "subscribedPrivate": "خاص",
         "checkingSubscription": "جاري التحقق...",
         "seo": {
-            "instagram": {
-                "contentTitle": "أداة سحب انستقرام مجانية — موقع سحب تعليقات انستقرام",
-                "contentParagraphs": [
-                    "يولاسانتا موقع سحب انستقرام مجاني لاختيار الفائزين من تعليقات منشورك بعدالة خلال ثوانٍ — بدون تسجيل أو كلمة مرور انستقرام.",
-                    "مصمّم للمشاهير والعلامات والأفراد: مسابقات التعليقات والإعجابات والوسوم. اختيار الفائز والاحتياطي وتصفية المكرر ومشاركة النتائج — كلها مجانية."
-                ],
-                "howToTitle": "كيف تعمل مسابقة تعليقات انستقرام؟",
-                "howToSteps": [
-                    "الصق رابط منشور انستقرام في يولاسانتا أو أضف المشاركين يدوياً.",
-                    "حدد عدد الفائزين والاحتياطيين وقواعد المشاركة (متابعة، مرة واحدة لكل مستخدم).",
-                    "ابدأ السحب — يُختار الفائزون بخوارزمية عشوائية عادلة ويمكنك مشاركة النتائج فوراً."
-                ],
-                "faqTitle": "أسئلة شائعة عن سحب انستقرام",
-                "faq": [
-                    {
-                        "q": "هل موقع سحب انستقرام مجاني؟",
-                        "a": "نعم. يولاسانتا مجاني بالكامل. سحوبات غير محدودة بدون تسجيل."
-                    },
-                    {
-                        "q": "هل أحتاج لتسجيل الدخول إلى انستقرام؟",
-                        "a": "لا. يعمل بدون كلمة مرور. الصق الرابط أو أضف التعليقات يدوياً."
-                    },
-                    {
-                        "q": "هل يمكن اختيار فائز احتياطي؟",
-                        "a": "نعم. حدد أي عدد من الفائزين الأساسيين والاحتياطيين."
-                    },
-                    {
-                        "q": "هل تُحسب تعليقات متعددة لنفس الشخص؟",
-                        "a": "لا. مع خيار «عدّ كل مستخدم مرة واحدة» يدخل كل شخص مرة واحدة فقط."
-                    }
-                ]
-            },
             "tiktok": {
                 "contentTitle": "أداة سحب تيك توك — مسابقة تعليقات مجانية",
                 "contentParagraphs": [
@@ -296,163 +238,6 @@
             }
         },
         "landing": {
-            "instagram": {
-                "badge": "أداة سحب Instagram",
-                "heroTitle": "Instagram",
-                "heroHighlight": "أداة اختيار الفائز",
-                "heroSubtitle": "اختر فائزًا عشوائيًا من تعليقات Instagram خلال ثوانٍ. لا يتطلب تسجيل الدخول.",
-                "urlPlaceholder": "الصق رابط منشور Instagram",
-                "fetchCta": "جلب المشاركين",
-                "fetching": "جاري الجلب…",
-                "urlHint": "يعمل مع المنشورات وReels العامة · تفتح الخطوة 2 تلقائيًا بعد الجلب",
-                "step1Url": "الخطوة 1 — الصق رابط Instagram",
-                "step1Manual": "الخطوة 1 — الصق التعليقات أو أسماء المستخدمين",
-                "step3Title": "حدد القواعد وتحقق من المشاركين",
-                "step3Subtitle": "الخطوة 3",
-                "step4Label": "الخطوة 4 — بدء السحب",
-                "backToUrl": "← العودة إلى الرابط",
-                "continueWith": "المتابعة مع {count} مشارك",
-                "switchManual": "الانتقال إلى اللصق اليدوي →",
-                "automatic": "تلقائي",
-                "manual": "يدوي",
-                "selecting": "جاري الاختيار…",
-                "winner": "الفائز",
-                "backup": "الاحتياطي",
-                "pngDownload": "PNG",
-                "add": "إضافة",
-                "loadingWait": "يستغرق عادةً 20–60 ثانية",
-                "featuresTitle": "كل ما تحتاجه لإجراء سحب عادل",
-                "featuresSubtitle": "سرعة وشفافية وأمان — دون الحاجة للمخاطرة بتسجيل الدخول إلى Instagram.",
-                "howTitle": "كيف يعمل؟",
-                "howSubtitle": "خمس خطوات واضحة. لا داعي للتفكير فيما ستنقر عليه.",
-                "startCta": "ابدأ السحب",
-                "faqTitle": "الأسئلة الشائعة",
-                "steps": {
-                    "paste": "الصق الرابط",
-                    "load": "تحميل",
-                    "rules": "القواعد",
-                    "draw": "السحب"
-                },
-                "trustBadges": [
-                    "لا يتطلب تسجيل الدخول إلى Instagram",
-                    "معالجة سريعة",
-                    "فلتر التكرار",
-                    "فائز احتياطي",
-                    "مجاني"
-                ],
-                "metrics": [
-                    {
-                        "value": "500.000+",
-                        "label": "تعليق معالج"
-                    },
-                    {
-                        "value": "50.000+",
-                        "label": "سحب ناجح"
-                    },
-                    {
-                        "value": "100%",
-                        "label": "اختيار عشوائي"
-                    },
-                    {
-                        "value": "0",
-                        "label": "تسجيل دخول مطلوب"
-                    }
-                ],
-                "features": [
-                    {
-                        "title": "جلب التعليقات التلقائي",
-                        "desc": "الصق رابط المنشور واجلب المشاركين خلال ثوانٍ."
-                    },
-                    {
-                        "title": "فلتر التكرار",
-                        "desc": "مشاركة واحدة لكل مستخدم لسحب عادل."
-                    },
-                    {
-                        "title": "فائزون احتياطيو",
-                        "desc": "اختر فائزين احتياطيين فورًا في حال تعذر التواصل مع الفائز."
-                    },
-                    {
-                        "title": "شرط المتابعة",
-                        "desc": "حدد شرط المتابعة قبل إجراء السحب."
-                    },
-                    {
-                        "title": "التركيز على الإشارات (Mention)",
-                        "desc": "ركز على السحوبات القائمة على التعليقات."
-                    },
-                    {
-                        "title": "متوافق مع الهاشتاج",
-                        "desc": "يعمل مع المنشورات وReels التي تحتوي على هاشتاج."
-                    },
-                    {
-                        "title": "تصدير النتائج",
-                        "desc": "انسخ أو شارك أو قم بتنزيل بطاقة الفائز بصيغة PNG."
-                    },
-                    {
-                        "title": "معالجة سريعة",
-                        "desc": "تدفق سلس وسريع من الرابط إلى اختيار الفائزين."
-                    }
-                ],
-                "howSteps": [
-                    {
-                        "title": "الصق رابط Instagram",
-                        "desc": "ضع URL المنشور أو Reel في المنطقة الرئيسية."
-                    },
-                    {
-                        "title": "تحميل التعليقات",
-                        "desc": "اجلب المشاركين تلقائيًا أو الصقهم يدويًا."
-                    },
-                    {
-                        "title": "اختر القواعد",
-                        "desc": "اضبط تفضيلات الفائزين، الاحتياطيين والمشاركات."
-                    },
-                    {
-                        "title": "إجراء السحب",
-                        "desc": "قم باختيار عشوائي عادل ومؤمن تشفيرياً."
-                    },
-                    {
-                        "title": "مشاركة النتائج",
-                        "desc": "انسخ، نزل أو شارك بنقرة واحدة."
-                    }
-                ],
-                "faq": [
-                    {
-                        "q": "هل أحتاج إلى تسجيل الدخول إلى Instagram؟",
-                        "a": "لا. YulaSanta لا يطلب كلمة مرور Instagram الخاصة بك. فقط الصق رابط منشور عام أو أضف التعليقات يدويًا."
-                    },
-                    {
-                        "q": "هل اختيار الفائز عشوائي حقًا؟",
-                        "a": "نعم. يتم اختيار الفائزين بواسطة خلط آمن؛ كل مشارك مؤهل لديه فرصة متساوية."
-                    },
-                    {
-                        "q": "ماذا يحدث إذا لم يعمل الجلب التلقائي؟",
-                        "a": "انتقل إلى الوضع اليدوي: الصق أسماء المستخدمين أو التعليقات، وتابع بنفس القواعد وتدفق السحب."
-                    },
-                    {
-                        "q": "هل يمكنني اختيار فائز احتياطي؟",
-                        "a": "نعم. حدد عدد الفائزين الاحتياطيين قبل البدء. سيظهر الاحتياطيون في النتائج جنباً إلى جنب مع الفائزين الأساسيين."
-                    }
-                ],
-                "errors": {
-                    "needLink": "يرجى إدخال رابط منشور Instagram",
-                    "invalidLink": "يرجى إدخال رابط منشور Instagram صالحة (instagram.com/p/...)",
-                    "serviceDown": "الجلب التلقائي غير متاح حاليًا. يمكنك لصق التعليقات يدويًا.",
-                    "privateOrMissing": "هذا الحساب خاص أو لم يتم العثور على المنشور",
-                    "timeout": "انتهت مهلة الاتصال، يرجى المحاولة مرة أخرى",
-                    "generic": "تعذر جلب التعليقات — تحقق من الرابط أو أضفها يدويًا"
-                },
-                "toasts": {
-                    "added": "تمت إضافة @{name}",
-                    "participantsAdded": "تمت إضافة {count} مشارك بنجاح!",
-                    "copied": "تم نسخ النتائج إلى الحافظة!",
-                    "cardDownloaded": "تم تنزيل بطاقة الفائز!"
-                },
-                "loadingSteps": [
-                    "جاري الاتصال بـ Instagram...",
-                    "جاري جلب التعليقات...",
-                    "جاري تحليل المشاركين...",
-                    "جاري إعداد البيانات..."
-                ]
-            },
             "youtube": {
                 "badge": "أداة سحب YouTube",
                 "heroTitle": "YouTube",
@@ -675,8 +460,6 @@
     },
     "tools": {
         "title": "الأدوات",
-        "instagramStoryViewer": "مشاهدة قصص إنستغرام",
-        "instagramProfilePicture": "مشاهدة صورة الملف الشخصي",
         "onlineGiveaway": "سحب قرعة أونلاين",
         "dice": "لعبة النرد",
         "coinFlip": "رمي العملة",
@@ -685,8 +468,8 @@
         "wheelOfFortune": "عجلة الحظ",
         "teamGenerator": "منشئ الفرق",
         "meta": {
-            "title": "أدوات مجانية عبر الإنترنت | YulaSanta - نرد، رمي عملة، رقم عشوائي",
-            "description": "أدوات YulaSanta المجانية عبر الإنترنت: لعبة النرد، رمي العملة، مولد أرقام، سحب القش، مشاهدة القصص وصورة الملف الشخصي."
+            "title": "Free Online Tools | Dice, Coin Flip, Wheel - YulaSanta",
+            "description": "Name picker, dice roller, coin flip, random number, short straw, wheel of fortune, team generator and gift suggestions — all free."
         },
         "diceMeta": {
             "title": "🎲 لعبة النرد | رمي النرد عبر الإنترنت مجانًا - YulaSanta",
@@ -857,72 +640,6 @@
                 "fair selection"
             ]
         },
-        "instagramStoryContent": {
-            "title": "مشاهدة قصص إنستغرام",
-            "subtitle": "مشاهدة ستوري بدون اسم",
-            "placeholder": "أدخل اسم المستخدم",
-            "view": "مشاهدة القصص",
-            "helper": "شاهد القصص بشكل مجهول دون أن يعلم صاحبها.",
-            "aboutTitle": "عن مشاهدة القصص",
-            "aboutText": "شاهد قصص إنستغرام سراً مع أداة YulaSanta للمشاهدة المجهولة.",
-            "searchLabel": "اسم مستخدم إنستغرام",
-            "searchButton": "بحث",
-            "loadingNote": "قد يستغرق هذا 20-60 ثانية",
-            "waitPlease": "يرجى الانتظار...",
-            "howItWorks": "كيف يعمل؟",
-            "howStep1": "أدخل اسم المستخدم واضغط بحث",
-            "howStep2": "يتم جلب معلومات الملف الشخصي والقصص النشطة",
-            "howStep3": "شاهد القصص بشكل مجهول — لن يعرف أحد",
-            "storiesTitle": "القصص",
-            "viewOnInstagram": "عرض على إنستغرام",
-            "viewProfile": "عرض على إنستغرام",
-            "searchAgain": "← البحث عن ملف شخصي آخر",
-            "posts": "المنشورات",
-            "followingLabel": "يتابع",
-            "noStoriesError": "هذا الحساب لا يملك قصصاً نشطة أو القصص خاصة.",
-            "enterUsername": "يرجى إدخال اسم مستخدم",
-            "storiesFound": "تم العثور على {count} قصة!",
-            "loadStepProfile1": "جلب معلومات الملف الشخصي...",
-            "loadStepProfile2": "التحقق من الحساب...",
-            "loadStepProfile3": "تحضير البيانات...",
-            "loadStepStory1": "الاتصال بإنستغرام...",
-            "loadStepStory2": "جلب القصص...",
-            "loadStepStory3": "تحميل ملفات الوسائط...",
-            "loadStepStory4": "جاري التحضير...",
-            "followers": "المتابعون"
-        },
-        "instagramStoryMeta": {
-            "title": "📱 مشاهدة قصص إنستغرام | مجهول - YulaSanta",
-            "description": "شاهد قصص إنستغرام بشكل مجهول. أداة مشاهدة قصص إنستغرام خاصة.",
-            "keywords": [
-                "instagram story",
-                "story viewer",
-                "anonymous story viewer",
-                "private story viewer"
-            ]
-        },
-        "instagramProfileContent": {
-            "title": "صورة ملف إنستغرام الشخصي",
-            "subtitle": "حجم صورة الملف الشخصي HD",
-            "placeholder": "أدخل اسم المستخدم",
-            "view": "مشاهدة الصورة",
-            "helper": "اعرض صورة الملف الشخصي بالحجم الكامل وبجودة عالية.",
-            "aboutTitle": "عن تكبير الصورة",
-            "aboutText": "استخدم أداتنا المجانية لمشاهدة وتحميل صور ملفات إنستغرام الشخصية بجودة عالية.",
-            "usernameLabel": "اسم المستخدم",
-            "searchButton": "بحث",
-            "loading": "جارٍ تحميل الملف الشخصي...",
-            "downloadHD": "تحميل HD",
-            "downloadNormal": "تحميل عادي",
-            "openInInstagram": "فتح في Instagram",
-            "searchAnother": "← البحث عن ملف شخصي آخر",
-            "tryAgain": "حاول مرة أخرى",
-            "posts": "المنشورات",
-            "followers": "المتابعون",
-            "following": "المتابَعون",
-            "errorEmptyUsername": "الرجاء إدخال اسم المستخدم",
-            "errorGeneric": "حدث خطأ"
-        },
         "wheelOfFortuneContent": {
             "title": "عجلة الحظ",
             "subtitle": "تدوير العجلة - اختيار عشوائي",
@@ -970,16 +687,6 @@
             "bulkMode": "تعديل جماعي",
             "listMode": "عرض القائمة",
             "clear": "مسح الكل"
-        },
-        "instagramProfileMeta": {
-            "title": "🖼️ صورة ملف إنستغرام الشخصي | تحميل HD - YulaSanta",
-            "description": "عرض وتحميل صور ملفات إنستغرام الشخصية بجودة HD.",
-            "keywords": [
-                "instagram profile",
-                "profile picture viewer",
-                "HD profile picture",
-                "pp downloader"
-            ]
         },
         "wheelOfFortuneMeta": {
             "title": "🎡 عجلة الحظ | عجلة دوارة مجانية عبر الإنترنت - YulaSanta",
@@ -1511,15 +1218,15 @@
     },
     "about": {
         "meta": {
-            "title": "من نحن | YulaSanta - منصة سحب قرعة مجانية",
-            "description": "تعرف على YulaSanta. المنصة الأكثر موثوقية للسحوبات."
+            "title": "About Us | YulaSanta — YouTube, TikTok & Secret Santa",
+            "description": "YulaSanta: YouTube & TikTok comment giveaways, Secret Santa, name picker and free online tools."
         },
         "title": "من نحن",
-        "subtitle": "YulaSanta هي منصة مجانية تجعل السحوبات سهلة للجميع.",
+        "subtitle": "YulaSanta is a free platform for YouTube and TikTok comment giveaways, Secret Santa, name picking and fun online tools.",
         "story": {
             "title": "قصتنا",
             "p1": "ولدت YulaSanta في عام 2024 لتسهيل عملية سحب القرعة للجميع.",
-            "p2": "كان هدفنا بسيطاً: تمكين الجميع من إجراء سحوبات مجانية وآمنة وسهلة.",
+            "p2": "Our goal is simple: help creators run fair YouTube and TikTok comment giveaways for free — securely and without passwords. We also offer simple tools like a name picker, dice roller, coin flip, and random number generator.",
             "p3": "اليوم، يختار آلاف المستخدمين YulaSanta لإجراء سحوباتهم."
         },
         "whyUs": {

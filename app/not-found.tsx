@@ -1,32 +1,28 @@
 /**
  * Global 404 — Markalı "Sayfa Bulunamadı" sayfası.
- *
- * Kök layout html/body sağlamadığı için burada kendi <html>/<body>'mizi
- * veriyoruz. next-intl provider'ı kök seviyede olmadığından, çeviriler
- * URL'deki locale önekinden çıkarılıp inline tablodan alınır.
  */
 
 "use client";
 
 import { usePathname } from "next/navigation";
 import Link from "next/link";
-import { Gift, Home, Search } from "lucide-react";
+import { Youtube, Home, Search } from "lucide-react";
 
 const LOCALES = ['tr', 'en', 'de', 'fr', 'es', 'it', 'pt', 'ru', 'ar', 'ja', 'ko', 'zh'];
 
 const T: Record<string, { title: string; desc: string; home: string; draw: string }> = {
-    tr: { title: 'Sayfa Bulunamadı', desc: 'Aradığınız sayfa taşınmış veya hiç var olmamış olabilir.', home: 'Ana Sayfa', draw: 'Çekiliş Yap' },
-    en: { title: 'Page Not Found', desc: 'The page you are looking for may have moved or never existed.', home: 'Home', draw: 'Start a Draw' },
-    de: { title: 'Seite nicht gefunden', desc: 'Die gesuchte Seite wurde möglicherweise verschoben oder existierte nie.', home: 'Startseite', draw: 'Verlosung starten' },
-    fr: { title: 'Page introuvable', desc: 'La page que vous recherchez a peut-être été déplacée ou n’a jamais existé.', home: 'Accueil', draw: 'Lancer un tirage' },
-    es: { title: 'Página no encontrada', desc: 'La página que buscas pudo haberse movido o nunca existió.', home: 'Inicio', draw: 'Hacer un sorteo' },
-    it: { title: 'Pagina non trovata', desc: 'La pagina che cerchi potrebbe essere stata spostata o non è mai esistita.', home: 'Home', draw: 'Avvia un’estrazione' },
-    pt: { title: 'Página não encontrada', desc: 'A página que procura pode ter sido movida ou nunca existiu.', home: 'Início', draw: 'Fazer um sorteio' },
-    ru: { title: 'Страница не найдена', desc: 'Запрашиваемая страница могла быть перемещена или никогда не существовала.', home: 'Главная', draw: 'Провести розыгрыш' },
-    ar: { title: 'الصفحة غير موجودة', desc: 'قد تكون الصفحة التي تبحث عنها قد نُقلت أو لم تكن موجودة أصلاً.', home: 'الرئيسية', draw: 'إجراء سحب' },
-    ja: { title: 'ページが見つかりません', desc: 'お探しのページは移動したか、存在しない可能性があります。', home: 'ホーム', draw: '抽選する' },
-    ko: { title: '페이지를 찾을 수 없습니다', desc: '찾으시는 페이지가 이동되었거나 존재하지 않을 수 있습니다.', home: '홈', draw: '추첨하기' },
-    zh: { title: '页面未找到', desc: '您要查找的页面可能已被移动或从未存在。', home: '首页', draw: '开始抽奖' },
+    tr: { title: 'Sayfa Bulunamadı', desc: 'Aradığınız sayfa taşınmış veya hiç var olmamış olabilir.', home: 'Ana Sayfa', draw: 'YouTube Çekilişi' },
+    en: { title: 'Page Not Found', desc: 'The page you are looking for may have moved or never existed.', home: 'Home', draw: 'YouTube Giveaway' },
+    de: { title: 'Seite nicht gefunden', desc: 'Die gesuchte Seite wurde möglicherweise verschoben oder existierte nie.', home: 'Startseite', draw: 'YouTube-Verlosung' },
+    fr: { title: 'Page introuvable', desc: 'La page que vous recherchez a peut-être été déplacée ou n’a jamais existé.', home: 'Accueil', draw: 'Tirage YouTube' },
+    es: { title: 'Página no encontrada', desc: 'La página que buscas pudo haberse movido o nunca existió.', home: 'Inicio', draw: 'Sorteo de YouTube' },
+    it: { title: 'Pagina non trovata', desc: 'La pagina che cerchi potrebbe essere stata spostata o non è mai esistita.', home: 'Home', draw: 'Giveaway YouTube' },
+    pt: { title: 'Página não encontrada', desc: 'A página que procura pode ter sido movida ou nunca existiu.', home: 'Início', draw: 'Sorteio YouTube' },
+    ru: { title: 'Страница не найдена', desc: 'Запрашиваемая страница могла быть перемещена или никогда не существовала.', home: 'Главная', draw: 'Розыгрыш YouTube' },
+    ar: { title: 'الصفحة غير موجودة', desc: 'قد تكون الصفحة التي تبحث عنها قد نُقلت أو لم تكن موجودة أصلاً.', home: 'الرئيسية', draw: 'سحب يوتيوب' },
+    ja: { title: 'ページが見つかりません', desc: 'お探しのページは移動したか、存在しない可能性があります。', home: 'ホーム', draw: 'YouTube抽選' },
+    ko: { title: '페이지를 찾을 수 없습니다', desc: '찾으시는 페이지가 이동되었거나 존재하지 않을 수 있습니다.', home: '홈', draw: 'YouTube 추첨' },
+    zh: { title: '页面未找到', desc: '您要查找的页面可能已被移动或从未存在。', home: '首页', draw: 'YouTube抽奖' },
 };
 
 export default function NotFound() {
@@ -35,6 +31,7 @@ export default function NotFound() {
     const locale = seg && LOCALES.includes(seg) ? seg : 'tr';
     const t = T[locale] || T.tr;
     const homeHref = locale === 'tr' ? '/' : `/${locale}`;
+    const youtubeHref = `${homeHref === '/' ? '' : homeHref}/youtube`;
 
     return (
         <html lang={locale} dir={locale === 'ar' ? 'rtl' : 'ltr'}>
@@ -59,10 +56,10 @@ export default function NotFound() {
                                 <Home className="w-5 h-5" /> {t.home}
                             </Link>
                             <Link
-                                href={`${homeHref === '/' ? '' : homeHref}/secret-santa`}
+                                href={youtubeHref}
                                 className="w-full sm:w-auto inline-flex items-center justify-center gap-2 px-6 py-3 bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-700 text-gray-700 dark:text-gray-200 font-bold rounded-full shadow-sm transition-all hover:-translate-y-0.5"
                             >
-                                <Gift className="w-5 h-5 text-santa-red" /> {t.draw}
+                                <Youtube className="w-5 h-5 text-santa-red" /> {t.draw}
                             </Link>
                         </div>
                     </div>

@@ -30,9 +30,18 @@ import { applyGiveawayFilters, extractOwnerFromSocialUrl } from "@/lib/giveawayF
 import { buildDrawProof, type DrawProof } from "@/lib/giveawayProof";
 import { FilterRulesPanel } from "@/components/giveaway/FilterRulesPanel";
 import { DrawProofPanel } from "@/components/giveaway/DrawProofPanel";
+import { TikTokFetchStats } from "@/components/giveaway/TikTokFetchStats";
 import { SITE_SHARE_SUFFIX } from "@/lib/constants";
 import { AdWrapper, InArticleAd } from "@/components/ads";
 import { AD_SLOTS } from "@/lib/ads/config";
+import {
+    applyManualImportPreview,
+    isLikelyTikTokUrl,
+    parseManualImport,
+    type ManualImportPreview,
+    type TikTokErrorCode,
+    type TikTokFetchMeta,
+} from "@/lib/tiktok";
 
 // TikTok Icon Component
 const TikTokIcon = ({ className }: { className?: string }) => (
@@ -106,6 +115,8 @@ export default function TikTokGiveaway() {
     const [loadingStep, setLoadingStep] = useState("");
     const [error, setError] = useState<string | null>(null);
     const [showShareModal, setShowShareModal] = useState(false);
+    const [fetchMeta, setFetchMeta] = useState<TikTokFetchMeta | null>(null);
+    const [importPreview, setImportPreview] = useState<ManualImportPreview | null>(null);
 
     const addParticipant = () => {
         if (!newParticipant.trim()) return;
@@ -125,77 +136,69 @@ export default function TikTokGiveaway() {
 
     const handleBulkAdd = () => {
         if (!bulkInput.trim()) return;
-        const names = bulkInput
-            .split(/[\n,;]+/)
-            .map(n => n.trim().replace(/^@/, ''))
-            .filter(n => n.length > 0);
-
-        const existingNames = new Set(participants.map(p => p.name));
-        const unique = [...participants];
-
-        names.forEach(name => {
-            if (!existingNames.has(name)) {
-                unique.push({ name, comment: 'Manual Entry' });
-                existingNames.add(name);
-            }
-        });
-
-        setParticipants(unique);
+        const preview = parseManualImport(bulkInput, participants.map((p) => p.name));
+        const added = applyManualImportPreview(preview);
+        if (added.length === 0) {
+            toast.warning(locale.startsWith("tr") ? "Eklenecek yeni isim bulunamadı" : "No new names to add");
+            return;
+        }
+        setParticipants((prev) => [...prev, ...added]);
         setBulkInput("");
         setShowManualEntry(false);
+        toast.success(`${added.length} ${locale.startsWith("tr") ? "katılımcı eklendi" : "participants added"}`);
     };
 
     const handleManualParse = () => {
         if (!manualPaste.trim()) return;
+        const preview = parseManualImport(manualPaste, participants.map((p) => p.name));
+        setImportPreview(preview);
+    };
 
-        const lines = manualPaste.split('\n');
-        const extracted: Participant[] = [];
-
-        lines.forEach(line => {
-            const trimmed = line.trim();
-            if (!trimmed) return;
-
-            let possibleName = trimmed.split(':')[0].trim();
-            possibleName = possibleName.replace(/^@/, '');
-
-            if (possibleName.length > 0 && possibleName.length <= 30 && !possibleName.includes(' ')) {
-                extracted.push({ name: possibleName, comment: trimmed.substring(possibleName.length + 1).trim() || 'Manual Entry' });
-            }
-        });
-
-        const existingNames = new Set(participants.map(p => p.name));
-        const unique = [...participants];
-
-        extracted.forEach(p => {
-            if (!existingNames.has(p.name)) {
-                unique.push(p);
-                existingNames.add(p.name);
-            }
-        });
-
-        setParticipants(unique);
+    const confirmManualImport = () => {
+        if (!importPreview) return;
+        const added = applyManualImportPreview(importPreview);
+        if (added.length === 0) {
+            toast.warning(locale.startsWith("tr") ? "İçe aktarılacak geçerli satır yok" : "No valid rows to import");
+            return;
+        }
+        setParticipants((prev) => [...prev, ...added]);
         setManualPaste("");
-        setActiveTab('rules');
+        setImportPreview(null);
+        setFetchMeta(null);
+        setActiveTab("rules");
+        toast.success(`${added.length} ${locale.startsWith("tr") ? "katılımcı içe aktarıldı" : "participants imported"}`);
     };
 
     const fetchTikTokComments = async () => {
         setError(null);
         if (!postLink.trim()) {
-            toast.warning("Lütfen bir TikTok video linki girin");
+            toast.warning(locale.startsWith("tr") ? "Lütfen bir TikTok video linki girin" : "Please enter a TikTok video link");
             return;
         }
-        if (!postLink.includes('tiktok.com')) {
-            toast.error("Geçerli bir TikTok video linki giriniz (tiktok.com/@.../video/...)");
+        if (!isLikelyTikTokUrl(postLink)) {
+            toast.error(
+                locale.startsWith("tr")
+                    ? "Geçerli bir TikTok video linki giriniz (tiktok.com/@.../video/...)"
+                    : "Enter a valid TikTok video link (tiktok.com/@.../video/...)"
+            );
             return;
         }
 
         setLoading(true);
-        const steps = [
-            "TikTok'a bağlanılıyor...",
-            "Video yorumları çekiliyor...",
-            "Katılımcılar analiz ediliyor...",
-            "Veriler hazırlanıyor...",
-        ];
+        setFetchMeta(null);
+        const steps = locale.startsWith("tr")
+            ? [
+                  "TikTok'a bağlanılıyor...",
+                  "Video yorumları çekiliyor...",
+                  "Katılımcılar doğrulanıyor...",
+                  "Veriler hazırlanıyor...",
+              ]
+            : [
+                  "Connecting to TikTok...",
+                  "Fetching video comments...",
+                  "Validating participants...",
+                  "Preparing data...",
+              ];
         let stepIdx = 0;
         setLoadingStep(steps[0]);
         const stepInterval = setInterval(() => {
@@ -204,41 +207,47 @@ export default function TikTokGiveaway() {
         }, 5000);
 
         try {
-            const response = await fetch('/api/tiktok/comments', {
-                method: 'POST',
-                headers: { 'Content-Type': 'application/json' },
-                body: JSON.stringify({ postLink })
+            const response = await fetch("/api/tiktok/comments", {
+                method: "POST",
+                headers: { "Content-Type": "application/json" },
+                body: JSON.stringify({ postLink }),
             });
 
+            const data = await response.json().catch(() => ({} as Record<string, unknown>));
+
             if (!response.ok) {
-                const data = await response.json().catch(() => ({}));
-                // Sunucu zaten kullanıcıya yönelik (manuel ekleme) bir mesaj verdiyse onu göster
-                if (data.code === 'NO_APIFY_TOKEN' && data.error) {
-                    setError(data.error);
-                    toast.error(data.error);
-                    return;
+                const code = (data.code as TikTokErrorCode | undefined) ?? "UNKNOWN";
+                const message =
+                    typeof data.error === "string"
+                        ? data.error
+                        : locale.startsWith("tr")
+                          ? "Yorumlar çekilemedi"
+                          : "Could not fetch comments";
+                setError(message);
+                toast.error(message);
+                if (code === "NO_APIFY_TOKEN" || code === "SCRAPER_UNAVAILABLE") {
+                    setMode("manual");
                 }
-                throw new Error(data.error || t.giveaway.fetchError);
+                return;
             }
 
-            const data = await response.json();
-
-            if (data.participants && Array.isArray(data.participants)) {
-                setParticipants(data.participants);
-                setActiveTab('rules');
-                toast.success(`${data.participants.length} katılımcı başarıyla eklendi!`);
-            } else {
-                throw new Error(t.giveaway.fetchError);
+            if (!Array.isArray(data.participants)) {
+                throw new Error("Malformed response");
             }
 
+            setParticipants(data.participants);
+            if (data.meta) setFetchMeta(data.meta as TikTokFetchMeta);
+            setActiveTab("rules");
+            toast.success(
+                `${data.participants.length} ${
+                    locale.startsWith("tr") ? "katılımcı başarıyla eklendi!" : "participants added!"
+                }`
+            );
         } catch (err: unknown) {
             console.error(err);
-            const raw = err instanceof Error ? err.message : String(err);
-            const friendly = raw.includes('token') || raw.includes('API') || raw.includes('valid')
-                ? 'Servis şu anda kullanılamıyor, lütfen daha sonra deneyin'
-                : raw.includes('timeout') || raw.includes('ETIMEDOUT')
-                ? 'Bağlantı zaman aşımına uğradı, lütfen tekrar deneyin'
-                : 'Yorumlar çekilemedi — video linkini kontrol edin ve videonun herkese açık olduğundan emin olun';
+            const friendly = locale.startsWith("tr")
+                ? "Yorumlar çekilemedi — video linkini kontrol edin ve videonun herkese açık olduğundan emin olun"
+                : "Could not fetch comments — check the link and that the video is public";
             setError(friendly);
             toast.error(friendly);
         } finally {
@@ -334,6 +343,8 @@ export default function TikTokGiveaway() {
             }),
         [participants, countUserOnce, keywordFilter, excludeOwner, ownerUsername]
     );
+
+    const ownerRemovedCount = Math.max(0, filterStats.afterDedupe - filterStats.afterExclude);
 
     const filterLabels = {
         keywordLabel: tg("keywordLabel"),
@@ -551,13 +562,59 @@ export default function TikTokGiveaway() {
                                                     <div className="space-y-3">
                                                         <textarea
                                                             value={manualPaste}
-                                                            onChange={(e) => setManualPaste(e.target.value)}
-                                                            placeholder={t.giveaway.pasteComments}
+                                                            onChange={(e) => {
+                                                                setManualPaste(e.target.value);
+                                                                setImportPreview(null);
+                                                            }}
+                                                            placeholder={`${t.giveaway.pasteComments}\n\nCSV / TXT / Excel paste desteklenir:\nusername,comment\n@user: yorum`}
                                                             className="w-full h-48 p-4 rounded-xl border-2 border-dashed border-[var(--border-medium)] focus:border-cyan-300 outline-none resize-none bg-[var(--surface-2)]"
                                                         />
                                                         <Button onClick={handleManualParse} disabled={!manualPaste.trim()} className="w-full bg-cyan-600 hover:bg-cyan-700">
-                                                            {t.giveaway.parse}
+                                                            {locale.startsWith("tr") ? "Önizle" : "Preview"}
                                                         </Button>
+
+                                                        {importPreview && (
+                                                            <div className="space-y-3 rounded-2xl border border-[var(--border-light)] bg-[var(--surface-2)] p-4">
+                                                                <div className="grid grid-cols-2 sm:grid-cols-4 gap-2 text-center">
+                                                                    <div className="rounded-xl bg-white/70 dark:bg-white/5 p-2">
+                                                                        <p className="text-[10px] font-bold text-[var(--text-muted)] uppercase">Valid</p>
+                                                                        <p className="font-black text-[var(--text-primary)]">{importPreview.validCount}</p>
+                                                                    </div>
+                                                                    <div className="rounded-xl bg-white/70 dark:bg-white/5 p-2">
+                                                                        <p className="text-[10px] font-bold text-[var(--text-muted)] uppercase">Duplicate</p>
+                                                                        <p className="font-black text-[var(--text-primary)]">{importPreview.duplicateCount}</p>
+                                                                    </div>
+                                                                    <div className="rounded-xl bg-white/70 dark:bg-white/5 p-2">
+                                                                        <p className="text-[10px] font-bold text-[var(--text-muted)] uppercase">Invalid</p>
+                                                                        <p className="font-black text-[var(--text-primary)]">{importPreview.invalidCount}</p>
+                                                                    </div>
+                                                                    <div className="rounded-xl bg-white/70 dark:bg-white/5 p-2">
+                                                                        <p className="text-[10px] font-bold text-[var(--text-muted)] uppercase">Empty</p>
+                                                                        <p className="font-black text-[var(--text-primary)]">{importPreview.skippedEmpty}</p>
+                                                                    </div>
+                                                                </div>
+                                                                <div className="max-h-40 overflow-y-auto space-y-1 text-left">
+                                                                    {importPreview.rows.slice(0, 40).map((row) => (
+                                                                        <div
+                                                                            key={`${row.sourceLine}-${row.name}`}
+                                                                            className={`text-xs px-2 py-1.5 rounded-lg ${row.duplicate ? "opacity-50 line-through" : "bg-white/60 dark:bg-white/5"}`}
+                                                                        >
+                                                                            <span className="font-bold">@{row.name}</span>
+                                                                            <span className="text-[var(--text-muted)]"> — {row.comment.slice(0, 80)}</span>
+                                                                        </div>
+                                                                    ))}
+                                                                </div>
+                                                                <Button
+                                                                    onClick={confirmManualImport}
+                                                                    disabled={importPreview.validCount === 0}
+                                                                    className="w-full bg-cyan-600 hover:bg-cyan-700"
+                                                                >
+                                                                    {locale.startsWith("tr")
+                                                                        ? `${importPreview.validCount} kişiyi içe aktar`
+                                                                        : `Import ${importPreview.validCount} people`}
+                                                                </Button>
+                                                            </div>
+                                                        )}
                                                     </div>
                                                 ) : (
                                                     <div className="space-y-6">
@@ -614,6 +671,10 @@ export default function TikTokGiveaway() {
                                                                 <span className="text-lg leading-none">⚠️</span>
                                                                 <span>{error}</span>
                                                             </div>
+                                                        )}
+
+                                                        {fetchMeta && !loading && (
+                                                            <TikTokFetchStats fetchMeta={fetchMeta} locale={locale} />
                                                         )}
 
                                                         <div className="bg-blue-50 border border-blue-200 rounded-xl p-4 text-sm text-blue-700 space-y-2">
@@ -696,6 +757,13 @@ export default function TikTokGiveaway() {
                                                     <span className={`absolute top-1 w-5 h-5 rounded-full bg-white shadow transition-transform ${countUserOnce ? 'right-1' : 'left-1'}`} />
                                                 </button>
                                             </label>
+                                            <TikTokFetchStats
+                                                fetchMeta={fetchMeta}
+                                                filterStats={filterStats}
+                                                ownerRemoved={ownerRemovedCount}
+                                                locale={locale}
+                                            />
+
                                             <FilterRulesPanel
                                                 keyword={keywordFilter}
                                                 onKeywordChange={setKeywordFilter}

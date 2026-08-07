@@ -12,7 +12,7 @@
  * 4. Default locale (tr)
  * 
  * SEO BENEFITS:
- * - Clean URL-based routing (/en/youtube, /tr/instagram)
+ * - Clean URL-based routing (/en/youtube, /tr/tiktok)
  * - No query parameters
  * - Proper redirects (301 for SEO)
  * - No duplicate content issues

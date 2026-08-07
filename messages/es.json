@@ -1,49 +1,47 @@
 {
     "meta": {
-        "title": "YulaSanta - Sistema de sorteos online gratuito de última generación",
-        "description": "Crea sorteos de Secret Santa en línea gratis con YulaSanta. Realiza tus concursos de Instagram, YouTube, TikTok y Twitter en segundos. ¡Lanzamiento de dados, cara o cruz, generador de números y más herramientas gratis!",
+        "title": "YulaSanta — YouTube & TikTok Comment Giveaways, Secret Santa",
+        "description": "Pick fair winners from YouTube and TikTok comments. Free Secret Santa, name picker, dice, coin flip, wheel of fortune and more — no signup, no password.",
         "keywords": [
-            "sorteo en línea",
-            "hacer sorteo",
-            "concurso gratis",
-            "sorteo de navidad",
+            "youtube giveaway",
+            "youtube comment picker",
+            "tiktok giveaway",
+            "tiktok comment picker",
             "secret santa",
-            "secret santa 2025",
-            "amigo invisible",
-            "intercambio de regalos",
-            "sorteo instagram",
-            "sorteo youtube",
-            "sorteo tiktok",
-            "sorteo twitter",
-            "herramienta de sorteo gratis",
-            "azar",
-            "cara o cruz",
-            "número aleatorio"
+            "name picker",
+            "online raffle",
+            "free giveaway",
+            "dice roller",
+            "coin flip",
+            "random number generator",
+            "short straw",
+            "wheel of fortune",
+            "team generator"
         ],
         "faq": {
-            "breadcrumbHome": "Inicio",
-            "q1": "¿Qué es YulaSanta?",
-            "a1": "YulaSanta es una plataforma gratuita de sorteos en línea y Secret Santa. Puedes organizar sorteos en Instagram, YouTube, TikTok y Twitter, y organizar intercambios de regalos Secret Santa.",
-            "q2": "¿YulaSanta es gratis?",
-            "a2": "Sí, YulaSanta es completamente gratuito. Puedes usar todas las funciones sin registro.",
-            "q3": "¿Qué plataformas de redes sociales admiten?",
-            "a3": "Puedes organizar sorteos desde Instagram, YouTube, TikTok y Twitter (X) usando comentarios y me gusta.",
-            "q4": "¿Cómo funciona Secret Santa?",
-            "a4": "Agrega los nombres de los participantes, inicia el sorteo. Cada persona elige aleatoriamente a alguien y solo puede ver su propia asignación. ¡La privacidad está protegida!",
-            "title": "Preguntas frecuentes | YulaSanta",
-            "description": "Respuestas sobre sorteos de Instagram, amigo invisible y herramientas de sorteo en redes.",
-            "q5": "¿Cómo hago un sorteo de comentarios en Instagram?",
-            "a5": "Pega el enlace de tu publicación en YulaSanta, trae o añade comentarios, elige el número de ganadores e inicia el sorteo. Ganadores y suplentes en segundos.",
-            "q6": "¿Es seguro el sorteo de Instagram?",
-            "a6": "Sí. Funciona sin contraseña ni login. No introduces credenciales de Instagram. Todos los sorteos usan un algoritmo aleatorio justo.",
-            "q7": "¿Cuántos ganadores puedo elegir?",
-            "a7": "Cualquier número de ganadores y suplentes — de un solo ganador a campañas con varios.",
-            "q8": "¿Puede ganar dos veces la misma persona?",
-            "a8": "No. Con «Contar cada usuario una vez», varios comentarios de la misma persona cuentan como una sola entrada."
+            "title": "Frequently Asked Questions | YulaSanta",
+            "description": "FAQ about YouTube, TikTok, Secret Santa and free raffle tools.",
+            "breadcrumbHome": "Home",
+            "q1": "What is YulaSanta?",
+            "a1": "YulaSanta is a free platform for YouTube and TikTok comment giveaways, Secret Santa gift exchanges, name picking, and tools like dice, coin flip, random numbers, short straw, wheel of fortune, and team generator.",
+            "q2": "Is YulaSanta free?",
+            "a2": "Yes. All core features are free — no registration or login required.",
+            "q3": "Which social platforms do you support?",
+            "a3": "You can run comment giveaways from YouTube and TikTok videos.",
+            "q4": "How does Secret Santa work?",
+            "a4": "Add participant names, start the draw. Each person is randomly matched and only sees their own recipient.",
+            "q5": "How do I run a YouTube comment giveaway?",
+            "a5": "Paste your YouTube video link, fetch or paste comments, set winner and backup counts, then start the draw.",
+            "q6": "How do I run a TikTok comment giveaway?",
+            "a6": "Paste your TikTok video link, collect comments, set winners, and start the raffle.",
+            "q7": "Do I need to log in?",
+            "a7": "No. YulaSanta never asks for your YouTube or TikTok password.",
+            "q8": "Can the same person win twice?",
+            "a8": "No. With “Count each user once”, multiple comments from the same account count as a single entry."
         }
     },
     "home": {
-        "title": "YulaSanta - Sistema de sorteos online gratuito de última generación",
+        "title": "YulaSanta — YouTube & TikTok Comment Giveaways, Secret Santa",
         "subtitle": "¡Añade a tus amigos, comienza el sorteo!",
         "secretDraw": "Sorteo Secreto 🤫",
         "directMatch": "Emparejamiento Directo 🤝",
@@ -52,7 +50,7 @@
         "uploadList": "Cargar lista (Excel/PDF)",
         "uploading": "Cargando...",
         "clearList": "Limpiar lista",
-        "startDraw": "Realizar Sorteo de Año Nuevo",
+        "startDraw": "Start a Giveaway",
         "match": "Emparejar",
         "happyNewYear": "🎄 ¡Feliz Año Nuevo!",
         "minPeople3": "Añade al menos 3 personas",
@@ -70,30 +68,37 @@
         "directMatchMinError": "¡El emparejamiento requiere al menos 2 personas!",
         "directMatchEvenError": "¡El emparejamiento directo requiere un número par!",
         "drawError": "Ocurrió un error, por favor inténtalo de nuevo.",
-        "socialMediaGiveaways": "Sorteos de Redes Sociales",
+        "socialMediaGiveaways": "Sorteos de comentarios",
         "secure": "100% Seguro",
         "fast": "Súper Rápido",
         "noPassword": "Sin Contraseña",
         "noRegistration": "Sin Registro",
         "startNow": "Empezar Ahora",
-        "socialDesc": "Realiza tus sorteos fácilmente en todas las plataformas",
-        "toolsDesc": "Herramientas y juegos divertidos para tu día a día.",
+        "socialDesc": "Herramientas especializadas para sorteos de comentarios en YouTube y TikTok.",
+        "toolsDesc": "Herramientas gratuitas simples para sorteos justos y decisiones diarias.",
         "viewAll": "Ver todo",
         "seo": {
-            "title": "Plataforma gratuita de sorteos online y amigo invisible",
+            "title": "Free YouTube, TikTok & Secret Santa Platform",
             "paragraphs": [
-                "YulaSanta es una herramienta gratuita de sorteo Instagram, YouTube, TikTok y Twitter. Haz sorteos de comentarios en segundos — sin registro ni contraseña. Elige ganadores y suplentes de forma justa.",
-                "Organiza amigo invisible, sorteos de nombres, dados y cara o cruz. Gestiona campañas en redes y eventos con amigos desde un solo sitio."
+                "Run YouTube and TikTok comment giveaways in seconds with YulaSanta — no signup, no password. Pick winners and backups fairly.",
+                "Organize Secret Santa draws, name raffles, dice rolls, coin flips, short straw, wheel of fortune, team generator, and gift suggestions in one place."
             ],
-            "featuresTitle": "¿Por qué YulaSanta?",
+            "featuresTitle": "Why YulaSanta?",
             "features": [
-                "Totalmente gratis — sin costes ocultos",
-                "Sin registro ni contraseña",
-                "Extracción automática de comentarios de Instagram",
-                "Soporte de ganadores y suplentes",
-                "Soporte en 12 idiomas"
+                "Completely free — no hidden fees",
+                "No registration or password required",
+                "YouTube and TikTok comment giveaways",
+                "Secret Santa and name picker",
+                "Dice, coin flip, wheel and more tools",
+                "12 language support"
             ]
-        }
+        },
+        "heroTitle": "Sorteos de comentarios de YouTube y TikTok",
+        "heroSubtitle": "Elige ganadores justos de los comentarios en segundos — gratis, sin registro, sin contraseña.",
+        "youtubeGiveaway": "Sorteo de YouTube",
+        "tiktokGiveaway": "Sorteo de TikTok",
+        "namePickerDesc": "Elige ganadores justos de cualquier lista",
+        "description": "Elige ganadores justos de comentarios de YouTube y TikTok en segundos. Herramientas gratis — sin registro, sin contraseña."
     },
     "result": {
         "whoGetsGift": "¿A quién le voy a dar un regalo?",
@@ -125,7 +130,6 @@
         "comments": "Comentarios",
         "likes": "Me gusta",
         "subscribers": "Suscriptores",
-        "retweets": "Retweets",
         "replies": "Respuestas",
         "followers": "Seguidores",
         "tags": "Etiquetas",
@@ -138,29 +142,14 @@
         "results": "Resultados",
         "winners": "Ganadores",
         "backups": "Suplentes",
-        "youtubeTitle": "Herramienta de Sorteo YouTube Gratis 2025",
-        "instagramTitle": "Sorteo Instagram | Seleccionador de comentarios",
-        "twitterTitle": "Sorteo Twitter (X) | Sorteo de Retweets y Likes",
-        "youtubeDesc": "Usa nuestra herramienta gratuita para elegir ganadores de comentarios de YouTube.",
-        "instagramDesc": "Elige ganadores y suplentes de tus comentarios de Instagram al instante.",
-        "twitterDesc": "Haz sorteos de retweets y likes en Twitter (X) fácilmente.",
+        "youtubeTitle": "Free YouTube Comment Giveaway Tool | YulaSanta",
+        "youtubeDesc": "Pick fair winners and backups from YouTube video comments. Free, password-free YouTube comment picker.",
         "tiktokTitle": "Sorteo TikTok | Sorteo de comentarios TikTok gratis",
         "tiktokDesc": "Haz sorteos de comentarios en tus videos de TikTok gratis.",
         "meta": {
-            "instagram": {
-                "title": "Sorteo Instagram Gratis | Sorteador de Comentarios - YulaSanta",
-                "description": "Haz un sorteo de Instagram gratis y sin contraseña. Elige ganadores y suplentes de los comentarios al instante con YulaSanta.",
-                "keywords": [
-                    "sorteo instagram",
-                    "sorteo comentarios instagram",
-                    "sorteador instagram gratis",
-                    "sorteo instagram gratis",
-                    "selector comentarios instagram"
-                ]
-            },
             "youtube": {
-                "title": "Sorteo YouTube Gratis | YulaSanta",
-                "description": "Sorteos rápidos y fiables para tus vídeos de YouTube.",
+                "title": "Free YouTube Comment Giveaway Tool | Comment Picker - YulaSanta",
+                "description": "Run fast, fair YouTube comment giveaways. Pick random winners — no signup, no password.",
                 "keywords": [
                     "sorteo youtube",
                     "comentarios youtube"
@@ -176,22 +165,11 @@
                     "sorteo comentarios tiktok",
                     "concurso tiktok"
                 ]
-            },
-            "twitter": {
-                "title": "Sorteo Twitter (X) | Retweet y likes - YulaSanta",
-                "description": "Gestiona sorteos en Twitter (X). Elige ganadores de retweets y likes. Sitio de sorteo Twitter gratis.",
-                "keywords": [
-                    "sorteo twitter",
-                    "sorteo x",
-                    "sorteo retweet",
-                    "concurso twitter"
-                ]
             }
         },
         "requireSubscription": "Requiere Suscripción",
         "requireNotification": "Requiere Notificación",
         "requireFollow": "Requiere Seguir",
-        "requireRetweet": "Requiere Retweet",
         "requireLike": "Requiere Me gusta",
         "countUserOnce": "Contar cada usuario una vez",
         "inputError": "¡Por favor introduce un enlace válido!",
@@ -205,7 +183,6 @@
         "parse": "Analizar Comentarios",
         "parsed": "{count} participantes analizados",
         "youtubeLimitNote": "Nota: Se pueden obtener hasta 1000 comentarios automáticamente.",
-        "instagramLimitNote": "Nota: Se pueden obtener hasta 1000 comentarios automáticamente.",
         "tiktokLimitNote": "Nota: Se pueden obtener hasta 100 comentarios automáticamente.",
         "participantLimitDetails": "Para ver más comentarios, usa el modo manual.",
         "channelUsername": "Nombre de usuario (Check seguidores)",
@@ -219,10 +196,8 @@
         "shareDesc": "Comparte los resultados del sorteo en redes sociales",
         "shareCopied": "¡Copiado!",
         "copyLink": "Copiar enlace",
-        "comingSoon": "Próximamente",
         "noParticipantsYet": "Aún no hay participantes",
         "youtubeNoParticipantsHint": "Pega un enlace de video de YouTube o añade usuarios manualmente",
-        "instagramNoParticipantsHint": "Pega un enlace de publicación de Instagram o añade usuarios manualmente",
         "tiktokNoParticipantsHint": "Pega un enlace de video de TikTok o añade usuarios manualmente",
         "fetchFromVideo": "← Obtener del enlace de video",
         "fetchFromPost": "← Obtener del enlace de publicación",
@@ -231,38 +206,6 @@
         "subscribedPrivate": "Privado",
         "checkingSubscription": "Verificando...",
         "seo": {
-            "instagram": {
-                "contentTitle": "Sorteo Instagram gratis — Selector de comentarios",
-                "contentParagraphs": [
-                    "YulaSanta es un sorteador de Instagram gratis. Elige ganadores de los comentarios de tu publicación en segundos — sin registro ni contraseña de Instagram.",
-                    "Para influencers, marcas y creadores: sorteos de comentarios, likes y etiquetas. Ganadores, suplentes, filtro de duplicados y compartir resultados, todo gratis."
-                ],
-                "howToTitle": "Cómo hacer un sorteo de comentarios en Instagram",
-                "howToSteps": [
-                    "Pega el enlace de tu publicación de Instagram en YulaSanta o añade participantes manualmente.",
-                    "Define ganadores y suplentes, y reglas como seguir obligatorio o contar usuario una vez.",
-                    "Inicia el sorteo — los ganadores se eligen al azar de forma justa y puedes compartir el resultado al instante."
-                ],
-                "faqTitle": "Preguntas frecuentes del sorteo Instagram",
-                "faq": [
-                    {
-                        "q": "¿El sorteo de Instagram es gratis?",
-                        "a": "Sí. YulaSanta es totalmente gratis. Sorteos ilimitados sin registro."
-                    },
-                    {
-                        "q": "¿Necesito iniciar sesión en Instagram?",
-                        "a": "No. Funciona sin contraseña. Pega el enlace o añade comentarios a mano."
-                    },
-                    {
-                        "q": "¿Puedo elegir suplentes?",
-                        "a": "Sí. Define el número de ganadores y suplentes que quieras."
-                    },
-                    {
-                        "q": "¿Cuentan varios comentarios de la misma persona?",
-                        "a": "No. Con «Contar cada usuario una vez», cada persona entra solo una vez."
-                    }
-                ]
-            },
             "tiktok": {
                 "contentTitle": "Sorteo TikTok — Sorteador de comentarios gratis",
                 "contentParagraphs": [
@@ -297,163 +240,6 @@
             }
         },
         "landing": {
-            "instagram": {
-                "badge": "Herramienta de Sorteos de Instagram",
-                "heroTitle": "Instagram",
-                "heroHighlight": "Seleccionador de Sorteos",
-                "heroSubtitle": "Elige un ganador al azar entre los comentarios de Instagram en segundos. Sin necesidad de iniciar sesión.",
-                "urlPlaceholder": "Pega el enlace de la publicación de Instagram",
-                "fetchCta": "Obtener participantes",
-                "fetching": "Obteniendo…",
-                "urlHint": "Funciona con publicaciones públicas y Reels · El paso 2 se abre automáticamente tras obtenerlos",
-                "step1Url": "Paso 1 — Pega el enlace de Instagram",
-                "step1Manual": "Paso 1 — Pega nombres de usuario o comentarios",
-                "step3Title": "Elige las reglas y revisa los participantes",
-                "step3Subtitle": "Paso 3",
-                "step4Label": "Paso 4 — Iniciar Sorteo",
-                "backToUrl": "← Volver al enlace",
-                "continueWith": "Continuar con {count} participantes",
-                "switchManual": "Cambiar a pegado manual →",
-                "automatic": "Automático",
-                "manual": "Manual",
-                "selecting": "Seleccionando…",
-                "winner": "Ganador",
-                "backup": "Suplente",
-                "pngDownload": "PNG",
-                "add": "Añadir",
-                "loadingWait": "Suele tardar entre 20 y 60 segundos",
-                "featuresTitle": "Todo lo que necesitas para un sorteo justo",
-                "featuresSubtitle": "Rapidez, claridad y confianza — sin riesgos de iniciar sesión en Instagram.",
-                "howTitle": "¿Cómo funciona?",
-                "howSubtitle": "Cinco pasos claros. Sin tener que pensar qué pulsar.",
-                "startCta": "Iniciar sorteo",
-                "faqTitle": "Preguntas frecuentes",
-                "steps": {
-                    "paste": "Pegar enlace",
-                    "load": "Cargar",
-                    "rules": "Reglas",
-                    "draw": "Sorteo"
-                },
-                "trustBadges": [
-                    "Sin iniciar sesión en Instagram",
-                    "Proceso rápido",
-                    "Filtro de duplicados",
-                    "Ganadores suplentes",
-                    "Gratis"
-                ],
-                "metrics": [
-                    {
-                        "value": "500.000+",
-                        "label": "Comentarios procesados"
-                    },
-                    {
-                        "value": "50.000+",
-                        "label": "Sorteos con éxito"
-                    },
-                    {
-                        "value": "100%",
-                        "label": "Selección aleatoria"
-                    },
-                    {
-                        "value": "0",
-                        "label": "Inicio de sesión requerido"
-                    }
-                ],
-                "features": [
-                    {
-                        "title": "Extracción automática de comentarios",
-                        "desc": "Pega el enlace de la publicación y obtén los participantes en segundos."
-                    },
-                    {
-                        "title": "Filtro de duplicados",
-                        "desc": "Una sola participación por usuario para un sorteo justo."
-                    },
-                    {
-                        "title": "Ganadores suplentes",
-                        "desc": "Selecciona suplentes al instante si no se puede contactar al ganador."
-                    },
-                    {
-                        "title": "Requisito de seguimiento",
-                        "desc": "Marca la regla de seguimiento antes del sorteo."
-                    },
-                    {
-                        "title": "Enfocado en menciones",
-                        "desc": "Concéntrate en sorteos basados en comentarios."
-                    },
-                    {
-                        "title": "Compatible con hashtags",
-                        "desc": "Funciona con publicaciones y Reels etiquetados."
-                    },
-                    {
-                        "title": "Exportar resultados",
-                        "desc": "Copia, comparte o descarga la tarjeta del ganador en PNG."
-                    },
-                    {
-                        "title": "Proceso rápido",
-                        "desc": "Flujo fluido desde el enlace hasta los ganadores."
-                    }
-                ],
-                "howSteps": [
-                    {
-                        "title": "Pega el enlace de Instagram",
-                        "desc": "Suelta la URL de la publicación o Reel en el área principal."
-                    },
-                    {
-                        "title": "Carga los comentarios",
-                        "desc": "Obtén los participantes automáticamente o pégalos manualmente."
-                    },
-                    {
-                        "title": "Elige las reglas",
-                        "desc": "Ajusta las preferencias de ganadores, suplentes y participación."
-                    },
-                    {
-                        "title": "Realiza el sorteo",
-                        "desc": "Haz una selección aleatoria criptográficamente justa."
-                    },
-                    {
-                        "title": "Comparte los resultados",
-                        "desc": "Copia, descarga o comparte con un solo clic."
-                    }
-                ],
-                "faq": [
-                    {
-                        "q": "¿Necesito iniciar sesión en Instagram?",
-                        "a": "No. YulaSanta no solicita tu contraseña de Instagram. Pega un enlace de una publicación pública o añade comentarios manualmente."
-                    },
-                    {
-                        "q": "¿La selección del ganador es realmente aleatoria?",
-                        "a": "Sí. Los ganadores se eligen mediante una mezcla segura; cada participante elegible tiene las mismas posibilidades."
-                    },
-                    {
-                        "q": "¿Qué pasa si la extracción automática no funciona?",
-                        "a": "Cambia al modo manual: pega los nombres de usuario o comentarios y continúa con las mismas reglas y flujo de sorteo."
-                    },
-                    {
-                        "q": "¿Puedo elegir ganadores suplentes?",
-                        "a": "Sí. Configura la cantidad de suplentes antes de empezar. Los suplentes aparecerán junto a los ganadores principales en los resultados."
-                    }
-                ],
-                "errors": {
-                    "needLink": "Por favor, introduce un enlace de publicación de Instagram",
-                    "invalidLink": "Por favor, introduce un enlace válido de publicación de Instagram (instagram.com/p/...)",
-                    "serviceDown": "La extracción automática no está disponible en este momento. Puedes pegar los comentarios manualmente.",
-                    "privateOrMissing": "Esta cuenta es privada o no se encontró la publicación",
-                    "timeout": "La conexión ha expirado, por favor inténtalo de nuevo",
-                    "generic": "No se pudieron obtener los comentarios — comprueba el enlace o añádelos manualmente"
-                },
-                "toasts": {
-                    "added": "@{name} añadido",
-                    "participantsAdded": "¡{count} participantes añadidos con éxito!",
-                    "copied": "¡Resultados copiados al portapapeles!",
-                    "cardDownloaded": "¡Tarjeta del ganador descargada!"
-                },
-                "loadingSteps": [
-                    "Conectando a Instagram...",
-                    "Obteniendo comentarios...",
-                    "Analizando participantes...",
-                    "Preparando datos..."
-                ]
-            },
             "youtube": {
                 "badge": "Herramienta de Sorteos de YouTube",
                 "heroTitle": "YouTube",
@@ -676,8 +462,6 @@
     },
     "tools": {
         "title": "Herramientas",
-        "instagramStoryViewer": "Instagram Story Viewer",
-        "instagramProfilePicture": "Ver Foto de Perfil Instagram",
         "onlineGiveaway": "Sorteo en línea",
         "dice": "Dados",
         "coinFlip": "Cara o Cruz",
@@ -686,8 +470,8 @@
         "wheelOfFortune": "Rueda de la Fortuna",
         "teamGenerator": "Generador de Equipos",
         "meta": {
-            "title": "Herramientas gratis | YulaSanta",
-            "description": "Herramientas gratis: dados, cara o cruz, números aleatorios, corta pajita."
+            "title": "Free Online Tools | Dice, Coin Flip, Wheel - YulaSanta",
+            "description": "Name picker, dice roller, coin flip, random number, short straw, wheel of fortune, team generator and gift suggestions — all free."
         },
         "diceMeta": {
             "title": "🎲 Dados | Tirar dados gratis online - YulaSanta",
@@ -858,50 +642,6 @@
                 "fair selection"
             ]
         },
-        "instagramStoryContent": {
-            "title": "Instagram Story Viewer",
-            "subtitle": "Visor de Historias Anónimo",
-            "placeholder": "Introduce un usuario",
-            "view": "Ver Historias",
-            "helper": "Mira las historias de forma anónima sin que el dueño lo sepa.",
-            "aboutTitle": "Sobre Story Viewer",
-            "aboutText": "Mira discretamente las historias de Instagram con el visor anónimo de YulaSanta.",
-            "searchLabel": "Nombre de usuario de Instagram",
-            "searchButton": "Buscar",
-            "loadingNote": "Esto puede tardar entre 20 y 60 segundos",
-            "waitPlease": "Por favor espere...",
-            "howItWorks": "¿Cómo funciona?",
-            "howStep1": "Ingresa el nombre de usuario y presiona Buscar",
-            "howStep2": "Se obtiene la información del perfil y las historias activas",
-            "howStep3": "Ver historias de forma anónima — nadie lo sabrá",
-            "storiesTitle": "Historias",
-            "viewOnInstagram": "Ver en Instagram",
-            "viewProfile": "Ver en Instagram",
-            "searchAgain": "← Buscar otro perfil",
-            "posts": "Publicaciones",
-            "followingLabel": "Siguiendo",
-            "noStoriesError": "Esta cuenta no tiene historias activas o las historias son privadas.",
-            "enterUsername": "Por favor ingresa un nombre de usuario",
-            "storiesFound": "¡Se encontraron {count} historias!",
-            "loadStepProfile1": "Obteniendo información del perfil...",
-            "loadStepProfile2": "Verificando cuenta...",
-            "loadStepProfile3": "Preparando datos...",
-            "loadStepStory1": "Conectando con Instagram...",
-            "loadStepStory2": "Obteniendo historias...",
-            "loadStepStory3": "Cargando archivos multimedia...",
-            "loadStepStory4": "Preparando...",
-            "followers": "Seguidores"
-        },
-        "instagramStoryMeta": {
-            "title": "📱 Visor de Historias Instagram | Anónimo - YulaSanta",
-            "description": "Mira las historias de Instagram de forma anónima. Visor de historias privado.",
-            "keywords": [
-                "perfil de instagram",
-                "ver foto de perfil",
-                "foto de perfil hd",
-                "descargar foto perfil"
-            ]
-        },
         "wheelOfFortuneMeta": {
             "title": "🎡 Rueda de la Fortuna | Girar la Ruleta Online Gratis - YulaSanta",
             "description": "Rueda de la fortuna aleatoria personalizable. Ingrese nombres u opciones, gire la rueda para decidir. Ruleta de selección online gratuita.",
@@ -923,28 +663,6 @@
                 "dividir equipos",
                 "generador de grupos"
             ]
-        },
-        "instagramProfileContent": {
-            "title": "Foto de Perfil Instagram",
-            "subtitle": "Tamaño de Foto de Perfil HD",
-            "placeholder": "Introduce un usuario",
-            "view": "Ver Foto",
-            "helper": "Muestra la foto de perfil en tamaño completo y HD.",
-            "aboutTitle": "Sobre PP Viewer",
-            "aboutText": "Usa nuestra herramienta gratuita para ver y descargar las fotos de perfil de Instagram en alta calidad.",
-            "usernameLabel": "Nombre de usuario",
-            "searchButton": "Buscar",
-            "loading": "Cargando perfil...",
-            "downloadHD": "Descargar HD",
-            "downloadNormal": "Descargar Normal",
-            "openInInstagram": "Abrir en Instagram",
-            "searchAnother": "← Buscar otro perfil",
-            "tryAgain": "Reintentar",
-            "posts": "Publicaciones",
-            "followers": "Seguidores",
-            "following": "Siguiendo",
-            "errorEmptyUsername": "Por favor, introduzca un nombre de usuario",
-            "errorGeneric": "Ocurrió un error"
         },
         "wheelOfFortuneContent": {
             "title": "Rueda de la Fortuna",
@@ -993,16 +711,6 @@
             "bulkMode": "Edición en Bloque",
             "listMode": "Vista de Lista",
             "clear": "Borrar Todo"
-        },
-        "instagramProfileMeta": {
-            "title": "🖼️ Foto de Perfil Instagram | Descarga HD - YulaSanta",
-            "description": "Visualiza y descarga fotos de perfil de Instagram en calidad HD.",
-            "keywords": [
-                "instagram profile",
-                "profile picture viewer",
-                "HD profile picture",
-                "pp downloader"
-            ]
         },
         "giftSuggestions": "Gift Suggestions",
         "giftSuggestionsContent": {
@@ -1512,15 +1220,15 @@
     },
     "about": {
         "meta": {
-            "title": "Sobre nosotros | YulaSanta - Plataforma de sorteos gratis",
-            "description": "Conoce YulaSanta. La plataforma de sorteos más fiable."
+            "title": "About Us | YulaSanta — YouTube, TikTok & Secret Santa",
+            "description": "YulaSanta: YouTube & TikTok comment giveaways, Secret Santa, name picker and free online tools."
         },
         "title": "Sobre nosotros",
-        "subtitle": "YulaSanta es una plataforma gratis para hacer sorteos fáciles.",
+        "subtitle": "YulaSanta is a free platform for YouTube and TikTok comment giveaways, Secret Santa, name picking and fun online tools.",
         "story": {
             "title": "Nuestra Historia",
             "p1": "YulaSanta nació en 2024 para simplificar los sorteos.",
-            "p2": "Nuestra meta era sorteos gratis, seguros y fáciles para todos.",
+            "p2": "Nuestro objetivo es simple: ayudar a los creadores a hacer sorteos justos de comentarios de YouTube y TikTok gratis, de forma segura y sin contraseña. También ofrecemos herramientas simples como selector de nombres, dados, cara o cruz y generador de números.",
             "p3": "Hoy, miles de usuarios eligen YulaSanta."
         },
         "whyUs": {

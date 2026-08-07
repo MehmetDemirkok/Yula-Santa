@@ -32,18 +32,13 @@ export function normalizeGiveawayName(name: string): string {
     return name.trim().replace(/^@+/, "").toLocaleLowerCase("tr-TR");
 }
 
-/** Best-effort owner handle from Instagram / TikTok URLs. */
+/** Best-effort owner handle from TikTok URLs. */
 export function extractOwnerFromSocialUrl(url: string): string | null {
     const raw = url.trim();
     if (!raw) return null;
 
     const tiktok = raw.match(/tiktok\.com\/@([^/?#]+)/i);
     if (tiktok?.[1]) return normalizeGiveawayName(decodeURIComponent(tiktok[1]));
-
-    const igUserPath = raw.match(/instagram\.com\/([^/?#]+)\/(?:p|reel|reels|tv)\//i);
-    if (igUserPath?.[1] && !["p", "reel", "reels", "tv", "stories", "explore"].includes(igUserPath[1].toLowerCase())) {
-        return normalizeGiveawayName(decodeURIComponent(igUserPath[1]));
-    }
 
     return null;
 }

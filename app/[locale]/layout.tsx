@@ -164,7 +164,7 @@ function getJsonLd(locale: string, messages: Record<string, any>) {
         "@id": `${SITE_URL}/#website`,
         "url": SITE_URL,
         "name": "YulaSanta",
-        "description": messages.meta?.description || "Online Çekiliş ve Yılbaşı Hediye Eşleştirme Platformu",
+        "description": messages.meta?.description || "Ücretsiz YouTube & TikTok yorum çekilişi, gizli çekiliş ve online araçlar",
         "publisher": {
             "@id": `${SITE_URL}/#organization`
         },
@@ -211,7 +211,7 @@ function getJsonLd(locale: string, messages: Record<string, any>) {
         ],
         "sameAs": [],
         "foundingDate": "2024",
-        "description": messages.meta?.description || "YulaSanta - Ücretsiz Online Çekiliş ve Secret Santa Platformu"
+        "description": messages.meta?.description || "YulaSanta — YouTube & TikTok yorum çekilişi, gizli çekiliş, isim çekilişi ve ücretsiz araçlar"
     };
 
     // WebPage Schema
@@ -256,15 +256,17 @@ function getJsonLd(locale: string, messages: Record<string, any>) {
             "@id": `${SITE_URL}/#organization`
         },
         "featureList": [
-            "Secret Santa Generator",
-            "Instagram Comment Picker",
-            "YouTube Comment Picker",
-            "TikTok Comment Picker",
-            "Twitter Giveaway Tool",
+            "YouTube Comment Giveaway",
+            "TikTok Comment Giveaway",
+            "Secret Santa / Gift Exchange",
+            "Name Picker",
             "Dice Roller",
             "Coin Flip",
             "Random Number Generator",
             "Short Straw Game",
+            "Wheel of Fortune",
+            "Team Generator",
+            "Gift Suggestions",
             "No Login Required",
             "Free to use",
             "Multi-language Support"

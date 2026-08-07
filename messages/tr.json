@@ -1,63 +1,48 @@
 {
     "meta": {
-        "title": "YulaSanta - Yeni Nesil Ücretsiz Online Çekiliş Sistemi",
-        "description": "YulaSanta ile ücretsiz, şifresiz Online Yılbaşı Çekilişi (Secret Santa) yapın. Instagram, YouTube, TikTok ve Twitter çekilişlerinizi saniyeler içinde gerçekleştirin. Zar atma, yazı tura, rastgele sayı seçici ve daha fazla ücretsiz araç!",
+        "title": "YulaSanta — YouTube & TikTok Yorum Çekilişi, Gizli Çekiliş",
+        "description": "YouTube ve TikTok yorumlarından adil kazanan seçin. Gizli çekiliş, isim çekilişi, zar, yazı tura, çarkıfelek ve daha fazla ücretsiz araç — kayıt ve şifre yok.",
         "keywords": [
-            "online çekiliş",
-            "çekiliş yap",
-            "ücretsiz çekiliş",
-            "insta çekiliş",
-            "insta çekiliş sitesi",
-            "insta yorum çekiliş",
-            "insta yorum çekiliş sitesi",
-            "yılbaşı çekilişi",
-            "secret santa",
-            "secret santa 2025",
-            "gizli noel",
-            "hediye çekilişi",
-            "yılbaşı hediyesi",
-            "instagram çekiliş",
-            "instagram çekiliş sitesi",
-            "instagram yorum çekilişi",
             "youtube çekiliş",
             "youtube yorum çekilişi",
             "tiktok çekiliş",
-            "twitter çekiliş",
-            "ücretsiz çekiliş aracı",
-            "online yılbaşı çekilişi",
-            "secret santa online",
-            "arkadaş çekilişi",
+            "tiktok yorum çekilişi",
+            "gizli çekiliş",
+            "secret santa",
+            "isim çekilişi",
+            "online çekiliş",
+            "ücretsiz çekiliş",
             "zar atma",
             "yazı tura",
             "rastgele sayı",
-            "kısa çöp oyunu",
-            "çekiliş programı",
-            "sosyal medya çekilişi"
+            "kısa çöp",
+            "çarkıfelek",
+            "takım oluşturucu"
         ],
         "faq": {
             "title": "Sıkça Sorulan Sorular | YulaSanta",
-            "description": "Instagram çekiliş, Secret Santa ve sosyal medya çekiliş araçları hakkında merak edilen soruların cevapları.",
+            "description": "YouTube, TikTok, gizli çekiliş ve ücretsiz araçlar hakkında SSS.",
             "breadcrumbHome": "Ana Sayfa",
             "q1": "YulaSanta nedir?",
-            "a1": "YulaSanta, ücretsiz online çekiliş ve yılbaşı hediye eşleştirme platformudur. Instagram, YouTube, TikTok ve Twitter çekilişleri yapabilir, Secret Santa organizasyonları düzenleyebilirsiniz.",
+            "a1": "YulaSanta; YouTube ve TikTok yorum çekilişi, gizli çekiliş (Secret Santa), isim çekilişi ve zar, yazı tura, rastgele sayı, kısa çöp, çarkıfelek, takım oluşturucu gibi ücretsiz araçlar sunan bir platformdur.",
             "q2": "YulaSanta ücretsiz mi?",
-            "a2": "Evet, YulaSanta tamamen ücretsizdir. Kayıt olmadan, giriş yapmadan tüm özellikleri kullanabilirsiniz.",
-            "q3": "Hangi sosyal medya platformlarını destekliyorsunuz?",
-            "a3": "Instagram, YouTube, TikTok ve Twitter (X) platformlarından yorum ve beğeni çekilişleri yapabilirsiniz.",
-            "q4": "Secret Santa nasıl çalışır?",
-            "a4": "Katılımcı isimlerini ekleyin, çekilişi başlatın. Her kişi rastgele birini çeker ve sadece kendi eşleşmesini görebilir. Gizlilik korunur!",
-            "q5": "Instagram yorum çekilişi nasıl yapılır?",
-            "a5": "Instagram gönderi linkinizi YulaSanta'ya yapıştırın, yorumları otomatik çekin veya manuel ekleyin, kazanan sayısını belirleyin ve çekilişi başlatın. Asil ve yedek kazananlar saniyeler içinde belirlenir.",
-            "q6": "Insta çekiliş sitesi güvenli mi?",
-            "a6": "Evet, YulaSanta şifresiz ve kayıtsız çalışır. Instagram hesabınıza giriş yapmanız gerekmez. Tüm çekilişler adil rastgele algoritma ile yapılır.",
-            "q7": "Kaç kazanan seçebilirim?",
-            "a7": "İstediğiniz kadar asil ve yedek kazanan belirleyebilirsiniz. Tek kazananlı çekilişlerden çoklu kazananlı kampanyalara kadar tüm senaryolar desteklenir.",
-            "q8": "Yorum çekilişinde aynı kişi birden fazla kez kazanabilir mi?",
-            "a8": "Hayır, 'Her kullanıcıyı bir kez say' seçeneği ile aynı kişinin birden fazla yorum yapması durumunda yalnızca bir kez katılımcı olarak sayılır."
+            "a2": "Evet. Temel özelliklerin tamamı ücretsizdir; kayıt veya giriş gerekmez.",
+            "q3": "Hangi sosyal medya çekilişlerini destekliyorsunuz?",
+            "a3": "YouTube ve TikTok videolarından yorum çekilişi yapabilirsiniz.",
+            "q4": "Gizli çekiliş (Secret Santa) nasıl çalışır?",
+            "a4": "Katılımcı isimlerini ekleyin, çekilişi başlatın. Her kişi rastgele birini çeker ve yalnızca kendi eşleşmesini görür.",
+            "q5": "YouTube yorum çekilişi nasıl yapılır?",
+            "a5": "YouTube video linkini yapıştırın, yorumları çekin veya yapıştırın, kazanan ve yedek sayısını belirleyip çekilişi başlatın.",
+            "q6": "TikTok yorum çekilişi nasıl yapılır?",
+            "a6": "TikTok video linkini yapıştırın, yorumları toplayın, kazanan sayısını seçin ve çekilişi başlatın.",
+            "q7": "Giriş yapmam gerekir mi?",
+            "a7": "Hayır. YulaSanta YouTube veya TikTok şifrenizi asla istemez.",
+            "q8": "Aynı kişi iki kez kazanabilir mi?",
+            "a8": "Hayır. “Her kullanıcıyı bir kez say” seçeneği ile aynı hesap tek giriş sayılır."
         }
     },
     "home": {
-        "title": "YulaSanta - Yeni Nesil Ücretsiz Online Çekiliş Sistemi",
+        "title": "YulaSanta — YouTube & TikTok Yorum Çekilişi, Gizli Çekiliş",
         "subtitle": "Arkadaşlarını ekle, çekilişi başlat!",
         "secretDraw": "Gizli Çekiliş 🤫",
         "directMatch": "Direkt Eşleşme 🤝",
@@ -66,7 +51,7 @@
         "uploadList": "Toplu Liste Yükle (Excel/PDF)",
         "uploading": "Yükleniyor...",
         "clearList": "Listeyi Temizle",
-        "startDraw": "Yılbaşı Çekilişi Yap",
+        "startDraw": "Çekiliş Başlat",
         "match": "Eşleştir",
         "happyNewYear": "🎄 Mutlu Yıllar!",
         "minPeople3": "En az 3 kişi eklemelisiniz",
@@ -84,30 +69,36 @@
         "directMatchMinError": "Eşleştirme için en az 2 kişi gerekli!",
         "directMatchEvenError": "Direkt eşleştirme için kişi sayısı çift olmalıdır! Lütfen bir kişi ekleyin veya çıkarın.",
         "drawError": "Bir hata oluştu, lütfen tekrar deneyin.",
-        "socialMediaGiveaways": "Sosyal Medya Çekilişleri",
+        "socialMediaGiveaways": "Yorum Çekilişleri",
         "secure": "%100 Güvenli",
         "fast": "Süper Hızlı",
         "noPassword": "Şifresiz",
         "noRegistration": "Kayıtsız",
         "startNow": "Hemen Başla",
-        "socialDesc": "Tüm platformlarda çekilişlerinizi kolayca yapın",
-        "toolsDesc": "Günlük işlerinizi kolaylaştıracak minik araçlar ve eğlenceli oyunlar.",
+        "socialDesc": "YouTube ve TikTok yorum çekilişleri için özel araçlar.",
+        "toolsDesc": "Adil seçimler ve günlük kararlar için basit ücretsiz araçlar.",
         "viewAll": "Tümünü Gör",
         "seo": {
-            "title": "Türkiye'nin Ücretsiz Online Çekiliş Platformu",
+            "title": "Ücretsiz YouTube, TikTok ve Gizli Çekiliş Platformu",
             "paragraphs": [
-                "YulaSanta, Instagram, YouTube, TikTok ve Twitter çekilişlerinizi saniyeler içinde yapmanızı sağlayan ücretsiz bir insta çekiliş sitesidir. Kayıt olmadan, şifre girmeden yorum çekilişi yapabilir, asil ve yedek kazananları adil bir şekilde belirleyebilirsiniz.",
-                "Secret Santa yılbaşı çekilişi, isim çekilişi, zar atma, yazı tura ve daha birçok ücretsiz araç ile hem sosyal medya kampanyalarınızı hem de arkadaş gruplarınızdaki organizasyonları kolayca yönetin."
+                "YulaSanta ile YouTube ve TikTok yorum çekilişlerinizi saniyeler içinde yapın. Kayıt olmadan, şifre girmeden adil asil ve yedek kazanan seçin.",
+                "Gizli çekiliş (Secret Santa), isim çekilişi, zar atma, yazı tura, rastgele sayı, kısa çöp, çarkıfelek, takım oluşturucu ve hediye önerileri ile tüm çekiliş ihtiyaçlarınız tek yerde."
             ],
             "featuresTitle": "Neden YulaSanta?",
             "features": [
                 "Tamamen ücretsiz — gizli ücret yok",
                 "Kayıtsız ve şifresiz kullanım",
-                "Instagram yorum seçici ile otomatik katılımcı çekme",
-                "Asil ve yedek kazanan desteği",
+                "YouTube ve TikTok yorum çekilişi",
+                "Gizli çekiliş ve isim çekilişi",
+                "Zar, yazı tura, çarkıfelek ve daha fazla araç",
                 "12 dil desteği"
             ]
-        }
+        },
+        "heroTitle": "YouTube ve TikTok Yorum Çekilişi",
+        "heroSubtitle": "Video yorumlarından saniyeler içinde adil kazanan seçin — ücretsiz, kayıtsız, şifresiz.",
+        "youtubeGiveaway": "YouTube Çekilişi",
+        "tiktokGiveaway": "TikTok Çekilişi",
+        "namePickerDesc": "Listeden adil kazanan seçin"
     },
     "result": {
         "whoGetsGift": "Kime Hediye Alacağım?",
@@ -139,7 +130,6 @@
         "comments": "Yorumlar",
         "likes": "Beğeniler",
         "subscribers": "Aboneler",
-        "retweets": "Retweetler",
         "replies": "Yanıtlar",
         "followers": "Takipçiler",
         "tags": "Etiketler",
@@ -152,34 +142,14 @@
         "results": "Sonuçlar",
         "winners": "Kazananlar",
         "backups": "Yedekler",
-        "youtubeTitle": "Ücretsiz YouTube Çekiliş Aracı 2025 | Yorum & Beğeni Çekilişi",
-        "instagramTitle": "Instagram Çekiliş Aracı | Ücretsiz Yorum Çekilişi Yap",
-        "twitterTitle": "Twitter (X) Çekiliş Aracı | Retweet & Beğeni Çekilişi",
-        "youtubeDesc": "Ücretsiz YouTube çekiliş aracı ile videolarınızdaki yorumlar ve beğeniler arasından hızlıca kazananı belirleyin. Şifresiz ve güvenilir YouTube yorum seçici.",
-        "instagramDesc": "Ücretsiz Instagram çekiliş aracı ile gönderilerinizdeki yorumlar arasından asil ve yedek kazananları anında belirleyin. En iyi Instagram yorum çekiliş programı.",
-        "twitterDesc": "Twitter (X) çekiliş aracı ile retweet ve beğeniler arasından kolayca çekiliş yapın. Ücretsiz, şifresiz Twitter kura çekme sitesi.",
+        "youtubeTitle": "Ücretsiz YouTube Yorum Çekiliş Aracı | YulaSanta",
+        "youtubeDesc": "YouTube videolarınızdaki yorumlar arasından adil kazanan ve yedek seçin. Ücretsiz, şifresiz YouTube yorum çekiliş aracı.",
         "tiktokTitle": "TikTok Çekiliş Aracı | Ücretsiz TikTok Yorum Çekilişi",
         "tiktokDesc": "TikTok çekiliş aracı ile videolarınızdaki yorumlar arasından kolayca çekiliş yapın. Ücretsiz ve şifresiz TikTok kura çek!",
         "meta": {
-            "instagram": {
-                "title": "Insta Çekiliş Sitesi | Ücretsiz Instagram Yorum Çekilişi - YulaSanta",
-                "description": "Insta çekiliş ve Instagram yorum çekilişi yapın — ücretsiz, şifresiz, kayıtsız. YulaSanta ile yorumlar arasından asil ve yedek kazananları anında belirleyin.",
-                "keywords": [
-                    "insta çekiliş",
-                    "insta çekiliş sitesi",
-                    "insta yorum çekiliş",
-                    "insta yorum çekiliş sitesi",
-                    "instagram çekiliş",
-                    "instagram çekiliş sitesi",
-                    "ücretsiz instagram çekiliş",
-                    "instagram yorum çekilişi",
-                    "instagram çekiliş yap",
-                    "instagram giveaway"
-                ]
-            },
             "youtube": {
-                "title": "Ücretsiz YouTube Çekiliş Aracı | Yorum Seçici & Beğeni Kontrolü - YulaSanta",
-                "description": "YouTube videolarınız için hızlı ve güvenilir çekilişler yapın. Yorumlar arasından rastgele kazananı seçin. Şifresiz YouTube çekiliş sitesi.",
+                "title": "Ücretsiz YouTube Yorum Çekiliş Aracı | Yorum Seçici - YulaSanta",
+                "description": "YouTube videolarınız için hızlı ve güvenilir yorum çekilişi yapın. Rastgele kazanan seçin — kayıt ve şifre yok.",
                 "keywords": [
                     "youtube çekiliş",
                     "youtube yorum çekilişi",
@@ -198,52 +168,9 @@
                     "tiktok giveaway",
                     "tiktok çekiliş sitesi"
                 ]
-            },
-            "twitter": {
-                "title": "Twitter (X) Çekiliş Aracı | Retweet & Beğeni Çekilişi Yap - YulaSanta",
-                "description": "Twitter (X) çekilişlerinizi kolayca yönetin. Retweet ve beğeniler arasından kazananları belirleyin. Ücretsiz Twitter çekiliş sitesi.",
-                "keywords": [
-                    "twitter çekiliş",
-                    "x çekiliş",
-                    "retweet çekilişi",
-                    "twitter kura",
-                    "twitter giveaway"
-                ]
             }
         },
         "seo": {
-            "instagram": {
-                "contentTitle": "Insta Çekiliş Sitesi — Ücretsiz Instagram Yorum Çekilişi",
-                "contentParagraphs": [
-                    "YulaSanta, Türkiye'nin en popüler ücretsiz insta çekiliş sitesidir. Instagram gönderilerinizdeki yorumlar arasından adil ve şeffaf bir şekilde kazanan belirlemenizi sağlar. Kayıt olmadan, Instagram şifrenizi girmeden saniyeler içinde çekiliş yapabilirsiniz.",
-                    "Influencer'lar, markalar ve bireysel kullanıcılar için tasarlanmış bu araç; yorum çekilişi, beğeni çekilişi ve etiket çekilişi gibi tüm Instagram kampanya türlerini destekler. Asil ve yedek kazanan seçimi, tekrarlayan kullanıcı filtreleme ve sonuç paylaşımı gibi profesyonel özellikler tamamen ücretsizdir."
-                ],
-                "howToTitle": "Instagram Yorum Çekilişi Nasıl Yapılır?",
-                "howToSteps": [
-                    "Instagram gönderinizin linkini kopyalayıp YulaSanta'ya yapıştırın veya katılımcıları manuel olarak ekleyin.",
-                    "Kazanan ve yedek sayısını belirleyin, katılım kurallarını (takip şartı, tekrarlayan yorum filtresi) ayarlayın.",
-                    "Çekilişi başlatın — kazananlar rastgele algoritma ile belirlenir ve sonuçları anında paylaşabilirsiniz."
-                ],
-                "faqTitle": "Instagram Çekiliş Hakkında Sık Sorulan Sorular",
-                "faq": [
-                    {
-                        "q": "Insta çekiliş sitesi ücretsiz mi?",
-                        "a": "Evet, YulaSanta tamamen ücretsizdir. Sınırsız çekiliş yapabilir, tüm özellikleri kayıt olmadan kullanabilirsiniz."
-                    },
-                    {
-                        "q": "Instagram hesabıma giriş yapmam gerekiyor mu?",
-                        "a": "Hayır. YulaSanta şifresiz çalışır. Gönderi linkini yapıştırmanız veya yorumları manuel eklemeniz yeterlidir."
-                    },
-                    {
-                        "q": "Yedek kazanan seçebilir miyim?",
-                        "a": "Evet. İstediğiniz sayıda asil ve yedek kazanan belirleyebilirsiniz."
-                    },
-                    {
-                        "q": "Aynı kişinin birden fazla yorumu sayılır mı?",
-                        "a": "Hayır. 'Her kullanıcıyı bir kez say' seçeneği ile her katılımcı yalnızca bir kez listeye eklenir."
-                    }
-                ]
-            },
             "tiktok": {
                 "contentTitle": "TikTok Çekiliş Aracı — Ücretsiz TikTok Yorum Çekilişi",
                 "contentParagraphs": [
@@ -280,7 +207,6 @@
         "requireSubscription": "Abone Olma Şartı",
         "requireNotification": "Bildirim Şartı",
         "requireFollow": "Takip Şartı",
-        "requireRetweet": "Retweet Şartı",
         "requireLike": "Beğeni Şartı",
         "countUserOnce": "Her Kullanıcıyı 1 Kere Say",
         "inputError": "Lütfen geçerli bir link giriniz!",
@@ -294,7 +220,6 @@
         "parse": "Yorumları Ayrıştır",
         "parsed": "{count} kişi ayrıştırıldı",
         "youtubeLimitNote": "Not: API üzerinden otomatik olarak en fazla 1000 yorum çekilebilir.",
-        "instagramLimitNote": "Not: API üzerinden otomatik olarak en fazla 1000 yorum çekilebilir.",
         "tiktokLimitNote": "Not: API üzerinden otomatik olarak en fazla 100 yorum çekilebilir.",
         "participantLimitDetails": "Daha fazla yorum için lütfen manuel giriş modunu kullanın.",
         "channelUsername": "Kullanıcı Adı (Takip Kontrolü)",
@@ -308,10 +233,8 @@
         "shareDesc": "Çekiliş sonuçlarını sosyal medyada paylaşın",
         "shareCopied": "Kopyalandı!",
         "copyLink": "Linki Kopyala",
-        "comingSoon": "Yakında",
         "noParticipantsYet": "Henüz katılımcı yok",
         "youtubeNoParticipantsHint": "YouTube video linkini yapıştırın veya manuel olarak kullanıcı ekleyin",
-        "instagramNoParticipantsHint": "Instagram post linkini yapıştırın veya manuel olarak kullanıcı ekleyin",
         "tiktokNoParticipantsHint": "TikTok video linkini yapıştırın veya manuel olarak kullanıcı ekleyin",
         "fetchFromVideo": "← Video Linkinden Çek",
         "fetchFromPost": "← Post Linkinden Çek",
@@ -320,163 +243,6 @@
         "subscribedPrivate": "Gizli",
         "checkingSubscription": "Kontrol Ediliyor...",
         "landing": {
-            "instagram": {
-                "badge": "Instagram Çekiliş Aracı",
-                "heroTitle": "Instagram",
-                "heroHighlight": "Çekiliş Seçici",
-                "heroSubtitle": "Instagram yorumları arasından saniyeler içinde rastgele kazanan seçin. Giriş gerekmez.",
-                "urlPlaceholder": "Instagram gönderi linkini yapıştırın",
-                "fetchCta": "Katılımcıları Getir",
-                "fetching": "Getiriliyor…",
-                "urlHint": "Herkese açık gönderi ve reel’lerle çalışır · Getirdikten sonra 2. adım otomatik açılır",
-                "step1Url": "Adım 1 — Instagram linkini yapıştır",
-                "step1Manual": "Adım 1 — Yorum veya kullanıcı adlarını yapıştır",
-                "step3Title": "Kuralları seç ve katılımcıları kontrol et",
-                "step3Subtitle": "Adım 3",
-                "step4Label": "Adım 4 — Çekilişi Başlat",
-                "backToUrl": "← Linke dön",
-                "continueWith": "{count} katılımcıyla devam et",
-                "switchManual": "Manuel yapıştırmaya geç →",
-                "automatic": "Otomatik",
-                "manual": "Manuel",
-                "selecting": "Seçiliyor…",
-                "winner": "Kazanan",
-                "backup": "Yedek",
-                "pngDownload": "PNG",
-                "add": "Ekle",
-                "loadingWait": "Genelde 20–60 saniye sürer",
-                "featuresTitle": "Adil çekiliş için ihtiyacınız olan her şey",
-                "featuresSubtitle": "Hız, netlik ve güven — Instagram girişi riski olmadan.",
-                "howTitle": "Nasıl çalışır?",
-                "howSubtitle": "Beş net adım. Ne tıklayacağınızı düşünmenize gerek yok.",
-                "startCta": "Çekilişe başla",
-                "faqTitle": "Sık sorulan sorular",
-                "steps": {
-                    "paste": "Link yapıştır",
-                    "load": "Yükle",
-                    "rules": "Kurallar",
-                    "draw": "Çekiliş"
-                },
-                "trustBadges": [
-                    "Instagram girişi gerekmez",
-                    "Hızlı işlem",
-                    "Tekrar filtresi",
-                    "Yedek kazanan",
-                    "Ücretsiz"
-                ],
-                "metrics": [
-                    {
-                        "value": "500.000+",
-                        "label": "İşlenen yorum"
-                    },
-                    {
-                        "value": "50.000+",
-                        "label": "Başarılı çekiliş"
-                    },
-                    {
-                        "value": "%100",
-                        "label": "Rastgele seçim"
-                    },
-                    {
-                        "value": "0",
-                        "label": "Giriş gerekir"
-                    }
-                ],
-                "features": [
-                    {
-                        "title": "Otomatik yorum çekme",
-                        "desc": "Gönderi linkini yapıştırın, katılımcıları saniyeler içinde alın."
-                    },
-                    {
-                        "title": "Tekrar filtresi",
-                        "desc": "Adil çekiliş için kullanıcı başına tek katılım."
-                    },
-                    {
-                        "title": "Yedek kazananlar",
-                        "desc": "Kazanan ulaşılmazsa yedekleri anında seçin."
-                    },
-                    {
-                        "title": "Takip şartı",
-                        "desc": "Çekilişten önce takip kuralını işaretleyin."
-                    },
-                    {
-                        "title": "Mention odaklı",
-                        "desc": "Yorum tabanlı çekilişlere odaklanın."
-                    },
-                    {
-                        "title": "Hashtag uyumlu",
-                        "desc": "Etiketli gönderi ve reel’lerle çalışır."
-                    },
-                    {
-                        "title": "Sonuç dışa aktarma",
-                        "desc": "Kopyala, paylaş veya kazanan kartı PNG indir."
-                    },
-                    {
-                        "title": "Hızlı işlem",
-                        "desc": "Linkten kazananlara sürtünmesiz akış."
-                    }
-                ],
-                "howSteps": [
-                    {
-                        "title": "Instagram linkini yapıştır",
-                        "desc": "Gönderi veya reel URL’sini hero alana bırakın."
-                    },
-                    {
-                        "title": "Yorumları yükle",
-                        "desc": "Katılımcıları otomatik getirin veya manuel yapıştırın."
-                    },
-                    {
-                        "title": "Kuralları seç",
-                        "desc": "Kazanan, yedek ve katılım tercihlerini ayarlayın."
-                    },
-                    {
-                        "title": "Kazananları çek",
-                        "desc": "Kriptografik olarak adil rastgele seçim yapın."
-                    },
-                    {
-                        "title": "Sonuçları paylaş",
-                        "desc": "Tek tıkla kopyala, indir veya paylaş."
-                    }
-                ],
-                "faq": [
-                    {
-                        "q": "Instagram’a giriş yapmam gerekir mi?",
-                        "a": "Hayır. YulaSanta Instagram şifresi istemez. Herkese açık gönderi linki yapıştırın veya yorumları manuel ekleyin."
-                    },
-                    {
-                        "q": "Kazanan seçimi gerçekten rastgele mi?",
-                        "a": "Evet. Kazananlar güvenli karıştırma ile seçilir; her uygun katılımcının şansı eşittir."
-                    },
-                    {
-                        "q": "Otomatik çekme çalışmazsa ne olur?",
-                        "a": "Manuel moda geçin: kullanıcı adı veya yorumları yapıştırın, aynı kurallar ve çekiliş akışıyla devam edin."
-                    },
-                    {
-                        "q": "Yedek kazanan seçebilir miyim?",
-                        "a": "Evet. Başlamadan önce yedek sayısını ayarlayın. Yedekler sonuçlarda asil kazananlarla birlikte görünür."
-                    }
-                ],
-                "errors": {
-                    "needLink": "Lütfen bir Instagram gönderi linki girin",
-                    "invalidLink": "Geçerli bir Instagram gönderi linki giriniz (instagram.com/p/...)",
-                    "serviceDown": "Otomatik çekme şu an kullanılamıyor. Yorumları manuel yapıştırabilirsiniz.",
-                    "privateOrMissing": "Bu hesap gizli veya gönderi bulunamadı",
-                    "timeout": "Bağlantı zaman aşımına uğradı, lütfen tekrar deneyin",
-                    "generic": "Yorumlar çekilemedi — linki kontrol edin veya manuel ekleyin"
-                },
-                "toasts": {
-                    "added": "@{name} eklendi",
-                    "participantsAdded": "{count} katılımcı başarıyla eklendi!",
-                    "copied": "Sonuçlar panoya kopyalandı!",
-                    "cardDownloaded": "Kazanan kartı indirildi!"
-                },
-                "loadingSteps": [
-                    "Instagram’a bağlanılıyor...",
-                    "Yorumlar çekiliyor...",
-                    "Katılımcılar analiz ediliyor...",
-                    "Veriler hazırlanıyor..."
-                ]
-            },
             "youtube": {
                 "badge": "YouTube Çekiliş Aracı",
                 "heroTitle": "YouTube",
@@ -699,8 +465,6 @@
     },
     "tools": {
         "title": "Araçlar",
-        "instagramStoryViewer": "Instagram Hikaye İzleme",
-        "instagramProfilePicture": "Instagram Profil Resmi Büyütme",
         "onlineGiveaway": "Online Çekiliş Programı",
         "dice": "Zar Atma",
         "coinFlip": "Yazı Tura",
@@ -709,8 +473,8 @@
         "wheelOfFortune": "Çarkıfelek",
         "teamGenerator": "Takım Oluşturucu",
         "meta": {
-            "title": "Ücretsiz Online Araçlar | YulaSanta - Zar, Yazı Tura, Rastgele Sayı",
-            "description": "YulaSanta ücretsiz online araçlar: Zar atma oyunu, yazı tura, rastgele sayı seçici, kısa çöp çekme, Instagram hikaye izleyici ve profil resmi indirici."
+            "title": "Ücretsiz Online Araçlar | Zar, Yazı Tura, Çarkıfelek - YulaSanta",
+            "description": "İsim çekilişi, zar atma, yazı tura, rastgele sayı, kısa çöp, çarkıfelek, takım oluşturucu ve hediye önerileri — tamamen ücretsiz."
         },
         "diceMeta": {
             "title": "🎲 Zar Atma Oyunu | Online Ücretsiz Zar At - YulaSanta",
@@ -870,40 +634,6 @@
             "phaseReveal": "Çöpler çekildi",
             "addPeopleFirst": "Başlamak için en az 2 isim ekle"
         },
-        "instagramStoryContent": {
-            "title": "Instagram Hikaye İzleme",
-            "subtitle": "Anonim Story Viewer",
-            "placeholder": "Kullanıcı adı girin (örn: yula)",
-            "view": "Hikayeleri İzle",
-            "helper": "Profil sahibinin haberi olmadan anonim izleyin.",
-            "aboutTitle": "Instagram Hikaye İzleme Hakkında",
-            "aboutText": "YulaSanta story viewer ile Instagram hikayelerini gizlice izleyebilirsiniz. İzlediğiniz kişiler bunu göremez.",
-            "searchLabel": "Instagram Kullanıcı Adı",
-            "searchButton": "Ara",
-            "loadingNote": "Bu işlem 20-60 saniye sürebilir",
-            "waitPlease": "Lütfen bekleyin...",
-            "howItWorks": "Nasıl çalışır?",
-            "howStep1": "Kullanıcı adını girin ve Ara butonuna basın",
-            "howStep2": "Profil bilgileri ve aktif hikayeler çekilir",
-            "howStep3": "Hikayeleri anonim olarak izleyin — kimse görmez",
-            "storiesTitle": "Hikayeler",
-            "viewOnInstagram": "Instagram'da Görüntüle",
-            "viewProfile": "Instagram'da görüntüle",
-            "searchAgain": "← Başka profil ara",
-            "posts": "Gönderi",
-            "followingLabel": "Takip",
-            "noStoriesError": "Bu hesabın aktif hikayesi yok veya hikayeler gizli.",
-            "enterUsername": "Lütfen bir kullanıcı adı girin",
-            "storiesFound": "{count} hikaye bulundu!",
-            "loadStepProfile1": "Profil bilgileri getiriliyor...",
-            "loadStepProfile2": "Hesap doğrulanıyor...",
-            "loadStepProfile3": "Veriler hazırlanıyor...",
-            "loadStepStory1": "Instagram'a bağlanılıyor...",
-            "loadStepStory2": "Hikayeler çekiliyor...",
-            "loadStepStory3": "Medya dosyaları yükleniyor...",
-            "loadStepStory4": "Hazırlanıyor...",
-            "followers": "Takipçi"
-        },
         "wheelOfFortuneMeta": {
             "title": "🎡 Çarkıfelek | Online Çark Çevir - Ücretsiz Karar Çarkı - YulaSanta",
             "description": "Özelleştirilebilir şans çarkı. İsimleri veya seçenekleri girin, çarkı çevirin ve kazananı belirleyin. Ücretsiz online karar çarkı.",
@@ -925,28 +655,6 @@
                 "rastgele takım",
                 "grup oluşturma"
             ]
-        },
-        "instagramProfileContent": {
-            "title": "Instagram Profil Resmi Büyütme",
-            "subtitle": "HD Profile Picture Size",
-            "placeholder": "Kullanıcı adı girin",
-            "usernameLabel": "Kullanıcı Adı",
-            "view": "Profil Resmini Gör",
-            "helper": "Profil fotoğrafını tam boy ve HD olarak görüntüleyin.",
-            "aboutTitle": "PP Büyütme Hakkında",
-            "aboutText": "Instagram kullanıcılarının profil resimlerini tam kalitede görmek ve indirmek için ücretsiz aracımızı kullanın.",
-            "searchButton": "Ara",
-            "loading": "Profil getiriliyor...",
-            "downloadHD": "HD İndir",
-            "downloadNormal": "Normal İndir",
-            "openInInstagram": "Instagram'da Aç",
-            "searchAnother": "← Başka bir profil ara",
-            "tryAgain": "Tekrar dene",
-            "posts": "Gönderi",
-            "followers": "Takipçi",
-            "following": "Takip",
-            "errorEmptyUsername": "Lütfen bir kullanıcı adı girin",
-            "errorGeneric": "Bir hata oluştu"
         },
         "wheelOfFortuneContent": {
             "title": "Çarkıfelek",
@@ -1464,26 +1172,6 @@
                 "kura çekme",
                 "rastgele seçim"
             ]
-        },
-        "instagramStoryMeta": {
-            "title": "📱 Instagram Hikaye İzleme | Story Viewer Anonim - YulaSanta",
-            "description": "Instagram hikayelerini anonim olarak izleyin. Gizli Instagram hikaye görüntüleyici.",
-            "keywords": [
-                "instagram hikaye",
-                "story viewer",
-                "anonim hikaye",
-                "gizli izleme"
-            ]
-        },
-        "instagramProfileMeta": {
-            "title": "🖼️ Instagram Profil Resmi Büyütme | HD İndirme - YulaSanta",
-            "description": "Instagram profil fotoğraflarını HD kalitede görüntüleyin ve indirin.",
-            "keywords": [
-                "instagram profil",
-                "profil resmi büyütme",
-                "HD profil",
-                "pp indirme"
-            ]
         }
     },
     "footer": {
@@ -1534,15 +1222,15 @@
     },
     "about": {
         "meta": {
-            "title": "Hakkımızda | YulaSanta - Ücretsiz Online Çekiliş Platformu",
-            "description": "YulaSanta hakkında bilgi edinin. Türkiye'nin en güvenilir ücretsiz online çekiliş ve Secret Santa platformu."
+            "title": "Hakkımızda | YulaSanta — YouTube, TikTok ve Gizli Çekiliş",
+            "description": "YulaSanta: YouTube & TikTok yorum çekilişi, gizli çekiliş, isim çekilişi ve ücretsiz online araçlar."
         },
         "title": "Hakkımızda",
-        "subtitle": "YulaSanta, herkesin kolayca çekiliş yapabilmesi için tasarlanmış ücretsiz bir platformdur. Sosyal medya çekilişlerinden Secret Santa organizasyonlarına kadar tüm ihtiyaçlarınızı karşılıyoruz.",
+        "subtitle": "YulaSanta; YouTube ve TikTok yorum çekilişi, gizli çekiliş, isim çekilişi ve eğlenceli online araçlar sunan ücretsiz bir platformdur.",
         "story": {
             "title": "Hikayemiz",
             "p1": "YulaSanta, 2024 yılında bir grup yazılım geliştiricisinin 'çekiliş yapmak neden bu kadar zor?' sorusuna yanıt aramasıyla doğdu. Mevcut çekiliş araçlarının ya çok karmaşık, ya ücretli, ya da güvenilir olmadığını fark ettik.",
-            "p2": "Amacımız basitti: Herkesin ücretsiz, güvenli ve kolay bir şekilde çekiliş yapabilmesini sağlamak. Instagram, YouTube, TikTok ve Twitter gibi popüler platformlar için özel araçlar geliştirdik. Secret Santa için de mükemmel bir eşleştirme sistemi oluşturduk.",
+            "p2": "Amacımız basit: İçerik üreticilerinin YouTube ve TikTok yorum çekilişlerini ücretsiz, güvenli ve şifresiz yapabilmesini sağlamak. Ayrıca isim çekilişi, zar, yazı tura ve rastgele sayı gibi basit araçlar da sunuyoruz.",
             "p3": "Bugün binlerce kullanıcı YulaSanta'yı tercih ediyor. Yılbaşı çekilişlerinden marka kampanyalarına, arkadaş gruplarından büyük topluluklara kadar herkes YulaSanta ile çekiliş yapıyor."
         },
         "whyUs": {

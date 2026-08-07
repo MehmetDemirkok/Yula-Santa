@@ -8,7 +8,7 @@
 
 import { useState, useEffect, useRef } from "react";
 import { useRouter, useParams } from "next/navigation";
-import { Plus, Trash2, Gift, Sparkles, FileUp, Instagram, Youtube, HelpCircle } from "lucide-react";
+import { Plus, Trash2, Gift, Sparkles, FileUp, Youtube, HelpCircle } from "lucide-react";
 import { Button } from "@/components/ui/Button";
 import { Input } from "@/components/ui/Input";
 import { useTranslations } from 'next-intl';
@@ -347,22 +347,9 @@ export default function Home() {
                     </ul>
                 </div>
 
-                {/* Social Media Giveaways Section */}
                 <div className="w-full space-y-3 sm:space-y-4 mt-3 sm:mt-4">
                     <h2 className="font-heading text-base sm:text-lg font-bold text-[var(--text-primary)] text-center">{t('home.socialMediaGiveaways')}</h2>
-                    <div className="grid grid-cols-2 sm:grid-cols-4 gap-2 sm:gap-3">
-                        {/* Instagram */}
-                        <button
-                            onClick={() => router.push(`/${locale}/instagram`)}
-                            className="group flex flex-col items-center gap-1.5 sm:gap-2 p-3 sm:p-4 bg-[var(--card-bg)] rounded-xl sm:rounded-2xl border border-[var(--border-light)] hover:border-pink-200 dark:hover:border-pink-500/30 hover:shadow-lg hover:shadow-pink-100/50 dark:hover:shadow-pink-900/20 transition-all"
-                        >
-                            <div className="p-2 sm:p-3 bg-gradient-to-br from-purple-500 via-pink-500 to-orange-400 rounded-lg sm:rounded-xl group-hover:scale-110 transition-transform">
-                                <Instagram className="w-5 h-5 sm:w-6 sm:h-6 text-white" />
-                            </div>
-                            <span className="text-[10px] sm:text-xs font-bold text-[var(--text-secondary)] group-hover:text-pink-600 dark:group-hover:text-pink-400">Instagram</span>
-                        </button>
-
-                        {/* YouTube */}
+                    <div className="grid grid-cols-2 gap-2 sm:gap-3">
                         <button
                             onClick={() => router.push(`/${locale}/youtube`)}
                             className="group flex flex-col items-center gap-1.5 sm:gap-2 p-3 sm:p-4 bg-[var(--card-bg)] rounded-xl sm:rounded-2xl border border-[var(--border-light)] hover:border-red-200 dark:hover:border-red-500/30 hover:shadow-lg hover:shadow-red-100/50 dark:hover:shadow-red-900/20 transition-all"
@@ -370,10 +357,9 @@ export default function Home() {
                             <div className="p-2 sm:p-3 bg-red-600 rounded-lg sm:rounded-xl group-hover:scale-110 transition-transform">
                                 <Youtube className="w-5 h-5 sm:w-6 sm:h-6 text-white" />
                             </div>
-                            <span className="text-[10px] sm:text-xs font-bold text-[var(--text-secondary)] group-hover:text-red-600 dark:group-hover:text-red-400">YouTube</span>
+                            <span className="text-[10px] sm:text-xs font-bold text-[var(--text-secondary)] group-hover:text-red-600 dark:group-hover:text-red-400">{t('home.youtubeGiveaway')}</span>
                         </button>
 
-                        {/* TikTok */}
                         <button
                             onClick={() => router.push(`/${locale}/tiktok`)}
                             className="group flex flex-col items-center gap-1.5 sm:gap-2 p-3 sm:p-4 bg-[var(--card-bg)] rounded-xl sm:rounded-2xl border border-[var(--border-light)] hover:border-cyan-200 dark:hover:border-cyan-500/30 hover:shadow-lg hover:shadow-cyan-100/50 dark:hover:shadow-cyan-900/20 transition-all"
@@ -383,20 +369,7 @@ export default function Home() {
                                     <path d="M448 209.91a210.06 210.06 0 0 1-122.77-39.25V349.38A162.55 162.55 0 1 1 185 188.31V278.2a74.62 74.62 0 1 0 52.23 71.18V0l88 0a121.18 121.18 0 0 0 1.86 22.17h0A122.18 122.18 0 0 0 381 102.39a121.43 121.43 0 0 0 67 20.14z" />
                                 </svg>
                             </div>
-                            <span className="text-[10px] sm:text-xs font-bold text-[var(--text-secondary)] group-hover:text-cyan-600 dark:group-hover:text-cyan-400">TikTok</span>
-                        </button>
-
-                        {/* Twitter/X */}
-                        <button
-                            onClick={() => router.push(`/${locale}/twitter`)}
-                            className="group flex flex-col items-center gap-1.5 sm:gap-2 p-3 sm:p-4 bg-[var(--card-bg)] rounded-xl sm:rounded-2xl border border-[var(--border-light)] hover:border-sky-200 dark:hover:border-sky-500/30 hover:shadow-lg hover:shadow-sky-100/50 dark:hover:shadow-sky-900/20 transition-all"
-                        >
-                            <div className="p-2 sm:p-3 bg-black dark:bg-[var(--card-bg)] rounded-lg sm:rounded-xl group-hover:scale-110 transition-transform flex items-center justify-center ring-1 ring-white/10">
-                                <svg viewBox="0 0 24 24" className="w-5 h-5 sm:w-6 sm:h-6 text-white" fill="currentColor">
-                                    <path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z" />
-                                </svg>
-                            </div>
-                            <span className="text-[10px] sm:text-xs font-bold text-[var(--text-secondary)] group-hover:text-sky-600 dark:group-hover:text-sky-400">Twitter/X</span>
+                            <span className="text-[10px] sm:text-xs font-bold text-[var(--text-secondary)] group-hover:text-cyan-600 dark:group-hover:text-cyan-400">{t('home.tiktokGiveaway')}</span>
                         </button>
                     </div>
                 </div>

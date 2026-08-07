@@ -1,47 +1,47 @@
 {
     "meta": {
-        "title": "YulaSanta - 차세대 무료 온라인 경품 시스템",
-        "description": "YulaSanta로 무료 온라인 시크릿 산타 추첨을 만들어보세요. 인스타그램, 유튜브, 틱톡, 트위터 이벤트를 몇 초 만에 진행하세요. 주사위 굴리기, 동전 던지기, 난수 생성기 등 다양한 무료 툴 제공!",
+        "title": "YulaSanta — YouTube & TikTok Comment Giveaways, Secret Santa",
+        "description": "Pick fair winners from YouTube and TikTok comments. Free Secret Santa, name picker, dice, coin flip, wheel of fortune and more — no signup, no password.",
         "keywords": [
-            "온라인 추첨기",
-            "이벤트 추첨",
-            "무료 추첨",
-            "시크릿 산타",
+            "youtube giveaway",
+            "youtube comment picker",
+            "tiktok giveaway",
+            "tiktok comment picker",
             "secret santa",
-            "크리스마스 추첨",
-            "선물 교환",
-            "인스타 추첨",
-            "유튜브 추첨",
-            "틱톡 추첨",
-            "트위터 추첨",
-            "주사위",
-            "동전 던지기",
-            "랜덤 숫자"
+            "name picker",
+            "online raffle",
+            "free giveaway",
+            "dice roller",
+            "coin flip",
+            "random number generator",
+            "short straw",
+            "wheel of fortune",
+            "team generator"
         ],
         "faq": {
-            "breadcrumbHome": "홈",
-            "q1": "YulaSanta란 무엇인가요?",
-            "a1": "YulaSanta는 무료 온라인 추첨 및 시크릿 산타 플랫폼입니다. Instagram, YouTube, TikTok, Twitter에서 경품 행사를 진행하고 시크릿 산타 선물 교환을 조직할 수 있습니다.",
-            "q2": "YulaSanta는 무료인가요?",
-            "a2": "네, YulaSanta는 완전 무료입니다. 회원가입 없이 모든 기능을 사용할 수 있습니다.",
-            "q3": "어떤 소셜 미디어 플랫폼을 지원하나요?",
-            "a3": "댓글과 좋아요를 사용하여 Instagram, YouTube, TikTok, Twitter(X)에서 경품 행사를 진행할 수 있습니다.",
-            "q4": "시크릿 산타는 어떻게 작동하나요?",
-            "a4": "참가자 이름을 추가하고 추첨을 시작합니다. 각 사람이 무작위로 누군가를 선택하고 자신의 매칭만 볼 수 있습니다. 개인 정보가 보호됩니다!",
-            "title": "자주 묻는 질문 | YulaSanta",
-            "description": "인스타그램 추첨, 시크릿 산타, SNS 추첨 도구에 대한 자주 묻는 질문.",
-            "q5": "인스타 댓글 추첨은 어떻게 하나요?",
-            "a5": "인스타그램 게시물 링크를 YulaSanta에 붙여넣고 댓글을 불러오거나 직접 추가한 뒤, 당첨자 수를 설정하고 추첨을 시작하세요. 당첨자와 예비 당첨자가 몇 초 만에 선정됩니다.",
-            "q6": "인스타 추첨 사이트는 안전한가요?",
-            "a6": "네. YulaSanta는 비밀번호·로그인 없이 작동합니다. 인스타 계정 정보를 입력할 필요가 없으며, 모든 추첨은 공정한 랜덤 알고리즘을 사용합니다.",
-            "q7": "당첨자를 몇 명까지 뽑을 수 있나요?",
-            "a7": "원하는 수의 당첨자와 예비 당첨자를 설정할 수 있습니다. 단일·다중 당첨 모두 지원합니다.",
-            "q8": "같은 사람이 댓글을 여러 번 달면 여러 번 당첨될 수 있나요?",
-            "a8": "아니요. '사용자 1회만 카운트' 옵션으로 같은 사람의 여러 댓글은 한 번만 참가로 집계됩니다."
+            "title": "Frequently Asked Questions | YulaSanta",
+            "description": "FAQ about YouTube, TikTok, Secret Santa and free raffle tools.",
+            "breadcrumbHome": "Home",
+            "q1": "What is YulaSanta?",
+            "a1": "YulaSanta is a free platform for YouTube and TikTok comment giveaways, Secret Santa gift exchanges, name picking, and tools like dice, coin flip, random numbers, short straw, wheel of fortune, and team generator.",
+            "q2": "Is YulaSanta free?",
+            "a2": "Yes. All core features are free — no registration or login required.",
+            "q3": "Which social platforms do you support?",
+            "a3": "You can run comment giveaways from YouTube and TikTok videos.",
+            "q4": "How does Secret Santa work?",
+            "a4": "Add participant names, start the draw. Each person is randomly matched and only sees their own recipient.",
+            "q5": "How do I run a YouTube comment giveaway?",
+            "a5": "Paste your YouTube video link, fetch or paste comments, set winner and backup counts, then start the draw.",
+            "q6": "How do I run a TikTok comment giveaway?",
+            "a6": "Paste your TikTok video link, collect comments, set winners, and start the raffle.",
+            "q7": "Do I need to log in?",
+            "a7": "No. YulaSanta never asks for your YouTube or TikTok password.",
+            "q8": "Can the same person win twice?",
+            "a8": "No. With “Count each user once”, multiple comments from the same account count as a single entry."
         }
     },
     "home": {
-        "title": "YulaSanta - 차세대 무료 온라인 경품 시스템",
+        "title": "YulaSanta — YouTube & TikTok Comment Giveaways, Secret Santa",
         "subtitle": "친구를 추가하고, 추첨을 시작하세요!",
         "secretDraw": "비밀 추첨 🤫",
         "directMatch": "직접 매칭 🤝",
@@ -50,7 +50,7 @@
         "uploadList": "리스트 업로드 (Excel/PDF)",
         "uploading": "업로드 중...",
         "clearList": "리스트 초기화",
-        "startDraw": "새해 추첨 시작",
+        "startDraw": "Start a Giveaway",
         "match": "매칭",
         "happyNewYear": "🎄 새해 복 많이 받으세요!",
         "minPeople3": "최소 3명을 추가해주세요",
@@ -68,30 +68,36 @@
         "directMatchMinError": "매칭은 최소 2명이 필요합니다!",
         "directMatchEvenError": "직접 매칭은 짝수 인원이 필요합니다!",
         "drawError": "오류가 발생했습니다. 다시 시도해주세요.",
-        "socialMediaGiveaways": "SNS 이벤트 추첨",
+        "socialMediaGiveaways": "Comment Giveaways",
         "secure": "100% 안전",
         "fast": "초고속",
         "noPassword": "비밀번호 불필요",
         "noRegistration": "가입 불필요",
         "startNow": "지금 시작",
-        "socialDesc": "모든 플랫폼에서 간편하게 추첨 진행",
-        "toolsDesc": "일상에 유용한 미니 툴과 재미있는 게임들.",
+        "socialDesc": "Specialized tools for YouTube and TikTok comment raffles.",
+        "toolsDesc": "Simple free tools for fair picks and everyday decisions.",
         "viewAll": "전체 보기",
         "seo": {
-            "title": "무료 인스타그램·틱톡 추첨 사이트",
+            "title": "Free YouTube, TikTok & Secret Santa Platform",
             "paragraphs": [
-                "YulaSanta는 인스타 댓글 추첨 사이트이자 인스타그램 추첨기입니다. 가입·비밀번호 없이 몇 초 만에 댓글에서 당첨자와 예비 당첨자를 공정하게 뽑을 수 있습니다.",
-                "시크릿 산타, 이름 추첨, 주사위, 동전 던지기 등 무료 도구로 SNS 이벤트와 친구 모임을 한곳에서 관리하세요."
+                "Run YouTube and TikTok comment giveaways in seconds with YulaSanta — no signup, no password. Pick winners and backups fairly.",
+                "Organize Secret Santa draws, name raffles, dice rolls, coin flips, short straw, wheel of fortune, team generator, and gift suggestions in one place."
             ],
-            "featuresTitle": "YulaSanta를 선택하는 이유",
+            "featuresTitle": "Why YulaSanta?",
             "features": [
-                "완전 무료 — 숨은 비용 없음",
-                "회원가입·비밀번호 불필요",
-                "인스타 댓글 자동 불러오기",
-                "당첨자·예비 당첨자 지원",
-                "12개 언어 지원"
+                "Completely free — no hidden fees",
+                "No registration or password required",
+                "YouTube and TikTok comment giveaways",
+                "Secret Santa and name picker",
+                "Dice, coin flip, wheel and more tools",
+                "12 language support"
             ]
-        }
+        },
+        "heroTitle": "YouTube & TikTok Comment Giveaways",
+        "heroSubtitle": "Pick fair winners from video comments in seconds — free, no signup, no password.",
+        "youtubeGiveaway": "YouTube Giveaway",
+        "tiktokGiveaway": "TikTok Giveaway",
+        "namePickerDesc": "Pick fair winners from any list"
     },
     "result": {
         "whoGetsGift": "나는 누구에게 선물을 줄까요?",
@@ -123,7 +129,6 @@
         "comments": "댓글",
         "likes": "좋아요",
         "subscribers": "구독자",
-        "retweets": "리트윗",
         "replies": "답글",
         "followers": "팔로워",
         "tags": "태그",
@@ -136,31 +141,14 @@
         "results": "결과",
         "winners": "당첨자",
         "backups": "예비 번호",
-        "youtubeTitle": "무료 유튜브 추첨기 2025",
-        "instagramTitle": "인스타그램 추첨기 | 무료 댓글 추출",
-        "twitterTitle": "트위터 (X) 추첨기 | 리트윗 & 좋아요 추첨",
-        "youtubeDesc": "유튜브 댓글과 좋아요에서 무료 툴로 빠르게 당첨자를 뽑아보세요.",
-        "instagramDesc": "인스타그램 댓글에서 당첨자와 예비 당첨자를 즉시 뽑습니다. 최고의 댓글 추출 앱입니다.",
-        "twitterDesc": "트위터 (X) 리트윗과 좋아요에서 간편하게 추첨을 진행하세요. 무료 추첨 사이트입니다.",
+        "youtubeTitle": "Free YouTube Comment Giveaway Tool | YulaSanta",
+        "youtubeDesc": "Pick fair winners and backups from YouTube video comments. Free, password-free YouTube comment picker.",
         "tiktokTitle": "틱톡 추첨기 | 무료 틱톡 댓글 추출",
         "tiktokDesc": "틱톡 영상의 댓글에서 간편하게 무료로 당첨자를 뽑으세요!",
         "meta": {
-            "instagram": {
-                "title": "무료 인스타그램 추첨기 | 인스타 댓글 추첨 사이트 - YulaSanta",
-                "description": "인스타 댓글 추첨 사이트 YulaSanta로 비밀번호·가입 없이 인스타그램 추첨을 진행하세요. 댓글에서 당첨자와 예비 당첨자를 즉시 뽑습니다.",
-                "keywords": [
-                    "인스타 댓글 추첨 사이트",
-                    "인스타그램 추첨기",
-                    "인스타 추첨 사이트",
-                    "인스타 추첨",
-                    "인스타그램 댓글 추첨",
-                    "무료 인스타그램 추첨",
-                    "인스타 이벤트 추첨"
-                ]
-            },
             "youtube": {
-                "title": "무료 유튜브 추첨기 | YulaSanta",
-                "description": "유튜브 영상을 위한 빠르고 정확한 무료 추첨기.",
+                "title": "Free YouTube Comment Giveaway Tool | Comment Picker - YulaSanta",
+                "description": "Run fast, fair YouTube comment giveaways. Pick random winners — no signup, no password.",
                 "keywords": [
                     "유튜브 추첨",
                     "댓글 추출"
@@ -176,22 +164,11 @@
                     "틱톡 이벤트",
                     "무료 틱톡 추첨"
                 ]
-            },
-            "twitter": {
-                "title": "트위터(X) 추첨기 | 리트윗·좋아요 추첨 - YulaSanta",
-                "description": "트위터(X) 리트윗과 좋아요에서 간편하게 당첨자를 뽑으세요. 무료 트위터 추첨 사이트.",
-                "keywords": [
-                    "트위터 추첨",
-                    "X 추첨",
-                    "리트윗 추첨",
-                    "트위터 이벤트"
-                ]
             }
         },
         "requireSubscription": "채널 구독 필수",
         "requireNotification": "알림 설정 필수",
         "requireFollow": "팔로우 필수",
-        "requireRetweet": "리트윗 필수",
         "requireLike": "좋아요 필수",
         "countUserOnce": "사용자 중복 제거 (1회 카운트)",
         "inputError": "유효한 링크를 입력해주세요!",
@@ -205,7 +182,6 @@
         "parse": "댓글 분석",
         "parsed": "{count}명의 참여자를 찾았습니다",
         "youtubeLimitNote": "참고: API를 통해 최대 1000개의 댓글을 자동으로 가져올 수 있습니다.",
-        "instagramLimitNote": "참고: API를 통해 최대 1000개의 댓글을 자동으로 가져올 수 있습니다.",
         "tiktokLimitNote": "참고: API를 통해 최대 100개의 댓글을 자동으로 가져올 수 있습니다.",
         "participantLimitDetails": "더 많은 댓글을 확인하려면 수동 입력 모드를 사용하세요.",
         "channelUsername": "사용자 이름 (팔로우 확인용)",
@@ -219,10 +195,8 @@
         "shareDesc": "추첨 결과를 소셜 미디어에 공유하세요",
         "shareCopied": "복사됨!",
         "copyLink": "링크 복사",
-        "comingSoon": "출시 예정",
         "noParticipantsYet": "아직 참가자가 없습니다",
         "youtubeNoParticipantsHint": "YouTube 동영상 링크를 붙여넣거나 수동으로 사용자를 추가하세요",
-        "instagramNoParticipantsHint": "Instagram 게시물 링크를 붙여넣거나 수동으로 사용자를 추가하세요",
         "tiktokNoParticipantsHint": "TikTok 동영상 링크를 붙여넣거나 수동으로 사용자를 추가하세요",
         "fetchFromVideo": "← 동영상 링크에서 가져오기",
         "fetchFromPost": "← 게시물 링크에서 가져오기",
@@ -231,38 +205,6 @@
         "subscribedPrivate": "비공개",
         "checkingSubscription": "확인 중...",
         "seo": {
-            "instagram": {
-                "contentTitle": "무료 인스타그램 추첨기 — 인스타 댓글 추첨 사이트",
-                "contentParagraphs": [
-                    "YulaSanta는 인스타 댓글 추첨 사이트이자 인스타그램 추첨기입니다. 가입 없이, 인스타 비밀번호 없이 게시물 댓글에서 공정하게 당첨자를 뽑을 수 있습니다.",
-                    "인플루언서, 브랜드, 개인 크리에이터를 위한 도구로 댓글·좋아요·태그 이벤트를 지원합니다. 당첨자·예비 당첨자, 중복 사용자 필터, 결과 공유까지 모두 무료입니다."
-                ],
-                "howToTitle": "인스타 댓글 추첨은 어떻게 하나요?",
-                "howToSteps": [
-                    "인스타그램 게시물 링크를 YulaSanta에 붙여넣거나 참여자를 직접 추가하세요.",
-                    "당첨자·예비 당첨자 수와 팔로우 필수, 중복 제거 등 규칙을 설정하세요.",
-                    "추첨을 시작하면 공정한 랜덤 알고리즘으로 당첨자가 선정되고 결과를 바로 공유할 수 있습니다."
-                ],
-                "faqTitle": "인스타그램 추첨 FAQ",
-                "faq": [
-                    {
-                        "q": "인스타 추첨 사이트는 무료인가요?",
-                        "a": "네. YulaSanta는 완전 무료입니다. 회원가입 없이 무제한 추첨이 가능합니다."
-                    },
-                    {
-                        "q": "인스타그램 로그인이 필요한가요?",
-                        "a": "아니요. 비밀번호 없이 작동합니다. 게시물 링크를 붙여넣거나 댓글을 직접 추가하면 됩니다."
-                    },
-                    {
-                        "q": "예비 당첨자를 뽑을 수 있나요?",
-                        "a": "네. 원하는 수의 당첨자와 예비 당첨자를 설정할 수 있습니다."
-                    },
-                    {
-                        "q": "같은 사람의 여러 댓글이 모두 카운트되나요?",
-                        "a": "아니요. '사용자 1회만 카운트' 옵션으로 한 사람당 한 번만 참가합니다."
-                    }
-                ]
-            },
             "tiktok": {
                 "contentTitle": "틱톡 추첨기 — 무료 틱톡 댓글 추첨",
                 "contentParagraphs": [
@@ -297,163 +239,6 @@
             }
         },
         "landing": {
-            "instagram": {
-                "badge": "Instagram 추첨 도구",
-                "heroTitle": "Instagram",
-                "heroHighlight": "댓글 추첨기",
-                "heroSubtitle": "몇 초 만에 Instagram 댓글 중에서 무작위 당첨자를 뽑으세요. 로그인 필요 없음.",
-                "urlPlaceholder": "Instagram 게시물 링크를 붙여넣으세요",
-                "fetchCta": "참가자 가져오기",
-                "fetching": "가져오는 중…",
-                "urlHint": "공개 게시물 및 릴스에서 작동합니다 · 가져온 후 2단계가 자동으로 열립니다",
-                "step1Url": "1단계 — Instagram 링크 붙여넣기",
-                "step1Manual": "1단계 — 댓글 또는 사용자 이름 붙여넣기",
-                "step3Title": "규칙 선택 및 참가자 확인",
-                "step3Subtitle": "3단계",
-                "step4Label": "4단계 — 추첨 시작",
-                "backToUrl": "← 링크로 돌아가기",
-                "continueWith": "{count}명의 참가자로 계속하기",
-                "switchManual": "수동 붙여넣기로 전환 →",
-                "automatic": "자동",
-                "manual": "수동",
-                "selecting": "선정 중…",
-                "winner": "당첨자",
-                "backup": "예비 당첨자",
-                "pngDownload": "PNG",
-                "add": "추가",
-                "loadingWait": "보통 20–60초 정도 소요됩니다",
-                "featuresTitle": "공정한 추첨을 위해 필요한 모든 것",
-                "featuresSubtitle": "빠르고 투명하며 신뢰할 수 있음 — Instagram 로그인 위험 없이.",
-                "howTitle": "어떻게 작동하나요?",
-                "howSubtitle": "명확한 5단계. 어디를 클릭할지 고민할 필요가 없습니다.",
-                "startCta": "추첨 시작하기",
-                "faqTitle": "자주 묻는 질문",
-                "steps": {
-                    "paste": "링크 붙여넣기",
-                    "load": "불러오기",
-                    "rules": "규칙",
-                    "draw": "추첨"
-                },
-                "trustBadges": [
-                    "Instagram 로그인 불필요",
-                    "빠른 처리",
-                    "중복 필터",
-                    "예비 당첨자",
-                    "무료"
-                ],
-                "metrics": [
-                    {
-                        "value": "500,000+",
-                        "label": "처리된 댓글"
-                    },
-                    {
-                        "value": "50,000+",
-                        "label": "성공한 추첨"
-                    },
-                    {
-                        "value": "100%",
-                        "label": "무작위 선정"
-                    },
-                    {
-                        "value": "0",
-                        "label": "로그인 필요"
-                    }
-                ],
-                "features": [
-                    {
-                        "title": "자동 댓글 수집",
-                        "desc": "게시물 링크를 붙여넣고 몇 초 만에 참가자를 가져오세요."
-                    },
-                    {
-                        "title": "중복 필터",
-                        "desc": "공정한 추첨을 위해 사용자당 1회 참여로 제한합니다."
-                    },
-                    {
-                        "title": "예비 당첨자",
-                        "desc": "당첨자와 연락이 되지 않을 경우를 대비해 즉시 예비 당첨자를 선정합니다."
-                    },
-                    {
-                        "title": "팔로우 조건",
-                        "desc": "추첨 전에 팔로우 규칙을 확인하세요."
-                    },
-                    {
-                        "title": "멘션 중심",
-                        "desc": "댓글 기반 추첨에 집중하세요."
-                    },
-                    {
-                        "title": "해시태그 호환",
-                        "desc": "태그된 게시물 및 릴스에서 작동합니다."
-                    },
-                    {
-                        "title": "결과 내보내기",
-                        "desc": "복사, 공유 또는 당첨자 카드를 PNG로 다운로드하세요."
-                    },
-                    {
-                        "title": "빠른 처리",
-                        "desc": "링크에서 당첨자 선정까지 막힘없는 진행."
-                    }
-                ],
-                "howSteps": [
-                    {
-                        "title": "Instagram 링크 붙여넣기",
-                        "desc": "히어로 영역에 게시물 또는 릴스 URL을 넣으세요."
-                    },
-                    {
-                        "title": "댓글 불러오기",
-                        "desc": "참가자를 자동으로 가져오거나 수동으로 붙여넣으세요."
-                    },
-                    {
-                        "title": "규칙 선택",
-                        "desc": "당첨자, 예비 당첨자 및 참여 옵션을 설정하세요."
-                    },
-                    {
-                        "title": "당첨자 추첨",
-                        "desc": "암호학적으로 공정한 무작위 추첨을 진행하세요."
-                    },
-                    {
-                        "title": "결과 공유",
-                        "desc": "원클릭으로 복사, 다운로드 또는 공유하세요."
-                    }
-                ],
-                "faq": [
-                    {
-                        "q": "Instagram에 로그인해야 하나요?",
-                        "a": "아니요. YulaSanta는 Instagram 비밀번호를 요구하지 않습니다. 공개 게시물 링크를 붙여넣거나 댓글을 수동으로 추가하세요."
-                    },
-                    {
-                        "q": "당첨자 선정은 정말 무작위인가요?",
-                        "a": "네. 당첨자는 안전한 셔플 알고리즘으로 선정되며, 조건에 맞는 모든 참가자의 당첨 확률은 동일합니다."
-                    },
-                    {
-                        "q": "자동 수집이 작동하지 않으면 어떻게 하나요?",
-                        "a": "수동 모드로 전환하여 사용자 이름이나 댓글을 붙여넣고, 동일한 규칙과 추첨 절차로 진행하세요."
-                    },
-                    {
-                        "q": "예비 당첨자를 뽑을 수 있나요?",
-                        "a": "네. 시작하기 전에 예비 당첨자 수를 설정하세요. 예비 당첨자는 결과 페이지에 주 당첨자와 함께 표시됩니다."
-                    }
-                ],
-                "errors": {
-                    "needLink": "Instagram 게시물 링크를 입력해 주세요",
-                    "invalidLink": "올바른 Instagram 게시물 링크를 입력해 주세요 (instagram.com/p/...)",
-                    "serviceDown": "현재 자동 수집을 이용할 수 없습니다. 댓글을 수동으로 붙여넣으실 수 있습니다.",
-                    "privateOrMissing": "비공개 계정이거나 게시물을 찾을 수 없습니다",
-                    "timeout": "연결 시간이 초과되었습니다. 다시 시도해 주세요",
-                    "generic": "댓글을 가져오지 못했습니다 — 링크를 확인하거나 수동으로 추가해 주세요"
-                },
-                "toasts": {
-                    "added": "@{name} 님이 추가되었습니다",
-                    "participantsAdded": "{count}명의 참가자가 성공적으로 추가되었습니다!",
-                    "copied": "결과가 클립보드에 복사되었습니다!",
-                    "cardDownloaded": "당첨자 카드가 다운로드되었습니다!"
-                },
-                "loadingSteps": [
-                    "Instagram에 연결하는 중...",
-                    "댓글을 가져오는 중...",
-                    "참가자를 분석하는 중...",
-                    "데이터를 준비하는 중..."
-                ]
-            },
             "youtube": {
                 "badge": "YouTube 추첨 도구",
                 "heroTitle": "YouTube",
@@ -676,8 +461,6 @@
     },
     "tools": {
         "title": "도구",
-        "instagramStoryViewer": "인스타 스토리 보기",
-        "instagramProfilePicture": "인스타 프로필 확대",
         "onlineGiveaway": "온라인 추첨기",
         "dice": "주사위",
         "coinFlip": "동전 던지기",
@@ -686,8 +469,8 @@
         "wheelOfFortune": "행운의 룰렛",
         "teamGenerator": "팀 생성기",
         "meta": {
-            "title": "무료 온라인 툴 | YulaSanta",
-            "description": "주사위, 동전 던지기, 랜덤 숫자, 제비뽑기 등 무료 온라인 도구."
+            "title": "Free Online Tools | Dice, Coin Flip, Wheel - YulaSanta",
+            "description": "Name picker, dice roller, coin flip, random number, short straw, wheel of fortune, team generator and gift suggestions — all free."
         },
         "diceMeta": {
             "title": "🎲 주사위 굴리기 | 무료 온라인 주사위 - YulaSanta",
@@ -858,72 +641,6 @@
                 "fair selection"
             ]
         },
-        "instagramStoryContent": {
-            "title": "인스타 스토리 보기",
-            "subtitle": "익명 스토리 뷰어",
-            "placeholder": "아이디 입력",
-            "view": "스토리 보기",
-            "helper": "상대방 모르게 익명으로 스토리를 확인하세요.",
-            "aboutTitle": "스토리 뷰어 정보",
-            "aboutText": "YulaSanta의 익명 뷰어로 인스타그램 스토리를 몰래 확인할 수 있습니다.",
-            "searchLabel": "인스타그램 사용자명",
-            "searchButton": "검색",
-            "loadingNote": "20~60초 정도 소요될 수 있습니다",
-            "waitPlease": "잠시 기다려 주세요...",
-            "howItWorks": "사용 방법",
-            "howStep1": "사용자 이름을 입력하고 검색을 누르세요",
-            "howStep2": "프로필 정보와 활성 스토리를 가져옵니다",
-            "howStep3": "익명으로 스토리 시청 — 아무도 모릅니다",
-            "storiesTitle": "스토리",
-            "viewOnInstagram": "인스타그램에서 보기",
-            "viewProfile": "인스타그램에서 보기",
-            "searchAgain": "← 다른 프로필 검색",
-            "posts": "게시물",
-            "followingLabel": "팔로잉",
-            "noStoriesError": "이 계정에 활성 스토리가 없거나 스토리가 비공개입니다.",
-            "enterUsername": "사용자 이름을 입력해 주세요",
-            "storiesFound": "{count}개의 스토리를 찾았습니다!",
-            "loadStepProfile1": "프로필 정보 가져오는 중...",
-            "loadStepProfile2": "계정 확인 중...",
-            "loadStepProfile3": "데이터 준비 중...",
-            "loadStepStory1": "인스타그램 연결 중...",
-            "loadStepStory2": "스토리 가져오는 중...",
-            "loadStepStory3": "미디어 파일 로딩 중...",
-            "loadStepStory4": "준비 중...",
-            "followers": "팔로워"
-        },
-        "instagramStoryMeta": {
-            "title": "📱 인스타 스토리 보기 | 익명 뷰어 - YulaSanta",
-            "description": "인스타 스토리를 익명으로 확인하세요. 비밀 스토리 뷰어.",
-            "keywords": [
-                "instagram story",
-                "story viewer",
-                "anonymous story viewer",
-                "private story viewer"
-            ]
-        },
-        "instagramProfileContent": {
-            "title": "인스타 프로필 사진",
-            "subtitle": "고화질 프로필 사진 크기",
-            "placeholder": "아이디 입력",
-            "view": "사진 보기",
-            "helper": "프로필 사진을 전체 크기 및 고화질로 표시합니다.",
-            "aboutTitle": "PP 뷰어 정보",
-            "aboutText": "무료 도구로 인스타 사용자의 프로필 사진을 고품질로 확인하고 저장하세요.",
-            "usernameLabel": "사용자 이름",
-            "searchButton": "검색",
-            "loading": "프로필 로딩 중...",
-            "downloadHD": "HD 다운로드",
-            "downloadNormal": "일반 다운로드",
-            "openInInstagram": "Instagram에서 열기",
-            "searchAnother": "← 다른 프로필 검색",
-            "tryAgain": "다시 시도",
-            "posts": "게시물",
-            "followers": "팔로워",
-            "following": "팔로잉",
-            "errorEmptyUsername": "사용자 이름을 입력하세요",
-            "errorGeneric": "오류가 발생했습니다"
-        },
         "wheelOfFortuneContent": {
             "title": "행운의 룰렛",
             "subtitle": "룰렛 돌리기 - 랜덤 선택기",
@@ -971,16 +688,6 @@
             "bulkMode": "일괄 편집",
             "listMode": "목록 보기",
             "clear": "모두 지우기"
-        },
-        "instagramProfileMeta": {
-            "title": "🖼️ 인스타 프로필 확대 | 고화질 다운로드 - YulaSanta",
-            "description": "인스타 프로필 사진을 HD 화질로 확인하고 저장할 수 있습니다.",
-            "keywords": [
-                "instagram profile",
-                "profile picture viewer",
-                "HD profile picture",
-                "pp downloader"
-            ]
         },
         "giftSuggestions": "Gift Suggestions",
         "giftSuggestionsContent": {
@@ -1512,15 +1219,15 @@
     },
     "about": {
         "meta": {
-            "title": "소개 | YulaSanta - 무료 추첨 플랫폼",
-            "description": "YulaSanta 소개. 가장 신뢰받는 무료 추첨 플랫폼."
+            "title": "About Us | YulaSanta — YouTube, TikTok & Secret Santa",
+            "description": "YulaSanta: YouTube & TikTok comment giveaways, Secret Santa, name picker and free online tools."
         },
         "title": "소개",
-        "subtitle": "YulaSanta는 누구나 쉽게 추첨을 할 수 있는 무료 플랫폼입니다.",
+        "subtitle": "YulaSanta is a free platform for YouTube and TikTok comment giveaways, Secret Santa, name picking and fun online tools.",
         "story": {
             "title": "스토리",
             "p1": "YulaSanta는 2024년, '더 쉽고 공정한 추첨은 없을까?'라는 고민에서 시작되었습니다.",
-            "p2": "목표는 간단합니다: 누구나 무료로, 안전하고 쉽게 추첨을 할 수 있게 만드는 것.",
+            "p2": "Our goal is simple: help creators run fair YouTube and TikTok comment giveaways for free — securely and without passwords. We also offer simple tools like a name picker, dice roller, coin flip, and random number generator.",
             "p3": "현재 수천 명의 사용자가 YulaSanta와 함께하고 있습니다."
         },
         "whyUs": {

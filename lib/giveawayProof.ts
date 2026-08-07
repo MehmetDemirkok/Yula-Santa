@@ -7,7 +7,7 @@ import { SITE_HOST } from "@/lib/constants";
 
 export type DrawProof = {
     v: 1;
-    platform: "instagram" | "youtube" | "tiktok" | "raffle";
+    platform: "youtube" | "tiktok" | "raffle";
     title: string;
     at: string; // ISO
     seed: string;

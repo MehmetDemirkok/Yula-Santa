@@ -2,11 +2,10 @@ export interface WinnerCardData {
     giveawayName: string;
     winners: { name: string; comment?: string }[];
     backups: { name: string }[];
-    platform: "instagram" | "youtube" | "tiktok" | "secret-santa";
+    platform: "youtube" | "tiktok" | "secret-santa";
 }
 
 const PLATFORM_COLORS: Record<WinnerCardData["platform"], { bg: string; accent: string; text: string }> = {
-    instagram: { bg: "#6C2EBE", accent: "#E1306C", text: "#fff" },
     youtube:   { bg: "#CC0000", accent: "#FF4444", text: "#fff" },
     tiktok:    { bg: "#010101", accent: "#25F4EE", text: "#fff" },
     "secret-santa": { bg: "#165B33", accent: "#D42426", text: "#fff" },

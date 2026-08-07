@@ -1,37 +1,47 @@
 {
     "meta": {
-        "title": "YulaSanta - 次世代の無料オンライン景品システム",
-        "description": "YulaSantaで無料のオンライン・シークレット・サンタ抽選を作成しましょう。Instagram、YouTube、TikTok、Twitterのプレゼント・キャンペーンを数秒で実施。サイコロ、コイン投げ、乱数生成などの無料ツールも充実！",
+        "title": "YulaSanta — YouTube & TikTok Comment Giveaways, Secret Santa",
+        "description": "Pick fair winners from YouTube and TikTok comments. Free Secret Santa, name picker, dice, coin flip, wheel of fortune and more — no signup, no password.",
         "keywords": [
-            "オンライン抽選",
-            "抽選ツール",
-            "無料プレゼント",
-            "シークレットサンタ",
+            "youtube giveaway",
+            "youtube comment picker",
+            "tiktok giveaway",
+            "tiktok comment picker",
             "secret santa",
-            "クリスマス抽選",
-            "ギフト交換",
-            "インスタ抽選",
-            "YouTube抽選",
-            "TikTok抽選",
-            "Twitter抽選",
-            "サイコロ",
-            "コイン投げ",
-            "乱数生成"
+            "name picker",
+            "online raffle",
+            "free giveaway",
+            "dice roller",
+            "coin flip",
+            "random number generator",
+            "short straw",
+            "wheel of fortune",
+            "team generator"
         ],
         "faq": {
-            "breadcrumbHome": "ホーム",
-            "q1": "YulaSantaとは？",
-            "a1": "YulaSantaは無料のオンライン懸賞・シークレットサンタプラットフォームです。Instagram、YouTube、TikTok、Twitterのプレゼント企画を開催し、シークレットサンタのギフト交換を企画できます。",
-            "q2": "YulaSantaは無料ですか？",
-            "a2": "はい、YulaSantaは完全無料です。登録なしですべての機能を使用できます。",
-            "q3": "どのソーシャルメディアプラットフォームに対応していますか？",
-            "a3": "Instagram、YouTube、TikTok、Twitter（X）でコメントやいいねを使ったプレゼント企画を開催できます。",
-            "q4": "シークレットサンタはどのように機能しますか？",
-            "a4": "参加者の名前を追加して抽選を開始します。各自がランダムに誰かを選び、自分の組み合わせのみ確認できます。プライバシーが守られます！"
+            "title": "Frequently Asked Questions | YulaSanta",
+            "description": "FAQ about YouTube, TikTok, Secret Santa and free raffle tools.",
+            "breadcrumbHome": "Home",
+            "q1": "What is YulaSanta?",
+            "a1": "YulaSanta is a free platform for YouTube and TikTok comment giveaways, Secret Santa gift exchanges, name picking, and tools like dice, coin flip, random numbers, short straw, wheel of fortune, and team generator.",
+            "q2": "Is YulaSanta free?",
+            "a2": "Yes. All core features are free — no registration or login required.",
+            "q3": "Which social platforms do you support?",
+            "a3": "You can run comment giveaways from YouTube and TikTok videos.",
+            "q4": "How does Secret Santa work?",
+            "a4": "Add participant names, start the draw. Each person is randomly matched and only sees their own recipient.",
+            "q5": "How do I run a YouTube comment giveaway?",
+            "a5": "Paste your YouTube video link, fetch or paste comments, set winner and backup counts, then start the draw.",
+            "q6": "How do I run a TikTok comment giveaway?",
+            "a6": "Paste your TikTok video link, collect comments, set winners, and start the raffle.",
+            "q7": "Do I need to log in?",
+            "a7": "No. YulaSanta never asks for your YouTube or TikTok password.",
+            "q8": "Can the same person win twice?",
+            "a8": "No. With “Count each user once”, multiple comments from the same account count as a single entry."
         }
     },
     "home": {
-        "title": "YulaSanta - 次世代の無料オンライン景品システム",
+        "title": "YulaSanta — YouTube & TikTok Comment Giveaways, Secret Santa",
         "subtitle": "友達を追加して、抽選を始めましょう！",
         "secretDraw": "シークレット抽選 🤫",
         "directMatch": "直接マッチング 🤝",
@@ -40,7 +50,7 @@
         "uploadList": "リストをアップロード (Excel/PDF)",
         "uploading": "アップロード中...",
         "clearList": "リストをクリア",
-        "startDraw": "新年抽選を始める",
+        "startDraw": "Start a Giveaway",
         "match": "マッチング",
         "happyNewYear": "🎄 ハッピーニューイヤー！",
         "minPeople3": "3人以上追加してください",
@@ -58,15 +68,36 @@
         "directMatchMinError": "マッチングには少なくとも2人が必要です！",
         "directMatchEvenError": "直接マッチングには偶数の人数が必要です！",
         "drawError": "エラーが発生しました。もう一度お試しください。",
-        "socialMediaGiveaways": "SNS抽選キャンペーン",
+        "socialMediaGiveaways": "Comment Giveaways",
         "secure": "100% 安全",
         "fast": "超高速",
         "noPassword": "パスワード不要",
         "noRegistration": "登録不要",
         "startNow": "今すぐ開始",
-        "socialDesc": "すべてのプラットフォームで簡単に抽選を実施",
-        "toolsDesc": "日常生活を便利にするミニツールや楽しいゲーム。",
-        "viewAll": "すべて見る"
+        "socialDesc": "Specialized tools for YouTube and TikTok comment raffles.",
+        "toolsDesc": "Simple free tools for fair picks and everyday decisions.",
+        "viewAll": "すべて見る",
+        "heroTitle": "YouTube & TikTok Comment Giveaways",
+        "heroSubtitle": "Pick fair winners from video comments in seconds — free, no signup, no password.",
+        "youtubeGiveaway": "YouTube Giveaway",
+        "tiktokGiveaway": "TikTok Giveaway",
+        "namePickerDesc": "Pick fair winners from any list",
+        "seo": {
+            "title": "Free YouTube, TikTok & Secret Santa Platform",
+            "paragraphs": [
+                "Run YouTube and TikTok comment giveaways in seconds with YulaSanta — no signup, no password. Pick winners and backups fairly.",
+                "Organize Secret Santa draws, name raffles, dice rolls, coin flips, short straw, wheel of fortune, team generator, and gift suggestions in one place."
+            ],
+            "featuresTitle": "Why YulaSanta?",
+            "features": [
+                "Completely free — no hidden fees",
+                "No registration or password required",
+                "YouTube and TikTok comment giveaways",
+                "Secret Santa and name picker",
+                "Dice, coin flip, wheel and more tools",
+                "12 language support"
+            ]
+        }
     },
     "result": {
         "whoGetsGift": "誰にプレゼントを買う？",
@@ -98,7 +129,6 @@
         "comments": "コメント",
         "likes": "いいね",
         "subscribers": "チャンネル登録者",
-        "retweets": "リツイート",
         "replies": "返信",
         "followers": "フォロワー",
         "tags": "タグ",
@@ -111,27 +141,14 @@
         "results": "結果",
         "winners": "当選者",
         "backups": "補欠",
-        "youtubeTitle": "無料YouTube抽選ツール 2025",
-        "instagramTitle": "Instagram抽選ツール | 無料コメント抽出",
-        "twitterTitle": "Twitter (X) 抽選ツール | リツイート＆いいね抽出",
-        "youtubeDesc": "YouTube動画のコメントやいいねから、無料のツールで素早く当選者を選びましょう。",
-        "instagramDesc": "Instagram投稿のコメントから、当選者と補欠を即座に選びます。最高のインスタコメント抽出アプリです。",
-        "twitterDesc": "Twitter (X) のリツイートやいいねから簡単に抽選を実施。無料の抽選サイトです。",
+        "youtubeTitle": "Free YouTube Comment Giveaway Tool | YulaSanta",
+        "youtubeDesc": "Pick fair winners and backups from YouTube video comments. Free, password-free YouTube comment picker.",
         "tiktokTitle": "TikTok抽選ツール | 無料TikTokコメント抽出",
         "tiktokDesc": "TikTok動画のコメントから簡単に抽選を実施。無料で当選者を選べます！",
         "meta": {
-            "instagram": {
-                "title": "無料Instagram抽選ツール | YulaSanta",
-                "description": "YulaSantaを使って、パスワード不要でInstagram抽選を無料で実施しましょう。",
-                "keywords": [
-                    "インスタ 抽選",
-                    "コメント 抽出",
-                    "無料 キャンペーン"
-                ]
-            },
             "youtube": {
-                "title": "無料YouTube抽選ツール | YulaSanta",
-                "description": "YouTube動画のための素早く信頼性の高い抽選を実施。",
+                "title": "Free YouTube Comment Giveaway Tool | Comment Picker - YulaSanta",
+                "description": "Run fast, fair YouTube comment giveaways. Pick random winners — no signup, no password.",
                 "keywords": [
                     "YouTube 抽選",
                     "コメント 抽出"
@@ -146,22 +163,11 @@
                     "tiktok ギブアウェイ",
                     "ティックトック 抽選"
                 ]
-            },
-            "twitter": {
-                "title": "Twitter (X) 抽選ツール | リツイート＆いいね - YulaSanta",
-                "description": "Twitter (X) のリツイートといいねから当選者を選ぶ無料抽選サイト。",
-                "keywords": [
-                    "twitter 抽選",
-                    "x 抽選",
-                    "リツイート 抽選",
-                    "ツイッター ギブアウェイ"
-                ]
             }
         },
         "requireSubscription": "チャンネル登録を条件にする",
         "requireNotification": "通知を条件にする",
         "requireFollow": "フォローを条件にする",
-        "requireRetweet": "リツイートを条件にする",
         "requireLike": "いいねを条件にする",
         "countUserOnce": "1ユーザーを1回としてカウント",
         "inputError": "有効なリンクを入力してください！",
@@ -175,7 +181,6 @@
         "parse": "コメントを解析",
         "parsed": "{count} 名を解析しました",
         "youtubeLimitNote": "注：API経由で自動取得できるのは最大1000コメントまでです。",
-        "instagramLimitNote": "注：API経由で自動取得できるのは最大1000コメントまでです。",
         "tiktokLimitNote": "注：API経由で自動取得できるのは最大100コメントまでです。",
         "participantLimitDetails": "より多くのコメントを抽出するには、手動入力モードを使用してください。",
         "channelUsername": "ユーザー名（フォロー確認用）",
@@ -189,10 +194,8 @@
         "shareDesc": "抽選結果をSNSで共有しましょう",
         "shareCopied": "コピーしました！",
         "copyLink": "リンクをコピー",
-        "comingSoon": "近日公開",
         "noParticipantsYet": "参加者がいません",
         "youtubeNoParticipantsHint": "YouTubeのビデオリンクを貼り付けるか、手動でユーザーを追加してください",
-        "instagramNoParticipantsHint": "Instagramの投稿リンクを貼り付けるか、手動でユーザーを追加してください",
         "tiktokNoParticipantsHint": "TikTokのビデオリンクを貼り付けるか、手動でユーザーを追加してください",
         "fetchFromVideo": "← ビデオリンクから取得",
         "fetchFromPost": "← 投稿リンクから取得",
@@ -202,163 +205,6 @@
         "checkingSubscription": "確認中...",
         "seo": {},
         "landing": {
-            "instagram": {
-                "badge": "Instagram 抽選ツール",
-                "heroTitle": "Instagram",
-                "heroHighlight": "プレゼント抽選ツール",
-                "heroSubtitle": "Instagramのコメントから数秒でランダムに当選者を選出。ログイン不要。",
-                "urlPlaceholder": "Instagramの投稿リンクを貼り付け",
-                "fetchCta": "参加者を読み込む",
-                "fetching": "読み込み中…",
-                "urlHint": "公開投稿やリールに対応 · 読み込み後、ステップ2が自動で開きます",
-                "step1Url": "ステップ1 — Instagramリンクを貼り付け",
-                "step1Manual": "ステップ1 — コメントまたはユーザー名を貼り付け",
-                "step3Title": "ルールを選択して参加者を確認",
-                "step3Subtitle": "ステップ3",
-                "step4Label": "ステップ4 — 抽選を開始",
-                "backToUrl": "← リンクに戻る",
-                "continueWith": "{count} 人の参加者で進む",
-                "switchManual": "手動入力に切り替え →",
-                "automatic": "自動",
-                "manual": "手動",
-                "selecting": "選考中…",
-                "winner": "当選者",
-                "backup": "補欠当選者",
-                "pngDownload": "PNG",
-                "add": "追加",
-                "loadingWait": "通常20〜60秒かかります",
-                "featuresTitle": "公平な抽選に必要なすべてが揃っています",
-                "featuresSubtitle": "迅速、明確、信頼できる — Instagramログインのリスクなし。",
-                "howTitle": "使い方は？",
-                "howSubtitle": "簡単な5ステップ。迷わずスムーズに操作できます。",
-                "startCta": "抽選を開始",
-                "faqTitle": "よくある質問",
-                "steps": {
-                    "paste": "リンク貼り付け",
-                    "load": "読み込み",
-                    "rules": "ルール設定",
-                    "draw": "抽選"
-                },
-                "trustBadges": [
-                    "Instagramログイン不要",
-                    "高速処理",
-                    "重複フィルター",
-                    "補欠当選者設定",
-                    "無料"
-                ],
-                "metrics": [
-                    {
-                        "value": "500.000+",
-                        "label": "処理されたコメント"
-                    },
-                    {
-                        "value": "50.000+",
-                        "label": "成功した抽選"
-                    },
-                    {
-                        "value": "%100",
-                        "label": "完全ランダム選出"
-                    },
-                    {
-                        "value": "0",
-                        "label": "必要なログイン"
-                    }
-                ],
-                "features": [
-                    {
-                        "title": "コメント自動取得",
-                        "desc": "投稿リンクを貼り付けるだけで、数秒で参加者を取得。"
-                    },
-                    {
-                        "title": "重複フィルター",
-                        "desc": "公平な抽選のため、1ユーザーにつき1回のエントリーに制限。"
-                    },
-                    {
-                        "title": "補欠当選者",
-                        "desc": "当選者と連絡が取れない場合のために、補欠を即座に選出。"
-                    },
-                    {
-                        "title": "フォロー条件",
-                        "desc": "抽選前にフォロー条件をチェック。"
-                    },
-                    {
-                        "title": "メンション対応",
-                        "desc": "コメントベースの抽選に最適化。"
-                    },
-                    {
-                        "title": "ハッシュタグ対応",
-                        "desc": "タグ付きの投稿やリールに対応。"
-                    },
-                    {
-                        "title": "結果のエクスポート",
-                        "desc": "コピー、共有、または当選者カードのPNGダウンロードが可能。"
-                    },
-                    {
-                        "title": "高速処理",
-                        "desc": "リンク貼り付けから当選者決定までスムーズなフロー。"
-                    }
-                ],
-                "howSteps": [
-                    {
-                        "title": "Instagramリンクを貼り付け",
-                        "desc": "投稿またはリールのURLを入力欄に貼り付けます。"
-                    },
-                    {
-                        "title": "コメントを読み込み",
-                        "desc": "参加者を自動で読み込むか、手動で貼り付けます。"
-                    },
-                    {
-                        "title": "ルールを設定",
-                        "desc": "当選者数、補欠数、エントリー条件を設定します。"
-                    },
-                    {
-                        "title": "当選者を抽選",
-                        "desc": "暗号学的に公平なランダム選出を行います。"
-                    },
-                    {
-                        "title": "結果を共有",
-                        "desc": "ワンクリックでコピー、ダウンロード、または共有。"
-                    }
-                ],
-                "faq": [
-                    {
-                        "q": "Instagramにログインする必要がありますか？",
-                        "a": "いいえ。YulaSantaはInstagramのパスワードを要求しません。公開投稿のリンクを貼り付けるか、手動でコメントを追加してください。"
-                    },
-                    {
-                        "q": "当選者の選出は本当にランダムですか？",
-                        "a": "はい。安全なシャッフルアルゴリズムで選出されるため、条件を満たすすべての参加者に同等のチャンスがあります。"
-                    },
-                    {
-                        "q": "自動読み込みが機能しない場合はどうすればよいですか？",
-                        "a": "手動モードに切り替えてください。ユーザー名やコメントを貼り付ければ、同じルールと抽選フローで継続できます。"
-                    },
-                    {
-                        "q": "補欠当選者を選ぶことはできますか？",
-                        "a": "はい。抽選開始前に補欠人数を設定できます。補欠当選者は結果画面に主当選者と一緒に表示されます。"
-                    }
-                ],
-                "errors": {
-                    "needLink": "Instagramの投稿リンクを入力してください",
-                    "invalidLink": "有効なInstagram投稿リンクを入力してください (instagram.com/p/...)",
-                    "serviceDown": "現在、自動読み込みを利用できません。手動でコメントを貼り付けてください。",
-                    "privateOrMissing": "このアカウントは非公開か、投稿が見つかりませんでした",
-                    "timeout": "接続がタイムアウトしました。もう一度お試しください",
-                    "generic": "コメントを取得できませんでした。リンクを確認するか手動で追加してください"
-                },
-                "toasts": {
-                    "added": "@{name} を追加しました",
-                    "participantsAdded": "{count} 名の参加者を正常に追加しました！",
-                    "copied": "結果をクリップボードにコピーしました！",
-                    "cardDownloaded": "当選者カードをダウンロードしました！"
-                },
-                "loadingSteps": [
-                    "Instagramに接続中...",
-                    "コメントを取得中...",
-                    "参加者を分析中...",
-                    "データを準備中..."
-                ]
-            },
             "youtube": {
                 "badge": "YouTube 抽選ツール",
                 "heroTitle": "YouTube",
@@ -581,8 +427,6 @@
     },
     "tools": {
         "title": "ツール",
-        "instagramStoryViewer": "インスタストーリー閲覧",
-        "instagramProfilePicture": "インスタプロフ画像拡大",
         "onlineGiveaway": "オンライン抽選ツール",
         "dice": "サイコロ",
         "coinFlip": "コイン投げ",
@@ -591,8 +435,8 @@
         "wheelOfFortune": "運命の輪",
         "teamGenerator": "チームジェネレーター",
         "meta": {
-            "title": "無料オンラインツール | YulaSanta",
-            "description": "無料ツール：サイコロ、コイン投げ、乱数生成、くじ引きなど。"
+            "title": "Free Online Tools | Dice, Coin Flip, Wheel - YulaSanta",
+            "description": "Name picker, dice roller, coin flip, random number, short straw, wheel of fortune, team generator and gift suggestions — all free."
         },
         "diceMeta": {
             "title": "🎲 サイコロ | 無料オンラインサイコロ - YulaSanta",
@@ -763,72 +607,6 @@
                 "fair selection"
             ]
         },
-        "instagramStoryContent": {
-            "title": "Instagramストーリー閲覧",
-            "subtitle": "匿名ストーリービューアー",
-            "placeholder": "ユーザー名を入力",
-            "view": "ストーリーを見る",
-            "helper": "足跡をつけずに匿名でストーリーを閲覧できます。",
-            "aboutTitle": "ストーリービューアーについて",
-            "aboutText": "YulaSantaの匿名ビューアーを使って、こっそりインスタのストーリーをチェックできます。",
-            "searchLabel": "Instagramユーザー名",
-            "searchButton": "検索",
-            "loadingNote": "20〜60秒かかる場合があります",
-            "waitPlease": "しばらくお待ちください...",
-            "howItWorks": "使い方",
-            "howStep1": "ユーザー名を入力して検索を押す",
-            "howStep2": "プロフィール情報とアクティブなストーリーが取得されます",
-            "howStep3": "匿名でストーリーを視聴 — 誰にもわかりません",
-            "storiesTitle": "ストーリー",
-            "viewOnInstagram": "Instagramで見る",
-            "viewProfile": "Instagramで見る",
-            "searchAgain": "← 別のプロフィールを検索",
-            "posts": "投稿",
-            "followingLabel": "フォロー中",
-            "noStoriesError": "このアカウントにはアクティブなストーリーがないか、ストーリーが非公開です。",
-            "enterUsername": "ユーザー名を入力してください",
-            "storiesFound": "{count}件のストーリーが見つかりました！",
-            "loadStepProfile1": "プロフィール情報を取得中...",
-            "loadStepProfile2": "アカウントを確認中...",
-            "loadStepProfile3": "データを準備中...",
-            "loadStepStory1": "Instagramに接続中...",
-            "loadStepStory2": "ストーリーを取得中...",
-            "loadStepStory3": "メディアファイルを読み込み中...",
-            "loadStepStory4": "準備中...",
-            "followers": "フォロワー"
-        },
-        "instagramStoryMeta": {
-            "title": "📱 インスタストーリー閲覧 | 匿名ビューアー - YulaSanta",
-            "description": "インスタのストーリーを匿名で閲覧。秘密のストーリービューアー。",
-            "keywords": [
-                "instagram story",
-                "story viewer",
-                "anonymous story viewer",
-                "private story viewer"
-            ]
-        },
-        "instagramProfileContent": {
-            "title": "インスタのプロフ画像",
-            "subtitle": "高画質プロフィール画像サイズ",
-            "placeholder": "ユーザー名を入力",
-            "view": "画像を見る",
-            "helper": "プロフィール写真をフルサイズかつ高画質で表示します。",
-            "aboutTitle": "PPビューアーについて",
-            "aboutText": "無料ツールを使って、インスタユーザーのプロフィール画像を高品質で閲覧・保存できます。",
-            "usernameLabel": "ユーザー名",
-            "searchButton": "検索",
-            "loading": "プロフィールを読み込み中...",
-            "downloadHD": "HDをダウンロード",
-            "downloadNormal": "通常ダウンロード",
-            "openInInstagram": "Instagramで開く",
-            "searchAnother": "← 別のプロフィールを検索",
-            "tryAgain": "再試行",
-            "posts": "投稿",
-            "followers": "フォロワー",
-            "following": "フォロー中",
-            "errorEmptyUsername": "ユーザー名を入力してください",
-            "errorGeneric": "エラーが発生しました"
-        },
         "wheelOfFortuneContent": {
             "title": "運命の輪",
             "subtitle": "ルーレットを回す - ランダムセレクター",
@@ -876,16 +654,6 @@
             "bulkMode": "一括編集",
             "listMode": "リスト表示",
             "clear": "すべてクリア"
-        },
-        "instagramProfileMeta": {
-            "title": "🖼️ インスタプロフ画像拡大 | 高画質保存 - YulaSanta",
-            "description": "インスタのプロフィール写真をHD画質で表示し、保存できます。",
-            "keywords": [
-                "instagram profile",
-                "profile picture viewer",
-                "HD profile picture",
-                "pp downloader"
-            ]
         },
         "giftSuggestions": "Gift Suggestions",
         "giftSuggestionsContent": {
@@ -1417,15 +1185,15 @@
     },
     "about": {
         "meta": {
-            "title": "私たちについて | YulaSanta - 無料抽選プラットフォーム",
-            "description": "YulaSantaについて。最も信頼性の高い抽選プラットフォーム。"
+            "title": "About Us | YulaSanta — YouTube, TikTok & Secret Santa",
+            "description": "YulaSanta: YouTube & TikTok comment giveaways, Secret Santa, name picker and free online tools."
         },
         "title": "私たちについて",
-        "subtitle": "YulaSantaは、誰でも簡単に抽選ができる無料プラットフォームです。",
+        "subtitle": "YulaSanta is a free platform for YouTube and TikTok comment giveaways, Secret Santa, name picking and fun online tools.",
         "story": {
             "title": "ストーリー",
             "p1": "YulaSantaは2024年、「抽選をするのはなぜこんなに大変なのか？」という疑問から生まれました。",
-            "p2": "目標はシンプル：誰もが無料、安全、簡単に抽選をできるようにすること。",
+            "p2": "Our goal is simple: help creators run fair YouTube and TikTok comment giveaways for free — securely and without passwords. We also offer simple tools like a name picker, dice roller, coin flip, and random number generator.",
             "p3": "現在、何千人ものユーザーがYulaSantaを利用しています。"
         },
         "whyUs": {
