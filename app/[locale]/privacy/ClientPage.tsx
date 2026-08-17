@@ -72,7 +72,7 @@ export default function PrivacyClient() {
                                     {t('title')}
                                 </div>
                                 <h1 className="font-heading text-headline-lg-mobile sm:text-headline-lg text-[var(--text-primary)] tracking-tight">
-                                    Yula<span className="text-santa-red">Privacy</span>
+                                    {t('title')}
                                 </h1>
                             </div>
                         </div>

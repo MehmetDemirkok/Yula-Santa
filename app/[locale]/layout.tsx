@@ -26,12 +26,12 @@ import { ClientLayout } from "./ClientLayout";
 
 const inter = Inter({
     variable: "--font-inter",
-    subsets: ["latin"],
+    subsets: ["latin", "latin-ext"],
 });
 
 const plusJakartaSans = Plus_Jakarta_Sans({
     variable: "--font-jakarta",
-    subsets: ["latin"],
+    subsets: ["latin", "latin-ext"],
     weight: ["600", "700", "800"],
 });
 
@@ -104,7 +104,6 @@ export async function generateMetadata({
                 'max-snippet': -1,
             },
         },
-
         openGraph: {
             type: "website",
             locale: ({
@@ -112,37 +111,25 @@ export async function generateMetadata({
                 it: 'it_IT', pt: 'pt_BR', ru: 'ru_RU', ar: 'ar_SA', ja: 'ja_JP',
                 ko: 'ko_KR', zh: 'zh_CN',
             } as Record<string, string>)[locale] || 'en_US',
-            url: locale === 'tr' ? `${SITE_URL}` : `${SITE_URL}/${locale}`,
-            title: meta.title,
-            description: meta.description,
             siteName: "YulaSanta",
             images: [
                 {
                     url: '/opengraph-image.png',
                     width: 1200,
                     height: 630,
-                    alt: meta.title,
+                    alt: 'YulaSanta',
                 }
             ],
         },
         twitter: {
             card: "summary_large_image",
-            title: meta.title,
-            description: meta.description,
-            images: ['/twitter-image.png'],
-        },
-        alternates: {
-            canonical: locale === 'tr' ? `${SITE_URL}` : `${SITE_URL}/${locale}`,
-            languages: locales.reduce((acc, loc) => {
-                acc[loc] = loc === 'tr' ? `${SITE_URL}` : `${SITE_URL}/${loc}`;
-                return acc;
-            }, { 'x-default': `${SITE_URL}` } as Record<string, string>),
+            images: ['/opengraph-image.png'],
         },
     };
 }
 
 // JSON-LD structured data - SEO Optimized
-function getJsonLd(locale: string, messages: Record<string, any>) {
+function getJsonLd(locale: string, messages: { meta?: { description?: string } }) {
     const localeMap: Record<string, string> = {
         tr: 'tr-TR',
         en: 'en-US',
@@ -209,116 +196,13 @@ function getJsonLd(locale: string, messages: Record<string, any>) {
                 "encodingFormat": "image/png"
             }
         ],
-        "sameAs": [],
         "foundingDate": "2024",
         "description": messages.meta?.description || "YulaSanta — YouTube & TikTok yorum çekilişi, gizli çekiliş, isim çekilişi ve ücretsiz araçlar"
     };
 
-    // WebPage Schema
-    const webPageSchema = {
-        "@type": "WebPage",
-        "@id": `${SITE_URL}/${locale === 'tr' ? '' : locale + '/'}#webpage`,
-        "url": locale === 'tr' ? `${SITE_URL}` : `${SITE_URL}/${locale}`,
-        "name": messages.meta?.title || "YulaSanta",
-        "isPartOf": {
-            "@id": `${SITE_URL}/#website`
-        },
-        "about": {
-            "@id": `${SITE_URL}/#organization`
-        },
-        "description": messages.meta?.description,
-        "inLanguage": localeMap[locale] || locale,
-        "potentialAction": [
-            {
-                "@type": "ReadAction",
-                "target": [locale === 'tr' ? `${SITE_URL}` : `${SITE_URL}/${locale}`]
-            }
-        ]
-    };
-
-    // SoftwareApplication Schema
-    const appSchema = {
-        "@type": "SoftwareApplication",
-        "@id": `${SITE_URL}/#application`,
-        "name": "YulaSanta",
-        "applicationCategory": "UtilityApplication",
-        "operatingSystem": "Any",
-        "inLanguage": localeMap[locale] || locale,
-        "url": SITE_URL,
-        "offers": {
-            "@type": "Offer",
-            "price": "0",
-            "priceCurrency": "TRY",
-            "availability": "https://schema.org/InStock"
-        },
-        "description": messages.meta?.description,
-        "author": {
-            "@id": `${SITE_URL}/#organization`
-        },
-        "featureList": [
-            "YouTube Comment Giveaway",
-            "TikTok Comment Giveaway",
-            "Secret Santa / Gift Exchange",
-            "Name Picker",
-            "Dice Roller",
-            "Coin Flip",
-            "Random Number Generator",
-            "Short Straw Game",
-            "Wheel of Fortune",
-            "Team Generator",
-            "Gift Suggestions",
-            "No Login Required",
-            "Free to use",
-            "Multi-language Support"
-        ],
-        "screenshot": `${SITE_URL}/opengraph-image.png`
-    };
-
-    // FAQ Schema - Helps with rich snippets (include every qN/aN pair present)
-    const faq = messages.meta?.faq ?? {};
-    const faqEntities = [];
-    for (let i = 1; i <= 20; i++) {
-        const q = faq[`q${i}`];
-        const a = faq[`a${i}`];
-        if (!q || !a) break;
-        faqEntities.push({
-            "@type": "Question",
-            "name": q,
-            "acceptedAnswer": { "@type": "Answer", "text": a }
-        });
-    }
-    const faqSchema = {
-        "@type": "FAQPage",
-        "@id": `${SITE_URL}/${locale === 'tr' ? '' : locale + '/'}#faq`,
-        "mainEntity": faqEntities
-    };
-
-    // BreadcrumbList Schema
-    const breadcrumbSchema = {
-        "@type": "BreadcrumbList",
-        "@id": `${SITE_URL}/${locale === 'tr' ? '' : locale + '/'}#breadcrumb`,
-        "itemListElement": [
-            {
-                "@type": "ListItem",
-                "position": 1,
-                "item": {
-                    "@id": locale === 'tr' ? `${SITE_URL}` : `${SITE_URL}/${locale}`,
-                    "name": messages.meta?.faq?.breadcrumbHome ?? "Home"
-                }
-            }
-        ]
-    };
-
     return {
         "@context": "https://schema.org",
-        "@graph": [
-            websiteSchema,
-            organizationSchema,
-            webPageSchema,
-            appSchema,
-            faqSchema,
-            breadcrumbSchema
-        ]
+        "@graph": [websiteSchema, organizationSchema]
     };
 }
 

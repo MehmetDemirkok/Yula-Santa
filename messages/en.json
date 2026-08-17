@@ -1,7 +1,7 @@
 {
     "meta": {
-        "title": "YulaSanta — YouTube & TikTok Comment Giveaways, Secret Santa",
-        "description": "Pick fair winners from YouTube and TikTok comments. Free Secret Santa, name picker, dice, coin flip, wheel of fortune and more — no signup, no password.",
+        "title": "YulaSanta — Free Online Giveaway Tools",
+        "description": "YouTube and TikTok comment giveaways, name picker, Secret Santa, spin the wheel and more. Free, no signup, no password.",
         "keywords": [
             "youtube giveaway",
             "youtube comment picker",
@@ -147,8 +147,8 @@
         "tiktokDesc": "Run giveaways from comments on your TikTok videos easily. Pick winners for free and without passwords on TikTok!",
         "meta": {
             "youtube": {
-                "title": "Free YouTube Comment Giveaway Tool | Comment Picker - YulaSanta",
-                "description": "Run fast, fair YouTube comment giveaways. Pick random winners — no signup, no password.",
+                "title": "YouTube Comment Giveaway — Free Comment Picker | YulaSanta",
+                "description": "Pick fair winners from YouTube video comments. No signup or password; fetch via API or paste comments.",
                 "keywords": [
                     "youtube giveaway",
                     "youtube comment picker",
@@ -158,8 +158,8 @@
                 ]
             },
             "tiktok": {
-                "title": "TikTok Giveaway Tool | Free TikTok Raffle - YulaSanta",
-                "description": "Run giveaways from comments on your TikTok videos. Fast and fair raffle results with our TikTok giveaway site.",
+                "title": "TikTok Comment Giveaway — Free Picker | YulaSanta",
+                "description": "Pick winners from TikTok video comments. Paste a link or add comments by hand — no signup.",
                 "keywords": [
                     "tiktok giveaway",
                     "tiktok raffle",
@@ -185,7 +185,7 @@
         "parse": "Parse Comments",
         "parsed": "{count} participants parsed",
         "participantLimitDetails": "To see more comments, please use manual entry mode.",
-        "youtubeLimitNote": "Note: Up to 1000 comments can be fetched automatically from the API.",
+        "youtubeLimitNote": "Note: Automatic API fetch can load thousands of comments, up to a paging cap.",
         "tiktokLimitNote": "Note: Up to 100 comments can be fetched automatically from the API.",
         "channelUsername": "Username (Follower Check)",
         "channelUsernameHint": "Enter your username to check if winners follow you",
@@ -208,6 +208,34 @@
         "subscribedPrivate": "Private",
         "checkingSubscription": "Checking...",
         "seo": {
+            "youtube": {
+                "contentTitle": "How to run a YouTube comment giveaway",
+                "contentParagraphs": [
+                    "YulaSanta is a free YouTube comment picker. No account and no YouTube password.",
+                    "Paste a public video link to fetch comments via the YouTube Data API (there is a paging limit; paste more comments manually if needed). Winners are chosen in your browser with cryptographic randomness."
+                ],
+                "howToTitle": "YouTube comment giveaway steps",
+                "howToSteps": [
+                    "Paste a YouTube video or Shorts link, or add comments manually.",
+                    "Set winner and backup counts; optionally count each user once.",
+                    "Start the draw and copy or download the result."
+                ],
+                "faqTitle": "YouTube giveaway FAQ",
+                "faq": [
+                    {
+                        "q": "Is the YouTube comment giveaway free?",
+                        "a": "Yes. YulaSanta does not require signup."
+                    },
+                    {
+                        "q": "Do you fetch every comment?",
+                        "a": "The API paginates up to thousands of comments; there is a cap. For longer lists, paste comments manually."
+                    },
+                    {
+                        "q": "Is winner selection fair?",
+                        "a": "Yes. We use a Fisher–Yates shuffle and cryptographic random numbers."
+                    }
+                ]
+            },
             "tiktok": {
                 "contentTitle": "TikTok Giveaway Tool — Free Comment Raffle",
                 "contentParagraphs": [
@@ -288,20 +316,20 @@
                 ],
                 "metrics": [
                     {
-                        "value": "1,000,000+",
-                        "label": "Processed Comments"
+                        "value": "Free",
+                        "label": "No signup"
                     },
                     {
-                        "value": "80,000+",
-                        "label": "Successful Giveaways"
+                        "value": "API",
+                        "label": "Comment fetch"
                     },
                     {
                         "value": "100%",
-                        "label": "Random Selection"
+                        "label": "Random selection"
                     },
                     {
                         "value": "0",
-                        "label": "Login Required"
+                        "label": "Login required"
                     }
                 ],
                 "features": [

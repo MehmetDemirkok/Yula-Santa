@@ -54,7 +54,7 @@ export default function RandomNumberPage() {
                     </Link>
                     <div>
                         <h1 className="font-heading text-headline-lg-mobile sm:text-headline-lg text-[var(--text-primary)]">
-                            🔢 {t('title')}
+                            {t('title')}
                         </h1>
                         <p className="text-body-md text-[var(--text-secondary)] mt-1">{t('subtitle')}</p>
                     </div>

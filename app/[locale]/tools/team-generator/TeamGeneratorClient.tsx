@@ -109,12 +109,15 @@ export function TeamGeneratorClient() {
                     Back
                 </Button>
 
+                <h1 className="font-heading text-headline-lg-mobile sm:text-headline-lg text-[var(--text-primary)] mb-6 tracking-tight">
+                    {t('title')}
+                </h1>
                 <div className="grid grid-cols-1 lg:grid-cols-12 gap-8">
                     {/* Input Section */}
                     <div className="lg:col-span-4 space-y-6">
                         <div className="ys-card p-6 h-full flex flex-col min-h-[600px]">
                             <h2 className="font-heading text-headline-md text-[var(--text-primary)] mb-4 flex items-center justify-between">
-                                <span className="flex items-center gap-2">👥 {t('title')}</span>
+                                <span className="flex items-center gap-2">{t('listMode')}</span>
                                 <span className="ys-chip ys-chip-indigo">
                                     {namesList.length}
                                 </span>

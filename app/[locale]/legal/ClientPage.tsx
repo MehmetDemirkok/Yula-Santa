@@ -72,7 +72,7 @@ export default function LegalClient() {
                                     {t('title')}
                                 </div>
                                 <h1 className="text-4xl sm:text-6xl font-black text-[var(--text-primary)] dark:text-white tracking-tight">
-                                    Yula<span className="text-christmas-green">Legal</span>
+                                    {t('title')}
                                 </h1>
                             </div>
                         </div>

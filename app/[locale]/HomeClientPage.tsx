@@ -1,6 +1,7 @@
 "use client";
 
-import { useRouter, useParams } from "next/navigation";
+import { useParams } from "next/navigation";
+import Link from "next/link";
 import {
     Youtube,
     Gift,
@@ -16,7 +17,6 @@ import {
     Sparkles,
     Aperture
 } from "lucide-react";
-import { Button } from "@/components/ui/Button";
 import { useTranslations } from "next-intl";
 import { cn } from "@/lib/utils";
 import { CountdownBanner } from "@/components/NewYearTheme/CountdownBanner";
@@ -33,7 +33,6 @@ function TikTokIcon({ className }: { className?: string }) {
 }
 
 export default function HomeClientPage() {
-    const router = useRouter();
     const { locale } = useParams();
     const t = useTranslations();
 
@@ -127,21 +126,20 @@ export default function HomeClientPage() {
                             )}
 
                             <div className="flex flex-col sm:flex-row items-center justify-center lg:justify-start gap-3">
-                                <Button
-                                    onClick={() => router.push(localePath(locale, "/youtube"))}
-                                    className="w-full sm:w-auto text-sm lg:text-base py-5 px-8 rounded-2xl shadow-xl shadow-red-200/70 dark:shadow-red-500/20 hover:scale-[1.02] transition-all text-white font-bold bg-red-600 hover:bg-red-500"
+                                <Link
+                                    href={localePath(locale, "/youtube")}
+                                    className="w-full sm:w-auto inline-flex items-center justify-center text-sm lg:text-base py-5 px-8 rounded-2xl shadow-xl shadow-red-200/70 dark:shadow-red-500/20 hover:scale-[1.02] transition-all text-white font-bold bg-red-600 hover:bg-red-500"
                                 >
                                     <Youtube className="mr-2 w-5 h-5" />
                                     {t("home.youtubeGiveaway")}
-                                </Button>
-                                <Button
-                                    variant="ghost"
-                                    onClick={() => router.push(localePath(locale, "/tiktok"))}
-                                    className="w-full sm:w-auto text-sm lg:text-base py-5 px-8 rounded-2xl border-2 border-[var(--card-border)] bg-[var(--card-bg)] hover:bg-[var(--surface-2)] text-[var(--text-secondary)] font-bold"
+                                </Link>
+                                <Link
+                                    href={localePath(locale, "/tiktok")}
+                                    className="w-full sm:w-auto inline-flex items-center justify-center text-sm lg:text-base py-5 px-8 rounded-2xl border-2 border-[var(--card-border)] bg-[var(--card-bg)] hover:bg-[var(--surface-2)] text-[var(--text-secondary)] font-bold"
                                 >
                                     <TikTokIcon className="mr-2 w-5 h-5" />
                                     {t("home.tiktokGiveaway")}
-                                </Button>
+                                </Link>
                             </div>
                         </Reveal>
 
@@ -193,12 +191,12 @@ export default function HomeClientPage() {
                                     </div>
                                     <h3 className="font-heading text-2xl font-bold text-foreground mb-3">{item.title}</h3>
                                     <p className="text-[var(--text-secondary)] mb-8 leading-relaxed flex-grow">{item.desc}</p>
-                                    <Button
-                                        onClick={() => router.push(item.href)}
-                                        className={cn("mt-auto w-full py-4 rounded-xl font-bold text-white transition-all hover:shadow-lg", item.button)}
+                                    <Link
+                                        href={item.href}
+                                        className={cn("mt-auto w-full py-4 rounded-xl font-bold text-white transition-all hover:shadow-lg inline-flex items-center justify-center", item.button)}
                                     >
                                         {t("home.startNow")} <ArrowRight className="ml-2 w-4 h-4" />
-                                    </Button>
+                                    </Link>
                                 </div>
                             </Reveal>
                         ))}
@@ -214,12 +212,12 @@ export default function HomeClientPage() {
                                     <div className="min-w-0">
                                         <h3 className={cn("font-heading text-lg font-bold mb-1.5", item.accent)}>{item.title}</h3>
                                         <p className="text-sm text-[var(--text-secondary)] mb-3 leading-relaxed">{item.desc}</p>
-                                        <button
-                                            onClick={() => router.push(item.href)}
+                                        <Link
+                                            href={item.href}
                                             className={cn("font-bold text-sm flex items-center gap-1 group-hover:gap-2 transition-all", item.accent)}
                                         >
                                             {t("home.startNow")} <ArrowRight className="w-4 h-4" />
-                                        </button>
+                                        </Link>
                                     </div>
                                 </div>
                             </Reveal>
@@ -238,15 +236,15 @@ export default function HomeClientPage() {
                     <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-4 lg:gap-5">
                         {tools.map((tool, i) => (
                             <Reveal key={tool.href} delay={i * 60}>
-                                <button
-                                    onClick={() => router.push(tool.href)}
+                                <Link
+                                    href={tool.href}
                                     className="group flex flex-col items-center text-center gap-3 p-5 lg:p-6 w-full bg-[var(--card-bg)] rounded-2xl border border-[var(--card-border)] hover:border-santa-red/25 hover:shadow-lg transition-all"
                                 >
                                     <div className={cn("w-12 h-12 rounded-xl flex items-center justify-center text-white group-hover:scale-110 transition-transform", tool.color)}>
                                         <tool.icon className="w-6 h-6" />
                                     </div>
                                     <h4 className="text-sm lg:text-base font-bold text-foreground">{tool.name}</h4>
-                                </button>
+                                </Link>
                             </Reveal>
                         ))}
                     </div>

@@ -40,8 +40,8 @@ export default createMiddleware({
         name: 'NEXT_LOCALE'
     },
 
-    // Detect locale from Accept-Language header
-    localeDetection: true,
+    // URL and language switcher only — never redirect crawlers by Accept-Language.
+    localeDetection: false,
 });
 
 export const config = {

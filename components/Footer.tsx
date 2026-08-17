@@ -2,7 +2,7 @@
 
 import { useTranslations } from "next-intl";
 import Link from "next/link";
-import { useParams, usePathname } from "next/navigation";
+import { useParams } from "next/navigation";
 import { localePath } from "@/lib/localePath";
 import {
     Dice1,
@@ -30,10 +30,7 @@ export function Footer() {
     const tTools = useTranslations("tools");
     const tHome = useTranslations("home");
     const params = useParams();
-    const pathname = usePathname();
     const locale = params.locale as string;
-
-    const isHomePage = pathname === localePath(locale) || pathname === `${localePath(locale)}/`;
 
     const tools = [
         {
@@ -158,8 +155,7 @@ export function Footer() {
                         </Link>
                     </div>
 
-                    {!isHomePage && (
-                        <div className="w-full grid grid-cols-1 lg:grid-cols-2 gap-4 sm:gap-6">
+                    <div className="w-full grid grid-cols-1 lg:grid-cols-2 gap-4 sm:gap-6">
                             <div className="ys-card p-4 sm:p-6 md:p-8">
                                 <div className="flex items-center gap-2 sm:gap-3 mb-4 sm:mb-6">
                                     <div className="w-1 sm:w-1.5 h-6 sm:h-8 bg-santa-red rounded-full" />
@@ -209,8 +205,7 @@ export function Footer() {
                                     ))}
                                 </div>
                             </div>
-                        </div>
-                    )}
+                    </div>
 
                     <div className="flex flex-col items-center space-y-4 sm:space-y-6">
                         <nav className="flex flex-wrap justify-center items-center gap-x-6 sm:gap-x-8 gap-y-3 sm:gap-y-4">

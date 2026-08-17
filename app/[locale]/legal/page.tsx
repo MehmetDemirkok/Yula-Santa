@@ -12,7 +12,7 @@ export function generateStaticParams() {
 
 export async function generateMetadata({ params }: { params: Promise<{ locale: string }> }): Promise<Metadata> {
     const { locale } = await params;
-    return getSEOMetadata({ locale, path: '/legal', translationKey: 'legal' });
+    return getSEOMetadata({ locale, path: '/legal', translationKey: 'legal.meta' });
 }
 
 export default async function Page() {

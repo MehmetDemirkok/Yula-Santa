@@ -195,7 +195,7 @@ export default function Home() {
                         <img src="/icon.png" alt="YulaSanta Logo" className="w-16 h-16 sm:w-20 sm:h-20 object-contain rounded-xl" />
                     </div>
                     <h1 className="font-heading text-headline-lg-mobile sm:text-headline-lg text-[var(--text-primary)] tracking-tight">
-                        Yula<span className="text-santa-red">Santa</span>
+                        {locale === 'tr' ? 'Online Secret Santa' : t('footer.secretSanta')}
                     </h1>
                     <p className="text-[var(--text-secondary)] text-body-lg">
                         {t('home.subtitle')}

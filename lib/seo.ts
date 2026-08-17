@@ -50,7 +50,7 @@ export async function getSEOMetadata({
     let messages;
     try {
         messages = (await import(`@/messages/${locale}.json`)).default;
-    } catch (error) {
+    } catch {
         messages = (await import(`@/messages/${defaultLocale}.json`)).default;
     }
 

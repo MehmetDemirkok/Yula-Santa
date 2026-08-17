@@ -24,18 +24,19 @@ export default function robots(): MetadataRoute.Robots {
                 disallow: [
                     '/api/',
                     '/result',
+                    '/*/result',
                     '/private/',
                 ],
             },
             {
                 userAgent: 'Googlebot',
                 allow: '/',
-                disallow: ['/api/', '/result'],
+                disallow: ['/api/', '/result', '/*/result'],
             },
             {
                 userAgent: 'Bingbot',
                 allow: '/',
-                disallow: ['/api/', '/result'],
+                disallow: ['/api/', '/result', '/*/result'],
             },
         ],
         sitemap: `${SITE_URL}/sitemap.xml`,

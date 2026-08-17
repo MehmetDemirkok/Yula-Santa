@@ -490,7 +490,7 @@ export default function CoinFlipPage() {
                         <ArrowLeft className="w-5 h-5 text-[var(--text-secondary)]" />
                     </Link>
                     <div>
-                        <h1 className="font-heading text-headline-lg-mobile sm:text-headline-lg text-[var(--text-primary)] tracking-tight">🪙 {t('title')}</h1>
+                        <h1 className="font-heading text-headline-lg-mobile sm:text-headline-lg text-[var(--text-primary)] tracking-tight">{t('title')}</h1>
                         <p className="text-xs sm:text-sm text-amber-600 dark:text-amber-400 mt-0.5 font-medium">{t('subtitle')}</p>
                     </div>
                 </div>

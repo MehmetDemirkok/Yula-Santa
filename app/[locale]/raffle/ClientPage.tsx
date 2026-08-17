@@ -5,14 +5,14 @@ import { Trophy } from "lucide-react";
 import { useLanguage } from "@/lib/i18n/LanguageContext";
 
 const TITLE: Record<string, string> = {
-    tr: "Online İsim Çekilişi", en: "Online Name Picker", de: "Online-Namensauslosung",
-    fr: "Tirage au sort de noms", es: "Sorteo de nombres online", it: "Estrazione nomi online",
-    pt: "Sorteio de nomes online", ru: "Онлайн-розыгрыш имён", ar: "سحب الأسماء عبر الإنترنت",
-    ja: "オンライン名前抽選", ko: "온라인 이름 추첨", zh: "在线姓名抽奖",
+    tr: "İsim çekilişi", en: "Name picker", de: "Namensauslosung",
+    fr: "Tirage de noms", es: "Sorteo de nombres", it: "Estrazione nomi",
+    pt: "Sorteio de nomes", ru: "Розыгрыш имён", ar: "سحب الأسماء",
+    ja: "名前抽選", ko: "이름 추첨", zh: "姓名抽奖",
 };
 
 const SUBTITLE: Record<string, string> = {
-    tr: "İsim listenizi girin, adil ve şeffaf çekilişle kazananları ve yedekleri anında belirleyin.",
+    tr: "Listenizden adil kazanan ve yedek seçin. Ücretsiz kura — kayıt yok.",
     en: "Enter your list of names and instantly pick winners and backups with a fair, transparent draw.",
     de: "Geben Sie Ihre Namensliste ein und ermitteln Sie Gewinner und Ersatz mit einer fairen Auslosung.",
     fr: "Saisissez votre liste de noms et désignez instantanément les gagnants grâce à un tirage équitable.",

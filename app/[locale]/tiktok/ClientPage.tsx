@@ -454,7 +454,7 @@ export default function TikTokGiveaway() {
                         <TikTokIcon className="w-8 h-8 sm:w-10 sm:h-10 text-white" />
                     </div>
                     <h1 className="text-2xl sm:text-3xl md:text-4xl font-black text-[var(--text-primary)] dark:text-white tracking-tight">
-                        {t.giveaway.tiktokTitle}
+                        {locale === 'tr' ? 'TikTok yorum çekilişi' : t.giveaway.tiktokTitle.replace(/\s*\|.*$/, '')}
                     </h1>
                     <p className="text-[var(--text-muted)] dark:text-[var(--text-muted)] max-w-lg mx-auto text-sm sm:text-base px-2">
                         {t.giveaway.tiktokDesc}

@@ -1,9 +1,7 @@
-/**
- * On-page SEO content for giveaway tool pages (YouTube, TikTok).
- * Rendered below the tool UI so crawlers get unique, keyword-rich body copy.
- */
-
 import { getTranslations } from 'next-intl/server';
+import JsonLd from '@/components/seo/JsonLd';
+import RelatedLinks from '@/components/seo/RelatedLinks';
+import { SITE_URL } from '@/lib/constants';
 
 type Platform = 'tiktok' | 'youtube';
 
@@ -11,6 +9,45 @@ interface Props {
     locale: string;
     platform: Platform;
 }
+
+const RELATED: Record<Platform, Record<string, { title: string; items: { path: string; label: string }[] }>> = {
+    youtube: {
+        tr: {
+            title: 'İlgili araçlar',
+            items: [
+                { path: '/tiktok', label: 'Ücretsiz TikTok yorum çekilişi yap' },
+                { path: '/raffle', label: 'İsim çekilişi kullan' },
+                { path: '/tools/wheel-of-fortune', label: 'Çarkıfelek çevir' },
+            ],
+        },
+        en: {
+            title: 'Related tools',
+            items: [
+                { path: '/tiktok', label: 'Run a TikTok comment giveaway' },
+                { path: '/raffle', label: 'Use the name picker' },
+                { path: '/tools/wheel-of-fortune', label: 'Spin the wheel' },
+            ],
+        },
+    },
+    tiktok: {
+        tr: {
+            title: 'İlgili araçlar',
+            items: [
+                { path: '/youtube', label: 'YouTube yorum çekilişi yap' },
+                { path: '/raffle', label: 'İsim çekilişi kullan' },
+                { path: '/tools/wheel-of-fortune', label: 'Çarkıfelek çevir' },
+            ],
+        },
+        en: {
+            title: 'Related tools',
+            items: [
+                { path: '/youtube', label: 'Run a YouTube comment giveaway' },
+                { path: '/raffle', label: 'Use the name picker' },
+                { path: '/tools/wheel-of-fortune', label: 'Spin the wheel' },
+            ],
+        },
+    },
+};
 
 export default async function GiveawaySeoSection({ locale, platform }: Props) {
     const t = await getTranslations({ locale, namespace: `giveaway.seo.${platform}` });
@@ -20,6 +57,9 @@ export default async function GiveawaySeoSection({ locale, platform }: Props) {
     const paragraphs = t.raw('contentParagraphs') as string[];
     const steps = t.raw('howToSteps') as string[];
     const faq = t.raw('faq') as Array<{ q: string; a: string }>;
+    const related = RELATED[platform][locale] || RELATED[platform].en;
+    const path = platform === 'youtube' ? '/youtube' : '/tiktok';
+    const pageUrl = locale === 'tr' ? `${SITE_URL}${path}` : `${SITE_URL}/${locale}${path}`;
 
     const faqJsonLd =
         Array.isArray(faq) && faq.length > 0
@@ -34,22 +74,51 @@ export default async function GiveawaySeoSection({ locale, platform }: Props) {
               }
             : null;
 
+    const howToJsonLd = Array.isArray(steps) && steps.length > 0
+        ? {
+              '@context': 'https://schema.org',
+              '@type': 'HowTo',
+              name: t('howToTitle'),
+              step: steps.map((text, i) => ({
+                  '@type': 'HowToStep',
+                  position: i + 1,
+                  text,
+              })),
+          }
+        : null;
+
+    const breadcrumbJsonLd = {
+        '@context': 'https://schema.org',
+        '@type': 'BreadcrumbList',
+        itemListElement: [
+            {
+                '@type': 'ListItem',
+                position: 1,
+                name: locale === 'tr' ? 'Ana Sayfa' : 'Home',
+                item: locale === 'tr' ? SITE_URL : `${SITE_URL}/${locale}`,
+            },
+            {
+                '@type': 'ListItem',
+                position: 2,
+                name: t('contentTitle'),
+                item: pageUrl,
+            },
+        ],
+    };
+
     return (
         <section className="border-t border-[var(--border-light)] bg-[var(--surface-1)]">
-            {faqJsonLd && (
-                <script
-                    type="application/ld+json"
-                    dangerouslySetInnerHTML={{ __html: JSON.stringify(faqJsonLd) }}
-                />
-            )}
+            {faqJsonLd && <JsonLd data={faqJsonLd} />}
+            {howToJsonLd && <JsonLd data={howToJsonLd} />}
+            <JsonLd data={breadcrumbJsonLd} />
             <div className="max-w-3xl mx-auto px-4 py-14 sm:py-20 space-y-12">
                 <div>
                     <h2 className="font-heading text-3xl tracking-tight text-[var(--text-primary)] mb-5 sm:text-[2rem]">
                         {t('contentTitle')}
                     </h2>
                     <div className="space-y-4 text-base text-[var(--text-secondary)] leading-relaxed">
-                        {paragraphs.map((p, i) => (
-                            <p key={i}>{p}</p>
+                        {paragraphs.map((p) => (
+                            <p key={p}>{p}</p>
                         ))}
                     </div>
                 </div>
@@ -60,8 +129,8 @@ export default async function GiveawaySeoSection({ locale, platform }: Props) {
                     </h3>
                     <ol className="space-y-4">
                         {steps.map((step, i) => (
-                            <li key={i} className="flex gap-4 text-base text-[var(--text-secondary)]">
-                                <span className="shrink-0 w-9 h-9 rounded-full font-bold text-sm flex items-center justify-center shadow-sm bg-santa-red/10 text-santa-red">
+                            <li key={step} className="flex gap-4 text-base text-[var(--text-secondary)]">
+                                <span className="shrink-0 w-9 h-9 rounded-full font-bold text-sm flex items-center justify-center bg-santa-red/10 text-santa-red">
                                     {i + 1}
                                 </span>
                                 <span className="pt-1.5 leading-relaxed">{step}</span>
@@ -76,9 +145,9 @@ export default async function GiveawaySeoSection({ locale, platform }: Props) {
                             {t('faqTitle')}
                         </h3>
                         <div className="space-y-4">
-                            {faq.map((item, i) => (
+                            {faq.map((item) => (
                                 <details
-                                    key={i}
+                                    key={item.q}
                                     className="group rounded-2xl border border-[var(--border-light)] bg-[var(--card-bg)] px-5 py-4"
                                 >
                                     <summary className="cursor-pointer list-none font-bold text-[var(--text-primary)] pr-6 relative">
@@ -91,6 +160,8 @@ export default async function GiveawaySeoSection({ locale, platform }: Props) {
                         </div>
                     </div>
                 )}
+
+                <RelatedLinks locale={locale} title={related.title} items={related.items} />
             </div>
         </section>
     );

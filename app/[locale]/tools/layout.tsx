@@ -1,20 +1,8 @@
 
-import { Metadata } from "next";
-
 import { SITE_URL } from "@/lib/constants";
-import { getSEOMetadata, viewport } from '@/lib/seo';
+import { viewport } from '@/lib/seo';
 
 export { viewport };
-
-// Generate dynamic metadata with locale support
-export async function generateMetadata({ params }: { params: Promise<{ locale: string }> }): Promise<Metadata> {
-    const { locale } = await params;
-    return getSEOMetadata({
-        locale,
-        path: '/tools',
-        translationKey: 'tools.meta'
-    });
-}
 
 // JSON-LD Structured Data for Tools
 function getToolsJsonLd(locale: string) {

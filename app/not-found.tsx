@@ -35,6 +35,9 @@ export default function NotFound() {
 
     return (
         <html lang={locale} dir={locale === 'ar' ? 'rtl' : 'ltr'}>
+            <head>
+                <meta name="robots" content="noindex, nofollow" />
+            </head>
             <body className="antialiased">
                 <main className="min-h-screen flex flex-col items-center justify-center text-center px-4 bg-gradient-to-b from-[#FFF5F5] to-white dark:from-gray-950 dark:to-gray-900">
                     <div className="absolute top-0 left-1/4 w-72 h-72 bg-red-200/40 dark:bg-red-500/10 rounded-full blur-[100px]" />

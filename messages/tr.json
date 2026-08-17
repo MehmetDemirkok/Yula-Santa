@@ -1,7 +1,7 @@
 {
     "meta": {
-        "title": "YulaSanta — YouTube & TikTok Yorum Çekilişi, Gizli Çekiliş",
-        "description": "YouTube ve TikTok yorumlarından adil kazanan seçin. Gizli çekiliş, isim çekilişi, zar, yazı tura, çarkıfelek ve daha fazla ücretsiz araç — kayıt ve şifre yok.",
+        "title": "YulaSanta — Ücretsiz Çekiliş Sitesi",
+        "description": "YouTube ve TikTok yorum çekilişi, isim çekilişi, Secret Santa, çarkıfelek ve daha fazlası. Kayıtsız, şifresiz, ücretsiz.",
         "keywords": [
             "youtube çekiliş",
             "youtube yorum çekilişi",
@@ -42,7 +42,7 @@
         }
     },
     "home": {
-        "title": "YulaSanta — YouTube & TikTok Yorum Çekilişi, Gizli Çekiliş",
+        "title": "YulaSanta — Ücretsiz Çekiliş Sitesi",
         "subtitle": "Arkadaşlarını ekle, çekilişi başlat!",
         "secretDraw": "Gizli Çekiliş 🤫",
         "directMatch": "Direkt Eşleşme 🤝",
@@ -79,10 +79,10 @@
         "toolsDesc": "Adil seçimler ve günlük kararlar için basit ücretsiz araçlar.",
         "viewAll": "Tümünü Gör",
         "seo": {
-            "title": "Ücretsiz YouTube, TikTok ve Gizli Çekiliş Platformu",
+            "title": "Ücretsiz YouTube, TikTok ve isim çekilişi",
             "paragraphs": [
-                "YulaSanta ile YouTube ve TikTok yorum çekilişlerinizi saniyeler içinde yapın. Kayıt olmadan, şifre girmeden adil asil ve yedek kazanan seçin.",
-                "Gizli çekiliş (Secret Santa), isim çekilişi, zar atma, yazı tura, rastgele sayı, kısa çöp, çarkıfelek, takım oluşturucu ve hediye önerileri ile tüm çekiliş ihtiyaçlarınız tek yerde."
+                "YulaSanta ile YouTube ve TikTok yorum çekilişlerinizi kayıtsız yapın. Video linkini yapıştırın veya yorumları elle ekleyin; kazanan ve yedek seçimi tarayıcıda adil rastgelelikle yapılır.",
+                "İsim çekilişi, Secret Santa, çarkıfelek, rastgele sayı, yazı tura ve takım oluşturucu aynı yerde. Instagram yorumlarını otomatik çekmeyiz; isimleri kopyalayıp isim çekilişine yapıştırabilirsiniz."
             ],
             "featuresTitle": "Neden YulaSanta?",
             "features": [
@@ -148,8 +148,8 @@
         "tiktokDesc": "TikTok çekiliş aracı ile videolarınızdaki yorumlar arasından kolayca çekiliş yapın. Ücretsiz ve şifresiz TikTok kura çek!",
         "meta": {
             "youtube": {
-                "title": "Ücretsiz YouTube Yorum Çekiliş Aracı | Yorum Seçici - YulaSanta",
-                "description": "YouTube videolarınız için hızlı ve güvenilir yorum çekilişi yapın. Rastgele kazanan seçin — kayıt ve şifre yok.",
+                "title": "YouTube Yorum Çekilişi — Ücretsiz Yorum Seçici | YulaSanta",
+                "description": "YouTube videosundaki yorumlardan adil kazanan seçin. Kayıt ve şifre yok; yorumları API ile çekin veya yapıştırın.",
                 "keywords": [
                     "youtube çekiliş",
                     "youtube yorum çekilişi",
@@ -159,8 +159,8 @@
                 ]
             },
             "tiktok": {
-                "title": "TikTok Çekiliş Aracı | Ücretsiz TikTok Kura Çek - YulaSanta",
-                "description": "TikTok videolarınızdaki yorumlar arasından çekiliş yapın. TikTok çekiliş sitesi ile hızlı ve adil kura sonuçları.",
+                "title": "TikTok Yorum Çekilişi — Ücretsiz Çekiliş Aracı | YulaSanta",
+                "description": "TikTok videosundaki yorumlardan kazanan seçin. Link yapıştırın veya yorumları elle ekleyin — kayıt yok.",
                 "keywords": [
                     "tiktok çekiliş",
                     "tiktok kura çek",
@@ -171,8 +171,36 @@
             }
         },
         "seo": {
+            "youtube": {
+                "contentTitle": "YouTube yorum çekilişi nasıl yapılır?",
+                "contentParagraphs": [
+                    "YulaSanta, YouTube videosundaki yorumlardan kazanan seçmek için ücretsiz bir yorum seçicidir. Kayıt veya YouTube şifresi istemez.",
+                    "Herkese açık video linkini yapıştırınca yorumlar YouTube Data API ile çekilir (sayfalama sınırı vardır; daha fazlası için manuel ekleme kullanın). Kazananlar tarayıcıda kriptografik rastgelelikle seçilir."
+                ],
+                "howToTitle": "YouTube yorum çekilişi adımları",
+                "howToSteps": [
+                    "YouTube video veya Shorts linkini yapıştırın, ya da yorumları elle ekleyin.",
+                    "Kazanan ve yedek sayısını seçin; isterseniz her kullanıcıyı bir kez sayın.",
+                    "Çekilişi başlatın ve sonucu kopyalayın veya kazanan kartını indirin."
+                ],
+                "faqTitle": "YouTube çekiliş SSS",
+                "faq": [
+                    {
+                        "q": "YouTube yorum çekilişi ücretsiz mi?",
+                        "a": "Evet. YulaSanta kayıtsız ve ücretsizdir."
+                    },
+                    {
+                        "q": "Tüm yorumlar çekilir mi?",
+                        "a": "API ile binlerce yoruma kadar sayfalama yapılır; üst sınır vardır. Daha uzun listeler için yorumları yapıştırabilirsiniz."
+                    },
+                    {
+                        "q": "Kazanan seçimi adil mi?",
+                        "a": "Evet. Fisher–Yates karıştırması ve kriptografik rastgele sayı kullanılır."
+                    }
+                ]
+            },
             "tiktok": {
-                "contentTitle": "TikTok Çekiliş Aracı — Ücretsiz TikTok Yorum Çekilişi",
+                "contentTitle": "TikTok yorum çekilişi nasıl yapılır?",
                 "contentParagraphs": [
                     "YulaSanta ücretsiz TikTok çekiliş sitesi ile videolarınızdaki yorumlar arasından adil kazanan seçimi yapın. Kayıt ve şifre olmadan saniyeler içinde kura çekin.",
                     "İçerik üreticileri ve markalar için tasarlandı: yorum çekilişi, asil/yedek kazanan, tekrarlayan kullanıcı filtresi ve sonuç paylaşımı tamamen ücretsizdir."
@@ -219,7 +247,7 @@
         "pasteComments": "Yorumları buraya yapıştırın (Her satıra bir tane)",
         "parse": "Yorumları Ayrıştır",
         "parsed": "{count} kişi ayrıştırıldı",
-        "youtubeLimitNote": "Not: API üzerinden otomatik olarak en fazla 1000 yorum çekilebilir.",
+        "youtubeLimitNote": "Not: API üzerinden otomatik olarak binlerce yoruma kadar çekilebilir; üst sınır vardır.",
         "tiktokLimitNote": "Not: API üzerinden otomatik olarak en fazla 100 yorum çekilebilir.",
         "participantLimitDetails": "Daha fazla yorum için lütfen manuel giriş modunu kullanın.",
         "channelUsername": "Kullanıcı Adı (Takip Kontrolü)",
@@ -289,12 +317,12 @@
                 ],
                 "metrics": [
                     {
-                        "value": "1.000.000+",
-                        "label": "İşlenen yorum"
+                        "value": "Ücretsiz",
+                        "label": "Kayıt yok"
                     },
                     {
-                        "value": "80.000+",
-                        "label": "Başarılı çekiliş"
+                        "value": "API",
+                        "label": "Yorum çekme"
                     },
                     {
                         "value": "%100",
@@ -477,7 +505,7 @@
             "description": "İsim çekilişi, zar atma, yazı tura, rastgele sayı, kısa çöp, çarkıfelek, takım oluşturucu ve hediye önerileri — tamamen ücretsiz."
         },
         "diceMeta": {
-            "title": "🎲 Zar Atma Oyunu | Online Ücretsiz Zar At - YulaSanta",
+            "title": "Zar Atma Oyunu | Online Ücretsiz Zar At - YulaSanta",
             "description": "Online zar atma oyunu. 1 veya 2 zar ile ücretsiz zar at. Tavla, okey ve masa oyunları için profesyonel zar simülatörü.",
             "keywords": [
                 "zar atma",
@@ -541,7 +569,7 @@
             "throwing": "Zarlar havada..."
         },
         "coinFlipMeta": {
-            "title": "🪙 Yazı Tura | Online Coin Flip - Ücretsiz Para At - YulaSanta",
+            "title": "Yazı Tura | Online Coin Flip - YulaSanta",
             "description": "Online yazı tura atma aracı. Hızlı karar vermek için ücretsiz coin flip. Yazı mı tura mı?",
             "keywords": [
                 "yazı tura",
@@ -569,7 +597,7 @@
             "throws": "atış"
         },
         "randomNumberMeta": {
-            "title": "🔢 Rastgele Sayı Seçici | Random Number Generator - YulaSanta",
+            "title": "Rastgele Sayı Seçici | YulaSanta",
             "description": "Online rastgele sayı üretici. Belirlediğiniz aralıkta rastgele sayı seçin. Çekilişler ve oyunlar için ideal.",
             "keywords": [
                 "rastgele sayı",
@@ -635,7 +663,7 @@
             "addPeopleFirst": "Başlamak için en az 2 isim ekle"
         },
         "wheelOfFortuneMeta": {
-            "title": "🎡 Çarkıfelek | Online Çark Çevir - Ücretsiz Karar Çarkı - YulaSanta",
+            "title": "Çarkıfelek | Online Çark Çevir - YulaSanta",
             "description": "Özelleştirilebilir şans çarkı. İsimleri veya seçenekleri girin, çarkı çevirin ve kazananı belirleyin. Ücretsiz online karar çarkı.",
             "keywords": [
                 "çarkıfelek",
@@ -646,7 +674,7 @@
             ]
         },
         "teamGeneratorMeta": {
-            "title": "👥 Takım Oluşturucu | Rastgele Takım Kurma - YulaSanta",
+            "title": "Takım Oluşturucu | Rastgele Takım Kurma - YulaSanta",
             "description": "Ücretsiz online takım oluşturma aracı. İsim listesinden rastgele ve dengeli takımlar kurun. Maçlar, oyunlar ve ofis aktiviteleri için ideal.",
             "keywords": [
                 "takım kurma",
@@ -1151,7 +1179,7 @@
             }
         },
         "giftSuggestionsMeta": {
-            "title": "🎁 Hediye Önerileri Aracı | Özel Günler İçin Hediye Fikirleri - YulaSanta",
+            "title": "Hediye Önerileri | YulaSanta",
             "description": "Doğum günü, düğün, sevgililer günü ve daha fazlası için mükemmel hediyeyi bulun. Yapay zeka destekli ücretsiz hediye öneri aracı.",
             "keywords": [
                 "hediye önerileri",
@@ -1163,7 +1191,7 @@
             ]
         },
         "shortStrawMeta": {
-            "title": "🎋 Kısa Çöp Oyunu | Short Straw Game Online - YulaSanta",
+            "title": "Kısa Çöp Oyunu | YulaSanta",
             "description": "Online kısa çöp çekme oyunu. Grup içinde adil ve eğlenceli seçim yapın.",
             "keywords": [
                 "kısa çöp",
@@ -1195,13 +1223,13 @@
         "lastUpdated": "Son Güncelleme: 27 Aralık 2025",
         "intro": "YulaSanta olarak gizliliğinize büyük önem veriyoruz. Bu politika, web sitemizi kullandığınızda verilerinizin nasıl işlendiğini açıklar.",
         "dataTitle": "Veri Toplama",
-        "dataDesc": "YulaSanta, çekiliş oluşturmak için girdiğiniz isimleri yalnızca tarayıcınızın yerel depolamasında (localStorage) saklar. Bu veriler sunucularımıza iletilmez ve yalnızca kendi cihazınızda kalır.",
+        "dataDesc": "Çekiliş için girdiğiniz isimler tarayıcınızın yerel depolamasında (localStorage) saklanır. YouTube ve TikTok yorumlarını otomatik çekerken video adresi sunucumuz üzerinden ilgili platform API’lerine iletilir; yorum metinleri çekilişi tamamlamak için işlenir. İletişim formuna yazdığınız bilgiler e-posta olarak bize ulaşır.",
         "cookiesTitle": "Çerezler ve Reklam",
         "cookiesDesc": "Sitemizde Google AdSense reklamları gösterilmektedir. Google ve reklam ortakları, ilgi alanlarınıza dayalı reklamlar sunmak için çerezleri (cookies) kullanabilir.",
         "securityTitle": "Veri Güvenliği",
-        "securityDesc": "Verileriniz yalnızca tarayıcınızda saklandığı için, tarayıcı geçmişinizi veya verilerinizi temizlediğinizde tüm çekiliş bilgileri silinir.",
+        "securityDesc": "İsim listesi ve Secret Santa eşleşmeleri tarayıcınızda kalır; tarayıcı verilerini temizlediğinizde silinir.",
         "thirdPartyTitle": "Üçüncü Taraf Hizmetler",
-        "thirdPartyDesc": "Google Analytics ve Google AdSense gibi dünya standartlarında servisler kullanmaktayız. Bu servislerin kendi gizlilik politikaları geçerlidir."
+        "thirdPartyDesc": "Vercel Analytics (kullanım istatistikleri), Google AdSense (reklam) ve YouTube / TikTok yorum çekme için ilgili platform API’leri kullanılır. Bu servislerin kendi gizlilik politikaları geçerlidir."
     },
     "legal": {
         "title": "Yasal Bilgiler",
@@ -1243,7 +1271,7 @@
             },
             "secure": {
                 "title": "Güvenli & Gizli",
-                "desc": "Verileriniz sadece tarayıcınızda saklanır. Sunucularımıza herhangi bir kişisel bilgi göndermiyoruz."
+                "desc": "İsim listeleri ve Secret Santa eşleşmeleri tarayıcınızda kalır. YouTube/TikTok yorum çekme için video linki API’ye gönderilir; şifre istemeyiz."
             },
             "fast": {
                 "title": "Süper Hızlı",

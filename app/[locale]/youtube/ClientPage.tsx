@@ -467,8 +467,11 @@ export default function YouTubeGiveaway() {
                     </div>
 
                     <h1 className="font-heading text-[2.25rem] leading-[1.1] tracking-tight text-[var(--text-primary)] sm:text-5xl md:text-[3.5rem]">
-                        {tl("heroTitle")}{" "}
-                        <span className="text-[#FF0000]">{tl("heroHighlight")}</span>
+                        {locale === "tr"
+                            ? "YouTube yorum çekilişi"
+                            : locale === "en"
+                              ? "YouTube comment giveaway"
+                              : `${tl("heroTitle")} ${tl("heroHighlight")}`}
                     </h1>
 
                     <p className="mx-auto mt-5 max-w-xl text-base leading-relaxed text-[var(--text-secondary)] sm:text-lg">

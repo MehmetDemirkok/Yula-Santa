@@ -203,7 +203,36 @@
         "notSubscribed": "未订阅",
         "subscribedPrivate": "私密",
         "checkingSubscription": "检查中...",
-        "seo": {},
+        "seo": {
+            "youtube": {
+                "contentTitle": "How to run a YouTube comment giveaway",
+                "contentParagraphs": [
+                    "YulaSanta is a free YouTube comment picker. No account and no YouTube password.",
+                    "Paste a public video link to fetch comments via the YouTube Data API (there is a paging limit; paste more comments manually if needed). Winners are chosen in your browser with cryptographic randomness."
+                ],
+                "howToTitle": "YouTube comment giveaway steps",
+                "howToSteps": [
+                    "Paste a YouTube video or Shorts link, or add comments manually.",
+                    "Set winner and backup counts; optionally count each user once.",
+                    "Start the draw and copy or download the result."
+                ],
+                "faqTitle": "YouTube giveaway FAQ",
+                "faq": [
+                    {
+                        "q": "Is the YouTube comment giveaway free?",
+                        "a": "Yes. YulaSanta does not require signup."
+                    },
+                    {
+                        "q": "Do you fetch every comment?",
+                        "a": "The API paginates up to thousands of comments; there is a cap. For longer lists, paste comments manually."
+                    },
+                    {
+                        "q": "Is winner selection fair?",
+                        "a": "Yes. We use a Fisher–Yates shuffle and cryptographic random numbers."
+                    }
+                ]
+            }
+        },
         "landing": {
             "youtube": {
                 "badge": "YouTube 抽奖工具",
@@ -251,20 +280,20 @@
                 ],
                 "metrics": [
                     {
-                        "value": "1.000.000+",
-                        "label": "已处理评论"
+                        "value": "Free",
+                        "label": "No signup"
                     },
                     {
-                        "value": "80.000+",
-                        "label": "成功抽奖"
+                        "value": "API",
+                        "label": "Comment fetch"
                     },
                     {
-                        "value": "%100",
-                        "label": "随机抽取"
+                        "value": "100%",
+                        "label": "Random selection"
                     },
                     {
                         "value": "0",
-                        "label": "无需登录"
+                        "label": "Login required"
                     }
                 ],
                 "features": [
