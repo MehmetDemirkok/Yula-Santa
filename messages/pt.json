@@ -182,7 +182,7 @@
         "parse": "Analisar Comentários",
         "parsed": "{count} participantes analisados",
         "youtubeLimitNote": "Nota: Até 1000 comentários podem ser buscados automaticamente.",
-        "tiktokLimitNote": "Nota: Até 100 comentários podem ser buscados automaticamente.",
+        "tiktokLimitNote": "Nota: A busca automática custa 200 TL por execução e retorna até 500 comentários.",
         "participantLimitDetails": "Para ver mais comentários, use o modo manual.",
         "channelUsername": "Username (Check seguidores)",
         "channelUsernameHint": "Insira seu username para verificar se os ganhadores te seguem",
@@ -423,6 +423,195 @@
                     "Listando participantes...",
                     "Preparando dados..."
                 ]
+            },
+            "tiktok": {
+                "badge": "TikTok comment giveaway",
+                "heroTitle": "TikTok",
+                "heroHighlight": "comment giveaway",
+                "heroSubtitle": "Paste a video link and pick winners from comments. No login, no password.",
+                "urlPlaceholder": "tiktok.com/@user/video/…",
+                "fetchCta": "Fetch comments",
+                "fetchCtaPaid": "{price} — fetch comments",
+                "fetching": "Fetching…",
+                "urlHint": "Public videos · Up to 500 comments per fetch · Pasting is free",
+                "step1Url": "TikTok video link",
+                "step1Manual": "Paste comments",
+                "step3Title": "Set winner count",
+                "step3Subtitle": "Ready",
+                "step4Label": "Start the draw",
+                "backToUrl": "← Back to link",
+                "continueWith": "Continue with {count} people",
+                "switchManual": "Paste comments instead →",
+                "automatic": "From link",
+                "manual": "Paste",
+                "selecting": "Selecting…",
+                "winner": "Winner",
+                "backup": "Backup",
+                "pngDownload": "PNG",
+                "add": "Add",
+                "loadingWait": "This can take 20–60 seconds",
+                "moreRules": "More rules",
+                "hideRules": "Hide rules",
+                "eligibleCta": "{count} people will enter the draw",
+                "autoUnavailable": "Automatic fetch is unavailable right now. Copy comments from TikTok and paste them — the draw still works.",
+                "priceBadge": "Automatic comment fetch",
+                "priceCap": "up to {count} comments",
+                "priceHint": "One payment, one video. Need more? Paste comments for free.",
+                "followHint": "Shown as a badge after the draw; it does not remove people from the raffle.",
+                "previewImport": "Preview",
+                "importPeople": "Import {count} people",
+                "featuresTitle": "Run a TikTok giveaway without friction",
+                "featuresSubtitle": "One job: paste a link or comments, then pick a winner.",
+                "howTitle": "How it works",
+                "howSubtitle": "Three steps. You never have to guess what to click next.",
+                "startCta": "Start your giveaway",
+                "faqTitle": "Frequently asked questions",
+                "steps": {
+                    "paste": "Link",
+                    "load": "Comments",
+                    "rules": "Rules",
+                    "draw": "Draw"
+                },
+                "trustBadges": [
+                    "No TikTok login",
+                    "Paste fallback",
+                    "One-entry filter",
+                    "Backup winners",
+                    "Free"
+                ],
+                "metrics": [
+                    {
+                        "value": "3",
+                        "label": "Steps"
+                    },
+                    {
+                        "value": "0",
+                        "label": "Sign-up"
+                    },
+                    {
+                        "value": "Free",
+                        "label": "Giveaway"
+                    },
+                    {
+                        "value": "Proof",
+                        "label": "Fair draw"
+                    }
+                ],
+                "features": [
+                    {
+                        "title": "Link or paste",
+                        "desc": "If the video URL fails, paste comments and keep going."
+                    },
+                    {
+                        "title": "One person once",
+                        "desc": "Repeat comments from the same account are filtered."
+                    },
+                    {
+                        "title": "Keyword / hashtag",
+                        "desc": "Only comments with your phrase enter the draw."
+                    },
+                    {
+                        "title": "Backup winners",
+                        "desc": "Pick reserves if a winner cannot claim."
+                    },
+                    {
+                        "title": "Exclude owner",
+                        "desc": "Keep the video owner out of the raffle."
+                    },
+                    {
+                        "title": "Draw proof",
+                        "desc": "Share the seed and timestamp with the result."
+                    },
+                    {
+                        "title": "PNG card",
+                        "desc": "Download winners as a shareable image."
+                    },
+                    {
+                        "title": "No password",
+                        "desc": "We never ask for TikTok login or app access."
+                    }
+                ],
+                "howSteps": [
+                    {
+                        "title": "Paste the link",
+                        "desc": "Drop the TikTok video URL in the box. If that fails, paste comments."
+                    },
+                    {
+                        "title": "Choose winner count",
+                        "desc": "Set how many winners and backups you want. Extra rules are optional."
+                    },
+                    {
+                        "title": "Draw",
+                        "desc": "A fair shuffle picks from the eligible list. Copy or share the result."
+                    }
+                ],
+                "faq": [
+                    {
+                        "q": "Do I need to log in to TikTok?",
+                        "a": "No. We never ask for a password. A public video link or pasted comments is enough."
+                    },
+                    {
+                        "q": "How much is automatic fetch?",
+                        "a": "200 TL per fetch, up to 500 comments. Pasting comments is free; the draw itself stays free."
+                    },
+                    {
+                        "q": "What if automatic fetch fails?",
+                        "a": "Copy comments from the video and use the Paste tab. The giveaway continues the same way."
+                    },
+                    {
+                        "q": "Is the winner truly random?",
+                        "a": "Yes. A secure shuffle gives every eligible person an equal chance. You can check the proof panel."
+                    },
+                    {
+                        "q": "Does ‘must follow’ remove people from the draw?",
+                        "a": "No. Follow status is a badge after the draw. Keyword and one-entry rules decide who is eligible."
+                    }
+                ],
+                "errors": {
+                    "needLink": "Enter a TikTok video link",
+                    "invalidLink": "Enter a valid TikTok link (tiktok.com/@…/video/…)",
+                    "quota": "Automatic comment fetch is over quota. Paste comments to continue.",
+                    "unavailable": "The comment service is not responding. You can paste comments and continue.",
+                    "empty": "No comments found on this video. Try pasting them manually.",
+                    "generic": "Could not fetch comments. Check the link and that the video is public."
+                },
+                "toasts": {
+                    "added": "@{name} added",
+                    "participantsAdded": "{count} participants added",
+                    "copied": "Results copied",
+                    "cardDownloaded": "Winner card downloaded",
+                    "noNewNames": "No new names to add"
+                },
+                "loadingSteps": [
+                    "Connecting to TikTok…",
+                    "Fetching video comments…",
+                    "Validating participants…",
+                    "Preparing the list…"
+                ],
+                "pay": {
+                    "openCta": "Fetch comments",
+                    "title": "Confirm the draw",
+                    "subtitle": "Comments are taken from the video. No account is created.",
+                    "emailLabel": "Email",
+                    "emailPlaceholder": "you@email.com",
+                    "emailHint": "Confirmation and any credit go to this address.",
+                    "invalidEmail": "Enter a valid email",
+                    "cta": "Confirm and continue",
+                    "processing": "Going to payment…",
+                    "noMembership": "No account needed",
+                    "serviceName": "Comment fetch",
+                    "feeLine": "One-time service",
+                    "feeHint": "Service fee {price} · no account",
+                    "cap": "up to {count} comments",
+                    "noRefund": "If comments cannot be fetched there is no refund; you receive one draw credit.",
+                    "useCredit": "Continue with your credit",
+                    "creditTitle": "One draw credit added",
+                    "creditBody": "The payment was not refunded. The next automatic fetch uses this credit.",
+                    "creditEmail": "The credit was emailed to you. Use the link to retry.",
+                    "creditSaved": "The credit is saved on this device. Fetch comments again.",
+                    "paymentsDown": "Payments are not open yet. They start after Stripe terms are accepted.",
+                    "cancelled": "Cancelled. You can try again."
+                }
             }
         },
         "keywordLabel": "Required keyword / hashtag in comment",

@@ -1,15 +1,14 @@
 "use client";
 
 import { useState, useRef, useEffect, useMemo } from "react";
-import { useRouter } from "next/navigation";
 import confetti from "canvas-confetti";
 import { useLocale, useTranslations } from "next-intl";
+import { useSearchParams } from "next/navigation";
+import { useRouter } from "@/i18n/navigation";
 import {
     MessageCircle,
     Plus,
     Minus,
-    Settings,
-    Link2,
     Users,
     AtSign,
     Play,
@@ -18,7 +17,19 @@ import {
     Loader2,
     Trophy,
     X,
-    ChevronDown
+    ChevronDown,
+    ChevronUp,
+    Check,
+    Shield,
+    Filter,
+    Download,
+    Share2,
+    Link2,
+    ClipboardPaste,
+    ArrowRight,
+    BadgeCheck,
+    Shuffle,
+    UserMinus,
 } from "lucide-react";
 import { Button } from "@/components/ui/Button";
 import { useLanguage } from "@/lib/i18n/LanguageContext";
@@ -34,66 +45,99 @@ import { TikTokFetchStats } from "@/components/giveaway/TikTokFetchStats";
 import { SITE_SHARE_SUFFIX } from "@/lib/constants";
 import { AdWrapper, InArticleAd } from "@/components/ads";
 import { AD_SLOTS } from "@/lib/ads/config";
+import { Reveal } from "@/components/Reveal";
+import { PayTicketDialog } from "@/components/tiktok/PayTicketDialog";
 import {
     applyManualImportPreview,
+    COMMENTS_PER_FETCH,
+    formatFetchPrice,
     isLikelyTikTokUrl,
+    isValidEmail,
     parseManualImport,
     type ManualImportPreview,
     type TikTokErrorCode,
     type TikTokFetchMeta,
 } from "@/lib/tiktok";
 
-// TikTok Icon Component
-const TikTokIcon = ({ className }: { className?: string }) => (
-    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512" className={className} fill="currentColor">
-        <path d="M448 209.91a210.06 210.06 0 0 1-122.77-39.25V349.38A162.55 162.55 0 1 1 185 188.31V278.2a74.62 74.62 0 1 0 52.23 71.18V0l88 0a121.18 121.18 0 0 0 1.86 22.17h0A122.18 122.18 0 0 0 381 102.39a121.43 121.43 0 0 0 67 20.14z" />
-    </svg>
-);
-
-type TabType = 'links' | 'rules' | 'participants';
-
+type Phase = "input" | "configure" | "results";
+type EntryMode = "auto" | "manual";
 
 interface Participant {
     name: string;
     comment: string;
-    isFollowing?: boolean | 'unknown' | 'checking';
+    isFollowing?: boolean | "unknown" | "checking";
+}
+
+const TT_CTA = "bg-santa-red hover:bg-santa-red-hover";
+const CREDIT_STORAGE_KEY = "ys_tiktok_credit";
+
+const FEATURE_ICONS = [Link2, Filter, MessageCircle, Users, UserMinus, Shield, Download, BadgeCheck] as const;
+const TRUST_ICONS = [Shield, ClipboardPaste, Filter, Users, BadgeCheck] as const;
+
+const TikTokMark = ({ className }: { className?: string }) => (
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512" className={className} fill="currentColor" aria-hidden>
+        <path d="M448 209.91a210.06 210.06 0 0 1-122.77-39.25V349.38A162.55 162.55 0 1 1 185 188.31V278.2a74.62 74.62 0 1 0 52.23 71.18V0l88 0a121.18 121.18 0 0 0 1.86 22.17h0A122.18 122.18 0 0 0 381 102.39a121.43 121.43 0 0 0 67 20.14z" />
+    </svg>
+);
+
+function prefersReducedMotion() {
+    if (typeof window === "undefined") return false;
+    return window.matchMedia("(prefers-reduced-motion: reduce)").matches;
 }
 
 export default function TikTokGiveaway() {
     const router = useRouter();
     const locale = useLocale();
+    const searchParams = useSearchParams();
     const { t } = useLanguage();
+    const tl = useTranslations("giveaway.landing.tiktok");
     const tg = useTranslations("giveaway");
     const { toast } = useToast();
 
-    // Tab state
-    const [activeTab, setActiveTab] = useState<TabType>('links');
-
-    // Link & Draw settings
-    const [mode, setMode] = useState<'manual' | 'auto' | null>(null);
+    const [phase, setPhase] = useState<Phase>("input");
+    const [entryMode, setEntryMode] = useState<EntryMode>("auto");
     const [manualPaste, setManualPaste] = useState("");
     const [postLink, setPostLink] = useState("");
     const [channelUsername, setChannelUsername] = useState("");
+    const [showAdvanced, setShowAdvanced] = useState(false);
 
-    // Rules/Settings
     const [giveawayName, setGiveawayName] = useState("");
     const [winnerCount, setWinnerCount] = useState(1);
     const [backupCount, setBackupCount] = useState(0);
-    const [requireFollow, setRequireFollow] = useState(true);
+    const [requireFollow, setRequireFollow] = useState(false);
     const [countUserOnce, setCountUserOnce] = useState(true);
     const [keywordFilter, setKeywordFilter] = useState("");
     const [excludeOwner, setExcludeOwner] = useState(true);
     const [ownerUsername, setOwnerUsername] = useState("");
     const [drawProof, setDrawProof] = useState<DrawProof | null>(null);
 
-    // Participants
     const [participants, setParticipants] = useState<Participant[]>([]);
     const [newParticipant, setNewParticipant] = useState("");
     const [bulkInput, setBulkInput] = useState("");
     const [showManualEntry, setShowManualEntry] = useState(false);
     const dropdownRef = useRef<HTMLDivElement>(null);
+    const toolRef = useRef<HTMLDivElement>(null);
+    const configureRef = useRef<HTMLDivElement>(null);
 
-    // Close dropdown on click outside
+    const [isRolling, setIsRolling] = useState(false);
+    const [rollingParticipant, setRollingParticipant] = useState<Participant | null>(null);
+    const [winners, setWinners] = useState<Participant[]>([]);
+    const [backups, setBackups] = useState<Participant[]>([]);
+    const [copied, setCopied] = useState(false);
+    const [loading, setLoading] = useState(false);
+    const [loadingStep, setLoadingStep] = useState("");
+    const [error, setError] = useState<string | null>(null);
+    const [showShareModal, setShowShareModal] = useState(false);
+    const [fetchMeta, setFetchMeta] = useState<TikTokFetchMeta | null>(null);
+    const [importPreview, setImportPreview] = useState<ManualImportPreview | null>(null);
+    const [openFaq, setOpenFaq] = useState<number | null>(0);
+    const [payOpen, setPayOpen] = useState(false);
+    const [payerEmail, setPayerEmail] = useState("");
+    const [payError, setPayError] = useState<string | null>(null);
+    const [checkoutLoading, setCheckoutLoading] = useState(false);
+    const [creditToken, setCreditToken] = useState<string | null>(null);
+    const [creditNotice, setCreditNotice] = useState<{ reason: string; emailSent: boolean } | null>(null);
+
     useEffect(() => {
         function handleClickOutside(event: MouseEvent) {
             if (dropdownRef.current && !dropdownRef.current.contains(event.target as Node)) {
@@ -104,235 +148,27 @@ export default function TikTokGiveaway() {
         return () => document.removeEventListener("mousedown", handleClickOutside);
     }, []);
 
-    // Animation & Results
-    const [isRolling, setIsRolling] = useState(false);
-    const [rollingParticipant, setRollingParticipant] = useState<Participant | null>(null);
-    const [winners, setWinners] = useState<Participant[]>([]);
-    const [backups, setBackups] = useState<Participant[]>([]);
-    const [showResults, setShowResults] = useState(false);
-    const [copied, setCopied] = useState(false);
-    const [loading, setLoading] = useState(false);
-    const [loadingStep, setLoadingStep] = useState("");
-    const [error, setError] = useState<string | null>(null);
-    const [showShareModal, setShowShareModal] = useState(false);
-    const [fetchMeta, setFetchMeta] = useState<TikTokFetchMeta | null>(null);
-    const [importPreview, setImportPreview] = useState<ManualImportPreview | null>(null);
-
-    const addParticipant = () => {
-        if (!newParticipant.trim()) return;
-        const name = newParticipant.trim().replace(/^@/, '');
-        if (participants.some(p => p.name === name)) {
-            toast.warning(t.home.nameExists || "Bu kullanıcı zaten listede");
-            return;
-        }
-        setParticipants([...participants, { name, comment: 'Manual Entry' }]);
-        setNewParticipant("");
-        toast.success(`@${name} eklendi`);
-    };
-
-    const removeParticipant = (index: number) => {
-        setParticipants(participants.filter((_, i) => i !== index));
-    };
-
-    const handleBulkAdd = () => {
-        if (!bulkInput.trim()) return;
-        const preview = parseManualImport(bulkInput, participants.map((p) => p.name));
-        const added = applyManualImportPreview(preview);
-        if (added.length === 0) {
-            toast.warning(locale.startsWith("tr") ? "Eklenecek yeni isim bulunamadı" : "No new names to add");
-            return;
-        }
-        setParticipants((prev) => [...prev, ...added]);
-        setBulkInput("");
-        setShowManualEntry(false);
-        toast.success(`${added.length} ${locale.startsWith("tr") ? "katılımcı eklendi" : "participants added"}`);
-    };
-
-    const handleManualParse = () => {
-        if (!manualPaste.trim()) return;
-        const preview = parseManualImport(manualPaste, participants.map((p) => p.name));
-        setImportPreview(preview);
-    };
-
-    const confirmManualImport = () => {
-        if (!importPreview) return;
-        const added = applyManualImportPreview(importPreview);
-        if (added.length === 0) {
-            toast.warning(locale.startsWith("tr") ? "İçe aktarılacak geçerli satır yok" : "No valid rows to import");
-            return;
-        }
-        setParticipants((prev) => [...prev, ...added]);
-        setManualPaste("");
-        setImportPreview(null);
-        setFetchMeta(null);
-        setActiveTab("rules");
-        toast.success(`${added.length} ${locale.startsWith("tr") ? "katılımcı içe aktarıldı" : "participants imported"}`);
-    };
-
-    const fetchTikTokComments = async () => {
-        setError(null);
-        if (!postLink.trim()) {
-            toast.warning(locale.startsWith("tr") ? "Lütfen bir TikTok video linki girin" : "Please enter a TikTok video link");
-            return;
-        }
-        if (!isLikelyTikTokUrl(postLink)) {
-            toast.error(
-                locale.startsWith("tr")
-                    ? "Geçerli bir TikTok video linki giriniz (tiktok.com/@.../video/...)"
-                    : "Enter a valid TikTok video link (tiktok.com/@.../video/...)"
-            );
-            return;
-        }
-
-        setLoading(true);
-        setFetchMeta(null);
-        const steps = locale.startsWith("tr")
-            ? [
-                  "TikTok'a bağlanılıyor...",
-                  "Video yorumları çekiliyor...",
-                  "Katılımcılar doğrulanıyor...",
-                  "Veriler hazırlanıyor...",
-              ]
-            : [
-                  "Connecting to TikTok...",
-                  "Fetching video comments...",
-                  "Validating participants...",
-                  "Preparing data...",
-              ];
-        let stepIdx = 0;
-        setLoadingStep(steps[0]);
-        const stepInterval = setInterval(() => {
-            stepIdx = (stepIdx + 1) % steps.length;
-            setLoadingStep(steps[stepIdx]);
-        }, 5000);
-
-        try {
-            const response = await fetch("/api/tiktok/comments", {
-                method: "POST",
-                headers: { "Content-Type": "application/json" },
-                body: JSON.stringify({ postLink }),
-            });
-
-            const data = await response.json().catch(() => ({} as Record<string, unknown>));
-
-            if (!response.ok) {
-                const code = (data.code as TikTokErrorCode | undefined) ?? "UNKNOWN";
-                const message =
-                    typeof data.error === "string"
-                        ? data.error
-                        : locale.startsWith("tr")
-                          ? "Yorumlar çekilemedi"
-                          : "Could not fetch comments";
-                setError(message);
-                toast.error(message);
-                if (code === "NO_APIFY_TOKEN" || code === "SCRAPER_UNAVAILABLE") {
-                    setMode("manual");
-                }
-                return;
-            }
-
-            if (!Array.isArray(data.participants)) {
-                throw new Error("Malformed response");
-            }
-
-            setParticipants(data.participants);
-            if (data.meta) setFetchMeta(data.meta as TikTokFetchMeta);
-            setActiveTab("rules");
-            toast.success(
-                `${data.participants.length} ${
-                    locale.startsWith("tr") ? "katılımcı başarıyla eklendi!" : "participants added!"
-                }`
-            );
-        } catch (err: unknown) {
-            console.error(err);
-            const friendly = locale.startsWith("tr")
-                ? "Yorumlar çekilemedi — video linkini kontrol edin ve videonun herkese açık olduğundan emin olun"
-                : "Could not fetch comments — check the link and that the video is public";
-            setError(friendly);
-            toast.error(friendly);
-        } finally {
-            clearInterval(stepInterval);
-            setLoading(false);
-            setLoadingStep("");
-        }
-    };
-
-    const checkFollowerStatus = async (winnersToCheck: Participant[], backupsToCheck: Participant[]) => {
-        try {
-            const allUsernames = [...winnersToCheck, ...backupsToCheck].map(p => p.name);
-
-            const response = await fetch('/api/tiktok/followers', {
-                method: 'POST',
-                headers: { 'Content-Type': 'application/json' },
-                body: JSON.stringify({
-                    channelUsername: channelUsername.replace(/^@/, ''),
-                    usernames: allUsernames
-                })
-            });
-
-            if (response.ok) {
-                const data = await response.json();
-                const results = data.results as Record<string, boolean | 'unknown'>;
-
-                // Update winners with follower status
-                setWinners(prev => prev.map(w => ({
-                    ...w,
-                    isFollowing: results[w.name] ?? 'unknown'
-                })));
-
-                // Update backups with follower status
-                setBackups(prev => prev.map(b => ({
-                    ...b,
-                    isFollowing: results[b.name] ?? 'unknown'
-                })));
-            } else {
-                // Mark all as unknown on error
-                setWinners(prev => prev.map(w => ({ ...w, isFollowing: 'unknown' as const })));
-                setBackups(prev => prev.map(b => ({ ...b, isFollowing: 'unknown' as const })));
-            }
-        } catch (error) {
-            console.error('Follower check error:', error);
-            setWinners(prev => prev.map(w => ({ ...w, isFollowing: 'unknown' as const })));
-            setBackups(prev => prev.map(b => ({ ...b, isFollowing: 'unknown' as const })));
-        }
-    };
-
-    const triggerConfetti = () => {
-        const duration = 3000;
-        const end = Date.now() + duration;
-
-        // TikTok Colors: Cyan (#25F4EE) and Red/Magenta (#FE2C55)
-        const colors = ['#25F4EE', '#FE2C55', '#000000'];
-
-        (function frame() {
-            confetti({
-                particleCount: 5,
-                angle: 60,
-                spread: 55,
-                origin: { x: 0 },
-                colors: colors
-            });
-            confetti({
-                particleCount: 5,
-                angle: 120,
-                spread: 55,
-                origin: { x: 1 },
-                colors: colors
-            });
-
-            if (Date.now() < end) {
-                requestAnimationFrame(frame);
-            }
-        }());
-    };
-
     useEffect(() => {
         const extracted = extractOwnerFromSocialUrl(postLink);
         if (extracted) {
             setOwnerUsername(extracted);
             if (!channelUsername) setChannelUsername(extracted);
         }
-    }, [postLink]);
+    }, [postLink, channelUsername]);
+
+    const scrollToTool = () => {
+        toolRef.current?.scrollIntoView({ behavior: prefersReducedMotion() ? "auto" : "smooth", block: "start" });
+    };
+
+    const goToConfigure = () => {
+        setPhase("configure");
+        requestAnimationFrame(() => {
+            configureRef.current?.scrollIntoView({
+                behavior: prefersReducedMotion() ? "auto" : "smooth",
+                block: "start",
+            });
+        });
+    };
 
     const { eligible: eligibleParticipants, stats: filterStats } = useMemo(
         () =>
@@ -372,33 +208,284 @@ export default function TikTokGiveaway() {
         dedupeOff: tg("proofDedupeOff"),
     };
 
-    const startGiveaway = () => {
-        if (eligibleParticipants.length < winnerCount + backupCount) {
-            toast.warning(tg("notEnoughEligible") || t.home.notEnoughPeople || "Yeterli katılımcı yok");
+    const addParticipant = () => {
+        if (!newParticipant.trim()) return;
+        const name = newParticipant.trim().replace(/^@/, "");
+        if (participants.some((p) => p.name === name)) {
+            toast.warning(t.home.nameExists);
             return;
         }
+        setParticipants([...participants, { name, comment: "" }]);
+        setNewParticipant("");
+        toast.success(tl("toasts.added", { name }));
+    };
 
-        setIsRolling(true);
-        setDrawProof(null);
+    const removeParticipant = (index: number) => {
+        setParticipants(participants.filter((_, i) => i !== index));
+    };
 
-        // Rolling animation
-        const interval = setInterval(() => {
-            const randomIndex = secureRandomInt(eligibleParticipants.length);
-            setRollingParticipant(eligibleParticipants[randomIndex]);
-        }, 80);
+    const handleBulkAdd = () => {
+        if (!bulkInput.trim()) return;
+        const preview = parseManualImport(bulkInput, participants.map((p) => p.name));
+        const added = applyManualImportPreview(preview);
+        if (added.length === 0) {
+            toast.warning(tl("toasts.noNewNames"));
+            return;
+        }
+        setParticipants((prev) => [...prev, ...added]);
+        setBulkInput("");
+        setShowManualEntry(false);
+        toast.success(tl("toasts.participantsAdded", { count: added.length }));
+    };
 
-        setTimeout(() => {
-            clearInterval(interval);
+    const handleManualParse = () => {
+        if (!manualPaste.trim()) return;
+        const preview = parseManualImport(manualPaste, participants.map((p) => p.name));
+        setImportPreview(preview);
+    };
 
-            const shuffled = secureShuffle(eligibleParticipants);
-            const selectedWinners = shuffled.slice(0, winnerCount).map(w => ({ ...w, isFollowing: 'checking' as const }));
-            const selectedBackups = shuffled.slice(winnerCount, winnerCount + backupCount).map(b => ({ ...b, isFollowing: 'checking' as const }));
+    const confirmManualImport = () => {
+        if (!importPreview) return;
+        const added = applyManualImportPreview(importPreview);
+        if (added.length === 0) {
+            toast.warning(tl("toasts.noNewNames"));
+            return;
+        }
+        setParticipants((prev) => [...prev, ...added]);
+        setManualPaste("");
+        setImportPreview(null);
+        setFetchMeta(null);
+        toast.success(tl("toasts.participantsAdded", { count: added.length }));
+        goToConfigure();
+    };
 
-            setWinners(selectedWinners);
-            setBackups(selectedBackups);
-            setIsRolling(false);
-            setShowResults(true);
-            setDrawProof(buildDrawProof({
+    const mapFetchError = (code: TikTokErrorCode): string => {
+        if (code === "NO_APIFY_TOKEN" || code === "RATE_LIMIT") return tl("errors.quota");
+        if (code === "SCRAPER_UNAVAILABLE" || code === "TIMEOUT") return tl("errors.unavailable");
+        if (code === "EMPTY_RESULT") return tl("errors.empty");
+        if (code === "INVALID_URL") return tl("errors.invalidLink");
+        return tl("errors.generic");
+    };
+
+    const openPayFlow = () => {
+        setError(null);
+        setPayError(null);
+        if (!postLink.trim()) {
+            toast.warning(tl("errors.needLink"));
+            return;
+        }
+        if (!isLikelyTikTokUrl(postLink)) {
+            toast.error(tl("errors.invalidLink"));
+            return;
+        }
+        setPayOpen(true);
+    };
+
+    const startCheckout = async () => {
+        if (!isValidEmail(payerEmail)) {
+            setPayError(tl("pay.invalidEmail"));
+            return;
+        }
+        setCheckoutLoading(true);
+        setPayError(null);
+        try {
+            const response = await fetch("/api/tiktok/checkout", {
+                method: "POST",
+                headers: { "Content-Type": "application/json" },
+                body: JSON.stringify({ email: payerEmail, postLink, locale }),
+            });
+            const data = (await response.json().catch(() => ({}))) as { url?: string; code?: string; error?: string };
+            if (!response.ok) {
+                setPayError(data.code === "PAYMENTS_UNAVAILABLE" ? tl("pay.paymentsDown") : tl("errors.generic"));
+                return;
+            }
+            if (data.url) {
+                window.location.assign(data.url);
+                return;
+            }
+            setPayError(tl("pay.paymentsDown"));
+        } catch {
+            setPayError(tl("errors.generic"));
+        } finally {
+            setCheckoutLoading(false);
+        }
+    };
+
+    const runEntitledFetch = async (opts: { sessionId?: string; token?: string }) => {
+        setPayOpen(false);
+        setError(null);
+        setCreditNotice(null);
+        setLoading(true);
+        setFetchMeta(null);
+        const steps = tl.raw("loadingSteps") as string[];
+        let stepIdx = 0;
+        setLoadingStep(steps[0]);
+        const stepInterval = setInterval(() => {
+            stepIdx = (stepIdx + 1) % steps.length;
+            setLoadingStep(steps[stepIdx]);
+        }, 5000);
+
+        try {
+            const response = await fetch("/api/tiktok/run", {
+                method: "POST",
+                headers: { "Content-Type": "application/json" },
+                body: JSON.stringify({
+                    sessionId: opts.sessionId,
+                    creditToken: opts.token,
+                }),
+            });
+            const data = (await response.json().catch(() => ({}))) as Record<string, unknown>;
+
+            if (data.creditGranted) {
+                const token = typeof data.creditToken === "string" ? data.creditToken : null;
+                if (token) {
+                    setCreditToken(token);
+                    try {
+                        localStorage.setItem(CREDIT_STORAGE_KEY, token);
+                    } catch {
+                        /* ignore */
+                    }
+                }
+                const analysis = data.analysis as { reason?: string } | undefined;
+                setCreditNotice({
+                    reason: analysis?.reason || (typeof data.error === "string" ? data.error : tl("pay.creditBody")),
+                    emailSent: Boolean(data.emailSent),
+                });
+                const message = typeof data.error === "string" ? data.error : tl("errors.unavailable");
+                setError(message);
+                toast.warning(tl("pay.creditTitle"));
+                setEntryMode("manual");
+                return;
+            }
+
+            if (!response.ok) {
+                const code = (data.code as TikTokErrorCode | undefined) ?? "UNKNOWN";
+                const message = mapFetchError(code);
+                setError(message);
+                toast.error(message);
+                setEntryMode("manual");
+                return;
+            }
+
+            if (!Array.isArray(data.participants)) {
+                throw new Error("Malformed response");
+            }
+
+            try {
+                localStorage.removeItem(CREDIT_STORAGE_KEY);
+            } catch {
+                /* ignore */
+            }
+            setCreditToken(null);
+            setParticipants(data.participants as Participant[]);
+            if (data.meta) setFetchMeta(data.meta as TikTokFetchMeta);
+            toast.success(tl("toasts.participantsAdded", { count: (data.participants as unknown[]).length }));
+            goToConfigure();
+        } catch {
+            const friendly = tl("errors.generic");
+            setError(friendly);
+            toast.error(friendly);
+            setEntryMode("manual");
+        } finally {
+            clearInterval(stepInterval);
+            setLoading(false);
+            setLoadingStep("");
+        }
+    };
+
+    useEffect(() => {
+        try {
+            const stored = localStorage.getItem(CREDIT_STORAGE_KEY);
+            if (stored) setCreditToken(stored);
+        } catch {
+            /* ignore */
+        }
+        const credit = searchParams.get("credit");
+        const sessionId = searchParams.get("session_id");
+        const paid = searchParams.get("paid");
+        if (credit) {
+            setCreditToken(credit);
+            try {
+                localStorage.setItem(CREDIT_STORAGE_KEY, credit);
+            } catch {
+                /* ignore */
+            }
+            setPayOpen(true);
+        }
+        if (paid === "1" && sessionId) {
+            void runEntitledFetch({ sessionId });
+        }
+        if (paid === "0") {
+            setPayOpen(true);
+            setPayError(tl("pay.cancelled"));
+        }
+        if (credit || sessionId || paid) {
+            const url = new URL(window.location.href);
+            url.searchParams.delete("credit");
+            url.searchParams.delete("session_id");
+            url.searchParams.delete("paid");
+            window.history.replaceState({}, "", url.pathname + url.search + url.hash);
+        }
+        // One-shot return-from-checkout / credit-link bootstrap.
+        // eslint-disable-next-line react-hooks/exhaustive-deps
+    }, []);
+
+    const checkFollowerStatus = async (winnersToCheck: Participant[], backupsToCheck: Participant[]) => {
+        try {
+            const allUsernames = [...winnersToCheck, ...backupsToCheck].map((p) => p.name);
+            const response = await fetch("/api/tiktok/followers", {
+                method: "POST",
+                headers: { "Content-Type": "application/json" },
+                body: JSON.stringify({
+                    channelUsername: channelUsername.replace(/^@/, ""),
+                    usernames: allUsernames,
+                }),
+            });
+
+            if (response.ok) {
+                const data = await response.json();
+                const results = data.results as Record<string, boolean | "unknown">;
+                setWinners((prev) => prev.map((w) => ({ ...w, isFollowing: results[w.name] ?? "unknown" })));
+                setBackups((prev) => prev.map((b) => ({ ...b, isFollowing: results[b.name] ?? "unknown" })));
+            } else {
+                setWinners((prev) => prev.map((w) => ({ ...w, isFollowing: "unknown" as const })));
+                setBackups((prev) => prev.map((b) => ({ ...b, isFollowing: "unknown" as const })));
+            }
+        } catch {
+            setWinners((prev) => prev.map((w) => ({ ...w, isFollowing: "unknown" as const })));
+            setBackups((prev) => prev.map((b) => ({ ...b, isFollowing: "unknown" as const })));
+        }
+    };
+
+    const triggerConfetti = () => {
+        if (prefersReducedMotion()) return;
+        const duration = 2400;
+        const end = Date.now() + duration;
+        const colors = ["#B61722", "#E09600", "#FFFFFF"];
+
+        (function frame() {
+            confetti({ particleCount: 4, angle: 60, spread: 55, origin: { x: 0 }, colors });
+            confetti({ particleCount: 4, angle: 120, spread: 55, origin: { x: 1 }, colors });
+            if (Date.now() < end) requestAnimationFrame(frame);
+        })();
+    };
+
+    const finishDraw = (pool: Participant[]) => {
+        const shuffled = secureShuffle(pool);
+        const selectedWinners = shuffled.slice(0, winnerCount).map((w) => ({
+            ...w,
+            isFollowing: requireFollow && channelUsername ? ("checking" as const) : ("unknown" as const),
+        }));
+        const selectedBackups = shuffled.slice(winnerCount, winnerCount + backupCount).map((b) => ({
+            ...b,
+            isFollowing: requireFollow && channelUsername ? ("checking" as const) : ("unknown" as const),
+        }));
+
+        setWinners(selectedWinners);
+        setBackups(selectedBackups);
+        setIsRolling(false);
+        setDrawProof(
+            buildDrawProof({
                 platform: "tiktok",
                 title: giveawayName || t.giveaway.tiktokTitle,
                 total: filterStats.total,
@@ -407,691 +494,957 @@ export default function TikTokGiveaway() {
                 countUserOnce,
                 winners: selectedWinners,
                 backups: selectedBackups,
-            }));
-            triggerConfetti();
+            })
+        );
+        triggerConfetti();
 
-            // Check follower status if requireFollow is enabled and channelUsername is provided
-            if (requireFollow && channelUsername) {
-                checkFollowerStatus(selectedWinners, selectedBackups);
-            } else {
-                // Mark as unknown if we can't check
-                setWinners(selectedWinners.map(w => ({ ...w, isFollowing: 'unknown' as const })));
-                setBackups(selectedBackups.map(b => ({ ...b, isFollowing: 'unknown' as const })));
-            }
-        }, 3000);
+        if (requireFollow && channelUsername) {
+            checkFollowerStatus(selectedWinners, selectedBackups);
+        }
+    };
+
+    const startGiveaway = () => {
+        if (eligibleParticipants.length < winnerCount + backupCount) {
+            toast.warning(tg("notEnoughEligible") || t.home.notEnoughPeople);
+            return;
+        }
+
+        setDrawProof(null);
+        setPhase("results");
+
+        if (prefersReducedMotion()) {
+            finishDraw(eligibleParticipants);
+            return;
+        }
+
+        setIsRolling(true);
+        const interval = setInterval(() => {
+            const randomIndex = secureRandomInt(eligibleParticipants.length);
+            setRollingParticipant(eligibleParticipants[randomIndex]);
+        }, 80);
+
+        setTimeout(() => {
+            clearInterval(interval);
+            finishDraw(eligibleParticipants);
+        }, 2200);
     };
 
     const resetGiveaway = () => {
         setWinners([]);
         setBackups([]);
         setDrawProof(null);
-        setShowResults(false);
-        setActiveTab('links');
+        setPhase("input");
+        setIsRolling(false);
+        scrollToTool();
     };
 
     const copyResults = () => {
-        const text = `🎉 ${giveawayName || t.giveaway.tiktokTitle} ${t.giveaway.results}\n\n🏆 ${t.giveaway.winners}:\n${winners.map((w, i) => `${i + 1}. @${w.name} - "${w.comment}"`).join('\n')}${backups.length > 0 ? `\n\n🔄 ${t.giveaway.backups}:\n${backups.map((b, i) => `${i + 1}. @${b.name}`).join('\n')}` : ''}`;
+        const text = `🎉 ${giveawayName || t.giveaway.tiktokTitle} ${t.giveaway.results}\n\n🏆 ${t.giveaway.winners}:\n${winners.map((w, i) => `${i + 1}. @${w.name} - "${w.comment}"`).join("\n")}${backups.length > 0 ? `\n\n🔄 ${t.giveaway.backups}:\n${backups.map((b, i) => `${i + 1}. @${b.name}`).join("\n")}` : ""}`;
         navigator.clipboard.writeText(text);
         setCopied(true);
-        toast.success("Sonuçlar panoya kopyalandı!");
+        toast.success(tl("toasts.copied"));
         setTimeout(() => setCopied(false), 2000);
     };
 
     const getShareText = () => {
-        return `🎉 ${giveawayName || t.giveaway.tiktokTitle} ${t.giveaway.results}\n\n🏆 ${t.giveaway.winners}:\n${winners.map((w, i) => `${i + 1}. @${w.name}`).join('\n')}${backups.length > 0 ? `\n\n🔄 ${t.giveaway.backups}:\n${backups.map((b, i) => `${i + 1}. @${b.name}`).join('\n')}` : ''}\n\n${SITE_SHARE_SUFFIX}`;
+        return `🎉 ${giveawayName || t.giveaway.tiktokTitle} ${t.giveaway.results}\n\n🏆 ${t.giveaway.winners}:\n${winners.map((w, i) => `${i + 1}. @${w.name}`).join("\n")}${backups.length > 0 ? `\n\n🔄 ${t.giveaway.backups}:\n${backups.map((b, i) => `${i + 1}. @${b.name}`).join("\n")}` : ""}\n\n${SITE_SHARE_SUFFIX}`;
     };
 
-    return (
-        <main className="ys-page-shell flex flex-col items-center p-3 sm:p-4 pt-24 sm:pt-32 relative overflow-hidden safe-area-inset-bottom transition-colors duration-300">
-            {/* Decorative BG */}
-            <div className="absolute top-0 left-0 w-48 sm:w-72 md:w-96 h-48 sm:h-72 md:h-96 bg-cyan-200 dark:bg-cyan-500/20 rounded-full blur-[80px] sm:blur-[100px] md:blur-[120px] opacity-40 -translate-x-1/2 -translate-y-1/2" />
-            <div className="absolute bottom-0 right-0 w-48 sm:w-72 md:w-96 h-48 sm:h-72 md:h-96 bg-red-200 dark:bg-red-500/20 rounded-full blur-[80px] sm:blur-[100px] md:blur-[120px] opacity-40 translate-x-1/3 translate-y-1/3" />
+    const trustBadgeLabels = tl.raw("trustBadges") as string[];
+    const metrics = tl.raw("metrics") as Array<{ value: string; label: string }>;
+    const featuresData = tl.raw("features") as Array<{ title: string; desc: string }>;
+    const howSteps = tl.raw("howSteps") as Array<{ title: string; desc: string }>;
+    const faqItems = tl.raw("faq") as Array<{ q: string; a: string }>;
+    const priceLabel = formatFetchPrice(locale);
 
-            <div className="z-10 w-full max-w-2xl space-y-4 sm:space-y-6">
-                {/* Header */}
-                <div className="text-center space-y-3 sm:space-y-4 pt-4 sm:pt-8">
-                    <div className="inline-flex items-center justify-center p-3 sm:p-4 bg-black rounded-xl sm:rounded-2xl shadow-lg">
-                        <TikTokIcon className="w-8 h-8 sm:w-10 sm:h-10 text-white" />
-                    </div>
-                    <h1 className="text-2xl sm:text-3xl md:text-4xl font-black text-[var(--text-primary)] dark:text-white tracking-tight">
-                        {locale === 'tr' ? 'TikTok yorum çekilişi' : t.giveaway.tiktokTitle.replace(/\s*\|.*$/, '')}
+    const progressSteps = [
+        { n: 1, label: tl("steps.paste") },
+        { n: 2, label: tl("steps.load") },
+        { n: 3, label: tl("steps.rules") },
+        { n: 4, label: tl("steps.draw") },
+    ];
+
+    const currentStep =
+        phase === "results"
+            ? 4
+            : phase === "configure"
+              ? 3
+              : participants.length > 0 || loading
+                ? 2
+                : 1;
+
+    const canDraw = eligibleParticipants.length >= winnerCount + backupCount;
+
+    return (
+        <main className="relative min-h-screen overflow-x-hidden bg-[#fafafa] text-[var(--text-primary)] dark:bg-[var(--background)]">
+            <div className="pointer-events-none absolute inset-0 overflow-hidden" aria-hidden>
+                <div className="absolute -top-32 left-1/2 h-[480px] w-[820px] -translate-x-1/2 rounded-full bg-[radial-gradient(ellipse_at_center,rgba(182,23,34,0.08),transparent_70%)]" />
+            </div>
+
+            <section ref={toolRef} className="relative z-10 mx-auto max-w-5xl px-4 pb-16 pt-24 sm:px-6 sm:pt-32 lg:pb-20">
+                <div className="mx-auto max-w-xl text-center">
+                    <p className="mb-4 inline-flex items-center gap-2 text-[13px] font-medium text-[var(--text-muted)]">
+                        <TikTokMark className="h-3.5 w-3.5 text-[var(--text-primary)]" />
+                        <span className="tracking-tight">{tl("heroTitle")}</span>
+                    </p>
+
+                    <h1 className="font-heading text-[2.35rem] font-extrabold leading-[1.05] tracking-[-0.03em] text-[var(--text-primary)] sm:text-[3.15rem]">
+                        {tl("heroHighlight")}
                     </h1>
-                    <p className="text-[var(--text-muted)] dark:text-[var(--text-muted)] max-w-lg mx-auto text-sm sm:text-base px-2">
-                        {t.giveaway.tiktokDesc}
+                    <p className="mx-auto mt-4 max-w-md text-[15px] leading-relaxed text-[var(--text-secondary)] sm:text-base">
+                        {tl("heroSubtitle")}
                     </p>
                 </div>
 
-                {/* Main Card */}
-                <div className="bg-white/90 dark:bg-[var(--card-bg)] backdrop-blur-xl rounded-2xl sm:rounded-3xl shadow-xl dark:shadow-2xl border border-white/50 dark:border-white/10 overflow-hidden min-h-[400px]">
-                    {/* Tab Navigation */}
-                    <div className={`flex border-b border-[var(--border-light)] ${isRolling ? 'opacity-50 pointer-events-none' : ''}`}>
-                        <button
-                            onClick={() => setActiveTab('links')}
-                            className={`flex-1 py-3 sm:py-4 px-2 sm:px-6 font-bold text-xs sm:text-sm flex items-center justify-center gap-1 sm:gap-2 transition-all border-b-2 ${activeTab === 'links'
-                                ? 'text-cyan-600 border-cyan-500 bg-cyan-50/50'
-                                : 'text-[var(--text-muted)] border-transparent hover:text-[var(--text-secondary)]'
-                                }`}
-                        >
-                            <Link2 className="w-3.5 h-3.5 sm:w-4 sm:h-4" />
-                            <span className="hidden xs:inline sm:inline">{t.giveaway.links}</span>
-                        </button>
-                        <button
-                            onClick={() => setActiveTab('rules')}
-                            className={`flex-1 py-3 sm:py-4 px-2 sm:px-6 font-bold text-xs sm:text-sm flex items-center justify-center gap-1 sm:gap-2 transition-all border-b-2 ${activeTab === 'rules'
-                                ? 'text-cyan-600 border-cyan-500 bg-cyan-50/50'
-                                : 'text-[var(--text-muted)] border-transparent hover:text-[var(--text-secondary)]'
-                                }`}
-                        >
-                            <Settings className="w-3.5 h-3.5 sm:w-4 sm:h-4" />
-                            <span className="hidden xs:inline sm:inline">{t.giveaway.rules}</span>
-                        </button>
-                        <button
-                            onClick={() => setActiveTab('participants')}
-                            className={`flex-1 py-3 sm:py-4 px-2 sm:px-6 font-bold text-xs sm:text-sm flex items-center justify-center gap-1 sm:gap-2 transition-all border-b-2 ${activeTab === 'participants'
-                                ? 'text-cyan-600 border-cyan-500 bg-cyan-50/50'
-                                : 'text-[var(--text-muted)] border-transparent hover:text-[var(--text-secondary)]'
-                                }`}
-                        >
-                            <Users className="w-3.5 h-3.5 sm:w-4 sm:h-4" />
-                            <span className="hidden xs:inline sm:inline">{t.giveaway.participants}</span>
-                            {participants.length > 0 && (
-                                <span className="ml-1 sm:ml-2 bg-cyan-500 text-white text-[10px] sm:text-xs px-1.5 sm:px-2 py-0.5 rounded-full">
-                                    {participants.length}
-                                </span>
-                            )}
-                        </button>
-                    </div>
+                <nav aria-label={tl("howTitle")} className="mx-auto mt-10 max-w-lg px-2">
+                    <ol className="flex">
+                        {progressSteps.map((s, i) => {
+                            const state =
+                                s.n < currentStep ? "done" : s.n === currentStep ? "current" : "upcoming";
+                            return (
+                                <li key={s.n} className="relative flex flex-1 flex-col items-center">
+                                    {i > 0 && (
+                                        <span
+                                            aria-hidden
+                                            className={`absolute right-1/2 left-0 top-[13px] h-px ${
+                                                state !== "upcoming" ? "bg-santa-red" : "bg-[var(--border-medium)]"
+                                            }`}
+                                        />
+                                    )}
+                                    {i < progressSteps.length - 1 && (
+                                        <span
+                                            aria-hidden
+                                            className={`absolute left-1/2 right-0 top-[13px] h-px ${
+                                                state === "done" ? "bg-santa-red" : "bg-[var(--border-medium)]"
+                                            }`}
+                                        />
+                                    )}
+                                    <span
+                                        className={`relative z-10 flex h-[26px] w-[26px] items-center justify-center rounded-full text-[11px] font-bold ${
+                                            state === "current"
+                                                ? "bg-santa-red text-white shadow-[0_0_0_4px_rgba(182,23,34,0.12)]"
+                                                : state === "done"
+                                                  ? "bg-santa-red text-white"
+                                                  : "border border-[var(--border-medium)] bg-white text-[var(--text-muted)] dark:bg-[var(--card-bg)]"
+                                        }`}
+                                        aria-current={state === "current" ? "step" : undefined}
+                                    >
+                                        {state === "done" ? <Check className="h-3.5 w-3.5" strokeWidth={3} /> : s.n}
+                                    </span>
+                                    <span
+                                        className={`mt-2 text-[11px] font-semibold tracking-tight sm:text-xs ${
+                                            state === "upcoming"
+                                                ? "text-[var(--text-muted)]"
+                                                : "text-[var(--text-primary)]"
+                                        }`}
+                                    >
+                                        {s.label}
+                                    </span>
+                                </li>
+                            );
+                        })}
+                    </ol>
+                </nav>
 
-                    <div className="p-4 sm:p-6">
-                        {/* ROLLING ANIMATION UI */}
+                <div className="mx-auto mt-8 max-w-2xl">
+                    <div className="overflow-hidden rounded-[20px] border border-[var(--border-light)] bg-white shadow-[0_8px_40px_rgba(17,24,39,0.06)] dark:border-white/10 dark:bg-[var(--card-bg)]">
+                        <div className="h-[3px] w-full bg-santa-red" aria-hidden />
+
                         {isRolling && (
-                            <div className="flex flex-col items-center justify-center py-12 space-y-6 animate-in fade-in duration-300">
-                                <div className="text-center space-y-2">
-                                    <h3 className="text-xl font-bold text-[var(--text-muted)]">{t.giveaway.fetching || "Rolling..."}</h3>
-                                    <div className="text-4xl sm:text-5xl font-black text-cyan-600 tracking-tight transition-all scale-110">
-                                        @{rollingParticipant?.name}
-                                    </div>
-                                    <p className="text-sm text-[var(--text-muted)] max-w-sm mx-auto truncate px-4">
-                                        {rollingParticipant?.comment}
-                                    </p>
-                                </div>
-                                <Loader2 className="w-8 h-8 text-cyan-400 animate-spin" />
+                            <div className="flex flex-col items-center justify-center space-y-5 px-6 py-16" role="status" aria-live="polite">
+                                <p className="text-xs font-semibold uppercase tracking-[0.2em] text-[var(--text-muted)]">
+                                    {tl("selecting")}
+                                </p>
+                                <p className="text-4xl font-black tracking-tight text-santa-red sm:text-5xl">
+                                    @{rollingParticipant?.name}
+                                </p>
+                                <p className="max-w-sm truncate px-4 text-sm text-[var(--text-muted)]">
+                                    {rollingParticipant?.comment}
+                                </p>
+                                <Loader2 className="h-8 w-8 animate-spin text-santa-red" />
                             </div>
                         )}
 
-                        {/* NORMAL TABS */}
-                        {!isRolling && (
-                            <>
-                                {/* Links/Method Tab */}
-                                {activeTab === 'links' && !showResults && (
-                                    <div className="space-y-6 animate-in fade-in slide-in-from-bottom-4">
+                        {!isRolling && phase === "results" && (
+                            <div className="space-y-6 p-5 sm:p-8">
+                                <div className="text-center space-y-3">
+                                    <div className={`mx-auto inline-flex rounded-2xl p-3 text-white ${TT_CTA}`}>
+                                        <Trophy className="h-8 w-8" strokeWidth={1.75} />
+                                    </div>
+                                    <h2 className="text-2xl font-bold tracking-tight sm:text-3xl">
+                                        {giveawayName || t.giveaway.tiktokTitle} {t.giveaway.results}
+                                    </h2>
+                                </div>
 
-                                        {!mode ? (
-                                            // Mode Selection
-                                            <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-                                                <button
-                                                    onClick={() => setMode('manual')}
-                                                    className="flex flex-col items-center justify-center p-6 bg-[var(--surface-2)] hover:bg-cyan-50 dark:hover:bg-cyan-950/40 border-2 border-dashed border-[var(--border-medium)] hover:border-cyan-300 dark:hover:border-cyan-500/50 rounded-2xl transition-all group"
-                                                >
-                                                    <div className="p-4 bg-white dark:bg-white/10 rounded-full shadow-sm mb-4 group-hover:scale-110 transition-transform text-cyan-500">
-                                                        <Users className="w-8 h-8" />
-                                                    </div>
-                                                    <h3 className="font-bold text-lg text-[var(--text-primary)] mb-2">{t.giveaway.manualMode}</h3>
-                                                    <p className="text-sm text-[var(--text-secondary)] text-center">{t.giveaway.manualDesc}</p>
-                                                </button>
-
-                                                <button
-                                                    onClick={() => setMode('auto')}
-                                                    className="flex flex-col items-center justify-center p-6 bg-[var(--surface-2)] hover:bg-cyan-50 dark:hover:bg-cyan-950/40 border-2 border-dashed border-[var(--border-medium)] hover:border-cyan-300 dark:hover:border-cyan-500/50 rounded-2xl transition-all group"
-                                                >
-                                                    <div className="p-4 bg-white dark:bg-white/10 rounded-full shadow-sm mb-4 group-hover:scale-110 transition-transform text-cyan-500">
-                                                        <TikTokIcon className="w-8 h-8" />
-                                                    </div>
-                                                    <h3 className="font-bold text-lg text-[var(--text-primary)] mb-2">{t.giveaway.autoMode}</h3>
-                                                    <p className="text-sm text-[var(--text-secondary)] text-center">{t.giveaway.autoDesc}</p>
-                                                </button>
-                                            </div>
-                                        ) : (
-                                            // Selected Mode UI
-                                            <div className="space-y-4 animate-in fade-in slide-in-from-bottom-4">
-                                                <button onClick={() => setMode(null)} className="text-sm text-[var(--text-muted)] hover:text-[var(--text-secondary)] flex items-center gap-1 mb-2">
-                                                    ← Back to selection
-                                                </button>
-
-                                                {mode === 'manual' ? (
-                                                    <div className="space-y-3">
-                                                        <textarea
-                                                            value={manualPaste}
-                                                            onChange={(e) => {
-                                                                setManualPaste(e.target.value);
-                                                                setImportPreview(null);
-                                                            }}
-                                                            placeholder={`${t.giveaway.pasteComments}\n\nCSV / TXT / Excel paste desteklenir:\nusername,comment\n@user: yorum`}
-                                                            className="w-full h-48 p-4 rounded-xl border-2 border-dashed border-[var(--border-medium)] focus:border-cyan-300 outline-none resize-none bg-[var(--surface-2)]"
-                                                        />
-                                                        <Button onClick={handleManualParse} disabled={!manualPaste.trim()} className="w-full bg-cyan-600 hover:bg-cyan-700">
-                                                            {locale.startsWith("tr") ? "Önizle" : "Preview"}
-                                                        </Button>
-
-                                                        {importPreview && (
-                                                            <div className="space-y-3 rounded-2xl border border-[var(--border-light)] bg-[var(--surface-2)] p-4">
-                                                                <div className="grid grid-cols-2 sm:grid-cols-4 gap-2 text-center">
-                                                                    <div className="rounded-xl bg-white/70 dark:bg-white/5 p-2">
-                                                                        <p className="text-[10px] font-bold text-[var(--text-muted)] uppercase">Valid</p>
-                                                                        <p className="font-black text-[var(--text-primary)]">{importPreview.validCount}</p>
-                                                                    </div>
-                                                                    <div className="rounded-xl bg-white/70 dark:bg-white/5 p-2">
-                                                                        <p className="text-[10px] font-bold text-[var(--text-muted)] uppercase">Duplicate</p>
-                                                                        <p className="font-black text-[var(--text-primary)]">{importPreview.duplicateCount}</p>
-                                                                    </div>
-                                                                    <div className="rounded-xl bg-white/70 dark:bg-white/5 p-2">
-                                                                        <p className="text-[10px] font-bold text-[var(--text-muted)] uppercase">Invalid</p>
-                                                                        <p className="font-black text-[var(--text-primary)]">{importPreview.invalidCount}</p>
-                                                                    </div>
-                                                                    <div className="rounded-xl bg-white/70 dark:bg-white/5 p-2">
-                                                                        <p className="text-[10px] font-bold text-[var(--text-muted)] uppercase">Empty</p>
-                                                                        <p className="font-black text-[var(--text-primary)]">{importPreview.skippedEmpty}</p>
-                                                                    </div>
-                                                                </div>
-                                                                <div className="max-h-40 overflow-y-auto space-y-1 text-left">
-                                                                    {importPreview.rows.slice(0, 40).map((row) => (
-                                                                        <div
-                                                                            key={`${row.sourceLine}-${row.name}`}
-                                                                            className={`text-xs px-2 py-1.5 rounded-lg ${row.duplicate ? "opacity-50 line-through" : "bg-white/60 dark:bg-white/5"}`}
-                                                                        >
-                                                                            <span className="font-bold">@{row.name}</span>
-                                                                            <span className="text-[var(--text-muted)]"> — {row.comment.slice(0, 80)}</span>
-                                                                        </div>
-                                                                    ))}
-                                                                </div>
-                                                                <Button
-                                                                    onClick={confirmManualImport}
-                                                                    disabled={importPreview.validCount === 0}
-                                                                    className="w-full bg-cyan-600 hover:bg-cyan-700"
-                                                                >
-                                                                    {locale.startsWith("tr")
-                                                                        ? `${importPreview.validCount} kişiyi içe aktar`
-                                                                        : `Import ${importPreview.validCount} people`}
-                                                                </Button>
-                                                            </div>
-                                                        )}
-                                                    </div>
-                                                ) : (
-                                                    <div className="space-y-6">
-                                                        {/* Post Link Input */}
-                                                        <div className="space-y-3">
-                                                            <div className="flex gap-2">
-                                                                <div className="flex-1 flex items-center gap-2 bg-[var(--surface-2)] rounded-xl p-4 border-2 border-dashed border-[var(--border-medium)] focus-within:border-cyan-300 transition-colors">
-                                                                    <TikTokIcon className="w-5 h-5 text-cyan-500" />
-                                                                    <input
-                                                                        type="text"
-                                                                        placeholder={t.giveaway.linkInputPlaceholder}
-                                                                        value={postLink}
-                                                                        onChange={(e) => setPostLink(e.target.value)}
-                                                                        className="flex-1 bg-transparent outline-none text-[var(--text-secondary)] placeholder:text-[var(--text-muted)]"
-                                                                    />
-                                                                </div>
-                                                                <Button
-                                                                    onClick={fetchTikTokComments}
-                                                                    disabled={loading}
-                                                                    className="h-auto px-6 bg-cyan-600 hover:bg-cyan-700 text-white shadow-lg whitespace-nowrap"
-                                                                >
-                                                                    {loading ? (
-                                                                        <div className="flex items-center gap-2">
-                                                                            <div className="w-4 h-4 border-2 border-white/30 border-t-white rounded-full animate-spin" />
-                                                                            {t.giveaway.fetching}
-                                                                        </div>
-                                                                    ) : (
-                                                                        <>
-                                                                            <MessageCircle className="w-4 h-4 mr-2" />
-                                                                            {t.giveaway.fetchComments}
-                                                                        </>
-                                                                    )}
-                                                                </Button>
-                                                            </div>
-                                                        </div>
-
-                                                        {loading && (
-                                                            <div className="p-4 bg-cyan-50 border border-cyan-200 rounded-xl animate-in fade-in">
-                                                                <div className="flex items-center gap-3">
-                                                                    <div className="w-5 h-5 border-2 border-cyan-300 border-t-cyan-600 rounded-full animate-spin flex-shrink-0" />
-                                                                    <div className="flex-1 min-w-0">
-                                                                        <p className="text-sm font-semibold text-cyan-700">{loadingStep}</p>
-                                                                        <p className="text-xs text-cyan-400 mt-0.5">Bu işlem 20-60 saniye sürebilir, lütfen bekleyin</p>
-                                                                    </div>
-                                                                </div>
-                                                                <div className="mt-3 w-full bg-cyan-100 rounded-full h-1 overflow-hidden">
-                                                                    <div className="h-full w-full bg-gradient-to-r from-cyan-400 to-teal-400 rounded-full origin-left animate-[pulse_2s_ease-in-out_infinite]" />
-                                                                </div>
-                                                            </div>
-                                                        )}
-
-                                                        {error && !loading && (
-                                                            <div className="p-3 bg-red-50 border border-red-200 text-red-600 rounded-xl text-sm flex items-start gap-2 animate-in slide-in-from-top-2">
-                                                                <span className="text-lg leading-none">⚠️</span>
-                                                                <span>{error}</span>
-                                                            </div>
-                                                        )}
-
-                                                        {fetchMeta && !loading && (
-                                                            <TikTokFetchStats fetchMeta={fetchMeta} locale={locale} />
-                                                        )}
-
-                                                        <div className="bg-blue-50 border border-blue-200 rounded-xl p-4 text-sm text-blue-700 space-y-2">
-                                                            <h4 className="font-bold flex items-center gap-2">
-                                                                <span className="text-xl">ℹ️</span>
-                                                                {t.giveaway.tiktokLimitNote}
-                                                            </h4>
-                                                            <p className="opacity-90">
-                                                                {t.giveaway.participantLimitDetails}
+                                <div className="space-y-3">
+                                    {winners.map((winner, i) => (
+                                        <div
+                                            key={`${winner.name}-${i}`}
+                                            className="rounded-2xl border border-santa-red/15 bg-santa-red/[0.04] p-4"
+                                        >
+                                            <div className="flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-between">
+                                                <div className="flex items-center gap-3">
+                                                    <span className={`flex h-10 w-10 shrink-0 items-center justify-center rounded-full text-sm font-bold text-white ${TT_CTA}`}>
+                                                        {i + 1}
+                                                    </span>
+                                                    <div>
+                                                        <p className="text-lg font-bold">@{winner.name}</p>
+                                                        {winner.comment && (
+                                                            <p className="mt-0.5 line-clamp-2 text-sm text-[var(--text-secondary)]">
+                                                                &quot;{winner.comment}&quot;
                                                             </p>
-                                                        </div>
-
-                                                        <div className="pt-4 flex justify-end">
-                                                            <Button
-                                                                onClick={() => setActiveTab('rules')}
-                                                                className="bg-cyan-600 hover:bg-cyan-700 text-white shadow-lg"
-                                                            >
-                                                                {t.giveaway.rules} <Settings className="w-4 h-4 ml-2" />
-                                                            </Button>
-                                                        </div>
+                                                        )}
                                                     </div>
+                                                </div>
+                                                <div className="flex flex-wrap items-center gap-2 self-start">
+                                                    <span className="inline-flex items-center gap-1.5 rounded-full border border-santa-red/25 bg-white px-3 py-1 text-xs font-semibold text-santa-red dark:bg-white/5">
+                                                        <Trophy className="h-3.5 w-3.5" /> {tl("winner")}
+                                                    </span>
+                                                    {requireFollow && (
+                                                        <FollowBadge status={winner.isFollowing} t={t} />
+                                                    )}
+                                                </div>
+                                            </div>
+                                        </div>
+                                    ))}
+                                </div>
+
+                                {backups.length > 0 && (
+                                    <div className="space-y-3 border-t border-[var(--border-light)] pt-4">
+                                        <h3 className="flex items-center gap-2 font-semibold text-[var(--text-muted)]">
+                                            <Users className="h-5 w-5" /> {t.giveaway.backups}
+                                        </h3>
+                                        {backups.map((backup, i) => (
+                                            <div key={`${backup.name}-b-${i}`} className="rounded-xl bg-[var(--surface-2)] px-4 py-3">
+                                                <div className="flex items-center justify-between text-[var(--text-secondary)]">
+                                                    <span>
+                                                        {i + 1}. @{backup.name}
+                                                    </span>
+                                                    <span className="rounded bg-white/80 px-2 py-0.5 text-xs text-[var(--text-muted)] dark:bg-white/5">
+                                                        {tl("backup")}
+                                                    </span>
+                                                </div>
+                                                {backup.comment && (
+                                                    <p className="mt-1 truncate pl-4 text-xs text-[var(--text-muted)]">
+                                                        &quot;{backup.comment}&quot;
+                                                    </p>
                                                 )}
                                             </div>
-                                        )}
+                                        ))}
                                     </div>
                                 )}
 
+                                {drawProof && (
+                                    <DrawProofPanel
+                                        proof={drawProof}
+                                        locale={locale}
+                                        accentClass="text-santa-red"
+                                        buttonClass="bg-santa-red hover:bg-santa-red-hover"
+                                        labels={proofLabels}
+                                        onToast={(msg) => toast.success(msg)}
+                                    />
+                                )}
 
-                                {/* Rules Tab */}
-                                {activeTab === 'rules' && !showResults && (
-                                    <div className="space-y-6 animate-in fade-in slide-in-from-bottom-4">
-                                        {/* Giveaway Name */}
-                                        <div className="text-center space-y-2">
-                                            <label className="text-sm font-bold text-[var(--text-secondary)]">{t.giveaway.giveawayName}</label>
-                                            <input
-                                                type="text"
-                                                placeholder="TikTok Giveaway"
-                                                value={giveawayName}
-                                                onChange={(e) => setGiveawayName(e.target.value)}
-                                                className="w-full max-w-md mx-auto block text-center py-3 px-4 rounded-xl border-2 border-[var(--border-medium)] focus:border-cyan-400 outline-none transition-colors"
-                                            />
-                                        </div>
+                                <AdWrapper position="inline">
+                                    <InArticleAd adSlot={AD_SLOTS.IN_ARTICLE} />
+                                </AdWrapper>
 
-                                        {/* Winner Counts */}
-                                        <div className="flex justify-center gap-8">
-                                            <div className="text-center space-y-2">
-                                                <label className="text-sm font-bold text-[var(--text-secondary)]">{t.giveaway.winnerCount}</label>
-                                                <div className="flex items-center gap-3 bg-[var(--surface-2)] rounded-xl p-2">
-                                                    <button onClick={() => setWinnerCount(Math.max(1, winnerCount - 1))} className="w-10 h-10 rounded-lg bg-cyan-100 text-cyan-600 flex items-center justify-center"><Minus className="w-4 h-4" /></button>
-                                                    <span className="w-12 text-center font-bold text-xl">{winnerCount}</span>
-                                                    <button onClick={() => setWinnerCount(winnerCount + 1)} className="w-10 h-10 rounded-lg bg-cyan-100 text-cyan-600 flex items-center justify-center"><Plus className="w-4 h-4" /></button>
-                                                </div>
-                                            </div>
-                                            <div className="text-center space-y-2">
-                                                <label className="text-sm font-bold text-[var(--text-secondary)]">{t.giveaway.backupCount}</label>
-                                                <div className="flex items-center gap-3 bg-[var(--surface-2)] rounded-xl p-2">
-                                                    <button onClick={() => setBackupCount(Math.max(0, backupCount - 1))} className="w-10 h-10 rounded-lg bg-[var(--surface-2)] text-[var(--text-secondary)] flex items-center justify-center"><Minus className="w-4 h-4" /></button>
-                                                    <span className="w-12 text-center font-bold text-xl">{backupCount}</span>
-                                                    <button onClick={() => setBackupCount(backupCount + 1)} className="w-10 h-10 rounded-lg bg-[var(--surface-2)] text-[var(--text-secondary)] flex items-center justify-center"><Plus className="w-4 h-4" /></button>
-                                                </div>
-                                            </div>
-                                        </div>
+                                <div className="flex flex-wrap gap-2 pt-2">
+                                    <Button onClick={copyResults} variant="secondary" className="min-w-[120px] flex-1 rounded-2xl">
+                                        {copied ? t.giveaway.copied : t.giveaway.copyResults}
+                                    </Button>
+                                    <Button
+                                        onClick={() => {
+                                            downloadWinnerCard({
+                                                giveawayName: giveawayName || t.giveaway.tiktokTitle,
+                                                winners,
+                                                backups,
+                                                platform: "tiktok",
+                                            });
+                                            toast.success(tl("toasts.cardDownloaded"));
+                                        }}
+                                        variant="secondary"
+                                        className="min-w-[120px] flex-1 rounded-2xl text-[var(--text-primary)] hover:bg-[var(--surface-2)]"
+                                    >
+                                        <Download className="mr-1.5 h-4 w-4" /> {tl("pngDownload")}
+                                    </Button>
+                                    <Button
+                                        onClick={() => setShowShareModal(true)}
+                                        className={`min-w-[120px] flex-1 rounded-2xl text-white ${TT_CTA}`}
+                                    >
+                                        <Share2 className="mr-2 h-4 w-4" /> {t.giveaway.shareResults}
+                                    </Button>
+                                    <Button onClick={resetGiveaway} className={`min-w-[120px] flex-1 rounded-2xl text-white ${TT_CTA}`}>
+                                        {t.giveaway.newGiveaway}
+                                    </Button>
+                                </div>
 
-                                        {/* Toggles */}
-                                        <div className="space-y-3 max-w-md mx-auto">
-                                            <label className="flex items-center justify-between p-3 bg-[var(--surface-2)] rounded-xl cursor-pointer hover:bg-[var(--surface-2)] transition-colors">
-                                                <span className="text-sm font-medium text-[var(--text-secondary)] flex items-center gap-2">
-                                                    <Users className="w-4 h-4 text-cyan-500" />
-                                                    {t.giveaway.requireFollow}
-                                                </span>
-                                                <button onClick={() => setRequireFollow(!requireFollow)} className={`w-12 h-7 rounded-full transition-colors relative ${requireFollow ? 'bg-cyan-500' : 'bg-[var(--text-muted)]'}`}>
-                                                    <span className={`absolute top-1 w-5 h-5 rounded-full bg-white shadow transition-transform ${requireFollow ? 'right-1' : 'left-1'}`} />
-                                                </button>
+                                <ShareModal
+                                    isOpen={showShareModal}
+                                    onClose={() => setShowShareModal(false)}
+                                    shareText={getShareText()}
+                                    t={{
+                                        shareResults: t.giveaway.copyLink,
+                                        shareTitle: t.giveaway.shareTitle,
+                                        shareDesc: t.giveaway.shareDesc,
+                                        close: t.giveaway.shareCopied || t.giveaway.copied,
+                                    }}
+                                />
+                            </div>
+                        )}
+
+                        {!isRolling && phase === "input" && (
+                            <div className="p-5 sm:p-7">
+                                <div className="mb-5 flex gap-1 rounded-2xl bg-[var(--surface-2)] p-1">
+                                    <button
+                                        type="button"
+                                        onClick={() => setEntryMode("auto")}
+                                        className={`flex min-h-[44px] flex-1 items-center justify-center gap-2 rounded-xl px-3 text-sm font-semibold transition ${
+                                            entryMode === "auto"
+                                                ? "bg-white text-[var(--text-primary)] shadow-sm dark:bg-white/10"
+                                                : "text-[var(--text-muted)] hover:text-[var(--text-secondary)]"
+                                        }`}
+                                    >
+                                        <Link2 className="h-4 w-4" /> {tl("automatic")}
+                                    </button>
+                                    <button
+                                        type="button"
+                                        onClick={() => setEntryMode("manual")}
+                                        className={`flex min-h-[44px] flex-1 items-center justify-center gap-2 rounded-xl px-3 text-sm font-semibold transition ${
+                                            entryMode === "manual"
+                                                ? "bg-white text-[var(--text-primary)] shadow-sm dark:bg-white/10"
+                                                : "text-[var(--text-muted)] hover:text-[var(--text-secondary)]"
+                                        }`}
+                                    >
+                                        <ClipboardPaste className="h-4 w-4" /> {tl("manual")}
+                                    </button>
+                                </div>
+
+                                {entryMode === "auto" ? (
+                                    <div className="space-y-4">
+                                        <div>
+                                            <label htmlFor="tt-url" className="mb-2 block text-sm font-semibold text-[var(--text-secondary)]">
+                                                {tl("step1Url")}
                                             </label>
-                                            <label className="flex items-center justify-between p-3 bg-[var(--surface-2)] rounded-xl cursor-pointer hover:bg-[var(--surface-2)] transition-colors">
-                                                <span className="text-sm font-medium text-[var(--text-secondary)] flex items-center gap-2">
-                                                    {t.giveaway.countUserOnce}
-                                                </span>
-                                                <button onClick={() => setCountUserOnce(!countUserOnce)} className={`w-12 h-7 rounded-full transition-colors relative ${countUserOnce ? 'bg-cyan-500' : 'bg-[var(--text-muted)]'}`}>
-                                                    <span className={`absolute top-1 w-5 h-5 rounded-full bg-white shadow transition-transform ${countUserOnce ? 'right-1' : 'left-1'}`} />
-                                                </button>
-                                            </label>
-                                            <TikTokFetchStats
-                                                fetchMeta={fetchMeta}
-                                                filterStats={filterStats}
-                                                ownerRemoved={ownerRemovedCount}
-                                                locale={locale}
-                                            />
-
-                                            <FilterRulesPanel
-                                                keyword={keywordFilter}
-                                                onKeywordChange={setKeywordFilter}
-                                                total={filterStats.total}
-                                                eligible={filterStats.eligible}
-                                                eligibleList={eligibleParticipants}
-                                                excludeOwner={excludeOwner}
-                                                onExcludeOwnerChange={setExcludeOwner}
-                                                ownerUsername={ownerUsername}
-                                                onOwnerUsernameChange={setOwnerUsername}
-                                                accentClass="text-cyan-600"
-                                                toggleOnClass="bg-cyan-500"
-                                                inputFocusClass="focus:border-cyan-500 focus:ring-cyan-500/10"
-                                                labels={filterLabels}
-                                            />
-                                        </div>
-
-                                        {/* Channel Username for Follower Check */}
-                                        {requireFollow && (
-                                            <div className="max-w-md mx-auto space-y-2">
-                                                <label className="text-sm font-bold text-[var(--text-secondary)] flex items-center gap-2">
-                                                    <TikTokIcon className="w-4 h-4" />
-                                                    {t.giveaway.channelUsername || "Username (Follower Check)"}
-                                                </label>
-                                                <div className="flex items-center gap-2 bg-[var(--surface-2)] rounded-xl px-3 border-2 border-[var(--border-medium)] focus-within:border-cyan-400 transition-colors">
-                                                    <AtSign className="w-4 h-4 text-[var(--text-muted)]" />
+                                            <div className="flex flex-col gap-3">
+                                                <div className="flex items-center gap-3 rounded-2xl border border-[var(--border-medium)] bg-[var(--surface-2)] px-4 py-3.5 transition focus-within:border-santa-red focus-within:ring-4 focus-within:ring-santa-red/10">
+                                                    <TikTokMark className="h-5 w-5 shrink-0 text-[var(--text-primary)]" />
                                                     <input
-                                                        type="text"
-                                                        placeholder="tiktok_username"
-                                                        value={channelUsername}
-                                                        onChange={(e) => setChannelUsername(e.target.value)}
-                                                        className="flex-1 bg-transparent outline-none py-3 text-[var(--text-secondary)] placeholder:text-[var(--text-muted)]"
+                                                        id="tt-url"
+                                                        type="url"
+                                                        inputMode="url"
+                                                        autoComplete="url"
+                                                        placeholder={tl("urlPlaceholder")}
+                                                        value={postLink}
+                                                        onChange={(e) => setPostLink(e.target.value)}
+                                                        onKeyDown={(e) => e.key === "Enter" && openPayFlow()}
+                                                        className="w-full bg-transparent text-base outline-none placeholder:text-[var(--text-muted)]"
+                                                        aria-describedby="tt-url-hint"
                                                     />
                                                 </div>
-                                                <p className="text-xs text-[var(--text-muted)] text-center">
-                                                    {t.giveaway.channelUsernameHint || "Enter your username to check if winners follow you"}
+                                                <button
+                                                    type="button"
+                                                    onClick={openPayFlow}
+                                                    disabled={loading}
+                                                    className={`inline-flex min-h-[52px] items-center justify-center gap-2 rounded-xl px-6 text-base font-bold text-white shadow-[0_4px_16px_rgba(182,23,34,0.22)] transition hover:-translate-y-0.5 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-santa-red focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-60 ${TT_CTA}`}
+                                                >
+                                                    {loading ? (
+                                                        <>
+                                                            <Loader2 className="h-5 w-5 animate-spin" /> {tl("fetching")}
+                                                        </>
+                                                    ) : (
+                                                        <>
+                                                            <ArrowRight className="h-5 w-5" /> {tl("fetchCta")}
+                                                        </>
+                                                    )}
+                                                </button>
+                                            </div>
+                                            <p id="tt-url-hint" className="mt-2 text-xs text-[var(--text-muted)]">
+                                                {tl("pay.feeHint", { price: priceLabel })}
+                                            </p>
+                                        </div>
+
+                                        {creditNotice && !loading && (
+                                            <div className="rounded-xl border border-[var(--border-light)] bg-[var(--surface-2)] px-4 py-4" role="status">
+                                                <p className="text-xs font-semibold uppercase tracking-[0.12em] text-[var(--text-muted)]">
+                                                    {tl("pay.creditTitle")}
+                                                </p>
+                                                <p className="mt-2 text-sm leading-relaxed text-[var(--text-secondary)]">{creditNotice.reason}</p>
+                                                <p className="mt-2 text-xs text-[var(--text-muted)]">
+                                                    {creditNotice.emailSent ? tl("pay.creditEmail") : tl("pay.creditSaved")}
                                                 </p>
                                             </div>
                                         )}
 
-                                        <div className="pt-4 flex justify-between items-center gap-4">
-                                            <Button onClick={() => setActiveTab('links')} variant="ghost" className="text-[var(--text-muted)]">← {t.common.cancel}</Button>
-
-                                            <div className="flex gap-4">
-                                                <Button onClick={() => setActiveTab('participants')} variant="secondary" className="text-[var(--text-secondary)]">
-                                                    {t.giveaway.participants} ({participants.length})
-                                                </Button>
-
-                                                <Button onClick={startGiveaway} disabled={eligibleParticipants.length < winnerCount + backupCount} className="bg-cyan-600 hover:bg-cyan-700 text-white shadow-lg shadow-cyan-200">
-                                                    <Play className="w-5 h-5 mr-2" /> {t.giveaway.startGiveaway}
-                                                </Button>
-                                            </div>
-                                        </div>
-                                        {eligibleParticipants.length < winnerCount + backupCount && (
-                                            <p className="text-center text-sm text-red-500 font-medium bg-red-50 py-2 rounded-lg mt-2">
-                                                ⚠️ {tg("notEnoughEligible") || t.home.notEnoughPeople}
-                                            </p>
-                                        )}
-                                    </div>
-                                )}
-
-                                {/* Participants Tab */}
-                                {activeTab === 'participants' && !showResults && (
-                                    <div className="space-y-6 animate-in fade-in slide-in-from-bottom-4">
-                                        {/* List */}
-                                        <div className="space-y-2">
-                                            <div className="flex items-center justify-between">
-                                                <label className="text-sm font-bold text-[var(--text-secondary)]">{t.giveaway.participants} ({participants.length})</label>
-                                                <div className="flex gap-2 relative">
-                                                    <button
-                                                        onClick={() => setShowManualEntry(!showManualEntry)}
-                                                        className="text-xs bg-cyan-50 text-cyan-600 font-bold px-3 py-1.5 rounded-lg hover:bg-cyan-100 transition-colors flex items-center gap-1 active:scale-95 duration-75"
-                                                    >
-                                                        + {t.giveaway.addParticipant || "Add Manually"}
-                                                        {showManualEntry ? <X className="w-3 h-3 ml-1" /> : <ChevronDown className="w-3 h-3 ml-1" />}
-                                                    </button>
-
-                                                    {/* Dropdown Menu */}
-                                                    {showManualEntry && (
-                                                        <div
-                                                            ref={dropdownRef}
-                                                            className="absolute top-full right-0 mt-2 w-80 bg-white rounded-xl shadow-2xl border border-[var(--border-light)] z-50 p-4 animate-in fade-in zoom-in-95 duration-200 origin-top-right transform"
-                                                        >
-                                                            <div className="space-y-4">
-                                                                <div className="space-y-2">
-                                                                    <label className="text-xs font-bold text-[var(--text-muted)] uppercase tracking-wide">{t.giveaway.addParticipant}</label>
-                                                                    <div className="flex gap-2">
-                                                                        <div className="flex-1 flex items-center gap-2 bg-[var(--surface-2)] rounded-lg px-2 border border-[var(--border-medium)] focus-within:border-cyan-300 transition-colors">
-                                                                            <AtSign className="w-3.5 h-3.5 text-[var(--text-muted)]" />
-                                                                            <input
-                                                                                autoFocus
-                                                                                type="text"
-                                                                                placeholder="Username"
-                                                                                value={newParticipant}
-                                                                                onChange={(e) => setNewParticipant(e.target.value)}
-                                                                                onKeyDown={(e) => e.key === 'Enter' && addParticipant()}
-                                                                                className="flex-1 bg-transparent outline-none py-2 text-sm text-[var(--text-secondary)] placeholder:text-[var(--text-muted)]"
-                                                                            />
-                                                                        </div>
-                                                                        <Button onClick={addParticipant} size="sm" className="bg-cyan-500 hover:bg-cyan-600 h-9 w-9 p-0 rounded-lg">
-                                                                            <Plus className="w-4 h-4" />
-                                                                        </Button>
-                                                                    </div>
-                                                                </div>
-
-                                                                <div className="relative">
-                                                                    <div className="absolute inset-0 flex items-center"><span className="w-full border-t border-[var(--border-light)]"></span></div>
-                                                                    <div className="relative flex justify-center text-[10px] uppercase font-bold"><span className="bg-white px-2 text-[var(--text-muted)]">{t.common.or || "OR"} {t.giveaway.bulkAdd || "BULK"}</span></div>
-                                                                </div>
-
-                                                                <div className="space-y-2">
-                                                                    <textarea
-                                                                        placeholder="User1&#10;User2&#10;User3"
-                                                                        value={bulkInput}
-                                                                        onChange={(e) => setBulkInput(e.target.value)}
-                                                                        className="w-full h-24 p-3 text-sm rounded-lg border border-[var(--border-medium)] focus:border-cyan-300 outline-none resize-none bg-[var(--surface-2)]"
-                                                                    />
-                                                                    <Button onClick={handleBulkAdd} variant="secondary" size="sm" className="w-full text-xs h-8">
-                                                                        {t.giveaway.bulkAdd}
-                                                                    </Button>
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                    )}
-
-                                                    {participants.length > 0 && (
-                                                        <button
-                                                            onClick={() => setParticipants([])}
-                                                            className="text-xs text-[var(--text-muted)] hover:text-red-500 font-medium px-2"
-                                                        >
-                                                            {t.giveaway.clearAll}
-                                                        </button>
-                                                    )}
-                                                </div>
-                                            </div>
-
-                                            <div className="min-h-[200px] max-h-[50vh] overflow-y-auto space-y-2 pr-2 custom-scrollbar border-2 border-dashed border-[var(--border-light)] rounded-xl p-2 bg-[var(--surface-2)]">
-                                                {participants.length === 0 ? (
-                                                    <div className="h-full flex flex-col items-center justify-center text-[var(--text-muted)] py-10 gap-3">
-                                                        <div className="p-4 bg-cyan-50 rounded-2xl">
-                                                            <Users className="w-10 h-10 text-cyan-200" />
-                                                        </div>
-                                                        <div className="text-center space-y-1">
-                                                            <p className="text-sm font-semibold text-[var(--text-muted)]">{t.giveaway.noParticipantsYet}</p>
-                                                            <p className="text-xs text-[var(--text-muted)] max-w-[200px] mx-auto">{t.giveaway.tiktokNoParticipantsHint}</p>
-                                                        </div>
-                                                        <button
-                                                            onClick={() => setActiveTab('links')}
-                                                            className="text-xs bg-cyan-500 text-white font-bold px-4 py-2 rounded-lg hover:bg-cyan-600 transition-colors"
-                                                        >
-                                                            {t.giveaway.fetchFromVideo}
-                                                        </button>
-                                                    </div>
-                                                ) : (
-                                                    participants.map((p, i) => (
-                                                        <div key={i} className="flex flex-col p-3 bg-white rounded-xl shadow-sm border border-[var(--border-light)] group hover:border-cyan-200 transition-colors">
-                                                            <div className="flex items-center justify-between">
-                                                                <span className="font-medium text-[var(--text-secondary)]">@{p.name}</span>
-                                                                <button
-                                                                    onClick={() => removeParticipant(i)}
-                                                                    className="p-1 text-[var(--text-muted)] hover:text-red-500 rounded-lg transition-colors opacity-0 group-hover:opacity-100"
-                                                                >
-                                                                    <Trash2 className="w-4 h-4" />
-                                                                </button>
-                                                            </div>
-                                                            {p.comment && (
-                                                                <p className="text-xs text-[var(--text-muted)] mt-1 line-clamp-2">{p.comment}</p>
-                                                            )}
-                                                        </div>
-                                                    ))
-                                                )}
-                                            </div>
-                                        </div>
-
-                                        <div className="pt-4 border-t border-[var(--border-light)] flex justify-end">
-                                            <Button onClick={() => setActiveTab('rules')} className="bg-cyan-600 hover:bg-cyan-700 text-white shadow-lg">
-                                                {t.giveaway.rules} <Settings className="w-4 h-4 ml-2" />
-                                            </Button>
-                                        </div>
-                                    </div>
-                                )}
-
-                                {/* Results */}
-                                {showResults && (
-                                    <div className="space-y-6 animate-in zoom-in duration-500">
-                                        <div className="text-center space-y-2">
-                                            <div className="inline-flex items-center justify-center p-3 bg-gradient-to-br from-cyan-400 to-cyan-600 rounded-xl">
-                                                <Trophy className="w-8 h-8 text-white" />
-                                            </div>
-                                            <h2 className="text-2xl font-black text-[var(--text-primary)]">
-                                                🎉 {giveawayName || t.giveaway.tiktokTitle} {t.giveaway.results}
-                                            </h2>
-                                        </div>
-
-                                        <div className="space-y-3">
-                                            {winners.map((winner, i) => (
-                                                <div key={i} className="p-4 bg-gradient-to-r from-cyan-50 to-blue-50 rounded-xl border border-cyan-200 animate-in slide-in-from-bottom duration-500" style={{ animationDelay: `${i * 100}ms` }}>
-                                                    <div className="flex flex-col gap-2">
-                                                        <div className="flex items-center justify-between">
-                                                            <div className="flex items-center gap-3">
-                                                                <span className="w-8 h-8 rounded-full bg-gradient-to-br from-cyan-500 to-cyan-600 text-white flex items-center justify-center font-bold text-sm flex-shrink-0">
-                                                                    {i + 1}
-                                                                </span>
-                                                                <span className="font-bold text-[var(--text-primary)] text-lg">@{winner.name}</span>
-                                                            </div>
-                                                            {/* Follower Status Badge */}
-                                                            {requireFollow && (
-                                                                <div className="flex items-center gap-1.5 text-xs font-semibold px-2 py-1 rounded-full">
-                                                                    {winner.isFollowing === 'checking' && (
-                                                                        <>
-                                                                            <Loader2 className="w-3 h-3 text-[var(--text-muted)] animate-spin" />
-                                                                            <span className="text-[var(--text-muted)]">{t.giveaway.checkingFollow || "Checking..."}</span>
-                                                                        </>
-                                                                    )}
-                                                                    {winner.isFollowing === true && (
-                                                                        <>
-                                                                            <span className="w-2 h-2 bg-green-500 rounded-full" />
-                                                                            <span className="text-green-600">{t.giveaway.following || "Following"} ✓</span>
-                                                                        </>
-                                                                    )}
-                                                                    {winner.isFollowing === false && (
-                                                                        <>
-                                                                            <span className="w-2 h-2 bg-red-500 rounded-full" />
-                                                                            <span className="text-red-600">{t.giveaway.notFollowing || "Not Following"} ✗</span>
-                                                                        </>
-                                                                    )}
-                                                                    {winner.isFollowing === 'unknown' && (
-                                                                        <>
-                                                                            <span className="w-2 h-2 bg-yellow-500 rounded-full" />
-                                                                            <span className="text-yellow-600">{t.giveaway.unknownFollow || "Unknown"}</span>
-                                                                        </>
-                                                                    )}
-                                                                </div>
-                                                            )}
-                                                        </div>
-                                                        {winner.comment && (
-                                                            <div className="ml-11 p-3 bg-white/60 rounded-lg text-sm text-[var(--text-secondary)] italic border-l-4 border-cyan-300">
-                                                                &quot;{winner.comment}&quot;
-                                                            </div>
-                                                        )}
+                                        {loading && (
+                                            <div className="rounded-xl border border-[var(--border-light)] bg-[var(--surface-2)] p-4" role="status" aria-live="polite">
+                                                <div className="flex items-center gap-3">
+                                                    <Loader2 className="h-5 w-5 shrink-0 animate-spin text-santa-red" />
+                                                    <div>
+                                                        <p className="text-sm font-semibold">{loadingStep}</p>
+                                                        <p className="text-xs text-[var(--text-muted)]">{tl("loadingWait")}</p>
                                                     </div>
                                                 </div>
-                                            ))}
-                                        </div>
-
-                                        {backups.length > 0 && (
-                                            <div className="space-y-3 pt-4 border-t border-[var(--border-light)]">
-                                                <h3 className="font-bold text-[var(--text-muted)] flex items-center gap-2">
-                                                    <Users className="w-5 h-5" />
-                                                    {t.giveaway.backups}
-                                                </h3>
-                                                {backups.map((backup, i) => (
-                                                    <div key={i} className="px-4 py-3 bg-[var(--surface-2)] rounded-lg flex flex-col justify-between text-[var(--text-secondary)] animate-in slide-in-from-bottom duration-500" style={{ animationDelay: `${(winners.length + i) * 100}ms` }}>
-                                                        <div className="flex items-center justify-between">
-                                                            <span>{i + 1}. @{backup.name}</span>
-                                                            <span className="text-xs font-medium bg-[var(--surface-2)] px-2 py-0.5 rounded text-[var(--text-muted)]">{t.giveaway.backups.slice(0, -1)}</span>
-                                                        </div>
-                                                        {backup.comment && <p className="text-xs text-[var(--text-muted)] mt-1 truncate pl-4">&quot;{backup.comment}&quot;</p>}
-                                                    </div>
-                                                ))}
+                                                <div className="mt-3 h-1.5 overflow-hidden rounded-full bg-black/5 dark:bg-white/10">
+                                                    <div className="h-full w-1/2 animate-pulse rounded-full bg-santa-red" />
+                                                </div>
                                             </div>
                                         )}
 
-                                        {drawProof && (
-                                            <DrawProofPanel
-                                                proof={drawProof}
-                                                locale={locale}
-                                                accentClass="text-cyan-600"
-                                                buttonClass="bg-cyan-600 hover:bg-cyan-700"
-                                                labels={proofLabels}
-                                                onToast={(msg) => toast.success(msg)}
-                                            />
-                                        )}
-                                        <AdWrapper position="inline">
-                                            <InArticleAd adSlot={AD_SLOTS.IN_ARTICLE} />
-                                        </AdWrapper>
-
-                                        <div className="flex flex-wrap gap-2 pt-4">
-                                            <Button onClick={copyResults} variant="secondary" className="flex-1 min-w-[120px]">{copied ? t.giveaway.copied : t.giveaway.copyResults}</Button>
-                                            <Button
-                                                onClick={() => {
-                                                    downloadWinnerCard({ giveawayName: giveawayName || t.giveaway.tiktokTitle, winners, backups, platform: "tiktok" });
-                                                    toast.success("Kazanan kartı indirildi!");
-                                                }}
-                                                variant="secondary"
-                                                className="flex-1 min-w-[120px] border-cyan-200 text-cyan-600 hover:bg-cyan-50"
+                                        {error && !loading && (
+                                            <div
+                                                className="rounded-2xl border border-santa-red/30 bg-santa-red/8 p-4 text-sm"
+                                                role="alert"
                                             >
-                                                <svg className="w-4 h-4 mr-1.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}><path strokeLinecap="round" strokeLinejoin="round" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4" /></svg>
-                                                PNG İndir
-                                            </Button>
-                                            <Button onClick={() => setShowShareModal(true)} className="flex-1 min-w-[120px] bg-gradient-to-r from-cyan-500 to-teal-500 hover:from-cyan-600 hover:to-teal-600 text-white shadow-lg">
-                                                <svg className="w-4 h-4 mr-2" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
-                                                    <path strokeLinecap="round" strokeLinejoin="round" d="M8.684 13.342C8.886 12.938 9 12.482 9 12c0-.482-.114-.938-.316-1.342m0 2.684a3 3 0 110-2.684m0 2.684l6.632 3.316m-6.632-6l6.632-3.316m0 0a3 3 0 105.367-2.684 3 3 0 00-5.367 2.684zm0 9.316a3 3 0 105.368 2.684 3 3 0 00-5.368-2.684z" />
-                                                </svg>
-                                                {t.giveaway.shareResults || "Paylaş"}
-                                            </Button>
-                                            <Button onClick={resetGiveaway} className="flex-1 min-w-[120px] bg-cyan-600 hover:bg-cyan-700">{t.giveaway.newGiveaway}</Button>
-                                        </div>
+                                                <p className="font-medium text-[var(--text-primary)]">{error}</p>
+                                                <p className="mt-1 text-[var(--text-secondary)]">{tl("autoUnavailable")}</p>
+                                                <button
+                                                    type="button"
+                                                    onClick={() => setEntryMode("manual")}
+                                                    className="mt-3 inline-flex min-h-[44px] items-center font-semibold text-santa-red underline-offset-2 hover:underline"
+                                                >
+                                                    {tl("switchManual")}
+                                                </button>
+                                            </div>
+                                        )}
 
-                                        <ShareModal
-                                            isOpen={showShareModal}
-                                            onClose={() => setShowShareModal(false)}
-                                            shareText={getShareText()}
-                                            t={{
-                                                shareResults: t.giveaway.copyLink || "Linki Kopyala",
-                                                shareTitle: t.giveaway.shareTitle || "Sonuçları Paylaş",
-                                                shareDesc: t.giveaway.shareDesc || "Çekiliş sonuçlarını sosyal medyada paylaşın",
-                                                close: t.giveaway.shareCopied || t.giveaway.copied || "Kopyalandı!"
+                                        {participants.length > 0 && (
+                                            <button
+                                                type="button"
+                                                onClick={goToConfigure}
+                                                className="inline-flex w-full min-h-[48px] items-center justify-center gap-2 rounded-2xl bg-black px-5 text-sm font-bold text-white transition hover:opacity-90 dark:bg-white dark:text-black"
+                                            >
+                                                {tl("continueWith", { count: participants.length })} <ArrowRight className="h-4 w-4" />
+                                            </button>
+                                        )}
+                                    </div>
+                                ) : (
+                                    <div className="space-y-4">
+                                        <label htmlFor="tt-manual" className="block text-sm font-semibold text-[var(--text-secondary)]">
+                                            {tl("step1Manual")}
+                                        </label>
+                                        <textarea
+                                            id="tt-manual"
+                                            value={manualPaste}
+                                            onChange={(e) => {
+                                                setManualPaste(e.target.value);
+                                                setImportPreview(null);
                                             }}
+                                            placeholder={`${t.giveaway.pasteComments}\n\n@user: yorum\nusername,comment`}
+                                            className="h-44 w-full resize-none rounded-2xl border border-dashed border-[var(--border-medium)] bg-[var(--surface-2)] p-4 outline-none transition focus:border-santa-red focus:ring-4 focus:ring-santa-red/10"
+                                        />
+                                        <button
+                                            type="button"
+                                            onClick={handleManualParse}
+                                            disabled={!manualPaste.trim()}
+                                            className={`inline-flex w-full min-h-[52px] items-center justify-center gap-2 rounded-2xl px-6 text-base font-bold text-white disabled:opacity-50 ${TT_CTA}`}
+                                        >
+                                            {tl("previewImport")}
+                                        </button>
+
+                                        {importPreview && (
+                                            <div className="space-y-3 rounded-2xl border border-[var(--border-light)] bg-[var(--surface-2)] p-4">
+                                                <div className="grid grid-cols-2 gap-2 text-center sm:grid-cols-4">
+                                                    {[
+                                                        ["Valid", importPreview.validCount],
+                                                        ["Duplicate", importPreview.duplicateCount],
+                                                        ["Invalid", importPreview.invalidCount],
+                                                        ["Empty", importPreview.skippedEmpty],
+                                                    ].map(([label, value]) => (
+                                                        <div key={String(label)} className="rounded-xl bg-white/70 p-2 dark:bg-white/5">
+                                                            <p className="text-[10px] font-bold uppercase text-[var(--text-muted)]">{label}</p>
+                                                            <p className="font-black">{value}</p>
+                                                        </div>
+                                                    ))}
+                                                </div>
+                                                <div className="max-h-36 space-y-1 overflow-y-auto text-left">
+                                                    {importPreview.rows.slice(0, 40).map((row) => (
+                                                        <div
+                                                            key={`${row.sourceLine}-${row.name}`}
+                                                            className={`rounded-lg px-2 py-1.5 text-xs ${row.duplicate ? "opacity-50 line-through" : "bg-white/60 dark:bg-white/5"}`}
+                                                        >
+                                                            <span className="font-bold">@{row.name}</span>
+                                                            <span className="text-[var(--text-muted)]"> — {row.comment.slice(0, 80)}</span>
+                                                        </div>
+                                                    ))}
+                                                </div>
+                                                <button
+                                                    type="button"
+                                                    onClick={confirmManualImport}
+                                                    disabled={importPreview.validCount === 0}
+                                                    className={`inline-flex w-full min-h-[48px] items-center justify-center rounded-2xl text-sm font-bold text-white disabled:opacity-50 ${TT_CTA}`}
+                                                >
+                                                    {tl("importPeople", { count: importPreview.validCount })}
+                                                </button>
+                                            </div>
+                                        )}
+                                    </div>
+                                )}
+                            </div>
+                        )}
+
+                        {!isRolling && phase === "configure" && (
+                            <div ref={configureRef} className="space-y-6 p-5 sm:p-7">
+                                <div className="flex flex-wrap items-start justify-between gap-3">
+                                    <div>
+                                        <p className="text-xs font-semibold uppercase tracking-wider text-santa-red">{tl("step3Subtitle")}</p>
+                                        <h2 className="text-xl font-bold tracking-tight sm:text-2xl">{tl("step3Title")}</h2>
+                                    </div>
+                                    <button
+                                        type="button"
+                                        onClick={() => setPhase("input")}
+                                        className="min-h-[44px] text-sm font-medium text-[var(--text-muted)] hover:text-[var(--text-secondary)]"
+                                    >
+                                        {tl("backToUrl")}
+                                    </button>
+                                </div>
+
+                                {fetchMeta && <TikTokFetchStats fetchMeta={fetchMeta} locale={locale} />}
+
+                                <div>
+                                    <label className="mb-2 block text-sm font-semibold">{t.giveaway.giveawayName}</label>
+                                    <input
+                                        type="text"
+                                        placeholder={t.giveaway.tiktokTitle}
+                                        value={giveawayName}
+                                        onChange={(e) => setGiveawayName(e.target.value)}
+                                        className="w-full rounded-2xl border border-[var(--border-medium)] bg-[var(--surface-2)] px-4 py-3 outline-none transition focus:border-santa-red focus:ring-4 focus:ring-santa-red/10"
+                                    />
+                                </div>
+
+                                <div className="grid grid-cols-2 gap-3">
+                                    <div className="rounded-2xl border border-[var(--border-light)] bg-[var(--surface-2)] p-4">
+                                        <label className="mb-3 block text-center text-sm font-semibold">{t.giveaway.winnerCount}</label>
+                                        <div className="flex items-center justify-center gap-3">
+                                            <button
+                                                type="button"
+                                                aria-label="Decrease winners"
+                                                onClick={() => setWinnerCount(Math.max(1, winnerCount - 1))}
+                                                className="flex h-11 w-11 items-center justify-center rounded-xl bg-santa-red/12 text-santa-red"
+                                            >
+                                                <Minus className="h-4 w-4" />
+                                            </button>
+                                            <span className="w-10 text-center text-xl font-bold">{winnerCount}</span>
+                                            <button
+                                                type="button"
+                                                aria-label="Increase winners"
+                                                onClick={() => setWinnerCount(winnerCount + 1)}
+                                                className="flex h-11 w-11 items-center justify-center rounded-xl bg-santa-red/12 text-santa-red"
+                                            >
+                                                <Plus className="h-4 w-4" />
+                                            </button>
+                                        </div>
+                                    </div>
+                                    <div className="rounded-2xl border border-[var(--border-light)] bg-[var(--surface-2)] p-4">
+                                        <label className="mb-3 block text-center text-sm font-semibold">{t.giveaway.backupCount}</label>
+                                        <div className="flex items-center justify-center gap-3">
+                                            <button
+                                                type="button"
+                                                aria-label="Decrease backups"
+                                                onClick={() => setBackupCount(Math.max(0, backupCount - 1))}
+                                                className="flex h-11 w-11 items-center justify-center rounded-xl bg-white text-[var(--text-secondary)] dark:bg-white/10"
+                                            >
+                                                <Minus className="h-4 w-4" />
+                                            </button>
+                                            <span className="w-10 text-center text-xl font-bold">{backupCount}</span>
+                                            <button
+                                                type="button"
+                                                aria-label="Increase backups"
+                                                onClick={() => setBackupCount(backupCount + 1)}
+                                                className="flex h-11 w-11 items-center justify-center rounded-xl bg-white text-[var(--text-secondary)] dark:bg-white/10"
+                                            >
+                                                <Plus className="h-4 w-4" />
+                                            </button>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <button
+                                    type="button"
+                                    onClick={() => setCountUserOnce(!countUserOnce)}
+                                    className="flex w-full min-h-[48px] items-center justify-between rounded-2xl border border-[var(--border-light)] bg-[var(--surface-2)] px-4 py-3 text-left"
+                                >
+                                    <span className="flex items-center gap-2 text-sm font-medium">
+                                        <Filter className="h-4 w-4 text-santa-red" /> {t.giveaway.countUserOnce}
+                                    </span>
+                                    <span className={`relative h-7 w-12 rounded-full transition-colors ${countUserOnce ? "bg-santa-red" : "bg-[var(--text-muted)]"}`}>
+                                        <span className={`absolute top-1 h-5 w-5 rounded-full bg-white shadow transition-transform ${countUserOnce ? "right-1" : "left-1"}`} />
+                                    </span>
+                                </button>
+
+                                <button
+                                    type="button"
+                                    aria-expanded={showAdvanced}
+                                    onClick={() => setShowAdvanced(!showAdvanced)}
+                                    className="flex w-full min-h-[44px] items-center justify-between text-sm font-semibold text-[var(--text-secondary)]"
+                                >
+                                    {showAdvanced ? tl("hideRules") : tl("moreRules")}
+                                    {showAdvanced ? <ChevronUp className="h-4 w-4" /> : <ChevronDown className="h-4 w-4" />}
+                                </button>
+
+                                {showAdvanced && (
+                                    <div className="space-y-3">
+                                        <FilterRulesPanel
+                                            keyword={keywordFilter}
+                                            onKeywordChange={setKeywordFilter}
+                                            total={filterStats.total}
+                                            eligible={filterStats.eligible}
+                                            eligibleList={eligibleParticipants}
+                                            excludeOwner={excludeOwner}
+                                            onExcludeOwnerChange={setExcludeOwner}
+                                            ownerUsername={ownerUsername}
+                                            onOwnerUsernameChange={setOwnerUsername}
+                                            accentClass="text-santa-red"
+                                            toggleOnClass="bg-santa-red"
+                                            inputFocusClass="focus:border-santa-red focus:ring-santa-red/10"
+                                            labels={filterLabels}
+                                        />
+
+                                        <button
+                                            type="button"
+                                            onClick={() => setRequireFollow(!requireFollow)}
+                                            className="flex w-full items-center justify-between rounded-2xl border border-[var(--border-light)] bg-[var(--surface-2)] px-4 py-3 text-left"
+                                        >
+                                            <span className="flex items-center gap-2 text-sm font-medium">
+                                                <Users className="h-4 w-4 text-santa-red" /> {t.giveaway.requireFollow}
+                                            </span>
+                                            <span className={`relative h-7 w-12 rounded-full transition-colors ${requireFollow ? "bg-santa-red" : "bg-[var(--text-muted)]"}`}>
+                                                <span className={`absolute top-1 h-5 w-5 rounded-full bg-white shadow transition-transform ${requireFollow ? "right-1" : "left-1"}`} />
+                                            </span>
+                                        </button>
+                                        {requireFollow && (
+                                            <div className="space-y-1.5">
+                                                <p className="text-xs text-[var(--text-muted)]">{tl("followHint")}</p>
+                                                <div className="flex items-center gap-2 rounded-xl border border-[var(--border-medium)] bg-white px-3 dark:bg-white/5">
+                                                    <AtSign className="h-4 w-4 text-[var(--text-muted)]" />
+                                                    <input
+                                                        type="text"
+                                                        placeholder="tiktok_username"
+                                                        value={channelUsername}
+                                                        onChange={(e) => setChannelUsername(e.target.value.replace(/^@/, ""))}
+                                                        className="flex-1 bg-transparent py-3 text-sm outline-none"
+                                                    />
+                                                </div>
+                                            </div>
+                                        )}
+
+                                        <TikTokFetchStats
+                                            filterStats={filterStats}
+                                            ownerRemoved={ownerRemovedCount}
+                                            locale={locale}
                                         />
                                     </div>
                                 )}
-                            </>
+
+                                <div className="rounded-2xl border border-[var(--border-light)] bg-[var(--surface-2)] p-4">
+                                    <div className="mb-3 flex items-center justify-between gap-2">
+                                        <h3 className="text-sm font-bold">
+                                            {t.giveaway.participants}{" "}
+                                            <span className="rounded-full bg-santa-red px-2 py-0.5 text-xs text-white">{participants.length}</span>
+                                        </h3>
+                                        <div className="relative flex items-center gap-2" ref={dropdownRef}>
+                                            <button
+                                                type="button"
+                                                onClick={() => setShowManualEntry(!showManualEntry)}
+                                                className="inline-flex min-h-[36px] items-center gap-1 rounded-full bg-santa-red/10 px-3 py-1.5 text-xs font-bold text-santa-red"
+                                            >
+                                                <Plus className="h-3.5 w-3.5" /> {tl("add")}
+                                            </button>
+                                            {participants.length > 0 && (
+                                                <button
+                                                    type="button"
+                                                    onClick={() => setParticipants([])}
+                                                    className="text-xs font-medium text-[var(--text-muted)] hover:text-santa-red"
+                                                >
+                                                    {t.giveaway.clearAll}
+                                                </button>
+                                            )}
+                                            {showManualEntry && (
+                                                <div className="absolute right-0 top-full z-50 mt-2 w-72 rounded-2xl border border-[var(--border-light)] bg-white p-4 shadow-xl dark:bg-[var(--card-bg)]">
+                                                    <div className="space-y-3">
+                                                        <div className="flex gap-2">
+                                                            <div className="flex flex-1 items-center gap-2 rounded-xl border border-[var(--border-medium)] bg-[var(--surface-2)] px-2">
+                                                                <AtSign className="h-3.5 w-3.5 text-[var(--text-muted)]" />
+                                                                <input
+                                                                    autoFocus
+                                                                    type="text"
+                                                                    placeholder="Username"
+                                                                    value={newParticipant}
+                                                                    onChange={(e) => setNewParticipant(e.target.value)}
+                                                                    onKeyDown={(e) => e.key === "Enter" && addParticipant()}
+                                                                    className="w-full bg-transparent py-2 text-sm outline-none"
+                                                                />
+                                                            </div>
+                                                            <Button onClick={addParticipant} size="sm" className={`h-9 w-9 rounded-xl p-0 ${TT_CTA}`}>
+                                                                <Plus className="h-4 w-4" />
+                                                            </Button>
+                                                        </div>
+                                                        <textarea
+                                                            placeholder={"User1\nUser2"}
+                                                            value={bulkInput}
+                                                            onChange={(e) => setBulkInput(e.target.value)}
+                                                            className="h-20 w-full resize-none rounded-xl border border-[var(--border-medium)] bg-[var(--surface-2)] p-3 text-sm outline-none"
+                                                        />
+                                                        <Button onClick={handleBulkAdd} variant="secondary" size="sm" className="w-full rounded-xl text-xs">
+                                                            {t.giveaway.bulkAdd}
+                                                        </Button>
+                                                    </div>
+                                                </div>
+                                            )}
+                                        </div>
+                                    </div>
+                                    <div className="custom-scrollbar max-h-48 space-y-2 overflow-y-auto">
+                                        {participants.length === 0 ? (
+                                            <p className="py-8 text-center text-sm text-[var(--text-muted)]">{t.giveaway.noParticipantsYet}</p>
+                                        ) : (
+                                            participants.slice(0, 40).map((p, i) => (
+                                                <div key={`${p.name}-${i}`} className="flex items-start justify-between gap-2 rounded-xl bg-white p-3 dark:bg-white/5">
+                                                    <div className="min-w-0">
+                                                        <p className="truncate font-medium">@{p.name}</p>
+                                                        {p.comment && <p className="mt-0.5 line-clamp-1 text-xs text-[var(--text-muted)]">{p.comment}</p>}
+                                                    </div>
+                                                    <button
+                                                        type="button"
+                                                        aria-label={`Remove ${p.name}`}
+                                                        onClick={() => removeParticipant(i)}
+                                                        className="rounded-lg p-1 text-[var(--text-muted)] hover:text-santa-red"
+                                                    >
+                                                        <Trash2 className="h-4 w-4" />
+                                                    </button>
+                                                </div>
+                                            ))
+                                        )}
+                                        {participants.length > 40 && (
+                                            <p className="text-center text-xs text-[var(--text-muted)]">+{participants.length - 40}</p>
+                                        )}
+                                    </div>
+                                </div>
+
+                                <div className="sticky bottom-4 z-20 space-y-2 rounded-2xl border border-[var(--border-light)] bg-white/95 p-4 shadow-lg backdrop-blur dark:bg-[var(--card-bg)]/95">
+                                    <p className="text-center text-sm font-medium text-[var(--text-secondary)]">
+                                        {tl("eligibleCta", { count: filterStats.eligible })}
+                                    </p>
+                                    <button
+                                        type="button"
+                                        onClick={startGiveaway}
+                                        disabled={!canDraw}
+                                        className={`inline-flex w-full min-h-[56px] items-center justify-center gap-2 rounded-xl px-6 text-lg font-bold text-white shadow-[0_8px_24px_rgba(182,23,34,0.22)] transition hover:-translate-y-0.5 disabled:pointer-events-none disabled:opacity-50 ${TT_CTA}`}
+                                    >
+                                        <Play className="h-5 w-5 fill-current" /> {t.giveaway.startGiveaway}
+                                    </button>
+                                    {!canDraw && (
+                                        <p className="text-center text-sm font-medium text-santa-red">
+                                            {tg("notEnoughEligible") || t.home.notEnoughPeople}
+                                        </p>
+                                    )}
+                                </div>
+                            </div>
                         )}
                     </div>
                 </div>
-                {/* Back to Home */}
-                <div className="text-center pb-8">
-                    <Button
-                        onClick={() => router.push(`/${locale}`)}
-                        variant="ghost"
-                        className="text-[var(--text-muted)] hover:text-[var(--text-secondary)]"
-                    >
-                        <Home className="w-4 h-4 mr-2" />
-                        {t.result.backToHome}
-                    </Button>
+
+                {phase === "input" && (
+                    <ul className="mx-auto mt-8 flex max-w-2xl flex-wrap items-center justify-center gap-2">
+                        {trustBadgeLabels.map((label, i) => {
+                            const Icon = TRUST_ICONS[i] ?? BadgeCheck;
+                            return (
+                                <li
+                                    key={label}
+                                    className="inline-flex items-center gap-1.5 rounded-full border border-[var(--border-light)] bg-white/90 px-3 py-1.5 text-xs font-medium text-[var(--text-secondary)] dark:bg-white/5"
+                                >
+                                    <Icon className="h-3.5 w-3.5 text-santa-red" strokeWidth={2} />
+                                    {label}
+                                </li>
+                            );
+                        })}
+                    </ul>
+                )}
+            </section>
+
+            <section className="relative z-10 border-y border-[var(--border-light)] bg-white/80 py-12 dark:bg-white/[0.02]">
+                <div className="mx-auto grid max-w-5xl grid-cols-2 gap-6 px-4 sm:grid-cols-4 sm:px-6">
+                    {metrics.map((m) => (
+                        <Reveal key={m.label}>
+                            <div className="text-center">
+                                <p className="font-heading text-3xl font-bold tracking-tight text-[var(--text-primary)] sm:text-4xl">{m.value}</p>
+                                <p className="mt-2 text-sm text-[var(--text-muted)]">{m.label}</p>
+                            </div>
+                        </Reveal>
+                    ))}
                 </div>
+            </section>
+
+            <section className="relative z-10 mx-auto max-w-5xl px-4 py-16 sm:px-6">
+                <Reveal>
+                    <div className="mx-auto mb-10 max-w-2xl text-center">
+                        <h2 className="text-3xl font-bold tracking-tight sm:text-[2rem]">{tl("featuresTitle")}</h2>
+                        <p className="mt-3 text-base text-[var(--text-secondary)]">{tl("featuresSubtitle")}</p>
+                    </div>
+                </Reveal>
+                <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
+                    {featuresData.map((f, i) => {
+                        const Icon = FEATURE_ICONS[i] ?? MessageCircle;
+                        return (
+                            <Reveal key={f.title}>
+                                <article className="h-full rounded-[18px] border border-[var(--border-light)] bg-white p-5 dark:bg-[var(--card-bg)] dark:border-white/10">
+                                    <div className="mb-4 inline-flex rounded-xl bg-[var(--navy)] p-3 text-white">
+                                        <Icon className="h-5 w-5" strokeWidth={1.75} />
+                                    </div>
+                                    <h3 className="text-lg font-semibold tracking-tight">{f.title}</h3>
+                                    <p className="mt-2 text-sm leading-relaxed text-[var(--text-secondary)]">{f.desc}</p>
+                                </article>
+                            </Reveal>
+                        );
+                    })}
+                </div>
+            </section>
+
+            <section className="relative z-10 border-t border-[var(--border-light)] bg-white py-16 dark:bg-white/[0.02]">
+                <div className="mx-auto max-w-3xl px-4 sm:px-6">
+                    <Reveal>
+                        <div className="mb-10 text-center">
+                            <h2 className="text-3xl font-bold tracking-tight sm:text-[2rem]">{tl("howTitle")}</h2>
+                            <p className="mt-3 text-base text-[var(--text-secondary)]">{tl("howSubtitle")}</p>
+                        </div>
+                    </Reveal>
+                    <ol>
+                        {howSteps.map((s, i) => (
+                            <Reveal key={s.title} delay={i * 50}>
+                                <li className="relative flex gap-4 pb-8 last:pb-0">
+                                    {i < howSteps.length - 1 && (
+                                        <div className="absolute left-[19px] top-10 h-[calc(100%-2rem)] w-px bg-santa-red/30" aria-hidden />
+                                    )}
+                                    <div className={`relative z-10 flex h-10 w-10 shrink-0 items-center justify-center rounded-full text-sm font-bold text-white ${TT_CTA}`}>
+                                        {i + 1}
+                                    </div>
+                                    <div className="flex-1 rounded-2xl border border-[var(--border-light)] bg-[#f4f6f8] p-4 dark:bg-white/5">
+                                        <h3 className="text-lg font-semibold">{s.title}</h3>
+                                        <p className="mt-1 text-sm text-[var(--text-secondary)]">{s.desc}</p>
+                                    </div>
+                                </li>
+                            </Reveal>
+                        ))}
+                    </ol>
+                    <div className="mt-10 text-center">
+                        <button
+                            type="button"
+                            onClick={scrollToTool}
+                            className={`inline-flex min-h-[48px] items-center gap-2 rounded-2xl px-6 py-3 text-sm font-bold text-white ${TT_CTA}`}
+                        >
+                            <Shuffle className="h-4 w-4" /> {tl("startCta")}
+                        </button>
+                    </div>
+                </div>
+            </section>
+
+            <section className="relative z-10 mx-auto max-w-3xl px-4 py-16 sm:px-6">
+                <Reveal>
+                    <h2 className="mb-8 text-center text-3xl font-bold tracking-tight sm:text-[2rem]">{tl("faqTitle")}</h2>
+                </Reveal>
+                <div className="space-y-3">
+                    {faqItems.map((item, i) => {
+                        const open = openFaq === i;
+                        return (
+                            <Reveal key={item.q} delay={i * 40}>
+                                <div className="overflow-hidden rounded-[18px] border border-[var(--border-light)] bg-white dark:bg-[var(--card-bg)] dark:border-white/10">
+                                    <button
+                                        type="button"
+                                        aria-expanded={open}
+                                        onClick={() => setOpenFaq(open ? null : i)}
+                                        className="flex w-full min-h-[52px] items-center justify-between gap-4 px-5 py-4 text-left"
+                                    >
+                                        <span className="font-heading text-base font-semibold sm:text-lg">{item.q}</span>
+                                        <span className={`flex h-8 w-8 shrink-0 items-center justify-center rounded-full bg-[var(--surface-2)] text-[var(--text-muted)] transition ${open ? "rotate-180" : ""}`}>
+                                            <ChevronUp className="h-4 w-4" />
+                                        </span>
+                                    </button>
+                                    <div className={`grid transition-all duration-300 ${open ? "grid-rows-[1fr] opacity-100" : "grid-rows-[0fr] opacity-0"}`}>
+                                        <div className="overflow-hidden">
+                                            <p className="px-5 pb-5 text-sm leading-relaxed text-[var(--text-secondary)] sm:text-base">{item.a}</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </Reveal>
+                        );
+                    })}
+                </div>
+            </section>
+
+            <div className="relative z-10 pb-12 text-center">
+                <Button onClick={() => router.push("/")} variant="ghost" className="rounded-2xl text-[var(--text-muted)]">
+                    <Home className="mr-2 h-4 w-4" /> {t.result.backToHome}
+                </Button>
             </div>
+
+            <PayTicketDialog
+                open={payOpen}
+                onClose={() => setPayOpen(false)}
+                priceLabel={priceLabel}
+                email={payerEmail}
+                onEmailChange={setPayerEmail}
+                onPay={() => void startCheckout()}
+                onUseCredit={creditToken ? () => void runEntitledFetch({ token: creditToken }) : undefined}
+                hasCredit={Boolean(creditToken)}
+                paying={checkoutLoading || loading}
+                error={payError}
+                onManual={() => {
+                    setPayOpen(false);
+                    setEntryMode("manual");
+                }}
+                labels={{
+                    title: tl("pay.title"),
+                    subtitle: tl("pay.subtitle"),
+                    emailLabel: tl("pay.emailLabel"),
+                    emailPlaceholder: tl("pay.emailPlaceholder"),
+                    emailHint: tl("pay.emailHint"),
+                    cta: tl("pay.cta"),
+                    processing: tl("pay.processing"),
+                    noMembership: tl("pay.noMembership"),
+                    serviceName: tl("pay.serviceName"),
+                    cap: tl("pay.cap", { count: COMMENTS_PER_FETCH }),
+                    feeLine: tl("pay.feeLine"),
+                    noRefund: tl("pay.noRefund"),
+                    useCredit: tl("pay.useCredit"),
+                    switchManual: tl("switchManual"),
+                }}
+            />
         </main>
+    );
+}
+
+function FollowBadge({
+    status,
+    t,
+}: {
+    status?: boolean | "unknown" | "checking";
+    t: { giveaway: Record<string, string> };
+}) {
+    return (
+        <div className="inline-flex items-center gap-1.5 rounded-full border border-[var(--border-light)] bg-white px-3 py-1 text-xs font-semibold dark:bg-white/5">
+            {status === "checking" && (
+                <>
+                    <Loader2 className="h-3 w-3 animate-spin text-[var(--text-muted)]" />
+                    <span className="text-[var(--text-muted)]">{t.giveaway.checkingFollow}</span>
+                </>
+            )}
+            {status === true && (
+                <>
+                    <span className="h-2 w-2 rounded-full bg-emerald-500" />
+                    <span className="text-emerald-600">{t.giveaway.following}</span>
+                </>
+            )}
+            {status === false && (
+                <>
+                    <span className="h-2 w-2 rounded-full bg-santa-red" />
+                    <span className="text-santa-red">{t.giveaway.notFollowing}</span>
+                </>
+            )}
+            {(status === "unknown" || status === undefined) && (
+                <>
+                    <span className="h-2 w-2 rounded-full bg-amber-400" />
+                    <span className="text-amber-600">{t.giveaway.unknownFollow}</span>
+                </>
+            )}
+        </div>
     );
 }

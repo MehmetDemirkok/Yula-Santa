@@ -2,7 +2,12 @@ import assert from 'node:assert/strict';
 import { describe, it } from 'node:test';
 import {
     applyManualImportPreview,
+    capFetchedParticipants,
+    COMMENTS_PER_FETCH,
+    FETCH_PRICE_TRY,
+    formatFetchPrice,
     isLikelyTikTokUrl,
+    isValidEmail,
     isValidTikTokUsername,
     normalizeParticipantBatch,
     normalizeTikTokUsername,
@@ -10,6 +15,8 @@ import {
     sanitizeDisplayUsername,
 } from '../../lib/tiktok';
 import { applyGiveawayFilters, extractOwnerFromSocialUrl } from '../../lib/giveawayFilters';
+import { analyzePaidFetchFailure } from '../../lib/tiktok/failureAnalysis';
+import { createCreditToken, verifyCreditToken } from '../../lib/tiktok/entitlement';
 
 describe('normalizeTikTokUsername', () => {
     it('strips @ and lowercases', () => {
@@ -119,5 +126,53 @@ describe('url validation', () => {
 describe('sanitizeDisplayUsername', () => {
     it('strips control chars and @', () => {
         assert.equal(sanitizeDisplayUsername('@user\u0000name'), 'username');
+    });
+});
+
+describe('paid fetch product', () => {
+    it('locks 500 comments and 200 TL', () => {
+        assert.equal(COMMENTS_PER_FETCH, 500);
+        assert.equal(FETCH_PRICE_TRY, 200);
+        assert.match(formatFetchPrice('tr'), /200/);
+    });
+
+    it('caps fetched participants at 500', () => {
+        const items = Array.from({ length: 501 }, (_, i) => ({ name: `u${i}` }));
+        const capped = capFetchedParticipants(items);
+        assert.equal(capped.length, 500);
+        assert.equal(capped[0].name, 'u0');
+        assert.equal(capped[499].name, 'u499');
+        assert.deepEqual(capFetchedParticipants([{ name: 'a' }]), [{ name: 'a' }]);
+    });
+});
+
+describe('isValidEmail', () => {
+    it('accepts and rejects addresses', () => {
+        assert.equal(isValidEmail('a@b.co'), true);
+        assert.equal(isValidEmail('  a@b.co  '), true);
+        assert.equal(isValidEmail('nope'), false);
+        assert.equal(isValidEmail(''), false);
+    });
+});
+
+describe('analyzePaidFetchFailure', () => {
+    it('never refunds and always grants one credit', () => {
+        const infra = analyzePaidFetchFailure('TIMEOUT');
+        assert.equal(infra.refund, false);
+        assert.equal(infra.grantCredit, true);
+        assert.equal(infra.category, 'infrastructure');
+        assert.equal(analyzePaidFetchFailure('EMPTY_RESULT').category, 'empty');
+        assert.equal(analyzePaidFetchFailure('PRIVATE_VIDEO').category, 'video');
+    });
+});
+
+describe('credit token', () => {
+    it('round-trips a signed entitlement', () => {
+        process.env.TIKTOK_LEDGER_SECRET = 'test-ledger-secret';
+        const token = createCreditToken('ent_1', 'User@Mail.com');
+        const payload = verifyCreditToken(token);
+        assert.equal(payload?.id, 'ent_1');
+        assert.equal(payload?.email, 'user@mail.com');
+        assert.equal(verifyCreditToken('ttc1.nope.nope'), null);
     });
 });

@@ -19,4 +19,10 @@ export {
 } from './normalize';
 export { isLikelyTikTokUrl, normalizeTikTokPostUrl } from './url';
 export { friendlyTikTokError, mapProviderErrorToCode } from './errors';
+export {
+    COMMENTS_PER_FETCH,
+    FETCH_PRICE_TRY,
+    FETCH_CURRENCY,
+    capFetchedParticipants,
+} from './pricing';
 export { createRequestId, logTikTokEvent } from './logging';

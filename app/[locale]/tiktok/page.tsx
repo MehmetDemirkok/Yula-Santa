@@ -1,4 +1,5 @@
 
+import { Suspense } from 'react';
 import { getSEOMetadata, viewport } from '@/lib/seo';
 import { locales } from '@/i18n/config';
 export { viewport };
@@ -24,7 +25,9 @@ export default async function Page({ params }: { params: Promise<{ locale: strin
     const { locale } = await params;
     return (
         <>
-            <ClientPage />
+            <Suspense fallback={null}>
+                <ClientPage key={locale} />
+            </Suspense>
             <GiveawaySeoSection locale={locale} platform="tiktok" />
         </>
     );

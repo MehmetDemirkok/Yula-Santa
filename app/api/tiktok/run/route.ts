@@ -11,27 +11,16 @@ import { TikTokProviderError } from '@/lib/tiktok/types';
 export async function POST(req: NextRequest) {
     const requestId = createRequestId();
     const started = Date.now();
-
     const rl = rateLimit(req, 'tiktok');
     if (!rl.allowed) {
-        logTikTokEvent('rate_limited', { requestId, durationMs: Date.now() - started });
-        return NextResponse.json(
-            { error: 'Too many requests', code: 'RATE_LIMIT', requestId },
-            {
-                status: 429,
-                headers: { 'Retry-After': String(Math.ceil((rl.resetAt - Date.now()) / 1000)) },
-            }
-        );
+        return NextResponse.json({ error: 'Too many requests', code: 'RATE_LIMIT', requestId }, { status: 429 });
     }
 
     let body: { sessionId?: string; creditToken?: string } = {};
     try {
         body = await req.json();
     } catch {
-        return NextResponse.json(
-            { error: 'Invalid JSON', code: 'MALFORMED_PAYLOAD', requestId },
-            { status: 400 }
-        );
+        return NextResponse.json({ error: 'Invalid JSON', code: 'MALFORMED_PAYLOAD', requestId }, { status: 400 });
     }
 
     const sessionId = typeof body.sessionId === 'string' ? body.sessionId.trim() : '';
@@ -52,11 +41,6 @@ export async function POST(req: NextRequest) {
         });
 
         if (result.ok) {
-            logTikTokEvent('api_success', {
-                requestId,
-                durationMs: Date.now() - started,
-                returnedParticipants: result.participants.length,
-            });
             return NextResponse.json({
                 participants: result.participants,
                 meta: result.meta,
@@ -80,19 +64,20 @@ export async function POST(req: NextRequest) {
         );
     } catch (error) {
         const code = error instanceof TikTokProviderError ? error.code : 'UNKNOWN';
-        logTikTokEvent('api_error', {
+        logTikTokEvent('run_error', {
             requestId,
             durationMs: Date.now() - started,
             code,
             errors: error instanceof Error ? error.message.slice(0, 200) : 'unknown',
         });
+        const status = code === 'MALFORMED_PAYLOAD' ? 400 : 500;
         return NextResponse.json(
             {
-                error: error instanceof Error ? error.message : 'Fetch failed',
+                error: error instanceof Error ? error.message : 'Run failed',
                 code,
                 requestId,
             },
-            { status: code === 'MALFORMED_PAYLOAD' ? 400 : 500 }
+            { status }
         );
     }
 }

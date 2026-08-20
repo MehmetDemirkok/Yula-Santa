@@ -248,7 +248,7 @@
         "parse": "Yorumları Ayrıştır",
         "parsed": "{count} kişi ayrıştırıldı",
         "youtubeLimitNote": "Not: API üzerinden otomatik olarak binlerce yoruma kadar çekilebilir; üst sınır vardır.",
-        "tiktokLimitNote": "Not: API üzerinden otomatik olarak en fazla 100 yorum çekilebilir.",
+        "tiktokLimitNote": "Not: Otomatik çekim çekim başına 200 TL’dir; en fazla 500 yorum alınır.",
         "participantLimitDetails": "Daha fazla yorum için lütfen manuel giriş modunu kullanın.",
         "channelUsername": "Kullanıcı Adı (Takip Kontrolü)",
         "channelUsernameHint": "Kazananların sizi takip edip etmediğini kontrol etmek için kullanıcı adınızı girin",
@@ -427,6 +427,154 @@
                     "Katılımcılar listeleniyor...",
                     "Veriler hazırlanıyor..."
                 ]
+            },
+            "tiktok": {
+                "badge": "TikTok yorum çekilişi",
+                "heroTitle": "TikTok",
+                "heroHighlight": "Yorum çekilişi",
+                "heroSubtitle": "Video linkini yapıştırın, yorumlardan kazanan seçin. Giriş yok, şifre yok.",
+                "urlPlaceholder": "tiktok.com/@kullanici/video/…",
+                "fetchCta": "Yorumları çek",
+                "fetchCtaPaid": "{price} — yorumları çek",
+                "fetching": "Çekiliyor…",
+                "urlHint": "Herkese açık videolar. Dilerseniz yorumları ücretsiz yapıştırabilirsiniz.",
+                "step1Url": "TikTok video linki",
+                "step1Manual": "Yorumları yapıştır",
+                "step3Title": "Kazanan sayısını ayarla",
+                "step3Subtitle": "Hazır",
+                "step4Label": "Çekilişi başlat",
+                "backToUrl": "← Linke dön",
+                "continueWith": "{count} kişiyle devam et",
+                "switchManual": "Yorumları yapıştır →",
+                "automatic": "Link ile",
+                "manual": "Yapıştır",
+                "selecting": "Seçiliyor…",
+                "winner": "Kazanan",
+                "backup": "Yedek",
+                "pngDownload": "PNG",
+                "add": "Ekle",
+                "loadingWait": "Bu işlem 20–60 saniye sürebilir",
+                "moreRules": "Daha fazla kural",
+                "hideRules": "Kuralları gizle",
+                "eligibleCta": "{count} kişi çekilişe girecek",
+                "autoUnavailable": "Otomatik çekim şu an kapalı. TikTok’tan yorumları kopyalayıp yapıştırın — çekiliş yine çalışır.",
+                "priceBadge": "Otomatik yorum çekimi",
+                "priceCap": "en fazla {count} yorum",
+                "priceHint": "Linke tıklayınca ödeme penceresi açılır. Üyelik yok.",
+                "followHint": "Çekiliş sonrası rozet olarak görünür; kazananı otomatik elemez.",
+                "previewImport": "Önizle",
+                "importPeople": "{count} kişiyi içe aktar",
+                "featuresTitle": "Adil bir TikTok çekilişi",
+                "featuresSubtitle": "Link veya yorum, kurallar, kanıtlı kura. Hesap açılmaz.",
+                "howTitle": "Nasıl çalışır?",
+                "howSubtitle": "Üç adım. Hangisine tıklayacağınızı düşünmenize gerek yok.",
+                "startCta": "Çekilişe başla",
+                "faqTitle": "Sık sorulan sorular",
+                "steps": {
+                    "paste": "Link",
+                    "load": "Yorumlar",
+                    "rules": "Kurallar",
+                    "draw": "Kura"
+                },
+                "trustBadges": [
+                    "TikTok girişi yok",
+                    "Manuel yedek yol",
+                    "Tek kullanıcı filtresi",
+                    "Yedek kazanan",
+                    "Üyelik yok"
+                ],
+                "metrics": [
+                    { "value": "0", "label": "Kayıt" },
+                    { "value": "Adil", "label": "Kura" },
+                    { "value": "Kanıt", "label": "Sonuç" },
+                    { "value": "Yedek", "label": "Kazanan" }
+                ],
+                "features": [
+                    { "title": "Link veya yapıştır", "desc": "Video URL’si çalışmazsa yorumları kopyalayıp devam edin." },
+                    { "title": "Tek kişi bir kez", "desc": "Aynı hesabın tekrar yorumları elenir." },
+                    { "title": "Kelime / hashtag", "desc": "Sadece #çekiliş yazanlar kura’ya girsin." },
+                    { "title": "Yedek kazanan", "desc": "Ulaşılamayan asil için yedek seçin." },
+                    { "title": "Sahibi hariç tut", "desc": "Video sahibi otomatik listeden çıkarılabilir." },
+                    { "title": "Çekiliş kanıtı", "desc": "Seed ve zaman damgası ile sonucu paylaşın." },
+                    { "title": "PNG kart", "desc": "Kazananları görsel olarak indirin." },
+                    { "title": "Şifresiz", "desc": "TikTok hesabı veya uygulama izni istemeyiz." }
+                ],
+                "howSteps": [
+                    { "title": "Linki yapıştırın", "desc": "TikTok video URL’sini kutuya bırakın. İsterseniz yorumları kendiniz yapıştırın." },
+                    { "title": "Yorumları getirin", "desc": "E-posta ile onaylayın. Hesap açılmaz." },
+                    { "title": "Kurayı çekin", "desc": "Kazananı seçin, kanıtı paylaşın. Yorumlar gelmezse iade yerine bir çekiliş hakkı tanımlanır." }
+                ],
+                "faq": [
+                    {
+                        "q": "TikTok’a giriş gerekir mi?",
+                        "a": "Hayır. Şifre istemeyiz. Herkese açık video linki veya kopyalanan yorumlar yeter."
+                    },
+                    {
+                        "q": "Otomatik çekim ne kadar?",
+                        "a": "Çekim başına 200 TL. En fazla 500 yorum. Üyelik yok; e-posta yeter. Yapıştırmak ücretsizdir."
+                    },
+                    {
+                        "q": "Yorumlar gelmezse param iade edilir mi?",
+                        "a": "Hayır. Sistem durumu analiz eder ve hemen iade yapmaz. Bunun yerine 1 çekiliş hakkı tanımlanır; e-postanızdaki linkle tekrar deneyebilirsiniz."
+                    },
+                    {
+                        "q": "Otomatik çekim çalışmazsa ne yapayım?",
+                        "a": "Videodaki yorumları kopyalayıp Yapıştır sekmesine alın. Çekiliş aynı şekilde devam eder."
+                    },
+                    {
+                        "q": "Kazanan gerçekten rastgele mi?",
+                        "a": "Evet. Güvenli karıştırma kullanılır; her uygun kişinin şansı eşittir. Kanıt panelinden kontrol edebilirsiniz."
+                    },
+                    {
+                        "q": "Takip zorunluluğu kazananı eleyici mi?",
+                        "a": "Hayır. Takip durumu çekiliş sonrası rozet olarak görünür. Kura’ya kimlerin girdiğini kelime ve tek-kullanıcı kuralları belirler."
+                    }
+                ],
+                "errors": {
+                    "needLink": "TikTok video linki girin",
+                    "invalidLink": "Geçerli bir TikTok linki girin (tiktok.com/@…/video/…)",
+                    "quota": "Otomatik yorum çekme kotası doldu. Yorumları yapıştırarak devam edin.",
+                    "unavailable": "Yorum servisi şu an yanıt vermiyor. Yorumları yapıştırarak devam edebilirsiniz.",
+                    "empty": "Bu videoda çekilecek yorum bulunamadı. Manuel yapıştırmayı deneyin.",
+                    "generic": "Yorumlar çekilemedi. Linki ve videonun herkese açık olduğunu kontrol edin."
+                },
+                "toasts": {
+                    "added": "@{name} eklendi",
+                    "participantsAdded": "{count} katılımcı eklendi",
+                    "copied": "Sonuçlar kopyalandı",
+                    "cardDownloaded": "Kazanan kartı indirildi",
+                    "noNewNames": "Eklenecek yeni isim yok"
+                },
+                "loadingSteps": [
+                    "TikTok’a bağlanılıyor…",
+                    "Video yorumları çekiliyor…",
+                    "Katılımcılar doğrulanıyor…",
+                    "Liste hazırlanıyor…"
+                ],
+                "pay": {
+                    "openCta": "Yorumları getir",
+                    "title": "Çekilişi onayla",
+                    "subtitle": "Yorumlar videodan alınır. Hesap açılmaz.",
+                    "emailLabel": "E-posta",
+                    "emailPlaceholder": "ornek@posta.com",
+                    "emailHint": "Onay ve çekiliş hakkı bu adrese gider.",
+                    "invalidEmail": "Geçerli bir e-posta girin",
+                    "cta": "Onayla ve devam et",
+                    "processing": "Ödemeye gidiliyor…",
+                    "noMembership": "Hesap gerekmez",
+                    "serviceName": "Yorum çekimi",
+                    "feeLine": "Tek seferlik hizmet",
+                    "feeHint": "Hizmet bedeli {price} · hesap açılmaz",
+                    "cap": "en fazla {count} yorum",
+                    "noRefund": "Yorumlar alınamazsa ücret iade edilmez; bir çekiliş hakkı tanımlanır.",
+                    "useCredit": "Kayıtlı hakkınla devam et",
+                    "creditTitle": "Bir çekiliş hakkı tanımlandı",
+                    "creditBody": "Ödeme iade edilmedi. Sonraki otomatik çekim bu hakla yapılır.",
+                    "creditEmail": "Hakkın e-postana kaydedildi. Linkle tekrar dene.",
+                    "creditSaved": "Hakkın bu cihazda kaydedildi. Tekrar yorumları getir.",
+                    "paymentsDown": "Ödeme henüz açılmadı. Stripe şart onayı tamamlanınca çalışır.",
+                    "cancelled": "İşlem iptal edildi. İstersen tekrar dene."
+                }
             }
         },
         "keywordLabel": "Yorumda zorunlu kelime / hashtag",

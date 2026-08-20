@@ -119,6 +119,7 @@
 ═══════════════════════════════════════════════════════════════════════════ */
 @theme inline {
   --color-santa-red:        var(--santa-red);
+  --color-santa-red-hover:  var(--santa-red-hover);
   --color-christmas-green:  var(--christmas-green);
   --color-gold:             var(--gold);
   --color-snow:             var(--snow);

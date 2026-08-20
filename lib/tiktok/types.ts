@@ -28,6 +28,7 @@ export type TikTokFetchMeta = {
     emptyUsernamesRemoved: number;
     retryCount: number;
     pageCount: number;
+    commentCap?: number;
 };
 
 export type TikTokFetchResult = {

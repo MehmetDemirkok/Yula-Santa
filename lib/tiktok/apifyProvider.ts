@@ -7,9 +7,9 @@ import {
     TikTokProviderError,
     TikTokRawComment,
 } from './types';
+import { COMMENTS_PER_FETCH, capFetchedParticipants } from './pricing';
 
 const ACTOR_ID = 'clockworks/tiktok-comments-scraper';
-const COMMENTS_PER_POST = 500;
 const DEFAULT_TIMEOUT_MS = 90_000;
 const MAX_RETRIES = 3;
 
@@ -145,7 +145,9 @@ export class ApifyCommentProvider implements TikTokCommentProvider {
             // Apify client doesn't take AbortSignal directly; race with timeout promise
             const runPromise = client.actor(ACTOR_ID).call({
                 postURLs: [postUrl],
-                commentsPerPost: COMMENTS_PER_POST,
+                commentsPerPost: COMMENTS_PER_FETCH,
+                topLevelCommentsPerPost: COMMENTS_PER_FETCH,
+                maxRepliesPerComment: 0,
             });
 
             const run = await Promise.race([
@@ -173,25 +175,27 @@ export class ApifyCommentProvider implements TikTokCommentProvider {
 
             // Incremental normalize — single pass, no extra map copies beyond result arrays
             const normalized = normalizeParticipantBatch(rawItems, { dedupe: true });
+            const participants = capFetchedParticipants(normalized.participants);
 
-            if (normalized.participants.length === 0) {
+            if (participants.length === 0) {
                 throw new TikTokProviderError('EMPTY_RESULT', 'No valid comments returned', {
                     retryable: false,
                 });
             }
 
             return {
-                participants: normalized.participants,
+                participants,
                 meta: {
                     provider: this.id,
                     durationMs: Date.now() - started,
                     fetchedComments: rawItems.length,
-                    validParticipants: normalized.participants.length,
+                    validParticipants: participants.length,
                     invalidRecords: normalized.invalidRecords,
                     duplicatesRemoved: normalized.duplicatesRemoved,
                     emptyUsernamesRemoved: normalized.emptyUsernamesRemoved,
                     retryCount,
                     pageCount: 1,
+                    commentCap: COMMENTS_PER_FETCH,
                 },
             };
         } catch (error) {
