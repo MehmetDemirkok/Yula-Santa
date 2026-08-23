@@ -780,10 +780,6 @@ export default function YouTubeGiveaway() {
                                             </button>
                                         </div>
 
-                                        <p className="rounded-2xl border border-blue-100 bg-blue-50/70 px-4 py-3 text-sm text-blue-800 dark:border-blue-500/20 dark:bg-blue-500/10 dark:text-blue-200">
-                                            {t.giveaway.youtubeLimitNote} — {t.giveaway.participantLimitDetails}
-                                        </p>
-
                                         {participants.length > 0 && (
                                             <button
                                                 type="button"
