@@ -10,6 +10,8 @@ const MAX_REQUESTS: Record<string, number> = {
     default: 10,
     youtube: 8,
     tiktok: 5,
+    'tiktok-giveaway-create': 5,
+    'tiktok-giveaway-import': 30,
 };
 
 function getKey(ip: string, route: string): string {

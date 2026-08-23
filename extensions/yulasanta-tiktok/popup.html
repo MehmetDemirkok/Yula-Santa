@@ -1,0 +1,87 @@
+<!doctype html>
+<html lang="tr">
+<head>
+    <meta charset="utf-8" />
+    <title>YulaSanta — TikTok Çekilişi</title>
+    <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+    <main class="ys-popup">
+        <header class="ys-header">
+            <span class="ys-logo">🎁 YulaSanta</span>
+            <span class="ys-subtitle">TikTok Çekilişi</span>
+        </header>
+
+        <section class="ys-row">
+            <span>Bağlantı:</span>
+            <span id="ys-connection" class="ys-status">
+                <span id="ys-connection-dot" class="ys-dot"></span>
+                <span id="ys-connection-text">Kontrol ediliyor…</span>
+            </span>
+        </section>
+
+        <section id="ys-setup" class="ys-card">
+            <button id="ys-detect" class="ys-btn ys-btn-primary">
+                <span id="ys-detect-label">YulaSanta sekmesinden algıla</span>
+            </button>
+            <p id="ys-detect-hint" class="ys-hint">
+                YulaSanta'da açık bir çekiliş sekmesi varsa Çekiliş ID ve İçe Aktarma Kodu otomatik doldurulur —
+                kopyala/yapıştır gerekmez.
+            </p>
+
+            <div class="ys-divider"><span>veya elle gir</span></div>
+
+            <label class="ys-label" for="ys-giveaway-id">Çekiliş ID</label>
+            <input id="ys-giveaway-id" class="ys-input" type="text" placeholder="YS-TT-XXXXXXXX" />
+
+            <label class="ys-label" for="ys-owner-token">İçe Aktarma Kodu</label>
+            <input id="ys-owner-token" class="ys-input" type="text" placeholder="YulaSanta'dan kopyaladığınız kod" />
+
+            <label class="ys-label" for="ys-api-base">Sunucu adresi (isteğe bağlı)</label>
+            <input id="ys-api-base" class="ys-input" type="text" placeholder="https://www.yulasanta.com.tr" />
+
+            <button id="ys-save" class="ys-btn ys-btn-secondary">Kaydet</button>
+            <p id="ys-setup-error" class="ys-error" hidden></p>
+        </section>
+
+        <section id="ys-active" class="ys-card" hidden>
+            <div class="ys-giveaway-id-row">
+                <span>Çekiliş:</span>
+                <strong id="ys-active-id"></strong>
+                <button id="ys-change" class="ys-link-btn">değiştir</button>
+            </div>
+            <p id="ys-active-server" class="ys-hint" style="margin-top: -6px; margin-bottom: 10px; text-align: left;"></p>
+
+            <div class="ys-stats">
+                <div class="ys-stat">
+                    <span class="ys-stat-value" id="ys-collected">0</span>
+                    <span class="ys-stat-label">Toplanan yorum</span>
+                </div>
+                <div class="ys-stat">
+                    <span class="ys-stat-value" id="ys-unique">0</span>
+                    <span class="ys-stat-label">Benzersiz kullanıcı</span>
+                </div>
+            </div>
+
+            <div id="ys-progress-wrap" class="ys-progress-wrap" hidden>
+                <p id="ys-progress-label" class="ys-progress-label"></p>
+                <div class="ys-progress-track">
+                    <div id="ys-progress-bar" class="ys-progress-bar"></div>
+                </div>
+            </div>
+
+            <p id="ys-action-error" class="ys-error" hidden></p>
+            <p id="ys-action-success" class="ys-success" hidden></p>
+
+            <button id="ys-collect" class="ys-btn ys-btn-primary">Yorumları Topla</button>
+            <button id="ys-stop" class="ys-btn ys-btn-outline" hidden>Durdur</button>
+            <button id="ys-send" class="ys-btn ys-btn-primary">YulaSanta'ya Gönder</button>
+        </section>
+
+        <footer class="ys-footer">
+            <span>Kullanıcının başlattığı işlem sırasında yalnızca görünen yorumlar okunur.</span>
+        </footer>
+    </main>
+    <script src="popup.js"></script>
+</body>
+</html>
