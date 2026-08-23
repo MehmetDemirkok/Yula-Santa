@@ -15,17 +15,19 @@ import {
     Loader2,
     ShieldCheck,
     ArrowRight,
+    ArrowLeft,
     RefreshCcw,
     Download,
     Link2,
+    Puzzle,
 } from "lucide-react";
-import { Button } from "@/components/ui/Button";
 import { Input } from "@/components/ui/Input";
 import { FilterRulesPanel } from "@/components/giveaway/FilterRulesPanel";
 import { downloadWinnerCard } from "@/lib/downloadWinnerCard";
 import { useToast } from "@/lib/ToastContext";
+import { cn } from "@/lib/utils";
 
-type Step = "create" | "collect" | "countdown" | "result";
+type Step = "link" | "comments" | "rules" | "result";
 
 type DrawResult = {
     winners: { name: string; comment?: string }[];
@@ -37,6 +39,15 @@ type DrawResult = {
 };
 
 const OWNER_TOKEN_PREFIX = "ys_tt_ext_owner:";
+const EXT_CTA =
+    "bg-indigo-accent text-white shadow-[0_4px_16px_rgba(79,70,229,0.25)] hover:shadow-[0_8px_24px_rgba(79,70,229,0.32)] hover:brightness-110";
+
+const STEPS: { n: 1 | 2 | 3 | 4; label: string }[] = [
+    { n: 1, label: "Link" },
+    { n: 2, label: "Yorumlar" },
+    { n: 3, label: "Kurallar" },
+    { n: 4, label: "Kura" },
+];
 
 function ownerTokenStorageKey(giveawayId: string) {
     return `${OWNER_TOKEN_PREFIX}${giveawayId}`;
@@ -52,13 +63,81 @@ async function apiFetch<T>(input: string, init?: RequestInit): Promise<T> {
     return data as T;
 }
 
+function Stepper({ current }: { current: 1 | 2 | 3 | 4 }) {
+    return (
+        <nav aria-label="Çekiliş adımları" className="mx-auto mb-8 max-w-lg px-2">
+            <ol className="flex">
+                {STEPS.map((s, i) => {
+                    const state = s.n < current ? "done" : s.n === current ? "current" : "upcoming";
+                    return (
+                        <li key={s.n} className="relative flex flex-1 flex-col items-center">
+                            {i > 0 && (
+                                <span
+                                    aria-hidden
+                                    className={cn(
+                                        "absolute left-0 right-1/2 top-[13px] h-px",
+                                        state !== "upcoming" ? "bg-indigo-accent" : "bg-[var(--border-medium)]"
+                                    )}
+                                />
+                            )}
+                            {i < STEPS.length - 1 && (
+                                <span
+                                    aria-hidden
+                                    className={cn(
+                                        "absolute left-1/2 right-0 top-[13px] h-px",
+                                        state === "done" ? "bg-indigo-accent" : "bg-[var(--border-medium)]"
+                                    )}
+                                />
+                            )}
+                            <span
+                                className={cn(
+                                    "relative z-10 flex h-[26px] w-[26px] items-center justify-center rounded-full text-[11px] font-bold",
+                                    state === "current" &&
+                                        "bg-indigo-accent text-white shadow-[0_0_0_4px_rgba(79,70,229,0.14)]",
+                                    state === "done" && "bg-indigo-accent text-white",
+                                    state === "upcoming" &&
+                                        "border border-[var(--border-medium)] bg-white text-[var(--text-muted)] dark:bg-[var(--card-bg)]"
+                                )}
+                                aria-current={state === "current" ? "step" : undefined}
+                            >
+                                {state === "done" ? <Check className="h-3.5 w-3.5" strokeWidth={3} /> : s.n}
+                            </span>
+                            <span
+                                className={cn(
+                                    "mt-2 text-[11px] font-semibold tracking-tight sm:text-xs",
+                                    state === "upcoming" ? "text-[var(--text-muted)]" : "text-[var(--text-primary)]"
+                                )}
+                            >
+                                {s.label}
+                            </span>
+                        </li>
+                    );
+                })}
+            </ol>
+        </nav>
+    );
+}
+
+function Card({ className, children }: { className?: string; children: React.ReactNode }) {
+    return (
+        <div
+            className={cn(
+                "rounded-[20px] border border-[var(--border-light)] bg-white p-6 shadow-[0_8px_40px_rgba(17,24,39,0.06)] dark:bg-[var(--card-bg)] sm:p-8",
+                className
+            )}
+        >
+            {children}
+        </div>
+    );
+}
+
 export default function TikTokExtensionGiveaway() {
     const router = useRouter();
     const locale = useLocale();
     const searchParams = useSearchParams();
     const { toast } = useToast();
 
-    const [step, setStep] = useState<Step>("create");
+    const [step, setStep] = useState<Step>("link");
     const [videoUrl, setVideoUrl] = useState("");
     const [creating, setCreating] = useState(false);
     const [createError, setCreateError] = useState<string | null>(null);
@@ -77,32 +156,33 @@ export default function TikTokExtensionGiveaway() {
 
     const [drawing, setDrawing] = useState(false);
     const [drawError, setDrawError] = useState<string | null>(null);
+    const [countingDown, setCountingDown] = useState(false);
     const [countdownValue, setCountdownValue] = useState<number | null>(null);
     const [result, setResult] = useState<DrawResult | null>(null);
 
     const pollRef = useRef<ReturnType<typeof setInterval> | null>(null);
 
-    // "Çekilişi Başlat" is at the bottom of a long settings card — without this,
+    // "Çekilişi Başlat" can be scrolled far down a settings card — without this,
     // the countdown/winner reveal render off-screen above the user's scroll
-    // position and the footer shows instead (the bug being fixed here).
+    // position and the footer shows instead of the reveal.
     useEffect(() => {
-        // Instant, not smooth — an in-flight smooth scroll gets cut short by the
-        // body-scroll lock effect below (overflow:hidden freezes it mid-animation).
-        if (step === "countdown" || step === "result") {
+        if (step === "result" || countingDown) {
+            // Instant, not smooth — an in-flight smooth scroll gets cut short by
+            // the body-scroll lock effect below (overflow:hidden freezes it mid-animation).
             window.scrollTo(0, 0);
         }
-    }, [step]);
+    }, [step, countingDown]);
 
     // The countdown is a fixed full-screen overlay (see below), but a locked
     // body scroll keeps the page from jumping under it while it's up.
     useEffect(() => {
-        if (step !== "countdown") return;
+        if (!countingDown) return;
         const prev = document.body.style.overflow;
         document.body.style.overflow = "hidden";
         return () => {
             document.body.style.overflow = prev;
         };
-    }, [step]);
+    }, [countingDown]);
 
     // Restore an in-progress giveaway from ?g=ID + localStorage (owner-token) on load/reload.
     useEffect(() => {
@@ -112,19 +192,20 @@ export default function TikTokExtensionGiveaway() {
         if (stored) {
             setGiveawayId(fromQuery);
             setOwnerToken(stored);
-            setStep("collect");
+            setStep("comments");
         }
         // eslint-disable-next-line react-hooks/exhaustive-deps
     }, []);
 
     useEffect(() => {
-        if (step !== "collect" || !giveawayId || !ownerToken) return;
+        const shouldPoll = (step === "comments" || step === "rules") && giveawayId && ownerToken;
+        if (!shouldPoll) return;
 
         let cancelled = false;
         const poll = async () => {
             try {
                 const data = await apiFetch<{ participantCount: number; status: string }>(
-                    `/api/tiktok/giveaway/${giveawayId}?ownerToken=${encodeURIComponent(ownerToken)}`
+                    `/api/tiktok/giveaway/${giveawayId}?ownerToken=${encodeURIComponent(ownerToken!)}`
                 );
                 if (cancelled) return;
                 setParticipantCount(data.participantCount);
@@ -158,7 +239,7 @@ export default function TikTokExtensionGiveaway() {
             setGiveawayId(data.giveawayId);
             setOwnerToken(data.ownerToken);
             setParticipantCount(0);
-            setStep("collect");
+            setStep("comments");
             router.replace(`/tiktok/extension?g=${data.giveawayId}`);
         } catch (err) {
             setCreateError(err instanceof Error ? err.message : "Çekiliş oluşturulamadı");
@@ -182,7 +263,8 @@ export default function TikTokExtensionGiveaway() {
         if (!giveawayId || !ownerToken) return;
         setDrawError(null);
         setDrawing(true);
-        setStep("countdown");
+        setStep("result");
+        setCountingDown(true);
 
         try {
             await apiFetch(`/api/tiktok/giveaway/${giveawayId}`, {
@@ -212,12 +294,12 @@ export default function TikTokExtensionGiveaway() {
 
             confetti({ particleCount: 160, spread: 80, origin: { y: 0.6 } });
             setResult(data.result);
-            setStep("result");
         } catch (err) {
             setDrawError(err instanceof Error ? err.message : "Çekiliş yapılamadı");
-            setStep("collect");
+            setStep("rules");
         } finally {
             setDrawing(false);
+            setCountingDown(false);
             setCountdownValue(null);
         }
     }, [giveawayId, ownerToken, countUserOnce, keyword, excludeOwner, ownerUsername, winnerCount, backupCount]);
@@ -237,10 +319,13 @@ export default function TikTokExtensionGiveaway() {
         []
     );
 
+    const currentStepNumber: 1 | 2 | 3 | 4 =
+        step === "link" ? 1 : step === "comments" ? 2 : step === "rules" ? 3 : 4;
+
     return (
         <main className="mx-auto max-w-2xl px-4 py-16 sm:px-6 sm:py-20">
             <div className="mb-8 text-center">
-                <div className="mx-auto mb-4 flex h-14 w-14 items-center justify-center rounded-2xl bg-santa-red/10 text-santa-red">
+                <div className="mx-auto mb-4 flex h-14 w-14 items-center justify-center rounded-2xl bg-indigo-accent/10 text-indigo-accent">
                     <Chrome className="h-7 w-7" />
                 </div>
                 <h1 className="text-2xl font-bold tracking-tight sm:text-3xl">TikTok Chrome Extension Çekilişi</h1>
@@ -249,74 +334,153 @@ export default function TikTokExtensionGiveaway() {
                 </p>
             </div>
 
-            {step === "create" && (
-                <div className="rounded-[20px] border border-[var(--border-light)] bg-white p-6 shadow-[0_8px_40px_rgba(17,24,39,0.06)] dark:bg-[var(--card-bg)] sm:p-8">
-                    <label className="mb-2 block text-sm font-semibold">TikTok Video URL</label>
-                    <Input
-                        value={videoUrl}
-                        onChange={(e) => setVideoUrl(e.target.value)}
-                        placeholder="https://www.tiktok.com/@kullanici/video/..."
-                        inputMode="url"
-                    />
-                    {createError && <p className="mt-2 text-sm text-red-600">{createError}</p>}
-                    <Button className="mt-4 w-full" onClick={createGiveaway} disabled={creating || !videoUrl.trim()}>
-                        {creating ? <Loader2 className="h-4 w-4 animate-spin" /> : "Çekilişi Oluştur"}
-                    </Button>
-                </div>
-            )}
+            <Stepper current={currentStepNumber} />
 
-            {step === "collect" && giveawayId && ownerToken && (
-                <div className="space-y-6">
-                    <div className="rounded-[20px] border border-[var(--border-light)] bg-white p-6 shadow-[0_8px_40px_rgba(17,24,39,0.06)] dark:bg-[var(--card-bg)] sm:p-8">
-                        <div className="mb-4 flex items-center justify-between rounded-xl bg-[var(--surface-2)] px-4 py-3">
-                            <div>
-                                <p className="text-xs text-[var(--text-muted)]">Çekiliş ID</p>
-                                <p className="font-mono text-lg font-bold">{giveawayId}</p>
-                            </div>
-                            <button
-                                type="button"
-                                onClick={() => copy(giveawayId, "id")}
-                                className="rounded-lg p-2 text-[var(--text-secondary)] hover:bg-[var(--border-light)]"
-                                aria-label="Çekiliş ID'yi kopyala"
-                            >
-                                {copiedField === "id" ? <Check className="h-4 w-4 text-emerald-600" /> : <Copy className="h-4 w-4" />}
-                            </button>
+            {step === "link" && (
+                <Card>
+                    <label htmlFor="ext-url" className="mb-2 block text-sm font-semibold text-[var(--text-secondary)]">
+                        TikTok video linki
+                    </label>
+                    <div className="flex flex-col gap-3">
+                        <div className="flex items-center gap-3 rounded-2xl border border-[var(--border-medium)] bg-[var(--surface-2)] px-4 py-3.5 transition focus-within:border-indigo-accent focus-within:ring-4 focus-within:ring-indigo-accent/10">
+                            <Link2 className="h-5 w-5 shrink-0 text-[var(--text-muted)]" />
+                            <input
+                                id="ext-url"
+                                type="url"
+                                inputMode="url"
+                                autoComplete="url"
+                                placeholder="https://www.tiktok.com/@kullanici/video/..."
+                                value={videoUrl}
+                                onChange={(e) => setVideoUrl(e.target.value)}
+                                onKeyDown={(e) => e.key === "Enter" && createGiveaway()}
+                                className="w-full bg-transparent text-base outline-none placeholder:text-[var(--text-muted)]"
+                            />
                         </div>
-
-                        <div className="mb-6 flex items-center justify-between rounded-xl bg-[var(--surface-2)] px-4 py-3">
-                            <div className="min-w-0">
-                                <p className="text-xs text-[var(--text-muted)]">İçe Aktarma Kodu (extension&apos;a yapıştırın)</p>
-                                <p className="truncate font-mono text-xs">{ownerToken}</p>
-                            </div>
-                            <button
-                                type="button"
-                                onClick={() => copy(ownerToken, "code")}
-                                className="rounded-lg p-2 text-[var(--text-secondary)] hover:bg-[var(--border-light)]"
-                                aria-label="İçe aktarma kodunu kopyala"
-                            >
-                                {copiedField === "code" ? <Check className="h-4 w-4 text-emerald-600" /> : <Copy className="h-4 w-4" />}
-                            </button>
-                        </div>
-
-                        <ol className="mb-6 space-y-2 text-sm text-[var(--text-secondary)]">
-                            <li>1. Bu sekmeyi açık bırakın, TikTok videosunu başka bir sekmede açın.</li>
-                            <li>
-                                2. YulaSanta Chrome Extension&apos;ı açın — bu sekme açık olduğu sürece Çekiliş ID ve
-                                İçe Aktarma Kodu otomatik algılanır, kopyala/yapıştır gerekmez.
-                            </li>
-                            <li>3. &quot;Yorumları Topla&quot;ya, ardından &quot;YulaSanta&apos;ya Gönder&quot;e basın.</li>
-                            <li>4. Toplanan yorumlar otomatik olarak bu çekilişe aktarılacaktır.</li>
-                        </ol>
-
-                        <div className="flex items-center justify-between rounded-xl border border-dashed border-[var(--border-light)] px-4 py-3">
-                            <span className="flex items-center gap-2 text-sm font-medium">
-                                <Users className="h-4 w-4 text-santa-red" /> Toplanan yorum
-                            </span>
-                            <span className="text-xl font-bold">{participantCount.toLocaleString("tr-TR")}</span>
-                        </div>
+                        {createError && (
+                            <p className="rounded-xl bg-red-50 px-4 py-2.5 text-sm text-red-700 dark:bg-red-500/10 dark:text-red-400">
+                                {createError}
+                            </p>
+                        )}
+                        <button
+                            type="button"
+                            onClick={createGiveaway}
+                            disabled={creating || !videoUrl.trim()}
+                            className={cn(
+                                "inline-flex min-h-[52px] w-full items-center justify-center gap-2 rounded-xl px-6 text-base font-bold transition hover:-translate-y-0.5 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-indigo-accent focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-60",
+                                EXT_CTA
+                            )}
+                        >
+                            {creating ? (
+                                <>
+                                    <Loader2 className="h-5 w-5 animate-spin" /> Oluşturuluyor…
+                                </>
+                            ) : (
+                                <>
+                                    <ArrowRight className="h-5 w-5" /> Çekilişi Oluştur
+                                </>
+                            )}
+                        </button>
                     </div>
 
-                    <div className="rounded-[20px] border border-[var(--border-light)] bg-white p-6 shadow-[0_8px_40px_rgba(17,24,39,0.06)] dark:bg-[var(--card-bg)] sm:p-8">
+                    <div className="mt-6 flex items-start gap-2.5 rounded-xl bg-[var(--surface-2)] px-4 py-3 text-xs text-[var(--text-muted)]">
+                        <Puzzle className="mt-0.5 h-4 w-4 shrink-0" />
+                        <p>
+                            Bir sonraki adımda size özel bir Çekiliş ID ve İçe Aktarma Kodu göstereceğiz — bunları
+                            YulaSanta Chrome Extension&apos;a kaydedip yorumları toplayacaksınız.
+                        </p>
+                    </div>
+                </Card>
+            )}
+
+            {step === "comments" && giveawayId && ownerToken && (
+                <Card>
+                    <div className="mb-4 flex items-center justify-between rounded-xl bg-[var(--surface-2)] px-4 py-3">
+                        <div>
+                            <p className="text-xs text-[var(--text-muted)]">Çekiliş ID</p>
+                            <p className="font-mono text-lg font-bold">{giveawayId}</p>
+                        </div>
+                        <button
+                            type="button"
+                            onClick={() => copy(giveawayId, "id")}
+                            className="rounded-lg p-2 text-[var(--text-secondary)] hover:bg-[var(--border-light)]"
+                            aria-label="Çekiliş ID'yi kopyala"
+                        >
+                            {copiedField === "id" ? <Check className="h-4 w-4 text-emerald-600" /> : <Copy className="h-4 w-4" />}
+                        </button>
+                    </div>
+
+                    <div className="mb-6 flex items-center justify-between rounded-xl bg-[var(--surface-2)] px-4 py-3">
+                        <div className="min-w-0">
+                            <p className="text-xs text-[var(--text-muted)]">İçe Aktarma Kodu (extension&apos;a yapıştırın)</p>
+                            <p className="truncate font-mono text-xs">{ownerToken}</p>
+                        </div>
+                        <button
+                            type="button"
+                            onClick={() => copy(ownerToken, "code")}
+                            className="rounded-lg p-2 text-[var(--text-secondary)] hover:bg-[var(--border-light)]"
+                            aria-label="İçe aktarma kodunu kopyala"
+                        >
+                            {copiedField === "code" ? <Check className="h-4 w-4 text-emerald-600" /> : <Copy className="h-4 w-4" />}
+                        </button>
+                    </div>
+
+                    <ol className="mb-6 space-y-2 text-sm text-[var(--text-secondary)]">
+                        <li>1. Bu sekmeyi açık bırakın, TikTok videosunu başka bir sekmede açın.</li>
+                        <li>
+                            2. YulaSanta Chrome Extension&apos;ı açın — bu sekme açık olduğu sürece Çekiliş ID ve
+                            İçe Aktarma Kodu otomatik algılanır, kopyala/yapıştır gerekmez.
+                        </li>
+                        <li>3. &quot;Yorumları Topla&quot;ya, ardından &quot;YulaSanta&apos;ya Gönder&quot;e basın.</li>
+                    </ol>
+
+                    <div className="flex items-center justify-between rounded-xl border border-indigo-accent/25 bg-indigo-accent/[0.06] px-4 py-3.5">
+                        <span className="flex items-center gap-2 text-sm font-medium">
+                            <span className="relative flex h-2 w-2">
+                                <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-indigo-accent opacity-60" />
+                                <span className="relative inline-flex h-2 w-2 rounded-full bg-indigo-accent" />
+                            </span>
+                            Toplanan yorum
+                        </span>
+                        <span className="text-2xl font-bold tabular-nums">{participantCount.toLocaleString("tr-TR")}</span>
+                    </div>
+
+                    <button
+                        type="button"
+                        onClick={() => setStep("rules")}
+                        disabled={participantCount === 0}
+                        className={cn(
+                            "mt-5 inline-flex min-h-[52px] w-full items-center justify-center gap-2 rounded-xl px-6 text-base font-bold transition hover:-translate-y-0.5 disabled:pointer-events-none disabled:opacity-50",
+                            EXT_CTA
+                        )}
+                    >
+                        Devam Et <ArrowRight className="h-5 w-5" />
+                    </button>
+                    {participantCount === 0 && (
+                        <p className="mt-2 text-center text-xs text-[var(--text-muted)]">
+                            Devam etmek için önce extension ile en az bir yorum toplayın.
+                        </p>
+                    )}
+                </Card>
+            )}
+
+            {step === "rules" && (
+                <div className="space-y-6">
+                    <Card>
+                        <button
+                            type="button"
+                            onClick={() => setStep("comments")}
+                            className="mb-5 inline-flex items-center gap-1.5 text-sm font-semibold text-[var(--text-muted)] hover:text-[var(--text-secondary)]"
+                        >
+                            <ArrowLeft className="h-4 w-4" /> Yorumlar
+                        </button>
+
+                        <div className="mb-5 flex items-center justify-between rounded-xl border border-dashed border-[var(--border-light)] px-4 py-3">
+                            <span className="flex items-center gap-2 text-sm font-medium">
+                                <Users className="h-4 w-4 text-indigo-accent" /> Toplanan yorum
+                            </span>
+                            <span className="text-xl font-bold tabular-nums">{participantCount.toLocaleString("tr-TR")}</span>
+                        </div>
+
                         <h2 className="mb-4 font-semibold">Çekiliş Ayarları</h2>
 
                         <button
@@ -325,13 +489,19 @@ export default function TikTokExtensionGiveaway() {
                             className="mb-4 flex w-full min-h-[48px] items-center justify-between rounded-2xl border border-[var(--border-light)] bg-[var(--surface-2)] px-4 py-3 text-left"
                         >
                             <span className="flex items-center gap-2 text-sm font-medium">
-                                <Filter className="h-4 w-4 text-santa-red" /> Bir kullanıcı = bir katılım
+                                <Filter className="h-4 w-4 text-indigo-accent" /> Bir kullanıcı = bir katılım
                             </span>
                             <span
-                                className={`relative h-7 w-12 rounded-full transition-colors ${countUserOnce ? "bg-santa-red" : "bg-[var(--text-muted)]"}`}
+                                className={cn(
+                                    "relative h-7 w-12 rounded-full transition-colors",
+                                    countUserOnce ? "bg-indigo-accent" : "bg-[var(--text-muted)]"
+                                )}
                             >
                                 <span
-                                    className={`absolute top-1 h-5 w-5 rounded-full bg-white shadow transition-transform ${countUserOnce ? "right-1" : "left-1"}`}
+                                    className={cn(
+                                        "absolute top-1 h-5 w-5 rounded-full bg-white shadow transition-transform",
+                                        countUserOnce ? "right-1" : "left-1"
+                                    )}
                                 />
                             </span>
                         </button>
@@ -346,6 +516,9 @@ export default function TikTokExtensionGiveaway() {
                             onExcludeOwnerChange={setExcludeOwner}
                             ownerUsername={ownerUsername}
                             onOwnerUsernameChange={setOwnerUsername}
+                            accentClass="text-indigo-accent"
+                            toggleOnClass="bg-indigo-accent"
+                            inputFocusClass="focus:border-indigo-accent focus:ring-indigo-accent/10"
                             labels={filterLabels}
                         />
 
@@ -370,41 +543,43 @@ export default function TikTokExtensionGiveaway() {
                             </div>
                         </div>
 
-                        {drawError && <p className="mt-3 text-sm text-red-600">{drawError}</p>}
-
-                        <Button
-                            className="mt-6 w-full"
-                            size="lg"
-                            onClick={runDraw}
-                            disabled={drawing || participantCount === 0}
-                        >
-                            <Trophy className="h-4 w-4" /> Çekilişi Başlat
-                        </Button>
-                        {participantCount === 0 && (
-                            <p className="mt-2 text-center text-xs text-[var(--text-muted)]">
-                                Çekilişi başlatmak için önce extension ile yorum toplayın.
+                        {drawError && (
+                            <p className="mt-3 rounded-xl bg-red-50 px-4 py-2.5 text-sm text-red-700 dark:bg-red-500/10 dark:text-red-400">
+                                {drawError}
                             </p>
                         )}
-                    </div>
+
+                        <button
+                            type="button"
+                            onClick={runDraw}
+                            disabled={drawing || participantCount === 0}
+                            className={cn(
+                                "mt-6 inline-flex min-h-[56px] w-full items-center justify-center gap-2 rounded-xl px-6 text-lg font-bold transition hover:-translate-y-0.5 disabled:pointer-events-none disabled:opacity-50",
+                                EXT_CTA
+                            )}
+                        >
+                            <Trophy className="h-5 w-5" /> Çekilişi Başlat
+                        </button>
+                    </Card>
                 </div>
             )}
 
-            {step === "countdown" && (
+            {countingDown && (
                 <div
                     className="fixed inset-0 z-50 flex flex-col items-center justify-center bg-[var(--background)]"
                     role="status"
                     aria-live="polite"
                 >
                     <p className="mb-6 text-lg text-[var(--text-secondary)]">Hazır mısın?</p>
-                    <div className="text-8xl font-black text-santa-red sm:text-9xl">
+                    <div className="text-8xl font-black text-indigo-accent sm:text-9xl">
                         {countdownValue && countdownValue > 0 ? countdownValue : "🎉"}
                     </div>
                 </div>
             )}
 
-            {step === "result" && result && giveawayId && (
+            {step === "result" && !countingDown && result && giveawayId && (
                 <div className="space-y-6">
-                    <div className="rounded-[20px] border border-[var(--border-light)] bg-white p-6 text-center shadow-[0_8px_40px_rgba(17,24,39,0.06)] dark:bg-[var(--card-bg)] sm:p-8">
+                    <Card className="text-center">
                         <Trophy className="mx-auto mb-3 h-12 w-12 text-amber-500" />
                         <p className="text-sm font-semibold uppercase tracking-wider text-[var(--text-muted)]">Kazanan</p>
                         {result.winners.map((w, i) => (
@@ -428,9 +603,8 @@ export default function TikTokExtensionGiveaway() {
                         )}
 
                         <div className="mt-6 flex flex-col gap-3 sm:flex-row">
-                            <Button
-                                variant="secondary"
-                                className="flex-1"
+                            <button
+                                type="button"
                                 onClick={() =>
                                     downloadWinnerCard({
                                         giveawayName: videoUrl || "TikTok Çekilişi",
@@ -439,17 +613,18 @@ export default function TikTokExtensionGiveaway() {
                                         platform: "tiktok",
                                     })
                                 }
+                                className="inline-flex flex-1 items-center justify-center gap-2 rounded-lg bg-indigo-accent/10 px-5 py-2.5 text-sm font-bold text-indigo-accent hover:bg-indigo-accent/15"
                             >
                                 <Download className="h-4 w-4" /> Sonucu İndir
-                            </Button>
+                            </button>
                             <Link
                                 href={`/verify/${giveawayId}`}
-                                className="flex flex-1 items-center justify-center gap-2 rounded-lg border-2 border-current px-5 py-2.5 text-sm font-bold text-santa-red hover:bg-santa-red hover:text-white"
+                                className="flex flex-1 items-center justify-center gap-2 rounded-lg border-2 border-indigo-accent px-5 py-2.5 text-sm font-bold text-indigo-accent hover:bg-indigo-accent hover:text-white"
                             >
                                 <ShieldCheck className="h-4 w-4" /> Çekilişi Doğrula
                             </Link>
                         </div>
-                    </div>
+                    </Card>
 
                     <div className="flex items-center justify-between rounded-xl border border-[var(--border-light)] bg-[var(--surface-2)] px-4 py-3 text-sm">
                         <span className="flex items-center gap-2 text-[var(--text-secondary)]">
@@ -458,20 +633,20 @@ export default function TikTokExtensionGiveaway() {
                         <ArrowRight className="h-4 w-4 text-[var(--text-muted)]" />
                     </div>
 
-                    <Button
-                        variant="ghost"
-                        className="w-full"
+                    <button
+                        type="button"
                         onClick={() => {
-                            setStep("create");
+                            setStep("link");
                             setVideoUrl("");
                             setGiveawayId(null);
                             setOwnerToken(null);
                             setResult(null);
                             router.replace("/tiktok/extension");
                         }}
+                        className="inline-flex w-full items-center justify-center gap-2 rounded-lg px-5 py-2.5 text-sm font-semibold text-[var(--text-muted)] hover:bg-[var(--surface-2)]"
                     >
                         <RefreshCcw className="h-4 w-4" /> Yeni Çekiliş
-                    </Button>
+                    </button>
                 </div>
             )}
         </main>
