@@ -1,0 +1,264 @@
+:root {
+    --ys-red: #B61722;
+    --ys-red-hover: #930013;
+    --ys-surface-2: #F3F4F5;
+    --ys-card-bg: #FDFBF8;
+    --ys-text-primary: #1C1C1E;
+    --ys-text-secondary: #45464C;
+    --ys-text-muted: #76777D;
+    --ys-border: rgba(198, 198, 205, 0.5);
+}
+
+@media (prefers-color-scheme: dark) {
+    :root {
+        --ys-red: #E84040;
+        --ys-red-hover: #F55555;
+        --ys-surface-2: #16171A;
+        --ys-card-bg: #1A1B1E;
+        --ys-text-primary: #F2F2F3;
+        --ys-text-secondary: #C7C8CC;
+        --ys-text-muted: #8A8B90;
+        --ys-border: rgba(255, 255, 255, 0.1);
+    }
+}
+
+* {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    width: 320px;
+    background: var(--ys-card-bg);
+    color: var(--ys-text-primary);
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+    font-size: 13px;
+}
+
+.ys-popup {
+    padding: 14px;
+}
+
+.ys-header {
+    display: flex;
+    align-items: baseline;
+    justify-content: space-between;
+    margin-bottom: 12px;
+}
+
+.ys-logo {
+    font-weight: 800;
+    font-size: 15px;
+}
+
+.ys-subtitle {
+    color: var(--ys-text-muted);
+    font-size: 11px;
+    font-weight: 600;
+}
+
+.ys-row {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 12px;
+    padding: 8px 10px;
+    border-radius: 10px;
+    background: var(--ys-surface-2);
+}
+
+.ys-status {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    font-weight: 600;
+}
+
+.ys-dot {
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background: var(--ys-text-muted);
+    display: inline-block;
+}
+.ys-dot.ok { background: #2ECC71; }
+.ys-dot.bad { background: #E84040; }
+
+.ys-card {
+    background: var(--ys-surface-2);
+    border: 1px solid var(--ys-border);
+    border-radius: 14px;
+    padding: 12px;
+    margin-bottom: 10px;
+}
+
+.ys-label {
+    display: block;
+    font-size: 11px;
+    font-weight: 700;
+    color: var(--ys-text-muted);
+    margin: 8px 0 4px;
+}
+.ys-label:first-child { margin-top: 0; }
+
+#ys-detect { margin-top: 0; }
+
+.ys-hint {
+    margin: 6px 0 0;
+    font-size: 10.5px;
+    line-height: 1.4;
+    color: var(--ys-text-muted);
+    text-align: center;
+}
+
+.ys-divider {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    margin: 14px 0 6px;
+    color: var(--ys-text-muted);
+    font-size: 10.5px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.02em;
+}
+.ys-divider::before,
+.ys-divider::after {
+    content: "";
+    flex: 1;
+    height: 1px;
+    background: var(--ys-border);
+}
+
+.ys-input {
+    width: 100%;
+    padding: 8px 10px;
+    border-radius: 8px;
+    border: 1px solid var(--ys-border);
+    background: var(--ys-card-bg);
+    color: var(--ys-text-primary);
+    font-size: 13px;
+    font-family: inherit;
+}
+.ys-input:focus {
+    outline: none;
+    border-color: var(--ys-red);
+}
+
+.ys-btn {
+    width: 100%;
+    margin-top: 10px;
+    padding: 10px 12px;
+    border-radius: 10px;
+    border: none;
+    font-weight: 700;
+    font-size: 13px;
+    cursor: pointer;
+    font-family: inherit;
+}
+.ys-btn:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+}
+.ys-btn-primary {
+    background: var(--ys-red);
+    color: #fff;
+}
+.ys-btn-primary:not(:disabled):hover { background: var(--ys-red-hover); }
+.ys-btn-secondary {
+    background: var(--ys-border);
+    color: var(--ys-text-primary);
+}
+.ys-btn-outline {
+    background: transparent;
+    border: 1px solid var(--ys-red);
+    color: var(--ys-red);
+}
+.ys-link-btn {
+    margin-left: auto;
+    background: none;
+    border: none;
+    color: var(--ys-red);
+    font-size: 11px;
+    font-weight: 700;
+    cursor: pointer;
+    padding: 0;
+}
+
+.ys-giveaway-id-row {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    font-size: 12px;
+    color: var(--ys-text-secondary);
+    margin-bottom: 10px;
+}
+.ys-giveaway-id-row strong {
+    font-family: ui-monospace, monospace;
+    color: var(--ys-text-primary);
+}
+
+.ys-stats {
+    display: flex;
+    gap: 8px;
+    margin-bottom: 10px;
+}
+.ys-stat {
+    flex: 1;
+    text-align: center;
+    background: var(--ys-card-bg);
+    border-radius: 10px;
+    padding: 10px 4px;
+}
+.ys-stat-value {
+    display: block;
+    font-size: 18px;
+    font-weight: 800;
+}
+.ys-stat-label {
+    display: block;
+    font-size: 10px;
+    color: var(--ys-text-muted);
+    margin-top: 2px;
+}
+
+.ys-progress-wrap {
+    margin-bottom: 10px;
+}
+.ys-progress-label {
+    font-size: 11px;
+    color: var(--ys-text-secondary);
+    margin: 0 0 6px;
+}
+.ys-progress-track {
+    height: 6px;
+    border-radius: 999px;
+    background: var(--ys-border);
+    overflow: hidden;
+}
+.ys-progress-bar {
+    height: 100%;
+    width: 0%;
+    background: var(--ys-red);
+    transition: width 0.2s ease;
+}
+
+.ys-error {
+    color: #E84040;
+    font-size: 11.5px;
+    margin: 4px 0;
+}
+.ys-success {
+    color: #2ECC71;
+    font-size: 11.5px;
+    margin: 4px 0;
+    font-weight: 600;
+}
+
+.ys-footer {
+    color: var(--ys-text-muted);
+    font-size: 10px;
+    line-height: 1.4;
+    text-align: center;
+    margin-top: 4px;
+}

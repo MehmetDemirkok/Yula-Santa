@@ -1,0 +1,27 @@
+{
+    "manifest_version": 3,
+    "name": "YulaSanta — TikTok Çekiliş Yardımcısı",
+    "version": "1.0.0",
+    "description": "TikTok videosundaki yorumları kendi tarayıcınızda toplayıp YulaSanta çekilişine aktarın. Kayıt ve şifre gerekmez.",
+    "icons": {
+        "16": "icons/icon16.png",
+        "48": "icons/icon48.png",
+        "128": "icons/icon128.png"
+    },
+    "action": {
+        "default_popup": "popup.html",
+        "default_title": "YulaSanta TikTok Çekilişi"
+    },
+    "background": {
+        "service_worker": "background.js"
+    },
+    "permissions": ["activeTab", "scripting", "storage", "unlimitedStorage"],
+    "host_permissions": ["https://www.tiktok.com/*", "https://www.yulasanta.com.tr/*"],
+    "content_scripts": [
+        {
+            "matches": ["https://www.tiktok.com/*"],
+            "js": ["content/selectors.js", "content.js"],
+            "run_at": "document_idle"
+        }
+    ]
+}

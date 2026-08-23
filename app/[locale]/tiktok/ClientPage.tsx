@@ -3,9 +3,7 @@
 import { useState, useRef, useEffect, useMemo } from "react";
 import confetti from "canvas-confetti";
 import { useLocale, useTranslations } from "next-intl";
-import { useSearchParams } from "next/navigation";
-import { useRouter } from "@/i18n/navigation";
-import { localePath } from "@/lib/localePath";
+import { useRouter, Link } from "@/i18n/navigation";
 import {
     MessageCircle,
     Plus,
@@ -31,6 +29,7 @@ import {
     BadgeCheck,
     Shuffle,
     UserMinus,
+    Chrome,
 } from "lucide-react";
 import { Button } from "@/components/ui/Button";
 import { useLanguage } from "@/lib/i18n/LanguageContext";
@@ -38,7 +37,7 @@ import ShareModal from "@/components/ShareModal";
 import { useToast } from "@/lib/ToastContext";
 import { downloadWinnerCard } from "@/lib/downloadWinnerCard";
 import { secureShuffle, secureRandomInt } from "@/lib/random";
-import { applyGiveawayFilters, extractOwnerFromSocialUrl } from "@/lib/giveawayFilters";
+import { applyGiveawayFilters } from "@/lib/giveawayFilters";
 import { buildDrawProof, type DrawProof } from "@/lib/giveawayProof";
 import { FilterRulesPanel } from "@/components/giveaway/FilterRulesPanel";
 import { DrawProofPanel } from "@/components/giveaway/DrawProofPanel";
@@ -47,21 +46,9 @@ import { SITE_SHARE_SUFFIX } from "@/lib/constants";
 import { AdWrapper, InArticleAd } from "@/components/ads";
 import { AD_SLOTS } from "@/lib/ads/config";
 import { Reveal } from "@/components/Reveal";
-import { PayTicketDialog } from "@/components/tiktok/PayTicketDialog";
-import {
-    applyManualImportPreview,
-    COMMENTS_PER_FETCH,
-    formatFetchPrice,
-    isLikelyTikTokUrl,
-    isValidEmail,
-    parseManualImport,
-    type ManualImportPreview,
-    type TikTokErrorCode,
-    type TikTokFetchMeta,
-} from "@/lib/tiktok";
+import { applyManualImportPreview, parseManualImport, type ManualImportPreview } from "@/lib/tiktok";
 
 type Phase = "input" | "configure" | "results";
-type EntryMode = "auto" | "manual";
 
 interface Participant {
     name: string;
@@ -70,7 +57,6 @@ interface Participant {
 }
 
 const TT_CTA = "bg-santa-red hover:bg-santa-red-hover";
-const CREDIT_STORAGE_KEY = "ys_tiktok_credit";
 
 const FEATURE_ICONS = [Link2, Filter, MessageCircle, Users, UserMinus, Shield, Download, BadgeCheck] as const;
 const TRUST_ICONS = [Shield, ClipboardPaste, Filter, Users, BadgeCheck] as const;
@@ -89,16 +75,13 @@ function prefersReducedMotion() {
 export default function TikTokGiveaway() {
     const router = useRouter();
     const locale = useLocale();
-    const searchParams = useSearchParams();
     const { t } = useLanguage();
     const tl = useTranslations("giveaway.landing.tiktok");
     const tg = useTranslations("giveaway");
     const { toast } = useToast();
 
     const [phase, setPhase] = useState<Phase>("input");
-    const [entryMode, setEntryMode] = useState<EntryMode>("auto");
     const [manualPaste, setManualPaste] = useState("");
-    const [postLink, setPostLink] = useState("");
     const [channelUsername, setChannelUsername] = useState("");
     const [showAdvanced, setShowAdvanced] = useState(false);
 
@@ -125,19 +108,9 @@ export default function TikTokGiveaway() {
     const [winners, setWinners] = useState<Participant[]>([]);
     const [backups, setBackups] = useState<Participant[]>([]);
     const [copied, setCopied] = useState(false);
-    const [loading, setLoading] = useState(false);
-    const [loadingStep, setLoadingStep] = useState("");
-    const [error, setError] = useState<string | null>(null);
     const [showShareModal, setShowShareModal] = useState(false);
-    const [fetchMeta, setFetchMeta] = useState<TikTokFetchMeta | null>(null);
     const [importPreview, setImportPreview] = useState<ManualImportPreview | null>(null);
     const [openFaq, setOpenFaq] = useState<number | null>(0);
-    const [payOpen, setPayOpen] = useState(false);
-    const [payerEmail, setPayerEmail] = useState("");
-    const [payError, setPayError] = useState<string | null>(null);
-    const [checkoutLoading, setCheckoutLoading] = useState(false);
-    const [creditToken, setCreditToken] = useState<string | null>(null);
-    const [creditNotice, setCreditNotice] = useState<{ reason: string; emailSent: boolean } | null>(null);
 
     useEffect(() => {
         function handleClickOutside(event: MouseEvent) {
@@ -148,14 +121,6 @@ export default function TikTokGiveaway() {
         document.addEventListener("mousedown", handleClickOutside);
         return () => document.removeEventListener("mousedown", handleClickOutside);
     }, []);
-
-    useEffect(() => {
-        const extracted = extractOwnerFromSocialUrl(postLink);
-        if (extracted) {
-            setOwnerUsername(extracted);
-            if (!channelUsername) setChannelUsername(extracted);
-        }
-    }, [postLink, channelUsername]);
 
     const scrollToTool = () => {
         toolRef.current?.scrollIntoView({ behavior: prefersReducedMotion() ? "auto" : "smooth", block: "start" });
@@ -255,199 +220,9 @@ export default function TikTokGiveaway() {
         setParticipants((prev) => [...prev, ...added]);
         setManualPaste("");
         setImportPreview(null);
-        setFetchMeta(null);
         toast.success(tl("toasts.participantsAdded", { count: added.length }));
         goToConfigure();
     };
-
-    const mapFetchError = (code: TikTokErrorCode): string => {
-        if (code === "NO_APIFY_TOKEN" || code === "RATE_LIMIT") return tl("errors.quota");
-        if (code === "SCRAPER_UNAVAILABLE" || code === "TIMEOUT") return tl("errors.unavailable");
-        if (code === "EMPTY_RESULT") return tl("errors.empty");
-        if (code === "INVALID_URL") return tl("errors.invalidLink");
-        return tl("errors.generic");
-    };
-
-    const openPayFlow = () => {
-        setError(null);
-        setPayError(null);
-        if (!postLink.trim()) {
-            toast.warning(tl("errors.needLink"));
-            return;
-        }
-        if (!isLikelyTikTokUrl(postLink)) {
-            toast.error(tl("errors.invalidLink"));
-            return;
-        }
-        setPayOpen(true);
-    };
-
-    const startCheckout = async () => {
-        if (!isValidEmail(payerEmail)) {
-            setPayError(tl("pay.invalidEmail"));
-            return;
-        }
-        setCheckoutLoading(true);
-        setPayError(null);
-        try {
-            const response = await fetch("/api/tiktok/checkout", {
-                method: "POST",
-                headers: { "Content-Type": "application/json" },
-                body: JSON.stringify({ email: payerEmail, postLink, locale }),
-            });
-            const data = (await response.json().catch(() => ({}))) as { url?: string; code?: string; error?: string };
-            if (!response.ok) {
-                setPayError(data.code === "PAYMENTS_UNAVAILABLE" ? tl("pay.paymentsDown") : tl("errors.generic"));
-                return;
-            }
-            if (data.url) {
-                window.location.assign(data.url);
-                return;
-            }
-            setPayError(tl("pay.paymentsDown"));
-        } catch {
-            setPayError(tl("errors.generic"));
-        } finally {
-            setCheckoutLoading(false);
-        }
-    };
-
-    const PAYMENT_PENDING_RETRY_MS = 2500;
-    const PAYMENT_PENDING_MAX_ATTEMPTS = 6;
-
-    const runEntitledFetch = async (opts: { orderId?: string; token?: string }, attempt = 0) => {
-        setPayOpen(false);
-        setError(null);
-        setCreditNotice(null);
-        setLoading(true);
-        setFetchMeta(null);
-        const steps = tl.raw("loadingSteps") as string[];
-        let stepIdx = 0;
-        setLoadingStep(steps[0]);
-        const stepInterval = setInterval(() => {
-            stepIdx = (stepIdx + 1) % steps.length;
-            setLoadingStep(steps[stepIdx]);
-        }, 5000);
-
-        let retrying = false;
-        try {
-            const response = await fetch("/api/tiktok/run", {
-                method: "POST",
-                headers: { "Content-Type": "application/json" },
-                body: JSON.stringify({
-                    orderId: opts.orderId,
-                    creditToken: opts.token,
-                }),
-            });
-            const data = (await response.json().catch(() => ({}))) as Record<string, unknown>;
-
-            if (data.creditGranted) {
-                const token = typeof data.creditToken === "string" ? data.creditToken : null;
-                if (token) {
-                    setCreditToken(token);
-                    try {
-                        localStorage.setItem(CREDIT_STORAGE_KEY, token);
-                    } catch {
-                        /* ignore */
-                    }
-                }
-                const analysis = data.analysis as { reason?: string } | undefined;
-                setCreditNotice({
-                    reason: analysis?.reason || (typeof data.error === "string" ? data.error : tl("pay.creditBody")),
-                    emailSent: Boolean(data.emailSent),
-                });
-                const message = typeof data.error === "string" ? data.error : tl("errors.unavailable");
-                setError(message);
-                toast.warning(tl("pay.creditTitle"));
-                setEntryMode("manual");
-                return;
-            }
-
-            if (!response.ok) {
-                const code = (data.code as TikTokErrorCode | undefined) ?? "UNKNOWN";
-
-                // PayTR confirms payment via an async server-to-server notification.
-                // If we land back before it arrives, poll briefly instead of giving up.
-                if (code === "PAYMENT_PENDING" && attempt < PAYMENT_PENDING_MAX_ATTEMPTS) {
-                    retrying = true;
-                    setLoadingStep(tl("pay.confirming"));
-                    setTimeout(() => {
-                        void runEntitledFetch(opts, attempt + 1);
-                    }, PAYMENT_PENDING_RETRY_MS);
-                    return;
-                }
-
-                const message = code === "PAYMENT_PENDING" ? tl("errors.paymentTimeout") : mapFetchError(code);
-                setError(message);
-                toast.error(message);
-                setEntryMode("manual");
-                return;
-            }
-
-            if (!Array.isArray(data.participants)) {
-                throw new Error("Malformed response");
-            }
-
-            try {
-                localStorage.removeItem(CREDIT_STORAGE_KEY);
-            } catch {
-                /* ignore */
-            }
-            setCreditToken(null);
-            setParticipants(data.participants as Participant[]);
-            if (data.meta) setFetchMeta(data.meta as TikTokFetchMeta);
-            toast.success(tl("toasts.participantsAdded", { count: (data.participants as unknown[]).length }));
-            goToConfigure();
-        } catch {
-            const friendly = tl("errors.generic");
-            setError(friendly);
-            toast.error(friendly);
-            setEntryMode("manual");
-        } finally {
-            clearInterval(stepInterval);
-            if (!retrying) {
-                setLoading(false);
-                setLoadingStep("");
-            }
-        }
-    };
-
-    useEffect(() => {
-        try {
-            const stored = localStorage.getItem(CREDIT_STORAGE_KEY);
-            if (stored) setCreditToken(stored);
-        } catch {
-            /* ignore */
-        }
-        const credit = searchParams.get("credit");
-        const orderId = searchParams.get("oid");
-        const paid = searchParams.get("paid");
-        if (credit) {
-            setCreditToken(credit);
-            try {
-                localStorage.setItem(CREDIT_STORAGE_KEY, credit);
-            } catch {
-                /* ignore */
-            }
-            setPayOpen(true);
-        }
-        if (paid === "1" && orderId) {
-            void runEntitledFetch({ orderId });
-        }
-        if (paid === "0") {
-            setPayOpen(true);
-            setPayError(tl("pay.cancelled"));
-        }
-        if (credit || orderId || paid) {
-            const url = new URL(window.location.href);
-            url.searchParams.delete("credit");
-            url.searchParams.delete("oid");
-            url.searchParams.delete("paid");
-            window.history.replaceState({}, "", url.pathname + url.search + url.hash);
-        }
-        // One-shot return-from-checkout / credit-link bootstrap.
-        // eslint-disable-next-line react-hooks/exhaustive-deps
-    }, []);
 
     const checkFollowerStatus = async (winnersToCheck: Participant[], backupsToCheck: Participant[]) => {
         try {
@@ -574,7 +349,6 @@ export default function TikTokGiveaway() {
     const featuresData = tl.raw("features") as Array<{ title: string; desc: string }>;
     const howSteps = tl.raw("howSteps") as Array<{ title: string; desc: string }>;
     const faqItems = tl.raw("faq") as Array<{ q: string; a: string }>;
-    const priceLabel = formatFetchPrice(locale);
 
     const progressSteps = [
         { n: 1, label: tl("steps.paste") },
@@ -588,7 +362,7 @@ export default function TikTokGiveaway() {
             ? 4
             : phase === "configure"
               ? 3
-              : participants.length > 0 || loading
+              : participants.length > 0
                 ? 2
                 : 1;
 
@@ -814,187 +588,95 @@ export default function TikTokGiveaway() {
 
                         {!isRolling && phase === "input" && (
                             <div className="p-5 sm:p-7">
-                                <div className="mb-5 flex gap-1 rounded-2xl bg-[var(--surface-2)] p-1">
-                                    <button
-                                        type="button"
-                                        onClick={() => setEntryMode("auto")}
-                                        className={`flex min-h-[44px] flex-1 items-center justify-center gap-2 rounded-xl px-3 text-sm font-semibold transition ${
-                                            entryMode === "auto"
-                                                ? "bg-white text-[var(--text-primary)] shadow-sm dark:bg-white/10"
-                                                : "text-[var(--text-muted)] hover:text-[var(--text-secondary)]"
-                                        }`}
-                                    >
-                                        <Link2 className="h-4 w-4" /> {tl("automatic")}
-                                    </button>
-                                    <button
-                                        type="button"
-                                        onClick={() => setEntryMode("manual")}
-                                        className={`flex min-h-[44px] flex-1 items-center justify-center gap-2 rounded-xl px-3 text-sm font-semibold transition ${
-                                            entryMode === "manual"
-                                                ? "bg-white text-[var(--text-primary)] shadow-sm dark:bg-white/10"
-                                                : "text-[var(--text-muted)] hover:text-[var(--text-secondary)]"
-                                        }`}
-                                    >
-                                        <ClipboardPaste className="h-4 w-4" /> {tl("manual")}
-                                    </button>
+                                <Link
+                                    href="/tiktok/extension"
+                                    className="group relative mb-5 flex items-center gap-3.5 overflow-hidden rounded-2xl border border-indigo-accent/30 bg-indigo-accent/[0.07] px-4 py-3.5 shadow-[0_1px_0_rgba(79,70,229,0.06)] transition hover:border-indigo-accent/60 hover:bg-indigo-accent/[0.12] hover:shadow-[0_6px_20px_rgba(79,70,229,0.18)] sm:px-5"
+                                >
+                                    <span className="flex h-10 w-10 shrink-0 items-center justify-center rounded-xl bg-indigo-accent text-white shadow-[0_4px_14px_rgba(79,70,229,0.35)] transition-transform group-hover:scale-105">
+                                        <Chrome className="h-5 w-5" />
+                                    </span>
+                                    <span className="min-w-0 flex-1">
+                                        <span className="flex flex-wrap items-center gap-1.5">
+                                            <span className="text-sm font-bold leading-tight text-[var(--text-primary)]">
+                                                Chrome Extension ile ücretsiz toplayın
+                                            </span>
+                                            <span className="rounded-full bg-indigo-accent px-2 py-0.5 text-[10px] font-extrabold uppercase tracking-wide text-white">
+                                                Ücretsiz
+                                            </span>
+                                        </span>
+                                        <span className="mt-0.5 block truncate text-xs text-[var(--text-secondary)]">
+                                            Kayıt yok, ödeme yok — yorumları kendi tarayıcınızda toplayın.
+                                        </span>
+                                    </span>
+                                    <ArrowRight className="h-5 w-5 shrink-0 text-indigo-accent transition-transform group-hover:translate-x-1" />
+                                </Link>
+
+                                <div className="mb-5 flex items-center gap-3 text-xs font-semibold uppercase tracking-wider text-[var(--text-muted)]">
+                                    <span className="h-px flex-1 bg-[var(--border-light)]" />
+                                    veya yorumları elle yapıştırın
+                                    <span className="h-px flex-1 bg-[var(--border-light)]" />
                                 </div>
 
-                                {entryMode === "auto" ? (
-                                    <div className="space-y-4">
-                                        <div>
-                                            <label htmlFor="tt-url" className="mb-2 block text-sm font-semibold text-[var(--text-secondary)]">
-                                                {tl("step1Url")}
-                                            </label>
-                                            <div className="flex flex-col gap-3">
-                                                <div className="flex items-center gap-3 rounded-2xl border border-[var(--border-medium)] bg-[var(--surface-2)] px-4 py-3.5 transition focus-within:border-santa-red focus-within:ring-4 focus-within:ring-santa-red/10">
-                                                    <TikTokMark className="h-5 w-5 shrink-0 text-[var(--text-primary)]" />
-                                                    <input
-                                                        id="tt-url"
-                                                        type="url"
-                                                        inputMode="url"
-                                                        autoComplete="url"
-                                                        placeholder={tl("urlPlaceholder")}
-                                                        value={postLink}
-                                                        onChange={(e) => setPostLink(e.target.value)}
-                                                        onKeyDown={(e) => e.key === "Enter" && openPayFlow()}
-                                                        className="w-full bg-transparent text-base outline-none placeholder:text-[var(--text-muted)]"
-                                                    />
-                                                </div>
-                                                <button
-                                                    type="button"
-                                                    onClick={openPayFlow}
-                                                    disabled={loading}
-                                                    className={`inline-flex min-h-[52px] items-center justify-center gap-2 rounded-xl px-6 text-base font-bold text-white shadow-[0_4px_16px_rgba(182,23,34,0.22)] transition hover:-translate-y-0.5 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-santa-red focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-60 ${TT_CTA}`}
-                                                >
-                                                    {loading ? (
-                                                        <>
-                                                            <Loader2 className="h-5 w-5 animate-spin" /> {tl("fetching")}
-                                                        </>
-                                                    ) : (
-                                                        <>
-                                                            <ArrowRight className="h-5 w-5" /> {tl("fetchCta")}
-                                                        </>
-                                                    )}
-                                                </button>
-                                            </div>
-                                        </div>
+                                <div className="space-y-4">
+                                    <label htmlFor="tt-manual" className="block text-sm font-semibold text-[var(--text-secondary)]">
+                                        {tl("step1Manual")}
+                                    </label>
+                                    <textarea
+                                        id="tt-manual"
+                                        value={manualPaste}
+                                        onChange={(e) => {
+                                            setManualPaste(e.target.value);
+                                            setImportPreview(null);
+                                        }}
+                                        placeholder={`${t.giveaway.pasteComments}\n\n@user: yorum\nusername,comment`}
+                                        className="h-44 w-full resize-none rounded-2xl border border-dashed border-[var(--border-medium)] bg-[var(--surface-2)] p-4 outline-none transition focus:border-santa-red focus:ring-4 focus:ring-santa-red/10"
+                                    />
+                                    <button
+                                        type="button"
+                                        onClick={handleManualParse}
+                                        disabled={!manualPaste.trim()}
+                                        className={`inline-flex w-full min-h-[52px] items-center justify-center gap-2 rounded-2xl px-6 text-base font-bold text-white disabled:opacity-50 ${TT_CTA}`}
+                                    >
+                                        {tl("previewImport")}
+                                    </button>
 
-                                        {creditNotice && !loading && (
-                                            <div className="rounded-xl border border-[var(--border-light)] bg-[var(--surface-2)] px-4 py-4" role="status">
-                                                <p className="text-xs font-semibold uppercase tracking-[0.12em] text-[var(--text-muted)]">
-                                                    {tl("pay.creditTitle")}
-                                                </p>
-                                                <p className="mt-2 text-sm leading-relaxed text-[var(--text-secondary)]">{creditNotice.reason}</p>
-                                                <p className="mt-2 text-xs text-[var(--text-muted)]">
-                                                    {creditNotice.emailSent ? tl("pay.creditEmail") : tl("pay.creditSaved")}
-                                                </p>
-                                            </div>
-                                        )}
-
-                                        {loading && (
-                                            <div className="rounded-xl border border-[var(--border-light)] bg-[var(--surface-2)] p-4" role="status" aria-live="polite">
-                                                <div className="flex items-center gap-3">
-                                                    <Loader2 className="h-5 w-5 shrink-0 animate-spin text-santa-red" />
-                                                    <div>
-                                                        <p className="text-sm font-semibold">{loadingStep}</p>
-                                                        <p className="text-xs text-[var(--text-muted)]">{tl("loadingWait")}</p>
+                                    {importPreview && (
+                                        <div className="space-y-3 rounded-2xl border border-[var(--border-light)] bg-[var(--surface-2)] p-4">
+                                            <div className="grid grid-cols-2 gap-2 text-center sm:grid-cols-4">
+                                                {[
+                                                    ["Valid", importPreview.validCount],
+                                                    ["Duplicate", importPreview.duplicateCount],
+                                                    ["Invalid", importPreview.invalidCount],
+                                                    ["Empty", importPreview.skippedEmpty],
+                                                ].map(([label, value]) => (
+                                                    <div key={String(label)} className="rounded-xl bg-white/70 p-2 dark:bg-white/5">
+                                                        <p className="text-[10px] font-bold uppercase text-[var(--text-muted)]">{label}</p>
+                                                        <p className="font-black">{value}</p>
                                                     </div>
-                                                </div>
-                                                <div className="mt-3 h-1.5 overflow-hidden rounded-full bg-black/5 dark:bg-white/10">
-                                                    <div className="h-full w-1/2 animate-pulse rounded-full bg-santa-red" />
-                                                </div>
+                                                ))}
                                             </div>
-                                        )}
-
-                                        {error && !loading && (
-                                            <div
-                                                className="rounded-2xl border border-santa-red/30 bg-santa-red/8 p-4 text-sm"
-                                                role="alert"
-                                            >
-                                                <p className="font-medium text-[var(--text-primary)]">{error}</p>
-                                                <p className="mt-1 text-[var(--text-secondary)]">{tl("autoUnavailable")}</p>
-                                                <button
-                                                    type="button"
-                                                    onClick={() => setEntryMode("manual")}
-                                                    className="mt-3 inline-flex min-h-[44px] items-center font-semibold text-santa-red underline-offset-2 hover:underline"
-                                                >
-                                                    {tl("switchManual")}
-                                                </button>
+                                            <div className="max-h-36 space-y-1 overflow-y-auto text-left">
+                                                {importPreview.rows.slice(0, 40).map((row) => (
+                                                    <div
+                                                        key={`${row.sourceLine}-${row.name}`}
+                                                        className={`rounded-lg px-2 py-1.5 text-xs ${row.duplicate ? "opacity-50 line-through" : "bg-white/60 dark:bg-white/5"}`}
+                                                    >
+                                                        <span className="font-bold">@{row.name}</span>
+                                                        <span className="text-[var(--text-muted)]"> — {row.comment.slice(0, 80)}</span>
+                                                    </div>
+                                                ))}
                                             </div>
-                                        )}
-
-                                        {participants.length > 0 && (
                                             <button
                                                 type="button"
-                                                onClick={goToConfigure}
-                                                className="inline-flex w-full min-h-[48px] items-center justify-center gap-2 rounded-2xl bg-black px-5 text-sm font-bold text-white transition hover:opacity-90 dark:bg-white dark:text-black"
+                                                onClick={confirmManualImport}
+                                                disabled={importPreview.validCount === 0}
+                                                className={`inline-flex w-full min-h-[48px] items-center justify-center rounded-2xl text-sm font-bold text-white disabled:opacity-50 ${TT_CTA}`}
                                             >
-                                                {tl("continueWith", { count: participants.length })} <ArrowRight className="h-4 w-4" />
+                                                {tl("importPeople", { count: importPreview.validCount })}
                                             </button>
-                                        )}
-                                    </div>
-                                ) : (
-                                    <div className="space-y-4">
-                                        <label htmlFor="tt-manual" className="block text-sm font-semibold text-[var(--text-secondary)]">
-                                            {tl("step1Manual")}
-                                        </label>
-                                        <textarea
-                                            id="tt-manual"
-                                            value={manualPaste}
-                                            onChange={(e) => {
-                                                setManualPaste(e.target.value);
-                                                setImportPreview(null);
-                                            }}
-                                            placeholder={`${t.giveaway.pasteComments}\n\n@user: yorum\nusername,comment`}
-                                            className="h-44 w-full resize-none rounded-2xl border border-dashed border-[var(--border-medium)] bg-[var(--surface-2)] p-4 outline-none transition focus:border-santa-red focus:ring-4 focus:ring-santa-red/10"
-                                        />
-                                        <button
-                                            type="button"
-                                            onClick={handleManualParse}
-                                            disabled={!manualPaste.trim()}
-                                            className={`inline-flex w-full min-h-[52px] items-center justify-center gap-2 rounded-2xl px-6 text-base font-bold text-white disabled:opacity-50 ${TT_CTA}`}
-                                        >
-                                            {tl("previewImport")}
-                                        </button>
-
-                                        {importPreview && (
-                                            <div className="space-y-3 rounded-2xl border border-[var(--border-light)] bg-[var(--surface-2)] p-4">
-                                                <div className="grid grid-cols-2 gap-2 text-center sm:grid-cols-4">
-                                                    {[
-                                                        ["Valid", importPreview.validCount],
-                                                        ["Duplicate", importPreview.duplicateCount],
-                                                        ["Invalid", importPreview.invalidCount],
-                                                        ["Empty", importPreview.skippedEmpty],
-                                                    ].map(([label, value]) => (
-                                                        <div key={String(label)} className="rounded-xl bg-white/70 p-2 dark:bg-white/5">
-                                                            <p className="text-[10px] font-bold uppercase text-[var(--text-muted)]">{label}</p>
-                                                            <p className="font-black">{value}</p>
-                                                        </div>
-                                                    ))}
-                                                </div>
-                                                <div className="max-h-36 space-y-1 overflow-y-auto text-left">
-                                                    {importPreview.rows.slice(0, 40).map((row) => (
-                                                        <div
-                                                            key={`${row.sourceLine}-${row.name}`}
-                                                            className={`rounded-lg px-2 py-1.5 text-xs ${row.duplicate ? "opacity-50 line-through" : "bg-white/60 dark:bg-white/5"}`}
-                                                        >
-                                                            <span className="font-bold">@{row.name}</span>
-                                                            <span className="text-[var(--text-muted)]"> — {row.comment.slice(0, 80)}</span>
-                                                        </div>
-                                                    ))}
-                                                </div>
-                                                <button
-                                                    type="button"
-                                                    onClick={confirmManualImport}
-                                                    disabled={importPreview.validCount === 0}
-                                                    className={`inline-flex w-full min-h-[48px] items-center justify-center rounded-2xl text-sm font-bold text-white disabled:opacity-50 ${TT_CTA}`}
-                                                >
-                                                    {tl("importPeople", { count: importPreview.validCount })}
-                                                </button>
-                                            </div>
-                                        )}
-                                    </div>
-                                )}
+                                        </div>
+                                    )}
+                                </div>
                             </div>
                         )}
 
@@ -1013,8 +695,6 @@ export default function TikTokGiveaway() {
                                         {tl("backToUrl")}
                                     </button>
                                 </div>
-
-                                {fetchMeta && <TikTokFetchStats fetchMeta={fetchMeta} locale={locale} />}
 
                                 <div>
                                     <label className="mb-2 block text-sm font-semibold">{t.giveaway.giveawayName}</label>
@@ -1390,41 +1070,6 @@ export default function TikTokGiveaway() {
                     <Home className="mr-2 h-4 w-4" /> {t.result.backToHome}
                 </Button>
             </div>
-
-            <PayTicketDialog
-                open={payOpen}
-                onClose={() => setPayOpen(false)}
-                priceLabel={priceLabel}
-                email={payerEmail}
-                onEmailChange={setPayerEmail}
-                onPay={() => void startCheckout()}
-                onUseCredit={creditToken ? () => void runEntitledFetch({ token: creditToken }) : undefined}
-                hasCredit={Boolean(creditToken)}
-                paying={checkoutLoading || loading}
-                error={payError}
-                onManual={() => {
-                    setPayOpen(false);
-                    setEntryMode("manual");
-                }}
-                salesContractHref={localePath(locale, "/mesafeli-satis-sozlesmesi")}
-                labels={{
-                    title: tl("pay.title"),
-                    subtitle: tl("pay.subtitle"),
-                    emailLabel: tl("pay.emailLabel"),
-                    emailPlaceholder: tl("pay.emailPlaceholder"),
-                    emailHint: tl("pay.emailHint"),
-                    cta: tl("pay.cta"),
-                    processing: tl("pay.processing"),
-                    noMembership: tl("pay.noMembership"),
-                    serviceName: tl("pay.serviceName"),
-                    cap: tl("pay.cap", { count: COMMENTS_PER_FETCH }),
-                    feeLine: tl("pay.feeLine"),
-                    noRefund: tl("pay.noRefund"),
-                    useCredit: tl("pay.useCredit"),
-                    switchManual: tl("switchManual"),
-                    salesContractLink: tl("pay.salesContractLink"),
-                }}
-            />
         </main>
     );
 }
