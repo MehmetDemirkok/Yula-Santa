@@ -1,17 +1,18 @@
 import { NextRequest, NextResponse } from 'next/server';
 import { rateLimit } from '@/lib/rateLimit';
 import {
-    attachStripeSession,
+    attachPaytrToken,
     createPendingEntitlement,
     isLedgerConfigured,
 } from '@/lib/tiktok/ledger';
 import { createRequestId, isLikelyTikTokUrl, logTikTokEvent, normalizeTikTokPostUrl } from '@/lib/tiktok/server';
 import { isValidEmail, normalizeEmail } from '@/lib/tiktok/email';
 import {
-    createTikTokCheckoutSession,
-    isStripeConfigured,
+    clientIpFromRequest,
+    createTikTokPaymentToken,
+    isPaytrConfigured,
     originFromRequest,
-} from '@/lib/tiktok/stripeCheckout';
+} from '@/lib/tiktok/paytrCheckout';
 
 export async function POST(req: NextRequest) {
     const requestId = createRequestId();
@@ -45,8 +46,8 @@ export async function POST(req: NextRequest) {
         return NextResponse.json({ error: 'Invalid TikTok URL', code: 'INVALID_URL', requestId }, { status: 400 });
     }
 
-    if (!isStripeConfigured()) {
-        logTikTokEvent('checkout_stripe_missing', { requestId });
+    if (!isPaytrConfigured()) {
+        logTikTokEvent('checkout_paytr_missing', { requestId });
         return NextResponse.json(
             {
                 error: 'Payments are not enabled yet',
@@ -57,8 +58,11 @@ export async function POST(req: NextRequest) {
         );
     }
 
+    // PayTR's merchant_oid must be alphanumeric, so the ledger id (used as the
+    // order id) is a dash-free UUID rather than createRequestId()'s default format.
+    const entitlementId = requestId.replace(/-/g, '');
     const entitlement = await createPendingEntitlement({
-        id: requestId,
+        id: entitlementId,
         email,
         postUrl: normalizeTikTokPostUrl(postLink),
         locale,
@@ -66,22 +70,22 @@ export async function POST(req: NextRequest) {
 
     const origin = originFromRequest(req);
     const localePrefix = locale === 'tr' ? '' : `/${locale}`;
-    const successUrl = `${origin}${localePrefix}/tiktok?paid=1&session_id={CHECKOUT_SESSION_ID}`;
-    const cancelUrl = `${origin}${localePrefix}/tiktok?paid=0`;
+    const successUrl = `${origin}${localePrefix}/tiktok?paid=1&oid=${entitlement.id}`;
+    const failUrl = `${origin}${localePrefix}/tiktok?paid=0`;
 
     try {
-        const session = await createTikTokCheckoutSession({
+        const payment = await createTikTokPaymentToken({
+            merchantOid: entitlement.id,
             email,
-            entitlementId: entitlement.id,
-            postUrl: entitlement.postUrl,
+            userIp: clientIpFromRequest(req),
             locale,
             successUrl,
-            cancelUrl,
+            failUrl,
         });
-        await attachStripeSession(entitlement.id, session.id);
+        await attachPaytrToken(entitlement.id, payment.token);
 
         logTikTokEvent('checkout_created', { requestId, entitlementId: entitlement.id });
-        return NextResponse.json({ url: session.url, entitlementId: entitlement.id, requestId });
+        return NextResponse.json({ url: payment.url, entitlementId: entitlement.id, requestId });
     } catch (error) {
         logTikTokEvent('checkout_error', {
             requestId,

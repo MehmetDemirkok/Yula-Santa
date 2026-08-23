@@ -7,7 +7,7 @@ export type Entitlement = {
     id: string;
     email: string;
     postUrl: string;
-    stripeSessionId: string | null;
+    paytrToken: string | null;
     status: EntitlementStatus;
     failureCode: string | null;
     failureReason: string | null;
@@ -40,7 +40,7 @@ async function ensureSchema() {
                 id TEXT PRIMARY KEY,
                 email TEXT NOT NULL,
                 post_url TEXT NOT NULL,
-                stripe_session_id TEXT UNIQUE,
+                paytr_token TEXT,
                 status TEXT NOT NULL,
                 failure_code TEXT,
                 failure_reason TEXT,
@@ -54,6 +54,9 @@ async function ensureSchema() {
                 credited_at TIMESTAMPTZ
             )
         `;
+        // Forward-compatible migration in case the table already exists from the old Stripe-backed schema.
+        await db`ALTER TABLE tiktok_entitlements ADD COLUMN IF NOT EXISTS paytr_token TEXT`;
+        await db`ALTER TABLE tiktok_entitlements DROP COLUMN IF EXISTS stripe_session_id`;
         await db`CREATE INDEX IF NOT EXISTS tiktok_entitlements_email_status ON tiktok_entitlements (email, status)`;
     })();
     return schemaReady;
@@ -64,7 +67,7 @@ function mapRow(row: Record<string, unknown>): Entitlement {
         id: String(row.id),
         email: String(row.email),
         postUrl: String(row.post_url),
-        stripeSessionId: row.stripe_session_id ? String(row.stripe_session_id) : null,
+        paytrToken: row.paytr_token ? String(row.paytr_token) : null,
         status: row.status as EntitlementStatus,
         failureCode: row.failure_code ? String(row.failure_code) : null,
         failureReason: row.failure_reason ? String(row.failure_reason) : null,
@@ -90,12 +93,12 @@ export async function createPendingEntitlement(input: {
     return mapRow(rows[0] as Record<string, unknown>);
 }
 
-export async function attachStripeSession(id: string, sessionId: string): Promise<void> {
+export async function attachPaytrToken(id: string, token: string): Promise<void> {
     await ensureSchema();
     const db = getSql();
     await db`
         UPDATE tiktok_entitlements
-        SET stripe_session_id = ${sessionId}, updated_at = now()
+        SET paytr_token = ${token}, updated_at = now()
         WHERE id = ${id}
     `;
 }
@@ -150,15 +153,6 @@ export async function getById(id: string): Promise<Entitlement | null> {
     await ensureSchema();
     const db = getSql();
     const rows = await db`SELECT * FROM tiktok_entitlements WHERE id = ${id} LIMIT 1`;
-    return rows[0] ? mapRow(rows[0] as Record<string, unknown>) : null;
-}
-
-export async function getByStripeSession(sessionId: string): Promise<Entitlement | null> {
-    await ensureSchema();
-    const db = getSql();
-    const rows = await db`
-        SELECT * FROM tiktok_entitlements WHERE stripe_session_id = ${sessionId} LIMIT 1
-    `;
     return rows[0] ? mapRow(rows[0] as Record<string, unknown>) : null;
 }
 

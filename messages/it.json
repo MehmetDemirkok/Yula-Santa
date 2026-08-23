@@ -540,7 +540,8 @@
                     "quota": "Automatic comment fetch is over quota. Paste comments to continue.",
                     "unavailable": "The comment service is not responding. You can paste comments and continue.",
                     "empty": "No comments found on this video. Try pasting them manually.",
-                    "generic": "Could not fetch comments. Check the link and that the video is public."
+                    "generic": "Could not fetch comments. Check the link and that the video is public.",
+                    "paymentTimeout": "Payment confirmation is taking longer than expected. Try again in a few minutes or contact us."
                 },
                 "toasts": {
                     "added": "@{name} added",
@@ -576,8 +577,10 @@
                     "creditBody": "The payment was not refunded. The next automatic fetch uses this credit.",
                     "creditEmail": "The credit was emailed to you. Use the link to retry.",
                     "creditSaved": "The credit is saved on this device. Fetch comments again.",
-                    "paymentsDown": "Payments are not open yet. They start after Stripe terms are accepted.",
-                    "cancelled": "Cancelled. You can try again."
+                    "paymentsDown": "Payments are not open yet. They start after PayTR onboarding is approved.",
+                    "cancelled": "Cancelled. You can try again.",
+                    "salesContractLink": "Read the Distance Sales Contract",
+                    "confirming": "Confirming your payment…"
                 }
             }
         },
@@ -1360,6 +1363,7 @@
         "contact": "Contatti",
         "privacyPolicy": "Privacy",
         "legalInfo": "Note Legali",
+        "salesTerms": "Condizioni di Vendita",
         "copyright": "© 2025 YulaSanta. Tutti i diritti riservati.",
         "cookieDisclaimer": "Questo sito utilizza i cookie per migliorare la tua esperienza.",
         "raffleTools": "Strumenti di Sorteggio",
@@ -1501,5 +1505,55 @@
         "step2": "Seleziona la modalità di estrazione (Estrazione Segreta o Abbinamento Diretto).",
         "step3": "Clicca sul pulsante 'Avvia Estrazione'.",
         "step4": "Nella pagina dei risultati, ognuno seleziona il proprio nome per vedere a chi deve fare il regalo!"
+    },
+    "salesContract":     {
+        "meta": {
+            "title": "Distance Sales Contract & Cancellation Policy | YulaSanta",
+            "description": "Distance sales contract, right of withdrawal, and cancellation/refund terms for YulaSanta's paid TikTok comment-fetch service."
+        },
+        "title": "Distance Sales Contract",
+        "subtitle": "Cancellation & Refund Policy",
+        "intro": "This page contains the distance sales contract and cancellation/refund terms for the paid \"TikTok Comment Fetch\" service offered on YulaSanta. Confirming the payment screen means you accept these terms.",
+        "lastUpdated": "Last updated: August 2026",
+        "sellerTitle": "1. Seller Information",
+        "seller": {
+            "name": "Name: Mehmet Şükrü Demirkök",
+            "type": "Business type: Individual (sole trader) seller",
+            "email": "Email: mehmetdemirkok@gmail.com",
+            "address": "Address: [seller address to be completed]"
+        },
+        "buyerTitle": "2. Buyer",
+        "buyerBody": "The individual purchasing the service, identified by the email address provided at checkout.",
+        "articles": [
+            {
+                "title": "3. Subject of the Contract",
+                "body": "This contract governs the rights and obligations of the parties regarding the sale and delivery of the \"TikTok Comment Fetch\" service purchased electronically by the Buyer on YulaSanta (yulasanta.com.tr)."
+            },
+            {
+                "title": "4. Key Features and Price",
+                "body": "The service consists of automatically fetching and listing up to 1000 comments from a publicly accessible TikTok video link specified by the Buyer. The service fee is 200 TL (VAT included), charged as a single payment via the PayTR payment infrastructure."
+            },
+            {
+                "title": "5. Method and Time of Performance",
+                "body": "Once payment is confirmed, the system automatically and immediately starts fetching the comments. This is a service performed instantly in electronic form; there is no physical delivery."
+            },
+            {
+                "title": "6. Right of Withdrawal",
+                "body": "Under Turkish consumer protection law (Law No. 6502 and the Distance Contracts Regulation, Art. 15/1-ğ), there is no right of withdrawal for services performed instantly in electronic form or for intangible goods delivered instantly to the consumer. As the service is performed immediately upon payment confirmation, the Buyer cannot exercise a right of withdrawal under this contract."
+            },
+            {
+                "title": "7. Cancellation and Refund Policy",
+                "body": "No refund is issued once the service has been successfully performed (comments fetched). If the service cannot be performed for technical reasons — a private or deleted video, the comment service being temporarily unavailable, or no comments found on the video — the fee is likewise not refunded; instead the Buyer is granted a retry credit of the same value, valid for 90 days, sent as a link to their registered email address. This policy is also stated on the payment screen."
+            },
+            {
+                "title": "8. Dispute Resolution",
+                "body": "Disputes arising from this contract are subject to Consumer Arbitration Committees up to the value announced by the Turkish Ministry of Trade, and Consumer Courts above that value. This contract is governed by the laws of the Republic of Turkey."
+            },
+            {
+                "title": "9. Effective Date",
+                "body": "By checking the confirmation box on the payment screen and completing payment, the Buyer is deemed to have read, understood, and accepted all terms of this contract."
+            }
+        ],
+        "contactNote": "Questions? Contact us at mehmetdemirkok@gmail.com"
     }
 }

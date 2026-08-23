@@ -536,7 +536,8 @@
                     "quota": "Otomatik yorum çekme kotası doldu. Yorumları yapıştırarak devam edin.",
                     "unavailable": "Yorum servisi şu an yanıt vermiyor. Yorumları yapıştırarak devam edebilirsiniz.",
                     "empty": "Bu videoda çekilecek yorum bulunamadı. Manuel yapıştırmayı deneyin.",
-                    "generic": "Yorumlar çekilemedi. Linki ve videonun herkese açık olduğunu kontrol edin."
+                    "generic": "Yorumlar çekilemedi. Linki ve videonun herkese açık olduğunu kontrol edin.",
+                    "paymentTimeout": "Ödeme onayı gecikti. Birkaç dakika sonra tekrar deneyin ya da bizimle iletişime geçin."
                 },
                 "toasts": {
                     "added": "@{name} eklendi",
@@ -572,8 +573,10 @@
                     "creditBody": "Ödeme iade edilmedi. Sonraki otomatik çekim bu hakla yapılır.",
                     "creditEmail": "Hakkın e-postana kaydedildi. Linkle tekrar dene.",
                     "creditSaved": "Hakkın bu cihazda kaydedildi. Tekrar yorumları getir.",
-                    "paymentsDown": "Ödeme henüz açılmadı. Stripe şart onayı tamamlanınca çalışır.",
-                    "cancelled": "İşlem iptal edildi. İstersen tekrar dene."
+                    "paymentsDown": "Ödeme henüz açılmadı. PayTR başvurusu onaylanınca çalışır.",
+                    "cancelled": "İşlem iptal edildi. İstersen tekrar dene.",
+                    "salesContractLink": "Mesafeli Satış Sözleşmesi'ni okudum",
+                    "confirming": "Ödemeniz onaylanıyor…"
                 }
             }
         },
@@ -1355,6 +1358,7 @@
         "contact": "İletişim",
         "privacyPolicy": "Gizlilik Koşulları",
         "legalInfo": "Yasal Bilgiler",
+        "salesTerms": "Satış Sözleşmesi",
         "copyright": "© 2025 YulaSanta. Tüm hakları saklıdır.",
         "cookieDisclaimer": "Web sayfamımızı, hizmetlerimizi veya araçlarımızı ziyaret ettiğinizde ve bunlarla etkileşim kurduğunuzda, biz veya hizmet sağlayıcılarımız, size daha iyi, daha hızlı ve daha güvenli bir deneyim sunmaya yardımcı olmak ve pazarlama amaçlarıyla bilgi depolamak için çerezleri kullanabiliriz.",
         "raffleTools": "Çekiliş Araçları",
@@ -1496,5 +1500,55 @@
         "step2": "Eşleşme türünü seçin (Gizli Çekiliş veya Eşleştirme).",
         "step3": "'Çekilişi Başlat' butonuna tıklayın.",
         "step4": "Sonuç sayfasında herkes kendi ismini seçerek kime hediye alacağını öğrensin!"
+    },
+    "salesContract":     {
+        "meta": {
+            "title": "Mesafeli Satış Sözleşmesi ve İptal/İade Politikası | YulaSanta",
+            "description": "YulaSanta TikTok yorum çekimi ücretli hizmetine ilişkin mesafeli satış sözleşmesi, cayma hakkı ve iptal/iade şartları."
+        },
+        "title": "Mesafeli Satış Sözleşmesi",
+        "subtitle": "İptal ve İade Politikası",
+        "intro": "Bu sayfa, YulaSanta üzerinden sunulan ücretli \"TikTok Yorum Çekimi\" hizmetinin satışına ilişkin mesafeli satış sözleşmesini ve iptal/iade şartlarını içerir. Ödeme ekranını onaylayarak bu şartları kabul etmiş olursunuz.",
+        "lastUpdated": "Son güncelleme: Ağustos 2026",
+        "sellerTitle": "1. Satıcı Bilgileri",
+        "seller": {
+            "name": "Ad Soyad: Mehmet Şükrü Demirkök",
+            "type": "İşletme türü: Bireysel (şahıs) satıcı",
+            "email": "E-posta: mehmetdemirkok@gmail.com",
+            "address": "Adres: [Satıcı adresi tamamlanacak]"
+        },
+        "buyerTitle": "2. Alıcı",
+        "buyerBody": "Ödeme sırasında verilen e-posta adresiyle tanımlanan, hizmeti satın alan gerçek kişi.",
+        "articles": [
+            {
+                "title": "3. Sözleşmenin Konusu",
+                "body": "İşbu sözleşme, Alıcı'nın YulaSanta (yulasanta.com.tr) üzerinden elektronik ortamda satın aldığı \"TikTok Yorum Çekimi\" hizmetinin satışı ve ifasına ilişkin tarafların hak ve yükümlülüklerini düzenler."
+            },
+            {
+                "title": "4. Hizmetin Temel Nitelikleri ve Bedeli",
+                "body": "Hizmet, Alıcı tarafından belirtilen genel erişime açık bir TikTok video linkindeki en fazla 1000 yorumun otomatik olarak çekilip listelenmesinden ibarettir. Hizmet bedeli KDV dahil 200 TL olup, ödeme PayTR ödeme altyapısı üzerinden banka/kredi kartı ile tek seferde tahsil edilir."
+            },
+            {
+                "title": "5. İfa Şekli ve Zamanı",
+                "body": "Ödeme onaylandıktan sonra sistem, yorum çekme işlemini otomatik olarak ve anında başlatır. Hizmet, elektronik ortamda anında ifa edilen bir hizmettir; fiziksel bir teslimat söz konusu değildir."
+            },
+            {
+                "title": "6. Cayma Hakkı",
+                "body": "6502 sayılı Tüketicinin Korunması Hakkında Kanun ve Mesafeli Sözleşmeler Yönetmeliği'nin 15/1-ğ maddesi uyarınca, elektronik ortamda anında ifa edilen hizmetlere ve tüketiciye anında teslim edilen gayri maddi mallara ilişkin sözleşmelerde cayma hakkı bulunmamaktadır. Hizmet, ödemenin onaylanmasıyla birlikte anında ifa edildiğinden, Alıcı işbu sözleşme kapsamında cayma hakkını kullanamaz."
+            },
+            {
+                "title": "7. İptal ve İade Politikası",
+                "body": "Hizmet başarıyla ifa edildikten (yorumlar çekildikten) sonra ücret iadesi yapılmaz. Video gizli/silinmiş olması, yorum servisinin geçici olarak yanıt vermemesi, videoda yorum bulunamaması gibi teknik nedenlerle hizmetin ifa edilememesi durumunda da ödenen bedel iade edilmez; bunun yerine Alıcı'ya, kayıtlı e-posta adresine gönderilen bir bağlantı ile 90 gün geçerli, aynı bedelde yeniden deneme hakkı (kredi) tanımlanır. Bu politika ödeme ekranında da açıkça belirtilmektedir."
+            },
+            {
+                "title": "8. Uyuşmazlıkların Çözümü",
+                "body": "İşbu sözleşmeden doğan uyuşmazlıklarda, Ticaret Bakanlığınca ilan edilen değere kadar Tüketici Hakem Heyetleri, bu değerin üzerindeki uyuşmazlıklarda ise Tüketici Mahkemeleri yetkilidir. Sözleşmeye Türkiye Cumhuriyeti kanunları uygulanır."
+            },
+            {
+                "title": "9. Yürürlük",
+                "body": "Alıcı, ödeme ekranında yer alan onay kutucuğunu işaretleyip ödemeyi tamamladığında işbu sözleşmenin tüm hükümlerini okumuş, anlamış ve kabul etmiş sayılır."
+            }
+        ],
+        "contactNote": "Sorularınız için: mehmetdemirkok@gmail.com"
     }
 }
