@@ -183,7 +183,7 @@
         "parse": "Kommentare analysieren",
         "parsed": "{count} Teilnehmer analysiert",
         "youtubeLimitNote": "Hinweis: Bis zu 1000 Kommentare können automatisch über die API abgerufen werden.",
-        "tiktokLimitNote": "Hinweis: Automatischer Abruf kostet 200 TL pro Lauf und liefert bis zu 500 Kommentare.",
+        "tiktokLimitNote": "Hinweis: Automatischer Abruf kostet 200 TL pro Lauf und liefert bis zu 1000 Kommentare.",
         "participantLimitDetails": "Um mehr Kommentare zu sehen, verwenden Sie den manuellen Eingabemodus.",
         "channelUsername": "Benutzername (Follower-Überprüfung)",
         "channelUsernameHint": "Geben Sie Ihren Benutzernamen ein, um zu überprüfen, ob die Gewinner Ihnen folgen",
@@ -372,7 +372,7 @@
                 "fetchCta": "Fetch comments",
                 "fetchCtaPaid": "{price} — fetch comments",
                 "fetching": "Fetching…",
-                "urlHint": "Public videos · Up to 500 comments per fetch · Pasting is free",
+                "urlHint": "Public videos · Up to 1000 comments per fetch · Pasting is free",
                 "step1Url": "TikTok video link",
                 "step1Manual": "Paste comments",
                 "step3Title": "Set winner count",
@@ -491,7 +491,7 @@
                     },
                     {
                         "q": "How much is automatic fetch?",
-                        "a": "200 TL per fetch, up to 500 comments. Pasting comments is free; the draw itself stays free."
+                        "a": "200 TL per fetch, up to 1000 comments. Pasting comments is free; the draw itself stays free."
                     },
                     {
                         "q": "What if automatic fetch fails?",

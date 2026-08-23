@@ -181,7 +181,7 @@
         "parse": "Обработать",
         "parsed": "Обработано {count} участников",
         "youtubeLimitNote": "Прим.: Можно загрузить до 1000 комментариев автоматически.",
-        "tiktokLimitNote": "Прим.: Автозагрузка стоит 200 TL за запуск и возвращает до 500 комментариев.",
+        "tiktokLimitNote": "Прим.: Автозагрузка стоит 200 TL за запуск и возвращает до 1000 комментариев.",
         "participantLimitDetails": "Для обработки большего числа комментариев используйте ручной режим.",
         "channelUsername": "Имя пользователя (Проверка подписки)",
         "channelUsernameHint": "Введите ваше имя пользователя, чтобы проверить подписку победителей",
@@ -400,7 +400,7 @@
                 "fetchCta": "Fetch comments",
                 "fetchCtaPaid": "{price} — fetch comments",
                 "fetching": "Fetching…",
-                "urlHint": "Public videos · Up to 500 comments per fetch · Pasting is free",
+                "urlHint": "Public videos · Up to 1000 comments per fetch · Pasting is free",
                 "step1Url": "TikTok video link",
                 "step1Manual": "Paste comments",
                 "step3Title": "Set winner count",
@@ -519,7 +519,7 @@
                     },
                     {
                         "q": "How much is automatic fetch?",
-                        "a": "200 TL per fetch, up to 500 comments. Pasting comments is free; the draw itself stays free."
+                        "a": "200 TL per fetch, up to 1000 comments. Pasting comments is free; the draw itself stays free."
                     },
                     {
                         "q": "What if automatic fetch fails?",

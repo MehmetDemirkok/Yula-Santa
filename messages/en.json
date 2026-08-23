@@ -186,7 +186,7 @@
         "parsed": "{count} participants parsed",
         "participantLimitDetails": "To see more comments, please use manual entry mode.",
         "youtubeLimitNote": "Note: Automatic API fetch can load thousands of comments, up to a paging cap.",
-        "tiktokLimitNote": "Note: Automatic fetch is 200 TL per run and returns up to 500 comments.",
+        "tiktokLimitNote": "Note: Automatic fetch is 200 TL per run and returns up to 1000 comments.",
         "channelUsername": "Username (Follower Check)",
         "channelUsernameHint": "Enter your username to check if winners follow you",
         "following": "Following",
@@ -510,7 +510,7 @@
                     },
                     {
                         "q": "How much is automatic fetch?",
-                        "a": "200 TL per fetch, up to 500 comments. No account — email is enough. Pasting comments is free."
+                        "a": "200 TL per fetch, up to 1000 comments. No account — email is enough. Pasting comments is free."
                     },
                     {
                         "q": "Do I get a refund if comments don’t load?",

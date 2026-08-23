@@ -181,7 +181,7 @@
         "parse": "コメントを解析",
         "parsed": "{count} 名を解析しました",
         "youtubeLimitNote": "注：API経由で自動取得できるのは最大1000コメントまでです。",
-        "tiktokLimitNote": "注：自動取得は1回200 TL、最大500コメントです。",
+        "tiktokLimitNote": "注：自動取得は1回200 TL、最大1000コメントです。",
         "participantLimitDetails": "より多くのコメントを抽出するには、手動入力モードを使用してください。",
         "channelUsername": "ユーザー名（フォロー確認用）",
         "channelUsernameHint": "当選者がフォローしているか確認するためにユーザー名を入力してください",
@@ -400,7 +400,7 @@
                 "fetchCta": "Fetch comments",
                 "fetchCtaPaid": "{price} — fetch comments",
                 "fetching": "Fetching…",
-                "urlHint": "Public videos · Up to 500 comments per fetch · Pasting is free",
+                "urlHint": "Public videos · Up to 1000 comments per fetch · Pasting is free",
                 "step1Url": "TikTok video link",
                 "step1Manual": "Paste comments",
                 "step3Title": "Set winner count",
@@ -519,7 +519,7 @@
                     },
                     {
                         "q": "How much is automatic fetch?",
-                        "a": "200 TL per fetch, up to 500 comments. Pasting comments is free; the draw itself stays free."
+                        "a": "200 TL per fetch, up to 1000 comments. Pasting comments is free; the draw itself stays free."
                     },
                     {
                         "q": "What if automatic fetch fails?",

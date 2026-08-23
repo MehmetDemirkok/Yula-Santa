@@ -1,6 +1,6 @@
 /** Paid TikTok auto-fetch product rules. Safe for client + server. */
 
-export const COMMENTS_PER_FETCH = 500;
+export const COMMENTS_PER_FETCH = 1000;
 export const FETCH_PRICE_TRY = 200;
 export const FETCH_CURRENCY = "TRY";
 

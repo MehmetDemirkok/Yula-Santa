@@ -248,7 +248,7 @@
         "parse": "Yorumları Ayrıştır",
         "parsed": "{count} kişi ayrıştırıldı",
         "youtubeLimitNote": "Not: API üzerinden otomatik olarak binlerce yoruma kadar çekilebilir; üst sınır vardır.",
-        "tiktokLimitNote": "Not: Otomatik çekim çekim başına 200 TL’dir; en fazla 500 yorum alınır.",
+        "tiktokLimitNote": "Not: Otomatik çekim çekim başına 200 TL’dir; en fazla 1000 yorum alınır.",
         "participantLimitDetails": "Daha fazla yorum için lütfen manuel giriş modunu kullanın.",
         "channelUsername": "Kullanıcı Adı (Takip Kontrolü)",
         "channelUsernameHint": "Kazananların sizi takip edip etmediğini kontrol etmek için kullanıcı adınızı girin",
@@ -511,7 +511,7 @@
                     },
                     {
                         "q": "Otomatik çekim ne kadar?",
-                        "a": "Çekim başına 200 TL. En fazla 500 yorum. Üyelik yok; e-posta yeter. Yapıştırmak ücretsizdir."
+                        "a": "Çekim başına 200 TL. En fazla 1000 yorum. Üyelik yok; e-posta yeter. Yapıştırmak ücretsizdir."
                     },
                     {
                         "q": "Yorumlar gelmezse param iade edilir mi?",

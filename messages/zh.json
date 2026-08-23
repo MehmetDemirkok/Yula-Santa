@@ -181,7 +181,7 @@
         "parse": "解析评论",
         "parsed": "已解析 {count} 位参与者",
         "youtubeLimitNote": "注：API 最多可自动获取 1000 条评论。",
-        "tiktokLimitNote": "注：每次自动获取收费 200 TL，最多 500 条评论。",
+        "tiktokLimitNote": "注：每次自动获取收费 200 TL，最多 1000 条评论。",
         "participantLimitDetails": "要分析更多评论，请使用手动输入模式。",
         "channelUsername": "用户名 (粉丝检查)",
         "channelUsernameHint": "输入您的用户名以检查中奖者是否关注了您",
@@ -400,7 +400,7 @@
                 "fetchCta": "Fetch comments",
                 "fetchCtaPaid": "{price} — fetch comments",
                 "fetching": "Fetching…",
-                "urlHint": "Public videos · Up to 500 comments per fetch · Pasting is free",
+                "urlHint": "Public videos · Up to 1000 comments per fetch · Pasting is free",
                 "step1Url": "TikTok video link",
                 "step1Manual": "Paste comments",
                 "step3Title": "Set winner count",
@@ -519,7 +519,7 @@
                     },
                     {
                         "q": "How much is automatic fetch?",
-                        "a": "200 TL per fetch, up to 500 comments. Pasting comments is free; the draw itself stays free."
+                        "a": "200 TL per fetch, up to 1000 comments. Pasting comments is free; the draw itself stays free."
                     },
                     {
                         "q": "What if automatic fetch fails?",

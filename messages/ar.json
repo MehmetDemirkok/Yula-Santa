@@ -181,7 +181,7 @@
         "parse": "تحليل التعليقات",
         "parsed": "تم تحليل {count} مشارك",
         "youtubeLimitNote": "ملاحظة: يمكن جلب ما يصل إلى 1000 تعليق تلقائياً من API.",
-        "tiktokLimitNote": "ملاحظة: الجلب التلقائي 200 ليرة تركية لكل عملية ويعيد حتى 500 تعليق.",
+        "tiktokLimitNote": "ملاحظة: الجلب التلقائي 200 ليرة تركية لكل عملية ويعيد حتى 1000 تعليق.",
         "participantLimitDetails": "لمشاهدة المزيد من التعليقات، استخدم وضع الإدخال اليدوي.",
         "channelUsername": "اسم المستخدم (التحقق من المتابعين)",
         "channelUsernameHint": "أدخل اسم المستخدم الخاص بك للتحقق مما إذا كان الفائزون يتابعونك",
@@ -432,7 +432,7 @@
                 "fetchCta": "Fetch comments",
                 "fetchCtaPaid": "{price} — fetch comments",
                 "fetching": "Fetching…",
-                "urlHint": "Public videos · Up to 500 comments per fetch · Pasting is free",
+                "urlHint": "Public videos · Up to 1000 comments per fetch · Pasting is free",
                 "step1Url": "TikTok video link",
                 "step1Manual": "Paste comments",
                 "step3Title": "Set winner count",
@@ -551,7 +551,7 @@
                     },
                     {
                         "q": "How much is automatic fetch?",
-                        "a": "200 TL per fetch, up to 500 comments. Pasting comments is free; the draw itself stays free."
+                        "a": "200 TL per fetch, up to 1000 comments. Pasting comments is free; the draw itself stays free."
                     },
                     {
                         "q": "What if automatic fetch fails?",

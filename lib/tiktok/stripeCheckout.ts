@@ -71,7 +71,7 @@ export async function createTikTokCheckoutSession(input: {
         'line_items[0][price_data][currency]': FETCH_CURRENCY.toLowerCase(),
         'line_items[0][price_data][unit_amount]': amount,
         'line_items[0][price_data][product_data][name]': 'TikTok yorum çekimi',
-        'line_items[0][price_data][product_data][description]': 'En fazla 500 yorum · üyelik yok',
+        'line_items[0][price_data][product_data][description]': 'En fazla 1000 yorum · üyelik yok',
         'metadata[entitlementId]': input.entitlementId,
         'metadata[email]': input.email,
         'metadata[postUrl]': input.postUrl,
