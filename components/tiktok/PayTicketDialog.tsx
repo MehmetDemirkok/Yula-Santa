@@ -1,6 +1,7 @@
 "use client";
 
 import { useEffect } from "react";
+import Link from "next/link";
 import { Loader2, Mail, X } from "lucide-react";
 
 type PayTicketDialogProps = {
@@ -15,6 +16,7 @@ type PayTicketDialogProps = {
     paying?: boolean;
     error?: string | null;
     onManual: () => void;
+    salesContractHref: string;
     labels: {
         title: string;
         subtitle: string;
@@ -30,6 +32,7 @@ type PayTicketDialogProps = {
         noRefund: string;
         useCredit: string;
         switchManual: string;
+        salesContractLink: string;
     };
 };
 
@@ -45,6 +48,7 @@ export function PayTicketDialog({
     paying,
     error,
     onManual,
+    salesContractHref,
     labels,
 }: PayTicketDialogProps) {
     useEffect(() => {
@@ -160,7 +164,12 @@ export function PayTicketDialog({
                         </button>
                     )}
 
-                    <p className="mt-3 text-center text-[11px] leading-relaxed text-[var(--text-muted)]">{labels.noRefund}</p>
+                    <p className="mt-3 text-center text-[11px] leading-relaxed text-[var(--text-muted)]">
+                        {labels.noRefund}{" "}
+                        <Link href={salesContractHref} target="_blank" className="font-semibold underline underline-offset-2 hover:text-[var(--text-secondary)]">
+                            {labels.salesContractLink}
+                        </Link>
+                    </p>
 
                     <button
                         type="button"

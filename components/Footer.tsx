@@ -242,6 +242,14 @@ export function Footer() {
                             </Link>
                             <div className="w-1 h-1 sm:w-1.5 sm:h-1.5 rounded-full bg-[var(--border-medium)]" />
                             <Link
+                                href={localePath(locale, "/mesafeli-satis-sozlesmesi")}
+                                className="group relative text-xs sm:text-sm font-bold text-[var(--text-secondary)] hover:text-foreground transition-colors"
+                            >
+                                {t("salesTerms")}
+                                <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-santa-red transition-all group-hover:w-full rounded-full" />
+                            </Link>
+                            <div className="w-1 h-1 sm:w-1.5 sm:h-1.5 rounded-full bg-[var(--border-medium)]" />
+                            <Link
                                 href={localePath(locale, "/faq")}
                                 className="group relative text-xs sm:text-sm font-bold text-[var(--text-secondary)] hover:text-foreground transition-colors"
                             >

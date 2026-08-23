@@ -5,7 +5,7 @@ import { rateLimit } from '@/lib/rateLimit';
 import { createRequestId, logTikTokEvent } from '@/lib/tiktok/server';
 import { runPaidTikTokFetch } from '@/lib/tiktok/paidFetch';
 import { COMMENTS_PER_FETCH, FETCH_PRICE_TRY } from '@/lib/tiktok/pricing';
-import { originFromRequest } from '@/lib/tiktok/stripeCheckout';
+import { originFromRequest } from '@/lib/tiktok/paytrCheckout';
 import { TikTokProviderError } from '@/lib/tiktok/types';
 
 export async function POST(req: NextRequest) {
@@ -16,16 +16,16 @@ export async function POST(req: NextRequest) {
         return NextResponse.json({ error: 'Too many requests', code: 'RATE_LIMIT', requestId }, { status: 429 });
     }
 
-    let body: { sessionId?: string; creditToken?: string } = {};
+    let body: { orderId?: string; creditToken?: string } = {};
     try {
         body = await req.json();
     } catch {
         return NextResponse.json({ error: 'Invalid JSON', code: 'MALFORMED_PAYLOAD', requestId }, { status: 400 });
     }
 
-    const sessionId = typeof body.sessionId === 'string' ? body.sessionId.trim() : '';
+    const orderId = typeof body.orderId === 'string' ? body.orderId.trim() : '';
     const creditToken = typeof body.creditToken === 'string' ? body.creditToken.trim() : '';
-    if (!sessionId && !creditToken) {
+    if (!orderId && !creditToken) {
         return NextResponse.json(
             { error: 'Payment or credit required', code: 'ENTITLEMENT_REQUIRED', requestId },
             { status: 401 }
@@ -34,7 +34,7 @@ export async function POST(req: NextRequest) {
 
     try {
         const result = await runPaidTikTokFetch({
-            sessionId: sessionId || undefined,
+            orderId: orderId || undefined,
             creditToken: creditToken || undefined,
             requestId,
             origin: originFromRequest(req),
@@ -70,7 +70,7 @@ export async function POST(req: NextRequest) {
             code,
             errors: error instanceof Error ? error.message.slice(0, 200) : 'unknown',
         });
-        const status = code === 'MALFORMED_PAYLOAD' ? 400 : 500;
+        const status = code === 'MALFORMED_PAYLOAD' || code === 'PAYMENT_PENDING' ? 400 : 500;
         return NextResponse.json(
             {
                 error: error instanceof Error ? error.message : 'Run failed',

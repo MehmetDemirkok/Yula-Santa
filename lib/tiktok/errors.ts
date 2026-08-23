@@ -37,6 +37,10 @@ const USER_MESSAGES: Record<TikTokErrorCode, { tr: string; en: string }> = {
         tr: 'İstek geçersiz. Sayfayı yenileyip tekrar deneyin.',
         en: 'Invalid request. Refresh the page and try again.',
     },
+    PAYMENT_PENDING: {
+        tr: 'Ödemeniz onaylanıyor. Birkaç saniye içinde otomatik olarak tekrar denenecek.',
+        en: 'Your payment is being confirmed. This will retry automatically in a few seconds.',
+    },
     UNKNOWN: {
         tr: 'Yorumlar çekilemedi. Linki ve videonun herkese açık olduğunu kontrol edin.',
         en: 'Could not fetch comments. Check the link and that the video is public.',

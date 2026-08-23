@@ -5,6 +5,7 @@ import confetti from "canvas-confetti";
 import { useLocale, useTranslations } from "next-intl";
 import { useSearchParams } from "next/navigation";
 import { useRouter } from "@/i18n/navigation";
+import { localePath } from "@/lib/localePath";
 import {
     MessageCircle,
     Plus,
@@ -311,7 +312,10 @@ export default function TikTokGiveaway() {
         }
     };
 
-    const runEntitledFetch = async (opts: { sessionId?: string; token?: string }) => {
+    const PAYMENT_PENDING_RETRY_MS = 2500;
+    const PAYMENT_PENDING_MAX_ATTEMPTS = 6;
+
+    const runEntitledFetch = async (opts: { orderId?: string; token?: string }, attempt = 0) => {
         setPayOpen(false);
         setError(null);
         setCreditNotice(null);
@@ -325,12 +329,13 @@ export default function TikTokGiveaway() {
             setLoadingStep(steps[stepIdx]);
         }, 5000);
 
+        let retrying = false;
         try {
             const response = await fetch("/api/tiktok/run", {
                 method: "POST",
                 headers: { "Content-Type": "application/json" },
                 body: JSON.stringify({
-                    sessionId: opts.sessionId,
+                    orderId: opts.orderId,
                     creditToken: opts.token,
                 }),
             });
@@ -360,7 +365,19 @@ export default function TikTokGiveaway() {
 
             if (!response.ok) {
                 const code = (data.code as TikTokErrorCode | undefined) ?? "UNKNOWN";
-                const message = mapFetchError(code);
+
+                // PayTR confirms payment via an async server-to-server notification.
+                // If we land back before it arrives, poll briefly instead of giving up.
+                if (code === "PAYMENT_PENDING" && attempt < PAYMENT_PENDING_MAX_ATTEMPTS) {
+                    retrying = true;
+                    setLoadingStep(tl("pay.confirming"));
+                    setTimeout(() => {
+                        void runEntitledFetch(opts, attempt + 1);
+                    }, PAYMENT_PENDING_RETRY_MS);
+                    return;
+                }
+
+                const message = code === "PAYMENT_PENDING" ? tl("errors.paymentTimeout") : mapFetchError(code);
                 setError(message);
                 toast.error(message);
                 setEntryMode("manual");
@@ -388,8 +405,10 @@ export default function TikTokGiveaway() {
             setEntryMode("manual");
         } finally {
             clearInterval(stepInterval);
-            setLoading(false);
-            setLoadingStep("");
+            if (!retrying) {
+                setLoading(false);
+                setLoadingStep("");
+            }
         }
     };
 
@@ -401,7 +420,7 @@ export default function TikTokGiveaway() {
             /* ignore */
         }
         const credit = searchParams.get("credit");
-        const sessionId = searchParams.get("session_id");
+        const orderId = searchParams.get("oid");
         const paid = searchParams.get("paid");
         if (credit) {
             setCreditToken(credit);
@@ -412,17 +431,17 @@ export default function TikTokGiveaway() {
             }
             setPayOpen(true);
         }
-        if (paid === "1" && sessionId) {
-            void runEntitledFetch({ sessionId });
+        if (paid === "1" && orderId) {
+            void runEntitledFetch({ orderId });
         }
         if (paid === "0") {
             setPayOpen(true);
             setPayError(tl("pay.cancelled"));
         }
-        if (credit || sessionId || paid) {
+        if (credit || orderId || paid) {
             const url = new URL(window.location.href);
             url.searchParams.delete("credit");
-            url.searchParams.delete("session_id");
+            url.searchParams.delete("oid");
             url.searchParams.delete("paid");
             window.history.replaceState({}, "", url.pathname + url.search + url.hash);
         }
@@ -1391,6 +1410,7 @@ export default function TikTokGiveaway() {
                     setPayOpen(false);
                     setEntryMode("manual");
                 }}
+                salesContractHref={localePath(locale, "/mesafeli-satis-sozlesmesi")}
                 labels={{
                     title: tl("pay.title"),
                     subtitle: tl("pay.subtitle"),
@@ -1406,6 +1426,7 @@ export default function TikTokGiveaway() {
                     noRefund: tl("pay.noRefund"),
                     useCredit: tl("pay.useCredit"),
                     switchManual: tl("switchManual"),
+                    salesContractLink: tl("pay.salesContractLink"),
                 }}
             />
         </main>

@@ -5,17 +5,13 @@ import { TikTokProviderError, type TikTokErrorCode, type TikTokFetchResult } fro
 import { analyzePaidFetchFailure, type PaidFetchAnalysis } from './failureAnalysis';
 import { createCreditToken, verifyCreditToken } from './entitlement';
 import {
-    attachStripeSession,
     getById,
-    getByStripeSession,
     getUsableById,
     grantCredit,
     isLedgerConfigured,
     markConsumed,
-    markPaid,
     type Entitlement,
 } from './ledger';
-import { checkoutPaid, isStripeConfigured, retrieveCheckoutSession } from './stripeCheckout';
 import { sendCreditEmail } from './creditEmail';
 import { SITE_URL } from '@/lib/constants';
 
@@ -38,7 +34,7 @@ export type PaidRunResult =
       };
 
 async function resolveEntitlement(input: {
-    sessionId?: string;
+    orderId?: string;
     creditToken?: string;
 }): Promise<Entitlement> {
     if (!isLedgerConfigured()) {
@@ -57,34 +53,25 @@ async function resolveEntitlement(input: {
         return row;
     }
 
-    if (input.sessionId) {
-        if (!isStripeConfigured()) {
-            throw new TikTokProviderError('UNKNOWN', 'Payments unavailable', { retryable: true });
+    if (input.orderId) {
+        const row = await getById(input.orderId);
+        if (!row) {
+            throw new TikTokProviderError('MALFORMED_PAYLOAD', 'Unknown order', { retryable: false });
         }
-        const session = await retrieveCheckoutSession(input.sessionId);
-        if (!checkoutPaid(session)) {
-            throw new TikTokProviderError('MALFORMED_PAYLOAD', 'Payment incomplete', { retryable: true });
+        // PayTR confirms payment via an async server-to-server notification, not the
+        // browser redirect. If the user lands back before that notification arrives,
+        // the entitlement is still 'pending' — ask the client to retry shortly.
+        if (row.status === 'pending') {
+            throw new TikTokProviderError('PAYMENT_PENDING', 'Payment not confirmed yet', { retryable: true });
         }
-        const entitlementId = session.client_reference_id || session.metadata?.entitlementId;
-        if (!entitlementId) {
-            throw new TikTokProviderError('MALFORMED_PAYLOAD', 'Missing entitlement', { retryable: false });
-        }
-        await attachStripeSession(entitlementId, session.id);
-        const paid = await markPaid(entitlementId);
-        if (!paid) {
-            throw new TikTokProviderError('MALFORMED_PAYLOAD', 'Entitlement missing', { retryable: false });
-        }
-        if (paid.status === 'consumed') {
-            throw new TikTokProviderError('MALFORMED_PAYLOAD', 'Already used', { retryable: false });
-        }
-        return paid;
+        return row;
     }
 
     throw new TikTokProviderError('MALFORMED_PAYLOAD', 'Payment required', { retryable: false });
 }
 
 export async function runPaidTikTokFetch(input: {
-    sessionId?: string;
+    orderId?: string;
     creditToken?: string;
     requestId?: string;
     origin?: string;
@@ -151,12 +138,4 @@ export async function runPaidTikTokFetch(input: {
             emailSent: email.sent,
         };
     }
-}
-
-export async function peekEntitlement(id: string) {
-    return getById(id);
-}
-
-export async function peekBySession(sessionId: string) {
-    return getByStripeSession(sessionId);
 }

@@ -46,6 +46,7 @@ export type TikTokErrorCode =
     | 'RATE_LIMIT'
     | 'NO_APIFY_TOKEN'
     | 'MALFORMED_PAYLOAD'
+    | 'PAYMENT_PENDING'
     | 'UNKNOWN';
 
 export class TikTokProviderError extends Error {
