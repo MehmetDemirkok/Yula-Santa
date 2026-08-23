@@ -858,7 +858,6 @@ export default function TikTokGiveaway() {
                                                         onChange={(e) => setPostLink(e.target.value)}
                                                         onKeyDown={(e) => e.key === "Enter" && openPayFlow()}
                                                         className="w-full bg-transparent text-base outline-none placeholder:text-[var(--text-muted)]"
-                                                        aria-describedby="tt-url-hint"
                                                     />
                                                 </div>
                                                 <button
@@ -878,9 +877,6 @@ export default function TikTokGiveaway() {
                                                     )}
                                                 </button>
                                             </div>
-                                            <p id="tt-url-hint" className="mt-2 text-xs text-[var(--text-muted)]">
-                                                {tl("pay.feeHint", { price: priceLabel })}
-                                            </p>
                                         </div>
 
                                         {creditNotice && !loading && (
