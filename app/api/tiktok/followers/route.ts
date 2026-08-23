@@ -1,6 +1,9 @@
-
 import { NextRequest, NextResponse } from 'next/server';
 import { ApifyClient } from 'apify-client';
+import { rateLimit } from '@/lib/rateLimit';
+import { createRequestId, logTikTokEvent } from '@/lib/tiktok/server';
+
+export const maxDuration = 60;
 
 interface FollowerCheckRequest {
     channelUsername: string;
@@ -8,27 +11,49 @@ interface FollowerCheckRequest {
 }
 
 export async function POST(req: NextRequest) {
+    const requestId = createRequestId();
+    const started = Date.now();
+
+    const rl = rateLimit(req, 'tiktok');
+    if (!rl.allowed) {
+        return NextResponse.json(
+            { error: 'Too many requests', code: 'RATE_LIMIT', requestId },
+            {
+                status: 429,
+                headers: { 'Retry-After': String(Math.ceil((rl.resetAt - Date.now()) / 1000)) },
+            }
+        );
+    }
+
     if (!process.env.APIFY_API_TOKEN) {
         return NextResponse.json(
-            { error: 'Takip doğrulama yapılandırılmamış (APIFY_API_TOKEN yok).', code: 'NO_APIFY_TOKEN' },
+            { error: 'Takip doğrulama yapılandırılmamış (APIFY_API_TOKEN yok).', code: 'NO_APIFY_TOKEN', requestId },
             { status: 503 }
         );
     }
 
+    let body: Partial<FollowerCheckRequest> = {};
     try {
-        const { channelUsername, usernames }: FollowerCheckRequest = await req.json();
+        body = await req.json();
+    } catch {
+        return NextResponse.json({ error: 'Invalid JSON', code: 'MALFORMED_PAYLOAD', requestId }, { status: 400 });
+    }
 
-        if (!channelUsername || !usernames || usernames.length === 0) {
-            return NextResponse.json({ error: 'Channel username and usernames are required' }, { status: 400 });
-        }
+    const channelUsername = typeof body.channelUsername === 'string' ? body.channelUsername.trim() : '';
+    const usernames = Array.isArray(body.usernames) ? body.usernames : [];
+    if (!channelUsername || usernames.length === 0) {
+        return NextResponse.json(
+            { error: 'Channel username and usernames are required', code: 'MALFORMED_PAYLOAD', requestId },
+            { status: 400 }
+        );
+    }
 
-        const client = new ApifyClient({
-            token: process.env.APIFY_API_TOKEN,
-        });
+    try {
+        const client = new ApifyClient({ token: process.env.APIFY_API_TOKEN });
 
         // Use TikTok Followers Scraper to get the followers of the channel
         // We'll check if the winner usernames are in the follower list
-        const run = await client.actor("clockworks/tiktok-scraper").call({
+        const run = await client.actor('clockworks/tiktok-scraper').call({
             profiles: [channelUsername],
             resultsPerPage: 1000, // Get up to 1000 followers
             scrapeFollowers: true,
@@ -71,16 +96,31 @@ export async function POST(req: NextRequest) {
             }
         });
 
-        return NextResponse.json({
-            results,
-            followerCount: followerUsernames.size
+        logTikTokEvent('followers_success', {
+            requestId,
+            durationMs: Date.now() - started,
+            followerCount: followerUsernames.size,
+            checkedCount: usernames.length,
         });
 
+        return NextResponse.json({
+            results,
+            followerCount: followerUsernames.size,
+            requestId,
+        });
     } catch (error) {
-        console.error('TikTok Follower Check Error:', error);
+        logTikTokEvent('followers_error', {
+            requestId,
+            durationMs: Date.now() - started,
+            errors: error instanceof Error ? error.message.slice(0, 200) : 'unknown',
+        });
         // Return unknown status for all users if the check fails
         return NextResponse.json(
-            { error: 'Could not verify follower status. This feature may not be available for all accounts.' },
+            {
+                error: 'Could not verify follower status. This feature may not be available for all accounts.',
+                code: 'SCRAPER_UNAVAILABLE',
+                requestId,
+            },
             { status: 500 }
         );
     }
