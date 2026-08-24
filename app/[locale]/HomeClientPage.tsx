@@ -96,7 +96,7 @@ export default function HomeClientPage() {
 
     return (
         <main className="ys-page-shell overflow-hidden transition-colors duration-300">
-            <section className="relative pt-24 pb-16 lg:pt-32 lg:pb-24 overflow-hidden">
+            <section className="relative pt-20 pb-10 lg:pt-24 lg:pb-14 overflow-hidden">
                 <div className="absolute top-0 left-1/2 -translate-x-1/2 w-full max-w-7xl h-full -z-10 pointer-events-none">
                     <div className="absolute top-[-8%] right-[-8%] w-[420px] h-[420px] bg-red-100/40 dark:bg-red-500/15 rounded-full blur-[100px]" />
                     <div className="absolute bottom-[-5%] left-[-8%] w-[380px] h-[380px] bg-cyan-100/30 dark:bg-cyan-500/10 rounded-full blur-[100px]" />
@@ -112,10 +112,10 @@ export default function HomeClientPage() {
                                 </div>
                             )}
 
-                            <h1 className="font-heading text-headline-lg-mobile sm:text-headline-lg lg:text-display-lg text-foreground tracking-tight mb-5">
+                            <h1 className="font-heading text-headline-lg-mobile sm:text-headline-lg lg:text-4xl xl:text-display-lg text-foreground tracking-tight mb-4">
                                 {t("home.heroTitle")}
                             </h1>
-                            <p className="max-w-xl mx-auto lg:mx-0 text-base lg:text-lg text-[var(--text-secondary)] mb-8 leading-relaxed font-medium">
+                            <p className="max-w-xl mx-auto lg:mx-0 text-sm sm:text-base lg:text-lg text-[var(--text-secondary)] mb-6 leading-relaxed font-medium">
                                 {t("home.heroSubtitle")}
                             </p>
 
@@ -144,7 +144,7 @@ export default function HomeClientPage() {
                         </Reveal>
 
                         <Reveal delay={120} className="order-2 flex justify-center lg:justify-end">
-                            <div className="relative w-64 sm:w-80 lg:w-full lg:max-w-md xl:max-w-lg aspect-square">
+                            <div className="relative w-40 sm:w-48 md:w-56 lg:w-[220px] xl:w-[280px] aspect-square">
                                 <div className="absolute inset-0 bg-santa-red/5 rounded-full blur-3xl scale-90" />
                                 <img
                                     alt="YulaSanta Mascot"
@@ -155,7 +155,7 @@ export default function HomeClientPage() {
                         </Reveal>
                     </div>
 
-                    <div className="mt-12 lg:mt-16 grid grid-cols-2 lg:grid-cols-4 gap-3 lg:gap-4">
+                    <div className="mt-8 lg:mt-10 grid grid-cols-2 lg:grid-cols-4 gap-3 lg:gap-4">
                         {features.map((feature, i) => (
                             <Reveal key={feature.label} delay={i * 70}>
                                 <div className="flex flex-col items-center text-center gap-2.5 bg-[var(--card-bg)]/70 p-4 lg:p-5 rounded-2xl border border-[var(--card-border)] h-full">

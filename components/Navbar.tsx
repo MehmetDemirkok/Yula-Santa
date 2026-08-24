@@ -44,6 +44,7 @@ export function Navbar() {
 
     useEffect(() => {
         const handleScroll = () => setScrolled(window.scrollY > 20);
+        handleScroll();
         window.addEventListener("scroll", handleScroll);
         return () => window.removeEventListener("scroll", handleScroll);
     }, []);
@@ -130,56 +131,95 @@ export function Navbar() {
         },
     ];
 
+    const toolsActive = pathname?.includes("/tools") && !pathname?.includes("/tools/gift-suggestions");
+
     return (
         <>
             <header
                 className={cn(
-                    "fixed top-0 left-0 right-0 z-[100] transition-all duration-300",
-                    scrolled
-                        ? "py-2.5 bg-[var(--card-bg)]/90 backdrop-blur-xl border-b border-[var(--card-border)] shadow-[0_4px_24px_rgba(17,24,39,0.05)] dark:shadow-[0_4px_24px_rgba(0,0,0,0.35)]"
-                        : "py-5 bg-transparent"
+                    "fixed top-0 left-0 right-0 z-[100] transition-[padding] duration-300",
+                    scrolled ? "py-2.5" : "py-4 sm:py-5"
                 )}
             >
-                <div className="container mx-auto px-4 sm:px-6">
-                    <nav className="flex items-center justify-between gap-4">
+                {/* Background layer — kept separate from the gradient rule below so the
+                    festive underline reads crisply against the blur regardless of scroll state. */}
+                <div
+                    aria-hidden
+                    className={cn(
+                        "absolute inset-0 transition-all duration-300",
+                        scrolled
+                            ? "bg-[var(--card-bg)]/85 backdrop-blur-xl border-b border-[var(--card-border)] shadow-[0_8px_28px_rgba(17,24,39,0.06)] dark:shadow-[0_8px_28px_rgba(0,0,0,0.4)]"
+                            : "bg-transparent"
+                    )}
+                />
+                <div
+                    aria-hidden
+                    className={cn(
+                        "absolute bottom-0 left-0 right-0 h-px bg-gradient-to-r from-santa-red via-gold to-indigo-accent transition-opacity duration-500",
+                        scrolled ? "opacity-70" : "opacity-0"
+                    )}
+                />
+
+                <div className="relative max-w-[1320px] mx-auto px-4 sm:px-6 lg:px-8">
+                    <nav className="flex items-center justify-between gap-3">
                         <button
                             onClick={() => router.push(localePath(locale))}
-                            className="flex items-center gap-2.5 group relative z-10"
+                            className="flex items-center gap-2.5 sm:gap-3 group relative z-10 shrink-0"
                         >
-                            <div className="p-1.5 bg-[var(--card-bg)] rounded-xl shadow-sm border border-[var(--card-border)] group-hover:scale-105 transition-transform duration-300">
-                                <img src="/icon.png" alt="YulaSanta Logo" className="w-8 h-8 sm:w-9 sm:h-9 object-contain" />
-                            </div>
+                            <span className="relative flex">
+                                <span
+                                    aria-hidden
+                                    className="absolute -inset-1 rounded-2xl bg-gradient-to-br from-santa-red to-gold opacity-0 blur-md transition-opacity duration-300 group-hover:opacity-60"
+                                />
+                                <span className="relative flex p-1.5 bg-[var(--card-bg)] rounded-xl shadow-sm border border-[var(--card-border)] group-hover:scale-105 group-hover:-rotate-2 transition-transform duration-300">
+                                    <img src="/icon.png" alt="YulaSanta Logo" className="w-8 h-8 sm:w-9 sm:h-9 object-contain" />
+                                </span>
+                            </span>
                             <span className="font-heading text-xl sm:text-2xl font-extrabold tracking-tight text-foreground">
                                 Yula<span className="text-santa-red">Santa</span>
                             </span>
                         </button>
 
-                        <div className="hidden lg:flex items-center gap-1">
+                        <div className="hidden lg:flex items-center gap-0.5 p-1 rounded-full bg-[var(--surface-2)]/70 border border-[var(--border-light)] dark:border-white/5 backdrop-blur-sm">
                             {primaryLinks.map((link) => (
                                 <button
                                     key={link.href}
                                     onClick={() => router.push(link.href)}
                                     className={cn(
-                                        "flex items-center gap-2 px-4 py-2.5 text-sm font-bold rounded-full transition-all",
+                                        "flex items-center gap-1.5 px-3.5 py-2 text-[13px] xl:text-sm font-bold rounded-full transition-all duration-200 whitespace-nowrap",
                                         link.active
-                                            ? "text-santa-red bg-santa-red/8"
-                                            : "text-[var(--text-secondary)] hover:text-santa-red hover:bg-santa-red/5"
+                                            ? "bg-santa-red text-white shadow-[0_3px_12px_rgba(182,23,34,0.35)]"
+                                            : "text-[var(--text-secondary)] hover:text-foreground hover:bg-[var(--card-bg)]"
                                     )}
                                 >
-                                    <link.icon className="w-4 h-4" />
+                                    <link.icon className="w-4 h-4 shrink-0" />
                                     {link.name}
                                 </button>
                             ))}
 
                             <div className="relative group/dropdown">
-                                <button className="flex items-center gap-1.5 px-4 py-2.5 text-sm font-bold text-[var(--text-secondary)] hover:text-santa-red transition-all rounded-full hover:bg-santa-red/5">
-                                    <Gamepad2 className="w-4 h-4" />
+                                <button
+                                    className={cn(
+                                        "flex items-center gap-1.5 px-3.5 py-2 text-[13px] xl:text-sm font-bold rounded-full transition-all duration-200 whitespace-nowrap",
+                                        toolsActive
+                                            ? "bg-santa-red text-white shadow-[0_3px_12px_rgba(182,23,34,0.35)]"
+                                            : "text-[var(--text-secondary)] hover:text-foreground hover:bg-[var(--card-bg)] group-hover/dropdown:text-foreground group-hover/dropdown:bg-[var(--card-bg)]"
+                                    )}
+                                >
+                                    <Gamepad2 className="w-4 h-4 shrink-0" />
                                     {t("tools.title")}
                                     <ChevronDown className="w-3.5 h-3.5 transition-transform duration-300 group-hover/dropdown:rotate-180" />
                                 </button>
 
-                                <div className="absolute top-full right-0 mt-3 w-max min-w-[380px] max-w-[min(92vw,440px)] bg-[var(--card-bg)] backdrop-blur-2xl rounded-2xl shadow-[0_20px_50px_rgba(17,24,39,0.12)] dark:shadow-[0_20px_50px_rgba(0,0,0,0.55)] border border-[var(--card-border)] opacity-0 invisible group-hover/dropdown:opacity-100 group-hover/dropdown:visible transition-all duration-250 translate-y-3 group-hover/dropdown:translate-y-0 p-2.5">
-                                    <div className="flex flex-col gap-1">
+                                <div className="absolute top-full right-0 mt-3 w-max min-w-[380px] max-w-[min(92vw,440px)] bg-[var(--card-bg)] backdrop-blur-2xl rounded-2xl shadow-[0_20px_50px_rgba(17,24,39,0.14)] dark:shadow-[0_20px_50px_rgba(0,0,0,0.6)] border border-[var(--card-border)] opacity-0 invisible group-hover/dropdown:opacity-100 group-hover/dropdown:visible transition-all duration-250 translate-y-3 group-hover/dropdown:translate-y-0 overflow-hidden">
+                                    <div className="h-1 bg-gradient-to-r from-santa-red via-gold to-indigo-accent" />
+                                    <div className="flex items-center gap-2 px-4 pt-3 pb-1">
+                                        <Gamepad2 className="w-3.5 h-3.5 text-santa-red" />
+                                        <span className="text-[11px] font-black uppercase tracking-[0.14em] text-[var(--text-muted)]">
+                                            {t("tools.title")}
+                                        </span>
+                                    </div>
+                                    <div className="flex flex-col gap-1 p-2.5">
                                         {toolLinks.map((link) => (
                                             <button
                                                 key={link.href}
@@ -204,7 +244,7 @@ export function Navbar() {
                             </div>
                         </div>
 
-                        <div className="flex items-center gap-2 sm:gap-3">
+                        <div className="flex items-center gap-2 sm:gap-3 shrink-0">
                             <div className="hidden sm:block">
                                 <ThemeToggle />
                             </div>
@@ -213,10 +253,12 @@ export function Navbar() {
                             </div>
                             <button
                                 onClick={() => setIsMenuOpen(!isMenuOpen)}
-                                className="lg:hidden p-2.5 rounded-xl bg-[var(--surface-2)] dark:bg-white/10 text-[var(--text-secondary)] hover:bg-[var(--border-medium)] dark:hover:bg-white/20 transition-colors border border-[var(--border-light)] dark:border-white/10"
+                                className="lg:hidden relative w-11 h-11 flex items-center justify-center rounded-xl bg-[var(--surface-2)] dark:bg-white/10 text-[var(--text-secondary)] hover:bg-[var(--border-medium)] dark:hover:bg-white/20 transition-colors border border-[var(--border-light)] dark:border-white/10"
                                 aria-label={isMenuOpen ? "Close menu" : "Open menu"}
+                                aria-expanded={isMenuOpen}
                             >
-                                {isMenuOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
+                                <Menu className={cn("w-6 h-6 absolute transition-all duration-300", isMenuOpen ? "opacity-0 rotate-90 scale-50" : "opacity-100 rotate-0 scale-100")} />
+                                <X className={cn("w-6 h-6 absolute transition-all duration-300", isMenuOpen ? "opacity-100 rotate-0 scale-100" : "opacity-0 -rotate-90 scale-50")} />
                             </button>
                         </div>
                     </nav>
@@ -241,16 +283,23 @@ export function Navbar() {
                     </div>
 
                     <div className="space-y-3">
-                        {primaryLinks.map((link) => (
+                        {primaryLinks.map((link, i) => (
                             <button
                                 key={link.href}
                                 onClick={() => router.push(link.href)}
-                                className="w-full flex items-center gap-4 p-4 bg-[var(--surface-2)] dark:bg-white/5 rounded-2xl border border-[var(--border-light)] dark:border-white/5 active:scale-[0.98] transition-all"
+                                style={isMenuOpen ? { animationDelay: `${i * 40}ms` } : undefined}
+                                className={cn(
+                                    "w-full flex items-center gap-4 p-4 rounded-2xl border active:scale-[0.98] transition-all",
+                                    isMenuOpen && "animate-slide-up opacity-0",
+                                    link.active
+                                        ? "bg-santa-red/10 border-santa-red/20"
+                                        : "bg-[var(--surface-2)] dark:bg-white/5 border-[var(--border-light)] dark:border-white/5"
+                                )}
                             >
-                                <div className="w-12 h-12 flex-shrink-0 flex items-center justify-center rounded-xl text-white shadow-md bg-santa-red">
+                                <div className={cn("w-12 h-12 flex-shrink-0 flex items-center justify-center rounded-xl text-white shadow-md", link.active ? "bg-santa-red" : "bg-santa-red/90")}>
                                     <link.icon className="w-6 h-6" />
                                 </div>
-                                <span className="font-extrabold text-foreground text-left">{link.name}</span>
+                                <span className={cn("font-extrabold text-left", link.active ? "text-santa-red" : "text-foreground")}>{link.name}</span>
                             </button>
                         ))}
                     </div>
@@ -261,11 +310,15 @@ export function Navbar() {
                             <h3 className="font-black text-xl tracking-tight">{t("tools.title")}</h3>
                         </div>
                         <div className="flex flex-col gap-2">
-                            {toolLinks.map((link) => (
+                            {toolLinks.map((link, i) => (
                                 <button
                                     key={link.href}
                                     onClick={() => router.push(link.href)}
-                                    className="flex items-center gap-4 p-4 bg-[var(--surface-2)] dark:bg-white/5 rounded-2xl border border-[var(--border-light)] dark:border-white/5 active:scale-[0.98] transition-all"
+                                    style={isMenuOpen ? { animationDelay: `${(primaryLinks.length + i) * 40}ms` } : undefined}
+                                    className={cn(
+                                        "flex items-center gap-4 p-4 bg-[var(--surface-2)] dark:bg-white/5 rounded-2xl border border-[var(--border-light)] dark:border-white/5 active:scale-[0.98] transition-all",
+                                        isMenuOpen && "animate-slide-up opacity-0"
+                                    )}
                                 >
                                     <div className={cn("w-12 h-12 flex-shrink-0 flex items-center justify-center rounded-xl text-white shadow-md", link.color)}>
                                         <link.icon className="w-6 h-6" />
