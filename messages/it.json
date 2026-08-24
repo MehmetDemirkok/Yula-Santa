@@ -163,6 +163,15 @@
                     "commenti tiktok",
                     "concorso tiktok"
                 ]
+            },
+            "tiktokExtension": {
+                "title": "Estensione Chrome TikTok | Estrazione commenti gratis - YulaSanta",
+                "description": "Raccogli i commenti del tuo video TikTok direttamente dal browser con la nostra estensione Chrome gratuita, poi estrai un vincitore equo — senza registrazione.",
+                "keywords": [
+                    "estensione chrome tiktok",
+                    "estrazione tiktok estensione",
+                    "raccogli commenti tiktok"
+                ]
             }
         },
         "requireSubscription": "Richiedi Iscrizione",
@@ -229,6 +238,38 @@
                     {
                         "q": "Is winner selection fair?",
                         "a": "Yes. We use a Fisher–Yates shuffle and cryptographic random numbers."
+                    }
+                ]
+            },
+            "tiktok": {
+                "contentTitle": "Strumento per estrazioni TikTok — Concorso a commenti gratuito",
+                "contentParagraphs": [
+                    "YulaSanta è un sito gratuito per estrazioni TikTok. Scegli vincitori equi tra i commenti del tuo video in pochi secondi — senza registrazione, senza password.",
+                    "Pensato per creator e brand: estrazioni sui commenti, vincitori e riserve, filtro dei duplicati e condivisione dei risultati — tutto gratuito."
+                ],
+                "howToTitle": "Come organizzare un'estrazione sui commenti TikTok",
+                "howToSteps": [
+                    "Incolla il link del tuo video TikTok su YulaSanta oppure aggiungi i partecipanti manualmente.",
+                    "Imposta il numero di vincitori e riserve e le regole di partecipazione.",
+                    "Avvia l'estrazione — condividi subito i risultati."
+                ],
+                "faqTitle": "Domande frequenti sull'estrazione TikTok",
+                "faq": [
+                    {
+                        "q": "Lo strumento per estrazioni TikTok è gratuito?",
+                        "a": "Sì. YulaSanta è completamente gratuito, con estrazioni illimitate e senza registrazione."
+                    },
+                    {
+                        "q": "Devo accedere al mio account TikTok?",
+                        "a": "No. Basta incollare il link del video o aggiungere i commenti manualmente — nessuna password richiesta."
+                    },
+                    {
+                        "q": "Posso scegliere dei vincitori di riserva?",
+                        "a": "Sì. Puoi impostare il numero che preferisci di vincitori principali e di riserva."
+                    },
+                    {
+                        "q": "I commenti multipli della stessa persona contano?",
+                        "a": "No. Con l'opzione «conta ogni utente una volta», ogni persona partecipa una sola volta."
                     }
                 ]
             }

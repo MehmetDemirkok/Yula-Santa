@@ -32,6 +32,7 @@ const localeRoutes = [
     { path: '', priority: 1.0, changeFrequency: 'weekly' as const },
     { path: '/youtube', priority: 0.95, changeFrequency: 'weekly' as const },
     { path: '/tiktok', priority: 0.95, changeFrequency: 'weekly' as const },
+    { path: '/tiktok/extension', priority: 0.8, changeFrequency: 'weekly' as const },
     { path: '/raffle', priority: 0.95, changeFrequency: 'weekly' as const },
     { path: '/secret-santa', priority: 0.9, changeFrequency: 'weekly' as const },
     { path: '/faq', priority: 0.7, changeFrequency: 'monthly' as const },

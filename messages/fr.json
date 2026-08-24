@@ -164,6 +164,15 @@
                     "tirage commentaires tiktok",
                     "giveaway tiktok"
                 ]
+            },
+            "tiktokExtension": {
+                "title": "Extension Chrome TikTok | Tirage commentaires gratuit - YulaSanta",
+                "description": "Collectez les commentaires de votre vidéo TikTok directement dans votre navigateur avec notre extension Chrome gratuite, puis tirez un gagnant équitable — sans inscription.",
+                "keywords": [
+                    "extension chrome tiktok",
+                    "extension tirage tiktok",
+                    "collecte commentaires tiktok"
+                ]
             }
         },
         "requireSubscription": "Abonnement requis",
@@ -230,6 +239,38 @@
                     {
                         "q": "Is winner selection fair?",
                         "a": "Yes. We use a Fisher–Yates shuffle and cryptographic random numbers."
+                    }
+                ]
+            },
+            "tiktok": {
+                "contentTitle": "Outil de tirage au sort TikTok — Concours de commentaires gratuit",
+                "contentParagraphs": [
+                    "YulaSanta est un site gratuit de tirage au sort TikTok. Choisissez des gagnants équitables parmi les commentaires de votre vidéo en quelques secondes — sans inscription, sans mot de passe.",
+                    "Conçu pour les créateurs et les marques : tirages sur commentaires, gagnants et suppléants, filtrage des doublons et partage des résultats — tout est gratuit."
+                ],
+                "howToTitle": "Comment organiser un tirage au sort sur les commentaires TikTok",
+                "howToSteps": [
+                    "Collez le lien de votre vidéo TikTok dans YulaSanta ou ajoutez les participants manuellement.",
+                    "Définissez le nombre de gagnants et de suppléants ainsi que les règles de participation.",
+                    "Lancez le tirage au sort — partagez les résultats instantanément."
+                ],
+                "faqTitle": "FAQ sur le tirage au sort TikTok",
+                "faq": [
+                    {
+                        "q": "L'outil de tirage au sort TikTok est-il gratuit ?",
+                        "a": "Oui. YulaSanta est entièrement gratuit, avec des tirages illimités et sans inscription."
+                    },
+                    {
+                        "q": "Dois-je me connecter à mon compte TikTok ?",
+                        "a": "Non. Collez simplement le lien de la vidéo ou ajoutez les commentaires manuellement — aucun mot de passe requis."
+                    },
+                    {
+                        "q": "Puis-je choisir des gagnants suppléants ?",
+                        "a": "Oui. Vous pouvez définir autant de gagnants principaux et suppléants que vous le souhaitez."
+                    },
+                    {
+                        "q": "Les commentaires multiples d'une même personne comptent-ils ?",
+                        "a": "Non. Avec l'option « compter chaque utilisateur une fois », chaque personne ne participe qu'une seule fois."
                     }
                 ]
             }

@@ -20,12 +20,14 @@ import {
     Download,
     Link2,
     Puzzle,
+    ExternalLink,
 } from "lucide-react";
 import { Input } from "@/components/ui/Input";
 import { FilterRulesPanel } from "@/components/giveaway/FilterRulesPanel";
 import { downloadWinnerCard } from "@/lib/downloadWinnerCard";
 import { useToast } from "@/lib/ToastContext";
 import { cn } from "@/lib/utils";
+import { TIKTOK_CHROME_EXTENSION_URL } from "@/lib/constants";
 
 type Step = "link" | "comments" | "rules" | "result";
 
@@ -332,6 +334,18 @@ export default function TikTokExtensionGiveaway() {
                 <p className="mt-2 text-[var(--text-secondary)]">
                     Yorumları kendi tarayıcınızda toplayın — tamamen ücretsiz, kayıt yok.
                 </p>
+                <a
+                    href={TIKTOK_CHROME_EXTENSION_URL}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="mt-5 inline-flex min-h-[44px] items-center justify-center gap-2 rounded-xl bg-indigo-accent px-5 text-sm font-bold text-white shadow-[0_4px_16px_rgba(79,70,229,0.25)] transition hover:-translate-y-0.5 hover:brightness-110"
+                >
+                    <Chrome className="h-4 w-4" /> Extension&apos;ı Chrome&apos;a Ekle
+                    <ExternalLink className="h-3.5 w-3.5 opacity-80" />
+                </a>
+                <p className="mt-2 text-xs text-[var(--text-muted)]">
+                    Zaten yüklediyseniz aşağıdan çekilişinizi oluşturmaya devam edin.
+                </p>
             </div>
 
             <Stepper current={currentStepNumber} />
@@ -386,7 +400,15 @@ export default function TikTokExtensionGiveaway() {
                         <Puzzle className="mt-0.5 h-4 w-4 shrink-0" />
                         <p>
                             Bir sonraki adımda size özel bir Çekiliş ID ve İçe Aktarma Kodu göstereceğiz — bunları
-                            YulaSanta Chrome Extension&apos;a kaydedip yorumları toplayacaksınız.
+                            YulaSanta Chrome Extension&apos;a kaydedip yorumları toplayacaksınız.{" "}
+                            <a
+                                href={TIKTOK_CHROME_EXTENSION_URL}
+                                target="_blank"
+                                rel="noopener noreferrer"
+                                className="font-semibold text-indigo-accent underline underline-offset-2 hover:text-indigo-accent/80"
+                            >
+                                Extension&apos;ı henüz yüklemediyseniz buradan ekleyin.
+                            </a>
                         </p>
                     </div>
                 </Card>
@@ -428,7 +450,15 @@ export default function TikTokExtensionGiveaway() {
                         <li>1. Bu sekmeyi açık bırakın, TikTok videosunu başka bir sekmede açın.</li>
                         <li>
                             2. YulaSanta Chrome Extension&apos;ı açın — bu sekme açık olduğu sürece Çekiliş ID ve
-                            İçe Aktarma Kodu otomatik algılanır, kopyala/yapıştır gerekmez.
+                            İçe Aktarma Kodu otomatik algılanır, kopyala/yapıştır gerekmez.{" "}
+                            <a
+                                href={TIKTOK_CHROME_EXTENSION_URL}
+                                target="_blank"
+                                rel="noopener noreferrer"
+                                className="font-semibold text-indigo-accent underline underline-offset-2 hover:text-indigo-accent/80"
+                            >
+                                Extension yüklü değil mi?
+                            </a>
                         </li>
                         <li>3. &quot;Yorumları Topla&quot;ya, ardından &quot;YulaSanta&apos;ya Gönder&quot;e basın.</li>
                     </ol>

@@ -163,6 +163,15 @@
                     "tiktok评论抽奖",
                     "免费tiktok抽奖"
                 ]
+            },
+            "tiktokExtension": {
+                "title": "TikTok Chrome扩展程序 | 免费评论抽奖 - YulaSanta",
+                "description": "使用我们的免费Chrome扩展程序，在您自己的浏览器中收集TikTok视频评论，公平抽取获奖者——无需注册。",
+                "keywords": [
+                    "tiktok chrome扩展",
+                    "tiktok评论收集",
+                    "tiktok抽奖插件"
+                ]
             }
         },
         "requireSubscription": "需要订阅",
@@ -229,6 +238,38 @@
                     {
                         "q": "Is winner selection fair?",
                         "a": "Yes. We use a Fisher–Yates shuffle and cryptographic random numbers."
+                    }
+                ]
+            },
+            "tiktok": {
+                "contentTitle": "TikTok抽奖工具 — 免费评论抽奖",
+                "contentParagraphs": [
+                    "YulaSanta是一个免费的TikTok抽奖网站。几秒钟内即可从视频评论中公平抽取获奖者——无需注册，无需密码。",
+                    "专为创作者和品牌打造：评论抽奖、正选与备选获奖者、重复参与者过滤、结果分享——完全免费。"
+                ],
+                "howToTitle": "如何进行TikTok评论抽奖",
+                "howToSteps": [
+                    "将TikTok视频链接粘贴到YulaSanta，或手动添加参与者。",
+                    "设置获奖人数、备选人数以及参与规则。",
+                    "开始抽奖——立即分享结果。"
+                ],
+                "faqTitle": "TikTok抽奖常见问题",
+                "faq": [
+                    {
+                        "q": "TikTok抽奖工具免费吗?",
+                        "a": "是的。YulaSanta完全免费，无限次抽奖且无需注册。"
+                    },
+                    {
+                        "q": "需要登录TikTok账号吗?",
+                        "a": "不需要。只需粘贴视频链接或手动添加评论，无需密码。"
+                    },
+                    {
+                        "q": "可以设置备选获奖者吗?",
+                        "a": "可以。您可以设置任意数量的正选和备选获奖者。"
+                    },
+                    {
+                        "q": "同一人的多条评论会被重复计算吗?",
+                        "a": "不会。启用「每位用户仅计一次」后，每个人只会参与一次。"
                     }
                 ]
             }

@@ -165,6 +165,15 @@
                     "tiktok verlosung",
                     "tiktok giveaway"
                 ]
+            },
+            "tiktokExtension": {
+                "title": "TikTok Chrome-Erweiterung | Kostenlose Verlosung - YulaSanta",
+                "description": "Sammeln Sie TikTok-Kommentare direkt in Ihrem Browser mit unserer kostenlosen Chrome-Erweiterung und wählen Sie einen fairen Gewinner — ohne Anmeldung.",
+                "keywords": [
+                    "tiktok chrome erweiterung",
+                    "tiktok kommentare sammeln",
+                    "tiktok gewinnspiel erweiterung"
+                ]
             }
         },
         "requireSubscription": "Abonnement erforderlich",
@@ -606,6 +615,38 @@
                     {
                         "q": "Is winner selection fair?",
                         "a": "Yes. We use a Fisher–Yates shuffle and cryptographic random numbers."
+                    }
+                ]
+            },
+            "tiktok": {
+                "contentTitle": "TikTok Gewinnspiel-Tool — Kostenlose Kommentar-Verlosung",
+                "contentParagraphs": [
+                    "YulaSanta ist eine kostenlose TikTok-Gewinnspielseite. Wählen Sie in Sekunden faire Gewinner aus den Kommentaren Ihres Videos aus — ohne Anmeldung, ohne Passwort.",
+                    "Entwickelt für Creator und Marken: Kommentar-Verlosungen, Gewinner und Ersatzgewinner, Filterung doppelter Teilnehmer und Ergebnis-Sharing — alles kostenlos."
+                ],
+                "howToTitle": "So führen Sie ein TikTok-Kommentar-Gewinnspiel durch",
+                "howToSteps": [
+                    "Fügen Sie Ihren TikTok-Video-Link bei YulaSanta ein oder fügen Sie Teilnehmer manuell hinzu.",
+                    "Legen Sie die Anzahl der Gewinner und Ersatzgewinner sowie die Teilnahmeregeln fest.",
+                    "Starten Sie das Gewinnspiel — teilen Sie die Ergebnisse sofort."
+                ],
+                "faqTitle": "Häufige Fragen zum TikTok-Gewinnspiel",
+                "faq": [
+                    {
+                        "q": "Ist das TikTok-Gewinnspiel-Tool kostenlos?",
+                        "a": "Ja. YulaSanta ist komplett kostenlos, mit unbegrenzten Gewinnspielen und ohne Registrierung."
+                    },
+                    {
+                        "q": "Muss ich mich bei TikTok anmelden?",
+                        "a": "Nein. Fügen Sie einfach den Video-Link ein oder tragen Sie Kommentare manuell ein — kein Passwort erforderlich."
+                    },
+                    {
+                        "q": "Kann ich Ersatzgewinner auswählen?",
+                        "a": "Ja. Sie können eine beliebige Anzahl an Haupt- und Ersatzgewinnern festlegen."
+                    },
+                    {
+                        "q": "Zählen mehrere Kommentare derselben Person?",
+                        "a": "Nein. Mit der Option „Jeden Nutzer einmal zählen“ nimmt jede Person nur einmal teil."
                     }
                 ]
             }

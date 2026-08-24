@@ -163,6 +163,15 @@
                     "tiktok ギブアウェイ",
                     "ティックトック 抽選"
                 ]
+            },
+            "tiktokExtension": {
+                "title": "TikTok Chrome拡張機能 | 無料コメント抽選 - YulaSanta",
+                "description": "無料のChrome拡張機能でTikTokのコメントをブラウザ上で収集し、公平に当選者を選びます — 登録不要。",
+                "keywords": [
+                    "tiktok chrome拡張機能",
+                    "tiktok コメント収集",
+                    "tiktok 抽選 拡張機能"
+                ]
             }
         },
         "requireSubscription": "チャンネル登録を条件にする",
@@ -229,6 +238,38 @@
                     {
                         "q": "Is winner selection fair?",
                         "a": "Yes. We use a Fisher–Yates shuffle and cryptographic random numbers."
+                    }
+                ]
+            },
+            "tiktok": {
+                "contentTitle": "TikTokプレゼント抽選ツール — 無料コメント抽選",
+                "contentParagraphs": [
+                    "YulaSantaは無料のTikTok抽選サイトです。動画のコメントの中から公平に当選者を数秒で選べます — 登録もパスワードも不要です。",
+                    "クリエイターやブランド向けに設計: コメント抽選、当選者と補欠、重複参加者のフィルター、結果の共有まで、すべて無料でご利用いただけます。"
+                ],
+                "howToTitle": "TikTokコメント抽選のやり方",
+                "howToSteps": [
+                    "TikTok動画のリンクをYulaSantaに貼り付けるか、参加者を手動で追加します。",
+                    "当選者数と補欠数、参加ルールを設定します。",
+                    "抽選を開始 — 結果をすぐに共有できます。"
+                ],
+                "faqTitle": "TikTok抽選 よくある質問",
+                "faq": [
+                    {
+                        "q": "TikTok抽選ツールは無料ですか?",
+                        "a": "はい。YulaSantaは完全無料で、登録不要・抽選回数の制限もありません。"
+                    },
+                    {
+                        "q": "TikTokアカウントへのログインは必要ですか?",
+                        "a": "いいえ。動画リンクを貼り付けるか、コメントを手動で追加するだけで、パスワードは不要です。"
+                    },
+                    {
+                        "q": "補欠当選者を選ぶことはできますか?",
+                        "a": "はい。本選と補欠の当選者数を自由に設定できます。"
+                    },
+                    {
+                        "q": "同じ人が複数コメントした場合はカウントされますか?",
+                        "a": "いいえ。「ユーザーごとに1回のみカウント」を使うと、各参加者は1回だけ参加としてカウントされます。"
                     }
                 ]
             }
