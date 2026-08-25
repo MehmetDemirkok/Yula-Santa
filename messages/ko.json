@@ -1597,5 +1597,66 @@
             }
         ],
         "contactNote": "Questions? Contact us at mehmetdemirkok@gmail.com"
+    },
+    "auth": {
+        "login": {
+            "meta": {
+                "title": "로그인 | YulaSanta",
+                "description": "YulaSanta 계정에 로그인하고 이어서 진행하세요."
+            },
+            "title": "다시 오신 것을 환영합니다",
+            "subtitle": "로그인하여 추첨과 도구에 접근하세요.",
+            "email": "이메일 주소",
+            "emailPlaceholder": "email@example.com",
+            "password": "비밀번호",
+            "passwordPlaceholder": "비밀번호를 입력하세요",
+            "remember": "로그인 상태 유지",
+            "forgot": "비밀번호를 잊으셨나요?",
+            "submit": "로그인",
+            "submitting": "로그인 중...",
+            "noAccount": "계정이 없으신가요?",
+            "registerLink": "회원가입",
+            "comingSoonToast": "로그인 기능이 곧 제공됩니다! 🎄",
+            "errors": {
+                "emailRequired": "이메일 주소를 입력해주세요",
+                "emailInvalid": "올바른 이메일 주소를 입력해주세요",
+                "passwordRequired": "비밀번호를 입력해주세요",
+                "passwordMin": "비밀번호는 최소 6자 이상이어야 합니다"
+            }
+        },
+        "register": {
+            "meta": {
+                "title": "회원가입 | YulaSanta",
+                "description": "무료 YulaSanta 계정을 만들고 몇 초 만에 추첨을 시작하세요."
+            },
+            "title": "계정 만들기",
+            "subtitle": "무료 계정을 만들고 바로 추첨을 시작하세요.",
+            "name": "이름",
+            "namePlaceholder": "예: 홍길동",
+            "email": "이메일 주소",
+            "emailPlaceholder": "email@example.com",
+            "password": "비밀번호",
+            "passwordPlaceholder": "최소 6자 이상",
+            "confirmPassword": "비밀번호 확인",
+            "confirmPasswordPlaceholder": "비밀번호를 다시 입력하세요",
+            "terms": "<privacy>개인정보 처리방침</privacy> 및 <terms>이용약관</terms>을 읽고 동의합니다.",
+            "submit": "회원가입",
+            "submitting": "계정 생성 중...",
+            "haveAccount": "이미 계정이 있으신가요?",
+            "loginLink": "로그인",
+            "comingSoonToast": "회원가입 기능이 곧 제공됩니다! 🎄",
+            "errors": {
+                "nameRequired": "이름을 입력해주세요",
+                "emailRequired": "이메일 주소를 입력해주세요",
+                "emailInvalid": "올바른 이메일 주소를 입력해주세요",
+                "passwordRequired": "비밀번호를 입력해주세요",
+                "passwordMin": "비밀번호는 최소 6자 이상이어야 합니다",
+                "confirmMismatch": "비밀번호가 일치하지 않습니다",
+                "termsRequired": "계속하려면 약관에 동의해야 합니다"
+            }
+        },
+        "showPassword": "비밀번호 표시",
+        "hidePassword": "비밀번호 숨기기",
+        "google": "Google로 계속하기"
     }
 }

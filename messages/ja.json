@@ -1596,5 +1596,66 @@
             }
         ],
         "contactNote": "Questions? Contact us at mehmetdemirkok@gmail.com"
+    },
+    "auth": {
+        "login": {
+            "meta": {
+                "title": "ログイン | YulaSanta",
+                "description": "YulaSantaアカウントにログインして、続きから始めましょう。"
+            },
+            "title": "おかえりなさい",
+            "subtitle": "ログインして抽選やツールにアクセスしましょう。",
+            "email": "メールアドレス",
+            "emailPlaceholder": "email@example.com",
+            "password": "パスワード",
+            "passwordPlaceholder": "パスワードを入力",
+            "remember": "ログイン状態を保持",
+            "forgot": "パスワードをお忘れですか？",
+            "submit": "ログイン",
+            "submitting": "ログイン中...",
+            "noAccount": "アカウントをお持ちでないですか？",
+            "registerLink": "新規登録",
+            "comingSoonToast": "ログイン機能はまもなく利用可能になります！🎄",
+            "errors": {
+                "emailRequired": "メールアドレスを入力してください",
+                "emailInvalid": "有効なメールアドレスを入力してください",
+                "passwordRequired": "パスワードを入力してください",
+                "passwordMin": "パスワードは6文字以上で入力してください"
+            }
+        },
+        "register": {
+            "meta": {
+                "title": "新規登録 | YulaSanta",
+                "description": "無料のYulaSantaアカウントを作成し、数秒で抽選を開始しましょう。"
+            },
+            "title": "アカウントを作成",
+            "subtitle": "無料アカウントを作成して、すぐに抽選を始めましょう。",
+            "name": "氏名",
+            "namePlaceholder": "例：山田 太郎",
+            "email": "メールアドレス",
+            "emailPlaceholder": "email@example.com",
+            "password": "パスワード",
+            "passwordPlaceholder": "6文字以上",
+            "confirmPassword": "パスワード（確認）",
+            "confirmPasswordPlaceholder": "パスワードを再入力",
+            "terms": "<privacy>プライバシーポリシー</privacy>と<terms>利用規約</terms>を読み、同意します。",
+            "submit": "登録する",
+            "submitting": "アカウントを作成中...",
+            "haveAccount": "すでにアカウントをお持ちですか？",
+            "loginLink": "ログイン",
+            "comingSoonToast": "新規登録機能はまもなく利用可能になります！🎄",
+            "errors": {
+                "nameRequired": "氏名を入力してください",
+                "emailRequired": "メールアドレスを入力してください",
+                "emailInvalid": "有効なメールアドレスを入力してください",
+                "passwordRequired": "パスワードを入力してください",
+                "passwordMin": "パスワードは6文字以上で入力してください",
+                "confirmMismatch": "パスワードが一致しません",
+                "termsRequired": "続けるには規約に同意してください"
+            }
+        },
+        "showPassword": "パスワードを表示",
+        "hidePassword": "パスワードを非表示",
+        "google": "Googleで続ける"
     }
 }

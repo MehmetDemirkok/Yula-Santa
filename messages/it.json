@@ -1596,5 +1596,66 @@
             }
         ],
         "contactNote": "Questions? Contact us at mehmetdemirkok@gmail.com"
+    },
+    "auth": {
+        "login": {
+            "meta": {
+                "title": "Accedi | YulaSanta",
+                "description": "Accedi al tuo account YulaSanta e riprendi da dove avevi lasciato."
+            },
+            "title": "Bentornato",
+            "subtitle": "Accedi per gestire i tuoi giveaway e strumenti.",
+            "email": "Indirizzo e-mail",
+            "emailPlaceholder": "email@example.com",
+            "password": "Password",
+            "passwordPlaceholder": "Inserisci la password",
+            "remember": "Ricordami",
+            "forgot": "Password dimenticata?",
+            "submit": "Accedi",
+            "submitting": "Accesso in corso...",
+            "noAccount": "Non hai un account?",
+            "registerLink": "Registrati",
+            "comingSoonToast": "Il login sarà disponibile molto presto! 🎄",
+            "errors": {
+                "emailRequired": "L'indirizzo e-mail è obbligatorio",
+                "emailInvalid": "Inserisci un indirizzo e-mail valido",
+                "passwordRequired": "La password è obbligatoria",
+                "passwordMin": "La password deve contenere almeno 6 caratteri"
+            }
+        },
+        "register": {
+            "meta": {
+                "title": "Registrati | YulaSanta",
+                "description": "Crea un account YulaSanta gratuito e avvia il tuo giveaway in pochi secondi."
+            },
+            "title": "Crea il tuo account",
+            "subtitle": "Crea il tuo account gratuito e avvia subito il tuo giveaway.",
+            "name": "Nome completo",
+            "namePlaceholder": "es. Mario Rossi",
+            "email": "Indirizzo e-mail",
+            "emailPlaceholder": "email@example.com",
+            "password": "Password",
+            "passwordPlaceholder": "Almeno 6 caratteri",
+            "confirmPassword": "Conferma password",
+            "confirmPasswordPlaceholder": "Reinserisci la password",
+            "terms": "Ho letto e accetto la <privacy>Informativa sulla privacy</privacy> e i <terms>Termini di servizio</terms>.",
+            "submit": "Registrati",
+            "submitting": "Creazione account...",
+            "haveAccount": "Hai già un account?",
+            "loginLink": "Accedi",
+            "comingSoonToast": "La registrazione sarà disponibile molto presto! 🎄",
+            "errors": {
+                "nameRequired": "Il nome completo è obbligatorio",
+                "emailRequired": "L'indirizzo e-mail è obbligatorio",
+                "emailInvalid": "Inserisci un indirizzo e-mail valido",
+                "passwordRequired": "La password è obbligatoria",
+                "passwordMin": "La password deve contenere almeno 6 caratteri",
+                "confirmMismatch": "Le password non corrispondono",
+                "termsRequired": "Devi accettare i termini per continuare"
+            }
+        },
+        "showPassword": "Mostra password",
+        "hidePassword": "Nascondi password",
+        "google": "Continua con Google"
     }
 }

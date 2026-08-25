@@ -1597,5 +1597,66 @@
             }
         ],
         "contactNote": "Questions? Contact us at mehmetdemirkok@gmail.com"
+    },
+    "auth": {
+        "login": {
+            "meta": {
+                "title": "Connexion | YulaSanta",
+                "description": "Connecte-toi à ton compte YulaSanta et reprends là où tu t'étais arrêté."
+            },
+            "title": "Content de te revoir",
+            "subtitle": "Connecte-toi pour accéder à tes tirages au sort et outils.",
+            "email": "Adresse e-mail",
+            "emailPlaceholder": "email@example.com",
+            "password": "Mot de passe",
+            "passwordPlaceholder": "Saisis ton mot de passe",
+            "remember": "Se souvenir de moi",
+            "forgot": "Mot de passe oublié ?",
+            "submit": "Se connecter",
+            "submitting": "Connexion en cours...",
+            "noAccount": "Pas encore de compte ?",
+            "registerLink": "S'inscrire",
+            "comingSoonToast": "La connexion arrive très bientôt ! 🎄",
+            "errors": {
+                "emailRequired": "L'adresse e-mail est requise",
+                "emailInvalid": "Saisis une adresse e-mail valide",
+                "passwordRequired": "Le mot de passe est requis",
+                "passwordMin": "Le mot de passe doit contenir au moins 6 caractères"
+            }
+        },
+        "register": {
+            "meta": {
+                "title": "Inscription | YulaSanta",
+                "description": "Crée un compte YulaSanta gratuit et lance ton tirage au sort en quelques secondes."
+            },
+            "title": "Créer un compte",
+            "subtitle": "Crée ton compte gratuit et lance ton tirage au sort immédiatement.",
+            "name": "Nom complet",
+            "namePlaceholder": "ex. Jean Dupont",
+            "email": "Adresse e-mail",
+            "emailPlaceholder": "email@example.com",
+            "password": "Mot de passe",
+            "passwordPlaceholder": "6 caractères minimum",
+            "confirmPassword": "Confirmer le mot de passe",
+            "confirmPasswordPlaceholder": "Ressaisis ton mot de passe",
+            "terms": "J'ai lu et j'accepte la <privacy>politique de confidentialité</privacy> et les <terms>conditions d'utilisation</terms>.",
+            "submit": "S'inscrire",
+            "submitting": "Création du compte...",
+            "haveAccount": "Tu as déjà un compte ?",
+            "loginLink": "Se connecter",
+            "comingSoonToast": "L'inscription arrive très bientôt ! 🎄",
+            "errors": {
+                "nameRequired": "Le nom complet est requis",
+                "emailRequired": "L'adresse e-mail est requise",
+                "emailInvalid": "Saisis une adresse e-mail valide",
+                "passwordRequired": "Le mot de passe est requis",
+                "passwordMin": "Le mot de passe doit contenir au moins 6 caractères",
+                "confirmMismatch": "Les mots de passe ne correspondent pas",
+                "termsRequired": "Tu dois accepter les conditions pour continuer"
+            }
+        },
+        "showPassword": "Afficher le mot de passe",
+        "hidePassword": "Masquer le mot de passe",
+        "google": "Continuer avec Google"
     }
 }

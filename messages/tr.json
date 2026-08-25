@@ -1560,5 +1560,66 @@
             }
         ],
         "contactNote": "Sorularınız için: mehmetdemirkok@gmail.com"
+    },
+    "auth": {
+        "login": {
+            "meta": {
+                "title": "Giriş Yap | YulaSanta",
+                "description": "YulaSanta hesabına giriş yap; çekilişlerine ve araçlarına kaldığın yerden devam et."
+            },
+            "title": "Tekrar Hoş Geldin",
+            "subtitle": "Çekilişlerine ve araçlarına erişmek için hesabına giriş yap.",
+            "email": "E-posta Adresi",
+            "emailPlaceholder": "email@example.com",
+            "password": "Şifre",
+            "passwordPlaceholder": "Şifreni gir",
+            "remember": "Beni hatırla",
+            "forgot": "Şifreni mi unuttun?",
+            "submit": "Giriş Yap",
+            "submitting": "Giriş yapılıyor...",
+            "noAccount": "Hesabın yok mu?",
+            "registerLink": "Kayıt ol",
+            "comingSoonToast": "Giriş sistemi çok yakında aktif olacak! 🎄",
+            "errors": {
+                "emailRequired": "E-posta adresi gerekli",
+                "emailInvalid": "Geçerli bir e-posta adresi gir",
+                "passwordRequired": "Şifre gerekli",
+                "passwordMin": "Şifre en az 6 karakter olmalı"
+            }
+        },
+        "register": {
+            "meta": {
+                "title": "Kayıt Ol | YulaSanta",
+                "description": "Ücretsiz YulaSanta hesabı oluştur; çekilişlerini saniyeler içinde başlat."
+            },
+            "title": "Hesap Oluştur",
+            "subtitle": "Ücretsiz hesabını oluştur, çekilişlerine hemen başla.",
+            "name": "Ad Soyad",
+            "namePlaceholder": "Örn: Ahmet Yılmaz",
+            "email": "E-posta Adresi",
+            "emailPlaceholder": "email@example.com",
+            "password": "Şifre",
+            "passwordPlaceholder": "En az 6 karakter",
+            "confirmPassword": "Şifre Tekrar",
+            "confirmPasswordPlaceholder": "Şifreni tekrar gir",
+            "terms": "<privacy>Gizlilik Politikası</privacy>'nı ve <terms>Kullanım Şartları</terms>'nı okudum, kabul ediyorum.",
+            "submit": "Kayıt Ol",
+            "submitting": "Hesap oluşturuluyor...",
+            "haveAccount": "Zaten hesabın var mı?",
+            "loginLink": "Giriş yap",
+            "comingSoonToast": "Kayıt sistemi çok yakında aktif olacak! 🎄",
+            "errors": {
+                "nameRequired": "Ad soyad gerekli",
+                "emailRequired": "E-posta adresi gerekli",
+                "emailInvalid": "Geçerli bir e-posta adresi gir",
+                "passwordRequired": "Şifre gerekli",
+                "passwordMin": "Şifre en az 6 karakter olmalı",
+                "confirmMismatch": "Şifreler eşleşmiyor",
+                "termsRequired": "Devam etmek için şartları kabul etmelisin"
+            }
+        },
+        "showPassword": "Şifreyi göster",
+        "hidePassword": "Şifreyi gizle",
+        "google": "Google ile devam et"
     }
 }

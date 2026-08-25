@@ -1598,5 +1598,66 @@
             }
         ],
         "contactNote": "Questions? Contact us at mehmetdemirkok@gmail.com"
+    },
+    "auth": {
+        "login": {
+            "meta": {
+                "title": "Anmelden | YulaSanta",
+                "description": "Melde dich bei deinem YulaSanta-Konto an und mach dort weiter, wo du aufgehört hast."
+            },
+            "title": "Willkommen zurück",
+            "subtitle": "Melde dich an, um auf deine Verlosungen und Tools zuzugreifen.",
+            "email": "E-Mail-Adresse",
+            "emailPlaceholder": "email@example.com",
+            "password": "Passwort",
+            "passwordPlaceholder": "Passwort eingeben",
+            "remember": "Angemeldet bleiben",
+            "forgot": "Passwort vergessen?",
+            "submit": "Anmelden",
+            "submitting": "Anmeldung läuft...",
+            "noAccount": "Noch kein Konto?",
+            "registerLink": "Registrieren",
+            "comingSoonToast": "Der Login ist bald verfügbar! 🎄",
+            "errors": {
+                "emailRequired": "E-Mail-Adresse ist erforderlich",
+                "emailInvalid": "Gib eine gültige E-Mail-Adresse ein",
+                "passwordRequired": "Passwort ist erforderlich",
+                "passwordMin": "Das Passwort muss mindestens 6 Zeichen lang sein"
+            }
+        },
+        "register": {
+            "meta": {
+                "title": "Registrieren | YulaSanta",
+                "description": "Erstelle ein kostenloses YulaSanta-Konto und starte deine Verlosung in Sekunden."
+            },
+            "title": "Konto erstellen",
+            "subtitle": "Erstelle dein kostenloses Konto und starte sofort mit deiner Verlosung.",
+            "name": "Vollständiger Name",
+            "namePlaceholder": "z. B. Max Mustermann",
+            "email": "E-Mail-Adresse",
+            "emailPlaceholder": "email@example.com",
+            "password": "Passwort",
+            "passwordPlaceholder": "Mindestens 6 Zeichen",
+            "confirmPassword": "Passwort bestätigen",
+            "confirmPasswordPlaceholder": "Passwort erneut eingeben",
+            "terms": "Ich habe die <privacy>Datenschutzerklärung</privacy> und die <terms>Nutzungsbedingungen</terms> gelesen und akzeptiere sie.",
+            "submit": "Registrieren",
+            "submitting": "Konto wird erstellt...",
+            "haveAccount": "Du hast bereits ein Konto?",
+            "loginLink": "Anmelden",
+            "comingSoonToast": "Die Registrierung ist bald verfügbar! 🎄",
+            "errors": {
+                "nameRequired": "Vollständiger Name ist erforderlich",
+                "emailRequired": "E-Mail-Adresse ist erforderlich",
+                "emailInvalid": "Gib eine gültige E-Mail-Adresse ein",
+                "passwordRequired": "Passwort ist erforderlich",
+                "passwordMin": "Das Passwort muss mindestens 6 Zeichen lang sein",
+                "confirmMismatch": "Die Passwörter stimmen nicht überein",
+                "termsRequired": "Du musst die Bedingungen akzeptieren, um fortzufahren"
+            }
+        },
+        "showPassword": "Passwort anzeigen",
+        "hidePassword": "Passwort verbergen",
+        "google": "Mit Google fortfahren"
     }
 }

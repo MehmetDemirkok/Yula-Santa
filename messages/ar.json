@@ -1596,5 +1596,66 @@
             }
         ],
         "contactNote": "Questions? Contact us at mehmetdemirkok@gmail.com"
+    },
+    "auth": {
+        "login": {
+            "meta": {
+                "title": "تسجيل الدخول | YulaSanta",
+                "description": "سجّل الدخول إلى حسابك في YulaSanta وتابع من حيث توقفت."
+            },
+            "title": "مرحبًا بعودتك",
+            "subtitle": "سجّل الدخول للوصول إلى سحوباتك وأدواتك.",
+            "email": "البريد الإلكتروني",
+            "emailPlaceholder": "email@example.com",
+            "password": "كلمة المرور",
+            "passwordPlaceholder": "أدخل كلمة المرور",
+            "remember": "تذكرني",
+            "forgot": "هل نسيت كلمة المرور؟",
+            "submit": "تسجيل الدخول",
+            "submitting": "جارٍ تسجيل الدخول...",
+            "noAccount": "ليس لديك حساب؟",
+            "registerLink": "إنشاء حساب",
+            "comingSoonToast": "سيتوفر تسجيل الدخول قريبًا جدًا! 🎄",
+            "errors": {
+                "emailRequired": "البريد الإلكتروني مطلوب",
+                "emailInvalid": "أدخل بريدًا إلكترونيًا صالحًا",
+                "passwordRequired": "كلمة المرور مطلوبة",
+                "passwordMin": "يجب أن تتكون كلمة المرور من 6 أحرف على الأقل"
+            }
+        },
+        "register": {
+            "meta": {
+                "title": "إنشاء حساب | YulaSanta",
+                "description": "أنشئ حساب YulaSanta مجانًا وابدأ سحبك خلال ثوانٍ."
+            },
+            "title": "إنشاء حساب",
+            "subtitle": "أنشئ حسابك المجاني وابدأ سحبك على الفور.",
+            "name": "الاسم الكامل",
+            "namePlaceholder": "مثال: أحمد يلماز",
+            "email": "البريد الإلكتروني",
+            "emailPlaceholder": "email@example.com",
+            "password": "كلمة المرور",
+            "passwordPlaceholder": "6 أحرف على الأقل",
+            "confirmPassword": "تأكيد كلمة المرور",
+            "confirmPasswordPlaceholder": "أعد إدخال كلمة المرور",
+            "terms": "لقد قرأت ووافقت على <privacy>سياسة الخصوصية</privacy> و<terms>شروط الاستخدام</terms>.",
+            "submit": "إنشاء حساب",
+            "submitting": "جارٍ إنشاء الحساب...",
+            "haveAccount": "لديك حساب بالفعل؟",
+            "loginLink": "تسجيل الدخول",
+            "comingSoonToast": "سيتوفر إنشاء الحساب قريبًا جدًا! 🎄",
+            "errors": {
+                "nameRequired": "الاسم الكامل مطلوب",
+                "emailRequired": "البريد الإلكتروني مطلوب",
+                "emailInvalid": "أدخل بريدًا إلكترونيًا صالحًا",
+                "passwordRequired": "كلمة المرور مطلوبة",
+                "passwordMin": "يجب أن تتكون كلمة المرور من 6 أحرف على الأقل",
+                "confirmMismatch": "كلمتا المرور غير متطابقتين",
+                "termsRequired": "يجب قبول الشروط للمتابعة"
+            }
+        },
+        "showPassword": "إظهار كلمة المرور",
+        "hidePassword": "إخفاء كلمة المرور",
+        "google": "المتابعة باستخدام Google"
     }
 }
