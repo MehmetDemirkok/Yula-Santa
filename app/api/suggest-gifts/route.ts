@@ -1,123 +1,54 @@
 import { NextResponse } from 'next/server';
 
-interface GiftSuggestion {
-    title: string;
-    description: string;
-}
-
-interface SuggestRequestBody {
-    occasion?: string;
-    relationship?: string;
-    budget?: 'low' | 'medium' | 'high';
-    notes?: string;
-    locale?: string;
-}
-
-const LANGUAGE_NAMES: Record<string, string> = {
-    tr: 'Turkish',
-    en: 'English',
-    de: 'German',
-    fr: 'French',
-    es: 'Spanish',
-    it: 'Italian',
-    pt: 'Portuguese',
-    ru: 'Russian',
-    ar: 'Arabic',
-    ja: 'Japanese',
-    ko: 'Korean',
-    zh: 'Simplified Chinese',
+const giftSuggestions = {
+  "uni-sex": {
+    low: [
+      { title: "Kahve/Çay Seti", description: "Kaliteli kahve veya çay ve aksesuar" },
+      { title: "Alet Takımı", description: "Temel tamir ve bakım için mini alet takımı" },
+      { title: "USB Şarj Cihazı", description: "Hızlı şarj özellikli USB-C şarj cihazı" },
+      { title: "Kitap", description: "İlgi alanına göre best-seller kitap" },
+      { title: "Spor Çorap Seti", description: "Rahat ve kaliteli spor çorap koleksiyonu" },
+    ],
+    medium: [
+      { title: "Bluetooth Hoparlör", description: "Taşınabilir wireless hoparlör" },
+      { title: "Fonksiyonel Sırt Çantası", description: "Günlük kullanım için modern tasarım" },
+      { title: "Yazı Takımı", description: "Premium kalem ve Not defteri seti" },
+      { title: "Masaj Cihazı", description: "El tipi masaj ve rahatlama cihazı" },
+      { title: "Lüks Çikolata/Helva Kutusu", description: "Özel koleksiyon gourmet tatılılar" },
+    ],
+    high: [
+      { title: "Akıllı Saat", description: "Fitness ve notification özellikli smartwatch" },
+      { title: "Premium Kulaklık", description: "Gürültü engelleme ve uzun pil ömrü" },
+      { title: "Dijital Kamera", description: "Taşınabilir action camera" },
+      { title: "Lüks Saati", description: "Stil ve işlevselliği birleştiren klasik saat" },
+      { title: "Premium Parfüm", description: "Seçkin marka kolon veya parfüm" },
+    ]
+  }
 };
-
-const BUDGET_PHRASES: Record<string, string> = {
-    low: 'a low, budget-friendly',
-    medium: 'a medium, reasonable',
-    high: 'a generous, high-end',
-};
-
-// Google AI Studio issues free Gemini API keys with a generous free tier
-// (no credit card required): https://aistudio.google.com/apikey
-// "gemini-flash-latest" auto-points to the current flash model and is
-// consistently covered by the free tier, unlike pinned model names which
-// sometimes report a zero free-tier quota depending on the project.
-const GEMINI_MODEL = 'gemini-flash-latest';
 
 export async function POST(request: Request) {
-    let body: SuggestRequestBody;
-    try {
-        body = await request.json();
-    } catch {
-        return NextResponse.json({ error: 'Invalid request body' }, { status: 400 });
-    }
+  try {
+    const body = await request.json();
+    const { gender = "uni-sex", budget = "medium" } = body;
 
-    const { occasion, relationship, budget, notes, locale } = body;
-    const apiKey = process.env.GEMINI_API_KEY;
+    const suggestions = giftSuggestions[gender as keyof typeof giftSuggestions]?.[budget as keyof typeof giftSuggestions["uni-sex"]] ||
+                       giftSuggestions["uni-sex"][budget as keyof typeof giftSuggestions["uni-sex"]];
 
-    if (!apiKey) {
-        return NextResponse.json({ suggestions: null, source: 'fallback', reason: 'no_api_key' });
-    }
+    const shuffled = [...suggestions].sort(() => Math.random() - 0.5);
+    const selected = shuffled.slice(0, Math.min(3, shuffled.length));
 
-    const languageName = LANGUAGE_NAMES[locale || 'tr'] || 'Turkish';
-    const budgetPhrase = BUDGET_PHRASES[budget || 'medium'] || BUDGET_PHRASES.medium;
-
-    const prompt = `You are a thoughtful, creative gift consultant.
-Suggest exactly 5 specific, non-generic gift ideas for the occasion "${occasion || 'a special day'}",
-intended for "${relationship || 'a loved one'}", with ${budgetPhrase} budget.
-${notes ? `Extra context about the recipient's interests: ${notes}.` : ''}
-Avoid vague suggestions like "a nice gift" — name real products, brands, or experiences.
-Write the "title" and "description" fields in ${languageName}.
-The description should be one warm, concise sentence explaining why it fits.`;
-
-    try {
-        const response = await fetch(
-            `https://generativelanguage.googleapis.com/v1beta/models/${GEMINI_MODEL}:generateContent?key=${apiKey}`,
-            {
-                method: 'POST',
-                headers: { 'Content-Type': 'application/json' },
-                body: JSON.stringify({
-                    contents: [{ parts: [{ text: prompt }] }],
-                    generationConfig: {
-                        temperature: 0.9,
-                        responseMimeType: 'application/json',
-                        responseSchema: {
-                            type: 'OBJECT',
-                            properties: {
-                                suggestions: {
-                                    type: 'ARRAY',
-                                    items: {
-                                        type: 'OBJECT',
-                                        properties: {
-                                            title: { type: 'STRING' },
-                                            description: { type: 'STRING' },
-                                        },
-                                        required: ['title', 'description'],
-                                    },
-                                },
-                            },
-                            required: ['suggestions'],
-                        },
-                    },
-                }),
-            }
-        );
-
-        if (!response.ok) {
-            throw new Error(`Gemini API error: ${response.status} ${response.statusText}`);
-        }
-
-        const data = await response.json();
-        const text: string | undefined = data?.candidates?.[0]?.content?.parts?.[0]?.text;
-        if (!text) {
-            throw new Error('Empty Gemini response');
-        }
-
-        const parsed = JSON.parse(text) as { suggestions?: GiftSuggestion[] };
-        if (!Array.isArray(parsed.suggestions) || parsed.suggestions.length === 0) {
-            throw new Error('Malformed suggestions payload');
-        }
-
-        return NextResponse.json({ suggestions: parsed.suggestions, source: 'ai' });
-    } catch (error) {
-        console.error('Gemini gift suggestion request failed:', error);
-        return NextResponse.json({ suggestions: null, source: 'fallback', reason: 'ai_error' });
-    }
+    return NextResponse.json({
+      suggestions: selected.map(s => ({
+        title: s.title,
+        description: s.description
+      }))
+    });
+  } catch (error) {
+    console.error('Gift suggestions error:', error);
+    return NextResponse.json({
+      suggestions: [
+        { title: "Hediye Kartı", description: "Alıcının seçeceği şey için hediye kartı" }
+      ]
+    });
+  }
 }

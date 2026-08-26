@@ -3,7 +3,7 @@
 import { useState, useEffect } from "react";
 import { useRouter, useParams } from "next/navigation";
 import confetti from "canvas-confetti";
-import { Gift, ArrowRight, Sparkles, User, RefreshCw, ArrowLeftRight, Home } from "lucide-react";
+import { Gift, ArrowRight, Sparkles, User, RefreshCw, ArrowLeftRight, Home, Plus } from "lucide-react";
 import { Button } from "@/components/ui/Button";
 import { useLanguage } from "@/lib/i18n/LanguageContext";
 import { AdWrapper, InArticleAd } from "@/components/ads";
@@ -242,9 +242,9 @@ export default function ResultPage() {
                                     <Button
                                         onClick={handleReveal}
                                         disabled={!selectedUser}
-                                        className="w-full py-4 text-lg"
+                                        className="w-full py-4 text-lg rounded-full font-bold"
                                     >
-                                        {t.result.seeResult} <ArrowRight className="w-5 h-5 ml-2" />
+                                        <Plus className="w-6 h-6" />
                                     </Button>
 
                                     <div className="pt-2">
