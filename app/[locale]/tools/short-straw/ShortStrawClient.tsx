@@ -1,13 +1,27 @@
 "use client";
 
 import { useEffect, useId, useMemo, useState, type CSSProperties } from "react";
-import { ArrowLeft, Check, Copy, History, Plus, Shuffle, Trash2, Users, X } from "lucide-react";
+import {
+  ArrowLeft,
+  Check,
+  History,
+  ListPlus,
+  Lock,
+  Plus,
+  Share2,
+  Shuffle,
+  Trash2,
+  Users,
+  X,
+} from "lucide-react";
 import { useTranslations } from "next-intl";
 import { Link } from "@/i18n/navigation";
 import { secureRandomInt, secureShuffle } from "@/lib/random";
 import { SITE_SHARE_SUFFIX } from "@/lib/constants";
 import { Button } from "@/components/ui/Button";
 import { Input } from "@/components/ui/Input";
+import { Modal } from "@/components/ui/Modal";
+import { cn } from "@/lib/utils";
 
 type Phase = "ready" | "shuffling" | "revealed";
 
@@ -129,7 +143,17 @@ export default function ShortStrawPage() {
   const [straws, setStraws] = useState<StrawVisual[]>([]);
   const [history, setHistory] = useState<string[]>([]);
   const [copied, setCopied] = useState(false);
+  const [showCryptoInfo, setShowCryptoInfo] = useState(false);
   const [sparks, setSparks] = useState<{ id: number; x: number; y: number; dx: number; dy: number }[]>([]);
+
+  const bulkNames = useMemo(
+    () =>
+      bulkText
+        .split(/[\n,;]+/)
+        .map((n) => n.trim())
+        .filter(Boolean),
+    [bulkText]
+  );
 
   const howSteps = t.raw("howSteps") as string[];
   const isSelecting = phase === "shuffling";
@@ -164,14 +188,10 @@ export default function ShortStrawPage() {
   };
 
   const addBulk = () => {
-    const names = bulkText
-      .split(/[\n,;]+/)
-      .map((n) => n.trim())
-      .filter(Boolean);
-    if (!names.length) return;
+    if (!bulkNames.length) return;
     setParticipants((prev) => {
       const next = [...prev];
-      for (const name of names) {
+      for (const name of bulkNames) {
         if (!next.includes(name)) next.push(name);
       }
       return next;
@@ -263,7 +283,15 @@ export default function ShortStrawPage() {
 
   const shareResult = async () => {
     if (!loser) return;
-    const text = `${t("lost")} → ${loser}\n${SITE_SHARE_SUFFIX}`;
+    const text = `${t("resultTitle")}: ${loser}\n${SITE_SHARE_SUFFIX}`;
+    if (typeof navigator !== "undefined" && navigator.share) {
+      try {
+        await navigator.share({ text });
+        return;
+      } catch {
+        return;
+      }
+    }
     try {
       await navigator.clipboard.writeText(text);
       setCopied(true);
@@ -286,14 +314,14 @@ export default function ShortStrawPage() {
     phase === "shuffling" ? t("phaseShuffle") : phase === "revealed" ? t("phaseReveal") : t("phaseReady");
 
   return (
-    <div className="ys-page-shell relative overflow-hidden px-4 py-8 sm:py-12 transition-colors duration-300">
+    <div className="ys-page-shell relative overflow-hidden px-4 py-6 sm:py-9 transition-colors duration-300">
       <div className="pointer-events-none absolute inset-0" aria-hidden="true">
         <div className="absolute -top-28 right-[-8%] h-[400px] w-[400px] rounded-full bg-santa-red/12 blur-3xl" />
         <div className="absolute bottom-[-18%] left-[-12%] h-[440px] w-[440px] rounded-full bg-rose-300/15 blur-3xl dark:bg-rose-900/10" />
       </div>
 
       <div className="relative mx-auto max-w-3xl">
-        <div className="mb-8 flex items-start gap-4">
+        <div className="mb-5 flex items-start gap-4">
           <Link
             href="/tools"
             className="mt-1 rounded-2xl border border-[var(--card-border)] bg-[var(--card-bg)] p-2.5 shadow-md backdrop-blur transition-all hover:scale-105 hover:shadow-lg"
@@ -338,7 +366,11 @@ export default function ShortStrawPage() {
               </p>
             </div>
 
-            <div className="relative mx-auto min-h-[280px] max-w-xl overflow-hidden rounded-[1.75rem] border border-[var(--border-light)] bg-[var(--card-bg)] shadow-inner sm:min-h-[320px]">
+            <div
+              className={`relative mx-auto max-w-xl overflow-hidden rounded-[1.75rem] border border-[var(--border-light)] bg-[var(--card-bg)] shadow-inner ${
+                participants.length === 0 ? "min-h-[160px]" : "min-h-[280px] sm:min-h-[320px]"
+              }`}
+            >
               {/* soft spotlight */}
               <div
                 className="pointer-events-none absolute inset-0"
@@ -366,9 +398,9 @@ export default function ShortStrawPage() {
               ))}
 
               {participants.length === 0 ? (
-                <div className="relative z-10 flex min-h-[280px] flex-col items-center justify-center px-6 text-center sm:min-h-[320px]">
-                  <div className="mb-4 flex h-16 w-16 items-center justify-center rounded-full bg-santa-red/10">
-                    <Users className="h-8 w-8 text-santa-red/70" />
+                <div className="relative z-10 flex min-h-[160px] flex-col items-center justify-center px-6 text-center">
+                  <div className="mb-3 flex h-11 w-11 items-center justify-center rounded-full bg-santa-red/10">
+                    <Users className="h-5 w-5 text-santa-red/70" />
                   </div>
                   <p className="text-sm text-[var(--text-muted)]">{t("noParticipants")}</p>
                 </div>
@@ -437,23 +469,29 @@ export default function ShortStrawPage() {
               )}
             </div>
 
-            <p className="mt-3 text-center text-[11px] text-[var(--text-muted)]">{t("fairNote")}</p>
+            <div className="mt-3 flex flex-col items-center gap-1.5">
+              <button
+                type="button"
+                onClick={() => setShowCryptoInfo((v) => !v)}
+                aria-expanded={showCryptoInfo}
+                className="inline-flex items-center gap-1.5 rounded-full px-2.5 py-1 text-[11px] font-semibold text-[var(--text-muted)] transition-colors hover:text-santa-red"
+              >
+                <Lock className="h-3 w-3" aria-hidden="true" />
+                {t("cryptoLabel")}
+              </button>
+              {showCryptoInfo && (
+                <p className="animate-fade-in max-w-xs text-center text-[10px] leading-relaxed text-[var(--text-muted)]">
+                  {t("cryptoInfo")}
+                </p>
+              )}
+            </div>
           </div>
 
-          <div className="space-y-6 p-5 sm:p-7">
+          <div className="space-y-5 p-5 sm:p-7">
             <div>
-              <div className="mb-2 flex items-center justify-between gap-2">
-                <label htmlFor="participant-name" className="text-label-md text-[var(--text-secondary)]">
-                  {t("participantsLabel")}
-                </label>
-                <button
-                  type="button"
-                  onClick={() => setBulkOpen((v) => !v)}
-                  className="text-label-sm font-semibold text-santa-red hover:underline"
-                >
-                  {t("bulkAdd")}
-                </button>
-              </div>
+              <label htmlFor="participant-name" className="mb-2 block text-label-md text-[var(--text-secondary)]">
+                {t("participantsLabel")}
+              </label>
 
               <div className="flex gap-2">
                 <Input
@@ -476,48 +514,71 @@ export default function ShortStrawPage() {
                 </Button>
               </div>
 
-              {bulkOpen && (
-                <div className="mt-3 animate-fade-in space-y-2 rounded-2xl border border-[var(--border-light)] bg-[var(--surface-2)] p-3">
-                  <textarea
-                    value={bulkText}
-                    onChange={(e) => setBulkText(e.target.value)}
-                    placeholder={t("bulkPlaceholder")}
-                    rows={4}
-                    className="w-full resize-none rounded-xl border border-[var(--border-light)] bg-[var(--card-bg)] px-3 py-2 text-sm text-[var(--text-primary)] outline-none focus:border-santa-red/40"
-                  />
-                  <Button onClick={addBulk} disabled={!bulkText.trim()} className="w-full" size="sm">
-                    {t("add")}
-                  </Button>
-                </div>
-              )}
+              <button
+                type="button"
+                onClick={() => setBulkOpen(true)}
+                disabled={isSelecting}
+                className={cn(
+                  "mt-2.5 inline-flex items-center gap-1.5 rounded-full border px-3 py-1.5 text-label-sm font-semibold transition-colors",
+                  "border-[var(--border-light)] text-[var(--text-muted)] hover:border-santa-red/40 hover:text-santa-red disabled:pointer-events-none disabled:opacity-50"
+                )}
+              >
+                <ListPlus className="h-3.5 w-3.5" aria-hidden="true" />
+                {t("bulkAdd")}
+              </button>
             </div>
 
+            <Modal isOpen={bulkOpen} onClose={() => setBulkOpen(false)} title={t("bulkModalTitle")}>
+              <div className="space-y-3">
+                <p className="text-sm text-[var(--text-muted)]">{t("bulkModalDesc")}</p>
+                <textarea
+                  autoFocus
+                  value={bulkText}
+                  onChange={(e) => setBulkText(e.target.value)}
+                  placeholder={t("bulkPlaceholder")}
+                  rows={6}
+                  className="w-full resize-none rounded-xl border border-[var(--border-light)] bg-[var(--card-bg)] px-3 py-2 text-sm text-[var(--text-primary)] outline-none focus:border-santa-red/40"
+                />
+                {bulkNames.length > 0 && (
+                  <p className="text-label-sm font-semibold text-santa-red">
+                    {t("bulkCount", { count: bulkNames.length })}
+                  </p>
+                )}
+                <Button onClick={addBulk} disabled={!bulkNames.length} className="w-full">
+                  {t("bulkSubmit")}
+                </Button>
+              </div>
+            </Modal>
+
             <div>
-              <p className="mb-3 text-label-md text-[var(--text-secondary)]">
+              <p className="mb-2 text-label-md text-[var(--text-secondary)]">
                 {t("label")} ({participants.length})
               </p>
               {participants.length > 0 ? (
-                <div className="flex flex-wrap gap-2" role="list">
+                <div
+                  className="max-h-[264px] overflow-y-auto rounded-xl border border-[var(--border-light)] custom-scrollbar"
+                  role="list"
+                >
                   {participants.map((name) => {
                     const isLoser = loser === name && phase === "revealed";
                     return (
                       <div
                         key={name}
                         role="listitem"
-                        className={`flex items-center gap-2 rounded-xl border px-3 py-2 transition-all ${
-                          isLoser
-                            ? "scale-105 border-santa-red bg-santa-red text-white shadow-lg shadow-santa-red/25"
-                            : "border-[var(--border-light)] bg-[var(--surface-2)] text-[var(--text-secondary)]"
-                        }`}
+                        className={cn(
+                          "ys-zebra-row group flex items-center gap-3 px-3 py-2 transition-colors",
+                          isLoser && "bg-santa-red text-white"
+                        )}
                       >
-                        <span className="text-sm font-semibold">{name}</span>
+                        <span className="flex-1 truncate text-sm font-semibold">{name}</span>
                         {!isSelecting && (
                           <button
                             type="button"
                             onClick={() => removeParticipant(name)}
-                            className={`transition-colors ${
-                              isLoser ? "text-white/70 hover:text-white" : "text-[var(--text-muted)] hover:text-santa-red"
-                            }`}
+                            className={cn(
+                              "shrink-0 opacity-60 transition-opacity hover:opacity-100",
+                              isLoser ? "text-white/80 hover:text-white" : "text-[var(--text-muted)] hover:text-santa-red"
+                            )}
                             aria-label={`${t("remove")} ${name}`}
                           >
                             <X className="h-4 w-4" aria-hidden="true" />
@@ -528,30 +589,25 @@ export default function ShortStrawPage() {
                   })}
                 </div>
               ) : (
-                <div className="rounded-2xl border border-dashed border-[var(--border-medium)] py-8 text-center text-[var(--text-muted)]">
-                  <p>{t("noParticipants")}</p>
+                <div className="rounded-2xl border border-dashed border-[var(--border-medium)] py-6 text-center text-[var(--text-muted)]">
+                  <p className="text-sm">{t("noParticipants")}</p>
                 </div>
-              )}
-              {participants.length === 1 && (
-                <p className="mt-2 text-label-sm text-santa-red/80">{t("tipMin")}</p>
               )}
             </div>
 
             {loser && phase === "revealed" && (
-              <div
-                className="animate-fade-in rounded-2xl bg-gradient-to-br from-santa-red to-[#9f1239] p-6 text-center text-white shadow-xl shadow-santa-red/20"
-                aria-live="polite"
-                aria-atomic="true"
-              >
-                <p className="mb-1 text-label-sm uppercase tracking-widest text-white/75">{t("lost")}</p>
+              <div className="ys-winner-reveal animate-fade-in p-6 text-center" aria-live="polite" aria-atomic="true">
+                <p className="mb-2 text-2xl">🎉</p>
+                <p className="mb-1 text-label-sm uppercase tracking-widest text-white/75">{t("resultTitle")}</p>
                 <p className="font-heading text-3xl font-black tracking-tight sm:text-4xl">{loser}</p>
+                <p className="mt-1.5 text-sm text-white/80">{t("selectedFrom", { count: participants.length })}</p>
                 <div className="mt-4 flex flex-wrap justify-center gap-2">
                   <button
                     type="button"
                     onClick={shareResult}
                     className="inline-flex items-center gap-2 rounded-xl bg-white/15 px-4 py-2 text-sm font-semibold backdrop-blur transition hover:bg-white/25"
                   >
-                    {copied ? <Check className="h-4 w-4" /> : <Copy className="h-4 w-4" />}
+                    {copied ? <Check className="h-4 w-4" /> : <Share2 className="h-4 w-4" />}
                     {copied ? t("copied") : t("share")}
                   </button>
                 </div>
@@ -563,6 +619,9 @@ export default function ShortStrawPage() {
                 <Shuffle className={`h-5 w-5 ${isSelecting ? "animate-spin" : ""}`} aria-hidden="true" />
                 {isSelecting ? t("selecting") : loser ? t("drawAgain") : t("draw")}
               </Button>
+              {participants.length < 2 && phase !== "shuffling" && (
+                <p className="text-center text-label-sm text-santa-red/80">{t("drawHint")}</p>
+              )}
 
               <div className="grid grid-cols-2 gap-2">
                 {loser && phase === "revealed" && (
