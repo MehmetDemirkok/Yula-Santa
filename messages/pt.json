@@ -1597,5 +1597,66 @@
             }
         ],
         "contactNote": "Questions? Contact us at mehmetdemirkok@gmail.com"
+    },
+    "auth": {
+        "login": {
+            "meta": {
+                "title": "Entrar | YulaSanta",
+                "description": "Entre na sua conta YulaSanta e continue de onde parou."
+            },
+            "title": "Bem-vindo de volta",
+            "subtitle": "Entre para acessar seus sorteios e ferramentas.",
+            "email": "Endereço de e-mail",
+            "emailPlaceholder": "email@example.com",
+            "password": "Senha",
+            "passwordPlaceholder": "Digite sua senha",
+            "remember": "Lembrar de mim",
+            "forgot": "Esqueceu sua senha?",
+            "submit": "Entrar",
+            "submitting": "Entrando...",
+            "noAccount": "Não tem uma conta?",
+            "registerLink": "Cadastre-se",
+            "comingSoonToast": "O login estará disponível muito em breve! 🎄",
+            "errors": {
+                "emailRequired": "O endereço de e-mail é obrigatório",
+                "emailInvalid": "Digite um endereço de e-mail válido",
+                "passwordRequired": "A senha é obrigatória",
+                "passwordMin": "A senha deve ter pelo menos 6 caracteres"
+            }
+        },
+        "register": {
+            "meta": {
+                "title": "Cadastrar | YulaSanta",
+                "description": "Crie uma conta gratuita na YulaSanta e comece seu sorteio em segundos."
+            },
+            "title": "Crie sua conta",
+            "subtitle": "Crie sua conta gratuita e comece seu sorteio agora mesmo.",
+            "name": "Nome completo",
+            "namePlaceholder": "ex.: João Silva",
+            "email": "Endereço de e-mail",
+            "emailPlaceholder": "email@example.com",
+            "password": "Senha",
+            "passwordPlaceholder": "No mínimo 6 caracteres",
+            "confirmPassword": "Confirmar senha",
+            "confirmPasswordPlaceholder": "Digite a senha novamente",
+            "terms": "Li e aceito a <privacy>Política de Privacidade</privacy> e os <terms>Termos de Uso</terms>.",
+            "submit": "Cadastrar",
+            "submitting": "Criando conta...",
+            "haveAccount": "Já tem uma conta?",
+            "loginLink": "Entrar",
+            "comingSoonToast": "O cadastro estará disponível muito em breve! 🎄",
+            "errors": {
+                "nameRequired": "O nome completo é obrigatório",
+                "emailRequired": "O endereço de e-mail é obrigatório",
+                "emailInvalid": "Digite um endereço de e-mail válido",
+                "passwordRequired": "A senha é obrigatória",
+                "passwordMin": "A senha deve ter pelo menos 6 caracteres",
+                "confirmMismatch": "As senhas não coincidem",
+                "termsRequired": "Você deve aceitar os termos para continuar"
+            }
+        },
+        "showPassword": "Mostrar senha",
+        "hidePassword": "Ocultar senha",
+        "google": "Continuar com o Google"
     }
 }

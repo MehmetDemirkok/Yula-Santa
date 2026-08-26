@@ -6,8 +6,8 @@ import { Button } from "@/components/ui/Button";
 import { Input } from "@/components/ui/Input";
 import { ArrowLeft, Users, RefreshCw, Copy, Check, Plus, Edit3, X, List, Shuffle, Trash2 } from "lucide-react";
 import { useRouter } from "next/navigation";
-import confetti from "canvas-confetti";
 import { secureShuffle } from "@/lib/random";
+import { celebrate } from "@/lib/celebrate";
 
 export function TeamGeneratorClient() {
     const t = useTranslations('tools.teamGeneratorContent');
@@ -73,15 +73,7 @@ export function TeamGeneratorClient() {
 
         setTeams(newTeams);
         setGenerated(true);
-        triggerConfetti();
-    };
-
-    const triggerConfetti = () => {
-        confetti({
-            particleCount: 100,
-            spread: 70,
-            origin: { y: 0.6 }
-        });
+        celebrate();
     };
 
     const copyTeam = (index: number, teamMembers: string[]) => {
@@ -166,8 +158,8 @@ export function TeamGeneratorClient() {
                                                 placeholder={t('addName')}
                                                 className="flex-1 h-auto py-2 focus:border-indigo-accent"
                                             />
-                                            <Button onClick={handleAddName} className="shrink-0 aspect-square p-0 w-10 h-10">
-                                                <Plus className="w-5 h-5" />
+                                            <Button onClick={handleAddName} className="shrink-0 aspect-square p-0 sm:p-0 w-10 h-10">
+                                                <Plus className="w-5 h-5 shrink-0" />
                                             </Button>
                                         </div>
 

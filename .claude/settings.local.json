@@ -28,7 +28,10 @@
       "Bash(echo \"=== exit: $? ===\")",
       "Bash(echo \"=== tsc exit: $? ===\")",
       "Bash(echo \"exit $?\")",
-      "Bash(lsof -i :3000 -sTCP:LISTEN -n -P)"
+      "Bash(lsof -i :3000 -sTCP:LISTEN -n -P)",
+      "Bash(git add *)",
+      "Bash(git commit -m 'Fix missing Sparkles import in TikTok ClientPage *)",
+      "Bash(git push *)"
     ]
   }
 }

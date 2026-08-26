@@ -52,7 +52,7 @@ export async function POST(request: Request) {
         let allParticipants: { name: string, comment: string, channelId: string, profileImageUrl?: string }[] = [];
         let nextPageToken = '';
         let pageCount = 0;
-        const MAX_PAGES = 35; // Sıralı sayfalama + 60s maxDuration sınırı içinde kalacak şekilde sınırlandı (~3.500 yorum)
+        const MAX_COMMENTS = 500; // Ücretsiz sınırı: 500 yorum
 
         do {
             // Request 'snippet' for top-level and 'replies' for nested comments
@@ -111,7 +111,7 @@ export async function POST(request: Request) {
             nextPageToken = data.nextPageToken;
             pageCount++;
 
-        } while (nextPageToken && pageCount < MAX_PAGES);
+        } while (nextPageToken && allParticipants.length < MAX_COMMENTS);
 
         // Remove duplicates based on channelId (more reliable than name)
         const uniqueParticipants = allParticipants.filter((v, i, a) => a.findIndex(t => t.channelId === v.channelId) === i);

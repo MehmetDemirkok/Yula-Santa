@@ -1,8 +1,8 @@
 "use client";
 
 import { useState, useRef, useEffect, useMemo } from "react";
-import confetti from "canvas-confetti";
 import { useLocale, useTranslations } from "next-intl";
+import { celebrate } from "@/lib/celebrate";
 import { useRouter, Link } from "@/i18n/navigation";
 import {
     MessageCircle,
@@ -30,6 +30,7 @@ import {
     Shuffle,
     UserMinus,
     Chrome,
+    Sparkles,
 } from "lucide-react";
 import { Button } from "@/components/ui/Button";
 import { useLanguage } from "@/lib/i18n/LanguageContext";
@@ -252,16 +253,7 @@ export default function TikTokGiveaway() {
     };
 
     const triggerConfetti = () => {
-        if (prefersReducedMotion()) return;
-        const duration = 2400;
-        const end = Date.now() + duration;
-        const colors = ["#B61722", "#E09600", "#FFFFFF"];
-
-        (function frame() {
-            confetti({ particleCount: 4, angle: 60, spread: 55, origin: { x: 0 }, colors });
-            confetti({ particleCount: 4, angle: 120, spread: 55, origin: { x: 1 }, colors });
-            if (Date.now() < end) requestAnimationFrame(frame);
-        })();
+        celebrate({ colors: ["#B61722", "#E09600", "#FFFFFF"] });
     };
 
     const finishDraw = (pool: Participant[]) => {
@@ -376,10 +368,19 @@ export default function TikTokGiveaway() {
 
             <section ref={toolRef} className="relative z-10 mx-auto max-w-5xl px-4 pb-16 pt-24 sm:px-6 sm:pt-32 lg:pb-20">
                 <div className="mx-auto max-w-xl text-center">
-                    <p className="mb-4 inline-flex items-center gap-2 text-[13px] font-medium text-[var(--text-muted)]">
-                        <TikTokMark className="h-3.5 w-3.5 text-[var(--text-primary)]" />
-                        <span className="tracking-tight">{tl("heroTitle")}</span>
-                    </p>
+                    <div className="mb-8 flex items-center justify-center gap-3">
+                        <div className="h-12 w-12 rounded-xl bg-gradient-to-br from-black to-gray-800 flex items-center justify-center shadow-lg">
+                            <TikTokMark className="h-6 w-6 text-white" />
+                        </div>
+                        <div className="text-left">
+                            <p className="text-xs font-semibold text-[var(--text-muted)] uppercase tracking-wider">
+                                {tl("heroTitle")}
+                            </p>
+                            <p className="text-sm font-semibold text-[var(--text-secondary)]">
+                                {locale === "tr" ? "Çekiliş Aracı" : "Giveaway Tool"}
+                            </p>
+                        </div>
+                    </div>
 
                     <h1 className="font-heading text-[2.35rem] font-extrabold leading-[1.05] tracking-[-0.03em] text-[var(--text-primary)] sm:text-[3.15rem]">
                         {tl("heroHighlight")}
@@ -387,6 +388,10 @@ export default function TikTokGiveaway() {
                     <p className="mx-auto mt-4 max-w-md text-[15px] leading-relaxed text-[var(--text-secondary)] sm:text-base">
                         {tl("heroSubtitle")}
                     </p>
+                    <div className="mx-auto mt-4 inline-flex items-center gap-2 rounded-full border border-green-200/50 bg-green-50/50 px-4 py-2 text-sm font-medium text-green-700 dark:border-green-500/20 dark:bg-green-500/5 dark:text-green-300">
+                        <Sparkles className="h-4 w-4" />
+                        <span>{tl("freeLimit")}</span>
+                    </div>
                 </div>
 
                 <nav aria-label={tl("howTitle")} className="mx-auto mt-10 max-w-lg px-2">
@@ -870,8 +875,8 @@ export default function TikTokGiveaway() {
                                                                     className="w-full bg-transparent py-2 text-sm outline-none"
                                                                 />
                                                             </div>
-                                                            <Button onClick={addParticipant} size="sm" className={`h-9 w-9 rounded-xl p-0 ${TT_CTA}`}>
-                                                                <Plus className="h-4 w-4" />
+                                                            <Button onClick={addParticipant} size="sm" className={`h-9 w-9 rounded-xl p-0 sm:p-0 ${TT_CTA}`}>
+                                                                <Plus className="h-4 w-4 shrink-0" />
                                                             </Button>
                                                         </div>
                                                         <textarea

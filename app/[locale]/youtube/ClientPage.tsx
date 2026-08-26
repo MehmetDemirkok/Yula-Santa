@@ -1,8 +1,8 @@
 "use client";
 
 import { useState, useRef, useEffect, useMemo } from "react";
-import confetti from "canvas-confetti";
 import { useLocale, useTranslations } from "next-intl";
+import { celebrate } from "@/lib/celebrate";
 import { useRouter } from "@/i18n/navigation";
 import {
     Youtube,
@@ -80,6 +80,7 @@ export default function YouTubeGiveaway() {
     const [entryMode, setEntryMode] = useState<EntryMode>("auto");
     const [manualPaste, setManualPaste] = useState("");
     const [videoLink, setVideoLink] = useState("");
+    const [isShortsVideo, setIsShortsVideo] = useState(false);
     const [drawType, setDrawType] = useState<DrawType>("comments");
 
     const [giveawayName, setGiveawayName] = useState("");
@@ -121,6 +122,14 @@ export default function YouTubeGiveaway() {
         document.addEventListener("mousedown", handleClickOutside);
         return () => document.removeEventListener("mousedown", handleClickOutside);
     }, []);
+
+    useEffect(() => {
+        if (videoLink.trim()) {
+            setIsShortsVideo(detectShortsVideo(videoLink));
+        } else {
+            setIsShortsVideo(false);
+        }
+    }, [videoLink]);
 
     const scrollToTool = () => {
         toolRef.current?.scrollIntoView({ behavior: "smooth", block: "start" });
@@ -170,10 +179,13 @@ export default function YouTubeGiveaway() {
     };
 
     const extractVideoId = (url: string) => {
-
         const regExp = /^.*((youtu.be\/)|(v\/)|(\/u\/\w\/)|(embed\/)|(watch\?)|(shorts\/))\??v?=?([^#&?]*).*/;
         const match = url.match(regExp);
         return match && match[8].length === 11 ? match[8] : null;
+    };
+
+    const detectShortsVideo = (url: string) => {
+        return /youtube\.com\/shorts\/|youtu\.be\/shorts\//.test(url);
     };
 
     const verifyParticipantSubscription = async (participant: Participant): Promise<boolean | null | "private"> => {
@@ -336,27 +348,7 @@ export default function YouTubeGiveaway() {
     };
 
     const triggerConfetti = () => {
-        const duration = 3000;
-        const end = Date.now() + duration;
-        const colors = ["#FF0000", "#FFFFFF", "#282828", "#FF4444"];
-
-        (function frame() {
-            confetti({
-                particleCount: 5,
-                angle: 60,
-                spread: 55,
-                origin: { x: 0 },
-                colors,
-            });
-            confetti({
-                particleCount: 5,
-                angle: 120,
-                spread: 55,
-                origin: { x: 1 },
-                colors,
-            });
-            if (Date.now() < end) requestAnimationFrame(frame);
-        })();
+        celebrate({ colors: ["#FF0000", "#FFFFFF", "#282828", "#FF4444"] });
     };
 
     const startGiveaway = () => {
@@ -461,9 +453,18 @@ export default function YouTubeGiveaway() {
 
             <section ref={toolRef} className="relative z-10 mx-auto max-w-5xl px-4 pb-16 pt-24 sm:px-6 sm:pt-32 lg:pb-24">
                 <div className="mx-auto max-w-3xl text-center">
-                    <div className="mb-6 inline-flex items-center gap-2 rounded-full border border-red-200/80 bg-white/80 px-3 py-1.5 text-xs font-semibold text-[#FF0000] shadow-sm backdrop-blur dark:border-red-500/20 dark:bg-white/5">
-                        <Youtube className="h-3.5 w-3.5" strokeWidth={2} />
-                        {tl("badge")}
+                    <div className="mb-8 flex items-center justify-center gap-3">
+                        <div className="h-12 w-12 rounded-xl bg-gradient-to-br from-red-500 to-red-600 flex items-center justify-center shadow-lg">
+                            <Youtube className="h-6 w-6 text-white" strokeWidth={1.5} />
+                        </div>
+                        <div className="text-left">
+                            <p className="text-xs font-semibold text-[var(--text-muted)] uppercase tracking-wider">
+                                {tl("badge")}
+                            </p>
+                            <p className="text-sm font-semibold text-[var(--text-secondary)]">
+                                {locale === "tr" ? "Çekiliş Aracı" : "Giveaway Tool"}
+                            </p>
+                        </div>
                     </div>
 
                     <h1 className="font-heading text-[2.25rem] leading-[1.1] tracking-tight text-[var(--text-primary)] sm:text-5xl md:text-[3.5rem]">
@@ -477,6 +478,10 @@ export default function YouTubeGiveaway() {
                     <p className="mx-auto mt-5 max-w-xl text-base leading-relaxed text-[var(--text-secondary)] sm:text-lg">
                         {tl("heroSubtitle")}
                     </p>
+                    <div className="mx-auto mt-4 inline-flex items-center gap-2 rounded-full border border-green-200/50 bg-green-50/50 px-4 py-2 text-sm font-medium text-green-700 dark:border-green-500/20 dark:bg-green-500/5 dark:text-green-300">
+                        <Sparkles className="h-4 w-4" />
+                        <span>{tl("freeLimit")}</span>
+                    </div>
                 </div>
 
                 <nav aria-label="Giveaway steps" className="mx-auto mt-10 max-w-3xl">
@@ -734,9 +739,24 @@ export default function YouTubeGiveaway() {
                                                     )}
                                                 </button>
                                             </div>
-                                            <p id="yt-url-hint" className="mt-2 text-xs text-[var(--text-muted)]">
-                                                {tl("urlHint")}
-                                            </p>
+                                            <div className="mt-2 flex items-center justify-between">
+                                                <p id="yt-url-hint" className="text-xs text-[var(--text-muted)]">
+                                                    {tl("urlHint")}
+                                                </p>
+                                                {isShortsVideo && (
+                                                    <span className="inline-flex items-center gap-1.5 rounded-full bg-red-100 px-3 py-1 text-xs font-semibold text-[#FF0000] dark:bg-red-500/15 dark:text-red-300">
+                                                        <span className="text-lg">📹</span>
+                                                        {tl("shortsDetected")}
+                                                    </span>
+                                                )}
+                                            </div>
+                                            {isShortsVideo && (
+                                                <div className="mt-3 rounded-xl border border-orange-200/50 bg-gradient-to-br from-orange-50/50 to-amber-50/30 p-3.5 dark:border-orange-500/20 dark:from-orange-500/5 dark:to-amber-500/5">
+                                                    <p className="text-xs leading-relaxed text-[var(--text-secondary)]">
+                                                        <span className="font-semibold text-orange-700 dark:text-orange-300">💡 Shorts da desteklenmektedir:</span> YouTube Shorts videolarındaki tüm yorumlardan da çekiliş yapabilirsiniz. Süreci aynı — linki yapıştır, katılımcıları getir, kazananları seç!
+                                                    </p>
+                                                </div>
+                                            )}
                                         </div>
 
                                         {loading && (
@@ -962,8 +982,8 @@ export default function YouTubeGiveaway() {
                                                                         className="w-full bg-transparent py-2 text-sm outline-none"
                                                                     />
                                                                 </div>
-                                                                <Button onClick={addParticipant} size="sm" className="h-9 w-9 rounded-xl bg-[#FF0000] p-0 hover:bg-[#e60000]">
-                                                                    <Plus className="h-4 w-4" />
+                                                                <Button onClick={addParticipant} size="sm" className="h-9 w-9 rounded-xl bg-[#FF0000] p-0 sm:p-0 hover:bg-[#e60000]">
+                                                                    <Plus className="h-4 w-4 shrink-0" />
                                                                 </Button>
                                                             </div>
                                                             <textarea

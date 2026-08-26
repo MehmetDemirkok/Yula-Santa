@@ -289,6 +289,8 @@
                 "fetchCta": "Fetch Participants",
                 "fetching": "Fetching…",
                 "urlHint": "Works with public videos · Step 2 opens automatically after fetch",
+                "shortsDetected": "Shorts Video Detected",
+                "freeLimit": "Free up to 500 comments",
                 "step1Url": "Step 1 — Paste YouTube URL",
                 "step1Manual": "Step 1 — Add participants",
                 "step3Title": "Choose rules & review participants",
@@ -447,6 +449,7 @@
                 "fetchCtaPaid": "{price} — fetch comments",
                 "fetching": "Fetching…",
                 "urlHint": "Public videos. You can also paste comments for free.",
+                "freeLimit": "Free up to 500 comments",
                 "step1Url": "TikTok video link",
                 "step1Manual": "Paste comments",
                 "step3Title": "Set winner count",
@@ -1560,5 +1563,66 @@
             }
         ],
         "contactNote": "Questions? Contact us at mehmetdemirkok@gmail.com"
+    },
+    "auth": {
+        "login": {
+            "meta": {
+                "title": "Log In | YulaSanta",
+                "description": "Log in to your YulaSanta account and pick up right where you left off."
+            },
+            "title": "Welcome Back",
+            "subtitle": "Log in to access your giveaways and tools.",
+            "email": "Email Address",
+            "emailPlaceholder": "email@example.com",
+            "password": "Password",
+            "passwordPlaceholder": "Enter your password",
+            "remember": "Remember me",
+            "forgot": "Forgot your password?",
+            "submit": "Log In",
+            "submitting": "Logging in...",
+            "noAccount": "Don't have an account?",
+            "registerLink": "Sign up",
+            "comingSoonToast": "Login is coming very soon! 🎄",
+            "errors": {
+                "emailRequired": "Email address is required",
+                "emailInvalid": "Enter a valid email address",
+                "passwordRequired": "Password is required",
+                "passwordMin": "Password must be at least 6 characters"
+            }
+        },
+        "register": {
+            "meta": {
+                "title": "Sign Up | YulaSanta",
+                "description": "Create a free YulaSanta account and start your giveaway in seconds."
+            },
+            "title": "Create Your Account",
+            "subtitle": "Create your free account and start your giveaway right away.",
+            "name": "Full Name",
+            "namePlaceholder": "e.g. Jane Doe",
+            "email": "Email Address",
+            "emailPlaceholder": "email@example.com",
+            "password": "Password",
+            "passwordPlaceholder": "At least 6 characters",
+            "confirmPassword": "Confirm Password",
+            "confirmPasswordPlaceholder": "Re-enter your password",
+            "terms": "I have read and accept the <privacy>Privacy Policy</privacy> and <terms>Terms of Service</terms>.",
+            "submit": "Sign Up",
+            "submitting": "Creating account...",
+            "haveAccount": "Already have an account?",
+            "loginLink": "Log in",
+            "comingSoonToast": "Sign up is coming very soon! 🎄",
+            "errors": {
+                "nameRequired": "Full name is required",
+                "emailRequired": "Email address is required",
+                "emailInvalid": "Enter a valid email address",
+                "passwordRequired": "Password is required",
+                "passwordMin": "Password must be at least 6 characters",
+                "confirmMismatch": "Passwords do not match",
+                "termsRequired": "You must accept the terms to continue"
+            }
+        },
+        "showPassword": "Show password",
+        "hidePassword": "Hide password",
+        "google": "Continue with Google"
     }
 }

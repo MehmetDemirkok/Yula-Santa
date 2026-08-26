@@ -469,10 +469,10 @@ export default function ShortStrawPage() {
                 <Button
                   onClick={addParticipant}
                   disabled={!newName.trim() || isSelecting}
-                  className="aspect-square w-11 shrink-0 p-0"
+                  className="aspect-square w-11 shrink-0 p-0 sm:p-0"
                   aria-label={t("add")}
                 >
-                  <Plus className="h-5 w-5 text-white" strokeWidth={2.5} aria-hidden="true" />
+                  <Plus className="h-5 w-5 shrink-0 text-white" strokeWidth={2.5} aria-hidden="true" />
                 </Button>
               </div>
 

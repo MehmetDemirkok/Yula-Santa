@@ -93,12 +93,15 @@
 
         if (!listInfo) {
             collecting = false;
+            console.error('[YulaSanta] Selectors not found or comments panel could not be opened');
             notifyPopup({
                 error: 'SELECTOR_NOT_FOUND',
                 message: 'TikTok yorum alanı algılanamadı. Sayfanın tamamen yüklenmesini bekleyip tekrar deneyin.',
             });
             return;
         }
+
+        console.log('[YulaSanta] Comment collection started', { giveawayId, strategy: listInfo.strategy?.name });
 
         // Fresh run — clear any previously staged chunks for this giveaway.
         await chrome.storage.local.set({ ys_collect_meta: { giveawayId, chunkKeys: [], totalCollected: 0 } });
@@ -112,15 +115,22 @@
 
         while (collecting && !stopRequested && idleScrolls < MAX_IDLE_SCROLLS) {
             const found = selectors.extractComments(listInfo);
+            let newCount = 0;
             for (const c of found) {
                 const key = `${c.username}|${c.commentId || ''}|${c.comment}`;
                 if (seen.has(key)) continue;
                 seen.add(key);
                 pendingChunk.push(c);
+                newCount++;
+            }
+
+            if (newCount > 0) {
+                console.log('[YulaSanta] Found', newCount, 'new comments | Total:', seen.size, '| Idle scrolls:', idleScrolls);
             }
 
             if (pendingChunk.length >= CHUNK_SIZE) {
                 await flushChunk(giveawayId, pendingChunk.splice(0, pendingChunk.length));
+                console.log('[YulaSanta] Flushed chunk to storage');
             }
 
             notifyPopup({ collected: seen.size, unique: new Set([...seen].map((k) => k.split('|')[0])).size });
@@ -141,21 +151,27 @@
 
         if (pendingChunk.length > 0) {
             await flushChunk(giveawayId, pendingChunk);
+            console.log('[YulaSanta] Flushed final chunk with', pendingChunk.length, 'comments');
         }
 
         const finished = !stopRequested;
         const hitIdleLimit = finished && idleScrolls >= MAX_IDLE_SCROLLS;
+        const uniqueUsers = new Set([...seen].map((k) => k.split('|')[0])).size;
         collecting = false;
+
+        console.log('[YulaSanta] Collection finished', {
+            totalCollected: seen.size,
+            uniqueUsers,
+            reason: stopRequested ? 'stopped' : hitIdleLimit ? 'idle_limit' : 'unknown',
+            idleScrolls,
+        });
+
         notifyPopup({
             done: true,
             stopped: stopRequested,
             collected: seen.size,
-            unique: new Set([...seen].map((k) => k.split('|')[0])).size,
+            unique: uniqueUsers,
             finished,
-            // TikTok's displayed comment count often includes replies we don't
-            // collect, and can also throttle further loading — both look
-            // identical from here (no new comments appear), so we can only
-            // report that no *more* were found, not that none exist.
             possiblyIncomplete: hitIdleLimit,
         });
     }

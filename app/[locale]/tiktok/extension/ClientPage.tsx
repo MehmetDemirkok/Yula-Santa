@@ -1,8 +1,8 @@
 "use client";
 
 import { useCallback, useEffect, useMemo, useRef, useState } from "react";
-import confetti from "canvas-confetti";
 import { useSearchParams } from "next/navigation";
+import { celebrate } from "@/lib/celebrate";
 import { useLocale } from "next-intl";
 import { useRouter, Link } from "@/i18n/navigation";
 import {
@@ -294,7 +294,7 @@ export default function TikTokExtensionGiveaway() {
                 body: JSON.stringify({ ownerToken }),
             });
 
-            confetti({ particleCount: 160, spread: 80, origin: { y: 0.6 } });
+            celebrate();
             setResult(data.result);
         } catch (err) {
             setDrawError(err instanceof Error ? err.message : "Çekiliş yapılamadı");

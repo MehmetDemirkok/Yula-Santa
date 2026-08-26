@@ -1596,5 +1596,66 @@
             }
         ],
         "contactNote": "Questions? Contact us at mehmetdemirkok@gmail.com"
+    },
+    "auth": {
+        "login": {
+            "meta": {
+                "title": "Вход | YulaSanta",
+                "description": "Войдите в свой аккаунт YulaSanta и продолжите с того места, где остановились."
+            },
+            "title": "С возвращением",
+            "subtitle": "Войдите, чтобы получить доступ к розыгрышам и инструментам.",
+            "email": "Электронная почта",
+            "emailPlaceholder": "email@example.com",
+            "password": "Пароль",
+            "passwordPlaceholder": "Введите пароль",
+            "remember": "Запомнить меня",
+            "forgot": "Забыли пароль?",
+            "submit": "Войти",
+            "submitting": "Вход...",
+            "noAccount": "Нет аккаунта?",
+            "registerLink": "Зарегистрироваться",
+            "comingSoonToast": "Вход скоро станет доступен! 🎄",
+            "errors": {
+                "emailRequired": "Укажите электронную почту",
+                "emailInvalid": "Введите корректный адрес электронной почты",
+                "passwordRequired": "Укажите пароль",
+                "passwordMin": "Пароль должен содержать не менее 6 символов"
+            }
+        },
+        "register": {
+            "meta": {
+                "title": "Регистрация | YulaSanta",
+                "description": "Создайте бесплатный аккаунт YulaSanta и запустите розыгрыш за секунды."
+            },
+            "title": "Создать аккаунт",
+            "subtitle": "Создайте бесплатный аккаунт и сразу начните розыгрыш.",
+            "name": "Полное имя",
+            "namePlaceholder": "напр. Иван Иванов",
+            "email": "Электронная почта",
+            "emailPlaceholder": "email@example.com",
+            "password": "Пароль",
+            "passwordPlaceholder": "Минимум 6 символов",
+            "confirmPassword": "Подтвердите пароль",
+            "confirmPasswordPlaceholder": "Введите пароль ещё раз",
+            "terms": "Я прочитал(а) и принимаю <privacy>Политику конфиденциальности</privacy> и <terms>Условия использования</terms>.",
+            "submit": "Зарегистрироваться",
+            "submitting": "Создание аккаунта...",
+            "haveAccount": "Уже есть аккаунт?",
+            "loginLink": "Войти",
+            "comingSoonToast": "Регистрация скоро станет доступна! 🎄",
+            "errors": {
+                "nameRequired": "Укажите полное имя",
+                "emailRequired": "Укажите электронную почту",
+                "emailInvalid": "Введите корректный адрес электронной почты",
+                "passwordRequired": "Укажите пароль",
+                "passwordMin": "Пароль должен содержать не менее 6 символов",
+                "confirmMismatch": "Пароли не совпадают",
+                "termsRequired": "Чтобы продолжить, примите условия"
+            }
+        },
+        "showPassword": "Показать пароль",
+        "hidePassword": "Скрыть пароль",
+        "google": "Продолжить через Google"
     }
 }
