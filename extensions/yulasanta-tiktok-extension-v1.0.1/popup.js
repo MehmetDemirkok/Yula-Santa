@@ -29,6 +29,7 @@
         collect: document.getElementById('ys-collect'),
         stop: document.getElementById('ys-stop'),
         send: document.getElementById('ys-send'),
+        reset: document.getElementById('ys-reset'),
     };
 
     let activeTabId = null;
@@ -208,6 +209,16 @@
         el.apiBaseInput.value = data.ys_api_base || '';
         el.setup.hidden = false;
         el.active.hidden = true;
+    });
+
+    el.reset.addEventListener('click', async () => {
+        if (confirm('Toplanan tüm yorumlar silinecek. Emin misiniz?')) {
+            await chrome.storage.local.remove('ys_collect_meta');
+            el.collected.textContent = '0';
+            el.unique.textContent = '0';
+            showError(el.actionSuccess, 'Veriler sıfırlandı.');
+            showError(el.actionError, '');
+        }
     });
 
     function setCollectingUI(isCollecting) {
