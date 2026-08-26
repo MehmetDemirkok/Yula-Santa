@@ -100,19 +100,32 @@
         const { strategy, list } = listInfo;
         const items = list.querySelectorAll(strategy.commentItem);
         const out = [];
+        let skipped = 0;
+
         items.forEach((node) => {
             const username = extractUsername(node, strategy);
-            if (!username) return;
+            if (!username) {
+                skipped++;
+                return;
+            }
+            const comment = extractText(node, strategy);
+            // Skip empty comments (they might be placeholders or loading states)
+            if (!comment || comment.length === 0) {
+                skipped++;
+                return;
+            }
             out.push({
                 username,
                 displayName: extractDisplayName(node, strategy) || username,
-                comment: extractText(node, strategy),
+                comment: comment,
                 commentId: extractCommentId(node),
-                // TikTok only ever shows a relative time ("2s", "3g") in the DOM —
-                // we deliberately do not convert that into a fabricated absolute timestamp.
                 timestamp: null,
             });
         });
+
+        if (skipped > 0) {
+            console.log('[YulaSanta] Skipped', skipped, 'invalid comment items (no username or empty text)');
+        }
         return out;
     }
 
