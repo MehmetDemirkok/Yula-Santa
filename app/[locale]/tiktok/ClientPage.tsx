@@ -377,10 +377,19 @@ export default function TikTokGiveaway() {
 
             <section ref={toolRef} className="relative z-10 mx-auto max-w-5xl px-4 pb-16 pt-24 sm:px-6 sm:pt-32 lg:pb-20">
                 <div className="mx-auto max-w-xl text-center">
-                    <p className="mb-4 inline-flex items-center gap-2 text-[13px] font-medium text-[var(--text-muted)]">
-                        <TikTokMark className="h-3.5 w-3.5 text-[var(--text-primary)]" />
-                        <span className="tracking-tight">{tl("heroTitle")}</span>
-                    </p>
+                    <div className="mb-8 flex items-center justify-center gap-3">
+                        <div className="h-12 w-12 rounded-xl bg-gradient-to-br from-black to-gray-800 flex items-center justify-center shadow-lg">
+                            <TikTokMark className="h-6 w-6 text-white" />
+                        </div>
+                        <div className="text-left">
+                            <p className="text-xs font-semibold text-[var(--text-muted)] uppercase tracking-wider">
+                                {tl("heroTitle")}
+                            </p>
+                            <p className="text-sm font-semibold text-[var(--text-secondary)]">
+                                {locale === "tr" ? "Çekiliş Aracı" : "Giveaway Tool"}
+                            </p>
+                        </div>
+                    </div>
 
                     <h1 className="font-heading text-[2.35rem] font-extrabold leading-[1.05] tracking-[-0.03em] text-[var(--text-primary)] sm:text-[3.15rem]">
                         {tl("heroHighlight")}

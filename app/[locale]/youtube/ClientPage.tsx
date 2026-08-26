@@ -473,9 +473,18 @@ export default function YouTubeGiveaway() {
 
             <section ref={toolRef} className="relative z-10 mx-auto max-w-5xl px-4 pb-16 pt-24 sm:px-6 sm:pt-32 lg:pb-24">
                 <div className="mx-auto max-w-3xl text-center">
-                    <div className="mb-6 inline-flex items-center gap-2 rounded-full border border-red-200/80 bg-white/80 px-3 py-1.5 text-xs font-semibold text-[#FF0000] shadow-sm backdrop-blur dark:border-red-500/20 dark:bg-white/5">
-                        <Youtube className="h-3.5 w-3.5" strokeWidth={2} />
-                        {tl("badge")}
+                    <div className="mb-8 flex items-center justify-center gap-3">
+                        <div className="h-12 w-12 rounded-xl bg-gradient-to-br from-red-500 to-red-600 flex items-center justify-center shadow-lg">
+                            <Youtube className="h-6 w-6 text-white" strokeWidth={1.5} />
+                        </div>
+                        <div className="text-left">
+                            <p className="text-xs font-semibold text-[var(--text-muted)] uppercase tracking-wider">
+                                {tl("badge")}
+                            </p>
+                            <p className="text-sm font-semibold text-[var(--text-secondary)]">
+                                {locale === "tr" ? "Çekiliş Aracı" : "Giveaway Tool"}
+                            </p>
+                        </div>
                     </div>
 
                     <h1 className="font-heading text-[2.25rem] leading-[1.1] tracking-tight text-[var(--text-primary)] sm:text-5xl md:text-[3.5rem]">
