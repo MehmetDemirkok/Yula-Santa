@@ -227,8 +227,11 @@ export default function Home() {
                             onKeyDown={(e) => e.key === "Enter" && addParticipant()}
                             className="flex-1 bg-[var(--input-bg)] text-base"
                         />
-                        <Button onClick={addParticipant} className="aspect-square p-0 w-11 sm:w-12 rounded-xl sm:rounded-2xl shrink-0">
-                            <Plus className="w-5 h-5 sm:w-6 sm:h-6" />
+                        <Button
+                            onClick={addParticipant}
+                            className="aspect-square p-0 w-12 sm:w-14 rounded-full shrink-0 flex items-center justify-center bg-santa-red hover:bg-red-700 text-white shadow-lg hover:shadow-xl transition-all"
+                        >
+                            <Plus className="w-6 h-6 sm:w-7 sm:h-7 stroke-[3]" strokeWidth={3} />
                         </Button>
                     </div>
 
