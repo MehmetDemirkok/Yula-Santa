@@ -8,7 +8,7 @@
 
 import { useState, useEffect, useRef } from "react";
 import { useRouter, useParams } from "next/navigation";
-import { Plus, Trash2, Gift, Sparkles, FileUp, Youtube, HelpCircle } from "lucide-react";
+import { Plus, Trash2, Gift, Sparkles, FileUp, Youtube, HelpCircle, ClipboardPaste } from "lucide-react";
 import { Button } from "@/components/ui/Button";
 import { Input } from "@/components/ui/Input";
 import { useTranslations } from 'next-intl';
@@ -26,6 +26,8 @@ export default function Home() {
     const [name, setName] = useState("");
     const [participants, setParticipants] = useState<string[]>([]);
     const [isUploading, setIsUploading] = useState(false);
+    const [drawMode, setDrawMode] = useState<'secret' | 'pairs'>('secret');
+    const [hydrated, setHydrated] = useState(false);
     const fileInputRef = useRef<HTMLInputElement>(null);
 
     useEffect(() => {
@@ -35,13 +37,14 @@ export default function Home() {
                 setParticipants(JSON.parse(saved));
             } catch { }
         }
+        const savedMode = localStorage.getItem("draw_mode") as 'secret' | 'pairs' || 'secret';
+        setDrawMode(savedMode);
+        setHydrated(true);
     }, []);
 
     useEffect(() => {
         localStorage.setItem("participants_draft", JSON.stringify(participants));
     }, [participants]);
-
-    const [drawMode, setDrawMode] = useState<'secret' | 'pairs'>('secret');
 
     const addParticipant = () => {
         if (!name.trim()) return;
@@ -197,25 +200,37 @@ export default function Home() {
                     <h1 className="font-heading text-headline-lg-mobile sm:text-headline-lg text-[var(--text-primary)] tracking-tight">
                         {locale === 'tr' ? 'Online Secret Santa' : t('footer.secretSanta')}
                     </h1>
-                    <p className="text-[var(--text-secondary)] text-body-lg">
-                        {t('home.subtitle')}
-                    </p>
+                    <div className="flex items-center justify-center gap-2 flex-wrap" suppressHydrationWarning>
+                        <p className="text-[var(--text-secondary)] text-body-lg">
+                            {t('home.subtitle')}
+                        </p>
+                        {participants.length > 0 && (
+                            <span className={`text-xs sm:text-sm font-bold px-2.5 py-1 rounded-full ${participants.length >= (drawMode === 'pairs' ? 2 : 3) ? 'bg-green-100/80 dark:bg-green-500/20 text-green-700 dark:text-green-300' : 'bg-yellow-100/80 dark:bg-yellow-500/20 text-yellow-700 dark:text-yellow-300'}`}>
+                                {participants.length}/{drawMode === 'pairs' ? '2+' : '3+'}
+                            </span>
+                        )}
+                    </div>
                 </div>
 
                 <div className="ys-card backdrop-blur-xl p-4 sm:p-5 md:p-6 space-y-4 sm:space-y-5 md:space-y-6">
                     {/* Mode Selector */}
-                    <div className="flex p-1 bg-[var(--surface-2)] rounded-lg sm:rounded-xl">
+                    <div className="grid grid-cols-2 gap-3" suppressHydrationWarning>
                         <button
                             onClick={() => setDrawMode('secret')}
-                            className={`flex-1 py-2 sm:py-2.5 text-xs sm:text-sm font-bold rounded-md sm:rounded-lg transition-all ${drawMode === 'secret' ? 'bg-[var(--card-bg)] text-[var(--text-primary)] shadow-sm ring-1 ring-black/5 dark:ring-white/10' : 'text-[var(--text-secondary)] hover:text-[var(--text-primary)]'}`}
+                            className={`p-3 sm:p-4 rounded-2xl transition-all border-2 ${drawMode === 'secret' ? 'bg-red-100/50 dark:bg-red-500/15 border-santa-red text-santa-red shadow-lg' : 'bg-[var(--surface-2)] border-transparent text-[var(--text-secondary)] hover:border-[var(--border-medium)]'}`}
                         >
-                            {t('home.secretDraw')}
+                            <div className="text-2xl sm:text-3xl mb-1">🎅</div>
+                            <div className="font-bold text-xs sm:text-sm">{t('home.secretDraw')}</div>
+                            <div className="text-[10px] sm:text-xs text-[var(--text-muted)] mt-1">Kim kime verecek gizli</div>
                         </button>
+
                         <button
                             onClick={() => setDrawMode('pairs')}
-                            className={`flex-1 py-2 sm:py-2.5 text-xs sm:text-sm font-bold rounded-md sm:rounded-lg transition-all ${drawMode === 'pairs' ? 'bg-[var(--card-bg)] text-santa-red shadow-sm ring-1 ring-black/5 dark:ring-white/10' : 'text-[var(--text-secondary)] hover:text-[var(--text-primary)]'}`}
+                            className={`p-3 sm:p-4 rounded-2xl transition-all border-2 ${drawMode === 'pairs' ? 'bg-green-100/50 dark:bg-green-500/15 border-christmas-green text-christmas-green shadow-lg' : 'bg-[var(--surface-2)] border-transparent text-[var(--text-secondary)] hover:border-[var(--border-medium)]'}`}
                         >
-                            {t('home.directMatch')}
+                            <div className="text-2xl sm:text-3xl mb-1">👥</div>
+                            <div className="font-bold text-xs sm:text-sm">{t('home.directMatch')}</div>
+                            <div className="text-[10px] sm:text-xs text-[var(--text-muted)] mt-1">Birbirlerine hediye</div>
                         </button>
                     </div>
 
@@ -243,14 +258,28 @@ export default function Home() {
                             </div>
                         )}
                         {participants.map((p, i) => (
-                            <div key={i} className="ys-zebra-row group flex items-center justify-between p-2.5 sm:p-3 pl-3 sm:pl-4 bg-[var(--card-bg)] rounded-lg sm:rounded-xl shadow-sm hover:shadow-md transition-all border border-[var(--border-light)] hover:border-red-100 dark:hover:border-red-900/30">
-                                <span className="font-medium text-[var(--text-secondary)] text-sm sm:text-base truncate mr-2">{p}</span>
-                                <button
-                                    onClick={() => removeParticipant(i)}
-                                    className="p-1.5 sm:p-2 text-[var(--text-muted)] hover:text-red-500 rounded-lg transition-colors flex-shrink-0"
-                                >
-                                    <Trash2 className="w-4 h-4 sm:w-5 sm:h-5" />
-                                </button>
+                            <div key={i} className="ys-zebra-row group flex items-center justify-between p-2.5 sm:p-3 pl-3 sm:pl-4 bg-[var(--card-bg)] rounded-lg sm:rounded-xl shadow-sm hover:shadow-md transition-all border border-[var(--border-light)] hover:border-red-100 dark:hover:border-red-900/30 animate-in slide-in-from-left-2 duration-300">
+                                <div className="flex items-center gap-2 min-w-0 flex-1">
+                                    <span className="font-bold text-santa-red text-xs sm:text-sm flex-shrink-0">#{i + 1}</span>
+                                    <span className="font-medium text-[var(--text-secondary)] text-sm sm:text-base truncate">{p}</span>
+                                </div>
+                                <div className="flex items-center gap-1 ml-2 flex-shrink-0 opacity-0 group-hover:opacity-100 transition-opacity">
+                                    <button
+                                        onClick={() => {
+                                            navigator.clipboard.writeText(p);
+                                        }}
+                                        className="p-1.5 sm:p-2 text-[var(--text-muted)] hover:text-santa-red rounded-lg transition-colors"
+                                        title="Kopyala"
+                                    >
+                                        <ClipboardPaste className="w-4 h-4 sm:w-5 sm:h-5" />
+                                    </button>
+                                    <button
+                                        onClick={() => removeParticipant(i)}
+                                        className="p-1.5 sm:p-2 text-[var(--text-muted)] hover:text-red-500 rounded-lg transition-colors"
+                                    >
+                                        <Trash2 className="w-4 h-4 sm:w-5 sm:h-5" />
+                                    </button>
+                                </div>
                             </div>
                         ))}
                     </div>
