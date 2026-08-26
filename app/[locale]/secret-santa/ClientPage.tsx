@@ -37,8 +37,8 @@ export default function Home() {
                 setParticipants(JSON.parse(saved));
             } catch { }
         }
-        const savedMode = localStorage.getItem("draw_mode") as 'secret' | 'pairs' || 'secret';
-        setDrawMode(savedMode);
+        const savedMode = localStorage.getItem("draw_mode") as 'secret' | 'pairs' | null;
+        setDrawMode(savedMode === 'pairs' ? 'pairs' : 'secret');
         setHydrated(true);
     }, []);
 
