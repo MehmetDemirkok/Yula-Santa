@@ -244,9 +244,9 @@ export default function Home() {
                         />
                         <button
                             onClick={addParticipant}
-                            className="aspect-square p-0 w-12 sm:w-14 rounded-full shrink-0 flex items-center justify-center bg-santa-red hover:bg-red-700 shadow-lg hover:shadow-xl transition-all active:scale-95"
+                            className="aspect-square p-0 w-12 sm:w-14 rounded-full shrink-0 flex items-center justify-center bg-santa-red hover:bg-red-600 hover:shadow-xl text-white shadow-lg transition-all active:scale-95 active:shadow-md"
                         >
-                            <svg className="w-7 h-7 sm:w-8 sm:h-8" viewBox="0 0 24 24" fill="none" stroke="white" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
+                            <svg className="w-5 h-5 sm:w-6 sm:h-6" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
                                 <path d="M5 12h14"></path>
                                 <path d="M12 5v14"></path>
                             </svg>
