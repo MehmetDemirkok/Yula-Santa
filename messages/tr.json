@@ -291,6 +291,7 @@
                 "fetching": "Getiriliyor…",
                 "urlHint": "Herkese açık videolarla çalışır · Getirdikten sonra 2. adım otomatik açılır",
                 "shortsDetected": "Shorts Videosu Algılandı",
+                "freeLimit": "500 yoruma kadar ücretsiz",
                 "step1Url": "Adım 1 — YouTube linkini yapıştır",
                 "step1Manual": "Adım 1 — Katılımcı ekle",
                 "step3Title": "Kuralları seç ve katılımcıları kontrol et",

@@ -290,6 +290,7 @@
                 "fetching": "Fetching…",
                 "urlHint": "Works with public videos · Step 2 opens automatically after fetch",
                 "shortsDetected": "Shorts Video Detected",
+                "freeLimit": "Free up to 500 comments",
                 "step1Url": "Step 1 — Paste YouTube URL",
                 "step1Manual": "Step 1 — Add participants",
                 "step3Title": "Choose rules & review participants",
