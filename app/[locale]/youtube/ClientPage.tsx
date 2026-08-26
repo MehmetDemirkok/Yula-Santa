@@ -1,8 +1,8 @@
 "use client";
 
 import { useState, useRef, useEffect, useMemo } from "react";
-import confetti from "canvas-confetti";
 import { useLocale, useTranslations } from "next-intl";
+import { celebrate } from "@/lib/celebrate";
 import { useRouter } from "@/i18n/navigation";
 import {
     Youtube,
@@ -348,27 +348,7 @@ export default function YouTubeGiveaway() {
     };
 
     const triggerConfetti = () => {
-        const duration = 3000;
-        const end = Date.now() + duration;
-        const colors = ["#FF0000", "#FFFFFF", "#282828", "#FF4444"];
-
-        (function frame() {
-            confetti({
-                particleCount: 5,
-                angle: 60,
-                spread: 55,
-                origin: { x: 0 },
-                colors,
-            });
-            confetti({
-                particleCount: 5,
-                angle: 120,
-                spread: 55,
-                origin: { x: 1 },
-                colors,
-            });
-            if (Date.now() < end) requestAnimationFrame(frame);
-        })();
+        celebrate({ colors: ["#FF0000", "#FFFFFF", "#282828", "#FF4444"] });
     };
 
     const startGiveaway = () => {
@@ -1002,8 +982,8 @@ export default function YouTubeGiveaway() {
                                                                         className="w-full bg-transparent py-2 text-sm outline-none"
                                                                     />
                                                                 </div>
-                                                                <Button onClick={addParticipant} size="sm" className="h-9 w-9 rounded-xl bg-[#FF0000] p-0 hover:bg-[#e60000]">
-                                                                    <Plus className="h-4 w-4" />
+                                                                <Button onClick={addParticipant} size="sm" className="h-9 w-9 rounded-xl bg-[#FF0000] p-0 sm:p-0 hover:bg-[#e60000]">
+                                                                    <Plus className="h-4 w-4 shrink-0" />
                                                                 </Button>
                                                             </div>
                                                             <textarea

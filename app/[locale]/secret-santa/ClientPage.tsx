@@ -319,10 +319,10 @@ export default function Home() {
                                     }
                                 }}
                                 variant="ghost"
-                                className="aspect-square p-0 w-10 sm:w-12 border-2 border-dashed border-red-200 dark:border-red-900/30 text-red-400 hover:bg-red-50 dark:hover:bg-red-900/30 hover:border-red-300 hover:text-red-500"
+                                className="aspect-square p-0 sm:p-0 w-10 sm:w-12 border-2 border-dashed border-red-200 dark:border-red-900/30 text-red-400 hover:bg-red-50 dark:hover:bg-red-900/30 hover:border-red-300 hover:text-red-500"
                                 title={t('home.clearList')}
                             >
-                                <Trash2 className="w-4 h-4 sm:w-5 sm:h-5" />
+                                <Trash2 className="w-4 h-4 sm:w-5 sm:h-5 shrink-0" />
                             </Button>
                         )}
                     </div>

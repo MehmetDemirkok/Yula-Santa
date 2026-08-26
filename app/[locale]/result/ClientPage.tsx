@@ -2,8 +2,8 @@
 
 import { useState, useEffect } from "react";
 import { useRouter, useParams } from "next/navigation";
-import confetti from "canvas-confetti";
 import { Gift, ArrowRight, Sparkles, User, RefreshCw, ArrowLeftRight, Home, Plus } from "lucide-react";
+import { celebrate } from "@/lib/celebrate";
 import { Button } from "@/components/ui/Button";
 import { useLanguage } from "@/lib/i18n/LanguageContext";
 import { AdWrapper, InArticleAd } from "@/components/ads";
@@ -44,39 +44,13 @@ export default function ResultPage() {
 
     useEffect(() => {
         if (drawMode === 'pairs' && Object.keys(assignments).length > 0) {
-            triggerConfetti();
+            celebrate();
         }
     }, [drawMode, assignments]);
 
-    const triggerConfetti = () => {
-        const duration = 3000;
-        const end = Date.now() + duration;
-
-        (function frame() {
-            confetti({
-                particleCount: 5,
-                angle: 60,
-                spread: 55,
-                origin: { x: 0 },
-                colors: ['#D42426', '#165B33', '#FFD700']
-            });
-            confetti({
-                particleCount: 5,
-                angle: 120,
-                spread: 55,
-                origin: { x: 1 },
-                colors: ['#D42426', '#165B33', '#FFD700']
-            });
-
-            if (Date.now() < end) {
-                requestAnimationFrame(frame);
-            }
-        }());
-    };
-
     const handleReveal = () => {
         if (!selectedUser) return;
-        triggerConfetti();
+        celebrate();
         setResult(assignments[selectedUser]);
     };
 

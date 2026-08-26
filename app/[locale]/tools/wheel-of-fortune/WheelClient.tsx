@@ -6,8 +6,8 @@ import { Button } from "@/components/ui/Button";
 import { Input } from "@/components/ui/Input";
 import { ArrowLeft, RefreshCw, Shuffle, SortAsc, Trash2, Plus, Edit3, X, List } from "lucide-react";
 import { useRouter } from "next/navigation";
-import confetti from "canvas-confetti";
 import { secureRandomInt, secureShuffle } from "@/lib/random";
+import { celebrate } from "@/lib/celebrate";
 
 const COLORS = [
     "#F87171", "#FB923C", "#FBBF24", "#A3E635", "#34D399",
@@ -101,23 +101,8 @@ export function WheelClient() {
         setTimeout(() => {
             setIsSpinning(false);
             setWinner(segments[winningIndex]);
-            triggerConfetti();
+            celebrate({ colors: COLORS });
         }, 5000);
-    };
-
-    const triggerConfetti = () => {
-        const duration = 3000;
-        const animationEnd = Date.now() + duration;
-        const defaults = { startVelocity: 30, spread: 360, ticks: 60, zIndex: 0 };
-        const randomInRange = (min: number, max: number) => Math.random() * (max - min) + min;
-
-        const interval: any = setInterval(function () {
-            const timeLeft = animationEnd - Date.now();
-            if (timeLeft <= 0) return clearInterval(interval);
-            const particleCount = 50 * (timeLeft / duration);
-            confetti({ ...defaults, particleCount, origin: { x: randomInRange(0.1, 0.3), y: Math.random() - 0.2 } });
-            confetti({ ...defaults, particleCount, origin: { x: randomInRange(0.7, 0.9), y: Math.random() - 0.2 } });
-        }, 250);
     };
 
     const removeWinner = () => {
@@ -211,8 +196,8 @@ export function WheelClient() {
                                                 placeholder={t('addName')}
                                                 className="flex-1 h-auto py-2 focus:border-indigo-accent"
                                             />
-                                            <Button onClick={handleAddName} className="shrink-0 aspect-square p-0 w-10 h-10">
-                                                <Plus className="w-5 h-5" />
+                                            <Button onClick={handleAddName} className="shrink-0 aspect-square p-0 sm:p-0 w-10 h-10">
+                                                <Plus className="w-5 h-5 shrink-0" />
                                             </Button>
                                         </div>
 

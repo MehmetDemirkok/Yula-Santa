@@ -1,8 +1,8 @@
 "use client";
 
 import { useState, useRef, useEffect, useMemo } from "react";
-import confetti from "canvas-confetti";
 import { useLocale, useTranslations } from "next-intl";
+import { celebrate } from "@/lib/celebrate";
 import { useRouter, Link } from "@/i18n/navigation";
 import {
     MessageCircle,
@@ -253,16 +253,7 @@ export default function TikTokGiveaway() {
     };
 
     const triggerConfetti = () => {
-        if (prefersReducedMotion()) return;
-        const duration = 2400;
-        const end = Date.now() + duration;
-        const colors = ["#B61722", "#E09600", "#FFFFFF"];
-
-        (function frame() {
-            confetti({ particleCount: 4, angle: 60, spread: 55, origin: { x: 0 }, colors });
-            confetti({ particleCount: 4, angle: 120, spread: 55, origin: { x: 1 }, colors });
-            if (Date.now() < end) requestAnimationFrame(frame);
-        })();
+        celebrate({ colors: ["#B61722", "#E09600", "#FFFFFF"] });
     };
 
     const finishDraw = (pool: Participant[]) => {
@@ -884,8 +875,8 @@ export default function TikTokGiveaway() {
                                                                     className="w-full bg-transparent py-2 text-sm outline-none"
                                                                 />
                                                             </div>
-                                                            <Button onClick={addParticipant} size="sm" className={`h-9 w-9 rounded-xl p-0 ${TT_CTA}`}>
-                                                                <Plus className="h-4 w-4" />
+                                                            <Button onClick={addParticipant} size="sm" className={`h-9 w-9 rounded-xl p-0 sm:p-0 ${TT_CTA}`}>
+                                                                <Plus className="h-4 w-4 shrink-0" />
                                                             </Button>
                                                         </div>
                                                         <textarea
