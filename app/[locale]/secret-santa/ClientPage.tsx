@@ -244,9 +244,9 @@ export default function Home() {
                         />
                         <Button
                             onClick={addParticipant}
-                            className="aspect-square p-0 w-12 sm:w-14 rounded-full shrink-0 flex items-center justify-center bg-santa-red hover:bg-red-700 text-white shadow-lg hover:shadow-xl transition-all"
+                            className="aspect-square p-0 w-12 sm:w-14 rounded-full shrink-0 flex items-center justify-center bg-santa-red hover:bg-red-700 text-white shadow-lg hover:shadow-xl transition-all active:scale-95"
                         >
-                            <Plus className="w-6 h-6 sm:w-7 sm:h-7 stroke-[3]" strokeWidth={3} />
+                            <Plus className="w-7 h-7 sm:w-8 sm:h-8 stroke-white" strokeWidth={2.5} />
                         </Button>
                     </div>
 
