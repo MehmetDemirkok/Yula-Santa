@@ -221,7 +221,7 @@ export default function Home() {
                         >
                             <div className="text-2xl sm:text-3xl mb-1">🎅</div>
                             <div className="font-bold text-xs sm:text-sm">{t('home.secretDraw')}</div>
-                            <div className="text-[10px] sm:text-xs text-[var(--text-muted)] mt-1">Kim kime verecek gizli</div>
+                            <div className="text-[10px] sm:text-xs text-[var(--text-muted)] mt-1">Kim kime hediye verecek gizli</div>
                         </button>
 
                         <button
