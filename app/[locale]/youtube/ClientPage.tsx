@@ -80,6 +80,7 @@ export default function YouTubeGiveaway() {
     const [entryMode, setEntryMode] = useState<EntryMode>("auto");
     const [manualPaste, setManualPaste] = useState("");
     const [videoLink, setVideoLink] = useState("");
+    const [isShortsVideo, setIsShortsVideo] = useState(false);
     const [drawType, setDrawType] = useState<DrawType>("comments");
 
     const [giveawayName, setGiveawayName] = useState("");
@@ -121,6 +122,14 @@ export default function YouTubeGiveaway() {
         document.addEventListener("mousedown", handleClickOutside);
         return () => document.removeEventListener("mousedown", handleClickOutside);
     }, []);
+
+    useEffect(() => {
+        if (videoLink.trim()) {
+            setIsShortsVideo(detectShortsVideo(videoLink));
+        } else {
+            setIsShortsVideo(false);
+        }
+    }, [videoLink]);
 
     const scrollToTool = () => {
         toolRef.current?.scrollIntoView({ behavior: "smooth", block: "start" });
@@ -170,10 +179,13 @@ export default function YouTubeGiveaway() {
     };
 
     const extractVideoId = (url: string) => {
-
         const regExp = /^.*((youtu.be\/)|(v\/)|(\/u\/\w\/)|(embed\/)|(watch\?)|(shorts\/))\??v?=?([^#&?]*).*/;
         const match = url.match(regExp);
         return match && match[8].length === 11 ? match[8] : null;
+    };
+
+    const detectShortsVideo = (url: string) => {
+        return /youtube\.com\/shorts\/|youtu\.be\/shorts\//.test(url);
     };
 
     const verifyParticipantSubscription = async (participant: Participant): Promise<boolean | null | "private"> => {
@@ -734,9 +746,24 @@ export default function YouTubeGiveaway() {
                                                     )}
                                                 </button>
                                             </div>
-                                            <p id="yt-url-hint" className="mt-2 text-xs text-[var(--text-muted)]">
-                                                {tl("urlHint")}
-                                            </p>
+                                            <div className="mt-2 flex items-center justify-between">
+                                                <p id="yt-url-hint" className="text-xs text-[var(--text-muted)]">
+                                                    {tl("urlHint")}
+                                                </p>
+                                                {isShortsVideo && (
+                                                    <span className="inline-flex items-center gap-1.5 rounded-full bg-red-100 px-3 py-1 text-xs font-semibold text-[#FF0000] dark:bg-red-500/15 dark:text-red-300">
+                                                        <span className="text-lg">📹</span>
+                                                        {tl("shortsDetected")}
+                                                    </span>
+                                                )}
+                                            </div>
+                                            {isShortsVideo && (
+                                                <div className="mt-3 rounded-xl border border-orange-200/50 bg-gradient-to-br from-orange-50/50 to-amber-50/30 p-3.5 dark:border-orange-500/20 dark:from-orange-500/5 dark:to-amber-500/5">
+                                                    <p className="text-xs leading-relaxed text-[var(--text-secondary)]">
+                                                        <span className="font-semibold text-orange-700 dark:text-orange-300">💡 Shorts da desteklenmektedir:</span> YouTube Shorts videolarındaki tüm yorumlardan da çekiliş yapabilirsiniz. Süreci aynı — linki yapıştır, katılımcıları getir, kazananları seç!
+                                                    </p>
+                                                </div>
+                                            )}
                                         </div>
 
                                         {loading && (
