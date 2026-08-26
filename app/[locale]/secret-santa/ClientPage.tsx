@@ -244,7 +244,7 @@ export default function Home() {
                         />
                         <button
                             onClick={addParticipant}
-                            aria-label={t('home.addParticipant') || 'Ekle'}
+                            aria-label={locale === 'tr' ? 'Kişi ekle' : 'Add participant'}
                             className="group relative aspect-square p-0 w-12 sm:w-14 rounded-xl sm:rounded-2xl shrink-0 flex items-center justify-center overflow-hidden bg-gradient-to-br from-santa-red to-red-700 text-white shadow-[0_4px_16px_rgba(182,23,34,0.35),inset_0_1px_0_rgba(255,255,255,0.25)] hover:shadow-[0_8px_24px_rgba(182,23,34,0.45),inset_0_1px_0_rgba(255,255,255,0.3)] hover:brightness-110 transition-all duration-200 active:scale-95"
                         >
                             <span className="absolute inset-0 -translate-x-full bg-white/20 transition-transform duration-300 group-hover:translate-x-0" aria-hidden />
