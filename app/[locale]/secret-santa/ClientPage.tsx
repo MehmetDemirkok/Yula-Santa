@@ -242,12 +242,15 @@ export default function Home() {
                             onKeyDown={(e) => e.key === "Enter" && addParticipant()}
                             className="flex-1 bg-[var(--input-bg)] text-base"
                         />
-                        <Button
+                        <button
                             onClick={addParticipant}
-                            className="aspect-square p-0 w-12 sm:w-14 rounded-full shrink-0 flex items-center justify-center bg-santa-red hover:bg-red-700 text-white shadow-lg hover:shadow-xl transition-all active:scale-95"
+                            className="aspect-square p-0 w-12 sm:w-14 rounded-full shrink-0 flex items-center justify-center bg-santa-red hover:bg-red-700 shadow-lg hover:shadow-xl transition-all active:scale-95"
                         >
-                            <Plus className="w-7 h-7 sm:w-8 sm:h-8 stroke-white" strokeWidth={2.5} />
-                        </Button>
+                            <svg className="w-7 h-7 sm:w-8 sm:h-8" viewBox="0 0 24 24" fill="none" stroke="white" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
+                                <path d="M5 12h14"></path>
+                                <path d="M12 5v14"></path>
+                            </svg>
+                        </button>
                     </div>
 
                     <div className="space-y-2 max-h-[35vh] sm:max-h-[40vh] overflow-y-auto pr-1 sm:pr-2 custom-scrollbar">
