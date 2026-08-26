@@ -262,6 +262,30 @@ body {
     font-weight: 600;
 }
 
+.ys-limit-info {
+    margin-top: 10px;
+    text-align: center;
+}
+
+.ys-limit-badge {
+    display: inline-block;
+    font-size: 11px;
+    font-weight: 600;
+    color: #10b981;
+    background: rgba(16, 185, 129, 0.1);
+    padding: 6px 10px;
+    border-radius: 6px;
+    border: 1px solid rgba(16, 185, 129, 0.2);
+}
+
+@media (prefers-color-scheme: dark) {
+    .ys-limit-badge {
+        color: #34d399;
+        background: rgba(16, 185, 129, 0.05);
+        border-color: rgba(16, 185, 129, 0.15);
+    }
+}
+
 .ys-footer {
     color: var(--ys-text-muted);
     font-size: 10px;

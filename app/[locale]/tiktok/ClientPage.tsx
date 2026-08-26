@@ -387,6 +387,10 @@ export default function TikTokGiveaway() {
                     <p className="mx-auto mt-4 max-w-md text-[15px] leading-relaxed text-[var(--text-secondary)] sm:text-base">
                         {tl("heroSubtitle")}
                     </p>
+                    <div className="mx-auto mt-4 inline-flex items-center gap-2 rounded-full border border-green-200/50 bg-green-50/50 px-4 py-2 text-sm font-medium text-green-700 dark:border-green-500/20 dark:bg-green-500/5 dark:text-green-300">
+                        <Sparkles className="h-4 w-4" />
+                        <span>{tl("freeLimit")}</span>
+                    </div>
                 </div>
 
                 <nav aria-label={tl("howTitle")} className="mx-auto mt-10 max-w-lg px-2">

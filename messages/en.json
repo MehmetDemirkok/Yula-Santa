@@ -449,6 +449,7 @@
                 "fetchCtaPaid": "{price} — fetch comments",
                 "fetching": "Fetching…",
                 "urlHint": "Public videos. You can also paste comments for free.",
+                "freeLimit": "Free up to 500 comments",
                 "step1Url": "TikTok video link",
                 "step1Manual": "Paste comments",
                 "step3Title": "Set winner count",

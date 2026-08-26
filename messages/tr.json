@@ -450,6 +450,7 @@
                 "fetchCtaPaid": "{price} — yorumları çek",
                 "fetching": "Çekiliyor…",
                 "urlHint": "Herkese açık videolar. Dilerseniz yorumları ücretsiz yapıştırabilirsiniz.",
+                "freeLimit": "500 yoruma kadar ücretsiz",
                 "step1Url": "TikTok video linki",
                 "step1Manual": "Yorumları yapıştır",
                 "step3Title": "Kazanan sayısını ayarla",
