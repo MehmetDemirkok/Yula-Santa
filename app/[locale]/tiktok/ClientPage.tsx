@@ -30,6 +30,7 @@ import {
     Shuffle,
     UserMinus,
     Chrome,
+    Sparkles,
 } from "lucide-react";
 import { Button } from "@/components/ui/Button";
 import { useLanguage } from "@/lib/i18n/LanguageContext";
