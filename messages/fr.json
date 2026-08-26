@@ -903,7 +903,15 @@
             "addName": "Ajouter un Nom",
             "bulkMode": "Édition Groupée",
             "listMode": "Vue Liste",
-            "clear": "Tout Effacer"
+            "clear": "Tout Effacer",
+            "soundOn": "Son activé",
+            "soundOff": "Son désactivé",
+            "spinning": "La roue tourne...",
+            "fairNote": "Tirage équitable : sélection aléatoire sécurisée par cryptographie",
+            "wheelReady": "Roue prête",
+            "spinHint": "Appuyez sur espace pour tourner",
+            "backToTools": "Retour aux outils",
+            "applyChanges": "Appliquer les modifications"
         },
         "teamGeneratorContent": {
             "title": "Générateur d'Équipes",

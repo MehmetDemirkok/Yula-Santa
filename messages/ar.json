@@ -902,7 +902,15 @@
             "addName": "إضافة اسم",
             "bulkMode": "تعديل جماعي",
             "listMode": "عرض القائمة",
-            "clear": "مسح الكل"
+            "clear": "مسح الكل",
+            "soundOn": "الصوت مفعّل",
+            "soundOff": "الصوت متوقف",
+            "spinning": "العجلة تدور...",
+            "fairNote": "قرعة عادلة: اختيار عشوائي آمن تشفيريًا",
+            "wheelReady": "العجلة جاهزة",
+            "spinHint": "اضغط مسافة للتدوير",
+            "backToTools": "العودة إلى الأدوات",
+            "applyChanges": "تطبيق التغييرات"
         },
         "teamGeneratorContent": {
             "title": "منشئ الفرق",

@@ -925,7 +925,15 @@
             "addName": "Adicionar Nome",
             "bulkMode": "Edição em Massa",
             "listMode": "Visualização de Lista",
-            "clear": "Limpar Tudo"
+            "clear": "Limpar Tudo",
+            "soundOn": "Som ativado",
+            "soundOff": "Som desativado",
+            "spinning": "Girando...",
+            "fairNote": "Sorteio justo: seleção aleatória criptograficamente segura",
+            "wheelReady": "Roda pronta",
+            "spinHint": "Pressione espaço para girar",
+            "backToTools": "Voltar às ferramentas",
+            "applyChanges": "Aplicar alterações"
         },
         "teamGeneratorContent": {
             "title": "Gerador de Equipes",

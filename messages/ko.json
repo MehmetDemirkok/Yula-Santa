@@ -903,7 +903,15 @@
             "addName": "이름 추가",
             "bulkMode": "일괄 편집",
             "listMode": "목록 보기",
-            "clear": "모두 지우기"
+            "clear": "모두 지우기",
+            "soundOn": "소리 켜기",
+            "soundOff": "소리 끄기",
+            "spinning": "돌아가는 중...",
+            "fairNote": "공정한 추첨: 암호학적으로 안전한 무작위 선택",
+            "wheelReady": "휠 준비 완료",
+            "spinHint": "스페이스바를 눌러 돌리기",
+            "backToTools": "도구로 돌아가기",
+            "applyChanges": "변경 사항 적용"
         },
         "teamGeneratorContent": {
             "title": "팀 생성기",

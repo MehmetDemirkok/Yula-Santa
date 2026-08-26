@@ -924,7 +924,15 @@
             "addName": "Aggiungi Nome",
             "bulkMode": "Modifica in Blocco",
             "listMode": "Vista Elenco",
-            "clear": "Cancella Tutto"
+            "clear": "Cancella Tutto",
+            "soundOn": "Audio attivo",
+            "soundOff": "Audio disattivato",
+            "spinning": "La ruota gira...",
+            "fairNote": "Estrazione equa: selezione casuale crittograficamente sicura",
+            "wheelReady": "Ruota pronta",
+            "spinHint": "Premi spazio per girare",
+            "backToTools": "Torna agli strumenti",
+            "applyChanges": "Applica modifiche"
         },
         "teamGeneratorContent": {
             "title": "Generatore di Squadre",

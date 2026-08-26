@@ -891,7 +891,15 @@
             "addName": "Add Name",
             "bulkMode": "Bulk Edit",
             "listMode": "List View",
-            "clear": "Clear All"
+            "clear": "Clear All",
+            "soundOn": "Sound on",
+            "soundOff": "Sound off",
+            "spinning": "Spinning...",
+            "fairNote": "Fair draw: cryptographically secure random selection",
+            "wheelReady": "Wheel ready",
+            "spinHint": "Press space to spin",
+            "backToTools": "Back to tools",
+            "applyChanges": "Apply changes"
         },
         "teamGeneratorContent": {
             "title": "Team Generator",

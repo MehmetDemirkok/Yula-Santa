@@ -902,7 +902,15 @@
             "addName": "添加姓名",
             "bulkMode": "批量编辑",
             "listMode": "列表视图",
-            "clear": "全部清除"
+            "clear": "全部清除",
+            "soundOn": "开启声音",
+            "soundOff": "关闭声音",
+            "spinning": "转盘转动中...",
+            "fairNote": "公平抽签:加密安全的随机选择",
+            "wheelReady": "转盘就绪",
+            "spinHint": "按空格键旋转",
+            "backToTools": "返回工具",
+            "applyChanges": "应用更改"
         },
         "teamGeneratorContent": {
             "title": "团队生成器",

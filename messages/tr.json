@@ -881,7 +881,15 @@
             "addName": "İsim Ekle",
             "bulkMode": "Toplu Düzenle",
             "listMode": "Liste Görünümü",
-            "clear": "Temizle"
+            "clear": "Temizle",
+            "soundOn": "Ses açık",
+            "soundOff": "Ses kapalı",
+            "spinning": "Çark dönüyor...",
+            "fairNote": "Adil çekiliş: kriptografik güvenli rastgele seçim",
+            "wheelReady": "Çark hazır",
+            "spinHint": "Boşluk tuşu ile çevir",
+            "backToTools": "Araçlara dön",
+            "applyChanges": "Değişiklikleri uygula"
         },
         "teamGeneratorContent": {
             "title": "Takım Oluşturucu",

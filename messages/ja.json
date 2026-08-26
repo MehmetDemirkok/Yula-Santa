@@ -902,7 +902,15 @@
             "addName": "名前を追加",
             "bulkMode": "一括編集",
             "listMode": "リスト表示",
-            "clear": "すべてクリア"
+            "clear": "すべてクリア",
+            "soundOn": "音を有効",
+            "soundOff": "音を無効",
+            "spinning": "回転中...",
+            "fairNote": "公正な抽選:暗号学的に安全なランダム選択",
+            "wheelReady": "ホイール準備完了",
+            "spinHint": "スペースキーで回す",
+            "backToTools": "ツールに戻る",
+            "applyChanges": "変更を適用"
         },
         "teamGeneratorContent": {
             "title": "チームジェネレーター",

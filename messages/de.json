@@ -904,7 +904,15 @@
             "addName": "Namen hinzufügen",
             "bulkMode": "Massenbearbeitung",
             "listMode": "Listenansicht",
-            "clear": "Alles löschen"
+            "clear": "Alles löschen",
+            "soundOn": "Ton an",
+            "soundOff": "Ton aus",
+            "spinning": "Dreht sich...",
+            "fairNote": "Faire Auslosung: kryptografisch sichere Zufallsauswahl",
+            "wheelReady": "Rad bereit",
+            "spinHint": "Leertaste zum Drehen drücken",
+            "backToTools": "Zurück zu den Tools",
+            "applyChanges": "Änderungen übernehmen"
         },
         "teamGeneratorContent": {
             "title": "Team-Generator",

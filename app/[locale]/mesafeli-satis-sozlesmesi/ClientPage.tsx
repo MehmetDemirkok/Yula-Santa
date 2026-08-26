@@ -46,19 +46,6 @@ export default function SalesContractClient() {
                     <section className="p-6 sm:p-8 bg-[var(--card-bg)] rounded-3xl border border-[var(--border-light)]">
                         <div className="flex items-center gap-2 mb-4">
                             <User className="w-5 h-5 text-santa-red" />
-                            <h2 className="text-lg font-bold text-[var(--text-primary)]">{t('sellerTitle')}</h2>
-                        </div>
-                        <ul className="space-y-1.5 text-sm text-[var(--text-secondary)]">
-                            <li>{t('seller.name')}</li>
-                            <li>{t('seller.type')}</li>
-                            <li>{t('seller.email')}</li>
-                            <li>{t('seller.address')}</li>
-                        </ul>
-                    </section>
-
-                    <section className="p-6 sm:p-8 bg-[var(--card-bg)] rounded-3xl border border-[var(--border-light)]">
-                        <div className="flex items-center gap-2 mb-4">
-                            <User className="w-5 h-5 text-santa-red" />
                             <h2 className="text-lg font-bold text-[var(--text-primary)]">{t('buyerTitle')}</h2>
                         </div>
                         <p className="text-sm text-[var(--text-secondary)] leading-relaxed">{t('buyerBody')}</p>
