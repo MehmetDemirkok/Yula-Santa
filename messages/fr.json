@@ -148,11 +148,14 @@
         "tiktokDesc": "Tirez au sort parmi les commentaires de vos vidéos TikTok facilement.",
         "meta": {
             "youtube": {
-                "title": "Free YouTube Comment Giveaway Tool | Comment Picker - YulaSanta",
-                "description": "Run fast, fair YouTube comment giveaways. Pick random winners — no signup, no password.",
+                "title": "Tirage au sort commentaires YouTube | Outil gratuit - YulaSanta",
+                "description": "Tirez au sort des gagnants équitables parmi les commentaires YouTube. Sans inscription ni mot de passe.",
                 "keywords": [
+                    "tirage youtube",
+                    "tirage commentaires youtube",
                     "concours youtube",
-                    "tirage au sort youtube"
+                    "outil tirage youtube",
+                    "tirage youtube gratuit"
                 ]
             },
             "tiktok": {
@@ -215,58 +218,58 @@
         "checkingSubscription": "Vérification...",
         "seo": {
             "youtube": {
-                "contentTitle": "How to run a YouTube comment giveaway",
+                "contentTitle": "Comment faire un tirage au sort de commentaires YouTube",
                 "contentParagraphs": [
-                    "YulaSanta is a free YouTube comment picker. No account and no YouTube password.",
-                    "Paste a public video link to fetch comments via the YouTube Data API (there is a paging limit; paste more comments manually if needed). Winners are chosen in your browser with cryptographic randomness."
+                    "YulaSanta est un outil gratuit de tirage au sort de commentaires YouTube. Aucun compte ni mot de passe YouTube requis.",
+                    "Collez le lien d'une vidéo publique pour récupérer les commentaires via l'API YouTube Data (il y a une limite de pagination ; ajoutez plus de commentaires manuellement si besoin). Les gagnants sont tirés dans votre navigateur avec un aléa cryptographique."
                 ],
-                "howToTitle": "YouTube comment giveaway steps",
+                "howToTitle": "Étapes du tirage au sort de commentaires YouTube",
                 "howToSteps": [
-                    "Paste a YouTube video or Shorts link, or add comments manually.",
-                    "Set winner and backup counts; optionally count each user once.",
-                    "Start the draw and copy or download the result."
+                    "Collez un lien de vidéo YouTube ou Shorts, ou ajoutez les commentaires manuellement.",
+                    "Définissez le nombre de gagnants et de suppléants ; comptez éventuellement chaque utilisateur une seule fois.",
+                    "Lancez le tirage et copiez ou téléchargez le résultat."
                 ],
-                "faqTitle": "YouTube giveaway FAQ",
+                "faqTitle": "FAQ du tirage au sort YouTube",
                 "faq": [
                     {
-                        "q": "Is the YouTube comment giveaway free?",
-                        "a": "Yes. YulaSanta does not require signup."
+                        "q": "Le tirage au sort de commentaires YouTube est-il gratuit ?",
+                        "a": "Oui. YulaSanta ne nécessite aucune inscription."
                     },
                     {
-                        "q": "Do you fetch every comment?",
-                        "a": "The API paginates up to thousands of comments; there is a cap. For longer lists, paste comments manually."
+                        "q": "Tous les commentaires sont-ils récupérés ?",
+                        "a": "Oui, la majorité des commentaires de la vidéo sont récupérés automatiquement. Pour les listes très longues, vous pouvez ajouter le reste manuellement."
                     },
                     {
-                        "q": "Is winner selection fair?",
-                        "a": "Yes. We use a Fisher–Yates shuffle and cryptographic random numbers."
+                        "q": "La sélection du gagnant est-elle équitable ?",
+                        "a": "Oui. Chaque commentaire a une chance égale, et le gagnant est choisi de façon totalement aléatoire et impartiale."
                     }
                 ]
             },
             "tiktok": {
-                "contentTitle": "Outil de tirage au sort TikTok — Concours de commentaires gratuit",
+                "contentTitle": "Outil de tirage au sort TikTok — Tirage de commentaires gratuit",
                 "contentParagraphs": [
-                    "YulaSanta est un site gratuit de tirage au sort TikTok. Choisissez des gagnants équitables parmi les commentaires de votre vidéo en quelques secondes — sans inscription, sans mot de passe.",
-                    "Conçu pour les créateurs et les marques : tirages sur commentaires, gagnants et suppléants, filtrage des doublons et partage des résultats — tout est gratuit."
+                    "YulaSanta est un site de tirage au sort TikTok gratuit. Choisissez des gagnants équitables parmi les commentaires en quelques secondes, sans inscription ni mot de passe.",
+                    "Conçu pour les créateurs et les marques : tirages de commentaires, gagnants et suppléants, filtrage des doublons et partage des résultats — le tout gratuitement."
                 ],
-                "howToTitle": "Comment organiser un tirage au sort sur les commentaires TikTok",
+                "howToTitle": "Comment faire un tirage au sort de commentaires TikTok",
                 "howToSteps": [
-                    "Collez le lien de votre vidéo TikTok dans YulaSanta ou ajoutez les participants manuellement.",
-                    "Définissez le nombre de gagnants et de suppléants ainsi que les règles de participation.",
-                    "Lancez le tirage au sort — partagez les résultats instantanément."
+                    "Collez le lien de votre vidéo TikTok dans YulaSanta ou ajoutez des participants manuellement.",
+                    "Définissez le nombre de gagnants, de suppléants et les règles de participation.",
+                    "Lancez le tirage — partagez les résultats instantanément."
                 ],
-                "faqTitle": "FAQ sur le tirage au sort TikTok",
+                "faqTitle": "FAQ du tirage au sort TikTok",
                 "faq": [
                     {
                         "q": "L'outil de tirage au sort TikTok est-il gratuit ?",
                         "a": "Oui. YulaSanta est entièrement gratuit, avec des tirages illimités et sans inscription."
                     },
                     {
-                        "q": "Dois-je me connecter à mon compte TikTok ?",
-                        "a": "Non. Collez simplement le lien de la vidéo ou ajoutez les commentaires manuellement — aucun mot de passe requis."
+                        "q": "Dois-je me connecter à TikTok ?",
+                        "a": "Non. Collez le lien de la vidéo ou ajoutez les commentaires manuellement, sans mot de passe."
                     },
                     {
                         "q": "Puis-je choisir des gagnants suppléants ?",
-                        "a": "Oui. Vous pouvez définir autant de gagnants principaux et suppléants que vous le souhaitez."
+                        "a": "Oui. Définissez le nombre de gagnants principaux et suppléants que vous souhaitez."
                     },
                     {
                         "q": "Les commentaires multiples d'une même personne comptent-ils ?",
@@ -285,6 +288,7 @@
                 "fetchCta": "Obtenir les participants",
                 "fetching": "Chargement…",
                 "urlHint": "Fonctionne avec les vidéos publiques · Étape 2 automatique après le chargement",
+                "shortsDetected": "Vidéo Shorts détectée",
                 "step1Url": "Étape 1 — Coller le lien YouTube",
                 "step1Manual": "Étape 1 — Ajouter des participants",
                 "step3Title": "Sélectionner les règles et vérifier les participants",
@@ -322,20 +326,20 @@
                 ],
                 "metrics": [
                     {
-                        "value": "Free",
-                        "label": "No signup"
+                        "value": "Gratuit",
+                        "label": "Sans inscription"
                     },
                     {
-                        "value": "API",
-                        "label": "Comment fetch"
+                        "value": "Automatique",
+                        "label": "Récupération des commentaires"
                     },
                     {
                         "value": "100%",
-                        "label": "Random selection"
+                        "label": "Sélection aléatoire"
                     },
                     {
                         "value": "0",
-                        "label": "Login required"
+                        "label": "Connexion requise"
                     }
                 ],
                 "features": [
@@ -434,196 +438,205 @@
                 ]
             },
             "tiktok": {
-                "badge": "TikTok comment giveaway",
+                "badge": "Tirage au sort commentaires TikTok",
                 "heroTitle": "TikTok",
-                "heroHighlight": "comment giveaway",
-                "heroSubtitle": "Paste a video link and pick winners from comments. No login, no password.",
-                "urlPlaceholder": "tiktok.com/@user/video/…",
-                "fetchCta": "Fetch comments",
-                "fetchCtaPaid": "{price} — fetch comments",
-                "fetching": "Fetching…",
-                "urlHint": "Public videos · Up to 1000 comments per fetch · Pasting is free",
-                "step1Url": "TikTok video link",
-                "step1Manual": "Paste comments",
-                "step3Title": "Set winner count",
-                "step3Subtitle": "Ready",
-                "step4Label": "Start the draw",
-                "backToUrl": "← Back to link",
-                "continueWith": "Continue with {count} people",
-                "switchManual": "Paste comments instead →",
-                "automatic": "From link",
-                "manual": "Paste",
-                "selecting": "Selecting…",
-                "winner": "Winner",
-                "backup": "Backup",
+                "heroHighlight": "Tirage au sort commentaires",
+                "heroSubtitle": "Collez le lien d'une vidéo et choisissez des gagnants parmi les commentaires. Sans connexion, sans mot de passe.",
+                "urlPlaceholder": "tiktok.com/@utilisateur/video/…",
+                "fetchCta": "Récupérer les commentaires",
+                "fetchCtaPaid": "{price} — récupérer les commentaires",
+                "fetching": "Récupération…",
+                "urlHint": "Vidéos publiques. Vous pouvez aussi coller des commentaires gratuitement.",
+                "step1Url": "Lien de la vidéo TikTok",
+                "step1Manual": "Coller les commentaires",
+                "step3Title": "Définir le nombre de gagnants",
+                "step3Subtitle": "Prêt",
+                "step4Label": "Lancer le tirage",
+                "backToUrl": "← Retour au lien",
+                "continueWith": "Continuer avec {count} personnes",
+                "switchManual": "Coller les commentaires à la place →",
+                "automatic": "Depuis le lien",
+                "manual": "Coller",
+                "selecting": "Sélection…",
+                "winner": "Gagnant",
+                "backup": "Suppléant",
                 "pngDownload": "PNG",
-                "add": "Add",
-                "loadingWait": "This can take 20–60 seconds",
-                "moreRules": "More rules",
-                "hideRules": "Hide rules",
-                "eligibleCta": "{count} people will enter the draw",
-                "autoUnavailable": "Automatic fetch is unavailable right now. Copy comments from TikTok and paste them — the draw still works.",
-                "priceBadge": "Automatic comment fetch",
-                "priceCap": "up to {count} comments",
-                "priceHint": "One payment, one video. Need more? Paste comments for free.",
-                "followHint": "Shown as a badge after the draw; it does not remove people from the raffle.",
-                "previewImport": "Preview",
-                "importPeople": "Import {count} people",
-                "featuresTitle": "Run a TikTok giveaway without friction",
-                "featuresSubtitle": "One job: paste a link or comments, then pick a winner.",
-                "howTitle": "How it works",
-                "howSubtitle": "Three steps. You never have to guess what to click next.",
-                "startCta": "Start your giveaway",
-                "faqTitle": "Frequently asked questions",
+                "add": "Ajouter",
+                "loadingWait": "Cela peut prendre 20 à 60 secondes",
+                "moreRules": "Plus de règles",
+                "hideRules": "Masquer les règles",
+                "eligibleCta": "{count} personnes participeront au tirage",
+                "autoUnavailable": "La récupération automatique n'est pas disponible pour le moment. Copiez les commentaires depuis TikTok et collez-les — le tirage fonctionne quand même.",
+                "priceBadge": "Récupération automatique des commentaires",
+                "priceCap": "jusqu'à {count} commentaires",
+                "priceHint": "Cliquer sur le lien ouvre une fenêtre de paiement. Aucun compte requis.",
+                "followHint": "Affiché comme badge après le tirage ; cela n'exclut personne du tirage.",
+                "previewImport": "Aperçu",
+                "importPeople": "Importer {count} personnes",
+                "featuresTitle": "Un tirage au sort TikTok équitable",
+                "featuresSubtitle": "Lien ou commentaires, règles, preuve. Sans compte.",
+                "howTitle": "Comment ça marche",
+                "howSubtitle": "Trois étapes. Vous n'aurez jamais à deviner sur quoi cliquer.",
+                "startCta": "Lancez votre tirage au sort",
+                "faqTitle": "Questions fréquentes",
                 "steps": {
-                    "paste": "Link",
-                    "load": "Comments",
-                    "rules": "Rules",
-                    "draw": "Draw"
+                    "paste": "Lien",
+                    "load": "Commentaires",
+                    "rules": "Règles",
+                    "draw": "Tirage"
                 },
                 "trustBadges": [
-                    "No TikTok login",
-                    "Paste fallback",
-                    "One-entry filter",
-                    "Backup winners",
-                    "Free"
+                    "Aucune connexion TikTok requise",
+                    "Solution manuelle de secours",
+                    "Filtre un utilisateur",
+                    "Gagnant suppléant",
+                    "Sans abonnement"
                 ],
                 "metrics": [
                     {
-                        "value": "3",
-                        "label": "Steps"
-                    },
-                    {
                         "value": "0",
-                        "label": "Sign-up"
+                        "label": "Inscription"
                     },
                     {
-                        "value": "Free",
-                        "label": "Giveaway"
+                        "value": "Équitable",
+                        "label": "Tirage"
                     },
                     {
-                        "value": "Proof",
-                        "label": "Fair draw"
+                        "value": "Preuve",
+                        "label": "Résultat"
+                    },
+                    {
+                        "value": "Suppléant",
+                        "label": "Gagnant"
                     }
                 ],
                 "features": [
                     {
-                        "title": "Link or paste",
-                        "desc": "If the video URL fails, paste comments and keep going."
+                        "title": "Lien ou coller",
+                        "desc": "Si l'URL de la vidéo ne fonctionne pas, copiez les commentaires et collez-les pour continuer."
                     },
                     {
-                        "title": "One person once",
-                        "desc": "Repeat comments from the same account are filtered."
+                        "title": "Une personne, une fois",
+                        "desc": "Les commentaires en double d'un même compte sont supprimés."
                     },
                     {
-                        "title": "Keyword / hashtag",
-                        "desc": "Only comments with your phrase enter the draw."
+                        "title": "Mot / hashtag",
+                        "desc": "Seules les personnes ayant écrit #tirage participent au tirage."
                     },
                     {
-                        "title": "Backup winners",
-                        "desc": "Pick reserves if a winner cannot claim."
+                        "title": "Gagnant suppléant",
+                        "desc": "Définissez un suppléant au cas où le gagnant principal serait injoignable."
                     },
                     {
-                        "title": "Exclude owner",
-                        "desc": "Keep the video owner out of the raffle."
+                        "title": "Exclure le propriétaire",
+                        "desc": "Le propriétaire de la vidéo peut être automatiquement exclu de la liste."
                     },
                     {
-                        "title": "Draw proof",
-                        "desc": "Share the seed and timestamp with the result."
+                        "title": "Preuve du tirage",
+                        "desc": "Partagez le résultat avec la graine (seed) et l'horodatage."
                     },
                     {
-                        "title": "PNG card",
-                        "desc": "Download winners as a shareable image."
+                        "title": "Carte PNG",
+                        "desc": "Téléchargez les gagnants sous forme d'image."
                     },
                     {
-                        "title": "No password",
-                        "desc": "We never ask for TikTok login or app access."
+                        "title": "Sans mot de passe",
+                        "desc": "Nous ne demandons jamais votre compte TikTok ni d'autorisation d'application."
                     }
                 ],
                 "howSteps": [
                     {
-                        "title": "Paste the link",
-                        "desc": "Drop the TikTok video URL in the box. If that fails, paste comments."
+                        "title": "Collez le lien",
+                        "desc": "Déposez l'URL de la vidéo TikTok dans le champ. Vous pouvez aussi coller les commentaires vous-même."
                     },
                     {
-                        "title": "Choose winner count",
-                        "desc": "Set how many winners and backups you want. Extra rules are optional."
+                        "title": "Récupérez les commentaires",
+                        "desc": "Confirmez par e-mail. Aucun compte n'est créé."
                     },
                     {
-                        "title": "Draw",
-                        "desc": "A fair shuffle picks from the eligible list. Copy or share the result."
+                        "title": "Lancez le tirage",
+                        "desc": "Choisissez le gagnant, partagez la preuve. Si les commentaires n'arrivent pas, un crédit de tirage est offert à la place d'un remboursement."
                     }
                 ],
                 "faq": [
                     {
-                        "q": "Do I need to log in to TikTok?",
-                        "a": "No. We never ask for a password. A public video link or pasted comments is enough."
+                        "q": "Dois-je me connecter à TikTok ?",
+                        "a": "Non. Nous ne demandons jamais de mot de passe. Un lien de vidéo publique ou des commentaires collés suffisent."
                     },
                     {
-                        "q": "How much is automatic fetch?",
-                        "a": "200 TL per fetch, up to 1000 comments. Pasting comments is free; the draw itself stays free."
+                        "q": "Combien coûte la récupération automatique ?",
+                        "a": "200 TL par récupération, jusqu'à 1000 commentaires. Aucun compte — un e-mail suffit. Coller les commentaires est gratuit."
                     },
                     {
-                        "q": "What if automatic fetch fails?",
-                        "a": "Copy comments from the video and use the Paste tab. The giveaway continues the same way."
+                        "q": "Suis-je remboursé si les commentaires ne se chargent pas ?",
+                        "a": "Non. Le système analyse l'échec et ne rembourse pas immédiatement. Vous recevez à la place 1 crédit de tirage par e-mail."
                     },
                     {
-                        "q": "Is the winner truly random?",
-                        "a": "Yes. A secure shuffle gives every eligible person an equal chance. You can check the proof panel."
+                        "q": "Que faire si la récupération automatique échoue ?",
+                        "a": "Copiez les commentaires de la vidéo et utilisez l'onglet Coller. Le tirage continue de la même façon."
                     },
                     {
-                        "q": "Does ‘must follow’ remove people from the draw?",
-                        "a": "No. Follow status is a badge after the draw. Keyword and one-entry rules decide who is eligible."
+                        "q": "Le gagnant est-il vraiment aléatoire ?",
+                        "a": "Oui. Un mélange sécurisé donne à chaque personne éligible une chance égale. Vous pouvez le vérifier dans le panneau de preuve."
+                    },
+                    {
+                        "q": "L'obligation de suivre exclut-elle des personnes du tirage ?",
+                        "a": "Non. Le statut d'abonnement s'affiche comme un badge après le tirage. Les règles de mot-clé et de participation unique déterminent qui est éligible."
                     }
                 ],
                 "errors": {
-                    "needLink": "Enter a TikTok video link",
-                    "invalidLink": "Enter a valid TikTok link (tiktok.com/@…/video/…)",
-                    "quota": "Automatic comment fetch is over quota. Paste comments to continue.",
-                    "unavailable": "The comment service is not responding. You can paste comments and continue.",
-                    "empty": "No comments found on this video. Try pasting them manually.",
-                    "generic": "Could not fetch comments. Check the link and that the video is public.",
-                    "paymentTimeout": "Payment confirmation is taking longer than expected. Try again in a few minutes or contact us."
+                    "needLink": "Saisissez un lien de vidéo TikTok",
+                    "invalidLink": "Saisissez un lien TikTok valide (tiktok.com/@…/video/…)",
+                    "quota": "Le quota de récupération automatique des commentaires est dépassé. Collez les commentaires pour continuer.",
+                    "unavailable": "Le service de commentaires ne répond pas pour le moment. Vous pouvez coller les commentaires et continuer.",
+                    "empty": "Aucun commentaire trouvé sur cette vidéo. Essayez de les coller manuellement.",
+                    "generic": "Impossible de récupérer les commentaires. Vérifiez le lien et que la vidéo est publique.",
+                    "paymentTimeout": "La confirmation du paiement prend plus de temps que prévu. Réessayez dans quelques minutes ou contactez-nous."
                 },
                 "toasts": {
-                    "added": "@{name} added",
-                    "participantsAdded": "{count} participants added",
-                    "copied": "Results copied",
-                    "cardDownloaded": "Winner card downloaded",
-                    "noNewNames": "No new names to add"
+                    "added": "@{name} ajouté",
+                    "participantsAdded": "{count} participants ajoutés",
+                    "copied": "Résultats copiés",
+                    "cardDownloaded": "Carte du gagnant téléchargée",
+                    "noNewNames": "Aucun nouveau nom à ajouter"
                 },
                 "loadingSteps": [
-                    "Connecting to TikTok…",
-                    "Fetching video comments…",
-                    "Validating participants…",
-                    "Preparing the list…"
+                    "Connexion à TikTok…",
+                    "Récupération des commentaires de la vidéo…",
+                    "Vérification des participants…",
+                    "Préparation de la liste…"
                 ],
                 "pay": {
-                    "openCta": "Fetch comments",
-                    "title": "Confirm the draw",
-                    "subtitle": "Comments are taken from the video. No account is created.",
-                    "emailLabel": "Email",
-                    "emailPlaceholder": "you@email.com",
-                    "emailHint": "Confirmation and any credit go to this address.",
-                    "invalidEmail": "Enter a valid email",
-                    "cta": "Confirm and continue",
-                    "processing": "Going to payment…",
-                    "noMembership": "No account needed",
-                    "serviceName": "Comment fetch",
-                    "feeLine": "One-time service",
-                    "feeHint": "Service fee {price} · no account",
-                    "cap": "up to {count} comments",
-                    "noRefund": "If comments cannot be fetched there is no refund; you receive one draw credit.",
-                    "useCredit": "Continue with your credit",
-                    "creditTitle": "One draw credit added",
-                    "creditBody": "The payment was not refunded. The next automatic fetch uses this credit.",
-                    "creditEmail": "The credit was emailed to you. Use the link to retry.",
-                    "creditSaved": "The credit is saved on this device. Fetch comments again.",
-                    "paymentsDown": "Payments are not open yet. They start after PayTR onboarding is approved.",
-                    "cancelled": "Cancelled. You can try again.",
-                    "salesContractLink": "Read the Distance Sales Contract",
-                    "confirming": "Confirming your payment…"
-                }
+                    "openCta": "Récupérer les commentaires",
+                    "title": "Confirmer le tirage",
+                    "subtitle": "Les commentaires proviennent de la vidéo. Aucun compte n'est créé.",
+                    "emailLabel": "E-mail",
+                    "emailPlaceholder": "vous@email.com",
+                    "emailHint": "La confirmation et tout crédit sont envoyés à cette adresse.",
+                    "invalidEmail": "Saisissez une adresse e-mail valide",
+                    "cta": "Confirmer et continuer",
+                    "processing": "Redirection vers le paiement…",
+                    "noMembership": "Aucun compte nécessaire",
+                    "serviceName": "Récupération de commentaires",
+                    "feeLine": "Service à usage unique",
+                    "feeHint": "Frais de service {price} · aucun compte",
+                    "cap": "jusqu'à {count} commentaires",
+                    "noRefund": "Si les commentaires ne peuvent pas être récupérés, il n'y a pas de remboursement ; vous recevez un crédit de tirage.",
+                    "useCredit": "Continuer avec votre crédit",
+                    "creditTitle": "Un crédit de tirage a été ajouté",
+                    "creditBody": "Le paiement n'a pas été remboursé. La prochaine récupération automatique utilisera ce crédit.",
+                    "creditEmail": "Le crédit vous a été envoyé par e-mail. Utilisez le lien pour réessayer.",
+                    "creditSaved": "Le crédit est enregistré sur cet appareil. Récupérez à nouveau les commentaires.",
+                    "paymentsDown": "Les paiements ne sont pas encore ouverts. Ils démarreront une fois l'inscription PayTR approuvée.",
+                    "cancelled": "Annulé. Vous pouvez réessayer.",
+                    "salesContractLink": "Lire le contrat de vente à distance",
+                    "confirming": "Confirmation de votre paiement…"
+                },
+                "extensionBannerTitle": "Collectez gratuitement avec l'extension Chrome",
+                "extensionBannerBadge": "Gratuit",
+                "extensionBannerDesc": "Sans inscription, sans paiement — collectez les commentaires directement dans votre propre navigateur.",
+                "pasteDivider": "ou collez les commentaires manuellement",
+                "pastePlaceholderExample": "@nom_utilisateur : texte du commentaire\nnom_utilisateur,texte du commentaire"
             }
         },
         "keywordLabel": "Required keyword / hashtag in comment",
@@ -649,7 +662,8 @@
         "eligibleWillEnter": "{count} people will enter the draw",
         "eligibleListTitle": "Eligible participants",
         "eligibleEmpty": "No one matches the filters",
-        "ownerUsernamePlaceholder": "Owner @username"
+        "ownerUsernamePlaceholder": "Owner @username",
+        "toolLabel": "Outil de Tirage"
     },
     "support": {
         "button": "Support",
@@ -1566,7 +1580,7 @@
         "step3": "Cliquez sur le bouton 'Lancer le Tirage'.",
         "step4": "Sur la page de résultats, chacun sélectionne son nom pour voir à qui il doit offrir un cadeau !"
     },
-    "salesContract":     {
+    "salesContract": {
         "meta": {
             "title": "Distance Sales Contract & Cancellation Policy | YulaSanta",
             "description": "Distance sales contract, right of withdrawal, and cancellation/refund terms for YulaSanta's paid TikTok comment-fetch service."

@@ -144,7 +144,7 @@ export default function HomeClientPage() {
                         </Reveal>
 
                         <Reveal delay={120} className="order-2 flex justify-center lg:justify-end">
-                            <div className="relative w-40 sm:w-48 md:w-56 lg:w-[220px] xl:w-[280px] aspect-square">
+                            <div className="relative w-44 sm:w-56 md:w-64 lg:w-[250px] xl:w-[320px] aspect-square">
                                 <div className="absolute inset-0 bg-santa-red/5 rounded-full blur-3xl scale-90" />
                                 <img
                                     alt="YulaSanta Mascot"

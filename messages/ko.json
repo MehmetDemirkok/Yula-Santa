@@ -147,11 +147,14 @@
         "tiktokDesc": "틱톡 영상의 댓글에서 간편하게 무료로 당첨자를 뽑으세요!",
         "meta": {
             "youtube": {
-                "title": "Free YouTube Comment Giveaway Tool | Comment Picker - YulaSanta",
-                "description": "Run fast, fair YouTube comment giveaways. Pick random winners — no signup, no password.",
+                "title": "유튜브 댓글 추첨 도구 | 무료 추첨기 - YulaSanta",
+                "description": "유튜브 댓글에서 공정하게 당첨자를 뽑으세요. 가입도 비밀번호도 필요 없습니다.",
                 "keywords": [
                     "유튜브 추첨",
-                    "댓글 추출"
+                    "유튜브 댓글 추첨",
+                    "유튜브 추첨기",
+                    "무료 유튜브 추첨",
+                    "유튜브 이벤트"
                 ]
             },
             "tiktok": {
@@ -215,62 +218,62 @@
         "checkingSubscription": "확인 중...",
         "seo": {
             "tiktok": {
-                "contentTitle": "틱톡 추첨기 — 무료 틱톡 댓글 추첨",
+                "contentTitle": "틱톡 추첨 도구 — 무료 댓글 추첨",
                 "contentParagraphs": [
-                    "YulaSanta 무료 틱톡 추첨 사이트로 영상 댓글에서 공정하게 당첨자를 뽑으세요. 가입·비밀번호 없이 몇 초면 충분합니다.",
-                    "크리에이터와 브랜드를 위해: 댓글 추첨, 당첨자·예비, 중복 필터, 결과 공유까지 모두 무료입니다."
+                    "YulaSanta는 무료 틱톡 추첨 사이트입니다. 동영상 댓글에서 몇 초 만에 공정한 당첨자를 뽑으세요 — 가입도 비밀번호도 필요 없습니다.",
+                    "크리에이터와 브랜드를 위해 설계됨: 댓글 추첨, 당첨자와 예비 당첨자, 중복 필터링, 결과 공유까지 모두 무료입니다."
                 ],
-                "howToTitle": "틱톡 댓글 추첨 방법",
+                "howToTitle": "틱톡 댓글 추첨 진행 방법",
                 "howToSteps": [
-                    "틱톡 영상 링크를 YulaSanta에 붙여넣거나 참여자를 직접 추가하세요.",
-                    "당첨자·예비 수와 참가 규칙을 설정하세요.",
+                    "틱톡 동영상 링크를 YulaSanta에 붙여넣거나 참가자를 수동으로 추가하세요.",
+                    "당첨자 수, 예비 당첨자 수, 참여 규칙을 설정하세요.",
                     "추첨을 시작하고 결과를 바로 공유하세요."
                 ],
-                "faqTitle": "틱톡 추첨 FAQ",
+                "faqTitle": "틱톡 추첨 자주 묻는 질문",
                 "faq": [
                     {
-                        "q": "틱톡 추첨기는 무료인가요?",
-                        "a": "네. 완전 무료이며 회원가입 없이 무제한 추첨이 가능합니다."
+                        "q": "틱톡 추첨 도구는 무료인가요?",
+                        "a": "네. YulaSanta는 완전 무료이며 무제한 추첨과 가입 절차가 없습니다."
                     },
                     {
-                        "q": "틱톡 로그인이 필요한가요?",
-                        "a": "아니요. 링크 붙여넣기 또는 수동 댓글 추가로 충분합니다."
+                        "q": "틱톡에 로그인해야 하나요?",
+                        "a": "아니요. 동영상 링크를 붙여넣거나 댓글을 수동으로 추가하면 됩니다 — 비밀번호가 필요 없습니다."
                     },
                     {
-                        "q": "예비 당첨자를 뽑을 수 있나요?",
-                        "a": "네. 원하는 수의 당첨자와 예비 당첨자를 설정할 수 있습니다."
+                        "q": "예비 당첨자를 선택할 수 있나요?",
+                        "a": "네. 본선과 예비 당첨자 수를 원하는 만큼 설정할 수 있습니다."
                     },
                     {
-                        "q": "같은 사람의 여러 댓글이 모두 카운트되나요?",
-                        "a": "아니요. 사용자 1회 카운트로 한 사람당 한 번만 참가합니다."
+                        "q": "같은 사람의 여러 댓글이 중복 집계되나요?",
+                        "a": "아니요. “사용자별 한 번만 집계”를 사용하면 각 사용자는 한 번만 참여로 집계됩니다."
                     }
                 ]
             },
             "youtube": {
-                "contentTitle": "How to run a YouTube comment giveaway",
+                "contentTitle": "유튜브 댓글 추첨 진행 방법",
                 "contentParagraphs": [
-                    "YulaSanta is a free YouTube comment picker. No account and no YouTube password.",
-                    "Paste a public video link to fetch comments via the YouTube Data API (there is a paging limit; paste more comments manually if needed). Winners are chosen in your browser with cryptographic randomness."
+                    "YulaSanta는 무료 유튜브 댓글 추첨 도구입니다. 계정이나 유튜브 비밀번호가 필요 없습니다.",
+                    "공개 동영상 링크를 붙여넣으면 YouTube Data API를 통해 댓글을 가져옵니다(페이징 한도가 있으므로 필요하면 댓글을 수동으로 추가하세요). 당첨자는 브라우저에서 암호학적 난수로 선정됩니다."
                 ],
-                "howToTitle": "YouTube comment giveaway steps",
+                "howToTitle": "유튜브 댓글 추첨 단계",
                 "howToSteps": [
-                    "Paste a YouTube video or Shorts link, or add comments manually.",
-                    "Set winner and backup counts; optionally count each user once.",
-                    "Start the draw and copy or download the result."
+                    "유튜브 동영상 또는 Shorts 링크를 붙여넣거나 댓글을 수동으로 추가하세요.",
+                    "당첨자 수와 예비 당첨자 수를 설정하고, 필요하면 사용자별로 한 번만 집계하세요.",
+                    "추첨을 시작하고 결과를 복사하거나 다운로드하세요."
                 ],
-                "faqTitle": "YouTube giveaway FAQ",
+                "faqTitle": "유튜브 추첨 자주 묻는 질문",
                 "faq": [
                     {
-                        "q": "Is the YouTube comment giveaway free?",
-                        "a": "Yes. YulaSanta does not require signup."
+                        "q": "유튜브 댓글 추첨은 무료인가요?",
+                        "a": "네. YulaSanta는 가입이 필요 없습니다."
                     },
                     {
-                        "q": "Do you fetch every comment?",
-                        "a": "The API paginates up to thousands of comments; there is a cap. For longer lists, paste comments manually."
+                        "q": "모든 댓글을 가져오나요?",
+                        "a": "네, 동영상의 대부분의 댓글이 자동으로 가져와집니다. 댓글이 매우 많은 경우 나머지는 수동으로 추가할 수 있습니다."
                     },
                     {
-                        "q": "Is winner selection fair?",
-                        "a": "Yes. We use a Fisher–Yates shuffle and cryptographic random numbers."
+                        "q": "당첨자 선정은 공정한가요?",
+                        "a": "네. 모든 댓글에 동일한 확률이 적용되며, 당첨자는 완전히 무작위로 공정하게 선정됩니다."
                     }
                 ]
             }
@@ -285,6 +288,7 @@
                 "fetchCta": "참가자 가져오기",
                 "fetching": "가져오는 중…",
                 "urlHint": "공개 동영상에서 작동합니다 · 가져온 후 2단계가 자동으로 열립니다",
+                "shortsDetected": "Shorts 동영상 감지됨",
                 "step1Url": "1단계 — YouTube 링크 붙여넣기",
                 "step1Manual": "1단계 — 참가자 추가",
                 "step3Title": "규칙 선택 및 참가자 확인",
@@ -322,20 +326,20 @@
                 ],
                 "metrics": [
                     {
-                        "value": "Free",
-                        "label": "No signup"
+                        "value": "무료",
+                        "label": "가입 불필요"
                     },
                     {
-                        "value": "API",
-                        "label": "Comment fetch"
+                        "value": "자동",
+                        "label": "댓글 수집"
                     },
                     {
                         "value": "100%",
-                        "label": "Random selection"
+                        "label": "무작위 선정"
                     },
                     {
                         "value": "0",
-                        "label": "Login required"
+                        "label": "로그인 필요"
                     }
                 ],
                 "features": [
@@ -434,196 +438,205 @@
                 ]
             },
             "tiktok": {
-                "badge": "TikTok comment giveaway",
-                "heroTitle": "TikTok",
-                "heroHighlight": "comment giveaway",
-                "heroSubtitle": "Paste a video link and pick winners from comments. No login, no password.",
+                "badge": "틱톡 댓글 추첨",
+                "heroTitle": "틱톡",
+                "heroHighlight": "댓글 추첨",
+                "heroSubtitle": "동영상 링크를 붙여넣고 댓글 중에서 당첨자를 선택하세요. 로그인도 비밀번호도 필요 없습니다.",
                 "urlPlaceholder": "tiktok.com/@user/video/…",
-                "fetchCta": "Fetch comments",
-                "fetchCtaPaid": "{price} — fetch comments",
-                "fetching": "Fetching…",
-                "urlHint": "Public videos · Up to 1000 comments per fetch · Pasting is free",
-                "step1Url": "TikTok video link",
-                "step1Manual": "Paste comments",
-                "step3Title": "Set winner count",
-                "step3Subtitle": "Ready",
-                "step4Label": "Start the draw",
-                "backToUrl": "← Back to link",
-                "continueWith": "Continue with {count} people",
-                "switchManual": "Paste comments instead →",
-                "automatic": "From link",
-                "manual": "Paste",
-                "selecting": "Selecting…",
-                "winner": "Winner",
-                "backup": "Backup",
+                "fetchCta": "댓글 가져오기",
+                "fetchCtaPaid": "{price} — 댓글 가져오기",
+                "fetching": "가져오는 중…",
+                "urlHint": "공개 동영상만 가능합니다. 댓글을 무료로 붙여넣을 수도 있습니다.",
+                "step1Url": "틱톡 동영상 링크",
+                "step1Manual": "댓글 붙여넣기",
+                "step3Title": "당첨자 수 설정",
+                "step3Subtitle": "준비 완료",
+                "step4Label": "추첨 시작",
+                "backToUrl": "← 링크로 돌아가기",
+                "continueWith": "{count}명으로 계속하기",
+                "switchManual": "대신 댓글 붙여넣기 →",
+                "automatic": "링크로 가져오기",
+                "manual": "붙여넣기",
+                "selecting": "선정 중…",
+                "winner": "당첨자",
+                "backup": "예비 당첨자",
                 "pngDownload": "PNG",
-                "add": "Add",
-                "loadingWait": "This can take 20–60 seconds",
-                "moreRules": "More rules",
-                "hideRules": "Hide rules",
-                "eligibleCta": "{count} people will enter the draw",
-                "autoUnavailable": "Automatic fetch is unavailable right now. Copy comments from TikTok and paste them — the draw still works.",
-                "priceBadge": "Automatic comment fetch",
-                "priceCap": "up to {count} comments",
-                "priceHint": "One payment, one video. Need more? Paste comments for free.",
-                "followHint": "Shown as a badge after the draw; it does not remove people from the raffle.",
-                "previewImport": "Preview",
-                "importPeople": "Import {count} people",
-                "featuresTitle": "Run a TikTok giveaway without friction",
-                "featuresSubtitle": "One job: paste a link or comments, then pick a winner.",
-                "howTitle": "How it works",
-                "howSubtitle": "Three steps. You never have to guess what to click next.",
-                "startCta": "Start your giveaway",
-                "faqTitle": "Frequently asked questions",
+                "add": "추가",
+                "loadingWait": "20~60초 정도 걸릴 수 있습니다",
+                "moreRules": "추가 규칙",
+                "hideRules": "규칙 숨기기",
+                "eligibleCta": "{count}명이 추첨에 참여합니다",
+                "autoUnavailable": "자동 가져오기가 현재 불가능합니다. 틱톡에서 댓글을 복사해 붙여넣으세요 — 추첨은 그대로 진행됩니다.",
+                "priceBadge": "자동 댓글 가져오기",
+                "priceCap": "최대 {count}개의 댓글",
+                "priceHint": "링크를 탭하면 결제 창이 열립니다. 계정 필요 없음.",
+                "followHint": "추첨 후 배지로 표시되며, 추첨 대상에서 제외되지 않습니다.",
+                "previewImport": "미리보기",
+                "importPeople": "{count}명 가져오기",
+                "featuresTitle": "공정한 틱톡 추첨",
+                "featuresSubtitle": "링크 또는 댓글, 규칙, 증명. 계정 불필요.",
+                "howTitle": "작동 방식",
+                "howSubtitle": "세 단계. 무엇을 클릭해야 할지 고민할 필요가 없습니다.",
+                "startCta": "추첨 시작하기",
+                "faqTitle": "자주 묻는 질문",
                 "steps": {
-                    "paste": "Link",
-                    "load": "Comments",
-                    "rules": "Rules",
-                    "draw": "Draw"
+                    "paste": "링크",
+                    "load": "댓글",
+                    "rules": "규칙",
+                    "draw": "추첨"
                 },
                 "trustBadges": [
-                    "No TikTok login",
-                    "Paste fallback",
-                    "One-entry filter",
-                    "Backup winners",
-                    "Free"
+                    "틱톡 로그인 불필요",
+                    "수동 대체 방법 제공",
+                    "1인 1회 필터",
+                    "예비 당첨자",
+                    "가입 불필요"
                 ],
                 "metrics": [
                     {
-                        "value": "3",
-                        "label": "Steps"
-                    },
-                    {
                         "value": "0",
-                        "label": "Sign-up"
+                        "label": "가입"
                     },
                     {
-                        "value": "Free",
-                        "label": "Giveaway"
+                        "value": "공정",
+                        "label": "추첨"
                     },
                     {
-                        "value": "Proof",
-                        "label": "Fair draw"
+                        "value": "증명",
+                        "label": "결과"
+                    },
+                    {
+                        "value": "예비",
+                        "label": "당첨자"
                     }
                 ],
                 "features": [
                     {
-                        "title": "Link or paste",
-                        "desc": "If the video URL fails, paste comments and keep going."
+                        "title": "링크 또는 붙여넣기",
+                        "desc": "동영상 URL이 작동하지 않으면 댓글을 복사해 붙여넣어 진행하세요."
                     },
                     {
-                        "title": "One person once",
-                        "desc": "Repeat comments from the same account are filtered."
+                        "title": "1인 1회만 인정",
+                        "desc": "동일 계정의 중복 댓글은 제외됩니다."
                     },
                     {
-                        "title": "Keyword / hashtag",
-                        "desc": "Only comments with your phrase enter the draw."
+                        "title": "키워드 / 해시태그",
+                        "desc": "#추첨 이라고 작성한 사람만 추첨에 참여합니다."
                     },
                     {
-                        "title": "Backup winners",
-                        "desc": "Pick reserves if a winner cannot claim."
+                        "title": "예비 당첨자",
+                        "desc": "본 당첨자와 연락이 닿지 않을 경우를 대비해 예비 당첨자를 설정하세요."
                     },
                     {
-                        "title": "Exclude owner",
-                        "desc": "Keep the video owner out of the raffle."
+                        "title": "작성자 제외",
+                        "desc": "동영상 작성자를 목록에서 자동으로 제외할 수 있습니다."
                     },
                     {
-                        "title": "Draw proof",
-                        "desc": "Share the seed and timestamp with the result."
+                        "title": "추첨 증명",
+                        "desc": "시드값과 타임스탬프로 결과를 공유하세요."
                     },
                     {
-                        "title": "PNG card",
-                        "desc": "Download winners as a shareable image."
+                        "title": "PNG 카드",
+                        "desc": "당첨자를 이미지로 다운로드하세요."
                     },
                     {
-                        "title": "No password",
-                        "desc": "We never ask for TikTok login or app access."
+                        "title": "비밀번호 불필요",
+                        "desc": "틱톡 계정이나 앱 권한을 요구하지 않습니다."
                     }
                 ],
                 "howSteps": [
                     {
-                        "title": "Paste the link",
-                        "desc": "Drop the TikTok video URL in the box. If that fails, paste comments."
+                        "title": "링크 붙여넣기",
+                        "desc": "틱톡 동영상 URL을 입력란에 붙여넣으세요. 댓글을 직접 붙여넣을 수도 있습니다."
                     },
                     {
-                        "title": "Choose winner count",
-                        "desc": "Set how many winners and backups you want. Extra rules are optional."
+                        "title": "댓글 가져오기",
+                        "desc": "이메일로 확인합니다. 계정은 생성되지 않습니다."
                     },
                     {
-                        "title": "Draw",
-                        "desc": "A fair shuffle picks from the eligible list. Copy or share the result."
+                        "title": "추첨 진행",
+                        "desc": "당첨자를 선택하고 증명을 공유하세요. 댓글을 가져오지 못하면 환불 대신 추첨권 1회가 제공됩니다."
                     }
                 ],
                 "faq": [
                     {
-                        "q": "Do I need to log in to TikTok?",
-                        "a": "No. We never ask for a password. A public video link or pasted comments is enough."
+                        "q": "틱톡에 로그인해야 하나요?",
+                        "a": "아니요. 비밀번호를 요구하지 않습니다. 공개 동영상 링크나 붙여넣은 댓글만 있으면 충분합니다."
                     },
                     {
-                        "q": "How much is automatic fetch?",
-                        "a": "200 TL per fetch, up to 1000 comments. Pasting comments is free; the draw itself stays free."
+                        "q": "자동 가져오기 비용은 얼마인가요?",
+                        "a": "1회 가져오기당 200TL, 최대 1000개의 댓글까지 가능합니다. 계정 불필요 — 이메일만 있으면 됩니다. 댓글 붙여넣기는 무료입니다."
                     },
                     {
-                        "q": "What if automatic fetch fails?",
-                        "a": "Copy comments from the video and use the Paste tab. The giveaway continues the same way."
+                        "q": "댓글이 로드되지 않으면 환불되나요?",
+                        "a": "아니요. 시스템이 실패 원인을 분석하며 즉시 환불하지 않습니다. 대신 이메일로 추첨권 1회가 제공됩니다."
                     },
                     {
-                        "q": "Is the winner truly random?",
-                        "a": "Yes. A secure shuffle gives every eligible person an equal chance. You can check the proof panel."
+                        "q": "자동 가져오기가 실패하면 어떻게 하나요?",
+                        "a": "동영상의 댓글을 복사해 붙여넣기 탭을 사용하세요. 추첨은 동일하게 진행됩니다."
                     },
                     {
-                        "q": "Does ‘must follow’ remove people from the draw?",
-                        "a": "No. Follow status is a badge after the draw. Keyword and one-entry rules decide who is eligible."
+                        "q": "당첨자 선정이 정말 무작위인가요?",
+                        "a": "네. 안전한 셔플 방식으로 모든 자격 있는 참가자에게 동일한 확률이 부여됩니다. 증명 패널에서 확인할 수 있습니다."
+                    },
+                    {
+                        "q": "'팔로우 필수' 조건이 추첨 대상에서 제외시키나요?",
+                        "a": "아니요. 팔로우 여부는 추첨 후 배지로만 표시됩니다. 참여 자격은 키워드 규칙과 1인 1회 규칙으로 결정됩니다."
                     }
                 ],
                 "errors": {
-                    "needLink": "Enter a TikTok video link",
-                    "invalidLink": "Enter a valid TikTok link (tiktok.com/@…/video/…)",
-                    "quota": "Automatic comment fetch is over quota. Paste comments to continue.",
-                    "unavailable": "The comment service is not responding. You can paste comments and continue.",
-                    "empty": "No comments found on this video. Try pasting them manually.",
-                    "generic": "Could not fetch comments. Check the link and that the video is public.",
-                    "paymentTimeout": "Payment confirmation is taking longer than expected. Try again in a few minutes or contact us."
+                    "needLink": "틱톡 동영상 링크를 입력하세요",
+                    "invalidLink": "유효한 틱톡 링크를 입력하세요 (tiktok.com/@…/video/…)",
+                    "quota": "댓글 자동 가져오기 한도를 초과했습니다. 댓글을 붙여넣어 계속하세요.",
+                    "unavailable": "현재 댓글 서비스가 응답하지 않습니다. 댓글을 붙여넣어 계속할 수 있습니다.",
+                    "empty": "이 동영상에서 댓글을 찾을 수 없습니다. 수동으로 붙여넣어 보세요.",
+                    "generic": "댓글을 가져올 수 없습니다. 링크와 동영상 공개 여부를 확인하세요.",
+                    "paymentTimeout": "결제 확인이 예상보다 오래 걸리고 있습니다. 몇 분 후 다시 시도하거나 문의해 주세요."
                 },
                 "toasts": {
-                    "added": "@{name} added",
-                    "participantsAdded": "{count} participants added",
-                    "copied": "Results copied",
-                    "cardDownloaded": "Winner card downloaded",
-                    "noNewNames": "No new names to add"
+                    "added": "@{name} 추가됨",
+                    "participantsAdded": "{count}명의 참가자가 추가됨",
+                    "copied": "결과가 복사됨",
+                    "cardDownloaded": "당첨자 카드가 다운로드됨",
+                    "noNewNames": "추가할 새 이름이 없습니다"
                 },
                 "loadingSteps": [
-                    "Connecting to TikTok…",
-                    "Fetching video comments…",
-                    "Validating participants…",
-                    "Preparing the list…"
+                    "틱톡에 연결하는 중…",
+                    "동영상 댓글을 가져오는 중…",
+                    "참가자를 확인하는 중…",
+                    "목록을 준비하는 중…"
                 ],
                 "pay": {
-                    "openCta": "Fetch comments",
-                    "title": "Confirm the draw",
-                    "subtitle": "Comments are taken from the video. No account is created.",
-                    "emailLabel": "Email",
+                    "openCta": "댓글 가져오기",
+                    "title": "추첨 확인",
+                    "subtitle": "댓글은 동영상에서 가져옵니다. 계정은 생성되지 않습니다.",
+                    "emailLabel": "이메일",
                     "emailPlaceholder": "you@email.com",
-                    "emailHint": "Confirmation and any credit go to this address.",
-                    "invalidEmail": "Enter a valid email",
-                    "cta": "Confirm and continue",
-                    "processing": "Going to payment…",
-                    "noMembership": "No account needed",
-                    "serviceName": "Comment fetch",
-                    "feeLine": "One-time service",
-                    "feeHint": "Service fee {price} · no account",
-                    "cap": "up to {count} comments",
-                    "noRefund": "If comments cannot be fetched there is no refund; you receive one draw credit.",
-                    "useCredit": "Continue with your credit",
-                    "creditTitle": "One draw credit added",
-                    "creditBody": "The payment was not refunded. The next automatic fetch uses this credit.",
-                    "creditEmail": "The credit was emailed to you. Use the link to retry.",
-                    "creditSaved": "The credit is saved on this device. Fetch comments again.",
-                    "paymentsDown": "Payments are not open yet. They start after PayTR onboarding is approved.",
-                    "cancelled": "Cancelled. You can try again.",
-                    "salesContractLink": "Read the Distance Sales Contract",
-                    "confirming": "Confirming your payment…"
-                }
+                    "emailHint": "확인 메일과 크레딧은 이 주소로 전송됩니다.",
+                    "invalidEmail": "유효한 이메일을 입력하세요",
+                    "cta": "확인하고 계속하기",
+                    "processing": "결제 페이지로 이동 중…",
+                    "noMembership": "계정이 필요하지 않습니다",
+                    "serviceName": "댓글 가져오기",
+                    "feeLine": "일회성 서비스",
+                    "feeHint": "서비스 요금 {price} · 계정 불필요",
+                    "cap": "최대 {count}개의 댓글",
+                    "noRefund": "댓글을 가져올 수 없는 경우 환불되지 않으며, 대신 추첨권 1회가 제공됩니다.",
+                    "useCredit": "보유한 크레딧으로 계속하기",
+                    "creditTitle": "추첨권 1회가 추가되었습니다",
+                    "creditBody": "결제는 환불되지 않았습니다. 다음 자동 가져오기에 이 크레딧이 사용됩니다.",
+                    "creditEmail": "크레딧이 이메일로 전송되었습니다. 링크를 통해 다시 시도하세요.",
+                    "creditSaved": "크레딧이 이 기기에 저장되었습니다. 댓글을 다시 가져오세요.",
+                    "paymentsDown": "결제 기능이 아직 열리지 않았습니다. PayTR 승인 후 시작됩니다.",
+                    "cancelled": "취소되었습니다. 다시 시도할 수 있습니다.",
+                    "salesContractLink": "통신판매계약서 읽기",
+                    "confirming": "결제를 확인하는 중…"
+                },
+                "extensionBannerTitle": "Chrome 확장 프로그램으로 무료로 수집하기",
+                "extensionBannerBadge": "무료",
+                "extensionBannerDesc": "가입도 결제도 필요 없이, 사용 중인 브라우저에서 바로 댓글을 수집하세요.",
+                "pasteDivider": "또는 댓글을 수동으로 붙여넣기",
+                "pastePlaceholderExample": "@사용자이름: 댓글 내용\n사용자이름,댓글 내용"
             }
         },
         "keywordLabel": "Required keyword / hashtag in comment",
@@ -649,7 +662,8 @@
         "eligibleWillEnter": "{count} people will enter the draw",
         "eligibleListTitle": "Eligible participants",
         "eligibleEmpty": "No one matches the filters",
-        "ownerUsernamePlaceholder": "Owner @username"
+        "ownerUsernamePlaceholder": "Owner @username",
+        "toolLabel": "추첨 도구"
     },
     "support": {
         "button": "고객지원",
@@ -1566,7 +1580,7 @@
         "step3": "'새해 추첨 시작' 버튼을 클릭합니다.",
         "step4": "결과 페이지에서 각자 자신의 이름을 선택하여 선물을 줄 사람을 확인합니다!"
     },
-    "salesContract":     {
+    "salesContract": {
         "meta": {
             "title": "Distance Sales Contract & Cancellation Policy | YulaSanta",
             "description": "Distance sales contract, right of withdrawal, and cancellation/refund terms for YulaSanta's paid TikTok comment-fetch service."

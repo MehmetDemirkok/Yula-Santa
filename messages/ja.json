@@ -147,11 +147,14 @@
         "tiktokDesc": "TikTok動画のコメントから簡単に抽選を実施。無料で当選者を選べます！",
         "meta": {
             "youtube": {
-                "title": "Free YouTube Comment Giveaway Tool | Comment Picker - YulaSanta",
-                "description": "Run fast, fair YouTube comment giveaways. Pick random winners — no signup, no password.",
+                "title": "YouTubeコメント抽選ツール | 無料抽選 - YulaSanta",
+                "description": "YouTubeのコメントから公平に当選者を選びます。登録もパスワードも不要。",
                 "keywords": [
-                    "YouTube 抽選",
-                    "コメント 抽出"
+                    "youtube 抽選",
+                    "youtubeコメント抽選",
+                    "youtube 当選者選び",
+                    "youtube 抽選ツール",
+                    "無料 youtube 抽選"
                 ]
             },
             "tiktok": {
@@ -214,62 +217,62 @@
         "checkingSubscription": "確認中...",
         "seo": {
             "youtube": {
-                "contentTitle": "How to run a YouTube comment giveaway",
+                "contentTitle": "YouTubeコメント抽選のやり方",
                 "contentParagraphs": [
-                    "YulaSanta is a free YouTube comment picker. No account and no YouTube password.",
-                    "Paste a public video link to fetch comments via the YouTube Data API (there is a paging limit; paste more comments manually if needed). Winners are chosen in your browser with cryptographic randomness."
+                    "YulaSantaは無料のYouTubeコメント抽選ツールです。アカウント登録やYouTubeのパスワードは不要です。",
+                    "公開動画のリンクを貼り付けると、YouTube Data API経由でコメントを取得します(ページング制限があるため、必要に応じてコメントを手動で追加してください)。当選者はブラウザ内で暗号学的な乱数により選ばれます。"
                 ],
-                "howToTitle": "YouTube comment giveaway steps",
+                "howToTitle": "YouTubeコメント抽選の手順",
                 "howToSteps": [
-                    "Paste a YouTube video or Shorts link, or add comments manually.",
-                    "Set winner and backup counts; optionally count each user once.",
-                    "Start the draw and copy or download the result."
+                    "YouTube動画またはShortsのリンクを貼り付けるか、コメントを手動で追加します。",
+                    "当選者数と補欠数を設定します。必要に応じて同一ユーザーを1回のみカウントできます。",
+                    "抽選を開始し、結果をコピーまたはダウンロードします。"
                 ],
-                "faqTitle": "YouTube giveaway FAQ",
+                "faqTitle": "YouTube抽選に関するよくある質問",
                 "faq": [
                     {
-                        "q": "Is the YouTube comment giveaway free?",
-                        "a": "Yes. YulaSanta does not require signup."
+                        "q": "YouTubeコメント抽選は無料ですか?",
+                        "a": "はい。YulaSantaは登録不要です。"
                     },
                     {
-                        "q": "Do you fetch every comment?",
-                        "a": "The API paginates up to thousands of comments; there is a cap. For longer lists, paste comments manually."
+                        "q": "すべてのコメントを取得しますか?",
+                        "a": "はい。動画のほとんどのコメントが自動的に取得されます。非常に長いコメントリストの場合は、残りを手動で追加できます。"
                     },
                     {
-                        "q": "Is winner selection fair?",
-                        "a": "Yes. We use a Fisher–Yates shuffle and cryptographic random numbers."
+                        "q": "当選者の選出は公平ですか?",
+                        "a": "はい。すべてのコメントに平等なチャンスがあり、当選者は完全にランダムかつ公平に選ばれます。"
                     }
                 ]
             },
             "tiktok": {
-                "contentTitle": "TikTokプレゼント抽選ツール — 無料コメント抽選",
+                "contentTitle": "TikTok抽選ツール — 無料コメント抽選",
                 "contentParagraphs": [
-                    "YulaSantaは無料のTikTok抽選サイトです。動画のコメントの中から公平に当選者を数秒で選べます — 登録もパスワードも不要です。",
-                    "クリエイターやブランド向けに設計: コメント抽選、当選者と補欠、重複参加者のフィルター、結果の共有まで、すべて無料でご利用いただけます。"
+                    "YulaSantaは無料のTikTok抽選サイトです。動画コメントから数秒で公平な当選者を選べます — 登録もパスワードも不要です。",
+                    "クリエイターやブランド向けに設計: コメント抽選、当選者と補欠、重複コメントの除外、結果の共有まで、すべて無料です。"
                 ],
                 "howToTitle": "TikTokコメント抽選のやり方",
                 "howToSteps": [
                     "TikTok動画のリンクをYulaSantaに貼り付けるか、参加者を手動で追加します。",
-                    "当選者数と補欠数、参加ルールを設定します。",
-                    "抽選を開始 — 結果をすぐに共有できます。"
+                    "当選者数、補欠数、参加ルールを設定します。",
+                    "抽選を開始し、結果をすぐに共有します。"
                 ],
-                "faqTitle": "TikTok抽選 よくある質問",
+                "faqTitle": "TikTok抽選に関するよくある質問",
                 "faq": [
                     {
                         "q": "TikTok抽選ツールは無料ですか?",
-                        "a": "はい。YulaSantaは完全無料で、登録不要・抽選回数の制限もありません。"
+                        "a": "はい。YulaSantaは完全無料で、抽選回数の制限も登録も不要です。"
                     },
                     {
-                        "q": "TikTokアカウントへのログインは必要ですか?",
+                        "q": "TikTokにログインする必要がありますか?",
                         "a": "いいえ。動画リンクを貼り付けるか、コメントを手動で追加するだけで、パスワードは不要です。"
                     },
                     {
-                        "q": "補欠当選者を選ぶことはできますか?",
+                        "q": "補欠当選者を選べますか?",
                         "a": "はい。本選と補欠の当選者数を自由に設定できます。"
                     },
                     {
-                        "q": "同じ人が複数コメントした場合はカウントされますか?",
-                        "a": "いいえ。「ユーザーごとに1回のみカウント」を使うと、各参加者は1回だけ参加としてカウントされます。"
+                        "q": "同じ人の複数コメントはカウントされますか?",
+                        "a": "いいえ。「ユーザーを1回のみカウント」を使うと、各ユーザーは1回のみ参加としてカウントされます。"
                     }
                 ]
             }
@@ -284,6 +287,7 @@
                 "fetchCta": "参加者を読み込む",
                 "fetching": "読み込み中…",
                 "urlHint": "公開動画に対応 · 読み込み後、ステップ2が自動で開きます",
+                "shortsDetected": "Shorts動画を検出しました",
                 "step1Url": "ステップ1 — YouTubeリンクを貼り付け",
                 "step1Manual": "ステップ1 — 参加者を追加",
                 "step3Title": "ルールを選択して参加者を確認",
@@ -321,20 +325,20 @@
                 ],
                 "metrics": [
                     {
-                        "value": "Free",
-                        "label": "No signup"
+                        "value": "無料",
+                        "label": "登録不要"
                     },
                     {
-                        "value": "API",
-                        "label": "Comment fetch"
+                        "value": "自動",
+                        "label": "コメント取得"
                     },
                     {
                         "value": "100%",
-                        "label": "Random selection"
+                        "label": "ランダム選出"
                     },
                     {
                         "value": "0",
-                        "label": "Login required"
+                        "label": "ログイン必要"
                     }
                 ],
                 "features": [
@@ -433,196 +437,205 @@
                 ]
             },
             "tiktok": {
-                "badge": "TikTok comment giveaway",
+                "badge": "TikTokコメント抽選",
                 "heroTitle": "TikTok",
-                "heroHighlight": "comment giveaway",
-                "heroSubtitle": "Paste a video link and pick winners from comments. No login, no password.",
+                "heroHighlight": "コメント抽選",
+                "heroSubtitle": "動画リンクを貼り付けてコメントから当選者を選びます。ログイン不要、パスワード不要。",
                 "urlPlaceholder": "tiktok.com/@user/video/…",
-                "fetchCta": "Fetch comments",
-                "fetchCtaPaid": "{price} — fetch comments",
-                "fetching": "Fetching…",
-                "urlHint": "Public videos · Up to 1000 comments per fetch · Pasting is free",
-                "step1Url": "TikTok video link",
-                "step1Manual": "Paste comments",
-                "step3Title": "Set winner count",
-                "step3Subtitle": "Ready",
-                "step4Label": "Start the draw",
-                "backToUrl": "← Back to link",
-                "continueWith": "Continue with {count} people",
-                "switchManual": "Paste comments instead →",
-                "automatic": "From link",
-                "manual": "Paste",
-                "selecting": "Selecting…",
-                "winner": "Winner",
-                "backup": "Backup",
+                "fetchCta": "コメントを取得",
+                "fetchCtaPaid": "{price} — コメントを取得",
+                "fetching": "取得中…",
+                "urlHint": "公開動画のみ対応。コメントは無料で貼り付けることもできます。",
+                "step1Url": "TikTok動画リンク",
+                "step1Manual": "コメントを貼り付け",
+                "step3Title": "当選者数を設定",
+                "step3Subtitle": "準備完了",
+                "step4Label": "抽選を開始",
+                "backToUrl": "← リンクに戻る",
+                "continueWith": "{count}人で続ける",
+                "switchManual": "代わりにコメントを貼り付ける →",
+                "automatic": "リンクから",
+                "manual": "貼り付け",
+                "selecting": "選出中…",
+                "winner": "当選者",
+                "backup": "補欠",
                 "pngDownload": "PNG",
-                "add": "Add",
-                "loadingWait": "This can take 20–60 seconds",
-                "moreRules": "More rules",
-                "hideRules": "Hide rules",
-                "eligibleCta": "{count} people will enter the draw",
-                "autoUnavailable": "Automatic fetch is unavailable right now. Copy comments from TikTok and paste them — the draw still works.",
-                "priceBadge": "Automatic comment fetch",
-                "priceCap": "up to {count} comments",
-                "priceHint": "One payment, one video. Need more? Paste comments for free.",
-                "followHint": "Shown as a badge after the draw; it does not remove people from the raffle.",
-                "previewImport": "Preview",
-                "importPeople": "Import {count} people",
-                "featuresTitle": "Run a TikTok giveaway without friction",
-                "featuresSubtitle": "One job: paste a link or comments, then pick a winner.",
-                "howTitle": "How it works",
-                "howSubtitle": "Three steps. You never have to guess what to click next.",
-                "startCta": "Start your giveaway",
-                "faqTitle": "Frequently asked questions",
+                "add": "追加",
+                "loadingWait": "20〜60秒ほどかかることがあります",
+                "moreRules": "詳細ルール",
+                "hideRules": "ルールを隠す",
+                "eligibleCta": "{count}人が抽選に参加します",
+                "autoUnavailable": "自動取得は現在利用できません。TikTokからコメントをコピーして貼り付けてください — 抽選は問題なく行えます。",
+                "priceBadge": "コメント自動取得",
+                "priceCap": "最大{count}件のコメント",
+                "priceHint": "リンクをタップすると支払いウィンドウが開きます。アカウント登録は不要です。",
+                "followHint": "抽選後にバッジとして表示されます。参加資格を奪うものではありません。",
+                "previewImport": "プレビュー",
+                "importPeople": "{count}人をインポート",
+                "featuresTitle": "公平なTikTok抽選",
+                "featuresSubtitle": "リンクまたはコメント、ルール、証明。アカウント不要。",
+                "howTitle": "使い方",
+                "howSubtitle": "3ステップ。次に何をクリックすべきか迷うことはありません。",
+                "startCta": "抽選を始める",
+                "faqTitle": "よくある質問",
                 "steps": {
-                    "paste": "Link",
-                    "load": "Comments",
-                    "rules": "Rules",
-                    "draw": "Draw"
+                    "paste": "リンク",
+                    "load": "コメント",
+                    "rules": "ルール",
+                    "draw": "抽選"
                 },
                 "trustBadges": [
-                    "No TikTok login",
-                    "Paste fallback",
-                    "One-entry filter",
-                    "Backup winners",
-                    "Free"
+                    "TikTokログイン不要",
+                    "手動での代替手段あり",
+                    "1ユーザー1回フィルター",
+                    "補欠当選者",
+                    "登録不要"
                 ],
                 "metrics": [
                     {
-                        "value": "3",
-                        "label": "Steps"
-                    },
-                    {
                         "value": "0",
-                        "label": "Sign-up"
+                        "label": "登録"
                     },
                     {
-                        "value": "Free",
-                        "label": "Giveaway"
+                        "value": "公平",
+                        "label": "抽選"
                     },
                     {
-                        "value": "Proof",
-                        "label": "Fair draw"
+                        "value": "証明",
+                        "label": "結果"
+                    },
+                    {
+                        "value": "補欠",
+                        "label": "当選者"
                     }
                 ],
                 "features": [
                     {
-                        "title": "Link or paste",
-                        "desc": "If the video URL fails, paste comments and keep going."
+                        "title": "リンクまたは貼り付け",
+                        "desc": "動画URLが機能しない場合は、コメントをコピーして貼り付けてください。"
                     },
                     {
-                        "title": "One person once",
-                        "desc": "Repeat comments from the same account are filtered."
+                        "title": "1人1回まで",
+                        "desc": "同じアカウントからの重複コメントは除外されます。"
                     },
                     {
-                        "title": "Keyword / hashtag",
-                        "desc": "Only comments with your phrase enter the draw."
+                        "title": "キーワード / ハッシュタグ",
+                        "desc": "#抽選 と書いた人だけが抽選に参加します。"
                     },
                     {
-                        "title": "Backup winners",
-                        "desc": "Pick reserves if a winner cannot claim."
+                        "title": "補欠当選者",
+                        "desc": "本選当選者に連絡が取れない場合に備えて補欠を設定できます。"
                     },
                     {
-                        "title": "Exclude owner",
-                        "desc": "Keep the video owner out of the raffle."
+                        "title": "投稿者を除外",
+                        "desc": "動画の投稿者を自動的にリストから除外できます。"
                     },
                     {
-                        "title": "Draw proof",
-                        "desc": "Share the seed and timestamp with the result."
+                        "title": "抽選の証明",
+                        "desc": "シードとタイムスタンプ付きで結果を共有できます。"
                     },
                     {
-                        "title": "PNG card",
-                        "desc": "Download winners as a shareable image."
+                        "title": "PNGカード",
+                        "desc": "当選者を画像としてダウンロードできます。"
                     },
                     {
-                        "title": "No password",
-                        "desc": "We never ask for TikTok login or app access."
+                        "title": "パスワード不要",
+                        "desc": "TikTokアカウントやアプリの許可は一切求めません。"
                     }
                 ],
                 "howSteps": [
                     {
-                        "title": "Paste the link",
-                        "desc": "Drop the TikTok video URL in the box. If that fails, paste comments."
+                        "title": "リンクを貼り付け",
+                        "desc": "TikTok動画のURLを入力欄に貼り付けます。コメントをご自身で貼り付けることもできます。"
                     },
                     {
-                        "title": "Choose winner count",
-                        "desc": "Set how many winners and backups you want. Extra rules are optional."
+                        "title": "コメントを取得",
+                        "desc": "メールで確認します。アカウントは作成されません。"
                     },
                     {
-                        "title": "Draw",
-                        "desc": "A fair shuffle picks from the eligible list. Copy or share the result."
+                        "title": "抽選を実行",
+                        "desc": "当選者を選び、証明を共有します。コメントが取得できない場合、返金の代わりに抽選クレジットが付与されます。"
                     }
                 ],
                 "faq": [
                     {
-                        "q": "Do I need to log in to TikTok?",
-                        "a": "No. We never ask for a password. A public video link or pasted comments is enough."
+                        "q": "TikTokにログインする必要がありますか?",
+                        "a": "いいえ。パスワードを求めることはありません。公開動画のリンクまたは貼り付けたコメントで十分です。"
                     },
                     {
-                        "q": "How much is automatic fetch?",
-                        "a": "200 TL per fetch, up to 1000 comments. Pasting comments is free; the draw itself stays free."
+                        "q": "自動取得の料金はいくらですか?",
+                        "a": "1回の取得につき200TL、最大1000件のコメントまで。アカウント不要 — メールアドレスがあれば十分です。コメントの貼り付けは無料です。"
                     },
                     {
-                        "q": "What if automatic fetch fails?",
-                        "a": "Copy comments from the video and use the Paste tab. The giveaway continues the same way."
+                        "q": "コメントが読み込まれない場合、返金されますか?",
+                        "a": "いいえ。システムが失敗の原因を分析し、即座には返金しません。代わりにメールで抽選クレジットが1回分付与されます。"
                     },
                     {
-                        "q": "Is the winner truly random?",
-                        "a": "Yes. A secure shuffle gives every eligible person an equal chance. You can check the proof panel."
+                        "q": "自動取得が失敗した場合はどうすればいいですか?",
+                        "a": "動画のコメントをコピーして「貼り付け」タブを使用してください。抽選は同じように続行できます。"
                     },
                     {
-                        "q": "Does ‘must follow’ remove people from the draw?",
-                        "a": "No. Follow status is a badge after the draw. Keyword and one-entry rules decide who is eligible."
+                        "q": "当選者選出は本当にランダムですか?",
+                        "a": "はい。安全なシャッフルにより、対象者全員に平等なチャンスが与えられます。証明パネルで確認できます。"
+                    },
+                    {
+                        "q": "「フォロー必須」は抽選から人を除外しますか?",
+                        "a": "いいえ。フォロー状況は抽選後にバッジとして表示されるだけです。キーワードと1人1回のルールが参加資格を決定します。"
                     }
                 ],
                 "errors": {
-                    "needLink": "Enter a TikTok video link",
-                    "invalidLink": "Enter a valid TikTok link (tiktok.com/@…/video/…)",
-                    "quota": "Automatic comment fetch is over quota. Paste comments to continue.",
-                    "unavailable": "The comment service is not responding. You can paste comments and continue.",
-                    "empty": "No comments found on this video. Try pasting them manually.",
-                    "generic": "Could not fetch comments. Check the link and that the video is public.",
-                    "paymentTimeout": "Payment confirmation is taking longer than expected. Try again in a few minutes or contact us."
+                    "needLink": "TikTok動画のリンクを入力してください",
+                    "invalidLink": "有効なTikTokリンクを入力してください (tiktok.com/@…/video/…)",
+                    "quota": "コメント自動取得のクォータを超えました。コメントを貼り付けて続行してください。",
+                    "unavailable": "現在コメントサービスが応答していません。コメントを貼り付けて続行できます。",
+                    "empty": "この動画にはコメントが見つかりませんでした。手動での貼り付けをお試しください。",
+                    "generic": "コメントを取得できませんでした。リンクと動画が公開されているかご確認ください。",
+                    "paymentTimeout": "支払いの確認に予想より時間がかかっています。数分後に再試行するか、お問い合わせください。"
                 },
                 "toasts": {
-                    "added": "@{name} added",
-                    "participantsAdded": "{count} participants added",
-                    "copied": "Results copied",
-                    "cardDownloaded": "Winner card downloaded",
-                    "noNewNames": "No new names to add"
+                    "added": "@{name} を追加しました",
+                    "participantsAdded": "{count}人の参加者を追加しました",
+                    "copied": "結果をコピーしました",
+                    "cardDownloaded": "当選者カードをダウンロードしました",
+                    "noNewNames": "追加できる新しい名前はありません"
                 },
                 "loadingSteps": [
-                    "Connecting to TikTok…",
-                    "Fetching video comments…",
-                    "Validating participants…",
-                    "Preparing the list…"
+                    "TikTokに接続しています…",
+                    "動画のコメントを取得しています…",
+                    "参加者を確認しています…",
+                    "リストを準備しています…"
                 ],
                 "pay": {
-                    "openCta": "Fetch comments",
-                    "title": "Confirm the draw",
-                    "subtitle": "Comments are taken from the video. No account is created.",
-                    "emailLabel": "Email",
+                    "openCta": "コメントを取得",
+                    "title": "抽選を確定",
+                    "subtitle": "コメントは動画から取得されます。アカウントは作成されません。",
+                    "emailLabel": "メールアドレス",
                     "emailPlaceholder": "you@email.com",
-                    "emailHint": "Confirmation and any credit go to this address.",
-                    "invalidEmail": "Enter a valid email",
-                    "cta": "Confirm and continue",
-                    "processing": "Going to payment…",
-                    "noMembership": "No account needed",
-                    "serviceName": "Comment fetch",
-                    "feeLine": "One-time service",
-                    "feeHint": "Service fee {price} · no account",
-                    "cap": "up to {count} comments",
-                    "noRefund": "If comments cannot be fetched there is no refund; you receive one draw credit.",
-                    "useCredit": "Continue with your credit",
-                    "creditTitle": "One draw credit added",
-                    "creditBody": "The payment was not refunded. The next automatic fetch uses this credit.",
-                    "creditEmail": "The credit was emailed to you. Use the link to retry.",
-                    "creditSaved": "The credit is saved on this device. Fetch comments again.",
-                    "paymentsDown": "Payments are not open yet. They start after PayTR onboarding is approved.",
-                    "cancelled": "Cancelled. You can try again.",
-                    "salesContractLink": "Read the Distance Sales Contract",
-                    "confirming": "Confirming your payment…"
-                }
+                    "emailHint": "確認メールおよびクレジットはこのアドレスに送信されます。",
+                    "invalidEmail": "有効なメールアドレスを入力してください",
+                    "cta": "確定して続ける",
+                    "processing": "お支払いページに移動しています…",
+                    "noMembership": "アカウント登録は不要です",
+                    "serviceName": "コメント取得",
+                    "feeLine": "一回限りのサービス",
+                    "feeHint": "サービス料金 {price} ・アカウント不要",
+                    "cap": "最大{count}件のコメント",
+                    "noRefund": "コメントを取得できない場合、返金はされません。代わりに抽選クレジットが1回分付与されます。",
+                    "useCredit": "クレジットを使って続ける",
+                    "creditTitle": "抽選クレジットが1回分付与されました",
+                    "creditBody": "お支払いは返金されませんでした。次回の自動取得ではこのクレジットが使用されます。",
+                    "creditEmail": "クレジットはメールで送信されました。リンクから再試行してください。",
+                    "creditSaved": "クレジットはこの端末に保存されています。もう一度コメントを取得してください。",
+                    "paymentsDown": "お支払い機能はまだ開放されていません。PayTRの審査が承認され次第、開始されます。",
+                    "cancelled": "キャンセルされました。再度お試しいただけます。",
+                    "salesContractLink": "特定商取引法に基づく通信販売契約を読む",
+                    "confirming": "お支払いを確認しています…"
+                },
+                "extensionBannerTitle": "Chrome拡張機能で無料収集",
+                "extensionBannerBadge": "無料",
+                "extensionBannerDesc": "登録不要、支払い不要 — ご自身のブラウザでそのままコメントを収集できます。",
+                "pasteDivider": "または手動でコメントを貼り付け",
+                "pastePlaceholderExample": "@ユーザー名: コメント本文\nユーザー名,コメント本文"
             }
         },
         "keywordLabel": "Required keyword / hashtag in comment",
@@ -648,7 +661,8 @@
         "eligibleWillEnter": "{count} people will enter the draw",
         "eligibleListTitle": "Eligible participants",
         "eligibleEmpty": "No one matches the filters",
-        "ownerUsernamePlaceholder": "Owner @username"
+        "ownerUsernamePlaceholder": "Owner @username",
+        "toolLabel": "抽選ツール"
     },
     "support": {
         "button": "サポート",
@@ -1565,7 +1579,7 @@
         "step3": "「新年抽選を始める」ボタンをクリックします。",
         "step4": "結果ページで、全員が自分の名前を選択して、誰にプレゼントを贈るかを確認します！"
     },
-    "salesContract":     {
+    "salesContract": {
         "meta": {
             "title": "Distance Sales Contract & Cancellation Policy | YulaSanta",
             "description": "Distance sales contract, right of withdrawal, and cancellation/refund terms for YulaSanta's paid TikTok comment-fetch service."

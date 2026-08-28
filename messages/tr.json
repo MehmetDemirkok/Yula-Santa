@@ -201,11 +201,11 @@
                     },
                     {
                         "q": "Tüm yorumlar çekilir mi?",
-                        "a": "API ile binlerce yoruma kadar sayfalama yapılır; üst sınır vardır. Daha uzun listeler için yorumları yapıştırabilirsiniz."
+                        "a": "Evet, videodaki yorumların büyük çoğunluğu otomatik olarak getirilir. Yorum listesi çok uzunsa dilerseniz kalanını elle ekleyebilirsiniz."
                     },
                     {
                         "q": "Kazanan seçimi adil mi?",
-                        "a": "Evet. Fisher–Yates karıştırması ve kriptografik rastgele sayı kullanılır."
+                        "a": "Evet. Her yorum eşit şansa sahiptir ve kazanan tamamen rastgele, tarafsız bir şekilde seçilir."
                     }
                 ]
             },
@@ -291,7 +291,6 @@
                 "fetching": "Getiriliyor…",
                 "urlHint": "Herkese açık videolarla çalışır · Getirdikten sonra 2. adım otomatik açılır",
                 "shortsDetected": "Shorts Videosu Algılandı",
-                "freeLimit": "500 yoruma kadar ücretsiz",
                 "step1Url": "Adım 1 — YouTube linkini yapıştır",
                 "step1Manual": "Adım 1 — Katılımcı ekle",
                 "step3Title": "Kuralları seç ve katılımcıları kontrol et",
@@ -333,7 +332,7 @@
                         "label": "Kayıt yok"
                     },
                     {
-                        "value": "API",
+                        "value": "Otomatik",
                         "label": "Yorum çekme"
                     },
                     {
@@ -450,7 +449,6 @@
                 "fetchCtaPaid": "{price} — yorumları çek",
                 "fetching": "Çekiliyor…",
                 "urlHint": "Herkese açık videolar. Dilerseniz yorumları ücretsiz yapıştırabilirsiniz.",
-                "freeLimit": "500 yoruma kadar ücretsiz",
                 "step1Url": "TikTok video linki",
                 "step1Manual": "Yorumları yapıştır",
                 "step3Title": "Kazanan sayısını ayarla",
@@ -497,25 +495,70 @@
                     "Üyelik yok"
                 ],
                 "metrics": [
-                    { "value": "0", "label": "Kayıt" },
-                    { "value": "Adil", "label": "Kura" },
-                    { "value": "Kanıt", "label": "Sonuç" },
-                    { "value": "Yedek", "label": "Kazanan" }
+                    {
+                        "value": "0",
+                        "label": "Kayıt"
+                    },
+                    {
+                        "value": "Adil",
+                        "label": "Kura"
+                    },
+                    {
+                        "value": "Kanıt",
+                        "label": "Sonuç"
+                    },
+                    {
+                        "value": "Yedek",
+                        "label": "Kazanan"
+                    }
                 ],
                 "features": [
-                    { "title": "Link veya yapıştır", "desc": "Video URL’si çalışmazsa yorumları kopyalayıp devam edin." },
-                    { "title": "Tek kişi bir kez", "desc": "Aynı hesabın tekrar yorumları elenir." },
-                    { "title": "Kelime / hashtag", "desc": "Sadece #çekiliş yazanlar kura’ya girsin." },
-                    { "title": "Yedek kazanan", "desc": "Ulaşılamayan asil için yedek seçin." },
-                    { "title": "Sahibi hariç tut", "desc": "Video sahibi otomatik listeden çıkarılabilir." },
-                    { "title": "Çekiliş kanıtı", "desc": "Seed ve zaman damgası ile sonucu paylaşın." },
-                    { "title": "PNG kart", "desc": "Kazananları görsel olarak indirin." },
-                    { "title": "Şifresiz", "desc": "TikTok hesabı veya uygulama izni istemeyiz." }
+                    {
+                        "title": "Link veya yapıştır",
+                        "desc": "Video URL’si çalışmazsa yorumları kopyalayıp devam edin."
+                    },
+                    {
+                        "title": "Tek kişi bir kez",
+                        "desc": "Aynı hesabın tekrar yorumları elenir."
+                    },
+                    {
+                        "title": "Kelime / hashtag",
+                        "desc": "Sadece #çekiliş yazanlar kura’ya girsin."
+                    },
+                    {
+                        "title": "Yedek kazanan",
+                        "desc": "Ulaşılamayan asil için yedek seçin."
+                    },
+                    {
+                        "title": "Sahibi hariç tut",
+                        "desc": "Video sahibi otomatik listeden çıkarılabilir."
+                    },
+                    {
+                        "title": "Çekiliş kanıtı",
+                        "desc": "Seed ve zaman damgası ile sonucu paylaşın."
+                    },
+                    {
+                        "title": "PNG kart",
+                        "desc": "Kazananları görsel olarak indirin."
+                    },
+                    {
+                        "title": "Şifresiz",
+                        "desc": "TikTok hesabı veya uygulama izni istemeyiz."
+                    }
                 ],
                 "howSteps": [
-                    { "title": "Linki yapıştırın", "desc": "TikTok video URL’sini kutuya bırakın. İsterseniz yorumları kendiniz yapıştırın." },
-                    { "title": "Yorumları getirin", "desc": "E-posta ile onaylayın. Hesap açılmaz." },
-                    { "title": "Kurayı çekin", "desc": "Kazananı seçin, kanıtı paylaşın. Yorumlar gelmezse iade yerine bir çekiliş hakkı tanımlanır." }
+                    {
+                        "title": "Linki yapıştırın",
+                        "desc": "TikTok video URL’sini kutuya bırakın. İsterseniz yorumları kendiniz yapıştırın."
+                    },
+                    {
+                        "title": "Yorumları getirin",
+                        "desc": "E-posta ile onaylayın. Hesap açılmaz."
+                    },
+                    {
+                        "title": "Kurayı çekin",
+                        "desc": "Kazananı seçin, kanıtı paylaşın. Yorumlar gelmezse iade yerine bir çekiliş hakkı tanımlanır."
+                    }
                 ],
                 "faq": [
                     {
@@ -590,7 +633,12 @@
                     "cancelled": "İşlem iptal edildi. İstersen tekrar dene.",
                     "salesContractLink": "Mesafeli Satış Sözleşmesi'ni okudum",
                     "confirming": "Ödemeniz onaylanıyor…"
-                }
+                },
+                "extensionBannerTitle": "Chrome Eklentisiyle ücretsiz toplayın",
+                "extensionBannerBadge": "Ücretsiz",
+                "extensionBannerDesc": "Kayıt yok, ödeme yok — yorumları kendi tarayıcınızda toplayın.",
+                "pasteDivider": "veya yorumları elle yapıştırın",
+                "pastePlaceholderExample": "@kullanici_adi: yorum metni\nkullanici_adi,yorum metni"
             }
         },
         "keywordLabel": "Yorumda zorunlu kelime / hashtag",
@@ -616,7 +664,8 @@
         "eligibleWillEnter": "{count} kişi çekilişe girecek",
         "eligibleListTitle": "Uygun katılımcılar",
         "eligibleEmpty": "Filtrelere uyan kimse yok",
-        "ownerUsernamePlaceholder": "Hesap sahibi @kullanıcıadı"
+        "ownerUsernamePlaceholder": "Hesap sahibi @kullanıcıadı",
+        "toolLabel": "Çekiliş Aracı"
     },
     "support": {
         "button": "Destek",
@@ -1532,7 +1581,7 @@
         "step3": "'Çekilişi Başlat' butonuna tıklayın.",
         "step4": "Sonuç sayfasında herkes kendi ismini seçerek kime hediye alacağını öğrensin!"
     },
-    "salesContract":     {
+    "salesContract": {
         "meta": {
             "title": "Mesafeli Satış Sözleşmesi ve İptal/İade Politikası | YulaSanta",
             "description": "YulaSanta TikTok yorum çekimi ücretli hizmetine ilişkin mesafeli satış sözleşmesi, cayma hakkı ve iptal/iade şartları."

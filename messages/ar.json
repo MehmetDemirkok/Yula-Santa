@@ -147,11 +147,14 @@
         "tiktokDesc": "قم بإجراء سحوبات من التعليقات على تيك توك بسهولة. اسحب الفائزين مجاناً!",
         "meta": {
             "youtube": {
-                "title": "Free YouTube Comment Giveaway Tool | Comment Picker - YulaSanta",
-                "description": "Run fast, fair YouTube comment giveaways. Pick random winners — no signup, no password.",
+                "title": "أداة سحب يوتيوب | مسابقة تعليقات يوتيوب مجانية - YulaSanta",
+                "description": "اسحب فائزين عادلين من تعليقات فيديو يوتيوب في ثوانٍ. بدون تسجيل أو كلمة مرور.",
                 "keywords": [
                     "سحب يوتيوب",
-                    "سحب تعليقات يوتيوب"
+                    "مسابقة يوتيوب",
+                    "سحب تعليقات يوتيوب",
+                    "أداة سحب يوتيوب",
+                    "سحب يوتيوب مجاني"
                 ]
             },
             "tiktok": {
@@ -216,60 +219,60 @@
             "tiktok": {
                 "contentTitle": "أداة سحب تيك توك — مسابقة تعليقات مجانية",
                 "contentParagraphs": [
-                    "يولاسانتا موقع سحب تيك توك مجاني لاختيار الفائزين من تعليقات الفيديو خلال ثوانٍ — بدون تسجيل أو كلمة مرور.",
-                    "للمبدعين والعلامات: سحب تعليقات، فائز واحتياطي، تصفية المكرر ومشاركة النتائج — كلها مجانية."
+                    "YulaSanta موقع سحب تيك توك مجاني. اختر فائزين عادلين من تعليقات الفيديو في ثوانٍ — بدون تسجيل وبدون كلمة مرور.",
+                    "مصمم لصناع المحتوى والعلامات التجارية: سحب التعليقات، فائزون واحتياط، تصفية التكرار، ومشاركة النتائج — كل ذلك مجانًا."
                 ],
-                "howToTitle": "كيف تعمل مسابقة تعليقات تيك توك؟",
+                "howToTitle": "كيفية إجراء سحب تعليقات تيك توك",
                 "howToSteps": [
-                    "الصق رابط فيديو تيك توك أو أضف المشاركين يدوياً.",
-                    "حدد عدد الفائزين والاحتياطيين وقواعد المشاركة.",
-                    "ابدأ السحب وشارك النتائج فوراً."
+                    "الصق رابط فيديو تيك توك في YulaSanta أو أضف المشاركين يدويًا.",
+                    "حدد عدد الفائزين والاحتياط وقواعد المشاركة.",
+                    "ابدأ السحب — شارك النتائج فورًا."
                 ],
-                "faqTitle": "أسئلة شائعة عن سحب تيك توك",
+                "faqTitle": "أسئلة شائعة حول سحب تيك توك",
                 "faq": [
                     {
                         "q": "هل أداة سحب تيك توك مجانية؟",
-                        "a": "نعم. مجانية بالكامل مع سحوبات غير محدودة بدون تسجيل."
+                        "a": "نعم. YulaSanta مجاني بالكامل مع سحوبات غير محدودة وبدون تسجيل."
                     },
                     {
                         "q": "هل أحتاج لتسجيل الدخول إلى تيك توك؟",
-                        "a": "لا. الصق الرابط أو أضف التعليقات يدوياً."
+                        "a": "لا. الصق رابط الفيديو أو أضف التعليقات يدويًا — بدون كلمة مرور."
                     },
                     {
-                        "q": "هل يمكن اختيار فائز احتياطي؟",
-                        "a": "نعم. أي عدد من الفائزين والاحتياطيين."
+                        "q": "هل يمكنني اختيار فائزين احتياطيين؟",
+                        "a": "نعم. حدد أي عدد من الفائزين الأساسيين والاحتياطيين."
                     },
                     {
-                        "q": "هل تُحسب تعليقات متعددة لنفس الشخص؟",
-                        "a": "لا. مع عدّ المستخدم مرة واحدة يدخل كل شخص مرة واحدة فقط."
+                        "q": "هل تُحتسب تعليقات الشخص نفسه المتعددة؟",
+                        "a": "لا. مع خيار «احتساب كل مستخدم مرة واحدة»، يشارك كل شخص مرة واحدة فقط."
                     }
                 ]
             },
             "youtube": {
-                "contentTitle": "How to run a YouTube comment giveaway",
+                "contentTitle": "كيفية إجراء سحب تعليقات يوتيوب",
                 "contentParagraphs": [
-                    "YulaSanta is a free YouTube comment picker. No account and no YouTube password.",
-                    "Paste a public video link to fetch comments via the YouTube Data API (there is a paging limit; paste more comments manually if needed). Winners are chosen in your browser with cryptographic randomness."
+                    "YulaSanta أداة مجانية لاختيار فائز من تعليقات يوتيوب. بدون حساب وبدون كلمة مرور يوتيوب.",
+                    "الصق رابط فيديو عام لجلب التعليقات عبر YouTube Data API (هناك حد للصفحات؛ الصق المزيد من التعليقات يدويًا إذا لزم الأمر). يتم اختيار الفائزين في متصفحك بعشوائية تشفيرية."
                 ],
-                "howToTitle": "YouTube comment giveaway steps",
+                "howToTitle": "خطوات سحب تعليقات يوتيوب",
                 "howToSteps": [
-                    "Paste a YouTube video or Shorts link, or add comments manually.",
-                    "Set winner and backup counts; optionally count each user once.",
-                    "Start the draw and copy or download the result."
+                    "الصق رابط فيديو يوتيوب أو Shorts، أو أضف التعليقات يدويًا.",
+                    "حدد عدد الفائزين والاحتياط؛ يمكنك احتساب كل مستخدم مرة واحدة فقط.",
+                    "ابدأ السحب وانسخ النتيجة أو نزّل بطاقة الفائز."
                 ],
-                "faqTitle": "YouTube giveaway FAQ",
+                "faqTitle": "أسئلة شائعة حول سحب يوتيوب",
                 "faq": [
                     {
-                        "q": "Is the YouTube comment giveaway free?",
-                        "a": "Yes. YulaSanta does not require signup."
+                        "q": "هل سحب تعليقات يوتيوب مجاني؟",
+                        "a": "نعم. YulaSanta لا يتطلب تسجيلاً."
                     },
                     {
-                        "q": "Do you fetch every comment?",
-                        "a": "The API paginates up to thousands of comments; there is a cap. For longer lists, paste comments manually."
+                        "q": "هل يتم جلب كل التعليقات؟",
+                        "a": "نعم، يتم جلب معظم تعليقات الفيديو تلقائيًا. إذا كانت القائمة طويلة جدًا، يمكنك إضافة الباقي يدويًا."
                     },
                     {
-                        "q": "Is winner selection fair?",
-                        "a": "Yes. We use a Fisher–Yates shuffle and cryptographic random numbers."
+                        "q": "هل اختيار الفائز عادل؟",
+                        "a": "نعم. لكل تعليق فرصة متساوية، ويتم اختيار الفائز بشكل عشوائي تمامًا وبنزاهة."
                     }
                 ]
             }
@@ -284,6 +287,7 @@
                 "fetchCta": "جلب المشاركين",
                 "fetching": "جاري الجلب…",
                 "urlHint": "يعمل مع الفيديوهات العامة · تفتح الخطوة 2 تلقائيًا بعد الجلب",
+                "shortsDetected": "تم اكتشاف فيديو Shorts",
                 "step1Url": "الخطوة 1 — الصق رابط YouTube",
                 "step1Manual": "الخطوة 1 — إضافة مشارك",
                 "step3Title": "حدد القواعد وتحقق من المشاركين",
@@ -321,20 +325,20 @@
                 ],
                 "metrics": [
                     {
-                        "value": "Free",
-                        "label": "No signup"
+                        "value": "مجاني",
+                        "label": "بدون تسجيل"
                     },
                     {
-                        "value": "API",
-                        "label": "Comment fetch"
+                        "value": "تلقائي",
+                        "label": "جلب التعليقات"
                     },
                     {
                         "value": "100%",
-                        "label": "Random selection"
+                        "label": "اختيار عشوائي"
                     },
                     {
                         "value": "0",
-                        "label": "Login required"
+                        "label": "تسجيل الدخول"
                     }
                 ],
                 "features": [
@@ -433,196 +437,205 @@
                 ]
             },
             "tiktok": {
-                "badge": "TikTok comment giveaway",
-                "heroTitle": "TikTok",
-                "heroHighlight": "comment giveaway",
-                "heroSubtitle": "Paste a video link and pick winners from comments. No login, no password.",
+                "badge": "سحب تعليقات تيك توك",
+                "heroTitle": "تيك توك",
+                "heroHighlight": "سحب التعليقات",
+                "heroSubtitle": "الصق رابط الفيديو واختر فائزين من التعليقات. بدون تسجيل دخول، بدون كلمة مرور.",
                 "urlPlaceholder": "tiktok.com/@user/video/…",
-                "fetchCta": "Fetch comments",
-                "fetchCtaPaid": "{price} — fetch comments",
-                "fetching": "Fetching…",
-                "urlHint": "Public videos · Up to 1000 comments per fetch · Pasting is free",
-                "step1Url": "TikTok video link",
-                "step1Manual": "Paste comments",
-                "step3Title": "Set winner count",
-                "step3Subtitle": "Ready",
-                "step4Label": "Start the draw",
-                "backToUrl": "← Back to link",
-                "continueWith": "Continue with {count} people",
-                "switchManual": "Paste comments instead →",
-                "automatic": "From link",
-                "manual": "Paste",
-                "selecting": "Selecting…",
-                "winner": "Winner",
-                "backup": "Backup",
+                "fetchCta": "جلب التعليقات",
+                "fetchCtaPaid": "{price} — جلب التعليقات",
+                "fetching": "جارٍ الجلب…",
+                "urlHint": "الفيديوهات العامة فقط. يمكنك أيضًا لصق التعليقات مجانًا.",
+                "step1Url": "رابط فيديو تيك توك",
+                "step1Manual": "لصق التعليقات",
+                "step3Title": "حدد عدد الفائزين",
+                "step3Subtitle": "جاهز",
+                "step4Label": "ابدأ السحب",
+                "backToUrl": "← الرجوع إلى الرابط",
+                "continueWith": "المتابعة مع {count} شخص",
+                "switchManual": "الصق التعليقات بدلاً من ذلك →",
+                "automatic": "من الرابط",
+                "manual": "لصق",
+                "selecting": "جارٍ الاختيار…",
+                "winner": "الفائز",
+                "backup": "احتياطي",
                 "pngDownload": "PNG",
-                "add": "Add",
-                "loadingWait": "This can take 20–60 seconds",
-                "moreRules": "More rules",
-                "hideRules": "Hide rules",
-                "eligibleCta": "{count} people will enter the draw",
-                "autoUnavailable": "Automatic fetch is unavailable right now. Copy comments from TikTok and paste them — the draw still works.",
-                "priceBadge": "Automatic comment fetch",
-                "priceCap": "up to {count} comments",
-                "priceHint": "One payment, one video. Need more? Paste comments for free.",
-                "followHint": "Shown as a badge after the draw; it does not remove people from the raffle.",
-                "previewImport": "Preview",
-                "importPeople": "Import {count} people",
-                "featuresTitle": "Run a TikTok giveaway without friction",
-                "featuresSubtitle": "One job: paste a link or comments, then pick a winner.",
-                "howTitle": "How it works",
-                "howSubtitle": "Three steps. You never have to guess what to click next.",
-                "startCta": "Start your giveaway",
-                "faqTitle": "Frequently asked questions",
+                "add": "إضافة",
+                "loadingWait": "قد يستغرق هذا 20-60 ثانية",
+                "moreRules": "قواعد إضافية",
+                "hideRules": "إخفاء القواعد",
+                "eligibleCta": "سيشارك {count} شخص في السحب",
+                "autoUnavailable": "الجلب التلقائي غير متاح حاليًا. انسخ التعليقات من تيك توك والصقها — السحب يعمل رغم ذلك.",
+                "priceBadge": "جلب تلقائي للتعليقات",
+                "priceCap": "حتى {count} تعليق",
+                "priceHint": "عند النقر على الرابط تُفتح نافذة الدفع. بدون حساب.",
+                "followHint": "يظهر كشارة بعد السحب؛ لا يستبعد أحدًا من السحب.",
+                "previewImport": "معاينة",
+                "importPeople": "استيراد {count} شخص",
+                "featuresTitle": "سحب تيك توك عادل",
+                "featuresSubtitle": "رابط أو تعليقات، قواعد، إثبات. بدون حساب.",
+                "howTitle": "كيف يعمل",
+                "howSubtitle": "ثلاث خطوات. لن تحتاج للتخمين حول ما ستنقر عليه.",
+                "startCta": "ابدأ سحبك",
+                "faqTitle": "الأسئلة الشائعة",
                 "steps": {
-                    "paste": "Link",
-                    "load": "Comments",
-                    "rules": "Rules",
-                    "draw": "Draw"
+                    "paste": "الرابط",
+                    "load": "التعليقات",
+                    "rules": "القواعد",
+                    "draw": "السحب"
                 },
                 "trustBadges": [
-                    "No TikTok login",
-                    "Paste fallback",
-                    "One-entry filter",
-                    "Backup winners",
-                    "Free"
+                    "بدون تسجيل دخول لتيك توك",
+                    "طريقة يدوية بديلة",
+                    "فلتر مستخدم واحد",
+                    "فائز احتياطي",
+                    "بدون اشتراك"
                 ],
                 "metrics": [
                     {
-                        "value": "3",
-                        "label": "Steps"
-                    },
-                    {
                         "value": "0",
-                        "label": "Sign-up"
+                        "label": "تسجيل"
                     },
                     {
-                        "value": "Free",
-                        "label": "Giveaway"
+                        "value": "عادل",
+                        "label": "سحب"
                     },
                     {
-                        "value": "Proof",
-                        "label": "Fair draw"
+                        "value": "إثبات",
+                        "label": "نتيجة"
+                    },
+                    {
+                        "value": "احتياطي",
+                        "label": "فائز"
                     }
                 ],
                 "features": [
                     {
-                        "title": "Link or paste",
-                        "desc": "If the video URL fails, paste comments and keep going."
+                        "title": "رابط أو لصق",
+                        "desc": "إذا لم يعمل رابط الفيديو، انسخ التعليقات والصقها للمتابعة."
                     },
                     {
-                        "title": "One person once",
-                        "desc": "Repeat comments from the same account are filtered."
+                        "title": "شخص واحد مرة واحدة",
+                        "desc": "تُستبعد التعليقات المكررة من نفس الحساب."
                     },
                     {
-                        "title": "Keyword / hashtag",
-                        "desc": "Only comments with your phrase enter the draw."
+                        "title": "كلمة / هاشتاغ",
+                        "desc": "فقط من كتب #سحب يدخل السحب."
                     },
                     {
-                        "title": "Backup winners",
-                        "desc": "Pick reserves if a winner cannot claim."
+                        "title": "فائز احتياطي",
+                        "desc": "اختر احتياطيًا في حال تعذر الوصول للفائز الأساسي."
                     },
                     {
-                        "title": "Exclude owner",
-                        "desc": "Keep the video owner out of the raffle."
+                        "title": "استبعاد صاحب الفيديو",
+                        "desc": "يمكن استبعاد صاحب الفيديو تلقائيًا من القائمة."
                     },
                     {
-                        "title": "Draw proof",
-                        "desc": "Share the seed and timestamp with the result."
+                        "title": "إثبات السحب",
+                        "desc": "شارك النتيجة مع Seed وطابع زمني."
                     },
                     {
-                        "title": "PNG card",
-                        "desc": "Download winners as a shareable image."
+                        "title": "بطاقة PNG",
+                        "desc": "نزّل الفائزين كصورة."
                     },
                     {
-                        "title": "No password",
-                        "desc": "We never ask for TikTok login or app access."
+                        "title": "بدون كلمة مرور",
+                        "desc": "لا نطلب حساب تيك توك أو أي إذن للتطبيق."
                     }
                 ],
                 "howSteps": [
                     {
-                        "title": "Paste the link",
-                        "desc": "Drop the TikTok video URL in the box. If that fails, paste comments."
+                        "title": "الصق الرابط",
+                        "desc": "ضع رابط فيديو تيك توك في الحقل. أو الصق التعليقات بنفسك إن أردت."
                     },
                     {
-                        "title": "Choose winner count",
-                        "desc": "Set how many winners and backups you want. Extra rules are optional."
+                        "title": "احضر التعليقات",
+                        "desc": "أكّد عبر البريد الإلكتروني. لا يُفتح أي حساب."
                     },
                     {
-                        "title": "Draw",
-                        "desc": "A fair shuffle picks from the eligible list. Copy or share the result."
+                        "title": "اسحب القرعة",
+                        "desc": "اختر الفائز وشارك الإثبات. إذا لم تصل التعليقات، يُمنح حق سحب بدلاً من الاسترداد."
                     }
                 ],
                 "faq": [
                     {
-                        "q": "Do I need to log in to TikTok?",
-                        "a": "No. We never ask for a password. A public video link or pasted comments is enough."
+                        "q": "هل يتطلب الأمر تسجيل الدخول إلى تيك توك؟",
+                        "a": "لا. لا نطلب كلمة مرور أبدًا. رابط فيديو عام أو تعليقات ملصقة كافٍ."
                     },
                     {
-                        "q": "How much is automatic fetch?",
-                        "a": "200 TL per fetch, up to 1000 comments. Pasting comments is free; the draw itself stays free."
+                        "q": "كم تكلفة الجلب التلقائي؟",
+                        "a": "200 ليرة تركية لكل عملية جلب، حتى 1000 تعليق. بدون حساب — يكفي البريد الإلكتروني. اللصق مجاني."
                     },
                     {
-                        "q": "What if automatic fetch fails?",
-                        "a": "Copy comments from the video and use the Paste tab. The giveaway continues the same way."
+                        "q": "هل أُسترد مالي إذا لم تُحمَّل التعليقات؟",
+                        "a": "لا. يحلل النظام سبب الفشل ولا يُسترد المبلغ فورًا. بدلاً من ذلك تحصل على حق سحب واحد عبر البريد الإلكتروني."
                     },
                     {
-                        "q": "Is the winner truly random?",
-                        "a": "Yes. A secure shuffle gives every eligible person an equal chance. You can check the proof panel."
+                        "q": "ماذا لو فشل الجلب التلقائي؟",
+                        "a": "انسخ التعليقات من الفيديو واستخدم تبويب اللصق. يستمر السحب بنفس الطريقة."
                     },
                     {
-                        "q": "Does ‘must follow’ remove people from the draw?",
-                        "a": "No. Follow status is a badge after the draw. Keyword and one-entry rules decide who is eligible."
+                        "q": "هل الفائز عشوائي فعلاً؟",
+                        "a": "نعم. يُستخدم خلط آمن يمنح كل شخص مؤهل فرصة متساوية. يمكنك التحقق من لوحة الإثبات."
+                    },
+                    {
+                        "q": "هل شرط المتابعة يستبعد أحدًا من السحب؟",
+                        "a": "لا. حالة المتابعة تظهر كشارة بعد السحب. قواعد الكلمة المفتاحية والدخول مرة واحدة هي التي تحدد المؤهلين."
                     }
                 ],
                 "errors": {
-                    "needLink": "Enter a TikTok video link",
-                    "invalidLink": "Enter a valid TikTok link (tiktok.com/@…/video/…)",
-                    "quota": "Automatic comment fetch is over quota. Paste comments to continue.",
-                    "unavailable": "The comment service is not responding. You can paste comments and continue.",
-                    "empty": "No comments found on this video. Try pasting them manually.",
-                    "generic": "Could not fetch comments. Check the link and that the video is public.",
-                    "paymentTimeout": "Payment confirmation is taking longer than expected. Try again in a few minutes or contact us."
+                    "needLink": "أدخل رابط فيديو تيك توك",
+                    "invalidLink": "أدخل رابط تيك توك صالح (tiktok.com/@…/video/…)",
+                    "quota": "تم تجاوز حصة الجلب التلقائي للتعليقات. الصق التعليقات للمتابعة.",
+                    "unavailable": "خدمة التعليقات لا تستجيب حاليًا. يمكنك لصق التعليقات والمتابعة.",
+                    "empty": "لم يتم العثور على تعليقات في هذا الفيديو. جرّب اللصق اليدوي.",
+                    "generic": "تعذر جلب التعليقات. تحقق من الرابط ومن أن الفيديو عام.",
+                    "paymentTimeout": "تأخر تأكيد الدفع عن المتوقع. حاول مجددًا بعد بضع دقائق أو تواصل معنا."
                 },
                 "toasts": {
-                    "added": "@{name} added",
-                    "participantsAdded": "{count} participants added",
-                    "copied": "Results copied",
-                    "cardDownloaded": "Winner card downloaded",
-                    "noNewNames": "No new names to add"
+                    "added": "تمت إضافة @{name}",
+                    "participantsAdded": "تمت إضافة {count} مشارك",
+                    "copied": "تم نسخ النتائج",
+                    "cardDownloaded": "تم تنزيل بطاقة الفائز",
+                    "noNewNames": "لا توجد أسماء جديدة لإضافتها"
                 },
                 "loadingSteps": [
-                    "Connecting to TikTok…",
-                    "Fetching video comments…",
-                    "Validating participants…",
-                    "Preparing the list…"
+                    "جارٍ الاتصال بتيك توك…",
+                    "جارٍ جلب تعليقات الفيديو…",
+                    "جارٍ التحقق من المشاركين…",
+                    "جارٍ تجهيز القائمة…"
                 ],
                 "pay": {
-                    "openCta": "Fetch comments",
-                    "title": "Confirm the draw",
-                    "subtitle": "Comments are taken from the video. No account is created.",
-                    "emailLabel": "Email",
+                    "openCta": "جلب التعليقات",
+                    "title": "تأكيد السحب",
+                    "subtitle": "تُؤخذ التعليقات من الفيديو. لا يُفتح أي حساب.",
+                    "emailLabel": "البريد الإلكتروني",
                     "emailPlaceholder": "you@email.com",
-                    "emailHint": "Confirmation and any credit go to this address.",
-                    "invalidEmail": "Enter a valid email",
-                    "cta": "Confirm and continue",
-                    "processing": "Going to payment…",
-                    "noMembership": "No account needed",
-                    "serviceName": "Comment fetch",
-                    "feeLine": "One-time service",
-                    "feeHint": "Service fee {price} · no account",
-                    "cap": "up to {count} comments",
-                    "noRefund": "If comments cannot be fetched there is no refund; you receive one draw credit.",
-                    "useCredit": "Continue with your credit",
-                    "creditTitle": "One draw credit added",
-                    "creditBody": "The payment was not refunded. The next automatic fetch uses this credit.",
-                    "creditEmail": "The credit was emailed to you. Use the link to retry.",
-                    "creditSaved": "The credit is saved on this device. Fetch comments again.",
-                    "paymentsDown": "Payments are not open yet. They start after PayTR onboarding is approved.",
-                    "cancelled": "Cancelled. You can try again.",
-                    "salesContractLink": "Read the Distance Sales Contract",
-                    "confirming": "Confirming your payment…"
-                }
+                    "emailHint": "يُرسل التأكيد وأي رصيد إلى هذا العنوان.",
+                    "invalidEmail": "أدخل بريدًا إلكترونيًا صالحًا",
+                    "cta": "تأكيد ومتابعة",
+                    "processing": "جارٍ الانتقال إلى الدفع…",
+                    "noMembership": "لا حاجة لحساب",
+                    "serviceName": "جلب التعليقات",
+                    "feeLine": "خدمة لمرة واحدة",
+                    "feeHint": "رسوم الخدمة {price} · بدون حساب",
+                    "cap": "حتى {count} تعليق",
+                    "noRefund": "إذا تعذر جلب التعليقات فلا يوجد استرداد؛ ستحصل على حق سحب واحد.",
+                    "useCredit": "المتابعة برصيدك",
+                    "creditTitle": "تمت إضافة حق سحب واحد",
+                    "creditBody": "لم يُسترد المبلغ المدفوع. سيُستخدم هذا الرصيد في الجلب التلقائي التالي.",
+                    "creditEmail": "تم إرسال الرصيد إلى بريدك الإلكتروني. استخدم الرابط لإعادة المحاولة.",
+                    "creditSaved": "تم حفظ الرصيد على هذا الجهاز. أعد جلب التعليقات.",
+                    "paymentsDown": "المدفوعات غير مفعّلة بعد. ستعمل بعد اعتماد PayTR.",
+                    "cancelled": "تم الإلغاء. يمكنك المحاولة مرة أخرى.",
+                    "salesContractLink": "قرأت عقد البيع عن بُعد",
+                    "confirming": "جارٍ تأكيد دفعتك…"
+                },
+                "extensionBannerTitle": "اجمع التعليقات مجانًا عبر إضافة Chrome",
+                "extensionBannerBadge": "مجاني",
+                "extensionBannerDesc": "بدون تسجيل، بدون دفع — اجمع التعليقات مباشرة من متصفحك.",
+                "pasteDivider": "أو الصق التعليقات يدويًا",
+                "pastePlaceholderExample": "@اسم_المستخدم: نص التعليق\nاسم_المستخدم,نص التعليق"
             }
         },
         "keywordLabel": "Required keyword / hashtag in comment",
@@ -648,7 +661,8 @@
         "eligibleWillEnter": "{count} people will enter the draw",
         "eligibleListTitle": "Eligible participants",
         "eligibleEmpty": "No one matches the filters",
-        "ownerUsernamePlaceholder": "Owner @username"
+        "ownerUsernamePlaceholder": "Owner @username",
+        "toolLabel": "أداة السحب"
     },
     "support": {
         "button": "الدعم",
@@ -1565,7 +1579,7 @@
         "step3": "انقر على زر 'ابدأ سحب العام الجديد'.",
         "step4": "في صفحة النتائج، يختار كل شخص اسمه لمعرفة لمن سيشتري هدية!"
     },
-    "salesContract":     {
+    "salesContract": {
         "meta": {
             "title": "Distance Sales Contract & Cancellation Policy | YulaSanta",
             "description": "Distance sales contract, right of withdrawal, and cancellation/refund terms for YulaSanta's paid TikTok comment-fetch service."

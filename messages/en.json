@@ -238,11 +238,11 @@
                     },
                     {
                         "q": "Do you fetch every comment?",
-                        "a": "The API paginates up to thousands of comments; there is a cap. For longer lists, paste comments manually."
+                        "a": "Yes, most of the video's comments are fetched automatically. For very long comment lists, you can add the rest manually."
                     },
                     {
                         "q": "Is winner selection fair?",
-                        "a": "Yes. We use a Fisher–Yates shuffle and cryptographic random numbers."
+                        "a": "Yes. Every comment has an equal chance, and the winner is chosen completely at random and impartially."
                     }
                 ]
             },
@@ -290,7 +290,6 @@
                 "fetching": "Fetching…",
                 "urlHint": "Works with public videos · Step 2 opens automatically after fetch",
                 "shortsDetected": "Shorts Video Detected",
-                "freeLimit": "Free up to 500 comments",
                 "step1Url": "Step 1 — Paste YouTube URL",
                 "step1Manual": "Step 1 — Add participants",
                 "step3Title": "Choose rules & review participants",
@@ -332,7 +331,7 @@
                         "label": "No signup"
                     },
                     {
-                        "value": "API",
+                        "value": "Automatic",
                         "label": "Comment fetch"
                     },
                     {
@@ -449,7 +448,6 @@
                 "fetchCtaPaid": "{price} — fetch comments",
                 "fetching": "Fetching…",
                 "urlHint": "Public videos. You can also paste comments for free.",
-                "freeLimit": "Free up to 500 comments",
                 "step1Url": "TikTok video link",
                 "step1Manual": "Paste comments",
                 "step3Title": "Set winner count",
@@ -496,25 +494,70 @@
                     "No account"
                 ],
                 "metrics": [
-                    { "value": "0", "label": "Sign-up" },
-                    { "value": "Fair", "label": "Draw" },
-                    { "value": "Proof", "label": "Result" },
-                    { "value": "Backup", "label": "Winners" }
+                    {
+                        "value": "0",
+                        "label": "Sign-up"
+                    },
+                    {
+                        "value": "Fair",
+                        "label": "Draw"
+                    },
+                    {
+                        "value": "Proof",
+                        "label": "Result"
+                    },
+                    {
+                        "value": "Backup",
+                        "label": "Winners"
+                    }
                 ],
                 "features": [
-                    { "title": "Link or paste", "desc": "If the video URL fails, paste comments and keep going." },
-                    { "title": "One person once", "desc": "Repeat comments from the same account are filtered." },
-                    { "title": "Keyword / hashtag", "desc": "Only comments with your phrase enter the draw." },
-                    { "title": "Backup winners", "desc": "Pick reserves if a winner cannot claim." },
-                    { "title": "Exclude owner", "desc": "Keep the video owner out of the raffle." },
-                    { "title": "Draw proof", "desc": "Share the seed and timestamp with the result." },
-                    { "title": "PNG card", "desc": "Download winners as a shareable image." },
-                    { "title": "No password", "desc": "We never ask for TikTok login or app access." }
+                    {
+                        "title": "Link or paste",
+                        "desc": "If the video URL fails, paste comments and keep going."
+                    },
+                    {
+                        "title": "One person once",
+                        "desc": "Repeat comments from the same account are filtered."
+                    },
+                    {
+                        "title": "Keyword / hashtag",
+                        "desc": "Only comments with your phrase enter the draw."
+                    },
+                    {
+                        "title": "Backup winners",
+                        "desc": "Pick reserves if a winner cannot claim."
+                    },
+                    {
+                        "title": "Exclude owner",
+                        "desc": "Keep the video owner out of the raffle."
+                    },
+                    {
+                        "title": "Draw proof",
+                        "desc": "Share the seed and timestamp with the result."
+                    },
+                    {
+                        "title": "PNG card",
+                        "desc": "Download winners as a shareable image."
+                    },
+                    {
+                        "title": "No password",
+                        "desc": "We never ask for TikTok login or app access."
+                    }
                 ],
                 "howSteps": [
-                    { "title": "Paste the link", "desc": "Drop the TikTok video URL in the box. Or paste comments yourself." },
-                    { "title": "Fetch comments", "desc": "Confirm with your email. No account is created." },
-                    { "title": "Draw", "desc": "Pick a winner and share the proof. If comments don’t load, you get a credit instead of a refund." }
+                    {
+                        "title": "Paste the link",
+                        "desc": "Drop the TikTok video URL in the box. Or paste comments yourself."
+                    },
+                    {
+                        "title": "Fetch comments",
+                        "desc": "Confirm with your email. No account is created."
+                    },
+                    {
+                        "title": "Draw",
+                        "desc": "Pick a winner and share the proof. If comments don’t load, you get a credit instead of a refund."
+                    }
                 ],
                 "faq": [
                     {
@@ -589,7 +632,12 @@
                     "cancelled": "Cancelled. You can try again.",
                     "salesContractLink": "Read the Distance Sales Contract",
                     "confirming": "Confirming your payment…"
-                }
+                },
+                "extensionBannerTitle": "Collect for free with the Chrome extension",
+                "extensionBannerBadge": "Free",
+                "extensionBannerDesc": "No signup, no payment — collect comments right in your own browser.",
+                "pasteDivider": "or paste comments manually",
+                "pastePlaceholderExample": "@username: comment text\nusername,comment text"
             }
         },
         "keywordLabel": "Required keyword / hashtag in comment",
@@ -615,7 +663,8 @@
         "eligibleWillEnter": "{count} people will enter the draw",
         "eligibleListTitle": "Eligible participants",
         "eligibleEmpty": "No one matches the filters",
-        "ownerUsernamePlaceholder": "Owner @username"
+        "ownerUsernamePlaceholder": "Owner @username",
+        "toolLabel": "Giveaway Tool"
     },
     "support": {
         "button": "Support",
@@ -1532,7 +1581,7 @@
         "step3": "Click the 'Start Draw' button.",
         "step4": "On the result page, everyone selects their name to see who they are buying a gift for!"
     },
-    "salesContract":     {
+    "salesContract": {
         "meta": {
             "title": "Distance Sales Contract & Cancellation Policy | YulaSanta",
             "description": "Distance sales contract, right of withdrawal, and cancellation/refund terms for YulaSanta's paid TikTok comment-fetch service."

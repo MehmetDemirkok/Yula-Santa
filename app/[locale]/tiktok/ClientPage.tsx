@@ -30,7 +30,6 @@ import {
     Shuffle,
     UserMinus,
     Chrome,
-    Sparkles,
 } from "lucide-react";
 import { Button } from "@/components/ui/Button";
 import { useLanguage } from "@/lib/i18n/LanguageContext";
@@ -377,7 +376,7 @@ export default function TikTokGiveaway() {
                                 {tl("heroTitle")}
                             </p>
                             <p className="text-sm font-semibold text-[var(--text-secondary)]">
-                                {locale === "tr" ? "Çekiliş Aracı" : "Giveaway Tool"}
+                                {tg("toolLabel")}
                             </p>
                         </div>
                     </div>
@@ -388,10 +387,6 @@ export default function TikTokGiveaway() {
                     <p className="mx-auto mt-4 max-w-md text-[15px] leading-relaxed text-[var(--text-secondary)] sm:text-base">
                         {tl("heroSubtitle")}
                     </p>
-                    <div className="mx-auto mt-4 inline-flex items-center gap-2 rounded-full border border-green-200/50 bg-green-50/50 px-4 py-2 text-sm font-medium text-green-700 dark:border-green-500/20 dark:bg-green-500/5 dark:text-green-300">
-                        <Sparkles className="h-4 w-4" />
-                        <span>{tl("freeLimit")}</span>
-                    </div>
                 </div>
 
                 <nav aria-label={tl("howTitle")} className="mx-auto mt-10 max-w-lg px-2">
@@ -603,14 +598,14 @@ export default function TikTokGiveaway() {
                                     <span className="min-w-0 flex-1">
                                         <span className="flex flex-wrap items-center gap-1.5">
                                             <span className="text-sm font-bold leading-tight text-[var(--text-primary)]">
-                                                Chrome Extension ile ücretsiz toplayın
+                                                {tl("extensionBannerTitle")}
                                             </span>
                                             <span className="rounded-full bg-indigo-accent px-2 py-0.5 text-[10px] font-extrabold uppercase tracking-wide text-white">
-                                                Ücretsiz
+                                                {tl("extensionBannerBadge")}
                                             </span>
                                         </span>
                                         <span className="mt-0.5 block truncate text-xs text-[var(--text-secondary)]">
-                                            Kayıt yok, ödeme yok — yorumları kendi tarayıcınızda toplayın.
+                                            {tl("extensionBannerDesc")}
                                         </span>
                                     </span>
                                     <ArrowRight className="h-5 w-5 shrink-0 text-indigo-accent transition-transform group-hover:translate-x-1" />
@@ -618,7 +613,7 @@ export default function TikTokGiveaway() {
 
                                 <div className="mb-5 flex items-center gap-3 text-xs font-semibold uppercase tracking-wider text-[var(--text-muted)]">
                                     <span className="h-px flex-1 bg-[var(--border-light)]" />
-                                    veya yorumları elle yapıştırın
+                                    {tl("pasteDivider")}
                                     <span className="h-px flex-1 bg-[var(--border-light)]" />
                                 </div>
 
@@ -633,7 +628,7 @@ export default function TikTokGiveaway() {
                                             setManualPaste(e.target.value);
                                             setImportPreview(null);
                                         }}
-                                        placeholder={`${t.giveaway.pasteComments}\n\n@user: yorum\nusername,comment`}
+                                        placeholder={`${t.giveaway.pasteComments}\n\n${tl("pastePlaceholderExample")}`}
                                         className="h-44 w-full resize-none rounded-2xl border border-dashed border-[var(--border-medium)] bg-[var(--surface-2)] p-4 outline-none transition focus:border-santa-red focus:ring-4 focus:ring-santa-red/10"
                                     />
                                     <button

@@ -147,11 +147,14 @@
         "tiktokDesc": "轻松从 TikTok 视频评论中进行抽奖。免费筛选中奖者！",
         "meta": {
             "youtube": {
-                "title": "Free YouTube Comment Giveaway Tool | Comment Picker - YulaSanta",
-                "description": "Run fast, fair YouTube comment giveaways. Pick random winners — no signup, no password.",
+                "title": "YouTube评论抽奖工具 | 免费抽奖 - YulaSanta",
+                "description": "从YouTube视频评论中快速公平地抽取获奖者。无需注册，无需密码。",
                 "keywords": [
                     "YouTube 抽奖",
-                    "评论筛选"
+                    "YouTube评论抽奖",
+                    "YouTube抽奖工具",
+                    "免费YouTube抽奖",
+                    "YouTube 抽奖活动"
                 ]
             },
             "tiktok": {
@@ -214,62 +217,62 @@
         "checkingSubscription": "检查中...",
         "seo": {
             "youtube": {
-                "contentTitle": "How to run a YouTube comment giveaway",
+                "contentTitle": "如何进行YouTube评论抽奖",
                 "contentParagraphs": [
-                    "YulaSanta is a free YouTube comment picker. No account and no YouTube password.",
-                    "Paste a public video link to fetch comments via the YouTube Data API (there is a paging limit; paste more comments manually if needed). Winners are chosen in your browser with cryptographic randomness."
+                    "YulaSanta是一款免费的YouTube评论抽奖工具，无需账号，也无需YouTube密码。",
+                    "粘贴公开视频链接后，系统会通过YouTube Data API获取评论(存在分页限制，如需更多可手动粘贴评论)。获奖者在您的浏览器中通过加密随机数选出。"
                 ],
-                "howToTitle": "YouTube comment giveaway steps",
+                "howToTitle": "YouTube评论抽奖步骤",
                 "howToSteps": [
-                    "Paste a YouTube video or Shorts link, or add comments manually.",
-                    "Set winner and backup counts; optionally count each user once.",
-                    "Start the draw and copy or download the result."
+                    "粘贴YouTube视频或Shorts链接，或手动添加评论。",
+                    "设置获奖人数和候补人数；可选择每位用户仅计算一次。",
+                    "开始抽奖，复制或下载结果。"
                 ],
-                "faqTitle": "YouTube giveaway FAQ",
+                "faqTitle": "YouTube抽奖常见问题",
                 "faq": [
                     {
-                        "q": "Is the YouTube comment giveaway free?",
-                        "a": "Yes. YulaSanta does not require signup."
+                        "q": "YouTube评论抽奖免费吗?",
+                        "a": "是的，YulaSanta无需注册。"
                     },
                     {
-                        "q": "Do you fetch every comment?",
-                        "a": "The API paginates up to thousands of comments; there is a cap. For longer lists, paste comments manually."
+                        "q": "会获取所有评论吗?",
+                        "a": "是的，系统会自动获取视频的大部分评论。如果评论列表非常长，您可以手动添加剩余部分。"
                     },
                     {
-                        "q": "Is winner selection fair?",
-                        "a": "Yes. We use a Fisher–Yates shuffle and cryptographic random numbers."
+                        "q": "获奖者的选择公平吗?",
+                        "a": "是的。每条评论的中奖机会相同，获奖者的选择完全随机且公正。"
                     }
                 ]
             },
             "tiktok": {
                 "contentTitle": "TikTok抽奖工具 — 免费评论抽奖",
                 "contentParagraphs": [
-                    "YulaSanta是一个免费的TikTok抽奖网站。几秒钟内即可从视频评论中公平抽取获奖者——无需注册，无需密码。",
-                    "专为创作者和品牌打造：评论抽奖、正选与备选获奖者、重复参与者过滤、结果分享——完全免费。"
+                    "YulaSanta是一个免费的TikTok抽奖网站，几秒钟内即可从视频评论中公平抽取获奖者——无需注册，无需密码。",
+                    "专为创作者和品牌设计：评论抽奖、获奖者与候补、重复评论过滤、结果分享，全部免费。"
                 ],
                 "howToTitle": "如何进行TikTok评论抽奖",
                 "howToSteps": [
-                    "将TikTok视频链接粘贴到YulaSanta，或手动添加参与者。",
-                    "设置获奖人数、备选人数以及参与规则。",
+                    "将您的TikTok视频链接粘贴到YulaSanta，或手动添加参与者。",
+                    "设置获奖人数、候补人数和参与规则。",
                     "开始抽奖——立即分享结果。"
                 ],
                 "faqTitle": "TikTok抽奖常见问题",
                 "faq": [
                     {
                         "q": "TikTok抽奖工具免费吗?",
-                        "a": "是的。YulaSanta完全免费，无限次抽奖且无需注册。"
+                        "a": "是的，YulaSanta完全免费，抽奖次数不限，无需注册。"
                     },
                     {
                         "q": "需要登录TikTok账号吗?",
-                        "a": "不需要。只需粘贴视频链接或手动添加评论，无需密码。"
+                        "a": "不需要。粘贴视频链接或手动添加评论即可，无需密码。"
                     },
                     {
-                        "q": "可以设置备选获奖者吗?",
-                        "a": "可以。您可以设置任意数量的正选和备选获奖者。"
+                        "q": "可以设置候补获奖者吗?",
+                        "a": "可以，您可以设置任意数量的正式获奖者和候补获奖者。"
                     },
                     {
-                        "q": "同一人的多条评论会被重复计算吗?",
-                        "a": "不会。启用「每位用户仅计一次」后，每个人只会参与一次。"
+                        "q": "同一人的多条评论会重复计入吗?",
+                        "a": "不会。启用「每位用户仅计算一次」后，每人只会计入一次。"
                     }
                 ]
             }
@@ -284,6 +287,7 @@
                 "fetchCta": "获取参与者",
                 "fetching": "正在获取…",
                 "urlHint": "适用于公开视频 · 获取后将自动进入第 2 步",
+                "shortsDetected": "检测到Shorts视频",
                 "step1Url": "第 1 步 — 粘贴 YouTube 链接",
                 "step1Manual": "第 1 步 — 添加参与者",
                 "step3Title": "选择规则并检查参与者",
@@ -321,20 +325,20 @@
                 ],
                 "metrics": [
                     {
-                        "value": "Free",
-                        "label": "No signup"
+                        "value": "免费",
+                        "label": "无需注册"
                     },
                     {
-                        "value": "API",
-                        "label": "Comment fetch"
+                        "value": "自动",
+                        "label": "评论抓取"
                     },
                     {
                         "value": "100%",
-                        "label": "Random selection"
+                        "label": "随机抽取"
                     },
                     {
                         "value": "0",
-                        "label": "Login required"
+                        "label": "需要登录"
                     }
                 ],
                 "features": [
@@ -433,196 +437,205 @@
                 ]
             },
             "tiktok": {
-                "badge": "TikTok comment giveaway",
+                "badge": "TikTok评论抽奖",
                 "heroTitle": "TikTok",
-                "heroHighlight": "comment giveaway",
-                "heroSubtitle": "Paste a video link and pick winners from comments. No login, no password.",
-                "urlPlaceholder": "tiktok.com/@user/video/…",
-                "fetchCta": "Fetch comments",
-                "fetchCtaPaid": "{price} — fetch comments",
-                "fetching": "Fetching…",
-                "urlHint": "Public videos · Up to 1000 comments per fetch · Pasting is free",
-                "step1Url": "TikTok video link",
-                "step1Manual": "Paste comments",
-                "step3Title": "Set winner count",
-                "step3Subtitle": "Ready",
-                "step4Label": "Start the draw",
-                "backToUrl": "← Back to link",
-                "continueWith": "Continue with {count} people",
-                "switchManual": "Paste comments instead →",
-                "automatic": "From link",
-                "manual": "Paste",
-                "selecting": "Selecting…",
-                "winner": "Winner",
-                "backup": "Backup",
+                "heroHighlight": "评论抽奖",
+                "heroSubtitle": "粘贴视频链接，从评论中选出获奖者。无需登录，无需密码。",
+                "urlPlaceholder": "tiktok.com/@用户名/video/…",
+                "fetchCta": "获取评论",
+                "fetchCtaPaid": "{price} — 获取评论",
+                "fetching": "获取中…",
+                "urlHint": "仅支持公开视频。您也可以免费手动粘贴评论。",
+                "step1Url": "TikTok视频链接",
+                "step1Manual": "粘贴评论",
+                "step3Title": "设置获奖人数",
+                "step3Subtitle": "准备就绪",
+                "step4Label": "开始抽奖",
+                "backToUrl": "← 返回链接",
+                "continueWith": "以{count}人继续",
+                "switchManual": "改为粘贴评论 →",
+                "automatic": "通过链接获取",
+                "manual": "粘贴",
+                "selecting": "抽取中…",
+                "winner": "获奖者",
+                "backup": "候补",
                 "pngDownload": "PNG",
-                "add": "Add",
-                "loadingWait": "This can take 20–60 seconds",
-                "moreRules": "More rules",
-                "hideRules": "Hide rules",
-                "eligibleCta": "{count} people will enter the draw",
-                "autoUnavailable": "Automatic fetch is unavailable right now. Copy comments from TikTok and paste them — the draw still works.",
-                "priceBadge": "Automatic comment fetch",
-                "priceCap": "up to {count} comments",
-                "priceHint": "One payment, one video. Need more? Paste comments for free.",
-                "followHint": "Shown as a badge after the draw; it does not remove people from the raffle.",
-                "previewImport": "Preview",
-                "importPeople": "Import {count} people",
-                "featuresTitle": "Run a TikTok giveaway without friction",
-                "featuresSubtitle": "One job: paste a link or comments, then pick a winner.",
-                "howTitle": "How it works",
-                "howSubtitle": "Three steps. You never have to guess what to click next.",
-                "startCta": "Start your giveaway",
-                "faqTitle": "Frequently asked questions",
+                "add": "添加",
+                "loadingWait": "此过程可能需要20–60秒",
+                "moreRules": "更多规则",
+                "hideRules": "隐藏规则",
+                "eligibleCta": "将有{count}人参与抽奖",
+                "autoUnavailable": "自动获取当前不可用。请从TikTok复制评论并粘贴 — 抽奖仍可正常进行。",
+                "priceBadge": "自动评论获取",
+                "priceCap": "最多{count}条评论",
+                "priceHint": "点击链接将打开支付窗口。无需账号。",
+                "followHint": "抽奖后以徽章形式显示；不会将任何人排除在抽奖之外。",
+                "previewImport": "预览",
+                "importPeople": "导入{count}人",
+                "featuresTitle": "公平的TikTok抽奖",
+                "featuresSubtitle": "链接或评论、规则、证明。无需账号。",
+                "howTitle": "使用方法",
+                "howSubtitle": "三个步骤，您无需猜测下一步该点击什么。",
+                "startCta": "开始抽奖",
+                "faqTitle": "常见问题",
                 "steps": {
-                    "paste": "Link",
-                    "load": "Comments",
-                    "rules": "Rules",
-                    "draw": "Draw"
+                    "paste": "链接",
+                    "load": "评论",
+                    "rules": "规则",
+                    "draw": "抽奖"
                 },
                 "trustBadges": [
-                    "No TikTok login",
-                    "Paste fallback",
-                    "One-entry filter",
-                    "Backup winners",
-                    "Free"
+                    "无需登录TikTok",
+                    "提供手动备用方式",
+                    "单用户过滤",
+                    "候补获奖者",
+                    "无需订阅"
                 ],
                 "metrics": [
                     {
-                        "value": "3",
-                        "label": "Steps"
-                    },
-                    {
                         "value": "0",
-                        "label": "Sign-up"
+                        "label": "注册"
                     },
                     {
-                        "value": "Free",
-                        "label": "Giveaway"
+                        "value": "公平",
+                        "label": "抽奖"
                     },
                     {
-                        "value": "Proof",
-                        "label": "Fair draw"
+                        "value": "证明",
+                        "label": "结果"
+                    },
+                    {
+                        "value": "候补",
+                        "label": "获奖者"
                     }
                 ],
                 "features": [
                     {
-                        "title": "Link or paste",
-                        "desc": "If the video URL fails, paste comments and keep going."
+                        "title": "链接或粘贴",
+                        "desc": "如果视频链接无法使用，可以复制评论并粘贴以继续。"
                     },
                     {
-                        "title": "One person once",
-                        "desc": "Repeat comments from the same account are filtered."
+                        "title": "每人限一次",
+                        "desc": "来自同一账号的重复评论会被排除。"
                     },
                     {
-                        "title": "Keyword / hashtag",
-                        "desc": "Only comments with your phrase enter the draw."
+                        "title": "关键词 / 话题标签",
+                        "desc": "只有写了#抽奖的人才能参与抽奖。"
                     },
                     {
-                        "title": "Backup winners",
-                        "desc": "Pick reserves if a winner cannot claim."
+                        "title": "候补获奖者",
+                        "desc": "以防正选获奖者无法联系，可设置候补获奖者。"
                     },
                     {
-                        "title": "Exclude owner",
-                        "desc": "Keep the video owner out of the raffle."
+                        "title": "排除视频作者",
+                        "desc": "可自动将视频作者从名单中排除。"
                     },
                     {
-                        "title": "Draw proof",
-                        "desc": "Share the seed and timestamp with the result."
+                        "title": "抽奖证明",
+                        "desc": "通过随机种子和时间戳分享结果。"
                     },
                     {
-                        "title": "PNG card",
-                        "desc": "Download winners as a shareable image."
+                        "title": "PNG卡片",
+                        "desc": "将获奖者下载为图片。"
                     },
                     {
-                        "title": "No password",
-                        "desc": "We never ask for TikTok login or app access."
+                        "title": "无需密码",
+                        "desc": "我们绝不要求您的TikTok账号或应用授权。"
                     }
                 ],
                 "howSteps": [
                     {
-                        "title": "Paste the link",
-                        "desc": "Drop the TikTok video URL in the box. If that fails, paste comments."
+                        "title": "粘贴链接",
+                        "desc": "将TikTok视频链接粘贴到输入框中，您也可以自行粘贴评论。"
                     },
                     {
-                        "title": "Choose winner count",
-                        "desc": "Set how many winners and backups you want. Extra rules are optional."
+                        "title": "获取评论",
+                        "desc": "通过邮箱确认，系统不会创建任何账号。"
                     },
                     {
-                        "title": "Draw",
-                        "desc": "A fair shuffle picks from the eligible list. Copy or share the result."
+                        "title": "进行抽奖",
+                        "desc": "选出获奖者并分享证明。如果评论无法获取，将不予退款，而是提供一次抽奖额度。"
                     }
                 ],
                 "faq": [
                     {
-                        "q": "Do I need to log in to TikTok?",
-                        "a": "No. We never ask for a password. A public video link or pasted comments is enough."
+                        "q": "需要登录TikTok吗?",
+                        "a": "不需要。我们绝不会要求密码。公开视频链接或粘贴的评论即可。"
                     },
                     {
-                        "q": "How much is automatic fetch?",
-                        "a": "200 TL per fetch, up to 1000 comments. Pasting comments is free; the draw itself stays free."
+                        "q": "自动获取评论收费多少?",
+                        "a": "每次获取200土耳其里拉，最多获取1000条评论。无需账号 — 提供邮箱即可。手动粘贴评论是免费的。"
                     },
                     {
-                        "q": "What if automatic fetch fails?",
-                        "a": "Copy comments from the video and use the Paste tab. The giveaway continues the same way."
+                        "q": "如果评论无法加载可以退款吗?",
+                        "a": "不可以。系统会分析失败原因，不会立即退款，而是通过邮箱提供一次抽奖额度。"
                     },
                     {
-                        "q": "Is the winner truly random?",
-                        "a": "Yes. A secure shuffle gives every eligible person an equal chance. You can check the proof panel."
+                        "q": "如果自动获取失败该怎么办?",
+                        "a": "从视频中复制评论并使用「粘贴」选项卡，抽奖流程照常进行。"
                     },
                     {
-                        "q": "Does ‘must follow’ remove people from the draw?",
-                        "a": "No. Follow status is a badge after the draw. Keyword and one-entry rules decide who is eligible."
+                        "q": "获奖者真的是随机选出的吗?",
+                        "a": "是的。系统使用安全的随机算法，让每位符合条件的参与者机会均等，您可以在证明面板中查看验证信息。"
+                    },
+                    {
+                        "q": "「必须关注」的要求会将人排除在抽奖之外吗?",
+                        "a": "不会。关注状态仅在抽奖后以徽章形式显示，参与资格由关键词规则和单次参与规则决定。"
                     }
                 ],
                 "errors": {
-                    "needLink": "Enter a TikTok video link",
-                    "invalidLink": "Enter a valid TikTok link (tiktok.com/@…/video/…)",
-                    "quota": "Automatic comment fetch is over quota. Paste comments to continue.",
-                    "unavailable": "The comment service is not responding. You can paste comments and continue.",
-                    "empty": "No comments found on this video. Try pasting them manually.",
-                    "generic": "Could not fetch comments. Check the link and that the video is public.",
-                    "paymentTimeout": "Payment confirmation is taking longer than expected. Try again in a few minutes or contact us."
+                    "needLink": "请输入TikTok视频链接",
+                    "invalidLink": "请输入有效的TikTok链接 (tiktok.com/@…/video/…)",
+                    "quota": "评论自动获取额度已用完，请粘贴评论以继续。",
+                    "unavailable": "评论服务当前无响应，您可以粘贴评论继续操作。",
+                    "empty": "未在此视频中找到评论，请尝试手动粘贴。",
+                    "generic": "无法获取评论，请检查链接并确认视频为公开状态。",
+                    "paymentTimeout": "支付确认所需时间超出预期，请几分钟后重试或联系我们。"
                 },
                 "toasts": {
-                    "added": "@{name} added",
-                    "participantsAdded": "{count} participants added",
-                    "copied": "Results copied",
-                    "cardDownloaded": "Winner card downloaded",
-                    "noNewNames": "No new names to add"
+                    "added": "已添加 @{name}",
+                    "participantsAdded": "已添加{count}位参与者",
+                    "copied": "结果已复制",
+                    "cardDownloaded": "获奖卡片已下载",
+                    "noNewNames": "没有可添加的新名字"
                 },
                 "loadingSteps": [
-                    "Connecting to TikTok…",
-                    "Fetching video comments…",
-                    "Validating participants…",
-                    "Preparing the list…"
+                    "正在连接TikTok…",
+                    "正在获取视频评论…",
+                    "正在验证参与者…",
+                    "正在准备名单…"
                 ],
                 "pay": {
-                    "openCta": "Fetch comments",
-                    "title": "Confirm the draw",
-                    "subtitle": "Comments are taken from the video. No account is created.",
-                    "emailLabel": "Email",
+                    "openCta": "获取评论",
+                    "title": "确认抽奖",
+                    "subtitle": "评论将从视频中获取，系统不会创建任何账号。",
+                    "emailLabel": "邮箱",
                     "emailPlaceholder": "you@email.com",
-                    "emailHint": "Confirmation and any credit go to this address.",
-                    "invalidEmail": "Enter a valid email",
-                    "cta": "Confirm and continue",
-                    "processing": "Going to payment…",
-                    "noMembership": "No account needed",
-                    "serviceName": "Comment fetch",
-                    "feeLine": "One-time service",
-                    "feeHint": "Service fee {price} · no account",
-                    "cap": "up to {count} comments",
-                    "noRefund": "If comments cannot be fetched there is no refund; you receive one draw credit.",
-                    "useCredit": "Continue with your credit",
-                    "creditTitle": "One draw credit added",
-                    "creditBody": "The payment was not refunded. The next automatic fetch uses this credit.",
-                    "creditEmail": "The credit was emailed to you. Use the link to retry.",
-                    "creditSaved": "The credit is saved on this device. Fetch comments again.",
-                    "paymentsDown": "Payments are not open yet. They start after PayTR onboarding is approved.",
-                    "cancelled": "Cancelled. You can try again.",
-                    "salesContractLink": "Read the Distance Sales Contract",
-                    "confirming": "Confirming your payment…"
-                }
+                    "emailHint": "确认信息和相关额度将发送至此邮箱。",
+                    "invalidEmail": "请输入有效的邮箱地址",
+                    "cta": "确认并继续",
+                    "processing": "正在跳转至支付页面…",
+                    "noMembership": "无需账号",
+                    "serviceName": "评论获取",
+                    "feeLine": "一次性服务",
+                    "feeHint": "服务费用 {price} · 无需账号",
+                    "cap": "最多{count}条评论",
+                    "noRefund": "如果无法获取评论，将不予退款；您将获得一次抽奖额度。",
+                    "useCredit": "使用您的额度继续",
+                    "creditTitle": "已添加一次抽奖额度",
+                    "creditBody": "付款未退还。下次自动获取评论时将使用此额度。",
+                    "creditEmail": "额度已通过邮箱发送给您，请使用链接重试。",
+                    "creditSaved": "额度已保存在此设备上，请重新获取评论。",
+                    "paymentsDown": "支付功能尚未开放，将在PayTR审核通过后开放。",
+                    "cancelled": "已取消，您可以重新尝试。",
+                    "salesContractLink": "阅读远程销售合同",
+                    "confirming": "正在确认您的付款…"
+                },
+                "extensionBannerTitle": "使用Chrome扩展程序免费收集",
+                "extensionBannerBadge": "免费",
+                "extensionBannerDesc": "无需注册，无需付费 — 直接在您自己的浏览器中收集评论。",
+                "pasteDivider": "或手动粘贴评论",
+                "pastePlaceholderExample": "@用户名: 评论内容\n用户名,评论内容"
             }
         },
         "keywordLabel": "Required keyword / hashtag in comment",
@@ -648,7 +661,8 @@
         "eligibleWillEnter": "{count} people will enter the draw",
         "eligibleListTitle": "Eligible participants",
         "eligibleEmpty": "No one matches the filters",
-        "ownerUsernamePlaceholder": "Owner @username"
+        "ownerUsernamePlaceholder": "Owner @username",
+        "toolLabel": "抽奖工具"
     },
     "support": {
         "button": "支持",
@@ -1565,7 +1579,7 @@
         "step3": "点击“开始新年抽奖”按钮。",
         "step4": "在结果页面上，每个人选择自己的名字以查看要给谁买礼物！"
     },
-    "salesContract":     {
+    "salesContract": {
         "meta": {
             "title": "Distance Sales Contract & Cancellation Policy | YulaSanta",
             "description": "Distance sales contract, right of withdrawal, and cancellation/refund terms for YulaSanta's paid TikTok comment-fetch service."
