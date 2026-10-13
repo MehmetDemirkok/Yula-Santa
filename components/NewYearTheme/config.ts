@@ -3,11 +3,15 @@
  * New Year Theme Configuration
  * ═══════════════════════════════════════════════════════════════════════════
  *
- * Tema her yıl otomatik olarak:
+ * Normal otomasyon (THEME_OVERRIDE = "auto"):
  *   • 30 Kasım 00:00 itibarıyla aktif olur
  *   • 10 Ocak 00:00 itibarıyla kapanır (1–9 Ocak arası hâlâ aktif)
  *
- * Manuel müdahale gerekmez.
+ * Manuel kontrol: THEME_OVERRIDE ile otomasyon THEME_AUTOMATION_RESUME
+ * tarihine (yaz başı) kadar askıya alınır:
+ *   • "on"  → tema zorla açık
+ *   • "off" → tema zorla kapalı
+ *   • "auto" → tarih bazlı normal otomasyon
  * ═══════════════════════════════════════════════════════════════════════════
  */
 
@@ -18,6 +22,22 @@ const THEME_START_DAY = 30;
 /** Tema bitiş: 10 Ocak 00:00 (bu andan itibaren kapalı) */
 const THEME_END_MONTH = 0; // January
 const THEME_END_DAY = 10;
+
+/** Manuel tema modu. "auto" = tarih bazlı otomasyon. */
+export type ThemeOverride = "on" | "off" | "auto";
+
+/**
+ * Manuel müdahale modu. Otomasyonu geçici olarak askıya alır.
+ * Şu an: kış teması elle açık.
+ */
+export const THEME_OVERRIDE: ThemeOverride = "on";
+
+/**
+ * Otomasyonun yeniden devreye gireceği tarih = yaz başı.
+ * Bu tarihe kadar THEME_OVERRIDE geçerli olur, sonrasında tarih bazlı
+ * otomasyon devralır (yazın tema otomatik kapanır).
+ */
+export const THEME_AUTOMATION_RESUME = new Date(2027, 5, 1, 0, 0, 0); // 1 Haziran 2027
 
 /**
  * Geri sayımın hedeflediği yeni yıl.
@@ -42,6 +62,11 @@ export function isNewYearThemeActive(now: Date = new Date()): boolean {
         } catch {
             /* ignore */
         }
+    }
+
+    // Otomasyon askıda mı? (yaz başına kadar manuel mod geçerli)
+    if (now.getTime() < THEME_AUTOMATION_RESUME.getTime() && THEME_OVERRIDE !== "auto") {
+        return THEME_OVERRIDE === "on";
     }
 
     const month = now.getMonth();

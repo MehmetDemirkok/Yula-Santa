@@ -274,7 +274,7 @@ export function Footer() {
                             <div className="relative p-6 rounded-3xl bg-gradient-to-br from-[var(--surface-2)] via-[var(--card-bg)] to-[var(--surface-2)] dark:from-gray-900/80 dark:via-gray-950/90 dark:to-black/80 shadow-xl dark:shadow-none border border-[var(--border-medium)] dark:border-white/5 overflow-hidden backdrop-blur-sm">
                                 <div className="absolute inset-0 bg-gradient-to-t from-santa-red/5 to-transparent pointer-events-none" />
                                 <img
-                                    src="/yula-mascot.png"
+                                    src="/yula-mascot-santa.png"
                                     alt="Yula the Cat"
                                     className="w-36 sm:w-44 md:w-52 h-auto object-contain relative z-10 animate-float drop-shadow-lg"
                                 />

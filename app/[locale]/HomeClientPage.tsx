@@ -149,7 +149,7 @@ export default function HomeClientPage() {
                                 <img
                                     alt="YulaSanta Mascot"
                                     className="relative z-10 w-full h-full object-contain animate-float drop-shadow-2xl"
-                                    src="/yula-mascot.png"
+                                    src="/yula-mascot-santa.png"
                                 />
                             </div>
                         </Reveal>

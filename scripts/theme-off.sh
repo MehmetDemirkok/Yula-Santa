@@ -10,8 +10,8 @@
 CONFIG_FILE="components/NewYearTheme/config.ts"
 
 if [ -f "$CONFIG_FILE" ]; then
-    # ENABLE_NEW_YEAR_THEME = true → false
-    sed -i '' 's/export const ENABLE_NEW_YEAR_THEME = true;/export const ENABLE_NEW_YEAR_THEME = false;/g' "$CONFIG_FILE"
+    # THEME_OVERRIDE = * → "off"
+    sed -i '' 's/export const THEME_OVERRIDE: ThemeOverride = "[a-z]*";/export const THEME_OVERRIDE: ThemeOverride = "off";/g' "$CONFIG_FILE"
     echo "✅ Yılbaşı teması KAPATILDI!"
     echo "📁 Değiştirilen dosya: $CONFIG_FILE"
     echo ""

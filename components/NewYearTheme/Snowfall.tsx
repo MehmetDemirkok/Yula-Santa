@@ -1,5 +1,6 @@
 /**
- * Soft winter snowfall — CSS particles, brand-neutral, respects reduced motion.
+ * Winter snowfall — six-armed snowflake particles (SVG), theme-aware
+ * (visible on both light and dark backgrounds), respects reduced motion.
  */
 
 "use client";
@@ -14,6 +15,29 @@ interface Snowflake {
     delay: number;
     opacity: number;
     drift: number;
+    rotation: number;
+}
+
+function SnowflakeIcon({ rotation }: { rotation: number }) {
+    return (
+        <svg
+            viewBox="-12 -12 24 24"
+            fill="none"
+            stroke="currentColor"
+            strokeWidth={2.5}
+            strokeLinecap="round"
+            aria-hidden
+            style={{ width: "100%", height: "100%", transform: `rotate(${rotation}deg)` }}
+        >
+            {[0, 60, 120, 180, 240, 300].map((angle) => (
+                <g key={angle} transform={`rotate(${angle})`}>
+                    <line x1={0} y1={0} x2={0} y2={-10} />
+                    <line x1={0} y1={-6.5} x2={-2.4} y2={-8.9} />
+                    <line x1={0} y1={-6.5} x2={2.4} y2={-8.9} />
+                </g>
+            ))}
+        </svg>
+    );
 }
 
 export function Snowfall() {
@@ -28,16 +52,17 @@ export function Snowfall() {
 
         if (mq.matches) return () => mq.removeEventListener("change", onChange);
 
-        const count = window.innerWidth < 640 ? 14 : 22;
+        const count = window.innerWidth < 640 ? 16 : 26;
         setFlakes(
             Array.from({ length: count }, (_, i) => ({
                 id: i,
                 x: Math.random() * 100,
-                size: Math.random() * 3.5 + 2,
+                size: Math.random() * 2 + 2.5, // ~2.5–4.5px — küçük kar taneleri
                 duration: Math.random() * 12 + 14,
                 delay: Math.random() * -24,
-                opacity: Math.random() * 0.35 + 0.25,
+                opacity: Math.random() * 0.35 + 0.35,
                 drift: (Math.random() - 0.5) * 40,
+                rotation: Math.random() * 360,
             }))
         );
 
@@ -68,11 +93,14 @@ export function Snowfall() {
                 .ys-flake {
                     position: absolute;
                     top: 0;
-                    border-radius: 50%;
-                    background: radial-gradient(circle at 30% 30%, #fff, rgba(255, 255, 255, 0.55));
-                    box-shadow: 0 0 4px rgba(255, 255, 255, 0.35);
+                    color: #6b80a4; /* light mode: cool slate-blue, visible on near-white bg */
+                    filter: drop-shadow(0 0 1px rgba(107, 128, 164, 0.45));
                     animation: ys-snow-fall linear infinite;
                     will-change: transform, opacity;
+                }
+                :global(.dark) .ys-flake {
+                    color: #ffffff;
+                    filter: drop-shadow(0 0 3px rgba(255, 255, 255, 0.45));
                 }
             `}</style>
             {flakes.map((f) => (
@@ -90,7 +118,9 @@ export function Snowfall() {
                             ["--drift" as string]: `${f.drift}px`,
                         } as React.CSSProperties
                     }
-                />
+                >
+                    <SnowflakeIcon rotation={f.rotation} />
+                </span>
             ))}
         </div>
     );
