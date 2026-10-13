@@ -1689,5 +1689,10 @@
         "showPassword": "パスワードを表示",
         "hidePassword": "パスワードを非表示",
         "google": "Googleで続ける"
+    },
+    "ads": {
+        "advertiseTitle": "広告スペース",
+        "advertiseText": "このスペースは広告掲載にご利用いただけます。",
+        "advertiseCta": "お問い合わせ"
     }
 }

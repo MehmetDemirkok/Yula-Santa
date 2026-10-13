@@ -1689,5 +1689,10 @@
         "showPassword": "Показать пароль",
         "hidePassword": "Скрыть пароль",
         "google": "Продолжить через Google"
+    },
+    "ads": {
+        "advertiseTitle": "Рекламное место",
+        "advertiseText": "Это место доступно для размещения рекламы.",
+        "advertiseCta": "Связаться с нами"
     }
 }

@@ -1690,5 +1690,10 @@
         "showPassword": "Mostrar senha",
         "hidePassword": "Ocultar senha",
         "google": "Continuar com o Google"
+    },
+    "ads": {
+        "advertiseTitle": "Espaço publicitário",
+        "advertiseText": "Este espaço está disponível para publicidade.",
+        "advertiseCta": "Fale conosco"
     }
 }

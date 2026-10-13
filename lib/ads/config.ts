@@ -40,3 +40,12 @@ export const AD_CONFIG = {
  * Format: ca-pub-XXXXXXXXXXXXXXXX
  */
 export const ADSENSE_CLIENT_ID = process.env.NEXT_PUBLIC_ADSENSE_CLIENT_ID || 'ca-pub-1407870205867199';
+
+/**
+ * Whether a real ad network is configured.
+ *
+ * True only when NEXT_PUBLIC_ADSENSE_CLIENT_ID is explicitly set. When false
+ * (no ads live yet), ad slots render nothing — no empty labeled boxes — and
+ * callers can show an "Advertise here" placeholder instead.
+ */
+export const ADS_ENABLED = Boolean(process.env.NEXT_PUBLIC_ADSENSE_CLIENT_ID);

@@ -21,8 +21,8 @@ import { Navbar } from "@/components/Navbar";
 import { ThemeProvider } from "@/lib/ThemeContext";
 import { ToastProvider } from "@/lib/ToastContext";
 import { ToastContainer } from "@/components/ToastContainer";
-import { AdWrapper, BannerAd } from "@/components/ads";
-import { AD_SLOTS } from "@/lib/ads/config";
+import { AdWrapper, BannerAd, AdvertiseHere } from "@/components/ads";
+import { AD_SLOTS, ADS_ENABLED } from "@/lib/ads/config";
 
 interface ClientLayoutProps {
     children: ReactNode;
@@ -50,11 +50,16 @@ export function ClientLayout({ children }: ClientLayoutProps) {
                     {children}
                 </div>
 
-                {/* Site geneli banner reklam - Footer'dan hemen önce, tüm sayfalarda görünür */}
+                {/* Site geneli reklam alanı - Footer'dan hemen önce, tüm sayfalarda görünür.
+                    Reklam ağı yapılandırılmadıysa yerine "reklam ver" daveti gösterilir. */}
                 <div className="w-full px-4">
-                    <AdWrapper position="bottom" className="max-w-4xl mx-auto">
-                        <BannerAd adSlot={AD_SLOTS.BANNER_BOTTOM} />
-                    </AdWrapper>
+                    {ADS_ENABLED ? (
+                        <AdWrapper position="bottom" className="max-w-4xl mx-auto">
+                            <BannerAd adSlot={AD_SLOTS.BANNER_BOTTOM} />
+                        </AdWrapper>
+                    ) : (
+                        <AdvertiseHere className="max-w-4xl mx-auto mt-4" />
+                    )}
                 </div>
 
                 {/* Footer is part of the scrollable content or fixed?

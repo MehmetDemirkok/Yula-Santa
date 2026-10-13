@@ -1691,5 +1691,10 @@
         "showPassword": "Şifreyi göster",
         "hidePassword": "Şifreyi gizle",
         "google": "Google ile devam et"
+    },
+    "ads": {
+        "advertiseTitle": "Reklam Alanı",
+        "advertiseText": "Bu alana reklam verebilirsiniz.",
+        "advertiseCta": "İletişime Geç"
     }
 }

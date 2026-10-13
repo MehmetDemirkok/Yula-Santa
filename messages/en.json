@@ -1691,5 +1691,10 @@
         "showPassword": "Show password",
         "hidePassword": "Hide password",
         "google": "Continue with Google"
+    },
+    "ads": {
+        "advertiseTitle": "Advertise Here",
+        "advertiseText": "This space is available for advertising.",
+        "advertiseCta": "Get in touch"
     }
 }

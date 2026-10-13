@@ -1690,5 +1690,10 @@
         "showPassword": "비밀번호 표시",
         "hidePassword": "비밀번호 숨기기",
         "google": "Google로 계속하기"
+    },
+    "ads": {
+        "advertiseTitle": "광고 공간",
+        "advertiseText": "이 공간은 광고 게재가 가능합니다.",
+        "advertiseCta": "문의하기"
     }
 }

@@ -1689,5 +1689,10 @@
         "showPassword": "Passwort anzeigen",
         "hidePassword": "Passwort verbergen",
         "google": "Mit Google fortfahren"
+    },
+    "ads": {
+        "advertiseTitle": "Werbeplatz",
+        "advertiseText": "Dieser Platz steht für Ihre Werbung zur Verfügung.",
+        "advertiseCta": "Kontakt aufnehmen"
     }
 }

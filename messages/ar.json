@@ -1689,5 +1689,10 @@
         "showPassword": "إظهار كلمة المرور",
         "hidePassword": "إخفاء كلمة المرور",
         "google": "المتابعة باستخدام Google"
+    },
+    "ads": {
+        "advertiseTitle": "مساحة إعلانية",
+        "advertiseText": "هذه المساحة متاحة للإعلان.",
+        "advertiseCta": "تواصل معنا"
     }
 }

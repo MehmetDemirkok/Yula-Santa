@@ -1,6 +1,7 @@
 "use client";
 
 import { ReactNode } from 'react';
+import { ADS_ENABLED } from '@/lib/ads/config';
 
 interface AdWrapperProps {
     children: ReactNode;
@@ -19,6 +20,11 @@ export function AdWrapper({
     showLabel = true,
     className = ''
 }: AdWrapperProps) {
+    // No ad network configured → render nothing (avoids empty ad boxes).
+    if (!ADS_ENABLED) {
+        return null;
+    }
+
     const positionClasses = {
         top: 'mb-4',
         bottom: 'mt-4',

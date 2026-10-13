@@ -1689,5 +1689,10 @@
         "showPassword": "显示密码",
         "hidePassword": "隐藏密码",
         "google": "使用 Google 继续"
+    },
+    "ads": {
+        "advertiseTitle": "广告位",
+        "advertiseText": "此位置可用于投放广告。",
+        "advertiseCta": "联系我们"
     }
 }
