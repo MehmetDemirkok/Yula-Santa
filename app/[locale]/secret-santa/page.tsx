@@ -19,8 +19,22 @@ export async function generateMetadata({ params }: { params: Promise<{ locale: s
         titleOverride: copy.title,
         descriptionOverride: copy.description,
         keywordsOverride: locale === 'tr'
-            ? ['secret santa', 'online secret santa', 'yılbaşı çekilişi', 'gizli çekiliş']
-            : ['secret santa', 'online secret santa', 'gift exchange'],
+            ? [
+                'yılbaşı çekilişi',
+                'online yılbaşı çekilişi',
+                'yılbaşı çekilişi nasıl yapılır',
+                'secret santa',
+                'online secret santa',
+                'gizli çekiliş',
+                'gizli hediye çekilişi',
+                'hediye çekilişi',
+                'kura çekme',
+                'sınıf yılbaşı çekilişi',
+                'okul yılbaşı çekilişi',
+                'ofis yılbaşı çekilişi',
+                'noel çekilişi',
+            ]
+            : ['secret santa', 'online secret santa', 'gift exchange', 'holiday gift draw'],
     });
 }
 

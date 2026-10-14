@@ -8,7 +8,7 @@
 
 import { useState, useEffect, useRef } from "react";
 import { useRouter, useParams } from "next/navigation";
-import { Plus, Trash2, Gift, Sparkles, FileUp, Youtube, HelpCircle, ClipboardPaste } from "lucide-react";
+import { Trash2, Sparkles, FileUp, Youtube, HelpCircle, ClipboardPaste, Check } from "lucide-react";
 import { Button } from "@/components/ui/Button";
 import { Input } from "@/components/ui/Input";
 import { useTranslations } from 'next-intl';
@@ -16,6 +16,24 @@ import { CountdownBanner } from "@/components/NewYearTheme";
 import { isNewYearThemeActive } from "@/components/NewYearTheme/config";
 import { secureShuffle } from "@/lib/random";
 import * as XLSX from "xlsx";
+
+const AVATAR_TONES = [
+    "from-red-500 to-rose-700",
+    "from-emerald-500 to-green-700",
+    "from-amber-400 to-yellow-600",
+    "from-indigo-500 to-violet-700",
+];
+
+function Avatar({ name, index = 0 }: { name: string; index?: number }) {
+    const initial = name.trim().charAt(0).toUpperCase() || "?";
+    return (
+        <span
+            className={`inline-flex items-center justify-center w-8 h-8 rounded-full bg-gradient-to-br ${AVATAR_TONES[index % AVATAR_TONES.length]} text-white font-bold text-xs shrink-0 shadow-sm ring-2 ring-white/50 dark:ring-white/10`}
+        >
+            {initial}
+        </span>
+    );
+}
 
 export default function Home() {
     const router = useRouter();
@@ -27,7 +45,6 @@ export default function Home() {
     const [participants, setParticipants] = useState<string[]>([]);
     const [isUploading, setIsUploading] = useState(false);
     const [drawMode, setDrawMode] = useState<'secret' | 'pairs'>('secret');
-    const [hydrated, setHydrated] = useState(false);
     const fileInputRef = useRef<HTMLInputElement>(null);
 
     useEffect(() => {
@@ -39,7 +56,6 @@ export default function Home() {
         }
         const savedMode = localStorage.getItem("draw_mode") as 'secret' | 'pairs' | null;
         setDrawMode(savedMode === 'pairs' ? 'pairs' : 'secret');
-        setHydrated(true);
     }, []);
 
     useEffect(() => {
@@ -186,6 +202,12 @@ export default function Home() {
 
     const handleDraw = () => triggerDraw(participants);
 
+    const isPairs = drawMode === 'pairs';
+    const oddPairs = isPairs && participants.length >= 2 && participants.length % 2 !== 0;
+    const minRequired = oddPairs ? participants.length + 1 : (isPairs ? 2 : 3);
+    const ready = participants.length >= minRequired;
+    const progress = Math.min(100, Math.round((participants.length / minRequired) * 100));
+
     return (
         <main className="ys-page-shell flex flex-col items-center pt-24 sm:pt-32 relative overflow-hidden transition-colors duration-300 safe-area-inset-bottom">
             {/* Decorative BG */}
@@ -197,16 +219,22 @@ export default function Home() {
                     <div className="inline-flex items-center justify-center p-1 bg-[var(--card-bg)] rounded-2xl mb-2 sm:mb-4 shadow-sm border border-[var(--border-light)] overflow-hidden ring-4 ring-[var(--card-bg)] shadow-xl">
                         <img src="/icon.png" alt="YulaSanta Logo" className="w-16 h-16 sm:w-20 sm:h-20 object-contain rounded-xl" />
                     </div>
+                    <div className="flex justify-center" suppressHydrationWarning>
+                        <span className="inline-flex items-center gap-1.5 rounded-full bg-red-50 dark:bg-red-500/10 text-santa-red px-3 py-1 text-[11px] font-bold uppercase tracking-wider border border-red-100 dark:border-red-500/20">
+                            <Sparkles className="w-3 h-3" />
+                            {locale === 'tr' ? 'Secret Santa' : 'New Year Draw'}
+                        </span>
+                    </div>
                     <h1 className="font-heading text-headline-lg-mobile sm:text-headline-lg text-[var(--text-primary)] tracking-tight">
-                        {locale === 'tr' ? 'Online Secret Santa' : t('footer.secretSanta')}
+                        {locale === 'tr' ? 'Online Yılbaşı Çekilişi' : t('footer.secretSanta')}
                     </h1>
                     <div className="flex items-center justify-center gap-2 flex-wrap" suppressHydrationWarning>
                         <p className="text-[var(--text-secondary)] text-body-lg">
                             {t('home.subtitle')}
                         </p>
                         {participants.length > 0 && (
-                            <span className={`text-xs sm:text-sm font-bold px-2.5 py-1 rounded-full ${participants.length >= (drawMode === 'pairs' ? 2 : 3) ? 'bg-green-100/80 dark:bg-green-500/20 text-green-700 dark:text-green-300' : 'bg-yellow-100/80 dark:bg-yellow-500/20 text-yellow-700 dark:text-yellow-300'}`}>
-                                {participants.length}/{drawMode === 'pairs' ? '2+' : '3+'}
+                            <span className={`text-xs sm:text-sm font-bold px-2.5 py-1 rounded-full ${ready ? 'bg-green-100/80 dark:bg-green-500/20 text-green-700 dark:text-green-300' : 'bg-yellow-100/80 dark:bg-yellow-500/20 text-yellow-700 dark:text-yellow-300'}`}>
+                                {participants.length}/{minRequired}
                             </span>
                         )}
                     </div>
@@ -217,20 +245,34 @@ export default function Home() {
                     <div className="grid grid-cols-2 gap-3" suppressHydrationWarning>
                         <button
                             onClick={() => setDrawMode('secret')}
-                            className={`p-3 sm:p-4 rounded-2xl transition-all border-2 ${drawMode === 'secret' ? 'bg-red-100/50 dark:bg-red-500/15 border-santa-red text-santa-red shadow-lg' : 'bg-[var(--surface-2)] border-transparent text-[var(--text-secondary)] hover:border-[var(--border-medium)]'}`}
+                            className={`relative p-3 sm:p-4 rounded-2xl transition-all border-2 ${drawMode === 'secret' ? 'bg-red-100/50 dark:bg-red-500/15 border-santa-red text-santa-red shadow-lg' : 'bg-[var(--surface-2)] border-transparent text-[var(--text-secondary)] hover:border-[var(--border-medium)]'}`}
                         >
+                            {drawMode === 'secret' && (
+                                <span className="absolute top-2 right-2 flex items-center justify-center w-5 h-5 rounded-full bg-santa-red text-white shadow-sm">
+                                    <Check className="w-3 h-3" strokeWidth={3} />
+                                </span>
+                            )}
                             <div className="text-2xl sm:text-3xl mb-1">🎅</div>
                             <div className="font-bold text-xs sm:text-sm">{t('home.secretDraw')}</div>
-                            <div className="text-[10px] sm:text-xs text-[var(--text-muted)] mt-1">Kim kime hediye verecek gizli</div>
+                            <div className="text-[10px] sm:text-xs text-[var(--text-muted)] mt-1">
+                                {locale === 'tr' ? 'Kim kime hediye verecek gizli' : 'Secret gift exchange'}
+                            </div>
                         </button>
 
                         <button
                             onClick={() => setDrawMode('pairs')}
-                            className={`p-3 sm:p-4 rounded-2xl transition-all border-2 ${drawMode === 'pairs' ? 'bg-green-100/50 dark:bg-green-500/15 border-christmas-green text-christmas-green shadow-lg' : 'bg-[var(--surface-2)] border-transparent text-[var(--text-secondary)] hover:border-[var(--border-medium)]'}`}
+                            className={`relative p-3 sm:p-4 rounded-2xl transition-all border-2 ${drawMode === 'pairs' ? 'bg-green-100/50 dark:bg-green-500/15 border-christmas-green text-christmas-green shadow-lg' : 'bg-[var(--surface-2)] border-transparent text-[var(--text-secondary)] hover:border-[var(--border-medium)]'}`}
                         >
+                            {drawMode === 'pairs' && (
+                                <span className="absolute top-2 right-2 flex items-center justify-center w-5 h-5 rounded-full bg-christmas-green text-white shadow-sm">
+                                    <Check className="w-3 h-3" strokeWidth={3} />
+                                </span>
+                            )}
                             <div className="text-2xl sm:text-3xl mb-1">👥</div>
                             <div className="font-bold text-xs sm:text-sm">{t('home.directMatch')}</div>
-                            <div className="text-[10px] sm:text-xs text-[var(--text-muted)] mt-1">Birbirlerine hediye</div>
+                            <div className="text-[10px] sm:text-xs text-[var(--text-muted)] mt-1">
+                                {locale === 'tr' ? 'Birbirlerine hediye' : 'Pair them together'}
+                            </div>
                         </button>
                     </div>
 
@@ -258,14 +300,17 @@ export default function Home() {
                     <div className="space-y-2 max-h-[35vh] sm:max-h-[40vh] overflow-y-auto pr-1 sm:pr-2 custom-scrollbar">
                         {participants.length === 0 && (
                             <div className="text-center py-8 sm:py-12 text-[var(--text-muted)] border-2 border-dashed border-[var(--border-medium)] rounded-xl sm:rounded-2xl bg-[var(--surface-2)]">
-                                <Sparkles className="w-6 h-6 sm:w-8 sm:h-8 mx-auto mb-2 opacity-50" />
+                                <div className="mx-auto mb-3 w-12 h-12 rounded-full bg-red-50 dark:bg-red-500/10 flex items-center justify-center">
+                                    <Sparkles className="w-6 h-6 text-santa-red/60" />
+                                </div>
                                 <p className="text-body-md">{t('home.noParticipants')}</p>
                             </div>
                         )}
                         {participants.map((p, i) => (
                             <div key={i} className="ys-zebra-row group flex items-center justify-between p-2.5 sm:p-3 pl-3 sm:pl-4 bg-[var(--card-bg)] rounded-lg sm:rounded-xl shadow-sm hover:shadow-md transition-all border border-[var(--border-light)] hover:border-red-100 dark:hover:border-red-900/30 animate-in slide-in-from-left-2 duration-300">
-                                <div className="flex items-center gap-2 min-w-0 flex-1">
-                                    <span className="font-bold text-santa-red text-xs sm:text-sm flex-shrink-0">#{i + 1}</span>
+                                <div className="flex items-center gap-2.5 min-w-0 flex-1">
+                                    <span className="text-[10px] font-bold text-[var(--text-muted)] w-3 text-center flex-shrink-0">{i + 1}</span>
+                                    <Avatar name={p} index={i} />
                                     <span className="font-medium text-[var(--text-secondary)] text-sm sm:text-base truncate">{p}</span>
                                 </div>
                                 <div className="flex items-center gap-1 ml-2 flex-shrink-0 opacity-0 group-hover:opacity-100 transition-opacity">
@@ -327,7 +372,33 @@ export default function Home() {
                         )}
                     </div>
 
-                    <div className="pt-4 border-t border-[var(--border-light)]">
+                    <div className="pt-4 border-t border-[var(--border-light)] space-y-3">
+                        {participants.length > 0 && (
+                            <div className="space-y-1.5" suppressHydrationWarning>
+                                <div className="flex items-center justify-between text-[11px] font-bold">
+                                    <span className="text-[var(--text-muted)]">{participants.length} / {minRequired}</span>
+                                    {ready ? (
+                                        <span className="inline-flex items-center gap-1 text-green-600 dark:text-green-400">
+                                            <Check className="w-3 h-3" strokeWidth={3} />
+                                            {locale === 'tr' ? 'Hazır' : 'Ready'}
+                                        </span>
+                                    ) : (
+                                        <span className="text-amber-600 dark:text-amber-400">
+                                            {locale === 'tr'
+                                                ? `${minRequired - participants.length} kişi daha`
+                                                : `${minRequired - participants.length} more`}
+                                        </span>
+                                    )}
+                                </div>
+                                <div className="h-1.5 w-full rounded-full bg-[var(--surface-2)] overflow-hidden">
+                                    <div
+                                        className={`h-full rounded-full transition-all duration-500 ${ready ? 'bg-gradient-to-r from-emerald-400 to-green-600' : 'bg-gradient-to-r from-amber-400 to-yellow-500'}`}
+                                        style={{ width: `${progress}%` }}
+                                    />
+                                </div>
+                            </div>
+                        )}
+
                         <Button
                             onClick={handleDraw}
                             className={`w-full text-lg py-6 shadow-lg transition-all ${drawMode === 'pairs' ? 'shadow-green-200/50 dark:shadow-green-900/20 hover:shadow-green-200/50 bg-christmas-green hover:bg-green-700' : 'shadow-red-200/50 dark:shadow-red-900/20'}`}
@@ -337,7 +408,7 @@ export default function Home() {
                             <Sparkles className="w-5 h-5 mr-2" /> {drawMode === 'pairs' ? t('home.match') : t('home.startDraw')}
                         </Button>
                         {participants.length > 0 && (
-                            <div className="mt-3 space-y-2">
+                            <div className="space-y-2">
                                 {drawMode === 'secret' && participants.length < 3 && (
                                     <p className="text-xs text-red-500 font-medium bg-red-50 dark:bg-red-950/30 py-2 rounded-lg">{t('home.minPeople3')}</p>
                                 )}

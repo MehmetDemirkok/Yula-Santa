@@ -55,9 +55,9 @@ const raffle: Record<string, Copy> = {
 
 const secretSanta: Record<string, Copy> = {
     tr: {
-        title: 'Online Secret Santa — Yılbaşı Çekilişi | YulaSanta',
+        title: 'Yılbaşı Çekilişi — Online Secret Santa | YulaSanta',
         description:
-            'Arkadaşlarını ekle, gizli eşleşme yap. Online Secret Santa ve yılbaşı çekilişi — kayıt yok, sonuç yalnızca sana görünür.',
+            'Yılbaşı çekilişi yap: sınıfını, arkadaşlarını veya ofisini ekle, gizli hediye eşleştirmesini başlat. Ücretsiz online Secret Santa — kayıt ve şifre yok.',
     },
     en: {
         title: 'Online Secret Santa — Holiday Gift Draw | YulaSanta',

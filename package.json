@@ -11,7 +11,8 @@
     "theme:off": "bash scripts/theme-off.sh",
     "theme:on": "bash scripts/theme-on.sh",
     "i18n:check": "npx tsx scripts/check-translations.ts",
-    "i18n:sync": "npx tsx scripts/generate-translations.ts"
+    "i18n:sync": "npx tsx scripts/generate-translations.ts",
+    "indexnow": "npx tsx scripts/indexnow.ts"
   },
   "dependencies": {
     "@neondatabase/serverless": "^1.1.0",
