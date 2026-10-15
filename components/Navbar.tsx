@@ -112,7 +112,7 @@ export function Navbar() {
             active: pathname?.includes("/tiktok"),
         },
         {
-            name: t("home.secretDraw").replace(" 🤫", ""),
+            name: t("home.secretDraw").replace(" 🎄", ""),
             href: localePath(locale, "/secret-santa"),
             icon: Gift,
             active: pathname?.includes("/secret-santa"),

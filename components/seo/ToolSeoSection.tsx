@@ -53,7 +53,7 @@ const COPY: Record<
                 { path: '/tools/wheel-of-fortune', label: 'Çarkıfelek kullan' },
                 { path: '/youtube', label: 'YouTube yorum çekilişi' },
                 { path: '/tiktok', label: 'TikTok yorum çekilişi' },
-                { path: '/secret-santa', label: 'Secret Santa yap' },
+                { path: '/secret-santa', label: 'Yılbaşı çekilişi yap' },
             ],
         },
         en: {

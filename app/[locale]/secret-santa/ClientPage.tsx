@@ -255,7 +255,7 @@ export default function Home() {
                             <div className="text-2xl sm:text-3xl mb-1">🎅</div>
                             <div className="font-bold text-xs sm:text-sm">{t('home.secretDraw')}</div>
                             <div className="text-[10px] sm:text-xs text-[var(--text-muted)] mt-1">
-                                {locale === 'tr' ? 'Kim kime hediye verecek gizli' : 'Secret gift exchange'}
+                                {locale === 'tr' ? 'Herkes kime hediye alacağını gizli görür' : 'Each person secretly sees who to buy for'}
                             </div>
                         </button>
 
@@ -271,7 +271,7 @@ export default function Home() {
                             <div className="text-2xl sm:text-3xl mb-1">👥</div>
                             <div className="font-bold text-xs sm:text-sm">{t('home.directMatch')}</div>
                             <div className="text-[10px] sm:text-xs text-[var(--text-muted)] mt-1">
-                                {locale === 'tr' ? 'Birbirlerine hediye' : 'Pair them together'}
+                                {locale === 'tr' ? 'Katılımcılar karşılıklı ikili eşleşir' : 'Participants are matched up in pairs'}
                             </div>
                         </button>
                     </div>

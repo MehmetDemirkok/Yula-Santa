@@ -110,7 +110,7 @@ const home: Record<string, Copy> = {
     tr: {
         title: 'YulaSanta — Ücretsiz Çekiliş Sitesi',
         description:
-            'YouTube ve TikTok yorum çekilişi, isim çekilişi, Secret Santa, çarkıfelek ve daha fazlası. Kayıtsız, şifresiz, ücretsiz.',
+            'YouTube ve TikTok yorum çekilişi, yılbaşı çekilişi (Secret Santa), isim çekilişi, çarkıfelek ve daha fazlası. Kayıtsız, şifresiz, ücretsiz.',
     },
     en: {
         title: 'YulaSanta — Free Online Giveaway Tools',

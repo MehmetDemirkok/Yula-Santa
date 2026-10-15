@@ -66,7 +66,7 @@ export default function HomeClientPage() {
 
     const raffleTools = [
         {
-            title: t("home.secretDraw").replace(" 🤫", ""),
+            title: t("home.secretDraw").replace(" 🎄", ""),
             desc: t("home.subtitle"),
             icon: Gift,
             href: localePath(locale, "/secret-santa"),
