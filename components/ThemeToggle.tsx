@@ -1,6 +1,6 @@
 "use client";
 
-import { Moon, Sun, Monitor } from "lucide-react";
+import { Moon, Sun, SunMoon } from "lucide-react";
 import { useTheme } from "@/lib/ThemeContext";
 import { useState, useRef, useEffect } from "react";
 import { useTranslations } from "next-intl";
@@ -62,7 +62,9 @@ export function ThemeToggle({ variant = "icon", className = "" }: ThemeTogglePro
                     border border-[rgba(210,190,185,0.6)] dark:border-white/[0.08]"
                 aria-label={t("toggle")}
             >
-                {resolvedTheme === "dark" ? (
+                {theme === "auto" ? (
+                    <SunMoon className="w-5 h-5" />
+                ) : resolvedTheme === "dark" ? (
                     <Moon className="w-5 h-5" />
                 ) : (
                     <Sun className="w-5 h-5" />
@@ -70,7 +72,7 @@ export function ThemeToggle({ variant = "icon", className = "" }: ThemeTogglePro
             </button>
 
             {isOpen && (
-                <div className="absolute right-0 mt-2 w-44 bg-white/95 dark:bg-[#1A1414]/95 backdrop-blur-xl rounded-2xl shadow-[0_8px_32px_rgba(100,35,25,0.12)] dark:shadow-[0_8px_32px_rgba(0,0,0,0.5)] border border-[rgba(225,210,205,0.6)] dark:border-white/[0.07] overflow-hidden z-50 animate-zoom-in">
+                <div className="absolute left-0 sm:left-auto sm:right-0 mt-2 w-44 bg-white/95 dark:bg-[#1A1414]/95 backdrop-blur-xl rounded-2xl shadow-[0_8px_32px_rgba(100,35,25,0.12)] dark:shadow-[0_8px_32px_rgba(0,0,0,0.5)] border border-[rgba(225,210,205,0.6)] dark:border-white/[0.07] overflow-hidden z-50 animate-zoom-in">
                     <div className="p-2 space-y-1">
                         <ThemeOption
                             icon={<Sun className="w-4 h-4" />}
@@ -91,11 +93,11 @@ export function ThemeToggle({ variant = "icon", className = "" }: ThemeTogglePro
                             }}
                         />
                         <ThemeOption
-                            icon={<Monitor className="w-4 h-4" />}
-                            label={t("system")}
-                            isActive={theme === "system"}
+                            icon={<SunMoon className="w-4 h-4" />}
+                            label={t("auto")}
+                            isActive={theme === "auto"}
                             onClick={() => {
-                                setTheme("system");
+                                setTheme("auto");
                                 setIsOpen(false);
                             }}
                         />

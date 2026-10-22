@@ -1,12 +1,11 @@
 "use client";
 
 import { createContext, useContext, useEffect, useState, ReactNode } from "react";
-
-type Theme = "light" | "dark" | "system";
+import { resolveTheme, isTheme, THEME_STORAGE_KEY, Theme, ResolvedTheme } from "@/lib/theme";
 
 interface ThemeContextType {
     theme: Theme;
-    resolvedTheme: "light" | "dark";
+    resolvedTheme: ResolvedTheme;
     setTheme: (theme: Theme) => void;
     toggleTheme: () => void;
 }
@@ -14,15 +13,21 @@ interface ThemeContextType {
 const ThemeContext = createContext<ThemeContextType | undefined>(undefined);
 
 export function ThemeProvider({ children }: { children: ReactNode }) {
-    const [theme, setThemeState] = useState<Theme>("system");
-    const [resolvedTheme, setResolvedTheme] = useState<"light" | "dark">("light");
+    const [theme, setThemeState] = useState<Theme>("auto");
+    const [resolvedTheme, setResolvedTheme] = useState<ResolvedTheme>("light");
     const [mounted, setMounted] = useState(false);
 
-    // Initialize theme from localStorage
+    // Initialize theme from localStorage ("system" is the legacy auto value)
     useEffect(() => {
-        const savedTheme = localStorage.getItem("theme") as Theme | null;
-        if (savedTheme && ["light", "dark", "system"].includes(savedTheme)) {
-            setThemeState(savedTheme);
+        try {
+            const savedTheme = localStorage.getItem(THEME_STORAGE_KEY);
+            if (isTheme(savedTheme)) {
+                setThemeState(savedTheme);
+            } else if (savedTheme === "system") {
+                setThemeState("auto");
+            }
+        } catch {
+            // localStorage may be unavailable (private mode); fall back to auto
         }
         setMounted(true);
     }, []);
@@ -31,37 +36,46 @@ export function ThemeProvider({ children }: { children: ReactNode }) {
     useEffect(() => {
         if (!mounted) return;
 
-        const mediaQuery = window.matchMedia("(prefers-color-scheme: dark)");
+        const root = document.documentElement;
+        let lastApplied: ResolvedTheme | null = null;
 
         const updateTheme = () => {
-            const root = document.documentElement;
-            let current: "light" | "dark";
-
-            if (theme === "system") {
-                current = mediaQuery.matches ? "dark" : "light";
-            } else {
-                current = theme as "light" | "dark";
-            }
+            const current = resolveTheme(theme);
+            if (current === lastApplied) return;
+            lastApplied = current;
 
             setResolvedTheme(current);
-
-            if (current === "dark") {
-                root.classList.add("dark");
-                root.style.colorScheme = "dark";
-            } else {
-                root.classList.remove("dark");
-                root.style.colorScheme = "light";
-            }
+            root.classList.toggle("dark", current === "dark");
+            root.style.colorScheme = current;
         };
 
         updateTheme();
-        mediaQuery.addEventListener("change", updateTheme);
-        return () => mediaQuery.removeEventListener("change", updateTheme);
+
+        if (theme !== "auto") return;
+
+        // Re-evaluate while the page stays open so 07:00 / 19:00 switches happen live
+        const interval = window.setInterval(updateTheme, 30_000);
+        const handleVisibility = () => {
+            if (!document.hidden) updateTheme();
+        };
+
+        document.addEventListener("visibilitychange", handleVisibility);
+        window.addEventListener("focus", updateTheme);
+
+        return () => {
+            window.clearInterval(interval);
+            document.removeEventListener("visibilitychange", handleVisibility);
+            window.removeEventListener("focus", updateTheme);
+        };
     }, [theme, mounted]);
 
     const setTheme = (newTheme: Theme) => {
         setThemeState(newTheme);
-        localStorage.setItem("theme", newTheme);
+        try {
+            localStorage.setItem(THEME_STORAGE_KEY, newTheme);
+        } catch {
+            // ignore storage failures
+        }
     };
 
     const toggleTheme = () => {

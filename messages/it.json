@@ -698,6 +698,7 @@
     "theme": {
         "light": "Tema Chiaro",
         "dark": "Tema Scuro",
+        "auto": "Automatico",
         "system": "Sistema",
         "toggle": "Cambia Tema"
     },

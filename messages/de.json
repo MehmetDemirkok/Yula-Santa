@@ -698,6 +698,7 @@
     "theme": {
         "light": "Helles Design",
         "dark": "Dunkles Design",
+        "auto": "Automatisch",
         "system": "System",
         "toggle": "Design umschalten"
     },

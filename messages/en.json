@@ -700,6 +700,7 @@
     "theme": {
         "light": "Light Theme",
         "dark": "Dark Theme",
+        "auto": "Auto",
         "system": "System",
         "toggle": "Toggle Theme"
     },

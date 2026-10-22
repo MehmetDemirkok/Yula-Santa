@@ -246,7 +246,7 @@ export function Navbar() {
 
                         <div className="flex items-center gap-2 sm:gap-3 shrink-0">
                             <div className="hidden sm:block">
-                                <ThemeToggle />
+                                <ThemeToggle variant="dropdown" />
                             </div>
                             <div className="hidden sm:block">
                                 <LanguageSwitcher />
@@ -277,7 +277,7 @@ export function Navbar() {
                             {t("languageSwitcher.label")}
                         </p>
                         <div className="flex items-center gap-3">
-                            <ThemeToggle />
+                            <ThemeToggle variant="dropdown" />
                             <LanguageSwitcher />
                         </div>
                     </div>

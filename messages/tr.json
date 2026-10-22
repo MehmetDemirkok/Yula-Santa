@@ -701,6 +701,7 @@
     "theme": {
         "light": "Açık Tema",
         "dark": "Koyu Tema",
+        "auto": "Otomatik",
         "system": "Sistem",
         "toggle": "Tema Değiştir"
     },

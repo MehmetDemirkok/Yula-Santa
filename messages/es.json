@@ -700,6 +700,7 @@
     "theme": {
         "light": "Tema Claro",
         "dark": "Tema Oscuro",
+        "auto": "Automático",
         "system": "Sistema",
         "toggle": "Cambiar Tema"
     },

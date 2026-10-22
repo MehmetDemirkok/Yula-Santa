@@ -699,6 +699,7 @@
     "theme": {
         "light": "Thème Clair",
         "dark": "Thème Sombre",
+        "auto": "Automatique",
         "system": "Système",
         "toggle": "Changer de Thème"
     },
