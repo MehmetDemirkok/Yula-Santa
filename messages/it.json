@@ -703,6 +703,13 @@
         "toggle": "Cambia Tema"
     },
     "tools": {
+        "plakaAvcisi": "Cacciatore di Targhe",
+        "plakaAvcisiShort": "Impara i codici di targa delle 81 province turche giocando.",
+        "plakaAvcisiMeta": {
+            "title": "Cacciatore di Targhe — Quiz targhe della Turchia | YulaSanta",
+            "description": "Abbina le 81 province della Turchia ai loro codici di targa. Quattro modalità, sfida giornaliera, bonus combo, badge e classifica live.",
+            "keywords": ["cacciatore di targhe", "targhe turchia", "quiz targhe", "province turche"]
+        },
         "title": "Strumenti",
         "onlineGiveaway": "Sorteggio Online",
         "dice": "Dadi",

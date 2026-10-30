@@ -31,6 +31,13 @@ Full architecture notes live in `CLAUDE.md`; design tokens in `design.md` — re
 - Two independent flows share one Neon DB but different tables: paid Apify/PayTR (ledger-based) and extension-collected (`giveawayStore.ts`). Changing one does not affect the other.
 - Apply `lib/rateLimit.ts` (in-memory, per-instance; limits in its `MAX_REQUESTS` map) in new API routes, like existing `app/api/tiktok/*`.
 
+## Plaka Avcısı (plate quiz game)
+
+- Routes: `/oyun/plaka-avcisi` (+ `/liderlik`); tool card on `/tools`; sitemap entry; `/plaka-avcisi` redirects to the game.
+- Data/UI: `lib/plaka/cities.ts` (81 provinces), `lib/plaka/game.ts` (modes, scoring), `components/plaka/` (client screens). UI copy is Turkish by design.
+- Server-only: `lib/plaka/store.ts` (Neon tables `plaka_*`, scoring, leaderboard, achievements), `lib/plaka/player.ts` (Google hash / signed guest cookie), `lib/plaka/questions.ts`. Points and answers are validated server-side via `app/api/plaka/*`; add new API routes to the `MAX_REQUESTS` map in `lib/rateLimit.ts`.
+- Tests: `npx tsx --test tests/plaka/plaka-game.test.ts` (pure logic, no DB).
+
 ## Other
 
 - Auth (`auth.ts`): Auth.js v5 with Google only, JWT-only sessions — there is no users table.

@@ -23,6 +23,8 @@ const nextConfig: NextConfig = {
       { source: `/${locale}/tiktok-cekilis`, destination: '/:locale/tiktok', permanent: true },
       { source: '/yilbasi-cekilisi', destination: '/secret-santa', permanent: true },
       { source: `/${locale}/yilbasi-cekilisi`, destination: '/:locale/secret-santa', permanent: true },
+      { source: '/plaka-avcisi', destination: '/oyun/plaka-avcisi', permanent: true },
+      { source: `/${locale}/plaka-avcisi`, destination: '/:locale/oyun/plaka-avcisi', permanent: true },
     ];
   },
   images: {

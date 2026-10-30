@@ -703,6 +703,13 @@
         "toggle": "切换主题"
     },
     "tools": {
+        "plakaAvcisi": "车牌猎人",
+        "plakaAvcisiShort": "通过游戏学习土耳其81个省份的车牌代码。",
+        "plakaAvcisiMeta": {
+            "title": "车牌猎人 — 土耳其车牌问答游戏 | YulaSanta",
+            "description": "将土耳其81个省份与其车牌代码配对。四种游戏模式、每日挑战、连击奖励、徽章和实时排行榜。",
+            "keywords": ["车牌猎人", "土耳其车牌", "车牌问答", "土耳其省份"]
+        },
         "title": "工具",
         "onlineGiveaway": "在线抽奖",
         "dice": "骰子游戏",

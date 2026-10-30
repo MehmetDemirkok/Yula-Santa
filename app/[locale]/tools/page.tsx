@@ -7,7 +7,7 @@ import { Metadata } from 'next';
 import Link from 'next/link';
 import {
     Dice5, Coins, Hash, Wand2,
-    Aperture, Users, Gift, Trophy, Wrench
+    Aperture, Users, Gift, Trophy, Wrench, Car
 } from 'lucide-react';
 import { getSEOMetadata, viewport } from '@/lib/seo';
 import { locales } from '@/i18n/config';
@@ -103,6 +103,14 @@ export default async function ToolsPage({ params }: Props) {
             href: localePath(locale, '/tools/gift-suggestions'),
             color: 'bg-red-500',
             gradient: 'from-red-500 to-pink-600'
+        },
+        {
+            name: t('plakaAvcisi'),
+            description: t('plakaAvcisiShort'),
+            icon: Car,
+            href: localePath(locale, '/oyun/plaka-avcisi'),
+            color: 'bg-teal-500',
+            gradient: 'from-teal-500 to-emerald-600'
         },
     ];
 

@@ -12,6 +12,11 @@ const MAX_REQUESTS: Record<string, number> = {
     tiktok: 5,
     'tiktok-giveaway-create': 5,
     'tiktok-giveaway-import': 30,
+    'plaka-session': 10,
+    'plaka-answer': 80,
+    'plaka-finish': 20,
+    'plaka-leaderboard': 40,
+    'plaka-stats': 40,
 };
 
 function getKey(ip: string, route: string): string {

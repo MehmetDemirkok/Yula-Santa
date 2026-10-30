@@ -706,6 +706,13 @@
         "toggle": "Tema Değiştir"
     },
     "tools": {
+        "plakaAvcisi": "Plaka Avcısı",
+        "plakaAvcisiShort": "81 ilin plaka kodlarını eğlenerek öğren.",
+        "plakaAvcisiMeta": {
+            "title": "Plaka Avcısı — Türkiye Plaka Bilmece Oyunu | YulaSanta",
+            "description": "Türkiye’nin 81 ilini plaka kodlarıyla eşleştir. Dört oyun modu, günlük meydan okuma, kombo bonusu, rozetler ve canlı liderlik tablosu.",
+            "keywords": ["plaka avcısı", "plaka oyunu", "türkiye plaka kodu", "plaka bilmece", "81 il plaka", "il plaka kodu oyunu"]
+        },
         "title": "Araçlar",
         "onlineGiveaway": "Online Çekiliş Programı",
         "dice": "Zar Atma",

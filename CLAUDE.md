@@ -51,6 +51,16 @@ This is the most complex subsystem — read `lib/tiktok/` before touching it:
 - `lib/rateLimit.ts` is an in-memory (per-instance) rate limiter keyed by IP + route name; route-specific limits are defined in its `MAX_REQUESTS` map (e.g. `tiktok`, `tiktok-giveaway-create`, `tiktok-giveaway-import`, `youtube`). Apply it in new API routes the same way existing `app/api/tiktok/*` and `app/api/youtube/*` routes do.
 - `extensions/yulasanta-tiktok-extension-v1.0.1/` is a separate, non-Next.js browser extension (manifest + vanilla JS) that feeds comments into the extension-collected giveaway flow via `giveawayStore.ts`'s API; it is not built/bundled by the Next.js app.
 
+### Plaka Avcısı (Turkey plate quiz game)
+
+- Pages: `app/[locale]/oyun/plaka-avcisi/` (server `page.tsx` for SEO/JSON-LD + `PlakaAvcisiClient.tsx`) and `/oyun/plaka-avcisi/liderlik` (noindex live rankings). UI copy is Turkish by design (`lang="tr"` on the game shell); translated strings in `messages/*.json` are limited to the tools card + page metadata (`tools.plakaAvcisi`, `plakaAvcisiShort`, `plakaAvcisiMeta`).
+- Static data: `lib/plaka/cities.ts` holds all 81 provinces (code, region, difficulty, two hints). `lib/plaka/questions.ts` builds question sets server-side; the daily challenge is deterministic from the UTC date seed.
+- Client-safe modules: `cities.ts`, `game.ts` (modes/scoring/combo), `achievements.ts`, `contracts.ts` (API types). **Never** import `store.ts`, `player.ts` or `questions.ts` from a client component — they use Neon/Node and are imported by API routes only.
+- Server: `lib/plaka/store.ts` owns the Neon schema (`plaka_cities`, `plaka_game_modes`, `plaka_sessions`, `plaka_questions`, `plaka_answers`, `plaka_player_stats`, `plaka_achievements`, `plaka_player_achievements`, plus the `plaka_leaderboard` view), scoring and achievement evaluation. Correct answers never leave the server; the client submits `position` + `optionIndex` and receives only the verdict.
+- `lib/plaka/player.ts` resolves identity: Google sessions are hashed to `user_<sha256>`, guests get an HMAC-signed httpOnly `plaka_player` cookie. Guest scores/leaderboard entries are anonymous but persistent.
+- API: `app/api/plaka/{session,answer,finish,leaderboard,stats}`; rate limits live in `lib/rateLimit.ts` (`plaka-session`, `plaka-answer`, `plaka-finish`, `plaka-leaderboard`, `plaka-stats`). Answering is guarded by `answered = false` in SQL, position must match `current_index`, and sessions expire after 45 minutes.
+- Tests: `tests/plaka/plaka-game.test.ts` covers dataset integrity (81 unique codes), scoring/combo math, question generation and daily determinism. It does not touch the DB.
+
 ### Auth
 
 - `auth.ts` configures Auth.js (NextAuth v5) with Google as the only provider and **JWT-only sessions — there is no users table / DB adapter yet**. Don't assume persisted user records exist anywhere in the app.

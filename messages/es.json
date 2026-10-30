@@ -705,6 +705,13 @@
         "toggle": "Cambiar Tema"
     },
     "tools": {
+        "plakaAvcisi": "Cazador de Placas",
+        "plakaAvcisiShort": "Aprende los códigos de matrícula de las 81 provincias de Turquía jugando.",
+        "plakaAvcisiMeta": {
+            "title": "Cazador de Placas — Quiz de matrículas de Turquía | YulaSanta",
+            "description": "Relaciona las 81 provincias de Turquía con sus códigos de matrícula. Cuatro modos, reto diario, bonos de combo, insignias y clasificación en vivo.",
+            "keywords": ["cazador de placas", "matrículas turquía", "quiz matrículas", "provincias turcas"]
+        },
         "title": "Herramientas",
         "onlineGiveaway": "Sorteo en línea",
         "dice": "Dados",
