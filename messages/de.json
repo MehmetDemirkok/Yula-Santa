@@ -705,6 +705,8 @@
     "tools": {
         "plakaAvcisi": "Kennzeichen-Jäger",
         "plakaAvcisiShort": "Lerne die Kennzeichen aller 81 türkischen Provinzen spielerisch.",
+        "play": "Spielen",
+        "new": "Neu",
         "plakaAvcisiMeta": {
             "title": "Kennzeichen-Jäger — Türkei-Kennzeichen-Quiz | YulaSanta",
             "description": "Ordne die 81 Provinzen der Türkei ihren Kennzeichen zu. Vier Spielmodi, tägliche Herausforderung, Combo-Bonus, Abzeichen und Live-Rangliste.",

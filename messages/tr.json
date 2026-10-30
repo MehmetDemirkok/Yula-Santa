@@ -708,6 +708,8 @@
     "tools": {
         "plakaAvcisi": "Plaka Avcısı",
         "plakaAvcisiShort": "81 ilin plaka kodlarını eğlenerek öğren.",
+        "play": "Oyna",
+        "new": "Yeni",
         "plakaAvcisiMeta": {
             "title": "Plaka Avcısı — Türkiye Plaka Bilmece Oyunu | YulaSanta",
             "description": "Türkiye’nin 81 ilini plaka kodlarıyla eşleştir. Dört oyun modu, günlük meydan okuma, kombo bonusu, rozetler ve canlı liderlik tablosu.",

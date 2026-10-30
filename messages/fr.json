@@ -706,6 +706,8 @@
     "tools": {
         "plakaAvcisi": "Chasseur de Plaques",
         "plakaAvcisiShort": "Apprends les codes de plaques des 81 provinces turques en jouant.",
+        "play": "Jouer",
+        "new": "Nouveau",
         "plakaAvcisiMeta": {
             "title": "Chasseur de Plaques — Quiz des plaques turques | YulaSanta",
             "description": "Associe les 81 provinces de Turquie à leurs codes de plaque. Quatre modes de jeu, défi quotidien, bonus de combo, badges et classement en direct.",

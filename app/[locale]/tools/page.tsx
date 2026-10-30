@@ -7,7 +7,7 @@ import { Metadata } from 'next';
 import Link from 'next/link';
 import {
     Dice5, Coins, Hash, Wand2,
-    Aperture, Users, Gift, Trophy, Wrench, Car
+    Aperture, Users, Gift, Trophy, Wrench, Car, Play, Sparkles
 } from 'lucide-react';
 import { getSEOMetadata, viewport } from '@/lib/seo';
 import { locales } from '@/i18n/config';
@@ -110,7 +110,8 @@ export default async function ToolsPage({ params }: Props) {
             icon: Car,
             href: localePath(locale, '/oyun/plaka-avcisi'),
             color: 'bg-teal-500',
-            gradient: 'from-teal-500 to-emerald-600'
+            gradient: 'from-teal-500 to-emerald-600',
+            cta: t('play')
         },
     ];
 
@@ -128,6 +129,42 @@ export default async function ToolsPage({ params }: Props) {
                         {t('meta.description')}
                     </p>
                 </div>
+
+                <Link
+                    href={localePath(locale, '/oyun/plaka-avcisi')}
+                    className="group relative block overflow-hidden rounded-2xl mb-8 sm:mb-10 border border-teal-400/40 bg-gradient-to-br from-emerald-600 via-teal-600 to-emerald-800 p-5 sm:p-7 shadow-xl hover:shadow-2xl transition-shadow duration-300"
+                >
+                    <span
+                        aria-hidden
+                        className="pointer-events-none absolute -right-12 -top-16 h-60 w-60 rounded-full bg-white/15 blur-2xl"
+                    />
+                    <span
+                        aria-hidden
+                        className="pointer-events-none absolute inset-0 opacity-[0.08]"
+                        style={{
+                            backgroundImage:
+                                'repeating-linear-gradient(115deg, #fff 0 1px, transparent 1px 22px)'
+                        }}
+                    />
+                    <div className="relative z-10 flex flex-col gap-5 sm:flex-row sm:items-center sm:justify-between">
+                        <div className="max-w-2xl">
+                            <span className="inline-flex items-center gap-1.5 rounded-full bg-white/15 px-3 py-1 text-[11px] font-black uppercase tracking-[0.16em] text-white">
+                                <Sparkles className="w-3.5 h-3.5" aria-hidden="true" />
+                                {t('new')}
+                            </span>
+                            <h2 className="mt-3 text-2xl sm:text-3xl font-black text-white">
+                                {t('plakaAvcisi')}
+                            </h2>
+                            <p className="mt-1.5 text-sm sm:text-base text-emerald-50/90 leading-relaxed">
+                                {t('plakaAvcisiShort')}
+                            </p>
+                        </div>
+                        <span className="inline-flex min-h-[48px] items-center justify-center gap-2 rounded-xl bg-white px-6 py-3 text-sm font-black uppercase tracking-wide text-emerald-800 shadow-lg group-hover:scale-[1.03] group-active:scale-[0.99] transition-transform whitespace-nowrap">
+                            <Play className="w-4 h-4" aria-hidden="true" />
+                            {t('play')}
+                        </span>
+                    </div>
+                </Link>
 
                 <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
                     {tools.map((tool) => (
@@ -147,6 +184,12 @@ export default async function ToolsPage({ params }: Props) {
                                 <p className="text-[var(--text-secondary)] dark:text-[var(--text-muted)] text-sm leading-relaxed">
                                     {tool.description}
                                 </p>
+                                {'cta' in tool && tool.cta ? (
+                                    <span className="mt-3 inline-flex items-center gap-1.5 rounded-lg bg-teal-500/10 px-3 py-1.5 text-xs font-black uppercase tracking-wide text-teal-700 dark:text-teal-300">
+                                        <Play className="w-3.5 h-3.5" aria-hidden="true" />
+                                        {tool.cta}
+                                    </span>
+                                ) : null}
                             </div>
                         </Link>
                     ))}

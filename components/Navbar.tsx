@@ -17,6 +17,7 @@ import {
     Aperture,
     Users,
     PartyPopper,
+    Car,
 } from "lucide-react";
 import { LanguageSwitcher } from "./LanguageSwitcher";
 import { ThemeToggle } from "./ThemeToggle";
@@ -54,6 +55,14 @@ export function Navbar() {
     }, [pathname]);
 
     const toolLinks = [
+        {
+            name: t("tools.plakaAvcisi"),
+            description: t("tools.plakaAvcisiShort"),
+            icon: Car,
+            href: localePath(locale, "/oyun/plaka-avcisi"),
+            color: "bg-teal-500",
+            badge: t("tools.play"),
+        },
         {
             name: t("tools.dice"),
             description: t("tools.diceContent.subtitle"),
@@ -131,7 +140,10 @@ export function Navbar() {
         },
     ];
 
-    const toolsActive = pathname?.includes("/tools") && !pathname?.includes("/tools/gift-suggestions");
+    const gameActive = pathname?.includes("/oyun/plaka-avcisi");
+    const toolsActive =
+        (pathname?.includes("/tools") && !pathname?.includes("/tools/gift-suggestions")) ||
+        gameActive;
 
     return (
         <>
@@ -232,6 +244,11 @@ export function Navbar() {
                                                 <div className="flex flex-col flex-1 pr-2">
                                                     <span className="text-sm font-bold text-foreground group-hover/item:text-santa-red transition-colors whitespace-nowrap">
                                                         {link.name}
+                                                        {"badge" in link && link.badge ? (
+                                                            <span className="ml-2 inline-flex items-center rounded-full bg-teal-500/15 px-2 py-0.5 text-[10px] font-black uppercase tracking-wide text-teal-600 dark:text-teal-300 align-middle">
+                                                                {link.badge}
+                                                            </span>
+                                                        ) : null}
                                                     </span>
                                                     <span className="text-xs text-[var(--text-muted)] whitespace-nowrap">
                                                         {link.description}
