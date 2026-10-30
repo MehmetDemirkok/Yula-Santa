@@ -61,7 +61,7 @@ export function Navbar() {
             icon: Car,
             href: localePath(locale, "/oyun/plaka-avcisi"),
             color: "bg-teal-500",
-            badge: t("tools.play"),
+            badge: t("tools.new"),
         },
         {
             name: t("tools.dice"),

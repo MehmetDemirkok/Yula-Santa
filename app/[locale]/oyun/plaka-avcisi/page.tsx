@@ -3,6 +3,7 @@ import { setRequestLocale } from 'next-intl/server';
 import { locales } from '@/i18n/config';
 import { SITE_URL } from '@/lib/constants';
 import { getSEOMetadata, viewport } from '@/lib/seo';
+import { PLAKA_FAQ } from '@/lib/plaka/faq';
 import PlakaAvcisiClient from './PlakaAvcisiClient';
 
 export { viewport };
@@ -47,11 +48,23 @@ function getJsonLd(locale: string) {
                     'Türkiye’nin 81 ilinin plaka kodlarını öğreten dört modlu bilgi yarışması: plakadan şehri bul, şehirden plakayı bul, zamana karşı ve ipuçlarından şehri bul.',
                 offers: { '@type': 'Offer', price: '0', priceCurrency: 'TRY' },
                 isAccessibleForFree: true,
+                gamePlatform: 'Web',
+                genre: ['Quiz', 'Educational game', 'Trivia'],
+                numberOfPlayers: { '@type': 'QuantitativeValue', minValue: 1, maxValue: 1 },
                 publisher: {
                     '@type': 'Organization',
                     name: 'YulaSanta',
                     url: SITE_URL,
                 },
+            },
+            {
+                '@type': 'FAQPage',
+                '@id': `${pageUrl}#faq`,
+                mainEntity: PLAKA_FAQ.map((item) => ({
+                    '@type': 'Question',
+                    name: item.question,
+                    acceptedAnswer: { '@type': 'Answer', text: item.answer },
+                })),
             },
             {
                 '@type': 'BreadcrumbList',

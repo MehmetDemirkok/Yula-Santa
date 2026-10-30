@@ -15,7 +15,9 @@ import {
     Users,
     Trophy,
     Sparkles,
-    Aperture
+    Aperture,
+    Play,
+    Car
 } from "lucide-react";
 import { useTranslations } from "next-intl";
 import { cn } from "@/lib/utils";
@@ -84,6 +86,7 @@ export default function HomeClientPage() {
     ];
 
     const tools = [
+        { name: t("tools.plakaAvcisi"), icon: Car, href: localePath(locale, "/oyun/plaka-avcisi"), color: "bg-teal-500" },
         { name: t("footer.namePicker"), icon: Trophy, href: localePath(locale, "/raffle"), color: "bg-amber-500" },
         { name: t("tools.dice"), icon: Dice5, href: localePath(locale, "/tools/dice"), color: "bg-indigo-500" },
         { name: t("tools.coinFlip"), icon: Coins, href: localePath(locale, "/tools/coin-flip"), color: "bg-amber-500" },
@@ -167,6 +170,64 @@ export default function HomeClientPage() {
                             </Reveal>
                         ))}
                     </div>
+                </div>
+            </section>
+
+            <section className="relative pb-10 lg:pb-14">
+                <div className="max-w-6xl mx-auto px-4">
+                    <Reveal>
+                        <Link
+                            href={localePath(locale, "/oyun/plaka-avcisi")}
+                            className="group relative block overflow-hidden rounded-[2rem] border border-teal-400/30 bg-gradient-to-br from-emerald-600 via-teal-600 to-emerald-800 p-6 sm:p-9 shadow-xl hover:shadow-2xl transition-shadow duration-300"
+                        >
+                            <span
+                                aria-hidden
+                                className="pointer-events-none absolute -right-16 -top-20 h-72 w-72 rounded-full bg-white/15 blur-3xl"
+                            />
+                            <span
+                                aria-hidden
+                                className="pointer-events-none absolute inset-0 opacity-[0.08]"
+                                style={{
+                                    backgroundImage:
+                                        "repeating-linear-gradient(115deg, #fff 0 1px, transparent 1px 22px)",
+                                }}
+                            />
+                            <div className="relative z-10 flex flex-col gap-6 lg:flex-row lg:items-center lg:justify-between lg:gap-10">
+                                <div className="max-w-3xl">
+                                    <span className="inline-flex items-center gap-1.5 rounded-full bg-white/15 px-3 py-1 text-[11px] font-black uppercase tracking-[0.16em] text-white">
+                                        <Sparkles className="w-3.5 h-3.5" aria-hidden="true" />
+                                        {t("tools.new")}
+                                    </span>
+                                    <h2 className="mt-3 font-heading text-2xl sm:text-3xl lg:text-4xl font-black text-white tracking-tight">
+                                        {t("tools.plakaAvcisi")}
+                                    </h2>
+                                    <p className="mt-2 text-sm sm:text-base text-emerald-50/90 leading-relaxed max-w-2xl">
+                                        {t("tools.plakaAvcisiMeta.description")}
+                                    </p>
+                                    <div className="mt-4 flex flex-wrap gap-2">
+                                        {[
+                                            t("tools.featureProvinces"),
+                                            t("tools.featureModes"),
+                                            t("tools.featureDaily"),
+                                        ].map((label) => (
+                                            <span
+                                                key={label}
+                                                className="inline-flex items-center gap-1.5 rounded-full bg-white/10 px-3 py-1.5 text-xs font-bold text-emerald-50 ring-1 ring-inset ring-white/20"
+                                            >
+                                                <CheckCircle2 className="w-3.5 h-3.5" aria-hidden="true" />
+                                                {label}
+                                            </span>
+                                        ))}
+                                    </div>
+                                </div>
+                                <span className="inline-flex min-h-[52px] items-center justify-center gap-2 rounded-xl bg-white px-7 py-3.5 text-sm font-black uppercase tracking-wide text-emerald-800 shadow-lg group-hover:scale-[1.03] group-active:scale-[0.99] transition-transform whitespace-nowrap">
+                                    <Play className="w-4 h-4" aria-hidden="true" />
+                                    {t("tools.play")}
+                                    <ArrowRight className="w-4 h-4" aria-hidden="true" />
+                                </span>
+                            </div>
+                        </Link>
+                    </Reveal>
                 </div>
             </section>
 

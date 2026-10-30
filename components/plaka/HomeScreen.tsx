@@ -2,6 +2,7 @@
 
 import Link from 'next/link';
 import { useMemo, useState } from 'react';
+import { useTranslations } from 'next-intl';
 import {
     ArrowLeft,
     CalendarDays,
@@ -10,6 +11,7 @@ import {
     Lightbulb,
     MapPin,
     Medal,
+    Info,
     Play,
     Sparkles,
     Target,
@@ -17,6 +19,7 @@ import {
     Trophy,
 } from 'lucide-react';
 import { localePath } from '@/lib/localePath';
+import { PLAKA_FAQ } from '@/lib/plaka/faq';
 import {
     DIFFICULTY_LABEL,
     MODE_CONFIG,
@@ -71,6 +74,7 @@ export default function HomeScreen({
     leaderboardKey,
     onDismissNotice,
 }: Props) {
+    const tTools = useTranslations('tools');
     const [mode, setMode] = useState<PlakaMode>('plaka-sehir');
     const [level, setLevel] = useState<PlakaLevel>('karisik');
 
@@ -118,7 +122,20 @@ export default function HomeScreen({
                 <header className={styles.hero}>
                     <div className={styles.heroInner}>
                         <div>
-                            <span className={styles.topTag}>Türkiye plaka yarışı</span>
+                            <div
+                                style={{
+                                    display: 'flex',
+                                    alignItems: 'center',
+                                    gap: '0.5rem',
+                                    flexWrap: 'wrap',
+                                }}
+                            >
+                                <span className={styles.topTag}>Türkiye plaka yarışı</span>
+                                <span className={styles.newBadge}>
+                                    <Sparkles size={11} aria-hidden="true" />
+                                    {tTools('new')}
+                                </span>
+                            </div>
                             <h1 className={styles.title}>
                                 Plaka <span className={styles.titleAccent}>Avcısı</span>
                             </h1>
@@ -168,7 +185,7 @@ export default function HomeScreen({
                         style={{
                             marginTop: '1rem',
                             borderColor: 'var(--pa-line-strong)',
-                            background: 'rgba(46,242,192,0.08)',
+                            background: 'var(--pa-neon-dim)',
                             color: 'var(--pa-text)',
                         }}
                         role="status"
@@ -361,6 +378,27 @@ export default function HomeScreen({
                         <AchievementList progress={profile?.achievements ?? null} limit={4} />
                     </section>
                 </div>
+
+                <section
+                    className={`${styles.section} ${styles.panel}`}
+                    aria-labelledby="plaka-faq-title"
+                >
+                    <div className={styles.panelHead}>
+                        <h2 id="plaka-faq-title" className={styles.panelTitle}>
+                            <Info size={17} aria-hidden="true" />
+                            Sık Sorulan Sorular
+                        </h2>
+                        <span className={styles.panelHint}>81 il · 4 mod · ücretsiz</span>
+                    </div>
+                    <div className={styles.faq}>
+                        {PLAKA_FAQ.map((item) => (
+                            <details key={item.question} className={styles.faqItem}>
+                                <summary className={styles.faqQuestion}>{item.question}</summary>
+                                <p className={styles.faqAnswer}>{item.answer}</p>
+                            </details>
+                        ))}
+                    </div>
+                </section>
 
                 <footer className={styles.section} style={{ textAlign: 'center' }}>
                     <p className={styles.panelHint} style={{ margin: 0 }}>

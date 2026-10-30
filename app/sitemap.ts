@@ -48,7 +48,7 @@ const localeRoutes = [
     { path: '/tools/wheel-of-fortune', priority: 0.85, changeFrequency: 'weekly' as const },
     { path: '/tools/team-generator', priority: 0.75, changeFrequency: 'monthly' as const },
     { path: '/tools/gift-suggestions', priority: 0.5, changeFrequency: 'monthly' as const },
-    { path: '/oyun/plaka-avcisi', priority: 0.8, changeFrequency: 'weekly' as const },
+    { path: '/oyun/plaka-avcisi', priority: 0.9, changeFrequency: 'weekly' as const },
 ];
 
 export default function sitemap(): MetadataRoute.Sitemap {

@@ -40,10 +40,12 @@ export default async function HomeSeoSection({ locale }: Props) {
             'Name picker',
             'Wheel of fortune',
             'Random number generator',
+            'Turkey plate code quiz game',
         ],
     };
 
     const related = [
+        { path: '/oyun/plaka-avcisi', label: tTools('plakaAvcisi') },
         { path: '/youtube', label: tHome('youtubeGiveaway') },
         { path: '/tiktok', label: tHome('tiktokGiveaway') },
         { path: '/raffle', label: tFooter('namePicker') },

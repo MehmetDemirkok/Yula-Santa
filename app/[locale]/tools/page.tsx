@@ -111,7 +111,8 @@ export default async function ToolsPage({ params }: Props) {
             href: localePath(locale, '/oyun/plaka-avcisi'),
             color: 'bg-teal-500',
             gradient: 'from-teal-500 to-emerald-600',
-            cta: t('play')
+            cta: t('play'),
+            badge: t('new')
         },
     ];
 
@@ -174,6 +175,11 @@ export default async function ToolsPage({ params }: Props) {
                             className="group relative bg-white/80 dark:bg-[var(--card-bg)] backdrop-blur-xl rounded-2xl p-6 shadow-lg border border-white/50 dark:border-white/10 hover:shadow-2xl transition-all duration-300 hover:-translate-y-1 overflow-hidden"
                         >
                             <div className={`absolute inset-0 bg-gradient-to-br ${tool.gradient} opacity-0 group-hover:opacity-5 transition-opacity duration-300`} />
+                            {'badge' in tool && tool.badge ? (
+                                <span className="absolute right-3 top-3 z-20 rounded-full border border-teal-500/30 bg-teal-500/10 px-2.5 py-1 text-[10px] font-black uppercase tracking-wider text-teal-700 dark:text-teal-300">
+                                    {tool.badge}
+                                </span>
+                            ) : null}
                             <div className="relative z-10">
                                 <div className={`w-14 h-14 rounded-xl flex items-center justify-center mb-4 ${tool.color} shadow-lg transform group-hover:scale-110 transition-transform duration-300`}>
                                     <tool.icon className="w-7 h-7 text-white" />
