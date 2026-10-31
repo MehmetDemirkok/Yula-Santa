@@ -14,7 +14,16 @@ const GUEST_COOKIE = 'plaka_player';
 const GUEST_MAX_AGE = 60 * 60 * 24 * 365;
 
 function signingSecret(): string {
-    return process.env.AUTH_SECRET || process.env.NEXTAUTH_SECRET || 'plaka-avcisi-local-dev-secret';
+    // Prefer an explicit secret; otherwise derive a stable, non-public key from
+    // the server-only DATABASE_URL so guest cookies cannot be forged from source.
+    return (
+        process.env.PLAKA_SECRET ||
+        process.env.AUTH_SECRET ||
+        process.env.NEXTAUTH_SECRET ||
+        (process.env.DATABASE_URL
+            ? createHash('sha256').update(`plaka-avcisi:${process.env.DATABASE_URL}`).digest('hex')
+            : 'plaka-avcisi-local-dev-secret')
+    );
 }
 
 function sign(value: string): string {
