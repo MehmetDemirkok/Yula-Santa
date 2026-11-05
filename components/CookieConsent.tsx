@@ -139,7 +139,7 @@ export function CookieConsent() {
     if (!showBanner) return null;
 
     return (
-        <div className="fixed bottom-0 left-0 right-0 z-50 p-2 sm:p-3 animate-in slide-in-from-bottom duration-300 pointer-events-none">
+        <div className="fixed bottom-0 left-0 right-0 z-[70] p-2 sm:p-3 animate-in slide-in-from-bottom duration-300 pointer-events-none">
             <div className="max-w-3xl mx-auto pointer-events-auto bg-white/95 dark:bg-gray-900/95 backdrop-blur-xl rounded-xl shadow-2xl border border-gray-100 dark:border-white/10 px-3 py-2.5 sm:px-4 sm:py-3">
                 <div className="flex items-center gap-3">
                     <div className="bg-amber-50 dark:bg-amber-500/15 p-2 rounded-lg shrink-0 hidden sm:block">

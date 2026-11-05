@@ -4,7 +4,9 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 
 ## Project overview
 
-YulaSanta (yulasanta.com) is a Next.js 16 (App Router) app offering a family of free draw/giveaway tools: Secret Santa, raffle, YouTube giveaway picker, TikTok comment-picker giveaway, and a set of small standalone tools (coin flip, dice, wheel of fortune, team generator, short straw, random number, gift suggestions). The whole UI is localized into 12 languages. The TikTok giveaway tool is a paid product with its own credit ledger, Apify-based scraping, PayTR checkout, and a companion browser extension.
+YulaSanta is a Next.js 16 (App Router) app offering a family of free draw/giveaway tools: Secret Santa, raffle, YouTube giveaway picker, TikTok comment-picker giveaway, a set of small standalone tools (coin flip, dice, wheel of fortune, team generator, short straw, random number, gift suggestions), and the Plaka Avcısı quiz game. The UI is localized into 12 languages. The TikTok giveaway tool is a paid product with its own credit ledger, Apify-based scraping, PayTR checkout, and a companion browser extension. The canonical site URL is `SITE_URL` in `lib/constants.ts` (`https://www.yulasanta.com.tr`).
+
+`README.md` predates locale routing and the paid TikTok product, so its project tree is stale; its AdSense setup steps are still the useful part. `AGENTS.md` is a condensed version of this file for other agents, so keep the two consistent.
 
 ## Commands
 
@@ -15,12 +17,19 @@ npm start                 # run production build
 npm run lint               # eslint
 npm test                   # run tests/**/*.test.ts via tsx --test (node:test + node:assert)
 npm run i18n:check         # verify every messages/*.json has the same keys as tr.json; exits 1 on mismatch (CI-suitable)
-npm run i18n:sync          # AI-generate missing translations from tr.json via OpenAI (needs OPENAI_API_KEY)
+npx tsx scripts/generate-translations.ts <locale|all> --sync  # AI-generate missing translations from tr.json via OpenAI (needs OPENAI_API_KEY)
+npm run indexnow           # submit sitemap URLs to IndexNow; run after deploy. Scope with `-- --url /raffle` or `-- --secret-santa`; preview with `-- --dry-run`
 npm run theme:on           # force seasonal theme on (sets THEME_OVERRIDE = "on" in components/NewYearTheme/config.ts)
 npm run theme:off          # force it off (sets THEME_OVERRIDE = "off")
 ```
 
+`npm run i18n:sync` on its own exits with an error because it passes no locale argument; use the `npx` form above. `i18n:check --fix` only reports and never exits 1.
+
 Run a single test file directly: `npx tsx --test tests/tiktok/tiktok-module.test.ts`. Tests use Node's built-in `node:test`/`node:assert`, not Jest/Vitest.
+
+There is no standalone typecheck script; `npm run build` type-checks.
+
+`npm test` currently exits non-zero on a clean checkout: two tests in `tests/tiktok/tiktok-module.test.ts` ("locks 500 comments and 200 TL", "caps fetched participants at 500") still expect a cap of 500. These failures predate any new work.
 
 There is no test/build step that touches the real Neon DB, Apify, or PayTR — those are exercised only through live API routes.
 
@@ -28,7 +37,9 @@ There is no test/build step that touches the real Neon DB, Apify, or PayTR — t
 
 ### Routing and locales
 
-- App Router with a locale segment: almost every user-facing page lives under `app/[locale]/...` and is powered by `next-intl`. `middleware.ts` handles locale detection/routing (URL path → cookie → default; `localePrefix: 'as-needed'`, so Turkish, the default locale, has no `/tr` prefix while others do, e.g. `/en/youtube`).
+- App Router with a locale segment: almost every user-facing page lives under `app/[locale]/...` and is powered by `next-intl`. `middleware.ts` handles locale detection/routing (URL path → cookie → default; `localePrefix: 'as-needed'`, so Turkish, the default locale, has no `/tr` prefix while others do, e.g. `/en/youtube`). Accept-Language detection is deliberately off (`localeDetection: false`) so crawlers are never redirected; the middleware's header comment still lists it, but that is out of date.
+- Two i18n APIs coexist: newer code calls next-intl's `useTranslations()` directly, while `useLanguage()` from `lib/i18n/LanguageContext.tsx` is a legacy wrapper still used by `LanguageSelector`, `CookieConsent`, `RaffleBoard`, and the `raffle`/`result`/`youtube`/`tiktok` client pages. `lib/i18n/translations.ts` holds locale constants and types, not strings.
+- Turkish-slug SEO redirects (e.g. `/isim-cekilisi` → `/raffle`) are hardcoded in `next.config.ts`.
 - `i18n/config.ts` is the source of truth for supported locales (`tr, en, de, fr, es, it, pt, ru, ar, ja, ko, zh`), default locale (`tr`), and RTL locales (`ar`). `i18n/request.ts` / `i18n/navigation.ts` wire this into next-intl.
 - Translation strings live in `messages/{locale}.json`, one file per locale, with `tr.json` as the source of truth. Never let locale files drift — run `npm run i18n:check` after editing translations, and add new keys to `tr.json` first.
 - `lib/localePath.ts` builds locale-aware links given the `as-needed` prefix strategy — use it instead of hand-rolling `/${locale}/...` paths (it must omit the prefix for `tr`).
@@ -51,6 +62,15 @@ This is the most complex subsystem — read `lib/tiktok/` before touching it:
 - `lib/rateLimit.ts` is an in-memory (per-instance) rate limiter keyed by IP + route name; route-specific limits are defined in its `MAX_REQUESTS` map (e.g. `tiktok`, `tiktok-giveaway-create`, `tiktok-giveaway-import`, `youtube`). Apply it in new API routes the same way existing `app/api/tiktok/*` and `app/api/youtube/*` routes do.
 - `extensions/yulasanta-tiktok-extension-v1.0.1/` is a separate, non-Next.js browser extension (manifest + vanilla JS) that feeds comments into the extension-collected giveaway flow via `giveawayStore.ts`'s API; it is not built/bundled by the Next.js app.
 
+### Wheel of fortune
+
+- `app/[locale]/tools/wheel-of-fortune/WheelClient.tsx` owns list, history and result state (saved to `localStorage` under `yulasanta_wheel_v1`). `components/wheel/WheelStage.tsx` is a 2D canvas engine with no WebGL, and `lib/wheel/wheelMath.ts` holds the pure, tested logic.
+- The winner comes only from `secureRandomInt` in `WheelClient`. Flick strength and landing jitter change how the spin looks, never who wins.
+
+### Mobile CSS gotchas
+
+`app/globals.css` sets `html { font-size: 14px }` at 640px and below, so rem-based Tailwind sizes shrink 12.5% on phones (`h-11` renders at 38.5px). It also applies an unlayered `min-height: 44px` to buttons, which beats every `min-h-*` utility. Use pixel sizes such as `h-[56px]` for touch targets. The fixed navbar is 72px tall on phones, but `main` only reserves `pt-14` (49px), so a page must add its own top padding.
+
 ### Plaka Avcısı (Turkey plate quiz game)
 
 - Pages: `app/[locale]/oyun/plaka-avcisi/` (server `page.tsx` for SEO/JSON-LD + `PlakaAvcisiClient.tsx`) and `/oyun/plaka-avcisi/liderlik` (noindex live rankings). UI copy is Turkish by design (`lang="tr"` on the game shell); translated strings in `messages/*.json` are limited to the tools card + page metadata (`tools.plakaAvcisi`, `plakaAvcisiShort`, `plakaAvcisiMeta`).
@@ -67,16 +87,28 @@ This is the most complex subsystem — read `lib/tiktok/` before touching it:
 
 ### Env / secrets
 
-`.env.local` (not committed) holds: Google OAuth (`AUTH_SECRET`, `GOOGLE_CLIENT_ID/SECRET`), Neon/Postgres (`DATABASE_URL*`, `PG*`, `POSTGRES_*`), `APIFY_API_TOKEN`, PayTR (`PAYTR_MERCHANT_ID/KEY/SALT`, `PAYTR_TEST_MODE`), `YOUTUBE_API_KEY`, `GEMINI_API_KEY`, and Instagram credentials. Treat any route touching these as server-only and never expose them to client components.
+`.env.local` (not committed) holds: Google OAuth (`AUTH_SECRET`, `GOOGLE_CLIENT_ID/SECRET`), Neon/Postgres (`DATABASE_URL*`, `PG*`, `POSTGRES_*`), `APIFY_API_TOKEN`, PayTR (`PAYTR_MERCHANT_ID/KEY/SALT`, `PAYTR_TEST_MODE`), and `YOUTUBE_API_KEY`. Treat any route touching these as server-only and never expose them to client components.
+
+The code also reads these optional variables, which are not currently in `.env.local`:
+
+- `RESEND_API_KEY` and `RESEND_FROM`/`EMAIL_FROM`: credit emails (`lib/tiktok/creditEmail.ts`)
+- `TIKTOK_LEDGER_SECRET`: credit token signing (`lib/tiktok/entitlement.ts`), with fallbacks
+- `PLAKA_SECRET`: guest cookie signing (`lib/plaka/player.ts`), with fallbacks
+- `OPENAI_API_KEY`: translation script only
+
+`GEMINI_API_KEY` and the `INSTAGRAM_*` values are in `.env.local`, but nothing in `app/`, `lib/`, `components/`, or `scripts/` reads them. `/api/suggest-gifts` serves a static list and makes no AI call.
 
 ### Ads / SEO
 
 - AdSense infra lives in `components/ads/` + `lib/ads/config.ts`, gated behind `NEXT_PUBLIC_ADSENSE_CLIENT_ID` / `NEXT_PUBLIC_AD_SLOT_*` env vars (see README for the full list).
 - `components/seo/` (JsonLd, per-tool/per-page SEO sections) and `lib/seo.ts` / `lib/pageSeoCopy.ts` centralize structured data and per-page SEO copy; `app/sitemap.ts` / `app/robots.ts` generate the sitemap/robots files.
 
-### Seasonal theme
+### Themes
 
-`components/NewYearTheme/` (snowfall, confetti, fireworks, glitter overlay, countdown banner) is active when `isNewYearThemeActive()` returns true — normally calendar-driven (Nov 30 → Jan 10) in `components/NewYearTheme/config.ts`. `THEME_OVERRIDE` (`"on"` / `"off"` / `"auto"`) manually suspends that automation until `THEME_AUTOMATION_RESUME`; flip it with `npm run theme:on` / `npm run theme:off`, or set it to `"auto"` to hand control back to the calendar. Consumers: `app/[locale]/ClientLayout.tsx`, `HomeClientPage.tsx`, `secret-santa/ClientPage.tsx`.
+Two independent systems share the word "theme":
+
+- **Light/dark:** `lib/theme.ts` and `lib/ThemeContext.tsx`. The stored preference is `light`, `dark`, or `auto`; `auto` is time-based (light from 07:00 to 19:00 local time), not OS-based, and re-evaluates while the page is open.
+- **Seasonal:** `components/NewYearTheme/` (snowfall, confetti, fireworks, glitter overlay, countdown banner) is active when `isNewYearThemeActive()` returns true — normally calendar-driven (Nov 30 → Jan 10) in `components/NewYearTheme/config.ts`. `THEME_OVERRIDE` (`"on"` / `"off"` / `"auto"`) manually suspends that automation until `THEME_AUTOMATION_RESUME`; flip it with `npm run theme:on` / `npm run theme:off`, or set it to `"auto"` to hand control back to the calendar. Add `?ny=1` to a URL to preview it. Consumers: `app/[locale]/ClientLayout.tsx`, `HomeClientPage.tsx`, `secret-santa/ClientPage.tsx`.
 
 ## Design system
 
