@@ -7,13 +7,14 @@
 
 import { useEffect, useState } from "react";
 import { useLocale } from "next-intl";
+import { TreePine } from "lucide-react";
 import { getTimeUntilNewYear } from "./config";
 
-const COPY: Record<
+export const COPY: Record<
     string,
     { until: string; celebration: string; days: string; hours: string; minutes: string; seconds: string }
 > = {
-    tr: { until: "{year}'ya kalan süre", celebration: "Mutlu Yıllar", days: "Gün", hours: "Saat", minutes: "Dk", seconds: "Sn" },
+    tr: { until: "{year} yılına kalan süre", celebration: "Mutlu Yıllar", days: "Gün", hours: "Saat", minutes: "Dk", seconds: "Sn" },
     en: { until: "Countdown to {year}", celebration: "Happy New Year", days: "Days", hours: "Hrs", minutes: "Min", seconds: "Sec" },
     de: { until: "Countdown bis {year}", celebration: "Frohes neues Jahr", days: "Tage", hours: "Std", minutes: "Min", seconds: "Sek" },
     fr: { until: "Compte à rebours {year}", celebration: "Bonne année", days: "Jours", hours: "Hrs", minutes: "Min", seconds: "Sec" },
@@ -27,7 +28,13 @@ const COPY: Record<
     zh: { until: "距 {year}", celebration: "新年快乐", days: "天", hours: "时", minutes: "分", seconds: "秒" },
 };
 
-export function CountdownBanner() {
+const STARS = [
+    { className: "left-[6px] bottom-[6px] text-[9px] opacity-60" },
+    { className: "right-[8px] top-[14px] text-[8px] opacity-70 animate-pulse" },
+    { className: "left-[38%] top-[13px] text-[7px] opacity-50 animate-pulse" },
+];
+
+export function CountdownBanner({ compact = false }: { compact?: boolean }) {
     const locale = useLocale();
     const copy = COPY[locale] || COPY.en;
     const [timeLeft, setTimeLeft] = useState(getTimeUntilNewYear());
@@ -39,9 +46,76 @@ export function CountdownBanner() {
         return () => clearInterval(timer);
     }, []);
 
-    if (!mounted) return null;
+    // Compact reserves its height, so the buttons below don't jump when it appears.
+    if (!mounted) return compact ? <div className="min-h-[93px] sm:min-h-[71px]" aria-hidden="true" /> : null;
 
     const untilLabel = copy.until.replace("{year}", String(timeLeft.targetYear));
+
+    if (compact) {
+        return (
+            <div
+                className={`relative overflow-hidden rounded-2xl border border-[#E7C26A]/70 shadow-[0_12px_30px_-12px_rgba(182,23,34,0.7)] ${timeLeft.days === 0 && !timeLeft.isNewYear ? "ys-countdown-final" : ""}`}
+                style={{
+                    background:
+                        "radial-gradient(circle at 12% 10%, #E0404F 0%, transparent 55%), linear-gradient(135deg, #B61722 0%, #8E101B 60%, #5F0A13 100%)",
+                }}
+            >
+                {/* Snow settled along the top edge */}
+                <svg
+                    aria-hidden="true"
+                    viewBox="0 0 400 14"
+                    preserveAspectRatio="none"
+                    className="absolute inset-x-0 top-0 h-[12px] w-full"
+                >
+                    <path
+                        fill="#FFFDF8"
+                        d="M0 0H400V4C385 11 372 11 358 6C345 2 332 3 318 8C302 13 288 12 272 6C258 1 244 3 230 8C214 13 198 11 184 5C170 1 156 3 142 9C128 13 112 12 98 6C84 1 70 3 56 8C40 13 24 12 12 7C7 5 3 4 0 4Z"
+                    />
+                </svg>
+
+                {STARS.map((star) => (
+                    <span
+                        key={star.className}
+                        aria-hidden="true"
+                        className={`absolute text-[#FFE08A] motion-reduce:animate-none ${star.className}`}
+                    >
+                        ✦
+                    </span>
+                ))}
+
+                {timeLeft.isNewYear ? (
+                    <p className="relative px-3 pb-3 pt-[20px] text-center font-heading text-lg font-extrabold text-[#FFF1C2]">
+                        {copy.celebration} {timeLeft.targetYear}
+                    </p>
+                ) : (
+                    <div className="relative flex flex-col items-center gap-x-4 gap-y-2 px-3 pb-3 pt-[18px] sm:flex-row sm:justify-between">
+                        <p className="flex items-center gap-1.5 text-center font-heading text-[13px] font-bold leading-tight text-[#FFF1C2]">
+                            <TreePine className="h-[18px] w-[18px] shrink-0 text-[#FFE08A]" aria-hidden="true" />
+                            {untilLabel}
+                        </p>
+                        <div role="timer" className="grid w-full grid-cols-4 gap-1.5 sm:w-auto">
+                            {[
+                                [timeLeft.days, copy.days],
+                                [timeLeft.hours, copy.hours],
+                                [timeLeft.minutes, copy.minutes],
+                                [timeLeft.seconds, copy.seconds],
+                            ].map(([value, label]) => (
+                                <div
+                                    key={label}
+                                    className="rounded-lg bg-[#FFFBF2] px-1 py-1 text-center shadow-[0_2px_6px_rgba(60,0,8,0.4)] sm:min-w-[50px]"
+                                >
+                                    <div className="font-heading text-[19px] font-extrabold leading-none tabular-nums text-[#B61722]">
+                                        {value.toString().padStart(2, "0")}
+                                    </div>
+                                    <div className="mt-0.5 text-[10px] font-semibold leading-none text-[#7A5A2A]">{label}</div>
+                                </div>
+                            ))}
+                        </div>
+                    </div>
+                )}
+            </div>
+        );
+    }
 
     return (
         <div className="z-40 pointer-events-auto animate-slide-up">

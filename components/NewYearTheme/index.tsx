@@ -5,13 +5,15 @@
 
 "use client";
 
-import { useState, useEffect } from "react";
+import { useCallback, useState, useEffect } from "react";
 import { getTimeUntilNewYear, isNewYearThemeActive } from "./config";
 import { Snowfall } from "./Snowfall";
 import { Fireworks } from "./Fireworks";
 import { Confetti } from "./Confetti";
 import { CountdownBanner } from "./CountdownBanner";
 import { GlitterOverlay } from "./GlitterOverlay";
+import { Garland } from "./Garland";
+import { MidnightMoment } from "./MidnightMoment";
 
 interface NewYearThemeProps {
     showSnowfall?: boolean;
@@ -31,6 +33,7 @@ export function NewYearTheme({
     const [isActive, setIsActive] = useState(false);
     const [isCelebration, setIsCelebration] = useState(false);
     const [mounted, setMounted] = useState(false);
+    const handleNewYear = useCallback(() => setIsCelebration(true), []);
 
     useEffect(() => {
         setMounted(true);
@@ -54,6 +57,8 @@ export function NewYearTheme({
 
     return (
         <>
+            <Garland />
+            <MidnightMoment onNewYear={handleNewYear} />
             {showSnowfall && <Snowfall />}
             {showGlitter && <GlitterOverlay />}
             {/* Paper confetti + fireworks only after midnight Jan 1 */}

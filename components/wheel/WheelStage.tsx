@@ -28,9 +28,12 @@ export type WheelStageHandle = {
     spin: (index: number, power?: number) => void;
 };
 
+type WheelTheme = "light" | "dark";
+
 type WheelStageProps = {
     segments: string[];
     winnerIndex: number | null;
+    theme: WheelTheme;
     canSpin: boolean;
     hubLabel: string;
     wheelLabel: string;
@@ -55,23 +58,19 @@ function makeLayer(size: number) {
     return { canvas, ctx: canvas.getContext("2d") };
 }
 
-function drawFrame(size: number) {
+function drawFrame(size: number, theme: WheelTheme) {
     const { canvas, ctx } = makeLayer(size);
     if (!ctx) return canvas;
     const c = size / 2;
+    const isLight = theme === "light";
 
-    ctx.save();
-    ctx.shadowColor = "rgba(0,0,0,0.55)";
-    ctx.shadowBlur = size * 0.03;
-    ctx.shadowOffsetY = size * 0.012;
     const body = ctx.createLinearGradient(0, 0, 0, size);
-    body.addColorStop(0, "#232a44");
-    body.addColorStop(1, "#0d1120");
+    body.addColorStop(0, isLight ? "#C4202D" : "#232a44");
+    body.addColorStop(1, isLight ? "#7E0F19" : "#0d1120");
     ctx.fillStyle = body;
     ctx.beginPath();
     ctx.arc(c, c, size * FRAME_RADIUS, 0, TWO_PI);
     ctx.fill();
-    ctx.restore();
 
     const gold = ctx.createLinearGradient(0, 0, size, size);
     gold.addColorStop(0, "#FFE9A8");
@@ -93,7 +92,7 @@ function drawFrame(size: number) {
     return canvas;
 }
 
-function drawFace(segments: string[], size: number, dpr: number, fontFamily: string) {
+function drawFace(segments: string[], size: number, dpr: number, fontFamily: string, theme: WheelTheme) {
     const { canvas, ctx } = makeLayer(size);
     if (!ctx) return canvas;
     const c = size / 2;
@@ -108,7 +107,8 @@ function drawFace(segments: string[], size: number, dpr: number, fontFamily: str
         ctx.moveTo(c, c);
         ctx.arc(c, c, r, startOf(i), startOf(i + 1));
         ctx.closePath();
-        ctx.fillStyle = hasEntries ? colorForSegment(i, count) : i % 2 ? "#1a2036" : "#222a45";
+        const emptyColors = theme === "light" ? ["#F3ECDC", "#E9DFC9"] : ["#222a45", "#1a2036"];
+        ctx.fillStyle = hasEntries ? colorForSegment(i, count) : emptyColors[i % 2];
         ctx.fill();
     }
 
@@ -260,12 +260,13 @@ function drawPointer(ctx: CanvasRenderingContext2D, size: number, angle: number)
 }
 
 export const WheelStage = forwardRef<WheelStageHandle, WheelStageProps>(function WheelStage(props, ref) {
-    const { segments, winnerIndex, canSpin, hubLabel, wheelLabel, onRequestSpin } = props;
+    const { segments, winnerIndex, theme, canSpin, hubLabel, wheelLabel, onRequestSpin } = props;
     const wrapRef = useRef<HTMLDivElement>(null);
     const canvasRef = useRef<HTMLCanvasElement>(null);
     const propsRef = useRef(props);
     const invalidateRef = useRef<() => void>(() => {});
     const rebuildRef = useRef<() => void>(() => {});
+    const restyleRef = useRef<() => void>(() => {});
     const spinRef = useRef<WheelStageHandle["spin"]>(() => {});
     const gestureRef = useRef<{ x: number; y: number; at: number } | null>(null);
 
@@ -305,7 +306,7 @@ export const WheelStage = forwardRef<WheelStageHandle, WheelStageProps>(function
         const rebuildFace = () => {
             if (!px) return;
             const fontFamily = getComputedStyle(canvas).fontFamily || "sans-serif";
-            face = drawFace(propsRef.current.segments, px, dpr, fontFamily);
+            face = drawFace(propsRef.current.segments, px, dpr, fontFamily, propsRef.current.theme);
         };
 
         const resize = () => {
@@ -315,7 +316,7 @@ export const WheelStage = forwardRef<WheelStageHandle, WheelStageProps>(function
             px = Math.round(css * dpr);
             canvas.width = px;
             canvas.height = px;
-            frame = drawFrame(px);
+            frame = drawFrame(px, propsRef.current.theme);
             gloss = drawGloss(px);
             const bulbSize = Math.round(px * 0.06);
             bulbOn = drawBulb(bulbSize, true);
@@ -330,7 +331,8 @@ export const WheelStage = forwardRef<WheelStageHandle, WheelStageProps>(function
             const angle = TWO_PI / count;
             const from = -Math.PI / 2 + index * angle;
 
-            ctx.fillStyle = `rgba(6,8,18,${0.66 * strength})`;
+            const veil = propsRef.current.theme === "light" ? "255,250,240" : "6,8,18";
+            ctx.fillStyle = `rgba(${veil},${(propsRef.current.theme === "light" ? 0.74 : 0.66) * strength})`;
             ctx.beginPath();
             ctx.moveTo(c, c);
             ctx.arc(c, c, r, from + angle, from + TWO_PI);
@@ -466,6 +468,7 @@ export const WheelStage = forwardRef<WheelStageHandle, WheelStageProps>(function
         };
 
         invalidateRef.current = invalidate;
+        restyleRef.current = resize;
         rebuildRef.current = () => {
             rebuildFace();
             invalidate();
@@ -518,6 +521,7 @@ export const WheelStage = forwardRef<WheelStageHandle, WheelStageProps>(function
             document.removeEventListener("visibilitychange", onVisibility);
             invalidateRef.current = () => {};
             rebuildRef.current = () => {};
+            restyleRef.current = () => {};
             spinRef.current = () => {};
         };
     }, []);
@@ -525,6 +529,10 @@ export const WheelStage = forwardRef<WheelStageHandle, WheelStageProps>(function
     useEffect(() => {
         rebuildRef.current();
     }, [segments]);
+
+    useEffect(() => {
+        restyleRef.current();
+    }, [theme]);
 
     useEffect(() => {
         invalidateRef.current();
@@ -560,6 +568,11 @@ export const WheelStage = forwardRef<WheelStageHandle, WheelStageProps>(function
                 gestureRef.current = null;
             }}
         >
+            {/* Drawn in CSS because a shadow on the canvas would be cut off at its square edge. */}
+            <div
+                aria-hidden="true"
+                className="absolute inset-[0.8%] rounded-full shadow-[0_10px_28px_rgba(90,50,20,0.38)] dark:shadow-[0_10px_28px_rgba(0,0,0,0.6)]"
+            />
             {/* The hub is the accessible control; the canvas is decoration for assistive tech. */}
             <canvas
                 ref={canvasRef}
@@ -575,7 +588,7 @@ export const WheelStage = forwardRef<WheelStageHandle, WheelStageProps>(function
                 onClick={(e) => {
                     if (e.detail === 0) onRequestSpin(0.5);
                 }}
-                className="absolute left-1/2 top-1/2 flex aspect-square w-[21%] min-w-11 -translate-x-1/2 -translate-y-1/2 cursor-pointer items-center justify-center rounded-full border-[3px] border-[#E7C26A] bg-[radial-gradient(circle_at_35%_28%,#3a4468_0%,#141a2e_70%)] px-1 text-center font-heading text-[clamp(10px,3.5cqw,17px)] font-extrabold uppercase leading-none tracking-wide text-white shadow-[0_6px_18px_rgba(0,0,0,0.55),inset_0_1px_0_rgba(255,255,255,0.3)] transition-transform duration-150 hover:scale-105 focus:outline-none focus-visible:ring-4 focus-visible:ring-white/80 active:scale-95 disabled:cursor-default disabled:text-white/40 disabled:hover:scale-100"
+                className="absolute left-1/2 top-1/2 flex aspect-square w-[21%] min-w-11 -translate-x-1/2 -translate-y-1/2 cursor-pointer items-center justify-center rounded-full border-[3px] border-[#D9AE4F] bg-[radial-gradient(circle_at_35%_28%,#ffffff_0%,#F3ECDC_75%)] px-1 text-center font-heading text-[clamp(10px,3.5cqw,17px)] font-extrabold uppercase leading-none tracking-wide text-[#B61722] shadow-[0_6px_18px_rgba(90,50,20,0.4),inset_0_1px_0_rgba(255,255,255,0.8)] transition-transform duration-150 hover:scale-105 focus:outline-none focus-visible:ring-4 focus-visible:ring-[#14161F]/50 active:scale-95 disabled:cursor-default disabled:text-[#14161F]/35 disabled:hover:scale-100 dark:border-[#E7C26A] dark:bg-[radial-gradient(circle_at_35%_28%,#3a4468_0%,#141a2e_70%)] dark:text-white dark:shadow-[0_6px_18px_rgba(0,0,0,0.55),inset_0_1px_0_rgba(255,255,255,0.3)] dark:focus-visible:ring-white/80 dark:disabled:text-white/40"
             >
                 {hubLabel}
             </button>

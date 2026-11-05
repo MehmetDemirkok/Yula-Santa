@@ -57,7 +57,8 @@ export function Snowfall() {
             Array.from({ length: count }, (_, i) => ({
                 id: i,
                 x: Math.random() * 100,
-                size: Math.random() * 2 + 2.5, // ~2.5–4.5px — küçük kar taneleri
+                // Çoğu ince kar; her dört taneden biri şekli seçilebilen büyük tane
+                size: i % 4 === 0 ? Math.random() * 3 + 8 : Math.random() * 2.5 + 3,
                 duration: Math.random() * 12 + 14,
                 delay: Math.random() * -24,
                 opacity: Math.random() * 0.35 + 0.35,

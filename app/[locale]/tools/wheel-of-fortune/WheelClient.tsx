@@ -24,6 +24,7 @@ import { WheelStage, type WheelStageHandle } from "@/components/wheel/WheelStage
 import { WinnerSheet } from "@/components/wheel/WinnerSheet";
 import { celebrate } from "@/lib/celebrate";
 import { secureRandomInt, secureShuffle } from "@/lib/random";
+import { useTheme } from "@/lib/ThemeContext";
 import { createWheelAudio } from "@/lib/wheel/wheelAudio";
 import { MAX_ENTRIES, WHEEL_COLORS, colorForSegment, parseEntries } from "@/lib/wheel/wheelMath";
 
@@ -56,6 +57,7 @@ function loadSaved(): Partial<SavedState> | null {
 export function WheelClient() {
     const t = useTranslations("tools.wheelOfFortuneContent");
     const locale = useLocale();
+    const { resolvedTheme } = useTheme();
 
     const [segments, setSegments] = useState<string[]>(() => t.raw("sampleOptions") as string[]);
     const [isSample, setIsSample] = useState(true);
@@ -363,11 +365,11 @@ export function WheelClient() {
                     <section
                         ref={stageSectionRef}
                         aria-label={t("title")}
-                        className="relative -mx-4 scroll-mt-16 overflow-hidden bg-[#0B0F1E] px-3 pb-4 pt-3 sm:mx-0 sm:rounded-3xl sm:border sm:border-white/10 sm:px-6 sm:pb-6 sm:pt-5 sm:shadow-[0_24px_60px_rgba(11,15,30,0.28)]"
+                        className="relative -mx-4 scroll-mt-16 overflow-hidden bg-[#FBF6EA] px-3 dark:bg-[#0B0F1E] pb-4 pt-3 sm:mx-0 sm:rounded-3xl sm:border sm:border-[#E7DCC3] sm:px-6 sm:pb-6 sm:pt-5 sm:shadow-[0_18px_48px_rgba(120,80,30,0.14)] dark:sm:border-white/10 dark:sm:shadow-[0_24px_60px_rgba(11,15,30,0.28)]"
                     >
                         <div
                             aria-hidden="true"
-                            className="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_50%_42%,rgba(79,70,229,0.34)_0%,rgba(182,23,34,0.12)_42%,transparent_72%)]"
+                            className="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_50%_42%,rgba(255,214,120,0.38)_0%,rgba(214,40,57,0.07)_46%,transparent_72%)] dark:bg-[radial-gradient(circle_at_50%_42%,rgba(79,70,229,0.34)_0%,rgba(182,23,34,0.12)_42%,transparent_72%)]"
                         />
 
                         <div className="relative flex min-h-9 items-center justify-center" aria-live="polite">
@@ -377,7 +379,7 @@ export function WheelClient() {
                                     key="pass"
                                     ref={passRef}
                                     aria-hidden="true"
-                                    className="max-w-full truncate rounded-full bg-white/10 px-4 py-1.5 font-heading text-sm font-bold text-white"
+                                    className="max-w-full truncate rounded-full bg-[#14161F]/8 px-4 py-1.5 font-heading text-sm font-bold text-[#14161F] dark:bg-white/10 dark:text-white"
                                 />
                             ) : winner ? (
                                 <span
@@ -389,7 +391,7 @@ export function WheelClient() {
                             ) : (
                                 <span
                                     key="hint"
-                                    className="px-4 py-1.5 text-center text-xs font-medium text-white/65 sm:text-sm"
+                                    className="px-4 py-1.5 text-center text-xs font-medium text-[#14161F]/70 sm:text-sm dark:text-white/65"
                                 >
                                     {segments.length < 2 ? t("needMore") : t("tapOrSwipe")}
                                 </span>
@@ -403,6 +405,7 @@ export function WheelClient() {
                                 ref={stageRef}
                                 segments={segments}
                                 winnerIndex={winner?.index ?? null}
+                                theme={resolvedTheme}
                                 canSpin={canSpin}
                                 hubLabel={t("spin")}
                                 wheelLabel={t("subtitle")}
@@ -419,11 +422,11 @@ export function WheelClient() {
                                 type="button"
                                 onClick={() => requestSpin()}
                                 disabled={!canSpin}
-                                className="inline-flex h-[56px] w-full cursor-pointer items-center justify-center gap-2 rounded-lg border border-white/15 bg-[#D62839] px-8 font-heading text-lg font-extrabold text-white shadow-[0_8px_26px_rgba(214,40,57,0.45),inset_0_1px_0_rgba(255,255,255,0.25)] transition hover:brightness-110 focus:outline-none focus-visible:ring-4 focus-visible:ring-white/60 active:scale-[0.98] disabled:cursor-default disabled:bg-white/10 disabled:text-white/50 disabled:shadow-none"
+                                className="inline-flex h-[56px] w-full cursor-pointer items-center justify-center gap-2 rounded-lg border border-white/15 bg-[#D62839] px-8 font-heading text-lg font-extrabold text-white shadow-[0_8px_26px_rgba(214,40,57,0.45),inset_0_1px_0_rgba(255,255,255,0.25)] transition hover:brightness-110 focus:outline-none focus-visible:ring-4 focus-visible:ring-[#14161F]/40 active:scale-[0.98] disabled:cursor-default disabled:bg-[#14161F]/10 disabled:text-[#14161F]/45 disabled:shadow-none dark:focus-visible:ring-white/60 dark:disabled:bg-white/10 dark:disabled:text-white/50"
                             >
                                 {isSpinning ? t("spinning") : t("spin")}
                             </button>
-                            <p className="flex items-center justify-center gap-1.5 text-center text-xs text-white/60">
+                            <p className="flex items-center justify-center gap-1.5 text-center text-xs text-[#14161F]/65 dark:text-white/60">
                                 <ShieldCheck className="h-3.5 w-3.5 shrink-0" aria-hidden="true" />
                                 {t("fairNote")}
                             </p>

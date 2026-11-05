@@ -17,12 +17,13 @@ import {
     Sparkles,
     Aperture,
     Play,
-    Car
+    Car,
 } from "lucide-react";
 import { useTranslations } from "next-intl";
 import { cn } from "@/lib/utils";
 import { CountdownBanner } from "@/components/NewYearTheme/CountdownBanner";
 import { isNewYearThemeActive } from "@/components/NewYearTheme/config";
+import { FestiveMascot, GiftBow, HeroDecor, SnowCap } from "@/components/NewYearTheme/HomeDecor";
 import { Reveal } from "@/components/Reveal";
 import { localePath } from "@/lib/localePath";
 
@@ -37,278 +38,222 @@ function TikTokIcon({ className }: { className?: string }) {
 export default function HomeClientPage() {
     const { locale } = useParams();
     const t = useTranslations();
+    const seasonal = isNewYearThemeActive();
 
-    const giveaways = [
+    const trustPoints = [
+        { label: t("home.secure"), icon: ShieldCheck, color: "text-success-green" },
+        { label: t("home.fast"), icon: Zap, color: "text-indigo-accent" },
+        { label: t("home.noPassword"), icon: CheckCircle2, color: "text-santa-red" },
+        { label: t("home.noRegistration"), icon: Users, color: "text-foreground" },
+    ];
+
+    // Every tool appears exactly once on the page: the main draws first, the rest below.
+    const mainDraws = [
         {
             title: t("home.youtubeGiveaway"),
             desc: t("giveaway.youtubeDesc"),
             icon: Youtube,
             href: localePath(locale, "/youtube"),
-            color: "from-red-600 to-red-500",
-            button: "bg-red-600 hover:bg-red-500 shadow-red-200/60 dark:shadow-red-500/20",
-            iconWrap: "bg-gradient-to-br from-red-600 to-red-500",
+            iconBg: "bg-red-600 text-white",
+            highlight: false,
         },
         {
             title: t("home.tiktokGiveaway"),
             desc: t("giveaway.tiktokDesc"),
             icon: TikTokIcon,
             href: localePath(locale, "/tiktok"),
-            color: "from-zinc-900 to-zinc-700",
-            button: "bg-zinc-900 hover:bg-zinc-800 dark:bg-white dark:text-zinc-900 dark:hover:bg-zinc-100 shadow-zinc-200/50 dark:shadow-white/10",
-            iconWrap: "bg-gradient-to-br from-zinc-900 to-zinc-700",
+            iconBg: "bg-zinc-900 text-white dark:bg-white dark:text-zinc-900",
+            highlight: false,
         },
-    ];
-
-    const features = [
-        { label: t("home.secure"), icon: ShieldCheck, color: "bg-success-green/10 text-success-green" },
-        { label: t("home.fast"), icon: Zap, color: "bg-indigo-accent/10 text-indigo-accent" },
-        { label: t("home.noPassword"), icon: CheckCircle2, color: "bg-santa-red/10 text-santa-red" },
-        { label: t("home.noRegistration"), icon: Users, color: "bg-foreground/5 dark:bg-foreground/10 text-foreground" },
-    ];
-
-    const raffleTools = [
         {
             title: t("home.secretDraw").replace(" 🎄", ""),
             desc: t("home.subtitle"),
             icon: Gift,
             href: localePath(locale, "/secret-santa"),
             iconBg: "bg-santa-red text-white",
-            accent: "text-santa-red",
+            highlight: seasonal,
         },
         {
             title: t("footer.namePicker"),
             desc: t("home.namePickerDesc"),
             icon: Trophy,
             href: localePath(locale, "/raffle"),
-            iconBg: "bg-foreground text-background",
-            accent: "text-foreground",
+            iconBg: "bg-amber-500 text-white",
+            highlight: false,
         },
     ];
 
-    const tools = [
-        { name: t("tools.plakaAvcisi"), icon: Car, href: localePath(locale, "/oyun/plaka-avcisi"), color: "bg-teal-500" },
-        { name: t("footer.namePicker"), icon: Trophy, href: localePath(locale, "/raffle"), color: "bg-amber-500" },
+    const quickTools = [
+        { name: t("tools.wheelOfFortune"), icon: Aperture, href: localePath(locale, "/tools/wheel-of-fortune"), color: "bg-pink-500" },
         { name: t("tools.dice"), icon: Dice5, href: localePath(locale, "/tools/dice"), color: "bg-indigo-500" },
         { name: t("tools.coinFlip"), icon: Coins, href: localePath(locale, "/tools/coin-flip"), color: "bg-amber-500" },
         { name: t("tools.randomNumber"), icon: Hash, href: localePath(locale, "/tools/random-number"), color: "bg-emerald-500" },
         { name: t("tools.shortStraw"), icon: Sparkles, href: localePath(locale, "/tools/short-straw"), color: "bg-rose-500" },
-        { name: t("tools.wheelOfFortune"), icon: Aperture, href: localePath(locale, "/tools/wheel-of-fortune"), color: "bg-pink-500" },
         { name: t("tools.teamGenerator"), icon: Users, href: localePath(locale, "/tools/team-generator"), color: "bg-purple-500" },
         { name: t("tools.giftSuggestions"), icon: Gift, href: localePath(locale, "/tools/gift-suggestions"), color: "bg-fuchsia-500" },
     ];
 
     return (
-        <main className="ys-page-shell overflow-hidden transition-colors duration-300">
-            <section className="relative pt-20 pb-10 lg:pt-24 lg:pb-14 overflow-hidden">
+        <main className="ys-page-shell overflow-hidden !min-h-0 transition-colors duration-300">
+            <section className={cn("relative overflow-hidden pb-6 lg:pb-10", seasonal ? "pt-[56px]" : "pt-[36px]")}>
+                {seasonal && <HeroDecor />}
                 <div className="absolute top-0 left-1/2 -translate-x-1/2 w-full max-w-7xl h-full -z-10 pointer-events-none">
                     <div className="absolute top-[-8%] right-[-8%] w-[420px] h-[420px] bg-red-100/40 dark:bg-red-500/15 rounded-full blur-[100px]" />
                     <div className="absolute bottom-[-5%] left-[-8%] w-[380px] h-[380px] bg-cyan-100/30 dark:bg-cyan-500/10 rounded-full blur-[100px]" />
                 </div>
 
-                <div className="max-w-6xl mx-auto px-4">
-                    <div className="grid grid-cols-1 lg:grid-cols-2 gap-10 lg:gap-12 items-center">
-                        <Reveal className="order-1 text-center lg:text-left">
-                            {isNewYearThemeActive() && (
-                                <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full border border-[color-mix(in_srgb,var(--gold)_40%,transparent)] bg-[color-mix(in_srgb,var(--santa-red)_10%,transparent)] text-santa-red text-xs sm:text-sm font-bold mb-6 tracking-wide">
-                                    <span className="text-gold" aria-hidden>✦</span>
-                                    <span>{t("home.happyNewYear")}</span>
-                                </div>
-                            )}
-
-                            <h1 className="font-heading text-headline-lg-mobile sm:text-headline-lg lg:text-4xl xl:text-display-lg text-foreground tracking-tight mb-4">
-                                {t("home.heroTitle")}
-                            </h1>
-                            <p className="max-w-xl mx-auto lg:mx-0 text-sm sm:text-base lg:text-lg text-[var(--text-secondary)] mb-6 leading-relaxed font-medium">
-                                {t("home.heroSubtitle")}
-                            </p>
-
-                            {isNewYearThemeActive() && (
-                                <div className="flex justify-center lg:justify-start mb-8">
-                                    <CountdownBanner />
-                                </div>
-                            )}
-
-                            <div className="flex flex-col sm:flex-row items-center justify-center lg:justify-start gap-3">
-                                <Link
-                                    href={localePath(locale, "/youtube")}
-                                    className="w-full sm:w-auto inline-flex items-center justify-center text-sm lg:text-base py-5 px-8 rounded-2xl shadow-xl shadow-red-200/70 dark:shadow-red-500/20 hover:scale-[1.02] transition-all text-white font-bold bg-red-600 hover:bg-red-500"
-                                >
-                                    <Youtube className="mr-2 w-5 h-5" />
-                                    {t("home.youtubeGiveaway")}
-                                </Link>
-                                <Link
-                                    href={localePath(locale, "/tiktok")}
-                                    className="w-full sm:w-auto inline-flex items-center justify-center text-sm lg:text-base py-5 px-8 rounded-2xl border-2 border-[var(--card-border)] bg-[var(--card-bg)] hover:bg-[var(--surface-2)] text-[var(--text-secondary)] font-bold"
-                                >
-                                    <TikTokIcon className="mr-2 w-5 h-5" />
-                                    {t("home.tiktokGiveaway")}
-                                </Link>
+                <div className="mx-auto grid max-w-6xl grid-cols-[minmax(0,1fr)_auto] items-center gap-x-3 gap-y-4 px-4 lg:grid-cols-[minmax(0,1fr)_360px] lg:gap-x-12">
+                    <Reveal>
+                        {seasonal && (
+                            <div className="mb-2 inline-flex items-center gap-1.5 rounded-full border border-[color-mix(in_srgb,var(--gold)_40%,transparent)] bg-[color-mix(in_srgb,var(--santa-red)_10%,transparent)] px-3 py-1 text-xs font-bold tracking-wide text-santa-red lg:mb-4">
+                                <span className="text-gold" aria-hidden>✦</span>
+                                <span>{t("home.happyNewYear")}</span>
                             </div>
-                        </Reveal>
+                        )}
+                        <h1 className="font-heading text-[26px] font-extrabold leading-tight tracking-tight text-foreground sm:text-headline-lg lg:text-4xl xl:text-display-lg">
+                            {t("home.heroTitle")}
+                        </h1>
+                    </Reveal>
 
-                        <Reveal delay={120} className="order-2 flex justify-center lg:justify-end">
-                            <div className="relative w-44 sm:w-56 md:w-64 lg:w-[250px] xl:w-[320px] aspect-square">
-                                <div className="absolute inset-0 bg-santa-red/5 rounded-full blur-3xl scale-90" />
+                    <Reveal delay={120} className="lg:row-span-2">
+                        <div className="relative aspect-square w-[116px] sm:w-[170px] lg:w-[360px]">
+                            <div className="absolute inset-0 scale-90 rounded-full bg-santa-red/5 blur-3xl" />
+                            {seasonal ? (
+                                <FestiveMascot />
+                            ) : (
                                 <img
                                     alt="YulaSanta Mascot"
-                                    className="relative z-10 w-full h-full object-contain animate-float drop-shadow-2xl"
-                                    src="/yula-mascot-santa.png"
+                                    className="relative z-10 h-full w-full object-contain drop-shadow-2xl animate-float"
+                                    src="/yula-mascot.png"
                                 />
-                            </div>
-                        </Reveal>
-                    </div>
+                            )}
+                        </div>
+                    </Reveal>
 
-                    <div className="mt-8 lg:mt-10 grid grid-cols-2 lg:grid-cols-4 gap-3 lg:gap-4">
-                        {features.map((feature, i) => (
-                            <Reveal key={feature.label} delay={i * 70}>
-                                <div className="flex flex-col items-center text-center gap-2.5 bg-[var(--card-bg)]/70 p-4 lg:p-5 rounded-2xl border border-[var(--card-border)] h-full">
-                                    <div className={cn("w-10 h-10 rounded-xl flex items-center justify-center", feature.color)}>
-                                        <feature.icon className="w-5 h-5" />
-                                    </div>
-                                    <span className="text-xs lg:text-sm font-bold text-foreground">{feature.label}</span>
-                                </div>
-                            </Reveal>
-                        ))}
-                    </div>
+                    <Reveal className="col-span-2 lg:col-span-1">
+                        <p className="mb-4 max-w-xl text-sm font-medium leading-relaxed text-[var(--text-secondary)] sm:text-base lg:text-lg">
+                            {t("home.heroSubtitle")}
+                        </p>
+
+                        {seasonal && (
+                            <div className="mb-4 max-w-md">
+                                <CountdownBanner compact />
+                            </div>
+                        )}
+
+                        <div className="grid grid-cols-2 gap-2 sm:flex sm:gap-3">
+                            <Link
+                                href={localePath(locale, "/youtube")}
+                                className="inline-flex min-h-[52px] items-center justify-center gap-2 rounded-xl bg-red-600 px-2 text-center text-sm font-bold leading-tight text-white shadow-lg shadow-red-200/70 transition-all hover:bg-red-500 dark:shadow-red-500/20 sm:px-6 lg:text-base"
+                            >
+                                <Youtube className="h-5 w-5 shrink-0" />
+                                {t("home.youtubeGiveaway")}
+                            </Link>
+                            <Link
+                                href={localePath(locale, "/tiktok")}
+                                className="inline-flex min-h-[52px] items-center justify-center gap-2 rounded-xl border-2 border-[var(--card-border)] bg-[var(--card-bg)] px-2 text-center text-sm font-bold leading-tight text-[var(--text-secondary)] transition-colors hover:bg-[var(--surface-2)] sm:px-6 lg:text-base"
+                            >
+                                <TikTokIcon className="h-5 w-5 shrink-0" />
+                                {t("home.tiktokGiveaway")}
+                            </Link>
+                        </div>
+
+                        <ul className="mt-4 flex flex-wrap gap-x-4 gap-y-1.5">
+                            {trustPoints.map((point) => (
+                                <li key={point.label} className="flex items-center gap-1.5 text-xs font-semibold text-[var(--text-secondary)] lg:text-sm">
+                                    <point.icon className={cn("h-4 w-4 shrink-0", point.color)} aria-hidden="true" />
+                                    {point.label}
+                                </li>
+                            ))}
+                        </ul>
+                    </Reveal>
                 </div>
             </section>
 
-            <section className="relative pb-10 lg:pb-14">
-                <div className="max-w-6xl mx-auto px-4">
-                    <Reveal>
-                        <Link
-                            href={localePath(locale, "/oyun/plaka-avcisi")}
-                            className="group relative block overflow-hidden rounded-[2rem] border border-teal-400/30 bg-gradient-to-br from-emerald-600 via-teal-600 to-emerald-800 p-6 sm:p-9 shadow-xl hover:shadow-2xl transition-shadow duration-300"
-                        >
-                            <span
-                                aria-hidden
-                                className="pointer-events-none absolute -right-16 -top-20 h-72 w-72 rounded-full bg-white/15 blur-3xl"
-                            />
-                            <span
-                                aria-hidden
-                                className="pointer-events-none absolute inset-0 opacity-[0.08]"
-                                style={{
-                                    backgroundImage:
-                                        "repeating-linear-gradient(115deg, #fff 0 1px, transparent 1px 22px)",
-                                }}
-                            />
-                            <div className="relative z-10 flex flex-col gap-6 lg:flex-row lg:items-center lg:justify-between lg:gap-10">
-                                <div className="max-w-3xl">
-                                    <span className="inline-flex items-center gap-1.5 rounded-full bg-white/15 px-3 py-1 text-[11px] font-black uppercase tracking-[0.16em] text-white">
-                                        <Sparkles className="w-3.5 h-3.5" aria-hidden="true" />
-                                        {t("tools.new")}
-                                    </span>
-                                    <h2 className="mt-3 font-heading text-2xl sm:text-3xl lg:text-4xl font-black text-white tracking-tight">
-                                        {t("tools.plakaAvcisi")}
-                                    </h2>
-                                    <p className="mt-2 text-sm sm:text-base text-emerald-50/90 leading-relaxed max-w-2xl">
-                                        {t("tools.plakaAvcisiMeta.description")}
-                                    </p>
-                                    <div className="mt-4 flex flex-wrap gap-2">
-                                        {[
-                                            t("tools.featureProvinces"),
-                                            t("tools.featureModes"),
-                                            t("tools.featureDaily"),
-                                        ].map((label) => (
-                                            <span
-                                                key={label}
-                                                className="inline-flex items-center gap-1.5 rounded-full bg-white/10 px-3 py-1.5 text-xs font-bold text-emerald-50 ring-1 ring-inset ring-white/20"
-                                            >
-                                                <CheckCircle2 className="w-3.5 h-3.5" aria-hidden="true" />
-                                                {label}
-                                            </span>
-                                        ))}
+            <section id="draws" className="pb-6 lg:pb-10">
+                <div className="mx-auto max-w-6xl px-4">
+                    <h2 className="mb-3 font-heading text-xl font-bold tracking-tight text-foreground lg:mb-4 lg:text-2xl">
+                        {t("tools.title")}
+                    </h2>
+
+                    <div className="grid grid-cols-2 gap-2 sm:gap-3 lg:grid-cols-4 lg:gap-4">
+                        {mainDraws.map((item) => (
+                            <Link
+                                key={item.href}
+                                href={item.href}
+                                className={cn(
+                                    "group relative flex h-full flex-col gap-2 overflow-hidden rounded-2xl border bg-[var(--card-bg)] p-3 transition-all hover:-translate-y-0.5 hover:shadow-lg sm:p-4 lg:p-5",
+                                    seasonal && "pt-4 sm:pt-5 lg:pt-6",
+                                    item.highlight
+                                        ? "border-[color-mix(in_srgb,var(--gold)_55%,transparent)]"
+                                        : "border-[var(--card-border)]"
+                                )}
+                            >
+                                {seasonal && <SnowCap />}
+                                {item.highlight && <GiftBow />}
+                                <div className="flex items-center justify-between">
+                                    <div className={cn("flex h-10 w-10 items-center justify-center rounded-xl lg:h-12 lg:w-12", item.iconBg)}>
+                                        <item.icon className="h-5 w-5 lg:h-6 lg:w-6" />
                                     </div>
+                                    <ArrowRight className="h-4 w-4 text-[var(--text-muted)] transition-transform group-hover:translate-x-0.5 rtl:rotate-180" aria-hidden="true" />
                                 </div>
-                                <span className="inline-flex min-h-[52px] items-center justify-center gap-2 rounded-xl bg-white px-7 py-3.5 text-sm font-black uppercase tracking-wide text-emerald-800 shadow-lg group-hover:scale-[1.03] group-active:scale-[0.99] transition-transform whitespace-nowrap">
-                                    <Play className="w-4 h-4" aria-hidden="true" />
-                                    {t("tools.play")}
-                                    <ArrowRight className="w-4 h-4" aria-hidden="true" />
+                                <h3 className="font-heading text-sm font-bold leading-tight text-foreground sm:text-base lg:text-lg">
+                                    {item.title}
+                                </h3>
+                                <p className="hidden text-sm leading-relaxed text-[var(--text-secondary)] lg:block">{item.desc}</p>
+                            </Link>
+                        ))}
+                    </div>
+
+                    <div className="mt-2 grid grid-cols-2 gap-2 sm:mt-3 sm:gap-3 lg:grid-cols-4">
+                        {quickTools.map((tool) => (
+                            <Link
+                                key={tool.href}
+                                href={tool.href}
+                                className="group flex min-h-[52px] items-center gap-2.5 rounded-xl border border-[var(--card-border)] bg-[var(--card-bg)] px-2.5 py-1.5 transition-colors hover:border-santa-red/30"
+                            >
+                                <span className={cn("flex h-8 w-8 shrink-0 items-center justify-center rounded-lg text-white", tool.color)}>
+                                    <tool.icon className="h-4 w-4" />
                                 </span>
-                            </div>
+                                <span className="min-w-0 text-sm font-semibold leading-tight text-foreground">{tool.name}</span>
+                            </Link>
+                        ))}
+                        <Link
+                            href={localePath(locale, "/tools")}
+                            className="flex min-h-[52px] items-center justify-center gap-1.5 rounded-xl border border-dashed border-[var(--border-medium)] px-2.5 py-1.5 text-sm font-bold text-[var(--text-secondary)] transition-colors hover:text-foreground"
+                        >
+                            {t("tools.title")}
+                            <ArrowRight className="h-4 w-4 rtl:rotate-180" aria-hidden="true" />
                         </Link>
-                    </Reveal>
-                </div>
-            </section>
-
-            <section id="draws" className="py-16 lg:py-24 bg-[var(--surface-2)]">
-                <div className="max-w-5xl mx-auto px-4">
-                    <Reveal className="text-center mb-10 lg:mb-14">
-                        <h2 className="font-heading text-headline-lg-mobile sm:text-headline-lg text-foreground mb-3">
-                            {t("home.socialMediaGiveaways")}
-                        </h2>
-                        <p className="text-[var(--text-secondary)] font-medium max-w-xl mx-auto">{t("home.socialDesc")}</p>
-                    </Reveal>
-
-                    <div className="grid grid-cols-1 md:grid-cols-2 gap-6 lg:gap-8">
-                        {giveaways.map((item, i) => (
-                            <Reveal key={item.href} delay={i * 100}>
-                                <div className="group relative bg-[var(--card-bg)] rounded-[1.75rem] p-7 lg:p-9 border border-[var(--card-border)] shadow-sm hover:shadow-xl transition-shadow duration-300 flex flex-col h-full text-left min-h-[280px]">
-                                    <div className={cn(
-                                        "w-16 h-16 rounded-2xl bg-gradient-to-br flex items-center justify-center text-white mb-6 shadow-lg group-hover:scale-105 transition-transform",
-                                        item.iconWrap
-                                    )}>
-                                        <item.icon className="w-8 h-8" />
-                                    </div>
-                                    <h3 className="font-heading text-2xl font-bold text-foreground mb-3">{item.title}</h3>
-                                    <p className="text-[var(--text-secondary)] mb-8 leading-relaxed flex-grow">{item.desc}</p>
-                                    <Link
-                                        href={item.href}
-                                        className={cn("mt-auto w-full py-4 rounded-xl font-bold text-white transition-all hover:shadow-lg inline-flex items-center justify-center", item.button)}
-                                    >
-                                        {t("home.startNow")} <ArrowRight className="ml-2 w-4 h-4" />
-                                    </Link>
-                                </div>
-                            </Reveal>
-                        ))}
-                    </div>
-
-                    <div className="grid grid-cols-1 md:grid-cols-2 gap-5 lg:gap-6 mt-6 lg:mt-8">
-                        {raffleTools.map((item, i) => (
-                            <Reveal key={item.href} delay={i * 90}>
-                                <div className="group bg-[var(--card-bg)] p-5 lg:p-6 rounded-3xl border border-[var(--card-border)] shadow-sm hover:shadow-xl transition-shadow duration-300 flex items-center gap-4 sm:gap-5 h-full">
-                                    <div className={cn("w-14 h-14 sm:w-16 sm:h-16 rounded-3xl flex items-center justify-center flex-shrink-0", item.iconBg)}>
-                                        <item.icon className="w-7 h-7" />
-                                    </div>
-                                    <div className="min-w-0">
-                                        <h3 className={cn("font-heading text-lg font-bold mb-1.5", item.accent)}>{item.title}</h3>
-                                        <p className="text-sm text-[var(--text-secondary)] mb-3 leading-relaxed">{item.desc}</p>
-                                        <Link
-                                            href={item.href}
-                                            className={cn("font-bold text-sm flex items-center gap-1 group-hover:gap-2 transition-all", item.accent)}
-                                        >
-                                            {t("home.startNow")} <ArrowRight className="w-4 h-4" />
-                                        </Link>
-                                    </div>
-                                </div>
-                            </Reveal>
-                        ))}
                     </div>
                 </div>
             </section>
 
-            <section className="py-16 lg:py-24 bg-[var(--background)]">
-                <div className="max-w-5xl mx-auto px-4">
-                    <Reveal className="text-center mb-10 lg:mb-12">
-                        <h2 className="font-heading text-headline-lg-mobile sm:text-headline-lg text-foreground mb-3">{t("tools.title")}</h2>
-                        <p className="text-[var(--text-secondary)] font-medium max-w-xl mx-auto">{t("home.toolsDesc")}</p>
-                    </Reveal>
-
-                    <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-4 lg:gap-5">
-                        {tools.map((tool, i) => (
-                            <Reveal key={tool.href} delay={i * 60}>
-                                <Link
-                                    href={tool.href}
-                                    className="group flex flex-col items-center text-center gap-3 p-5 lg:p-6 w-full bg-[var(--card-bg)] rounded-2xl border border-[var(--card-border)] hover:border-santa-red/25 hover:shadow-lg transition-all"
-                                >
-                                    <div className={cn("w-12 h-12 rounded-xl flex items-center justify-center text-white group-hover:scale-110 transition-transform", tool.color)}>
-                                        <tool.icon className="w-6 h-6" />
-                                    </div>
-                                    <h4 className="text-sm lg:text-base font-bold text-foreground">{tool.name}</h4>
-                                </Link>
-                            </Reveal>
-                        ))}
-                    </div>
+            <section className="pb-8 lg:pb-12">
+                <div className="mx-auto max-w-6xl px-4">
+                    <Link
+                        href={localePath(locale, "/oyun/plaka-avcisi")}
+                        className="group flex items-center gap-3 rounded-2xl bg-gradient-to-br from-emerald-600 via-teal-600 to-emerald-800 p-3 shadow-md transition-shadow hover:shadow-xl sm:gap-4 sm:p-4"
+                    >
+                        <span className="flex h-11 w-11 shrink-0 items-center justify-center rounded-xl bg-white/15 text-white">
+                            <Car className="h-6 w-6" aria-hidden="true" />
+                        </span>
+                        <span className="min-w-0 flex-1">
+                            <span className="flex items-center gap-2">
+                                <span className="font-heading text-base font-extrabold text-white sm:text-lg">{t("tools.plakaAvcisi")}</span>
+                                <span className="rounded-full bg-white/20 px-2 py-0.5 text-[10px] font-black uppercase tracking-wider text-white">
+                                    {t("tools.new")}
+                                </span>
+                            </span>
+                            <span className="mt-0.5 block text-xs leading-snug text-emerald-50/90 sm:text-sm">
+                                {t("tools.plakaAvcisiShort")}
+                            </span>
+                        </span>
+                        <span className="inline-flex min-h-[44px] shrink-0 items-center justify-center gap-1.5 rounded-lg bg-white px-3 text-sm font-black text-emerald-800 transition-transform group-hover:scale-[1.03] sm:px-5">
+                            <Play className="h-3.5 w-3.5 fill-current" aria-hidden="true" />
+                            {t("tools.play")}
+                        </span>
+                    </Link>
                 </div>
             </section>
         </main>

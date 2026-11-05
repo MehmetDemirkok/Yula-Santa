@@ -23,12 +23,15 @@ import { ToastProvider } from "@/lib/ToastContext";
 import { ToastContainer } from "@/components/ToastContainer";
 import { AdWrapper, BannerAd, AdvertiseHere } from "@/components/ads";
 import { AD_SLOTS, ADS_ENABLED } from "@/lib/ads/config";
+import { usePathname } from "@/i18n/navigation";
 
 interface ClientLayoutProps {
     children: ReactNode;
 }
 
 export function ClientLayout({ children }: ClientLayoutProps) {
+    const isHome = usePathname() === "/";
+
     return (
         <ThemeProvider>
         <ToastProvider>
@@ -51,16 +54,19 @@ export function ClientLayout({ children }: ClientLayoutProps) {
                 </div>
 
                 {/* Site geneli reklam alanı - Footer'dan hemen önce, tüm sayfalarda görünür.
-                    Reklam ağı yapılandırılmadıysa yerine "reklam ver" daveti gösterilir. */}
-                <div className="w-full px-4">
-                    {ADS_ENABLED ? (
-                        <AdWrapper position="bottom" className="max-w-4xl mx-auto">
-                            <BannerAd adSlot={AD_SLOTS.BANNER_BOTTOM} />
-                        </AdWrapper>
-                    ) : (
-                        <AdvertiseHere className="max-w-4xl mx-auto mt-4" />
-                    )}
-                </div>
+                    Reklam ağı yapılandırılmadıysa yerine "reklam ver" daveti gösterilir;
+                    ana sayfa kısa kalsın diye bu davet orada gösterilmez. */}
+                {(ADS_ENABLED || !isHome) && (
+                    <div className="w-full px-4">
+                        {ADS_ENABLED ? (
+                            <AdWrapper position="bottom" className="max-w-4xl mx-auto">
+                                <BannerAd adSlot={AD_SLOTS.BANNER_BOTTOM} />
+                            </AdWrapper>
+                        ) : (
+                            <AdvertiseHere className="max-w-4xl mx-auto mt-4" />
+                        )}
+                    </div>
+                )}
 
                 {/* Footer is part of the scrollable content or fixed?
                     Usually it's at the end of content. If it needs to be 'fixed' like Navbar, 

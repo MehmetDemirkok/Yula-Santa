@@ -551,3 +551,62 @@ html.ys-new-year .ys-page-shell {
 @media (prefers-reduced-motion: reduce) {
   .animate-sheet-up { animation: none; }
 }
+
+/* ═══════════════════════════════════════════════════════════════════════════
+   NEW YEAR EXTRAS — everything here only applies while the theme is active
+═══════════════════════════════════════════════════════════════════════════ */
+@keyframes ysGarlandTwinkle {
+  0%, 100% { opacity: 1; }
+  50%      { opacity: 0.35; }
+}
+.ys-garland-bulb { animation: ysGarlandTwinkle 1.8s ease-in-out infinite; }
+
+@keyframes ysBaubleSway {
+  0%, 100% { transform: rotate(-3deg); }
+  50%      { transform: rotate(3deg); }
+}
+.ys-bauble {
+  transform-origin: top center;
+  animation: ysBaubleSway 4.5s ease-in-out infinite;
+}
+
+@keyframes ysYulaHop {
+  0%, 100% { transform: translateY(0) rotate(0); }
+  35%      { transform: translateY(-16%) rotate(-5deg); }
+  70%      { transform: translateY(-4%) rotate(3deg); }
+}
+.ys-yula-hop { animation: ysYulaHop 0.55s ease-out; }
+
+@keyframes ysMidnightPop {
+  from { transform: scale(0.7); opacity: 0; }
+  to   { transform: scale(1); opacity: 1; }
+}
+.ys-midnight-pop { animation: ysMidnightPop 0.35s cubic-bezier(0.2, 0.9, 0.3, 1.2) both; }
+
+@keyframes ysCountdownFinal {
+  0%, 100% { box-shadow: 0 0 0 2px #FFE08A, 0 0 14px rgba(255, 224, 138, 0.45); }
+  50%      { box-shadow: 0 0 0 2px #FFE08A, 0 0 26px rgba(255, 224, 138, 0.85); }
+}
+.ys-countdown-final { animation: ysCountdownFinal 1.6s ease-in-out infinite; }
+
+/* Snow lying on top of the footer */
+html.ys-new-year footer::before {
+  content: "";
+  position: absolute;
+  inset: -9px 0 auto 0;
+  height: 14px;
+  pointer-events: none;
+  background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 400 14' preserveAspectRatio='none'%3E%3Cpath fill='%23D8E5F5' d='M0 14V8C14 3 28 2 44 7C60 12 74 12 90 6C106 1 120 2 136 7C152 12 168 12 184 6C200 1 214 2 230 7C246 12 262 12 278 6C294 1 308 2 324 7C340 12 356 11 372 6C382 3 392 4 400 7V14Z'/%3E%3C/svg%3E") repeat-x left top / 400px 14px;
+}
+html.ys-new-year.dark footer::before {
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 400 14' preserveAspectRatio='none'%3E%3Cpath fill='%23EEF3FB' d='M0 14V8C14 3 28 2 44 7C60 12 74 12 90 6C106 1 120 2 136 7C152 12 168 12 184 6C200 1 214 2 230 7C246 12 262 12 278 6C294 1 308 2 324 7C340 12 356 11 372 6C382 3 392 4 400 7V14Z'/%3E%3C/svg%3E");
+}
+
+html.ys-new-year ::selection {
+  background: #B61722;
+  color: #FFF1C2;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .ys-garland-bulb, .ys-bauble, .ys-yula-hop, .ys-midnight-pop, .ys-countdown-final { animation: none; }
+}
