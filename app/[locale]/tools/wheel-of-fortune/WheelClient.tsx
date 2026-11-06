@@ -1,6 +1,7 @@
 "use client";
 
 import { useCallback, useEffect, useRef, useState } from "react";
+import { trackDraw, trackShare } from "@/lib/analytics/client";
 import { useLocale, useTranslations } from "next-intl";
 import {
     ArrowLeft,
@@ -235,6 +236,7 @@ export function WheelClient() {
             const name = segments[index];
             setIsSpinning(false);
             setWinner({ index, name });
+            trackDraw("wheel", { participants: segments.length, winners: 1 });
             setHistory((prev) =>
                 [
                     { id: Date.now(), name, color: colorForSegment(index, segments.length), at: Date.now() },
@@ -289,6 +291,7 @@ export function WheelClient() {
     const shareResult = async () => {
         if (!winner) return;
         const text = `${t("congrats")} ${winner.name}`;
+        trackShare("wheel");
         const url = window.location.href;
         if (navigator.share) {
             try {

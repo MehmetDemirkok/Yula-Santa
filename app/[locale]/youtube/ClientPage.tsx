@@ -1,6 +1,7 @@
 "use client";
 
 import { useState, useRef, useEffect, useMemo } from "react";
+import { trackDraw, trackShare } from "@/lib/analytics/client";
 import { useLocale, useTranslations } from "next-intl";
 import { celebrate } from "@/lib/celebrate";
 import {
@@ -380,6 +381,7 @@ export default function YouTubeGiveaway() {
                 })
             );
             triggerConfetti();
+            trackDraw("youtube", { participants: filterStats.eligible, winners: selectedWinners.length });
 
             if (videoOwnerChannelId) {
                 selectedWinners.forEach(async (winner, index) => {
@@ -410,6 +412,7 @@ export default function YouTubeGiveaway() {
     const copyResults = () => {
         const text = `🎉 ${giveawayName || t.giveaway.youtubeTitle} ${t.giveaway.results}\n\n🏆 ${t.giveaway.winners}:\n${winners.map((w, i) => `${i + 1}. ${w.name} - "${w.comment}"`).join("\n")}${backups.length > 0 ? `\n\n🔄 ${t.giveaway.backups}:\n${backups.map((b, i) => `${i + 1}. ${b.name}`).join("\n")}` : ""}`;
         navigator.clipboard.writeText(text);
+        trackShare("youtube");
         setCopied(true);
         toast.success(tl("toasts.copied"));
         setTimeout(() => setCopied(false), 2000);

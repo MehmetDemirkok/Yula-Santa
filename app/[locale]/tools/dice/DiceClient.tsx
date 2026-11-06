@@ -1,6 +1,7 @@
 "use client";
 
 import { useCallback, useEffect, useMemo, useRef, useState } from "react";
+import { trackDraw, trackShare } from "@/lib/analytics/client";
 import { ArrowLeft, Check, Copy, RotateCcw, Volume2, VolumeX } from "lucide-react";
 import { useTranslations } from "next-intl";
 import { Link } from "@/i18n/navigation";
@@ -754,6 +755,7 @@ export default function DicePage() {
         setResults(final);
         setSpecial(badge);
         setHistory((prev) => [{ dice: final, total }, ...prev].slice(0, 12));
+        trackDraw("dice", { winners: final.length });
         isRollingRef.current = false;
         setIsRolling(false);
         if (soundOnRef.current) audioRef.current.settleChime();
@@ -782,6 +784,7 @@ export default function DicePage() {
     const text = `${faces} — ${t("total")} ${score}${badge}\n${SITE_SHARE_SUFFIX}`;
     try {
       await navigator.clipboard.writeText(text);
+      trackShare("dice");
       setCopied(true);
       setTimeout(() => setCopied(false), 1800);
     } catch {

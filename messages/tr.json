@@ -564,7 +564,14 @@
         "plakaAvcisiMeta": {
             "title": "Plaka Avcısı — Türkiye Plaka Bilmece Oyunu | YulaSanta",
             "description": "Türkiye’nin 81 ilini plaka kodlarıyla eşleştir. Dört oyun modu, günlük meydan okuma, kombo bonusu, rozetler ve canlı liderlik tablosu.",
-            "keywords": ["plaka avcısı", "plaka oyunu", "türkiye plaka kodu", "plaka bilmece", "81 il plaka", "il plaka kodu oyunu"]
+            "keywords": [
+                "plaka avcısı",
+                "plaka oyunu",
+                "türkiye plaka kodu",
+                "plaka bilmece",
+                "81 il plaka",
+                "il plaka kodu oyunu"
+            ]
         },
         "title": "Araçlar",
         "onlineGiveaway": "Online Çekiliş Programı",
@@ -1338,7 +1345,7 @@
             "title": "Gizlilik Koşulları | YulaSanta",
             "description": "YulaSanta gizlilik politikası ve veri güvenliği hakkında bilgiler."
         },
-        "lastUpdated": "Son Güncelleme: 27 Aralık 2025",
+        "lastUpdated": "Son Güncelleme: 6 Kasım 2026",
         "intro": "YulaSanta olarak gizliliğinize büyük önem veriyoruz. Bu politika, web sitemizi kullandığınızda verilerinizin nasıl işlendiğini açıklar.",
         "dataTitle": "Veri Toplama",
         "dataDesc": "Çekiliş için girdiğiniz isimler tarayıcınızın yerel depolamasında (localStorage) saklanır. YouTube ve TikTok yorumlarını otomatik çekerken video adresi sunucumuz üzerinden ilgili platform API’lerine iletilir; yorum metinleri çekilişi tamamlamak için işlenir. İletişim formuna yazdığınız bilgiler e-posta olarak bize ulaşır.",
@@ -1347,7 +1354,9 @@
         "securityTitle": "Veri Güvenliği",
         "securityDesc": "İsim listesi ve Secret Santa eşleşmeleri tarayıcınızda kalır; tarayıcı verilerini temizlediğinizde silinir.",
         "thirdPartyTitle": "Üçüncü Taraf Hizmetler",
-        "thirdPartyDesc": "Vercel Analytics (kullanım istatistikleri), Google AdSense (reklam) ve YouTube / TikTok yorum çekme için ilgili platform API’leri kullanılır. Bu servislerin kendi gizlilik politikaları geçerlidir."
+        "thirdPartyDesc": "Vercel Analytics (kullanım istatistikleri), Google AdSense (reklam) ve YouTube / TikTok yorum çekme için ilgili platform API’leri kullanılır. Bu servislerin kendi gizlilik politikaları geçerlidir.",
+        "analyticsTitle": "Kullanım İstatistikleri",
+        "analyticsDesc": "Siteyi geliştirmek için kendi sunucumuzda kullanım istatistikleri tutarız: görüntülenen sayfa, kullanılan araç, katılımcı ve sonuç sayısı, ülke, dil, cihaz ve tarayıcı türü. IP adresinizi ham olarak saklamayız. Girdiğiniz isimler, kazananlar ve Secret Santa eşleşmeleri bu istatistiklere dahil edilmez. Çerezleri kabul ederseniz tarayıcınızda anonim bir ziyaretçi kimliği saklanır; Google ile giriş yaptıysanız e-posta adresiniz de bu kayıtlarla ilişkilendirilir. Çerezleri reddederseniz bu kimlik silinir ve yalnızca günlük değişen anonim sayım yapılır. Kayıtlar en fazla 90 gün tutulur."
     },
     "legal": {
         "title": "Yasal Bilgiler",

@@ -17,6 +17,8 @@ const MAX_REQUESTS: Record<string, number> = {
     'plaka-finish': 20,
     'plaka-leaderboard': 40,
     'plaka-stats': 40,
+    'analytics-collect': 120,
+    'admin-denied': 5,
 };
 
 function getKey(ip: string, route: string): string {

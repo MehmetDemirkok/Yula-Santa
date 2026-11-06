@@ -1,6 +1,7 @@
 "use client";
 
 import { useState } from 'react';
+import { trackDraw, trackShare } from "@/lib/analytics/client";
 import Link from 'next/link';
 import { ArrowLeft, Hash, Shuffle, Copy, Check } from 'lucide-react';
 import { useTranslations } from 'next-intl';
@@ -33,11 +34,13 @@ export default function RandomNumberPage() {
             }
             setResults(numbers);
             setIsGenerating(false);
+            trackDraw("random_number", { winners: numbers.length });
         }, 500);
     };
 
     const copyResults = () => {
         navigator.clipboard.writeText(results.join(', '));
+        trackShare("random_number");
         setCopied(true);
         setTimeout(() => setCopied(false), 2000);
     };

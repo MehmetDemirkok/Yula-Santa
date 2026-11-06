@@ -13,6 +13,7 @@
 
 import { ReactNode } from "react";
 import { Analytics } from "@vercel/analytics/next";
+import { SiteTracker } from "@/components/analytics/SiteTracker";
 import { NewYearTheme } from "@/components/NewYearTheme";
 import { CookieConsent } from "@/components/CookieConsent";
 import { SupportButton } from "@/components/SupportButton";
@@ -81,6 +82,7 @@ export function ClientLayout({ children }: ClientLayoutProps) {
 
             {/* Analytics */}
             <Analytics />
+            <SiteTracker />
 
             {/* Toast Notifications */}
             <ToastContainer />

@@ -14,6 +14,13 @@
 import NextAuth from "next-auth";
 import Google from "next-auth/providers/google";
 
+declare module "next-auth" {
+    interface Session {
+        emailVerified?: boolean;
+        authAt?: number;
+    }
+}
+
 export const { handlers, auth, signIn, signOut } = NextAuth({
     trustHost: true,
     providers: [
@@ -24,5 +31,21 @@ export const { handlers, auth, signIn, signOut } = NextAuth({
     ],
     session: {
         strategy: "jwt",
+    },
+    callbacks: {
+        // Claims the admin gate needs. They are set only at Google sign-in, so
+        // older sessions lack them and fail the admin check.
+        jwt({ token, account, profile }) {
+            if (account && profile) {
+                token.emailVerified = profile.email_verified === true;
+                token.authAt = Math.floor(Date.now() / 1000);
+            }
+            return token;
+        },
+        session({ session, token }) {
+            session.emailVerified = token.emailVerified === true;
+            session.authAt = typeof token.authAt === "number" ? token.authAt : undefined;
+            return session;
+        },
     },
 });

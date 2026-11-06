@@ -1,6 +1,7 @@
 "use client";
 
 import { useCallback, useEffect, useMemo, useRef, useState } from "react";
+import { trackDraw } from "@/lib/analytics/client";
 import { useSearchParams } from "next/navigation";
 import { celebrate } from "@/lib/celebrate";
 import { useLocale } from "next-intl";
@@ -296,6 +297,7 @@ export default function TikTokExtensionGiveaway() {
 
             celebrate();
             setResult(data.result);
+            trackDraw("tiktok_extension", { participants: data.result.eligible, winners: data.result.winners.length });
         } catch (err) {
             setDrawError(err instanceof Error ? err.message : "Çekiliş yapılamadı");
             setStep("rules");

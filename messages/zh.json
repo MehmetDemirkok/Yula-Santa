@@ -561,7 +561,12 @@
         "plakaAvcisiMeta": {
             "title": "车牌猎人 — 土耳其车牌问答游戏 | YulaSanta",
             "description": "将土耳其81个省份与其车牌代码配对。四种游戏模式、每日挑战、连击奖励、徽章和实时排行榜。",
-            "keywords": ["车牌猎人", "土耳其车牌", "车牌问答", "土耳其省份"]
+            "keywords": [
+                "车牌猎人",
+                "土耳其车牌",
+                "车牌问答",
+                "土耳其省份"
+            ]
         },
         "title": "工具",
         "onlineGiveaway": "在线抽奖",
@@ -1336,7 +1341,7 @@
             "title": "隐私 | YulaSanta",
             "description": "YulaSanta 隐私政策。"
         },
-        "lastUpdated": "最后更新：2025年12月27日",
+        "lastUpdated": "最后更新：2026年11月6日",
         "intro": "在 YulaSanta，我们非常重视您的隐私。",
         "dataTitle": "数据收集",
         "dataDesc": "YulaSanta 仅在您的浏览器本地存储 (localStorage) 中保存数据。",
@@ -1345,7 +1350,9 @@
         "securityTitle": "数据安全",
         "securityDesc": "您的数据保留在您的设备上，不会上传至服务器。",
         "thirdPartyTitle": "第三方服务",
-        "thirdPartyDesc": "我们使用 Google Analytics 和 AdSense。"
+        "thirdPartyDesc": "我们使用 Google Analytics 和 AdSense。",
+        "analyticsTitle": "使用统计",
+        "analyticsDesc": "为改进网站，我们在自己的服务器上保存使用统计：浏览的页面、使用的工具、参与者和结果数量、国家、语言、设备和浏览器类型。我们不会存储您的原始IP地址。您输入的姓名、获奖者和Secret Santa配对不包含在这些统计中。如果您接受Cookie，您的浏览器中会保存一个匿名访客标识；如果您使用Google登录，您的电子邮箱也会与这些记录关联。如果您拒绝Cookie，该标识将被删除，仅进行每日变化的匿名计数。记录最多保留90天。"
     },
     "legal": {
         "title": "法律信息",

@@ -11,6 +11,7 @@
 "use client";
 
 import { useState, useRef, useEffect, type ReactNode } from "react";
+import { trackDraw, trackShare } from "@/lib/analytics/client";
 import { Plus, Trash2, Trophy, RefreshCw, Copy, Check, Sparkles, Users, Crown, ListPlus, ChevronDown } from "lucide-react";
 import { Button } from "@/components/ui/Button";
 import { Input } from "@/components/ui/Input";
@@ -119,6 +120,7 @@ export default function RaffleBoard({
             setIsRolling(false);
             setShowResults(true);
             celebrate();
+            trackDraw("raffle", { participants: participants.length, winners: winnerCount });
         }, 2600);
     };
 
@@ -134,6 +136,7 @@ export default function RaffleBoard({
             (backups.length ? `\n\n🔄 ${t.giveaway.backups}:\n${backups.map((b, i) => `${i + 1}. ${b}`).join("\n")}` : "") +
             (shareSuffix ? `\n\n${shareSuffix}` : "");
         navigator.clipboard.writeText(text);
+        trackShare("raffle");
         setCopied(true);
         toast.success(t.giveaway.copied);
         setTimeout(() => setCopied(false), 2000);

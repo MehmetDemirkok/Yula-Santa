@@ -22,10 +22,8 @@ import "../globals.css";
 import { locales, getDirection, type Locale } from '@/i18n/config';
 
 import { SITE_URL } from "@/lib/constants";
-import { AUTO_LIGHT_END_HOUR, AUTO_LIGHT_START_HOUR, THEME_STORAGE_KEY } from "@/lib/theme";
+import { themeInitScript } from "@/lib/theme";
 import { ClientLayout } from "./ClientLayout";
-
-const themeInitScript = `(function(){try{var t=localStorage.getItem(${JSON.stringify(THEME_STORAGE_KEY)});if(t==="system")t="auto";if(t!=="light"&&t!=="dark"){var h=new Date().getHours();t=(h>=${AUTO_LIGHT_START_HOUR}&&h<${AUTO_LIGHT_END_HOUR})?"light":"dark";}var r=document.documentElement;r.classList.toggle("dark",t==="dark");r.style.colorScheme=t;}catch(e){}})();`;
 
 const inter = Inter({
     variable: "--font-inter",

@@ -1,0 +1,53 @@
+/* Admin panel tokens. Chart hues are checked with the dataviz palette validator. */
+.admin-root {
+  --admin-surface: #FDFBF8;
+  --admin-surface-solid: #FFFFFF;
+  --admin-series-1: #4F46E5;
+  --admin-series-2: #EB6834;
+  --admin-series-3: #1BAF7A;
+  --admin-muted-mark: #A9AAB2;
+  --admin-grid: #E7E8E9;
+  --admin-hover: rgba(17, 24, 39, 0.045);
+  --admin-active: rgba(79, 70, 229, 0.12);
+  --admin-good: #047857;
+  --admin-bad: #BA1A1A;
+  --admin-demo-bg: #FFF4D6;
+  --admin-demo-border: #F2D58A;
+}
+
+.dark .admin-root {
+  --admin-surface: #1A1B1E;
+  --admin-surface-solid: #1A1B1E;
+  --admin-series-1: #6366F1;
+  --admin-series-2: #D95926;
+  --admin-series-3: #199E70;
+  --admin-muted-mark: #6B6C72;
+  --admin-grid: #2A2B2F;
+  --admin-hover: rgba(255, 255, 255, 0.05);
+  --admin-active: rgba(99, 102, 241, 0.22);
+  --admin-good: #34D399;
+  --admin-bad: #FF8A80;
+  --admin-demo-bg: #3A2E10;
+  --admin-demo-border: #5A4818;
+}
+
+.admin-card {
+  background: var(--admin-surface);
+  border: 1px solid var(--card-border);
+  border-radius: 1rem;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.04);
+  padding: 24px;
+  min-width: 0;
+}
+
+.admin-axis-text {
+  fill: var(--text-muted);
+  font-size: 12px;
+  font-variant-numeric: tabular-nums;
+}
+
+.admin-end-label {
+  fill: var(--text-primary);
+  font-size: 12px;
+  font-weight: 600;
+}

@@ -59,6 +59,7 @@ Create a `.env.local` file for local development. It is gitignored. Everything e
 | Google sign-in | `AUTH_SECRET`, `GOOGLE_CLIENT_ID`, `GOOGLE_CLIENT_SECRET` |
 | Database (Neon Postgres) | `DATABASE_URL` |
 | YouTube giveaway | `YOUTUBE_API_KEY` |
+| Admin panel (`/admin`) | `ADMIN_EMAILS`, plus `DATABASE_URL` for analytics |
 | TikTok follower check | `APIFY_API_TOKEN` |
 | Plaka Avcısı guest cookie (optional) | `PLAKA_SECRET` |
 | Translation script | `OPENAI_API_KEY` |

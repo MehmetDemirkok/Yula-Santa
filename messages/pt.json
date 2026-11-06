@@ -562,7 +562,12 @@
         "plakaAvcisiMeta": {
             "title": "Caçador de Placas — Quiz de matrículas da Turquia | YulaSanta",
             "description": "Associa as 81 províncias da Turquia aos seus códigos de matrícula. Quatro modos, desafio diário, bónus de combo, distintivos e classificação ao vivo.",
-            "keywords": ["caçador de placas", "matrículas turquia", "quiz matrículas", "províncias turcas"]
+            "keywords": [
+                "caçador de placas",
+                "matrículas turquia",
+                "quiz matrículas",
+                "províncias turcas"
+            ]
         },
         "title": "Ferramentas",
         "onlineGiveaway": "Sorteio Online",
@@ -1337,7 +1342,7 @@
             "title": "Privacidade | YulaSanta",
             "description": "Política de privacidade da YulaSanta."
         },
-        "lastUpdated": "Última atualização: 27 de dezembro de 2025",
+        "lastUpdated": "Última atualização: 6 de novembro de 2026",
         "intro": "Na YulaSanta, nos importamos muito com sua privacidade.",
         "dataTitle": "Coleta de Dados",
         "dataDesc": "YulaSanta armazena os nomes apenas localmente no seu navegador.",
@@ -1346,7 +1351,9 @@
         "securityTitle": "Segurança",
         "securityDesc": "Seus dados ficam no seu dispositivo.",
         "thirdPartyTitle": "Serviços de Terceiros",
-        "thirdPartyDesc": "Usamos Google Analytics e AdSense."
+        "thirdPartyDesc": "Usamos Google Analytics e AdSense.",
+        "analyticsTitle": "Estatísticas de utilização",
+        "analyticsDesc": "Para melhorar o site, mantemos estatísticas de utilização no nosso próprio servidor: página visualizada, ferramenta utilizada, número de participantes e resultados, país, idioma, tipo de dispositivo e navegador. Não guardamos o seu endereço IP em bruto. Os nomes que introduz, os vencedores e as correspondências do Secret Santa não fazem parte destas estatísticas. Se aceitar os cookies, é guardado no seu navegador um ID de visitante anónimo; se tiver iniciado sessão com o Google, o seu e-mail também fica associado a estes registos. Se recusar os cookies, este ID é eliminado e é feita apenas uma contagem anónima que muda diariamente. Os registos são mantidos durante um máximo de 90 dias."
     },
     "legal": {
         "title": "Informação Legal",

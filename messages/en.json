@@ -563,7 +563,13 @@
         "plakaAvcisiMeta": {
             "title": "Plate Hunter — Turkey License Plate Quiz | YulaSanta",
             "description": "Match Turkey’s 81 provinces with their plate codes. Four game modes, a daily challenge, combo bonuses, badges and a live leaderboard.",
-            "keywords": ["plate hunter", "turkey plate codes", "license plate quiz", "turkish provinces game", "plate code game"]
+            "keywords": [
+                "plate hunter",
+                "turkey plate codes",
+                "license plate quiz",
+                "turkish provinces game",
+                "plate code game"
+            ]
         },
         "title": "Tools",
         "onlineGiveaway": "Online Giveaway Tool",
@@ -1338,7 +1344,7 @@
             "title": "Privacy Policy | YulaSanta",
             "description": "Information about YulaSanta's privacy policy and data security."
         },
-        "lastUpdated": "Last Updated: December 27, 2025",
+        "lastUpdated": "Last Updated: November 6, 2026",
         "intro": "At YulaSanta, we care deeply about your privacy. This policy explains how your data is handled when you use our website.",
         "dataTitle": "Data Collection",
         "dataDesc": "YulaSanta only stores the names you enter for creating draws in your browser's local storage (localStorage). This data is not transmitted to our servers and remains only on your device.",
@@ -1347,7 +1353,9 @@
         "securityTitle": "Data Security",
         "securityDesc": "Since your data is only stored in your browser, all drawing information is deleted when you clear your browser history or data.",
         "thirdPartyTitle": "Third Party Services",
-        "thirdPartyDesc": "We use world-class services such as Google Analytics and Google AdSense. These services have their own privacy policies."
+        "thirdPartyDesc": "We use world-class services such as Google Analytics and Google AdSense. These services have their own privacy policies.",
+        "analyticsTitle": "Usage Statistics",
+        "analyticsDesc": "To improve the site, we keep usage statistics on our own server: the page viewed, the tool used, the number of participants and results, country, language, device and browser type. We do not store your raw IP address. Names you enter, winners and Secret Santa matches are not part of these statistics. If you accept cookies, an anonymous visitor ID is stored in your browser, and if you signed in with Google, your email address is linked to these records. If you decline cookies, this ID is deleted and only an anonymous count that changes daily is made. Records are kept for at most 90 days."
     },
     "legal": {
         "title": "Legal Information",

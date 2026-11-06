@@ -1,6 +1,7 @@
 "use client";
 
 import { useEffect, useId, useMemo, useState, type CSSProperties } from "react";
+import { trackDraw, trackShare } from "@/lib/analytics/client";
 import {
   ArrowLeft,
   Check,
@@ -261,6 +262,7 @@ export default function ShortStrawPage() {
         setStraws(buildReveal(participants, finalLoser));
         setPhase("revealed");
         setHistory((prev) => [finalLoser, ...prev].slice(0, 12));
+        trackDraw("short_straw", { participants: participants.length, winners: 1 });
         burstSparks();
         if (typeof navigator !== "undefined" && navigator.vibrate) navigator.vibrate([12, 30, 12]);
       }
@@ -284,6 +286,7 @@ export default function ShortStrawPage() {
   const shareResult = async () => {
     if (!loser) return;
     const text = `${t("resultTitle")}: ${loser}\n${SITE_SHARE_SUFFIX}`;
+    trackShare("short_straw");
     if (typeof navigator !== "undefined" && navigator.share) {
       try {
         await navigator.share({ text });

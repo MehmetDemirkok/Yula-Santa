@@ -562,7 +562,12 @@
         "plakaAvcisiMeta": {
             "title": "Chasseur de Plaques — Quiz des plaques turques | YulaSanta",
             "description": "Associe les 81 provinces de Turquie à leurs codes de plaque. Quatre modes de jeu, défi quotidien, bonus de combo, badges et classement en direct.",
-            "keywords": ["chasseur de plaques", "codes plaques turquie", "quiz plaques", "provinces turques"]
+            "keywords": [
+                "chasseur de plaques",
+                "codes plaques turquie",
+                "quiz plaques",
+                "provinces turques"
+            ]
         },
         "title": "Outils",
         "onlineGiveaway": "Tirage au sort en ligne",
@@ -1337,7 +1342,7 @@
             "title": "Confidentialité | YulaSanta",
             "description": "Politique de confidentialité de YulaSanta."
         },
-        "lastUpdated": "Dernière mise à jour : 27 décembre 2025",
+        "lastUpdated": "Dernière mise à jour : 6 novembre 2026",
         "intro": "Chez YulaSanta, nous accordons une grande importance à votre vie privée.",
         "dataTitle": "Collecte de Données",
         "dataDesc": "YulaSanta stocke les noms uniquement localement dans votre navigateur.",
@@ -1346,7 +1351,9 @@
         "securityTitle": "Sécurité",
         "securityDesc": "Vos données restent sur votre appareil.",
         "thirdPartyTitle": "Services Tiers",
-        "thirdPartyDesc": "Nous utilisons Google Analytics et AdSense."
+        "thirdPartyDesc": "Nous utilisons Google Analytics et AdSense.",
+        "analyticsTitle": "Statistiques d'utilisation",
+        "analyticsDesc": "Pour améliorer le site, nous conservons des statistiques d'utilisation sur notre propre serveur : page consultée, outil utilisé, nombre de participants et de résultats, pays, langue, type d'appareil et de navigateur. Nous ne stockons pas votre adresse IP en clair. Les noms que vous saisissez, les gagnants et les associations Secret Santa ne font pas partie de ces statistiques. Si vous acceptez les cookies, un identifiant de visiteur anonyme est enregistré dans votre navigateur ; si vous vous êtes connecté avec Google, votre adresse e-mail est également associée à ces enregistrements. Si vous refusez les cookies, cet identifiant est supprimé et seul un comptage anonyme, renouvelé chaque jour, est effectué. Les enregistrements sont conservés 90 jours au maximum."
     },
     "legal": {
         "title": "Mentions Légales",

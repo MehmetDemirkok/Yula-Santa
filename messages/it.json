@@ -561,7 +561,12 @@
         "plakaAvcisiMeta": {
             "title": "Cacciatore di Targhe — Quiz targhe della Turchia | YulaSanta",
             "description": "Abbina le 81 province della Turchia ai loro codici di targa. Quattro modalità, sfida giornaliera, bonus combo, badge e classifica live.",
-            "keywords": ["cacciatore di targhe", "targhe turchia", "quiz targhe", "province turche"]
+            "keywords": [
+                "cacciatore di targhe",
+                "targhe turchia",
+                "quiz targhe",
+                "province turche"
+            ]
         },
         "title": "Strumenti",
         "onlineGiveaway": "Sorteggio Online",
@@ -1336,7 +1341,7 @@
             "title": "Privacy | YulaSanta",
             "description": "Politica sulla privacy di YulaSanta."
         },
-        "lastUpdated": "Ultimo aggiornamento: 27 dicembre 2025",
+        "lastUpdated": "Ultimo aggiornamento: 6 novembre 2026",
         "intro": "In YulaSanta, ci teniamo molto alla tua privacy.",
         "dataTitle": "Raccolta Dati",
         "dataDesc": "YulaSanta salva i nomi solo localmente nel tuo browser.",
@@ -1345,7 +1350,9 @@
         "securityTitle": "Sicurezza",
         "securityDesc": "I tuoi dati restano sul tuo dispositivo.",
         "thirdPartyTitle": "Servizi Terzi",
-        "thirdPartyDesc": "Usiamo Google Analytics e AdSense."
+        "thirdPartyDesc": "Usiamo Google Analytics e AdSense.",
+        "analyticsTitle": "Statistiche di utilizzo",
+        "analyticsDesc": "Per migliorare il sito, conserviamo statistiche di utilizzo sul nostro server: pagina visitata, strumento utilizzato, numero di partecipanti e risultati, paese, lingua, tipo di dispositivo e browser. Non memorizziamo il tuo indirizzo IP in chiaro. I nomi che inserisci, i vincitori e gli abbinamenti di Secret Santa non fanno parte di queste statistiche. Se accetti i cookie, nel tuo browser viene salvato un ID visitatore anonimo; se hai effettuato l'accesso con Google, anche il tuo indirizzo email viene collegato a questi dati. Se rifiuti i cookie, questo ID viene eliminato e viene effettuato solo un conteggio anonimo che cambia ogni giorno. I dati vengono conservati per un massimo di 90 giorni."
     },
     "legal": {
         "title": "Note Legali",

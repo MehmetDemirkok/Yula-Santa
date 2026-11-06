@@ -7,6 +7,7 @@
 "use client";
 
 import { useState, useEffect, useRef } from "react";
+import { trackDraw } from "@/lib/analytics/client";
 import { useRouter, useParams } from "next/navigation";
 import { Trash2, Sparkles, FileUp, ClipboardPaste, Check, Gift } from "lucide-react";
 import { Button } from "@/components/ui/Button";
@@ -187,6 +188,7 @@ export default function Home() {
 
             localStorage.setItem("secret_santa_assignments", JSON.stringify(assignments));
             localStorage.setItem("draw_mode", 'secret');
+            trackDraw("secret_santa", { participants: currentParticipants.length });
             router.push(`/${locale}/result`);
 
         } else {
@@ -209,6 +211,7 @@ export default function Home() {
 
             localStorage.setItem("secret_santa_assignments", JSON.stringify(assignments));
             localStorage.setItem("draw_mode", 'pairs');
+            trackDraw("secret_santa", { participants: currentParticipants.length });
             router.push(`/${locale}/result`);
         }
     };

@@ -52,10 +52,11 @@ export const config = {
     matcher: [
         // Match all pathnames except those starting with:
         // - api (API routes)
+        // - admin (private panel, not localized)
         // - _next (Next.js internals)
         // - _vercel (Vercel internals)
         // - tools (standalone tools pages)
         // - favicon.ico, sitemap.xml, robots.txt (static files)
-        '/((?!api|_next|_vercel|.*\\.png|.*\\.jpe?g|.*\\.ico|.*\\.json|.*\\.txt|sitemap\\.xml|robots\\.txt).*)',
+        '/((?!api|admin|_next|_vercel|.*\\.png|.*\\.jpe?g|.*\\.ico|.*\\.json|.*\\.txt|sitemap\\.xml|robots\\.txt).*)',
     ]
 };

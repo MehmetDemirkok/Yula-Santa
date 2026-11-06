@@ -44,3 +44,13 @@ Full architecture notes live in `CLAUDE.md`; design tokens in `design.md` — re
 - Secrets live in `.env.local` (gitignored): Neon, Apify (follower check only), YouTube, Google OAuth. Never expose to client components.
 - AdSense is gated behind `NEXT_PUBLIC_ADSENSE_CLIENT_ID` / `NEXT_PUBLIC_AD_SLOT_*` env vars (`components/ads/`, `lib/ads/config.ts`); sitemap/robots via `app/sitemap.ts` / `app/robots.ts`.
 - `extensions/yulasanta-tiktok-extension-*/` is a standalone vanilla-JS browser extension, not built by the Next app.
+
+### Admin panel and analytics
+
+- `/admin` lives in `app/admin/`, outside `app/[locale]`, so it has no public navbar, ads or tracking. `middleware.ts` excludes it from locale routing. UI copy is Turkish only.
+- `requireAdmin()` in `lib/admin/guard.ts` must be the first call in anything under `/admin`. Anyone who is not the admin gets a plain 404. The rules live in `lib/admin/access.ts`: the Google e-mail must be verified, listed in `ADMIN_EMAILS`, and signed in within 12 hours. An empty list means nobody gets in. Next.js middleware does not cover `/api`, so never rely on it for admin checks.
+- `ADMIN_DEV_BYPASS=1` skips the check only under `next dev`.
+- Events go from `lib/analytics/client.ts` to `POST /api/analytics/collect`, a write-only endpoint, and into `analytics_events` through `lib/analytics/store.ts` (server-only). `lib/analytics/events.ts` is an allowlist with no free-text field. **Never send participant names, winners or matches**: the privacy page and Secret Santa copy promise they stay out of these records.
+- New tools must call `trackDraw(tool, counts)` when a draw finishes, and the tool name must be added to `TOOLS`.
+- Raw IPs and user agents are not stored. Without consent, the visitor key changes daily. A persistent browser ID and the signed-in e-mail are used only after cookies are accepted (`yulasanta_cookie_consent_v2`).
+- Rows carry `env` (`VERCEL_ENV`, else `development`), so localhost traffic stays apart from production. Rows older than 90 days are purged by a 1% chance on each write, as there is no cron job.

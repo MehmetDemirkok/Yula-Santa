@@ -1,7 +1,7 @@
 "use client";
 
 import { useTranslations } from 'next-intl';
-import { ArrowLeft, Shield, CheckCircle, Lock, Eye, Globe } from 'lucide-react';
+import { ArrowLeft, BarChart3, Shield, CheckCircle, Lock, Eye, Globe } from 'lucide-react';
 import Link from 'next/link';
 import { useParams } from 'next/navigation';
 
@@ -39,6 +39,13 @@ export default function PrivacyClient() {
             content: t('thirdPartyDesc'),
             color: 'text-orange-500',
             bg: 'bg-orange-50'
+        },
+        {
+            icon: BarChart3,
+            title: t('analyticsTitle'),
+            content: t('analyticsDesc'),
+            color: 'text-indigo-500',
+            bg: 'bg-indigo-50'
         },
     ];
 

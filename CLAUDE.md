@@ -79,6 +79,16 @@ Read `lib/tiktok/` before touching it. The earlier paid flow (PayTR checkout, cr
 - API: `app/api/plaka/{session,answer,finish,leaderboard,stats}`; rate limits live in `lib/rateLimit.ts` (`plaka-session`, `plaka-answer`, `plaka-finish`, `plaka-leaderboard`, `plaka-stats`). Answering is guarded by `answered = false` in SQL, position must match `current_index`, and sessions expire after 45 minutes.
 - Tests: `tests/plaka/plaka-game.test.ts` covers dataset integrity (81 unique codes), scoring/combo math, question generation and daily determinism. It does not touch the DB.
 
+### Admin panel and analytics
+
+- `/admin` lives in `app/admin/`, outside `app/[locale]`, so it has no public navbar, ads or tracking. `middleware.ts` excludes it from locale routing. UI copy is Turkish only.
+- `requireAdmin()` in `lib/admin/guard.ts` must be the first call in anything under `/admin`. Anyone who is not the admin gets a plain 404. The rules live in `lib/admin/access.ts`: the Google e-mail must be verified, listed in `ADMIN_EMAILS`, and signed in within 12 hours. An empty list means nobody gets in. Next.js middleware does not cover `/api`, so never rely on it for admin checks.
+- `ADMIN_DEV_BYPASS=1` skips the check only under `next dev`.
+- Events go from `lib/analytics/client.ts` to `POST /api/analytics/collect`, a write-only endpoint, and into `analytics_events` through `lib/analytics/store.ts` (server-only). `lib/analytics/events.ts` is an allowlist with no free-text field. **Never send participant names, winners or matches**: the privacy page and Secret Santa copy promise they stay out of these records.
+- New tools must call `trackDraw(tool, counts)` when a draw finishes, and the tool name must be added to `TOOLS`.
+- Raw IPs and user agents are not stored. Without consent, the visitor key changes daily. A persistent browser ID and the signed-in e-mail are used only after cookies are accepted (`yulasanta_cookie_consent_v2`).
+- Rows carry `env` (`VERCEL_ENV`, else `development`), so localhost traffic stays apart from production. Rows older than 90 days are purged by a 1% chance on each write, as there is no cron job.
+
 ### Auth
 
 - `auth.ts` configures Auth.js (NextAuth v5) with Google as the only provider and **JWT-only sessions — there is no users table / DB adapter yet**. Don't assume persisted user records exist anywhere in the app.
@@ -87,10 +97,12 @@ Read `lib/tiktok/` before touching it. The earlier paid flow (PayTR checkout, cr
 
 `.env.local` (not committed) holds: Google OAuth (`AUTH_SECRET`, `GOOGLE_CLIENT_ID/SECRET`), Neon/Postgres (`DATABASE_URL*`, `PG*`, `POSTGRES_*`), `APIFY_API_TOKEN`, and `YOUTUBE_API_KEY`. Treat any route touching these as server-only and never expose them to client components. Any `PAYTR_*` values still in the file are no longer read.
 
-The code also reads these optional variables, which are not currently in `.env.local`:
+The code also reads these optional variables; `PLAKA_SECRET` and `OPENAI_API_KEY` are not currently in `.env.local`:
 
 - `PLAKA_SECRET`: guest cookie signing (`lib/plaka/player.ts`), with fallbacks
 - `OPENAI_API_KEY`: translation script only
+- `ADMIN_EMAILS`: comma-separated admin allowlist; empty closes `/admin` for everyone
+- `ADMIN_DEV_BYPASS`: set to `1` to skip the admin check under `next dev`; ignored in production
 
 `/api/suggest-gifts` serves a static list and makes no AI call.
 

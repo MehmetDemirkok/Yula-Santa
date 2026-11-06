@@ -1,6 +1,7 @@
 "use client";
 
 import { useState, useEffect, useRef, useCallback } from 'react';
+import { trackDraw } from "@/lib/analytics/client";
 import Link from 'next/link';
 import { ArrowLeft, RotateCcw, TrendingUp } from 'lucide-react';
 import { useTranslations } from 'next-intl';
@@ -459,6 +460,7 @@ export default function CoinFlipPage() {
                 const dot = coinUp.dot(new CANNON.Vec3(0, 1, 0));
                 const outcome: 'heads' | 'tails' | 'edge' = Math.abs(dot) < 0.2 ? 'edge' : dot > 0 ? 'heads' : 'tails';
                 setResult(outcome);
+                trackDraw("coin_flip", { winners: 1 });
                 if (outcome !== 'edge') {
                     setFlipCount(p => ({ ...p, [outcome]: p[outcome] + 1 }));
                     setHistory(p => [outcome as 'heads' | 'tails', ...p].slice(0, 12));

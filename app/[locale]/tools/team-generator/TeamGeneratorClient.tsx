@@ -1,6 +1,7 @@
 "use client";
 
 import { useState, useEffect } from "react";
+import { trackDraw, trackShare } from "@/lib/analytics/client";
 import { useTranslations } from "next-intl";
 import { Button } from "@/components/ui/Button";
 import { Input } from "@/components/ui/Input";
@@ -74,11 +75,13 @@ export function TeamGeneratorClient() {
         setTeams(newTeams);
         setGenerated(true);
         celebrate();
+        trackDraw("team_generator", { participants: namesList.length, winners: teamCount });
     };
 
     const copyTeam = (index: number, teamMembers: string[]) => {
         const text = `${t('team')} ${index + 1}:\n${teamMembers.join('\n')}`;
         navigator.clipboard.writeText(text);
+        trackShare("team_generator");
         setCopied(index);
         setTimeout(() => setCopied(null), 2000);
     };

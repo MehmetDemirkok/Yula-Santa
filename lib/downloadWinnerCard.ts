@@ -1,3 +1,5 @@
+import { trackShare } from "@/lib/analytics/client";
+
 export interface WinnerCardData {
     giveawayName: string;
     winners: { name: string; comment?: string }[];
@@ -12,6 +14,7 @@ const PLATFORM_COLORS: Record<WinnerCardData["platform"], { bg: string; accent: 
 };
 
 export function downloadWinnerCard(data: WinnerCardData) {
+    trackShare(data.platform === "secret-santa" ? "secret_santa" : data.platform);
     const W = 800;
     const PADDING = 48;
     const ROW_H = 64;
