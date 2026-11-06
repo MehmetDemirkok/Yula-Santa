@@ -1,23 +1,24 @@
 "use client";
 
+import Image from "next/image";
 import { useRef, useState } from "react";
 import confetti from "canvas-confetti";
 
 const BAUBLES = [
     { position: "left-[58%] sm:left-[46%]", thread: 46, size: 24, color: "#D62839", delay: "0s" },
     { position: "left-[74%] sm:left-[54%]", thread: 74, size: 18, color: "#E7B53C", delay: "0.7s" },
-    { position: "hidden sm:block sm:left-[61%]", thread: 38, size: 20, color: "#1F9D63", delay: "1.3s" },
-    { position: "hidden lg:block lg:left-[96%]", thread: 60, size: 26, color: "#D62839", delay: "0.4s" },
+    { position: "hidden sm:flex sm:left-[61%]", thread: 38, size: 20, color: "#1F9D63", delay: "1.3s" },
+    { position: "hidden lg:flex lg:left-[96%]", thread: 60, size: 26, color: "#D62839", delay: "0.4s" },
 ];
 
 const GIFT_COLORS = ["#D62839", "#FFD166", "#34D399", "#FFFFFF"];
 
 /** Baubles hanging from under the navbar, plus a warm glow behind the hero. */
-export function HeroDecor() {
+export function HeroDecor({ baubles = BAUBLES }: { baubles?: typeof BAUBLES }) {
     return (
         <div aria-hidden="true" className="pointer-events-none absolute inset-0 overflow-hidden">
             <div className="absolute -top-16 right-[-6%] h-[420px] w-[520px] rounded-full bg-[radial-gradient(circle,rgba(231,181,60,0.2)_0%,transparent_68%)]" />
-            {BAUBLES.map((bauble) => (
+            {baubles.map((bauble) => (
                 <span
                     key={bauble.position}
                     className={`ys-bauble absolute top-0 flex flex-col items-center ${bauble.position}`}
@@ -40,7 +41,7 @@ export function HeroDecor() {
 }
 
 /** Santa-hat Yula on a little snow hill; a tap makes her hop and pop a gift burst. */
-export function FestiveMascot() {
+export function FestiveMascot({ sizes = "(min-width: 1024px) 360px, (min-width: 640px) 170px, 116px" }: { sizes?: string }) {
     const [hopping, setHopping] = useState(false);
     const buttonRef = useRef<HTMLButtonElement>(null);
 
@@ -76,10 +77,13 @@ export function FestiveMascot() {
                 onAnimationEnd={() => setHopping(false)}
                 className={`relative z-10 block h-full w-full cursor-pointer rounded-full !min-h-0 focus:outline-none focus-visible:ring-2 focus-visible:ring-santa-red ${hopping ? "ys-yula-hop" : ""}`}
             >
-                <img
+                <Image
                     alt="YulaSanta Mascot"
-                    className="h-full w-full object-contain drop-shadow-2xl animate-float"
+                    className="object-contain drop-shadow-2xl animate-float"
                     src="/yula-mascot-santa.png"
+                    fill
+                    priority
+                    sizes={sizes}
                 />
             </button>
         </>

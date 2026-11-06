@@ -25,7 +25,7 @@
             "q1": "What is YulaSanta?",
             "a1": "YulaSanta is a free platform for YouTube and TikTok comment giveaways, Secret Santa gift exchanges, name picking, and tools like dice, coin flip, random numbers, short straw, wheel of fortune, and team generator.",
             "q2": "Is YulaSanta free?",
-            "a2": "Yes. All core features are free — no registration or login required.",
+            "a2": "네. 모든 기능이 무료이며 가입이나 로그인이 필요 없습니다.",
             "q3": "Which social platforms do you support?",
             "a3": "You can run comment giveaways from YouTube and TikTok videos.",
             "q4": "How does Secret Santa work?",
@@ -50,7 +50,12 @@
         "uploadList": "리스트 업로드 (Excel/PDF)",
         "uploading": "업로드 중...",
         "clearList": "리스트 초기화",
-        "startDraw": "Start a Giveaway",
+        "startDraw": "추첨 시작",
+        "santaCta": "시크릿 산타 시작하기",
+        "secretDrawDesc": "각자 선물할 사람을 비밀로 확인합니다",
+        "directMatchDesc": "참가자를 2명씩 짝지어 줍니다",
+        "readyLabel": "준비 완료",
+        "moreNeeded": "{count}명 더",
         "match": "매칭",
         "happyNewYear": "🎄 새해 복 많이 받으세요!",
         "minPeople3": "최소 3명을 추가해주세요",
@@ -68,7 +73,6 @@
         "directMatchMinError": "매칭은 최소 2명이 필요합니다!",
         "directMatchEvenError": "직접 매칭은 짝수 인원이 필요합니다!",
         "drawError": "오류가 발생했습니다. 다시 시도해주세요.",
-        "socialMediaGiveaways": "Comment Giveaways",
         "secure": "100% 안전",
         "fast": "초고속",
         "noPassword": "비밀번호 불필요",
@@ -186,16 +190,10 @@
         "countUserOnce": "사용자 중복 제거 (1회 카운트)",
         "inputError": "유효한 링크를 입력해주세요!",
         "fetchError": "데이터를 불러올 수 없습니다.",
-        "apiLimitation": "현재 자동 불러오기가 불가능합니다. 수동 입력 모드를 사용해주세요.",
-        "manualMode": "수동 입력 (무료)",
-        "autoMode": "자동 불러오기",
-        "manualDesc": "소규모 이벤트에 적합합니다. 댓글을 직접 붙여넣으세요.",
-        "autoDesc": "대규모 이벤트에 적합합니다.",
         "pasteComments": "여기에 댓글을 붙여넣으세요 (한 줄에 하나씩)",
         "parse": "댓글 분석",
         "parsed": "{count}명의 참여자를 찾았습니다",
         "youtubeLimitNote": "참고: API를 통해 최대 1000개의 댓글을 자동으로 가져올 수 있습니다.",
-        "tiktokLimitNote": "참고: 자동 가져오기는 회당 200 TL이며 최대 1000개의 댓글을 반환합니다.",
         "participantLimitDetails": "더 많은 댓글을 확인하려면 수동 입력 모드를 사용하세요.",
         "channelUsername": "사용자 이름 (팔로우 확인용)",
         "channelUsernameHint": "당첨자가 나를 팔로우하고 있는지 확인하려면 아이디를 입력하세요",
@@ -226,7 +224,7 @@
                 ],
                 "howToTitle": "틱톡 댓글 추첨 진행 방법",
                 "howToSteps": [
-                    "틱톡 동영상 링크를 YulaSanta에 붙여넣거나 참가자를 수동으로 추가하세요.",
+                    "Chrome 확장 프로그램으로 댓글을 수집하거나 복사해 YulaSanta에 붙여넣으세요.",
                     "당첨자 수, 예비 당첨자 수, 참여 규칙을 설정하세요.",
                     "추첨을 시작하고 결과를 바로 공유하세요."
                 ],
@@ -238,7 +236,7 @@
                     },
                     {
                         "q": "틱톡에 로그인해야 하나요?",
-                        "a": "아니요. 동영상 링크를 붙여넣거나 댓글을 수동으로 추가하면 됩니다 — 비밀번호가 필요 없습니다."
+                        "a": "아니요. 비밀번호가 필요 없습니다. Chrome 확장 프로그램으로 댓글을 수집하거나 붙여넣기만 하면 됩니다."
                     },
                     {
                         "q": "예비 당첨자를 선택할 수 있나요?",
@@ -307,11 +305,6 @@
                 "add": "추가",
                 "loadingWait": "보통 10–40초 정도 소요됩니다",
                 "featuresTitle": "공정한 YouTube 추첨을 위한 모든 것",
-                "featuresSubtitle": "빠르고 투명하며 신뢰할 수 있음 — 계정 비밀번호 없이.",
-                "howTitle": "어떻게 작동하나요?",
-                "howSubtitle": "명확한 5단계. 어디를 클릭할지 고민할 필요가 없습니다.",
-                "startCta": "추첨 시작하기",
-                "faqTitle": "자주 묻는 질문",
                 "steps": {
                     "paste": "링크 붙여넣기",
                     "load": "불러오기",
@@ -324,24 +317,6 @@
                     "중복 필터",
                     "예비 당첨자",
                     "무료"
-                ],
-                "metrics": [
-                    {
-                        "value": "무료",
-                        "label": "가입 불필요"
-                    },
-                    {
-                        "value": "자동",
-                        "label": "댓글 수집"
-                    },
-                    {
-                        "value": "100%",
-                        "label": "무작위 선정"
-                    },
-                    {
-                        "value": "0",
-                        "label": "로그인 필요"
-                    }
                 ],
                 "features": [
                     {
@@ -375,28 +350,6 @@
                     {
                         "title": "빠른 처리",
                         "desc": "링크에서 당첨자까지 명확하고 짧은 과정."
-                    }
-                ],
-                "howSteps": [
-                    {
-                        "title": "YouTube 링크 붙여넣기",
-                        "desc": "히어로 영역에 동영상 또는 Shorts URL을 넣으세요."
-                    },
-                    {
-                        "title": "댓글 불러오기",
-                        "desc": "API를 통해 참가자를 가져오거나 직접 추가하세요."
-                    },
-                    {
-                        "title": "규칙 선택",
-                        "desc": "당첨자, 예비 당첨자 및 구독 옵션을 설정하세요."
-                    },
-                    {
-                        "title": "당첨자 추첨",
-                        "desc": "안전한 무작위 선정으로 당첨자를 결정하세요."
-                    },
-                    {
-                        "title": "결과 공유",
-                        "desc": "원클릭으로 복사, 다운로드 또는 공유하세요."
                     }
                 ],
                 "faq": [
@@ -439,82 +392,43 @@
                 ]
             },
             "tiktok": {
-                "badge": "틱톡 댓글 추첨",
                 "heroTitle": "틱톡",
                 "heroHighlight": "댓글 추첨",
-                "heroSubtitle": "동영상 링크를 붙여넣고 댓글 중에서 당첨자를 선택하세요. 로그인도 비밀번호도 필요 없습니다.",
-                "urlPlaceholder": "tiktok.com/@user/video/…",
-                "fetchCta": "댓글 가져오기",
-                "fetchCtaPaid": "{price} — 댓글 가져오기",
-                "fetching": "가져오는 중…",
-                "urlHint": "공개 동영상만 가능합니다. 댓글을 무료로 붙여넣을 수도 있습니다.",
-                "step1Url": "틱톡 동영상 링크",
+                "heroSubtitle": "댓글을 붙여넣고 당첨자를 선택하세요. 로그인도 비밀번호도 필요 없는 완전 무료 서비스입니다.",
                 "step1Manual": "댓글 붙여넣기",
                 "step3Title": "당첨자 수 설정",
                 "step3Subtitle": "준비 완료",
-                "step4Label": "추첨 시작",
-                "backToUrl": "← 링크로 돌아가기",
-                "continueWith": "{count}명으로 계속하기",
-                "switchManual": "대신 댓글 붙여넣기 →",
-                "automatic": "링크로 가져오기",
-                "manual": "붙여넣기",
+                "backToUrl": "← 댓글로 돌아가기",
                 "selecting": "선정 중…",
                 "winner": "당첨자",
                 "backup": "예비 당첨자",
                 "pngDownload": "PNG",
                 "add": "추가",
-                "loadingWait": "20~60초 정도 걸릴 수 있습니다",
                 "moreRules": "추가 규칙",
                 "hideRules": "규칙 숨기기",
                 "eligibleCta": "{count}명이 추첨에 참여합니다",
-                "autoUnavailable": "자동 가져오기가 현재 불가능합니다. 틱톡에서 댓글을 복사해 붙여넣으세요 — 추첨은 그대로 진행됩니다.",
-                "priceBadge": "자동 댓글 가져오기",
-                "priceCap": "최대 {count}개의 댓글",
-                "priceHint": "링크를 탭하면 결제 창이 열립니다. 계정 필요 없음.",
                 "followHint": "추첨 후 배지로 표시되며, 추첨 대상에서 제외되지 않습니다.",
                 "previewImport": "미리보기",
                 "importPeople": "{count}명 가져오기",
                 "featuresTitle": "공정한 틱톡 추첨",
-                "featuresSubtitle": "링크 또는 댓글, 규칙, 증명. 계정 불필요.",
                 "howTitle": "작동 방식",
-                "howSubtitle": "세 단계. 무엇을 클릭해야 할지 고민할 필요가 없습니다.",
-                "startCta": "추첨 시작하기",
-                "faqTitle": "자주 묻는 질문",
                 "steps": {
-                    "paste": "링크",
+                    "paste": "붙여넣기",
                     "load": "댓글",
                     "rules": "규칙",
                     "draw": "추첨"
                 },
                 "trustBadges": [
                     "틱톡 로그인 불필요",
-                    "수동 대체 방법 제공",
+                    "완전 무료",
                     "1인 1회 필터",
                     "예비 당첨자",
                     "가입 불필요"
                 ],
-                "metrics": [
-                    {
-                        "value": "0",
-                        "label": "가입"
-                    },
-                    {
-                        "value": "공정",
-                        "label": "추첨"
-                    },
-                    {
-                        "value": "증명",
-                        "label": "결과"
-                    },
-                    {
-                        "value": "예비",
-                        "label": "당첨자"
-                    }
-                ],
                 "features": [
                     {
-                        "title": "링크 또는 붙여넣기",
-                        "desc": "동영상 URL이 작동하지 않으면 댓글을 복사해 붙여넣어 진행하세요."
+                        "title": "확장 프로그램 또는 붙여넣기",
+                        "desc": "Chrome 확장 프로그램으로 댓글을 수집하거나 복사해 붙여넣으세요."
                     },
                     {
                         "title": "1인 1회만 인정",
@@ -545,36 +459,10 @@
                         "desc": "틱톡 계정이나 앱 권한을 요구하지 않습니다."
                     }
                 ],
-                "howSteps": [
-                    {
-                        "title": "링크 붙여넣기",
-                        "desc": "틱톡 동영상 URL을 입력란에 붙여넣으세요. 댓글을 직접 붙여넣을 수도 있습니다."
-                    },
-                    {
-                        "title": "댓글 가져오기",
-                        "desc": "이메일로 확인합니다. 계정은 생성되지 않습니다."
-                    },
-                    {
-                        "title": "추첨 진행",
-                        "desc": "당첨자를 선택하고 증명을 공유하세요. 댓글을 가져오지 못하면 환불 대신 추첨권 1회가 제공됩니다."
-                    }
-                ],
                 "faq": [
                     {
-                        "q": "틱톡에 로그인해야 하나요?",
-                        "a": "아니요. 비밀번호를 요구하지 않습니다. 공개 동영상 링크나 붙여넣은 댓글만 있으면 충분합니다."
-                    },
-                    {
-                        "q": "자동 가져오기 비용은 얼마인가요?",
-                        "a": "1회 가져오기당 200TL, 최대 1000개의 댓글까지 가능합니다. 계정 불필요 — 이메일만 있으면 됩니다. 댓글 붙여넣기는 무료입니다."
-                    },
-                    {
-                        "q": "댓글이 로드되지 않으면 환불되나요?",
-                        "a": "아니요. 시스템이 실패 원인을 분석하며 즉시 환불하지 않습니다. 대신 이메일로 추첨권 1회가 제공됩니다."
-                    },
-                    {
-                        "q": "자동 가져오기가 실패하면 어떻게 하나요?",
-                        "a": "동영상의 댓글을 복사해 붙여넣기 탭을 사용하세요. 추첨은 동일하게 진행됩니다."
+                        "q": "댓글은 어떻게 추가하나요?",
+                        "a": "Chrome 확장 프로그램으로 내 브라우저에서 수집하거나, 동영상 댓글을 복사해 붙여넣으세요. 두 방법 모두 무료입니다."
                     },
                     {
                         "q": "당첨자 선정이 정말 무작위인가요?",
@@ -585,53 +473,12 @@
                         "a": "아니요. 팔로우 여부는 추첨 후 배지로만 표시됩니다. 참여 자격은 키워드 규칙과 1인 1회 규칙으로 결정됩니다."
                     }
                 ],
-                "errors": {
-                    "needLink": "틱톡 동영상 링크를 입력하세요",
-                    "invalidLink": "유효한 틱톡 링크를 입력하세요 (tiktok.com/@…/video/…)",
-                    "quota": "댓글 자동 가져오기 한도를 초과했습니다. 댓글을 붙여넣어 계속하세요.",
-                    "unavailable": "현재 댓글 서비스가 응답하지 않습니다. 댓글을 붙여넣어 계속할 수 있습니다.",
-                    "empty": "이 동영상에서 댓글을 찾을 수 없습니다. 수동으로 붙여넣어 보세요.",
-                    "generic": "댓글을 가져올 수 없습니다. 링크와 동영상 공개 여부를 확인하세요.",
-                    "paymentTimeout": "결제 확인이 예상보다 오래 걸리고 있습니다. 몇 분 후 다시 시도하거나 문의해 주세요."
-                },
                 "toasts": {
                     "added": "@{name} 추가됨",
                     "participantsAdded": "{count}명의 참가자가 추가됨",
                     "copied": "결과가 복사됨",
                     "cardDownloaded": "당첨자 카드가 다운로드됨",
                     "noNewNames": "추가할 새 이름이 없습니다"
-                },
-                "loadingSteps": [
-                    "틱톡에 연결하는 중…",
-                    "동영상 댓글을 가져오는 중…",
-                    "참가자를 확인하는 중…",
-                    "목록을 준비하는 중…"
-                ],
-                "pay": {
-                    "openCta": "댓글 가져오기",
-                    "title": "추첨 확인",
-                    "subtitle": "댓글은 동영상에서 가져옵니다. 계정은 생성되지 않습니다.",
-                    "emailLabel": "이메일",
-                    "emailPlaceholder": "you@email.com",
-                    "emailHint": "확인 메일과 크레딧은 이 주소로 전송됩니다.",
-                    "invalidEmail": "유효한 이메일을 입력하세요",
-                    "cta": "확인하고 계속하기",
-                    "processing": "결제 페이지로 이동 중…",
-                    "noMembership": "계정이 필요하지 않습니다",
-                    "serviceName": "댓글 가져오기",
-                    "feeLine": "일회성 서비스",
-                    "feeHint": "서비스 요금 {price} · 계정 불필요",
-                    "cap": "최대 {count}개의 댓글",
-                    "noRefund": "댓글을 가져올 수 없는 경우 환불되지 않으며, 대신 추첨권 1회가 제공됩니다.",
-                    "useCredit": "보유한 크레딧으로 계속하기",
-                    "creditTitle": "추첨권 1회가 추가되었습니다",
-                    "creditBody": "결제는 환불되지 않았습니다. 다음 자동 가져오기에 이 크레딧이 사용됩니다.",
-                    "creditEmail": "크레딧이 이메일로 전송되었습니다. 링크를 통해 다시 시도하세요.",
-                    "creditSaved": "크레딧이 이 기기에 저장되었습니다. 댓글을 다시 가져오세요.",
-                    "paymentsDown": "결제 기능이 아직 열리지 않았습니다. PayTR 승인 후 시작됩니다.",
-                    "cancelled": "취소되었습니다. 다시 시도할 수 있습니다.",
-                    "salesContractLink": "통신판매계약서 읽기",
-                    "confirming": "결제를 확인하는 중…"
                 },
                 "extensionBannerTitle": "Chrome 확장 프로그램으로 무료로 수집하기",
                 "extensionBannerBadge": "무료",
@@ -1477,7 +1324,6 @@
         "contact": "문의하기",
         "privacyPolicy": "개인정보처리방침",
         "legalInfo": "법적 고지",
-        "salesTerms": "판매 약관",
         "copyright": "© 2025 YulaSanta. All rights reserved.",
         "cookieDisclaimer": "이 사이트는 사용자 경험 개선을 위해 쿠키를 사용합니다.",
         "raffleTools": "추첨 도구",
@@ -1611,64 +1457,6 @@
             "q2": "Is my data safe?",
             "q3": "How many people can I include in a giveaway?"
         }
-    },
-    "howToPlay": {
-        "title": "사용 방법",
-        "subtitle": "시크릿 산타 추첨 설정이 그 어느 때보다 쉬워졌습니다! 단계는 다음과 같습니다:",
-        "step1": "모든 참가자의 이름을 목록에 추가합니다.",
-        "step2": "추첨 모드(비밀 추첨 또는 직접 매칭)를 선택합니다.",
-        "step3": "'새해 추첨 시작' 버튼을 클릭합니다.",
-        "step4": "결과 페이지에서 각자 자신의 이름을 선택하여 선물을 줄 사람을 확인합니다!"
-    },
-    "salesContract": {
-        "meta": {
-            "title": "Distance Sales Contract & Cancellation Policy | YulaSanta",
-            "description": "Distance sales contract, right of withdrawal, and cancellation/refund terms for YulaSanta's paid TikTok comment-fetch service."
-        },
-        "title": "Distance Sales Contract",
-        "subtitle": "Cancellation & Refund Policy",
-        "intro": "This page contains the distance sales contract and cancellation/refund terms for the paid \"TikTok Comment Fetch\" service offered on YulaSanta. Confirming the payment screen means you accept these terms.",
-        "lastUpdated": "Last updated: August 2026",
-        "sellerTitle": "1. Seller Information",
-        "seller": {
-            "name": "Name: Mehmet Şükrü Demirkök",
-            "type": "Business type: Individual (sole trader) seller",
-            "email": "Email: mehmetdemirkok@gmail.com",
-            "address": "Address: [seller address to be completed]"
-        },
-        "buyerTitle": "2. Buyer",
-        "buyerBody": "The individual purchasing the service, identified by the email address provided at checkout.",
-        "articles": [
-            {
-                "title": "3. Subject of the Contract",
-                "body": "This contract governs the rights and obligations of the parties regarding the sale and delivery of the \"TikTok Comment Fetch\" service purchased electronically by the Buyer on YulaSanta (yulasanta.com.tr)."
-            },
-            {
-                "title": "4. Key Features and Price",
-                "body": "The service consists of automatically fetching and listing up to 1000 comments from a publicly accessible TikTok video link specified by the Buyer. The service fee is 200 TL (VAT included), charged as a single payment via the PayTR payment infrastructure."
-            },
-            {
-                "title": "5. Method and Time of Performance",
-                "body": "Once payment is confirmed, the system automatically and immediately starts fetching the comments. This is a service performed instantly in electronic form; there is no physical delivery."
-            },
-            {
-                "title": "6. Right of Withdrawal",
-                "body": "Under Turkish consumer protection law (Law No. 6502 and the Distance Contracts Regulation, Art. 15/1-ğ), there is no right of withdrawal for services performed instantly in electronic form or for intangible goods delivered instantly to the consumer. As the service is performed immediately upon payment confirmation, the Buyer cannot exercise a right of withdrawal under this contract."
-            },
-            {
-                "title": "7. Cancellation and Refund Policy",
-                "body": "No refund is issued once the service has been successfully performed (comments fetched). If the service cannot be performed for technical reasons — a private or deleted video, the comment service being temporarily unavailable, or no comments found on the video — the fee is likewise not refunded; instead the Buyer is granted a retry credit of the same value, valid for 90 days, sent as a link to their registered email address. This policy is also stated on the payment screen."
-            },
-            {
-                "title": "8. Dispute Resolution",
-                "body": "Disputes arising from this contract are subject to Consumer Arbitration Committees up to the value announced by the Turkish Ministry of Trade, and Consumer Courts above that value. This contract is governed by the laws of the Republic of Turkey."
-            },
-            {
-                "title": "9. Effective Date",
-                "body": "By checking the confirmation box on the payment screen and completing payment, the Buyer is deemed to have read, understood, and accepted all terms of this contract."
-            }
-        ],
-        "contactNote": "Questions? Contact us at mehmetdemirkok@gmail.com"
     },
     "auth": {
         "login": {

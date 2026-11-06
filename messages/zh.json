@@ -25,7 +25,7 @@
             "q1": "What is YulaSanta?",
             "a1": "YulaSanta is a free platform for YouTube and TikTok comment giveaways, Secret Santa gift exchanges, name picking, and tools like dice, coin flip, random numbers, short straw, wheel of fortune, and team generator.",
             "q2": "Is YulaSanta free?",
-            "a2": "Yes. All core features are free — no registration or login required.",
+            "a2": "是的。所有功能均免费，无需注册或登录。",
             "q3": "Which social platforms do you support?",
             "a3": "You can run comment giveaways from YouTube and TikTok videos.",
             "q4": "How does Secret Santa work?",
@@ -50,7 +50,12 @@
         "uploadList": "上传列表 (Excel/PDF)",
         "uploading": "上传中...",
         "clearList": "清除列表",
-        "startDraw": "Start a Giveaway",
+        "startDraw": "开始抽签",
+        "santaCta": "开始秘密圣诞老人抽签",
+        "secretDrawDesc": "每个人秘密查看要给谁送礼物",
+        "directMatchDesc": "参与者两两配对",
+        "readyLabel": "准备就绪",
+        "moreNeeded": "还差 {count} 人",
         "match": "配对",
         "happyNewYear": "🎄 新年快乐！",
         "minPeople3": "请至少添加 3 人",
@@ -68,7 +73,6 @@
         "directMatchMinError": "配对至少需要 2 人！",
         "directMatchEvenError": "直接配对需要偶数人数！",
         "drawError": "发生错误，请重试。",
-        "socialMediaGiveaways": "Comment Giveaways",
         "secure": "100% 安全",
         "fast": "极速响应",
         "noPassword": "无需密码",
@@ -185,16 +189,10 @@
         "countUserOnce": "每位用户仅计算一次",
         "inputError": "请输入有效的链接！",
         "fetchError": "无法获取数据。",
-        "apiLimitation": "当前无法自动获取。请使用手动输入模式。",
-        "manualMode": "手动输入 (免费)",
-        "autoMode": "自动获取",
-        "manualDesc": "适合小型抽奖。直接粘贴评论即可。",
-        "autoDesc": "适合大型和高流量抽奖。",
         "pasteComments": "在此粘贴评论 (每行一个)",
         "parse": "解析评论",
         "parsed": "已解析 {count} 位参与者",
         "youtubeLimitNote": "注：API 最多可自动获取 1000 条评论。",
-        "tiktokLimitNote": "注：每次自动获取收费 200 TL，最多 1000 条评论。",
         "participantLimitDetails": "要分析更多评论，请使用手动输入模式。",
         "channelUsername": "用户名 (粉丝检查)",
         "channelUsernameHint": "输入您的用户名以检查中奖者是否关注了您",
@@ -253,7 +251,7 @@
                 ],
                 "howToTitle": "如何进行TikTok评论抽奖",
                 "howToSteps": [
-                    "将您的TikTok视频链接粘贴到YulaSanta，或手动添加参与者。",
+                    "使用 Chrome 扩展程序收集评论，或复制后粘贴到 YulaSanta。",
                     "设置获奖人数、候补人数和参与规则。",
                     "开始抽奖——立即分享结果。"
                 ],
@@ -265,7 +263,7 @@
                     },
                     {
                         "q": "需要登录TikTok账号吗?",
-                        "a": "不需要。粘贴视频链接或手动添加评论即可，无需密码。"
+                        "a": "不需要。无需密码，只需使用 Chrome 扩展程序收集评论或直接粘贴即可。"
                     },
                     {
                         "q": "可以设置候补获奖者吗?",
@@ -306,11 +304,6 @@
                 "add": "添加",
                 "loadingWait": "通常需要 10–40 秒",
                 "featuresTitle": "公平 YouTube 抽奖所需的一切",
-                "featuresSubtitle": "快速、透明且可靠 — 无需输入账号密码。",
-                "howTitle": "工作原理",
-                "howSubtitle": "清晰的五个步骤，无需繁琐操作。",
-                "startCta": "开始抽奖",
-                "faqTitle": "常见问题",
                 "steps": {
                     "paste": "粘贴链接",
                     "load": "加载评论",
@@ -323,24 +316,6 @@
                     "重复过滤",
                     "候补中奖者",
                     "免费"
-                ],
-                "metrics": [
-                    {
-                        "value": "免费",
-                        "label": "无需注册"
-                    },
-                    {
-                        "value": "自动",
-                        "label": "评论抓取"
-                    },
-                    {
-                        "value": "100%",
-                        "label": "随机抽取"
-                    },
-                    {
-                        "value": "0",
-                        "label": "需要登录"
-                    }
                 ],
                 "features": [
                     {
@@ -374,28 +349,6 @@
                     {
                         "title": "高效处理",
                         "desc": "从链接到生成中奖者，流程简洁高效。"
-                    }
-                ],
-                "howSteps": [
-                    {
-                        "title": "粘贴 YouTube 链接",
-                        "desc": "将视频或 Shorts URL 粘贴到输入框中。"
-                    },
-                    {
-                        "title": "加载评论",
-                        "desc": "通过 API 获取参与者或手动添加。"
-                    },
-                    {
-                        "title": "选择规则",
-                        "desc": "设置中奖人数、候补人数及订阅选项。"
-                    },
-                    {
-                        "title": "抽取中奖者",
-                        "desc": "通过安全的随机算法确定中奖者。"
-                    },
-                    {
-                        "title": "分享结果",
-                        "desc": "一键复制、下载或分享结果。"
                     }
                 ],
                 "faq": [
@@ -438,82 +391,43 @@
                 ]
             },
             "tiktok": {
-                "badge": "TikTok评论抽奖",
                 "heroTitle": "TikTok",
                 "heroHighlight": "评论抽奖",
-                "heroSubtitle": "粘贴视频链接，从评论中选出获奖者。无需登录，无需密码。",
-                "urlPlaceholder": "tiktok.com/@用户名/video/…",
-                "fetchCta": "获取评论",
-                "fetchCtaPaid": "{price} — 获取评论",
-                "fetching": "获取中…",
-                "urlHint": "仅支持公开视频。您也可以免费手动粘贴评论。",
-                "step1Url": "TikTok视频链接",
+                "heroSubtitle": "粘贴评论，选出获奖者。无需登录，无需密码，完全免费。",
                 "step1Manual": "粘贴评论",
                 "step3Title": "设置获奖人数",
                 "step3Subtitle": "准备就绪",
-                "step4Label": "开始抽奖",
-                "backToUrl": "← 返回链接",
-                "continueWith": "以{count}人继续",
-                "switchManual": "改为粘贴评论 →",
-                "automatic": "通过链接获取",
-                "manual": "粘贴",
+                "backToUrl": "← 返回评论",
                 "selecting": "抽取中…",
                 "winner": "获奖者",
                 "backup": "候补",
                 "pngDownload": "PNG",
                 "add": "添加",
-                "loadingWait": "此过程可能需要20–60秒",
                 "moreRules": "更多规则",
                 "hideRules": "隐藏规则",
                 "eligibleCta": "将有{count}人参与抽奖",
-                "autoUnavailable": "自动获取当前不可用。请从TikTok复制评论并粘贴 — 抽奖仍可正常进行。",
-                "priceBadge": "自动评论获取",
-                "priceCap": "最多{count}条评论",
-                "priceHint": "点击链接将打开支付窗口。无需账号。",
                 "followHint": "抽奖后以徽章形式显示；不会将任何人排除在抽奖之外。",
                 "previewImport": "预览",
                 "importPeople": "导入{count}人",
                 "featuresTitle": "公平的TikTok抽奖",
-                "featuresSubtitle": "链接或评论、规则、证明。无需账号。",
                 "howTitle": "使用方法",
-                "howSubtitle": "三个步骤，您无需猜测下一步该点击什么。",
-                "startCta": "开始抽奖",
-                "faqTitle": "常见问题",
                 "steps": {
-                    "paste": "链接",
+                    "paste": "粘贴",
                     "load": "评论",
                     "rules": "规则",
                     "draw": "抽奖"
                 },
                 "trustBadges": [
                     "无需登录TikTok",
-                    "提供手动备用方式",
+                    "完全免费",
                     "单用户过滤",
                     "候补获奖者",
                     "无需订阅"
                 ],
-                "metrics": [
-                    {
-                        "value": "0",
-                        "label": "注册"
-                    },
-                    {
-                        "value": "公平",
-                        "label": "抽奖"
-                    },
-                    {
-                        "value": "证明",
-                        "label": "结果"
-                    },
-                    {
-                        "value": "候补",
-                        "label": "获奖者"
-                    }
-                ],
                 "features": [
                     {
-                        "title": "链接或粘贴",
-                        "desc": "如果视频链接无法使用，可以复制评论并粘贴以继续。"
+                        "title": "扩展程序或粘贴",
+                        "desc": "使用 Chrome 扩展程序收集评论，或复制后粘贴。"
                     },
                     {
                         "title": "每人限一次",
@@ -544,36 +458,10 @@
                         "desc": "我们绝不要求您的TikTok账号或应用授权。"
                     }
                 ],
-                "howSteps": [
-                    {
-                        "title": "粘贴链接",
-                        "desc": "将TikTok视频链接粘贴到输入框中，您也可以自行粘贴评论。"
-                    },
-                    {
-                        "title": "获取评论",
-                        "desc": "通过邮箱确认，系统不会创建任何账号。"
-                    },
-                    {
-                        "title": "进行抽奖",
-                        "desc": "选出获奖者并分享证明。如果评论无法获取，将不予退款，而是提供一次抽奖额度。"
-                    }
-                ],
                 "faq": [
                     {
-                        "q": "需要登录TikTok吗?",
-                        "a": "不需要。我们绝不会要求密码。公开视频链接或粘贴的评论即可。"
-                    },
-                    {
-                        "q": "自动获取评论收费多少?",
-                        "a": "每次获取200土耳其里拉，最多获取1000条评论。无需账号 — 提供邮箱即可。手动粘贴评论是免费的。"
-                    },
-                    {
-                        "q": "如果评论无法加载可以退款吗?",
-                        "a": "不可以。系统会分析失败原因，不会立即退款，而是通过邮箱提供一次抽奖额度。"
-                    },
-                    {
-                        "q": "如果自动获取失败该怎么办?",
-                        "a": "从视频中复制评论并使用「粘贴」选项卡，抽奖流程照常进行。"
+                        "q": "如何添加评论?",
+                        "a": "使用 Chrome 扩展程序在您自己的浏览器中收集，或复制视频评论后粘贴。两种方式都免费。"
                     },
                     {
                         "q": "获奖者真的是随机选出的吗?",
@@ -584,53 +472,12 @@
                         "a": "不会。关注状态仅在抽奖后以徽章形式显示，参与资格由关键词规则和单次参与规则决定。"
                     }
                 ],
-                "errors": {
-                    "needLink": "请输入TikTok视频链接",
-                    "invalidLink": "请输入有效的TikTok链接 (tiktok.com/@…/video/…)",
-                    "quota": "评论自动获取额度已用完，请粘贴评论以继续。",
-                    "unavailable": "评论服务当前无响应，您可以粘贴评论继续操作。",
-                    "empty": "未在此视频中找到评论，请尝试手动粘贴。",
-                    "generic": "无法获取评论，请检查链接并确认视频为公开状态。",
-                    "paymentTimeout": "支付确认所需时间超出预期，请几分钟后重试或联系我们。"
-                },
                 "toasts": {
                     "added": "已添加 @{name}",
                     "participantsAdded": "已添加{count}位参与者",
                     "copied": "结果已复制",
                     "cardDownloaded": "获奖卡片已下载",
                     "noNewNames": "没有可添加的新名字"
-                },
-                "loadingSteps": [
-                    "正在连接TikTok…",
-                    "正在获取视频评论…",
-                    "正在验证参与者…",
-                    "正在准备名单…"
-                ],
-                "pay": {
-                    "openCta": "获取评论",
-                    "title": "确认抽奖",
-                    "subtitle": "评论将从视频中获取，系统不会创建任何账号。",
-                    "emailLabel": "邮箱",
-                    "emailPlaceholder": "you@email.com",
-                    "emailHint": "确认信息和相关额度将发送至此邮箱。",
-                    "invalidEmail": "请输入有效的邮箱地址",
-                    "cta": "确认并继续",
-                    "processing": "正在跳转至支付页面…",
-                    "noMembership": "无需账号",
-                    "serviceName": "评论获取",
-                    "feeLine": "一次性服务",
-                    "feeHint": "服务费用 {price} · 无需账号",
-                    "cap": "最多{count}条评论",
-                    "noRefund": "如果无法获取评论，将不予退款；您将获得一次抽奖额度。",
-                    "useCredit": "使用您的额度继续",
-                    "creditTitle": "已添加一次抽奖额度",
-                    "creditBody": "付款未退还。下次自动获取评论时将使用此额度。",
-                    "creditEmail": "额度已通过邮箱发送给您，请使用链接重试。",
-                    "creditSaved": "额度已保存在此设备上，请重新获取评论。",
-                    "paymentsDown": "支付功能尚未开放，将在PayTR审核通过后开放。",
-                    "cancelled": "已取消，您可以重新尝试。",
-                    "salesContractLink": "阅读远程销售合同",
-                    "confirming": "正在确认您的付款…"
                 },
                 "extensionBannerTitle": "使用Chrome扩展程序免费收集",
                 "extensionBannerBadge": "免费",
@@ -1476,7 +1323,6 @@
         "contact": "联系我们",
         "privacyPolicy": "隐私政策",
         "legalInfo": "法律信息",
-        "salesTerms": "销售条款",
         "copyright": "© 2025 YulaSanta. 版权所有。",
         "cookieDisclaimer": "本网站使用 Cookie 以提升您的体验。",
         "raffleTools": "抽奖工具",
@@ -1610,64 +1456,6 @@
             "q2": "我的数据安全吗？",
             "q3": "我可以邀请多少人参加抽奖？"
         }
-    },
-    "howToPlay": {
-        "title": "如何使用？",
-        "subtitle": "设置秘密圣诞老人抽奖从未如此简单！步骤如下：",
-        "step1": "将所有参与者的名字添加到列表中。",
-        "step2": "选择抽奖模式（秘密抽奖或直接配对）。",
-        "step3": "点击“开始新年抽奖”按钮。",
-        "step4": "在结果页面上，每个人选择自己的名字以查看要给谁买礼物！"
-    },
-    "salesContract": {
-        "meta": {
-            "title": "Distance Sales Contract & Cancellation Policy | YulaSanta",
-            "description": "Distance sales contract, right of withdrawal, and cancellation/refund terms for YulaSanta's paid TikTok comment-fetch service."
-        },
-        "title": "Distance Sales Contract",
-        "subtitle": "Cancellation & Refund Policy",
-        "intro": "This page contains the distance sales contract and cancellation/refund terms for the paid \"TikTok Comment Fetch\" service offered on YulaSanta. Confirming the payment screen means you accept these terms.",
-        "lastUpdated": "Last updated: August 2026",
-        "sellerTitle": "1. Seller Information",
-        "seller": {
-            "name": "Name: Mehmet Şükrü Demirkök",
-            "type": "Business type: Individual (sole trader) seller",
-            "email": "Email: mehmetdemirkok@gmail.com",
-            "address": "Address: [seller address to be completed]"
-        },
-        "buyerTitle": "2. Buyer",
-        "buyerBody": "The individual purchasing the service, identified by the email address provided at checkout.",
-        "articles": [
-            {
-                "title": "3. Subject of the Contract",
-                "body": "This contract governs the rights and obligations of the parties regarding the sale and delivery of the \"TikTok Comment Fetch\" service purchased electronically by the Buyer on YulaSanta (yulasanta.com.tr)."
-            },
-            {
-                "title": "4. Key Features and Price",
-                "body": "The service consists of automatically fetching and listing up to 1000 comments from a publicly accessible TikTok video link specified by the Buyer. The service fee is 200 TL (VAT included), charged as a single payment via the PayTR payment infrastructure."
-            },
-            {
-                "title": "5. Method and Time of Performance",
-                "body": "Once payment is confirmed, the system automatically and immediately starts fetching the comments. This is a service performed instantly in electronic form; there is no physical delivery."
-            },
-            {
-                "title": "6. Right of Withdrawal",
-                "body": "Under Turkish consumer protection law (Law No. 6502 and the Distance Contracts Regulation, Art. 15/1-ğ), there is no right of withdrawal for services performed instantly in electronic form or for intangible goods delivered instantly to the consumer. As the service is performed immediately upon payment confirmation, the Buyer cannot exercise a right of withdrawal under this contract."
-            },
-            {
-                "title": "7. Cancellation and Refund Policy",
-                "body": "No refund is issued once the service has been successfully performed (comments fetched). If the service cannot be performed for technical reasons — a private or deleted video, the comment service being temporarily unavailable, or no comments found on the video — the fee is likewise not refunded; instead the Buyer is granted a retry credit of the same value, valid for 90 days, sent as a link to their registered email address. This policy is also stated on the payment screen."
-            },
-            {
-                "title": "8. Dispute Resolution",
-                "body": "Disputes arising from this contract are subject to Consumer Arbitration Committees up to the value announced by the Turkish Ministry of Trade, and Consumer Courts above that value. This contract is governed by the laws of the Republic of Turkey."
-            },
-            {
-                "title": "9. Effective Date",
-                "body": "By checking the confirmation box on the payment screen and completing payment, the Buyer is deemed to have read, understood, and accepted all terms of this contract."
-            }
-        ],
-        "contactNote": "Questions? Contact us at mehmetdemirkok@gmail.com"
     },
     "auth": {
         "login": {

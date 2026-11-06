@@ -96,7 +96,6 @@ export interface Translation {
         directMatchMinError: string;
         directMatchEvenError: string;
         drawError: string;
-        socialMediaGiveaways: string;
     };
     result: {
         whoGetsGift: string;
@@ -152,17 +151,11 @@ export interface Translation {
         countUserOnce: string;
         inputError: string;
         fetchError: string;
-        apiLimitation: string;
-        manualMode: string;
-        autoMode: string;
-        manualDesc: string;
-        autoDesc: string;
         pasteComments: string;
         parse: string;
         parsed: string;
         participantLimitDetails: string;
         youtubeLimitNote: string;
-        tiktokLimitNote: string;
         notEnoughEligible: string;
         channelUsername: string;
         channelUsernameHint: string;

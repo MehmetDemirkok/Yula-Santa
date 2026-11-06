@@ -5,6 +5,7 @@ export { viewport };
 import ClientPage from './ClientPage';
 import ToolSeoSection from '@/components/seo/ToolSeoSection';
 import { getPageSeoCopy } from '@/lib/pageSeoCopy';
+import { getTargetYear } from '@/components/NewYearTheme/config';
 
 export function generateStaticParams() {
     return locales.map((locale) => ({ locale }));
@@ -16,11 +17,16 @@ export async function generateMetadata({ params }: { params: Promise<{ locale: s
     return getSEOMetadata({
         locale,
         path: '/secret-santa',
-        titleOverride: copy.title,
+        titleOverride: copy.title.replace('{year}', String(getTargetYear())),
+        ogImage: { path: locale === 'tr' ? '/og-secret-santa-tr.jpg' : '/og-secret-santa-en.jpg', width: 1200, height: 630 },
         descriptionOverride: copy.description,
         keywordsOverride: locale === 'tr'
             ? [
+                'yılbaşı hediye çekilişi',
                 'yılbaşı çekilişi',
+                'yılbaşı kurası',
+                'isim çekme',
+                'gizli noel baba',
                 'online yılbaşı çekilişi',
                 'yılbaşı çekilişi nasıl yapılır',
                 'secret santa',

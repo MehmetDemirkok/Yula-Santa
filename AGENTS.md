@@ -25,10 +25,10 @@ Full architecture notes live in `CLAUDE.md`; design tokens in `design.md` — re
 - `@/*` path alias maps to the repo root.
 - Turkish-slug → English path redirects are hardcoded in `next.config.ts`.
 
-## TikTok subsystem (paid, most complex)
+## TikTok subsystem (free)
 
-- Client-safe barrel `lib/tiktok/index.ts` must stay free of Node/Apify/Neon imports; server-only code lives in `server.ts`, `apifyProvider.ts`, `giveawayStore.ts`, `paidFetch.ts`, `paytrCheckout.ts`, `ledger.ts`.
-- Two independent flows share one Neon DB but different tables: paid Apify/PayTR (ledger-based) and extension-collected (`giveawayStore.ts`). Changing one does not affect the other.
+- Client-safe barrel `lib/tiktok/index.ts` must stay free of Node/Neon imports; server-only code lives in `giveawayStore.ts`.
+- Comments arrive by manual paste (browser only) or the Chrome extension (`giveawayStore.ts`, Neon). The paid PayTR/credit flow was removed; do not reintroduce pricing copy.
 - Apply `lib/rateLimit.ts` (in-memory, per-instance; limits in its `MAX_REQUESTS` map) in new API routes, like existing `app/api/tiktok/*`.
 
 ## Plaka Avcısı (plate quiz game)
@@ -41,6 +41,6 @@ Full architecture notes live in `CLAUDE.md`; design tokens in `design.md` — re
 ## Other
 
 - Auth (`auth.ts`): Auth.js v5 with Google only, JWT-only sessions — there is no users table.
-- Secrets live in `.env.local` (gitignored): Neon, Apify, PayTR, YouTube, Google OAuth. Never expose to client components.
+- Secrets live in `.env.local` (gitignored): Neon, Apify (follower check only), YouTube, Google OAuth. Never expose to client components.
 - AdSense is gated behind `NEXT_PUBLIC_ADSENSE_CLIENT_ID` / `NEXT_PUBLIC_AD_SLOT_*` env vars (`components/ads/`, `lib/ads/config.ts`); sitemap/robots via `app/sitemap.ts` / `app/robots.ts`.
 - `extensions/yulasanta-tiktok-extension-*/` is a standalone vanilla-JS browser extension, not built by the Next app.

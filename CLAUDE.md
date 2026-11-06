@@ -4,7 +4,7 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 
 ## Project overview
 
-YulaSanta is a Next.js 16 (App Router) app offering a family of free draw/giveaway tools: Secret Santa, raffle, YouTube giveaway picker, TikTok comment-picker giveaway, a set of small standalone tools (coin flip, dice, wheel of fortune, team generator, short straw, random number, gift suggestions), and the Plaka Avcısı quiz game. The UI is localized into 12 languages. The TikTok giveaway tool is a paid product with its own credit ledger, Apify-based scraping, PayTR checkout, and a companion browser extension. The canonical site URL is `SITE_URL` in `lib/constants.ts` (`https://www.yulasanta.com.tr`).
+YulaSanta is a Next.js 16 (App Router) app offering a family of free draw/giveaway tools: Secret Santa, raffle, YouTube giveaway picker, TikTok comment-picker giveaway, a set of small standalone tools (coin flip, dice, wheel of fortune, team generator, short straw, random number, gift suggestions), and the Plaka Avcısı quiz game. The UI is localized into 12 languages. Every tool is free. The TikTok giveaway takes pasted comments or comments from a companion browser extension. The canonical site URL is `SITE_URL` in `lib/constants.ts` (`https://www.yulasanta.com.tr`).
 
 `README.md` is the short public overview: features, commands, env variables, and AdSense setup. `AGENTS.md` is a condensed version of this file for other agents, so keep the two consistent.
 
@@ -29,9 +29,7 @@ Run a single test file directly: `npx tsx --test tests/tiktok/tiktok-module.test
 
 There is no standalone typecheck script; `npm run build` type-checks.
 
-`npm test` currently exits non-zero on a clean checkout: two tests in `tests/tiktok/tiktok-module.test.ts` ("locks 500 comments and 200 TL", "caps fetched participants at 500") still expect a cap of 500. These failures predate any new work.
-
-There is no test/build step that touches the real Neon DB, Apify, or PayTR — those are exercised only through live API routes.
+There is no test/build step that touches the real Neon DB or Apify; those are exercised only through live API routes.
 
 ## Architecture
 
@@ -52,13 +50,13 @@ There is no test/build step that touches the real Neon DB, Apify, or PayTR — t
 - `lib/giveawayProof.ts` encodes a draw result into a URL-safe base64 token (no DB) so results can be shared/verified via `/proof?d=...` and `app/[locale]/verify/[id]/page.tsx`.
 - `lib/giveawayFilters.ts` contains shared filter logic (keyword requirement, exclude lists, one-entry-per-user) used across the giveaway pickers.
 
-### TikTok giveaway (paid feature)
+### TikTok giveaway (free)
 
-This is the most complex subsystem — read `lib/tiktok/` before touching it:
+Read `lib/tiktok/` before touching it. The earlier paid flow (PayTR checkout, credit ledger, Apify comment fetch) has been removed, so don't reintroduce pricing copy or payment assumptions:
 
-- **Two independent flows share one Neon Postgres instance but different tables** (see the header comment in `lib/tiktok/giveawayStore.ts`): the paid Apify/PayTR flow (ledger-based) and the extension-collected flow (`giveawayStore.ts`). Changes to one must not assume they affect the other.
-- `lib/tiktok/index.ts` is the **client-safe** barrel export (types, normalization, URL parsing, pricing, error mapping) — it deliberately excludes anything that imports Node/Apify/Neon so it can be imported from client components. Server-only logic (Apify calls, DB, payment) lives in `lib/tiktok/server.ts`, `apifyProvider.ts`, `giveawayStore.ts`, `paidFetch.ts`, `paytrCheckout.ts`, `ledger.ts`.
-- Payment/credit flow: `app/api/tiktok/checkout` (PayTR) → `app/api/tiktok/run` (consumes an `orderId` or a `creditToken`) → `lib/tiktok/paidFetch.ts` orchestrates the Apify fetch and, on failure, issues a refund credit (`lib/tiktok/entitlement.ts` signs/verifies opaque credit tokens with HMAC; `lib/tiktok/failureAnalysis.ts` decides why a fetch failed and whether to credit/email the user).
+- Comments arrive in two ways: pasted into `app/[locale]/tiktok/ClientPage.tsx` (browser only, no server), or collected by the extension through `app/api/tiktok/giveaway/*` and `lib/tiktok/giveawayStore.ts` (Neon).
+- `lib/tiktok/index.ts` is the **client-safe** barrel export (types, normalization, URL parsing, manual import). It deliberately excludes anything that imports Node or Neon so it can be imported from client components; `giveawayStore.ts` is server-only.
+- `app/api/tiktok/followers` is the only remaining Apify use: an optional follower check on winners, which needs `APIFY_API_TOKEN`.
 - `lib/rateLimit.ts` is an in-memory (per-instance) rate limiter keyed by IP + route name; route-specific limits are defined in its `MAX_REQUESTS` map (e.g. `tiktok`, `tiktok-giveaway-create`, `tiktok-giveaway-import`, `youtube`). Apply it in new API routes the same way existing `app/api/tiktok/*` and `app/api/youtube/*` routes do.
 - `extensions/yulasanta-tiktok-extension-v1.0.1/` is a separate, non-Next.js browser extension (manifest + vanilla JS) that feeds comments into the extension-collected giveaway flow via `giveawayStore.ts`'s API; it is not built/bundled by the Next.js app.
 
@@ -87,12 +85,10 @@ This is the most complex subsystem — read `lib/tiktok/` before touching it:
 
 ### Env / secrets
 
-`.env.local` (not committed) holds: Google OAuth (`AUTH_SECRET`, `GOOGLE_CLIENT_ID/SECRET`), Neon/Postgres (`DATABASE_URL*`, `PG*`, `POSTGRES_*`), `APIFY_API_TOKEN`, PayTR (`PAYTR_MERCHANT_ID/KEY/SALT`, `PAYTR_TEST_MODE`), and `YOUTUBE_API_KEY`. Treat any route touching these as server-only and never expose them to client components.
+`.env.local` (not committed) holds: Google OAuth (`AUTH_SECRET`, `GOOGLE_CLIENT_ID/SECRET`), Neon/Postgres (`DATABASE_URL*`, `PG*`, `POSTGRES_*`), `APIFY_API_TOKEN`, and `YOUTUBE_API_KEY`. Treat any route touching these as server-only and never expose them to client components. Any `PAYTR_*` values still in the file are no longer read.
 
 The code also reads these optional variables, which are not currently in `.env.local`:
 
-- `RESEND_API_KEY` and `RESEND_FROM`/`EMAIL_FROM`: credit emails (`lib/tiktok/creditEmail.ts`)
-- `TIKTOK_LEDGER_SECRET`: credit token signing (`lib/tiktok/entitlement.ts`), with fallbacks
 - `PLAKA_SECRET`: guest cookie signing (`lib/plaka/player.ts`), with fallbacks
 - `OPENAI_API_KEY`: translation script only
 
@@ -101,7 +97,7 @@ The code also reads these optional variables, which are not currently in `.env.l
 ### Ads / SEO
 
 - AdSense infra lives in `components/ads/` + `lib/ads/config.ts`, gated behind `NEXT_PUBLIC_ADSENSE_CLIENT_ID` / `NEXT_PUBLIC_AD_SLOT_*` env vars (see README for the full list).
-- `components/seo/` (JsonLd, per-tool/per-page SEO sections) and `lib/seo.ts` / `lib/pageSeoCopy.ts` centralize structured data and per-page SEO copy; `app/sitemap.ts` / `app/robots.ts` generate the sitemap/robots files.
+- `components/seo/` (JsonLd, per-tool/per-page SEO sections) and `lib/seo.ts` / `lib/pageSeoCopy.ts` centralize structured data and per-page SEO copy (`lib/secretSantaSeoCopy.ts` holds the long `/secret-santa` copy per locale; its claims must match how the tool works); `app/sitemap.ts` / `app/robots.ts` generate the sitemap/robots files.
 
 ### Themes
 

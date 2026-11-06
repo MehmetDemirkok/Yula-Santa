@@ -1,11 +1,13 @@
+import { getTranslations } from 'next-intl/server';
 import JsonLd from '@/components/seo/JsonLd';
-import RelatedLinks from '@/components/seo/RelatedLinks';
+import SeoContent from '@/components/seo/SeoContent';
 import { SITE_URL } from '@/lib/constants';
+import { SECRET_SANTA_SEO_COPY } from '@/lib/secretSantaSeoCopy';
 
 type Kind = 'raffle' | 'secretSanta';
 
-const COPY: Record<
-    Kind,
+const RAFFLE_COPY_BY_KIND: Record<
+    'raffle',
     Record<
         string,
         {
@@ -92,108 +94,12 @@ const COPY: Record<
             ],
         },
     },
-    secretSanta: {
-        tr: {
-            title: 'Online yılbaşı çekilişi (Secret Santa) nasıl yapılır?',
-            paragraphs: [
-                'YulaSanta yılbaşı çekilişi ile katılımcıları rastgele ve gizli şekilde eşleştirin. Her kişi yalnızca kime hediye alacağını görür; kimse başkasının eşleşmesini göremez.',
-                'Arkadaş grubu, aile, sınıf, okul veya ofis için idealdir. İsimleri tek tek ya da Excel, CSV veya PDF listesiyle ekleyin; gizli çekilişi başlatın ve cihazı sırayla gezdirin. En az 3 kişi yeterlidir ve kimse kendine çıkmaz.',
-                'Tüm eşleşmeler tarayıcınızda hesaplanır ve cihazınızda saklanır — sunucuya katılımcı verisi gönderilmez. Kayıt, e-posta veya şifre gerekmez; tamamen ücretsizdir.',
-            ],
-            howToTitle: 'Yılbaşı çekilişi nasıl yapılır?',
-            steps: [
-                'Katılımcı isimlerini ekleyin (en az 3 kişi) veya Excel/CSV/PDF listesini yükleyin.',
-                'Gizli çekilişi başlatın.',
-                'Cihazı sırayla gezdirin; herkes kendi adını seçip hediye alacağı kişiyi açsın.',
-            ],
-            faqTitle: 'Yılbaşı çekilişi ve Secret Santa SSS',
-            faq: [
-                {
-                    q: 'Yılbaşı çekilişi ücretsiz mi?',
-                    a: 'Evet. Online yılbaşı çekilişi tamamen ücretsizdir; kayıt, e-posta veya ödeme gerekmez.',
-                },
-                {
-                    q: 'Yılbaşı çekilişi nasıl yapılır?',
-                    a: 'Katılımcıları ekleyin, gizli çekilişi başlatın ve cihazı sırayla gezdirin. Herkes kendi adını seçerek hediye alacağı kişiyi görür.',
-                },
-                {
-                    q: 'Kaç kişi gerekir?',
-                    a: 'Gizli çekiliş için en az 3 kişi gerekir. Üst sınır yoktur; kalabalık sınıf ve ofisler için de uygundur.',
-                },
-                {
-                    q: 'Okul veya sınıf için uygun mu?',
-                    a: 'Evet. Öğretmenler sınıf listesini yükleyip tek cihazda sırayla çekiliş yaptırabilir. Kayıt gerekmez ve öğrenci verisi toplanmaz.',
-                },
-                {
-                    q: 'Birisi kendine çıkar mı?',
-                    a: 'Hayır. Algoritma herkese başka birini atar; kimse kendine çıkmaz.',
-                },
-                {
-                    q: 'Sonuçlar sitede yayınlanır mı?',
-                    a: 'Hayır. Eşleşmeler tarayıcınızda saklanır; her katılımcı yalnızca kendi sonucunu görür.',
-                },
-            ],
-            relatedTitle: 'İlgili araçlar',
-            related: [
-                { path: '/raffle', label: 'İsim çekilişi yap' },
-                { path: '/tools/gift-suggestions', label: 'Hediye önerileri' },
-                { path: '/tools/wheel-of-fortune', label: 'Çarkıfelek çevir' },
-                { path: '/youtube', label: 'YouTube çekilişi' },
-            ],
-        },
-        en: {
-            title: 'How online Secret Santa works',
-            paragraphs: [
-                'YulaSanta Secret Santa randomly and secretly matches participants. Each person only sees who they should buy a gift for.',
-                'Great for friends, family, classrooms, schools and offices. Add names one by one or upload an Excel, CSV or PDF list, start the secret draw, then pass the device around. You need at least 3 people, and nobody is matched to themselves.',
-                'Matches are computed and stored in your browser — no participant data is sent to a server. No account, email or password is required, and it is completely free.',
-            ],
-            howToTitle: 'How to run Secret Santa',
-            steps: [
-                'Add participant names (at least 3) or upload an Excel/CSV/PDF list.',
-                'Start the secret draw.',
-                'Pass the device around so each person opens only their own result.',
-            ],
-            faqTitle: 'Secret Santa FAQ',
-            faq: [
-                {
-                    q: 'Is online Secret Santa free?',
-                    a: 'Yes. No account, email or payment is required.',
-                },
-                {
-                    q: 'How do I run a Secret Santa draw?',
-                    a: 'Add participants, start the secret draw, then pass the device around. Each person selects their own name to reveal their recipient.',
-                },
-                {
-                    q: 'How many people do I need?',
-                    a: 'At least 3. There is no upper limit, so it works for large classrooms and offices too.',
-                },
-                {
-                    q: 'Is it suitable for a school or classroom?',
-                    a: 'Yes. Teachers can upload a class list and run the draw on a single device. No signup is needed and no student data is collected.',
-                },
-                {
-                    q: 'Can someone draw themselves?',
-                    a: 'No. Everyone is assigned a different person.',
-                },
-                {
-                    q: 'Are results published on the site?',
-                    a: 'No. Matches stay in your browser. Each participant only sees their own recipient.',
-                },
-            ],
-            relatedTitle: 'Related tools',
-            related: [
-                { path: '/raffle', label: 'Use the name picker' },
-                { path: '/tools/gift-suggestions', label: 'Gift suggestions' },
-                { path: '/tools/wheel-of-fortune', label: 'Spin the wheel' },
-                { path: '/youtube', label: 'YouTube giveaway' },
-            ],
-        },
-    },
 };
 
-export default function ToolSeoSection({ locale, kind }: { locale: string; kind: Kind }) {
-    const copy = COPY[kind][locale] || COPY[kind].en;
+export default async function ToolSeoSection({ locale, kind }: { locale: string; kind: Kind }) {
+    const tSeo = await getTranslations({ locale, namespace: 'home.seo' });
+    const santa = kind === 'secretSanta' ? SECRET_SANTA_SEO_COPY[locale] || SECRET_SANTA_SEO_COPY.en : null;
+    const copy = santa || RAFFLE_COPY_BY_KIND.raffle[locale] || RAFFLE_COPY_BY_KIND.raffle.en;
     const pageUrl =
         locale === 'tr'
             ? `${SITE_URL}${kind === 'raffle' ? '/raffle' : '/secret-santa'}`
@@ -233,17 +139,18 @@ export default function ToolSeoSection({ locale, kind }: { locale: string; kind:
             {
                 '@type': 'ListItem',
                 position: 2,
-                name: copy.title,
+                name: santa?.pageName || copy.title,
                 item: pageUrl,
             },
         ],
     };
 
-    const webAppJsonLd = kind === 'secretSanta'
+    const webAppJsonLd = santa
         ? {
             '@context': 'https://schema.org',
             '@type': 'WebApplication',
-            name: locale === 'tr' ? 'Yılbaşı Çekilişi — Online Secret Santa' : 'Online Secret Santa',
+            name: santa.pageName,
+            description: santa.paragraphs[0],
             url: pageUrl,
             applicationCategory: 'EntertainmentApplication',
             operatingSystem: 'Web',
@@ -264,55 +171,20 @@ export default function ToolSeoSection({ locale, kind }: { locale: string; kind:
             <JsonLd data={howToJsonLd} />
             <JsonLd data={breadcrumbJsonLd} />
             {webAppJsonLd && <JsonLd data={webAppJsonLd} />}
-            <div className="max-w-3xl mx-auto px-4 py-14 sm:py-20 space-y-12">
-                <div>
-                    <h2 className="font-heading text-3xl tracking-tight text-[var(--text-primary)] mb-5 sm:text-[2rem]">
-                        {copy.title}
-                    </h2>
-                    <div className="space-y-4 text-base text-[var(--text-secondary)] leading-relaxed">
-                        {copy.paragraphs.map((p) => (
-                            <p key={p}>{p}</p>
-                        ))}
-                    </div>
-                </div>
-                <div>
-                    <h3 className="font-heading text-2xl tracking-tight text-[var(--text-primary)] mb-5">
-                        {copy.howToTitle}
-                    </h3>
-                    <ol className="space-y-4">
-                        {copy.steps.map((step, i) => (
-                            <li key={step} className="flex gap-4 text-base text-[var(--text-secondary)]">
-                                <span className="shrink-0 w-9 h-9 rounded-full font-bold text-sm flex items-center justify-center bg-santa-red/10 text-santa-red">
-                                    {i + 1}
-                                </span>
-                                <span className="pt-1.5 leading-relaxed">{step}</span>
-                            </li>
-                        ))}
-                    </ol>
-                </div>
-                <div>
-                    <h3 className="font-heading text-2xl tracking-tight text-[var(--text-primary)] mb-5">
-                        {copy.faqTitle}
-                    </h3>
-                    <div className="space-y-4">
-                        {copy.faq.map((item) => (
-                            <details
-                                key={item.q}
-                                className="group rounded-2xl border border-[var(--border-light)] bg-[var(--card-bg)] px-5 py-4"
-                            >
-                                <summary className="cursor-pointer list-none font-bold text-[var(--text-primary)] pr-6 relative">
-                                    {item.q}
-                                    <span className="absolute right-0 top-0 text-[var(--text-muted)] group-open:rotate-45 transition-transform">
-                                        +
-                                    </span>
-                                </summary>
-                                <p className="mt-3 text-[var(--text-secondary)] leading-relaxed">{item.a}</p>
-                            </details>
-                        ))}
-                    </div>
-                </div>
-                <RelatedLinks locale={locale} title={copy.relatedTitle} items={copy.related} />
-            </div>
+            <SeoContent
+                locale={locale}
+                title={copy.title}
+                paragraphs={copy.paragraphs}
+                readMore={tSeo('readMore')}
+                featuresTitle={santa?.featuresTitle}
+                features={santa?.features}
+                howToTitle={copy.howToTitle}
+                steps={copy.steps}
+                faqTitle={copy.faqTitle}
+                faq={copy.faq}
+                relatedTitle={copy.relatedTitle}
+                related={copy.related}
+            />
         </section>
     );
 }

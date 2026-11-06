@@ -1,6 +1,6 @@
 import { getTranslations } from 'next-intl/server';
 import JsonLd from '@/components/seo/JsonLd';
-import RelatedLinks from '@/components/seo/RelatedLinks';
+import SeoContent from '@/components/seo/SeoContent';
 import { SITE_URL } from '@/lib/constants';
 
 type Platform = 'tiktok' | 'youtube';
@@ -226,6 +226,8 @@ const RELATED: Record<Platform, Record<string, { title: string; items: { path: s
 
 export default async function GiveawaySeoSection({ locale, platform }: Props) {
     const t = await getTranslations({ locale, namespace: `giveaway.seo.${platform}` });
+    const tLanding = await getTranslations({ locale, namespace: `giveaway.landing.${platform}` });
+    const tSeo = await getTranslations({ locale, namespace: 'home.seo' });
 
     if (!t.has('contentTitle')) return null;
 
@@ -286,58 +288,20 @@ export default async function GiveawaySeoSection({ locale, platform }: Props) {
             {faqJsonLd && <JsonLd data={faqJsonLd} />}
             {howToJsonLd && <JsonLd data={howToJsonLd} />}
             <JsonLd data={breadcrumbJsonLd} />
-            <div className="max-w-3xl mx-auto px-4 py-14 sm:py-20 space-y-12">
-                <div>
-                    <h2 className="font-heading text-3xl tracking-tight text-[var(--text-primary)] mb-5 sm:text-[2rem]">
-                        {t('contentTitle')}
-                    </h2>
-                    <div className="space-y-4 text-base text-[var(--text-secondary)] leading-relaxed">
-                        {paragraphs.map((p) => (
-                            <p key={p}>{p}</p>
-                        ))}
-                    </div>
-                </div>
-
-                <div>
-                    <h3 className="font-heading text-2xl tracking-tight text-[var(--text-primary)] mb-5">
-                        {t('howToTitle')}
-                    </h3>
-                    <ol className="space-y-4">
-                        {steps.map((step, i) => (
-                            <li key={step} className="flex gap-4 text-base text-[var(--text-secondary)]">
-                                <span className="shrink-0 w-9 h-9 rounded-full font-bold text-sm flex items-center justify-center bg-santa-red/10 text-santa-red">
-                                    {i + 1}
-                                </span>
-                                <span className="pt-1.5 leading-relaxed">{step}</span>
-                            </li>
-                        ))}
-                    </ol>
-                </div>
-
-                {Array.isArray(faq) && faq.length > 0 && (
-                    <div>
-                        <h3 className="font-heading text-2xl tracking-tight text-[var(--text-primary)] mb-5">
-                            {t('faqTitle')}
-                        </h3>
-                        <div className="space-y-4">
-                            {faq.map((item) => (
-                                <details
-                                    key={item.q}
-                                    className="group rounded-2xl border border-[var(--border-light)] bg-[var(--card-bg)] px-5 py-4"
-                                >
-                                    <summary className="cursor-pointer list-none font-bold text-[var(--text-primary)] pr-6 relative">
-                                        {item.q}
-                                        <span className="absolute right-0 top-0 text-[var(--text-muted)] group-open:rotate-45 transition-transform">+</span>
-                                    </summary>
-                                    <p className="mt-3 text-[var(--text-secondary)] leading-relaxed">{item.a}</p>
-                                </details>
-                            ))}
-                        </div>
-                    </div>
-                )}
-
-                <RelatedLinks locale={locale} title={related.title} items={related.items} />
-            </div>
+            <SeoContent
+                locale={locale}
+                title={t('contentTitle')}
+                paragraphs={paragraphs}
+                readMore={tSeo('readMore')}
+                featuresTitle={tLanding('featuresTitle')}
+                features={tLanding.raw('features') as Array<{ title: string; desc: string }>}
+                howToTitle={t('howToTitle')}
+                steps={steps}
+                faqTitle={t('faqTitle')}
+                faq={[...(Array.isArray(faq) ? faq : []), ...(tLanding.raw('faq') as Array<{ q: string; a: string }>)]}
+                relatedTitle={related.title}
+                related={related.items}
+            />
         </section>
     );
 }

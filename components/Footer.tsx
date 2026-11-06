@@ -1,5 +1,6 @@
 "use client";
 
+import Image from "next/image";
 import { useTranslations } from "next-intl";
 import Link from "next/link";
 import { useParams } from "next/navigation";
@@ -35,7 +36,6 @@ export function Footer() {
         { label: t("contact"), href: "/contact" },
         { label: t("privacyPolicy"), href: "/privacy" },
         { label: t("legalInfo"), href: "/legal" },
-        { label: t("salesTerms"), href: "/mesafeli-satis-sozlesmesi" },
         { label: locale === "tr" ? "SSS" : "FAQ", href: "/faq" },
     ];
 
@@ -50,7 +50,7 @@ export function Footer() {
                 <div className="grid grid-cols-2 gap-x-4 gap-y-5 lg:grid-cols-[1.2fr_1fr_1fr_1fr]">
                     <div className="col-span-2 lg:col-span-1">
                         <Link href={localePath(locale)} className="inline-flex items-center gap-2.5">
-                            <img src="/icon.png" alt="YulaSanta Logo" className="h-9 w-9 rounded-lg object-contain" />
+                            <img src="/icon-192.png" alt="YulaSanta Logo" className="h-9 w-9 rounded-lg object-contain" />
                             <span className="font-heading text-lg font-extrabold leading-none tracking-tight text-foreground">
                                 Yula<span className="text-santa-red">Santa</span>
                             </span>
@@ -108,9 +108,12 @@ export function Footer() {
                 <div className="mt-6 flex justify-center">
                     <div className="relative overflow-hidden rounded-3xl border border-[var(--border-medium)] bg-gradient-to-br from-[var(--surface-2)] via-[var(--card-bg)] to-[var(--surface-2)] p-6 shadow-xl backdrop-blur-sm dark:border-white/5 dark:from-gray-900/80 dark:via-gray-950/90 dark:to-black/80 dark:shadow-none">
                         <div className="pointer-events-none absolute inset-0 bg-gradient-to-t from-santa-red/5 to-transparent" />
-                        <img
+                        <Image
                             src={isNewYearThemeActive() ? "/yula-mascot-santa.png" : "/yula-mascot.png"}
                             alt="Yula the Cat"
+                            width={208}
+                            height={208}
+                            sizes="(min-width: 768px) 182px, (min-width: 640px) 154px, 126px"
                             className="relative z-10 h-auto w-36 object-contain drop-shadow-lg animate-float sm:w-44 md:w-52"
                         />
                     </div>

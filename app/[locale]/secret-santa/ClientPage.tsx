@@ -8,14 +8,16 @@
 
 import { useState, useEffect, useRef } from "react";
 import { useRouter, useParams } from "next/navigation";
-import { Trash2, Sparkles, FileUp, Youtube, HelpCircle, ClipboardPaste, Check } from "lucide-react";
+import { Trash2, Sparkles, FileUp, ClipboardPaste, Check, Gift } from "lucide-react";
 import { Button } from "@/components/ui/Button";
 import { Input } from "@/components/ui/Input";
 import { useTranslations } from 'next-intl';
 import { CountdownBanner } from "@/components/NewYearTheme";
 import { isNewYearThemeActive } from "@/components/NewYearTheme/config";
+import { FestiveMascot, GiftBow, HeroDecor, SnowCap } from "@/components/NewYearTheme/HomeDecor";
+import { HollySprig, WinterScene } from "@/components/NewYearTheme/SantaDecor";
 import { secureShuffle } from "@/lib/random";
-import * as XLSX from "xlsx";
+import { SECRET_SANTA_H1 } from "@/lib/pageSeoCopy";
 
 const AVATAR_TONES = [
     "from-red-500 to-rose-700",
@@ -24,11 +26,20 @@ const AVATAR_TONES = [
     "from-indigo-500 to-violet-700",
 ];
 
+const SANTA_BAUBLES = [
+    { position: "left-[7%]", thread: 34, size: 20, color: "#D62839", delay: "0s" },
+    { position: "left-[29%]", thread: 26, size: 15, color: "#E7B53C", delay: "0.7s" },
+    { position: "left-[52%]", thread: 36, size: 18, color: "#1F9D63", delay: "1.3s" },
+    { position: "left-[74%]", thread: 24, size: 14, color: "#D62839", delay: "0.4s" },
+    { position: "hidden lg:flex lg:left-[16%]", thread: 150, size: 26, color: "#E7B53C", delay: "1s" },
+    { position: "hidden lg:flex lg:left-[86%]", thread: 120, size: 24, color: "#D62839", delay: "1.6s" },
+];
+
 function Avatar({ name, index = 0 }: { name: string; index?: number }) {
     const initial = name.trim().charAt(0).toUpperCase() || "?";
     return (
         <span
-            className={`inline-flex items-center justify-center w-8 h-8 rounded-full bg-gradient-to-br ${AVATAR_TONES[index % AVATAR_TONES.length]} text-white font-bold text-xs shrink-0 shadow-sm ring-2 ring-white/50 dark:ring-white/10`}
+            className={`ys-avatar-bauble relative inline-flex items-center justify-center w-8 h-8 rounded-full bg-gradient-to-br ${AVATAR_TONES[index % AVATAR_TONES.length]} text-white font-bold text-xs shrink-0 shadow-sm ring-2 ring-white/50 dark:ring-white/10`}
         >
             {initial}
         </span>
@@ -87,6 +98,8 @@ export default function Home() {
 
         try {
             if (file.name.endsWith(".xlsx") || file.name.endsWith(".xls") || file.name.endsWith(".csv")) {
+                // Loaded on demand: most visitors never upload a file, and xlsx is a large bundle.
+                const XLSX = await import("xlsx");
                 const data = await file.arrayBuffer();
                 const workbook = XLSX.read(data);
                 const sheet = workbook.Sheets[workbook.SheetNames[0]];
@@ -207,40 +220,60 @@ export default function Home() {
     const minRequired = oddPairs ? participants.length + 1 : (isPairs ? 2 : 3);
     const ready = participants.length >= minRequired;
     const progress = Math.min(100, Math.round((participants.length / minRequired) * 100));
+    const seasonal = isNewYearThemeActive();
 
     return (
-        <main className="ys-page-shell flex flex-col items-center pt-24 sm:pt-32 relative overflow-hidden transition-colors duration-300 safe-area-inset-bottom">
+        <main className={`ys-page-shell !min-h-0 flex flex-col items-center px-3 relative overflow-hidden transition-colors duration-300 safe-area-inset-bottom ${seasonal ? "pt-[72px] !pb-[104px]" : "pt-[56px] pb-6"}`}>
             {/* Decorative BG */}
             <div className="absolute top-0 left-0 w-32 sm:w-48 md:w-64 h-32 sm:h-48 md:h-64 bg-red-200 dark:bg-red-900/20 rounded-full blur-[60px] sm:blur-[80px] md:blur-[100px] opacity-30 -translate-x-1/2 -translate-y-1/2"></div>
             <div className="absolute bottom-0 right-0 w-40 sm:w-60 md:w-80 h-40 sm:h-60 md:h-80 bg-green-200 dark:bg-green-900/20 rounded-full blur-[60px] sm:blur-[80px] md:blur-[100px] opacity-30 translate-x-1/3 translate-y-1/3"></div>
 
-            <div className="z-10 w-full max-w-md space-y-4 sm:space-y-6 md:space-y-8 text-center px-1 flex-1 flex flex-col justify-center">
-                <div className="space-y-2">
-                    <div className="inline-flex items-center justify-center p-1 bg-[var(--card-bg)] rounded-2xl mb-2 sm:mb-4 shadow-sm border border-[var(--border-light)] overflow-hidden ring-4 ring-[var(--card-bg)] shadow-xl">
-                        <img src="/icon.png" alt="YulaSanta Logo" className="w-16 h-16 sm:w-20 sm:h-20 object-contain rounded-xl" />
-                    </div>
-                    <div className="flex justify-center" suppressHydrationWarning>
-                        <span className="inline-flex items-center gap-1.5 rounded-full bg-red-50 dark:bg-red-500/10 text-santa-red px-3 py-1 text-[11px] font-bold uppercase tracking-wider border border-red-100 dark:border-red-500/20">
-                            <Sparkles className="w-3 h-3" />
-                            {locale === 'tr' ? 'Secret Santa' : 'New Year Draw'}
-                        </span>
-                    </div>
-                    <h1 className="font-heading text-headline-lg-mobile sm:text-headline-lg text-[var(--text-primary)] tracking-tight">
-                        {locale === 'tr' ? 'Online Yılbaşı Çekilişi' : t('footer.secretSanta')}
-                    </h1>
-                    <div className="flex items-center justify-center gap-2 flex-wrap" suppressHydrationWarning>
-                        <p className="text-[var(--text-secondary)] text-body-lg">
-                            {t('home.subtitle')}
-                        </p>
-                        {participants.length > 0 && (
-                            <span className={`text-xs sm:text-sm font-bold px-2.5 py-1 rounded-full ${ready ? 'bg-green-100/80 dark:bg-green-500/20 text-green-700 dark:text-green-300' : 'bg-yellow-100/80 dark:bg-yellow-500/20 text-yellow-700 dark:text-yellow-300'}`}>
-                                {participants.length}/{minRequired}
-                            </span>
+            {seasonal && (
+                <>
+                    <HeroDecor baubles={SANTA_BAUBLES} />
+                    <WinterScene />
+                </>
+            )}
+
+            <div className="z-10 w-full max-w-md space-y-4 text-center">
+                <div className={seasonal ? "grid grid-cols-[minmax(0,1fr)_auto] items-center gap-x-2 text-start" : ""}>
+                    <div className="space-y-2">
+                        {seasonal && (
+                            <div className="inline-flex items-center gap-1.5 rounded-full border border-[color-mix(in_srgb,var(--gold)_40%,transparent)] bg-[color-mix(in_srgb,var(--gold)_12%,transparent)] px-3 py-1 text-xs font-bold text-[var(--text-primary)]">
+                                <span className="text-gold" aria-hidden="true">✦</span>
+                                {t('home.happyNewYear')}
+                            </div>
                         )}
+                        <h1 className="font-heading text-headline-lg-mobile sm:text-headline-lg text-[var(--text-primary)] tracking-tight">
+                            {SECRET_SANTA_H1[locale] || SECRET_SANTA_H1.en}
+                        </h1>
+                        <div className={`flex items-center gap-2 flex-wrap ${seasonal ? "justify-start" : "justify-center"}`} suppressHydrationWarning>
+                            <p className="text-[var(--text-secondary)] text-body-lg">
+                                {t('home.subtitle')}
+                            </p>
+                            {participants.length > 0 && (
+                                <span className={`text-xs sm:text-sm font-bold px-2.5 py-1 rounded-full ${ready ? 'bg-green-100/80 dark:bg-green-500/20 text-green-700 dark:text-green-300' : 'bg-yellow-100/80 dark:bg-yellow-500/20 text-yellow-700 dark:text-yellow-300'}`}>
+                                    {participants.length}/{minRequired}
+                                </span>
+                            )}
+                        </div>
                     </div>
+                    {seasonal && (
+                        <div className="relative aspect-square w-[108px] shrink-0 sm:w-[128px]">
+                            <FestiveMascot sizes="(min-width: 640px) 128px, 108px" />
+                        </div>
+                    )}
                 </div>
 
-                <div className="ys-card backdrop-blur-xl p-4 sm:p-5 md:p-6 space-y-4 sm:space-y-5 md:space-y-6">
+                <div className={`ys-card backdrop-blur-xl p-4 sm:p-5 md:p-6 space-y-4 sm:space-y-5 md:space-y-6 ${seasonal ? "ys-gift-card relative overflow-hidden !pt-[38px]" : ""}`}>
+                    {seasonal && (
+                        <>
+                            <SnowCap />
+                            <GiftBow />
+                            <HollySprig className="left-[6px] top-[6px] h-[26px] w-auto" />
+                            <HollySprig className="right-[6px] top-[6px] h-[26px] w-auto -scale-x-100" />
+                        </>
+                    )}
                     {/* Mode Selector */}
                     <div className="grid grid-cols-2 gap-3" suppressHydrationWarning>
                         <button
@@ -255,7 +288,7 @@ export default function Home() {
                             <div className="text-2xl sm:text-3xl mb-1">🎅</div>
                             <div className="font-bold text-xs sm:text-sm">{t('home.secretDraw')}</div>
                             <div className="text-[10px] sm:text-xs text-[var(--text-muted)] mt-1">
-                                {locale === 'tr' ? 'Herkes kime hediye alacağını gizli görür' : 'Each person secretly sees who to buy for'}
+                                {t('home.secretDrawDesc')}
                             </div>
                         </button>
 
@@ -271,7 +304,7 @@ export default function Home() {
                             <div className="text-2xl sm:text-3xl mb-1">👥</div>
                             <div className="font-bold text-xs sm:text-sm">{t('home.directMatch')}</div>
                             <div className="text-[10px] sm:text-xs text-[var(--text-muted)] mt-1">
-                                {locale === 'tr' ? 'Katılımcılar karşılıklı ikili eşleşir' : 'Participants are matched up in pairs'}
+                                {t('home.directMatchDesc')}
                             </div>
                         </button>
                     </div>
@@ -299,9 +332,9 @@ export default function Home() {
 
                     <div className="space-y-2 max-h-[35vh] sm:max-h-[40vh] overflow-y-auto pr-1 sm:pr-2 custom-scrollbar">
                         {participants.length === 0 && (
-                            <div className="text-center py-8 sm:py-12 text-[var(--text-muted)] border-2 border-dashed border-[var(--border-medium)] rounded-xl sm:rounded-2xl bg-[var(--surface-2)]">
-                                <div className="mx-auto mb-3 w-12 h-12 rounded-full bg-red-50 dark:bg-red-500/10 flex items-center justify-center">
-                                    <Sparkles className="w-6 h-6 text-santa-red/60" />
+                            <div className="text-center py-5 text-[var(--text-muted)] border-2 border-dashed border-[var(--border-medium)] rounded-xl sm:rounded-2xl bg-[var(--surface-2)]">
+                                <div className="mx-auto mb-2 w-10 h-10 rounded-full bg-red-50 dark:bg-red-500/10 flex items-center justify-center">
+                                    <Gift className="w-5 h-5 text-santa-red animate-float motion-reduce:animate-none" />
                                 </div>
                                 <p className="text-body-md">{t('home.noParticipants')}</p>
                             </div>
@@ -380,19 +413,17 @@ export default function Home() {
                                     {ready ? (
                                         <span className="inline-flex items-center gap-1 text-green-600 dark:text-green-400">
                                             <Check className="w-3 h-3" strokeWidth={3} />
-                                            {locale === 'tr' ? 'Hazır' : 'Ready'}
+                                            {t('home.readyLabel')}
                                         </span>
                                     ) : (
                                         <span className="text-amber-600 dark:text-amber-400">
-                                            {locale === 'tr'
-                                                ? `${minRequired - participants.length} kişi daha`
-                                                : `${minRequired - participants.length} more`}
+                                            {t('home.moreNeeded', { count: minRequired - participants.length })}
                                         </span>
                                     )}
                                 </div>
-                                <div className="h-1.5 w-full rounded-full bg-[var(--surface-2)] overflow-hidden">
+                                <div className="h-2 w-full rounded-full bg-[var(--surface-2)] overflow-hidden">
                                     <div
-                                        className={`h-full rounded-full transition-all duration-500 ${ready ? 'bg-gradient-to-r from-emerald-400 to-green-600' : 'bg-gradient-to-r from-amber-400 to-yellow-500'}`}
+                                        className={`ys-candy-fill h-full rounded-full transition-all duration-500 ${ready ? 'bg-gradient-to-r from-emerald-400 to-green-600' : 'bg-gradient-to-r from-amber-400 to-yellow-500'}`}
                                         style={{ width: `${progress}%` }}
                                     />
                                 </div>
@@ -401,7 +432,7 @@ export default function Home() {
 
                         <Button
                             onClick={handleDraw}
-                            className={`w-full text-lg py-6 shadow-lg transition-all ${drawMode === 'pairs' ? 'shadow-green-200/50 dark:shadow-green-900/20 hover:shadow-green-200/50 bg-christmas-green hover:bg-green-700' : 'shadow-red-200/50 dark:shadow-red-900/20'}`}
+                            className={`ys-festive-cta w-full text-lg py-6 shadow-lg transition-all ${drawMode === 'pairs' ? 'shadow-green-200/50 dark:shadow-green-900/20 hover:shadow-green-200/50 bg-christmas-green hover:bg-green-700' : 'shadow-red-200/50 dark:shadow-red-900/20'}`}
                             variant="default"
                             disabled={participants.length < (drawMode === 'pairs' ? 2 : 3)}
                         >
@@ -429,62 +460,11 @@ export default function Home() {
 
                 {/* 🎄 Yılbaşı Geri Sayım Banner */}
                 {isNewYearThemeActive() && (
-                    <div className="w-full flex justify-center mt-4 mb-2">
-                        <CountdownBanner />
+                    <div className="w-full text-start">
+                        <CountdownBanner compact />
                     </div>
                 )}
 
-                {/* How to Play Section */}
-                <div className="ys-card w-full mt-4 backdrop-blur-sm p-5">
-                    <h3 className="font-heading text-headline-md text-[var(--text-primary)] mb-3 text-center flex items-center justify-center gap-2">
-                        <HelpCircle className="w-5 h-5 text-santa-red" />
-                        {t('howToPlay.title')}
-                    </h3>
-                    <p className="text-body-md text-[var(--text-secondary)] mb-4 text-center leading-relaxed font-medium">
-                        {t('howToPlay.subtitle')}
-                    </p>
-                    <ul className="space-y-3">
-                        {[1, 2, 3, 4].map((step) => (
-                            <li key={step} className="flex gap-3 text-sm text-[var(--text-secondary)] items-start text-left">
-                                <span className="flex-shrink-0 w-6 h-6 rounded-full bg-red-100 dark:bg-red-900/40 text-santa-red font-bold text-xs flex items-center justify-center mt-0.5 border border-red-200 dark:border-red-800/50">
-                                    {step}
-                                </span>
-                                <span>{t(`howToPlay.step${step}`)}</span>
-                            </li>
-                        ))}
-                    </ul>
-                </div>
-
-                <div className="w-full space-y-3 sm:space-y-4 mt-3 sm:mt-4">
-                    <h2 className="font-heading text-base sm:text-lg font-bold text-[var(--text-primary)] text-center">{t('home.socialMediaGiveaways')}</h2>
-                    <div className="grid grid-cols-2 gap-2 sm:gap-3">
-                        <button
-                            onClick={() => router.push(`/${locale}/youtube`)}
-                            className="group flex flex-col items-center gap-1.5 sm:gap-2 p-3 sm:p-4 bg-[var(--card-bg)] rounded-xl sm:rounded-2xl border border-[var(--border-light)] hover:border-red-200 dark:hover:border-red-500/30 hover:shadow-lg hover:shadow-red-100/50 dark:hover:shadow-red-900/20 transition-all"
-                        >
-                            <div className="p-2 sm:p-3 bg-red-600 rounded-lg sm:rounded-xl group-hover:scale-110 transition-transform">
-                                <Youtube className="w-5 h-5 sm:w-6 sm:h-6 text-white" />
-                            </div>
-                            <span className="text-[10px] sm:text-xs font-bold text-[var(--text-secondary)] group-hover:text-red-600 dark:group-hover:text-red-400">{t('home.youtubeGiveaway')}</span>
-                        </button>
-
-                        <button
-                            onClick={() => router.push(`/${locale}/tiktok`)}
-                            className="group flex flex-col items-center gap-1.5 sm:gap-2 p-3 sm:p-4 bg-[var(--card-bg)] rounded-xl sm:rounded-2xl border border-[var(--border-light)] hover:border-cyan-200 dark:hover:border-cyan-500/30 hover:shadow-lg hover:shadow-cyan-100/50 dark:hover:shadow-cyan-900/20 transition-all"
-                        >
-                            <div className="p-2 sm:p-3 bg-black dark:bg-[var(--card-bg)] rounded-lg sm:rounded-xl group-hover:scale-110 transition-transform flex items-center justify-center ring-1 ring-white/10">
-                                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512" className="w-5 h-5 sm:w-6 sm:h-6 text-white" fill="currentColor">
-                                    <path d="M448 209.91a210.06 210.06 0 0 1-122.77-39.25V349.38A162.55 162.55 0 1 1 185 188.31V278.2a74.62 74.62 0 1 0 52.23 71.18V0l88 0a121.18 121.18 0 0 0 1.86 22.17h0A122.18 122.18 0 0 0 381 102.39a121.43 121.43 0 0 0 67 20.14z" />
-                                </svg>
-                            </div>
-                            <span className="text-[10px] sm:text-xs font-bold text-[var(--text-secondary)] group-hover:text-cyan-600 dark:group-hover:text-cyan-400">{t('home.tiktokGiveaway')}</span>
-                        </button>
-                    </div>
-                </div>
-
-                <p className="text-[var(--text-muted)] text-body-md font-medium">
-                    {t('home.happyNewYear')}
-                </p>
             </div>
         </main>
     );

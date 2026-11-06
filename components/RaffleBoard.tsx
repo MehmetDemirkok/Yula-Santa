@@ -164,14 +164,14 @@ export default function RaffleBoard({
     );
 
     return (
-        <main className="ys-page-shell flex flex-col items-center pt-24 sm:pt-32 px-3 sm:px-4 pb-16 relative overflow-hidden transition-colors duration-300">
+        <main className="ys-page-shell !min-h-0 flex flex-col items-center pt-[56px] px-3 sm:px-4 pb-6 relative overflow-hidden transition-colors duration-300">
             <div className={`absolute top-0 left-0 w-64 h-64 ${accentGlow} rounded-full blur-[90px] opacity-40 -translate-x-1/3 -translate-y-1/3`} />
             <div className={`absolute bottom-0 right-0 w-72 h-72 ${accentGlow} rounded-full blur-[90px] opacity-30 translate-x-1/3 translate-y-1/3`} />
 
-            <div className="z-10 w-full max-w-lg space-y-5">
+            <div className="z-10 w-full max-w-lg space-y-4">
                 {/* Header */}
-                <div className="text-center space-y-3">
-                    <div className={`inline-flex items-center justify-center w-16 h-16 rounded-2xl text-white shadow-lg ${accentBox}`}>
+                <div className="text-center space-y-2">
+                    <div className={`inline-flex items-center justify-center w-12 h-12 rounded-2xl text-white shadow-lg ${accentBox}`}>
                         {icon}
                     </div>
                     <h1 className="font-heading text-headline-lg-mobile sm:text-headline-lg text-[var(--text-primary)] tracking-tight">{title}</h1>
@@ -239,7 +239,7 @@ export default function RaffleBoard({
                             </div>
                             <div className="rounded-md overflow-hidden border border-[var(--border-light)] max-h-[28vh] overflow-y-auto custom-scrollbar">
                                 {participants.length === 0 && (
-                                    <div className="text-center py-8 text-[var(--text-muted)] border-2 border-dashed border-[var(--border-medium)] rounded-md">
+                                    <div className="text-center py-5 text-[var(--text-muted)] border-2 border-dashed border-[var(--border-medium)] rounded-md">
                                         <Sparkles className="w-6 h-6 mx-auto mb-2 opacity-50" />
                                         <p className="text-sm">{t.home.noParticipants}</p>
                                     </div>

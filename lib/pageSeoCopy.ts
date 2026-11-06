@@ -55,14 +55,14 @@ const raffle: Record<string, Copy> = {
 
 const secretSanta: Record<string, Copy> = {
     tr: {
-        title: 'Yılbaşı Çekilişi — Online Secret Santa | YulaSanta',
+        title: 'Yılbaşı Hediye Çekilişi {year}: Ücretsiz Online Kura | YulaSanta',
         description:
-            'Yılbaşı çekilişi yap: sınıfını, arkadaşlarını veya ofisini ekle, gizli hediye eşleştirmesini başlat. Ücretsiz online Secret Santa — kayıt ve şifre yok.',
+            'Online yılbaşı çekilişi yap: isimleri ekle, gizli kurayı başlat, herkes kime hediye alacağını görsün. Sınıf, ofis ve aile için ücretsiz Secret Santa.',
     },
     en: {
-        title: 'Online Secret Santa — Holiday Gift Draw | YulaSanta',
+        title: 'Online Secret Santa Generator {year}: Free Draw | YulaSanta',
         description:
-            'Add friends and match in secret. Free online Secret Santa — no signup, each person sees only their recipient.',
+            'Run a free online Secret Santa draw for friends, family, classrooms or the office. Add names, draw in secret and find out who to buy for. No signup.',
     },
     de: {
         title: 'Online Wichteln — Secret Santa | YulaSanta',
@@ -143,7 +143,7 @@ export const RAFFLE_H1: Record<string, string> = {
 };
 
 export const SECRET_SANTA_H1: Record<string, string> = {
-    tr: 'Online Secret Santa',
+    tr: 'Online Yılbaşı Hediye Çekilişi',
     en: 'Online Secret Santa',
     de: 'Online Wichteln',
     fr: 'Père Noël Secret',

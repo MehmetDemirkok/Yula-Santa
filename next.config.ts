@@ -25,6 +25,8 @@ const nextConfig: NextConfig = {
       { source: `/${locale}/yilbasi-cekilisi`, destination: '/:locale/secret-santa', permanent: true },
       { source: '/plaka-avcisi', destination: '/oyun/plaka-avcisi', permanent: true },
       { source: `/${locale}/plaka-avcisi`, destination: '/:locale/oyun/plaka-avcisi', permanent: true },
+      { source: '/mesafeli-satis-sozlesmesi', destination: '/legal', permanent: true },
+      { source: `/${locale}/mesafeli-satis-sozlesmesi`, destination: '/:locale/legal', permanent: true },
     ];
   },
   images: {

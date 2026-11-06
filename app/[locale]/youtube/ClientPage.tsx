@@ -3,7 +3,6 @@
 import { useState, useRef, useEffect, useMemo } from "react";
 import { useLocale, useTranslations } from "next-intl";
 import { celebrate } from "@/lib/celebrate";
-import { useRouter } from "@/i18n/navigation";
 import {
     Youtube,
     MessageCircle,
@@ -12,14 +11,12 @@ import {
     Users,
     AtSign,
     Play,
-    Home,
     Trash2,
     Bell,
     Loader2,
     Trophy,
     X,
     ChevronDown,
-    ChevronUp,
     Check,
     Shield,
     Zap,
@@ -31,9 +28,7 @@ import {
     ClipboardPaste,
     ArrowRight,
     Sparkles,
-    Clock,
     BadgeCheck,
-    Shuffle,
 } from "lucide-react";
 import { Button } from "@/components/ui/Button";
 import { useLanguage } from "@/lib/i18n/LanguageContext";
@@ -48,7 +43,6 @@ import { DrawProofPanel } from "@/components/giveaway/DrawProofPanel";
 import { SITE_SHARE_SUFFIX } from "@/lib/constants";
 import { AdWrapper, InArticleAd } from "@/components/ads";
 import { AD_SLOTS } from "@/lib/ads/config";
-import { Reveal } from "@/components/Reveal";
 
 type Phase = "input" | "configure" | "results";
 type DrawType = "comments" | "likes" | "subscribers";
@@ -65,11 +59,9 @@ interface Participant {
 const YT_PRIMARY = "bg-[#FF0000] hover:bg-[#e60000]";
 const YT_SOFT = "bg-gradient-to-br from-red-50 to-orange-50 dark:from-red-500/10 dark:to-orange-500/5";
 
-const FEATURE_ICONS = [MessageCircle, Filter, Users, UserCheck, MessageCircle, Youtube, Download, Clock] as const;
 const TRUST_ICONS = [Shield, Zap, Filter, Users, BadgeCheck] as const;
 
 export default function YouTubeGiveaway() {
-    const router = useRouter();
     const locale = useLocale();
     const { t } = useLanguage();
     const tl = useTranslations("giveaway.landing.youtube");
@@ -111,7 +103,6 @@ export default function YouTubeGiveaway() {
     const [loadingStep, setLoadingStep] = useState("");
     const [error, setError] = useState<string | null>(null);
     const [showShareModal, setShowShareModal] = useState(false);
-    const [openFaq, setOpenFaq] = useState<number | null>(0);
 
     useEffect(() => {
         function handleClickOutside(event: MouseEvent) {
@@ -429,10 +420,6 @@ export default function YouTubeGiveaway() {
     };
 
     const trustBadgeLabels = tl.raw("trustBadges") as string[];
-    const metrics = tl.raw("metrics") as Array<{ value: string; label: string }>;
-    const featuresData = tl.raw("features") as Array<{ title: string; desc: string }>;
-    const howSteps = tl.raw("howSteps") as Array<{ title: string; desc: string }>;
-    const faqItems = tl.raw("faq") as Array<{ q: string; a: string }>;
 
     const progressSteps = [
         { n: 1, label: tl("steps.paste") },
@@ -444,17 +431,17 @@ export default function YouTubeGiveaway() {
     const stepIndex = phase === "input" ? 1 : phase === "configure" ? 3 : 4;
 
     return (
-        <main className="yt-page relative min-h-screen bg-[#fafafa] dark:bg-[var(--background)] text-[var(--text-primary)] overflow-x-hidden">
+        <main className="yt-page relative bg-[#fafafa] dark:bg-[var(--background)] text-[var(--text-primary)] overflow-x-hidden">
             <div className="pointer-events-none absolute inset-0 overflow-hidden" aria-hidden>
                 <div className="absolute -top-32 left-1/2 h-[520px] w-[900px] -translate-x-1/2 rounded-full bg-[radial-gradient(ellipse_at_center,rgba(255,0,0,0.12),transparent_70%)]" />
                 <div className="absolute top-40 -left-24 h-72 w-72 rounded-full bg-red-500/10 blur-3xl" />
                 <div className="absolute top-80 -right-20 h-80 w-80 rounded-full bg-orange-500/10 blur-3xl" />
             </div>
 
-            <section ref={toolRef} className="relative z-10 mx-auto max-w-5xl px-4 pb-16 pt-24 sm:px-6 sm:pt-32 lg:pb-24">
+            <section ref={toolRef} className="relative z-10 mx-auto max-w-5xl scroll-mt-14 px-4 pb-6 pt-[56px] sm:scroll-mt-16 sm:px-6 lg:scroll-mt-20 lg:pb-10">
                 <div className="mx-auto max-w-3xl text-center">
-                    <div className="mb-8 flex items-center justify-center gap-3">
-                        <div className="h-12 w-12 rounded-xl bg-gradient-to-br from-red-500 to-red-600 flex items-center justify-center shadow-lg">
+                    <div className="mb-3 flex items-center justify-center gap-3">
+                        <div className="h-10 w-10 rounded-xl bg-gradient-to-br from-red-500 to-red-600 flex items-center justify-center shadow-lg">
                             <Youtube className="h-6 w-6 text-white" strokeWidth={1.5} />
                         </div>
                         <div className="text-left">
@@ -467,7 +454,7 @@ export default function YouTubeGiveaway() {
                         </div>
                     </div>
 
-                    <h1 className="font-heading text-[2.25rem] leading-[1.1] tracking-tight text-[var(--text-primary)] sm:text-5xl md:text-[3.5rem]">
+                    <h1 className="font-heading text-[28px] font-extrabold leading-tight tracking-tight text-[var(--text-primary)] sm:text-4xl">
                         {locale === "tr"
                             ? "YouTube yorum çekilişi"
                             : locale === "en"
@@ -475,12 +462,12 @@ export default function YouTubeGiveaway() {
                               : `${tl("heroTitle")} ${tl("heroHighlight")}`}
                     </h1>
 
-                    <p className="mx-auto mt-5 max-w-xl text-base leading-relaxed text-[var(--text-secondary)] sm:text-lg">
+                    <p className="mx-auto mt-2 max-w-xl text-sm leading-relaxed text-[var(--text-secondary)] sm:text-base">
                         {tl("heroSubtitle")}
                     </p>
                 </div>
 
-                <nav aria-label="Giveaway steps" className="mx-auto mt-10 max-w-3xl">
+                <nav aria-label="Giveaway steps" className="mx-auto mt-5 max-w-3xl">
                     <ol className="flex flex-wrap items-center justify-center gap-2 sm:gap-3">
                         {progressSteps.map((s, i) => {
                             const active = stepIndex >= s.n || (phase === "configure" && s.n <= 3) || (phase === "results" && s.n <= 4);
@@ -511,7 +498,7 @@ export default function YouTubeGiveaway() {
                     </ol>
                 </nav>
 
-                <div className="mx-auto mt-8 max-w-3xl">
+                <div className="mx-auto mt-5 max-w-3xl">
                     <div className="overflow-hidden rounded-[20px] border border-[var(--border-light)] bg-white shadow-[0_8px_40px_rgba(17,24,39,0.06)] dark:border-white/10 dark:bg-[var(--card-bg)]">
                         {isRolling && (
                             <div className="flex flex-col items-center justify-center space-y-6 px-6 py-16">
@@ -1044,7 +1031,7 @@ export default function YouTubeGiveaway() {
                 </div>
 
                 {phase === "input" && (
-                    <ul className="mx-auto mt-8 flex max-w-3xl flex-wrap items-center justify-center gap-2 sm:gap-3">
+                    <ul className="mx-auto mt-4 flex max-w-3xl flex-wrap items-center justify-center gap-2 sm:gap-3">
                         {trustBadgeLabels.map((label, i) => {
                             const Icon = TRUST_ICONS[i] ?? BadgeCheck;
                             return (
@@ -1062,120 +1049,6 @@ export default function YouTubeGiveaway() {
                 )}
             </section>
 
-            <section className="relative z-10 border-y border-[var(--border-light)] bg-white/70 py-14 dark:bg-white/[0.02]">
-                <div className="mx-auto grid max-w-5xl grid-cols-2 gap-6 px-4 sm:grid-cols-4 sm:gap-8 sm:px-6">
-                    {metrics.map((m) => (
-                        <Reveal key={m.label}>
-                            <div className="text-center">
-                                <p className="text-3xl font-black tracking-tight text-[#FF0000] sm:text-4xl">{m.value}</p>
-                                <p className="mt-2 text-sm text-[var(--text-muted)]">{m.label}</p>
-                            </div>
-                        </Reveal>
-                    ))}
-                </div>
-            </section>
-
-            <section className="relative z-10 mx-auto max-w-5xl px-4 py-16 sm:px-6 sm:py-20">
-                <Reveal>
-                    <div className="mx-auto mb-12 max-w-2xl text-center">
-                        <h2 className="text-3xl font-bold tracking-tight sm:text-[2rem]">{tl("featuresTitle")}</h2>
-                        <p className="mt-3 text-base text-[var(--text-secondary)]">{tl("featuresSubtitle")}</p>
-                    </div>
-                </Reveal>
-                <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
-                    {featuresData.map((f, i) => {
-                        const Icon = FEATURE_ICONS[i] ?? MessageCircle;
-                        return (
-                            <Reveal key={f.title}>
-                                <article className="group h-full rounded-[18px] border border-[var(--border-light)] bg-gradient-to-b from-white to-[#fafafa] p-5 shadow-[0_4px_20px_rgba(17,24,39,0.04)] transition hover:-translate-y-1 hover:shadow-[0_12px_32px_rgba(17,24,39,0.08)] dark:from-[var(--card-bg)] dark:to-[var(--card-bg)] dark:border-white/10">
-                                    <div className={`mb-4 inline-flex rounded-2xl p-3 text-white shadow-md ${YT_PRIMARY}`}>
-                                        <Icon className="h-5 w-5" strokeWidth={1.75} />
-                                    </div>
-                                    <h3 className="text-lg font-semibold tracking-tight">{f.title}</h3>
-                                    <p className="mt-2 text-sm leading-relaxed text-[var(--text-secondary)]">{f.desc}</p>
-                                </article>
-                            </Reveal>
-                        );
-                    })}
-                </div>
-            </section>
-
-            <section className="relative z-10 border-t border-[var(--border-light)] bg-white py-16 dark:bg-white/[0.02] sm:py-20">
-                <div className="mx-auto max-w-3xl px-4 sm:px-6">
-                    <Reveal>
-                        <div className="mb-12 text-center">
-                            <h2 className="text-3xl font-bold tracking-tight sm:text-[2rem]">{tl("howTitle")}</h2>
-                            <p className="mt-3 text-base text-[var(--text-secondary)]">{tl("howSubtitle")}</p>
-                        </div>
-                    </Reveal>
-                    <ol className="relative space-y-0">
-                        {howSteps.map((s, i) => (
-                            <Reveal key={s.title} delay={i * 60}>
-                                <li className="relative flex gap-4 pb-10 last:pb-0">
-                                    {i < howSteps.length - 1 && (
-                                        <div className="absolute left-[19px] top-10 h-[calc(100%-2.5rem)] w-px bg-gradient-to-b from-[#FF0000]/50 to-transparent" aria-hidden />
-                                    )}
-                                    <div className={`relative z-10 flex h-10 w-10 shrink-0 items-center justify-center rounded-full text-sm font-bold text-white shadow-md ${YT_PRIMARY}`}>
-                                        {i + 1}
-                                    </div>
-                                    <div className="rounded-2xl border border-[var(--border-light)] bg-[#fafafa] p-4 pt-2 dark:bg-white/5 sm:flex-1">
-                                        <h3 className="text-lg font-semibold">{s.title}</h3>
-                                        <p className="mt-1 text-sm text-[var(--text-secondary)]">{s.desc}</p>
-                                    </div>
-                                </li>
-                            </Reveal>
-                        ))}
-                    </ol>
-                    <div className="mt-10 text-center">
-                        <button
-                            type="button"
-                            onClick={scrollToTool}
-                            className={`inline-flex items-center gap-2 rounded-2xl px-6 py-3.5 text-sm font-bold text-white shadow-lg transition hover:-translate-y-0.5 ${YT_PRIMARY}`}
-                        >
-                            <Shuffle className="h-4 w-4" /> {tl("startCta")}
-                        </button>
-                    </div>
-                </div>
-            </section>
-
-            <section className="relative z-10 mx-auto max-w-3xl px-4 py-16 sm:px-6 sm:py-20">
-                <Reveal>
-                    <h2 className="mb-8 text-center text-3xl font-bold tracking-tight sm:text-[2rem]">{tl("faqTitle")}</h2>
-                </Reveal>
-                <div className="space-y-3">
-                    {faqItems.map((item, i) => {
-                        const open = openFaq === i;
-                        return (
-                            <Reveal key={item.q} delay={i * 40}>
-                                <div className="overflow-hidden rounded-[18px] border border-[var(--border-light)] bg-white shadow-sm dark:bg-[var(--card-bg)] dark:border-white/10">
-                                    <button
-                                        type="button"
-                                        aria-expanded={open}
-                                        onClick={() => setOpenFaq(open ? null : i)}
-                                        className="flex w-full items-center justify-between gap-4 px-5 py-4 text-left"
-                                    >
-                                        <span className="font-heading text-base font-semibold sm:text-lg">{item.q}</span>
-                                        <span className={`flex h-8 w-8 shrink-0 items-center justify-center rounded-full bg-[var(--surface-2)] text-[var(--text-muted)] transition ${open ? "rotate-180" : ""}`}>
-                                            <ChevronUp className="h-4 w-4" />
-                                        </span>
-                                    </button>
-                                    <div className={`grid transition-all duration-300 ease-out ${open ? "grid-rows-[1fr] opacity-100" : "grid-rows-[0fr] opacity-0"}`}>
-                                        <div className="overflow-hidden">
-                                            <p className="px-5 pb-5 text-sm leading-relaxed text-[var(--text-secondary)] sm:text-base">{item.a}</p>
-                                        </div>
-                                    </div>
-                                </div>
-                            </Reveal>
-                        );
-                    })}
-                </div>
-            </section>
-
-            <div className="relative z-10 pb-12 text-center">
-                <Button onClick={() => router.push("/")} variant="ghost" className="rounded-2xl text-[var(--text-muted)]">
-                    <Home className="mr-2 h-4 w-4" /> {t.result.backToHome}
-                </Button>
-            </div>
         </main>
     );
 }

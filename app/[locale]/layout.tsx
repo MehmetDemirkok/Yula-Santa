@@ -118,8 +118,8 @@ export async function generateMetadata({
             images: [
                 {
                     url: '/opengraph-image.png',
-                    width: 1200,
-                    height: 630,
+                    width: 1024,
+                    height: 1024,
                     alt: 'YulaSanta',
                 }
             ],

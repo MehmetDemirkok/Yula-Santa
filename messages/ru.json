@@ -25,7 +25,7 @@
             "q1": "What is YulaSanta?",
             "a1": "YulaSanta is a free platform for YouTube and TikTok comment giveaways, Secret Santa gift exchanges, name picking, and tools like dice, coin flip, random numbers, short straw, wheel of fortune, and team generator.",
             "q2": "Is YulaSanta free?",
-            "a2": "Yes. All core features are free — no registration or login required.",
+            "a2": "Да. Все функции бесплатны, регистрация и вход не требуются.",
             "q3": "Which social platforms do you support?",
             "a3": "You can run comment giveaways from YouTube and TikTok videos.",
             "q4": "How does Secret Santa work?",
@@ -50,7 +50,12 @@
         "uploadList": "Загрузить список (Excel/PDF)",
         "uploading": "Загрузка...",
         "clearList": "Очистить список",
-        "startDraw": "Start a Giveaway",
+        "startDraw": "Начать жеребьёвку",
+        "santaCta": "Провести Тайного Санту",
+        "secretDrawDesc": "Каждый тайно видит, кому дарить подарок",
+        "directMatchDesc": "Участники распределяются по парам",
+        "readyLabel": "Готово",
+        "moreNeeded": "ещё {count}",
         "match": "Сопоставить",
         "happyNewYear": "🎄 С Новым годом!",
         "minPeople3": "Добавьте минимум 3 человека",
@@ -68,7 +73,6 @@
         "directMatchMinError": "Для сопоставления нужно минимум 2 человека!",
         "directMatchEvenError": "Для прямого соответствия нужно четное количество людей!",
         "drawError": "Произошла ошибка, попробуйте снова.",
-        "socialMediaGiveaways": "Comment Giveaways",
         "secure": "100% Безопасно",
         "fast": "Супер быстро",
         "noPassword": "Без пароля",
@@ -185,16 +189,10 @@
         "countUserOnce": "Считать пользователя один раз",
         "inputError": "Пожалуйста, введите корректную ссылку!",
         "fetchError": "Не удалось загрузить данные.",
-        "apiLimitation": "Автоматическая загрузка временно недоступна. Используйте ручной ввод.",
-        "manualMode": "Ручной ввод (Бесплатно)",
-        "autoMode": "Авто-загрузка",
-        "manualDesc": "Идеально для небольших розыгрышей. Просто вставьте комментарии.",
-        "autoDesc": "Идеально для больших розыгрышей.",
         "pasteComments": "Вставьте комментарии (по одному на строку)",
         "parse": "Обработать",
         "parsed": "Обработано {count} участников",
         "youtubeLimitNote": "Прим.: Можно загрузить до 1000 комментариев автоматически.",
-        "tiktokLimitNote": "Прим.: Автозагрузка стоит 200 TL за запуск и возвращает до 1000 комментариев.",
         "participantLimitDetails": "Для обработки большего числа комментариев используйте ручной режим.",
         "channelUsername": "Имя пользователя (Проверка подписки)",
         "channelUsernameHint": "Введите ваше имя пользователя, чтобы проверить подписку победителей",
@@ -253,7 +251,7 @@
                 ],
                 "howToTitle": "Как провести розыгрыш по комментариям TikTok",
                 "howToSteps": [
-                    "Вставьте ссылку на видео TikTok в YulaSanta или добавьте участников вручную.",
+                    "Соберите комментарии с помощью расширения Chrome или скопируйте и вставьте их в YulaSanta.",
                     "Укажите количество победителей, запасных и правила участия.",
                     "Запустите розыгрыш — мгновенно поделитесь результатами."
                 ],
@@ -265,7 +263,7 @@
                     },
                     {
                         "q": "Нужно ли входить в аккаунт TikTok?",
-                        "a": "Нет. Просто вставьте ссылку на видео или добавьте комментарии вручную — пароль не нужен."
+                        "a": "Нет. Пароль не нужен: просто соберите комментарии с помощью расширения Chrome или вставьте их."
                     },
                     {
                         "q": "Можно ли выбрать запасных победителей?",
@@ -306,11 +304,6 @@
                 "add": "Добавить",
                 "loadingWait": "Обычно занимает 10–40 секунд",
                 "featuresTitle": "Всё для честных розыгрышей на YouTube",
-                "featuresSubtitle": "Быстро, прозрачно и надежно — без захода в аккаунт.",
-                "howTitle": "Как это работает?",
-                "howSubtitle": "Пять простых шагов. Ничего лишнего.",
-                "startCta": "Начать розыгрыш",
-                "faqTitle": "Часто задаваемые вопросы",
                 "steps": {
                     "paste": "Вставить ссылку",
                     "load": "Загрузить",
@@ -323,24 +316,6 @@
                     "Фильтр дубликатов",
                     "Резервные победители",
                     "Бесплатно"
-                ],
-                "metrics": [
-                    {
-                        "value": "Бесплатно",
-                        "label": "Без регистрации"
-                    },
-                    {
-                        "value": "Автоматически",
-                        "label": "Сбор комментариев"
-                    },
-                    {
-                        "value": "100%",
-                        "label": "Случайный выбор"
-                    },
-                    {
-                        "value": "0",
-                        "label": "Вход обязателен"
-                    }
                 ],
                 "features": [
                     {
@@ -374,28 +349,6 @@
                     {
                         "title": "Быстрый процесс",
                         "desc": "Четкий и короткий путь от ссылки до результатов."
-                    }
-                ],
-                "howSteps": [
-                    {
-                        "title": "Вставьте ссылку YouTube",
-                        "desc": "Вставьте URL видео или Shorts в поле ввода."
-                    },
-                    {
-                        "title": "Загрузите комментарии",
-                        "desc": "Получите участников через API или добавьте вручную."
-                    },
-                    {
-                        "title": "Выберите правила",
-                        "desc": "Настройте количество победителей, резервных мест и проверку подписки."
-                    },
-                    {
-                        "title": "Выберите победителей",
-                        "desc": "Определите победителей с помощью честного случайного выбора."
-                    },
-                    {
-                        "title": "Поделитесь результатами",
-                        "desc": "Копируйте, скачивайте или делитесь в один клик."
                     }
                 ],
                 "faq": [
@@ -438,82 +391,43 @@
                 ]
             },
             "tiktok": {
-                "badge": "Розыгрыш по комментариям TikTok",
                 "heroTitle": "TikTok",
                 "heroHighlight": "Розыгрыш по комментариям",
-                "heroSubtitle": "Вставьте ссылку на видео и выберите победителей среди комментариев. Без входа в аккаунт, без пароля.",
-                "urlPlaceholder": "tiktok.com/@user/video/…",
-                "fetchCta": "Загрузить комментарии",
-                "fetchCtaPaid": "{price} — загрузить комментарии",
-                "fetching": "Загрузка…",
-                "urlHint": "Только публичные видео. Комментарии также можно вставить бесплатно вручную.",
-                "step1Url": "Ссылка на видео TikTok",
+                "heroSubtitle": "Вставьте комментарии и выберите победителей. Без входа, без пароля, полностью бесплатно.",
                 "step1Manual": "Вставить комментарии",
                 "step3Title": "Укажите количество победителей",
                 "step3Subtitle": "Готово",
-                "step4Label": "Начать розыгрыш",
-                "backToUrl": "← Вернуться к ссылке",
-                "continueWith": "Продолжить с {count} участниками",
-                "switchManual": "Вставить комментарии вручную →",
-                "automatic": "По ссылке",
-                "manual": "Вставить",
+                "backToUrl": "← Вернуться к комментариям",
                 "selecting": "Выбор…",
                 "winner": "Победитель",
                 "backup": "Запасной",
                 "pngDownload": "PNG",
                 "add": "Добавить",
-                "loadingWait": "Это может занять 20–60 секунд",
                 "moreRules": "Больше правил",
                 "hideRules": "Скрыть правила",
                 "eligibleCta": "{count} участников примут участие в розыгрыше",
-                "autoUnavailable": "Автоматическая загрузка сейчас недоступна. Скопируйте комментарии из TikTok и вставьте их — розыгрыш всё равно сработает.",
-                "priceBadge": "Автоматическая загрузка комментариев",
-                "priceCap": "до {count} комментариев",
-                "priceHint": "При нажатии на ссылку открывается окно оплаты. Аккаунт не требуется.",
                 "followHint": "Отображается как значок после розыгрыша; никого не исключает из розыгрыша.",
                 "previewImport": "Просмотр",
                 "importPeople": "Импортировать {count} участников",
                 "featuresTitle": "Честный розыгрыш TikTok",
-                "featuresSubtitle": "Ссылка или комментарии, правила, доказательство. Без аккаунта.",
                 "howTitle": "Как это работает",
-                "howSubtitle": "Три шага. Вам никогда не придётся гадать, на что нажать дальше.",
-                "startCta": "Начать розыгрыш",
-                "faqTitle": "Часто задаваемые вопросы",
                 "steps": {
-                    "paste": "Ссылка",
+                    "paste": "Вставка",
                     "load": "Комментарии",
                     "rules": "Правила",
                     "draw": "Розыгрыш"
                 },
                 "trustBadges": [
                     "Вход в TikTok не требуется",
-                    "Есть ручной запасной способ",
+                    "Полностью бесплатно",
                     "Фильтр «один пользователь»",
                     "Запасной победитель",
                     "Без подписки"
                 ],
-                "metrics": [
-                    {
-                        "value": "0",
-                        "label": "Регистрация"
-                    },
-                    {
-                        "value": "Честно",
-                        "label": "Розыгрыш"
-                    },
-                    {
-                        "value": "Доказательство",
-                        "label": "Результат"
-                    },
-                    {
-                        "value": "Запасной",
-                        "label": "Победитель"
-                    }
-                ],
                 "features": [
                     {
-                        "title": "Ссылка или вставка",
-                        "desc": "Если URL видео не работает, скопируйте комментарии и вставьте их, чтобы продолжить."
+                        "title": "Расширение или вставка",
+                        "desc": "Соберите комментарии с помощью расширения Chrome или скопируйте и вставьте их."
                     },
                     {
                         "title": "Один человек — один раз",
@@ -544,36 +458,10 @@
                         "desc": "Мы никогда не запрашиваем ваш аккаунт TikTok или разрешения приложения."
                     }
                 ],
-                "howSteps": [
-                    {
-                        "title": "Вставьте ссылку",
-                        "desc": "Вставьте URL видео TikTok в поле. Вы также можете вставить комментарии самостоятельно."
-                    },
-                    {
-                        "title": "Загрузите комментарии",
-                        "desc": "Подтвердите по электронной почте. Аккаунт не создаётся."
-                    },
-                    {
-                        "title": "Проведите розыгрыш",
-                        "desc": "Выберите победителя, поделитесь доказательством. Если комментарии не загрузятся, вместо возврата средств вы получите один розыгрышный кредит."
-                    }
-                ],
                 "faq": [
                     {
-                        "q": "Нужно ли входить в TikTok?",
-                        "a": "Нет. Мы никогда не запрашиваем пароль. Достаточно ссылки на публичное видео или вставленных комментариев."
-                    },
-                    {
-                        "q": "Сколько стоит автоматическая загрузка?",
-                        "a": "200 турецких лир за загрузку, до 1000 комментариев. Аккаунт не нужен — достаточно email. Вставка комментариев вручную бесплатна."
-                    },
-                    {
-                        "q": "Верните ли деньги, если комментарии не загрузятся?",
-                        "a": "Нет. Система анализирует причину сбоя и не возвращает деньги сразу. Вместо этого вы получаете 1 розыгрышный кредит по электронной почте."
-                    },
-                    {
-                        "q": "Что делать, если автоматическая загрузка не сработала?",
-                        "a": "Скопируйте комментарии из видео и используйте вкладку «Вставить». Розыгрыш продолжится тем же образом."
+                        "q": "Как добавить комментарии?",
+                        "a": "Соберите их в своём браузере с помощью расширения Chrome или скопируйте комментарии из видео и вставьте их. Оба способа бесплатны."
                     },
                     {
                         "q": "Победитель выбирается действительно случайно?",
@@ -584,53 +472,12 @@
                         "a": "Нет. Статус подписки отображается только как значок после розыгрыша. Право на участие определяют правила ключевого слова и «один раз на человека»."
                     }
                 ],
-                "errors": {
-                    "needLink": "Введите ссылку на видео TikTok",
-                    "invalidLink": "Введите корректную ссылку TikTok (tiktok.com/@…/video/…)",
-                    "quota": "Превышена квота автоматической загрузки комментариев. Вставьте комментарии, чтобы продолжить.",
-                    "unavailable": "Сервис комментариев сейчас не отвечает. Вы можете вставить комментарии и продолжить.",
-                    "empty": "Комментарии к этому видео не найдены. Попробуйте вставить их вручную.",
-                    "generic": "Не удалось загрузить комментарии. Проверьте ссылку и убедитесь, что видео публичное.",
-                    "paymentTimeout": "Подтверждение платежа занимает больше времени, чем ожидалось. Попробуйте снова через несколько минут или свяжитесь с нами."
-                },
                 "toasts": {
                     "added": "@{name} добавлен",
                     "participantsAdded": "Добавлено участников: {count}",
                     "copied": "Результаты скопированы",
                     "cardDownloaded": "Карточка победителя скачана",
                     "noNewNames": "Нет новых имён для добавления"
-                },
-                "loadingSteps": [
-                    "Подключение к TikTok…",
-                    "Загрузка комментариев видео…",
-                    "Проверка участников…",
-                    "Подготовка списка…"
-                ],
-                "pay": {
-                    "openCta": "Загрузить комментарии",
-                    "title": "Подтвердите розыгрыш",
-                    "subtitle": "Комментарии берутся из видео. Аккаунт не создаётся.",
-                    "emailLabel": "Email",
-                    "emailPlaceholder": "you@email.com",
-                    "emailHint": "Подтверждение и любой кредит отправляются на этот адрес.",
-                    "invalidEmail": "Введите корректный email",
-                    "cta": "Подтвердить и продолжить",
-                    "processing": "Переход к оплате…",
-                    "noMembership": "Аккаунт не требуется",
-                    "serviceName": "Загрузка комментариев",
-                    "feeLine": "Разовая услуга",
-                    "feeHint": "Стоимость услуги {price} · без аккаунта",
-                    "cap": "до {count} комментариев",
-                    "noRefund": "Если комментарии не удастся загрузить, возврат средств не производится; вы получите один розыгрышный кредит.",
-                    "useCredit": "Продолжить с вашим кредитом",
-                    "creditTitle": "Добавлен один розыгрышный кредит",
-                    "creditBody": "Платёж не был возвращён. Следующая автоматическая загрузка будет использовать этот кредит.",
-                    "creditEmail": "Кредит отправлен вам по электронной почте. Используйте ссылку, чтобы попробовать снова.",
-                    "creditSaved": "Кредит сохранён на этом устройстве. Загрузите комментарии ещё раз.",
-                    "paymentsDown": "Платежи пока не открыты. Они начнутся после одобрения подключения PayTR.",
-                    "cancelled": "Отменено. Вы можете попробовать снова.",
-                    "salesContractLink": "Прочитать договор дистанционной продажи",
-                    "confirming": "Подтверждение вашего платежа…"
                 },
                 "extensionBannerTitle": "Собирайте бесплатно с расширением Chrome",
                 "extensionBannerBadge": "Бесплатно",
@@ -1476,7 +1323,6 @@
         "contact": "Контакты",
         "privacyPolicy": "Приватность",
         "legalInfo": "Юридическая информация",
-        "salesTerms": "Условия продажи",
         "copyright": "© 2025 YulaSanta. Все права защищены.",
         "cookieDisclaimer": "Этот сайт использует куки для улучшения работы.",
         "raffleTools": "Инструменты розыгрыша",
@@ -1610,64 +1456,6 @@
             "q2": "Is my data safe?",
             "q3": "How many people can I include in a giveaway?"
         }
-    },
-    "howToPlay": {
-        "title": "Как играть?",
-        "subtitle": "Организовать Тайного Санту никогда не было так просто! Вот шаги:",
-        "step1": "Добавьте имена всех участников в список.",
-        "step2": "Выберите режим розыгрыша (Тайный розыгрыш или Прямое совпадение).",
-        "step3": "Нажмите кнопку 'Начать розыгрыш'.",
-        "step4": "На странице результатов каждый выбирает свое имя, чтобы узнать, кому он дарит подарок!"
-    },
-    "salesContract": {
-        "meta": {
-            "title": "Distance Sales Contract & Cancellation Policy | YulaSanta",
-            "description": "Distance sales contract, right of withdrawal, and cancellation/refund terms for YulaSanta's paid TikTok comment-fetch service."
-        },
-        "title": "Distance Sales Contract",
-        "subtitle": "Cancellation & Refund Policy",
-        "intro": "This page contains the distance sales contract and cancellation/refund terms for the paid \"TikTok Comment Fetch\" service offered on YulaSanta. Confirming the payment screen means you accept these terms.",
-        "lastUpdated": "Last updated: August 2026",
-        "sellerTitle": "1. Seller Information",
-        "seller": {
-            "name": "Name: Mehmet Şükrü Demirkök",
-            "type": "Business type: Individual (sole trader) seller",
-            "email": "Email: mehmetdemirkok@gmail.com",
-            "address": "Address: [seller address to be completed]"
-        },
-        "buyerTitle": "2. Buyer",
-        "buyerBody": "The individual purchasing the service, identified by the email address provided at checkout.",
-        "articles": [
-            {
-                "title": "3. Subject of the Contract",
-                "body": "This contract governs the rights and obligations of the parties regarding the sale and delivery of the \"TikTok Comment Fetch\" service purchased electronically by the Buyer on YulaSanta (yulasanta.com.tr)."
-            },
-            {
-                "title": "4. Key Features and Price",
-                "body": "The service consists of automatically fetching and listing up to 1000 comments from a publicly accessible TikTok video link specified by the Buyer. The service fee is 200 TL (VAT included), charged as a single payment via the PayTR payment infrastructure."
-            },
-            {
-                "title": "5. Method and Time of Performance",
-                "body": "Once payment is confirmed, the system automatically and immediately starts fetching the comments. This is a service performed instantly in electronic form; there is no physical delivery."
-            },
-            {
-                "title": "6. Right of Withdrawal",
-                "body": "Under Turkish consumer protection law (Law No. 6502 and the Distance Contracts Regulation, Art. 15/1-ğ), there is no right of withdrawal for services performed instantly in electronic form or for intangible goods delivered instantly to the consumer. As the service is performed immediately upon payment confirmation, the Buyer cannot exercise a right of withdrawal under this contract."
-            },
-            {
-                "title": "7. Cancellation and Refund Policy",
-                "body": "No refund is issued once the service has been successfully performed (comments fetched). If the service cannot be performed for technical reasons — a private or deleted video, the comment service being temporarily unavailable, or no comments found on the video — the fee is likewise not refunded; instead the Buyer is granted a retry credit of the same value, valid for 90 days, sent as a link to their registered email address. This policy is also stated on the payment screen."
-            },
-            {
-                "title": "8. Dispute Resolution",
-                "body": "Disputes arising from this contract are subject to Consumer Arbitration Committees up to the value announced by the Turkish Ministry of Trade, and Consumer Courts above that value. This contract is governed by the laws of the Republic of Turkey."
-            },
-            {
-                "title": "9. Effective Date",
-                "body": "By checking the confirmation box on the payment screen and completing payment, the Buyer is deemed to have read, understood, and accepted all terms of this contract."
-            }
-        ],
-        "contactNote": "Questions? Contact us at mehmetdemirkok@gmail.com"
     },
     "auth": {
         "login": {

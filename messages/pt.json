@@ -25,7 +25,7 @@
             "q1": "What is YulaSanta?",
             "a1": "YulaSanta is a free platform for YouTube and TikTok comment giveaways, Secret Santa gift exchanges, name picking, and tools like dice, coin flip, random numbers, short straw, wheel of fortune, and team generator.",
             "q2": "Is YulaSanta free?",
-            "a2": "Yes. All core features are free — no registration or login required.",
+            "a2": "Sim. Todos os recursos são gratuitos, sem cadastro nem login.",
             "q3": "Which social platforms do you support?",
             "a3": "You can run comment giveaways from YouTube and TikTok videos.",
             "q4": "How does Secret Santa work?",
@@ -50,7 +50,12 @@
         "uploadList": "Carregar Lista (Excel/PDF)",
         "uploading": "Carregando...",
         "clearList": "Limpar Lista",
-        "startDraw": "Start a Giveaway",
+        "startDraw": "Iniciar o sorteio",
+        "santaCta": "Fazer um Amigo Secreto",
+        "secretDrawDesc": "Cada pessoa vê em segredo para quem dar o presente",
+        "directMatchDesc": "Os participantes formam pares",
+        "readyLabel": "Pronto",
+        "moreNeeded": "mais {count}",
         "match": "Combinar",
         "happyNewYear": "🎄 Feliz Ano Novo!",
         "minPeople3": "Adicione pelo menos 3 pessoas",
@@ -68,7 +73,6 @@
         "directMatchMinError": "A combinação requer pelo menos 2 pessoas!",
         "directMatchEvenError": "A combinação direta requer um número par!",
         "drawError": "Ocorreu um erro, por favor tente novamente.",
-        "socialMediaGiveaways": "Comment Giveaways",
         "secure": "100% Seguro",
         "fast": "Super Rápido",
         "noPassword": "Sem Senha",
@@ -186,16 +190,10 @@
         "countUserOnce": "Contar cada usuário uma vez",
         "inputError": "Por favor, insira um link válido!",
         "fetchError": "Não foi possível buscar os dados.",
-        "apiLimitation": "Busca automática indisponível no momento. Use a entrada manual.",
-        "manualMode": "Entrada Manual (Grátis)",
-        "autoMode": "Busca Automática",
-        "manualDesc": "Ideal para sorteios pequenos. Cole os comentários diretamente.",
-        "autoDesc": "Ideal para sorteios grandes.",
         "pasteComments": "Cole os comentários aqui (Um por linha)",
         "parse": "Analisar Comentários",
         "parsed": "{count} participantes analisados",
         "youtubeLimitNote": "Nota: Até 1000 comentários podem ser buscados automaticamente.",
-        "tiktokLimitNote": "Nota: A busca automática custa 200 TL por execução e retorna até 1000 comentários.",
         "participantLimitDetails": "Para ver mais comentários, use o modo manual.",
         "channelUsername": "Username (Check seguidores)",
         "channelUsernameHint": "Insira seu username para verificar se os ganhadores te seguem",
@@ -226,7 +224,7 @@
                 ],
                 "howToTitle": "Como fazer um sorteio de comentários do TikTok",
                 "howToSteps": [
-                    "Cole o link do seu vídeo do TikTok no YulaSanta ou adicione participantes manualmente.",
+                    "Colete os comentários com a extensão do Chrome, ou copie e cole no YulaSanta.",
                     "Defina o número de vencedores, suplentes e as regras de participação.",
                     "Inicie o sorteio — compartilhe os resultados na hora."
                 ],
@@ -238,7 +236,7 @@
                     },
                     {
                         "q": "Preciso fazer login no TikTok?",
-                        "a": "Não. Cole o link do vídeo ou adicione os comentários manualmente — sem senha."
+                        "a": "Não. Nenhuma senha é necessária: basta coletar os comentários com a extensão do Chrome ou colá-los."
                     },
                     {
                         "q": "Posso escolher vencedores suplentes?",
@@ -307,11 +305,6 @@
                 "add": "Adicionar",
                 "loadingWait": "Geralmente leva de 10 a 40 segundos",
                 "featuresTitle": "Tudo para sorteios justos no YouTube",
-                "featuresSubtitle": "Rápido, transparente e confiável — sem pedir senha da sua conta.",
-                "howTitle": "Como funciona?",
-                "howSubtitle": "Cinco etapas simples. Sem precisar pensar no que clicar.",
-                "startCta": "Iniciar sorteio",
-                "faqTitle": "Perguntas frequentes",
                 "steps": {
                     "paste": "Colar link",
                     "load": "Carregar",
@@ -324,24 +317,6 @@
                     "Filtro de duplicados",
                     "Vencedores suplentes",
                     "Grátis"
-                ],
-                "metrics": [
-                    {
-                        "value": "Grátis",
-                        "label": "Sem cadastro"
-                    },
-                    {
-                        "value": "Automático",
-                        "label": "Busca de comentários"
-                    },
-                    {
-                        "value": "100%",
-                        "label": "Seleção aleatória"
-                    },
-                    {
-                        "value": "0",
-                        "label": "Login necessário"
-                    }
                 ],
                 "features": [
                     {
@@ -375,28 +350,6 @@
                     {
                         "title": "Processo rápido",
                         "desc": "Fluxo direto e curto, do link até os vencedores."
-                    }
-                ],
-                "howSteps": [
-                    {
-                        "title": "Cole o link do YouTube",
-                        "desc": "Solte o URL do vídeo ou Shorts na área principal."
-                    },
-                    {
-                        "title": "Carregue os comentários",
-                        "desc": "Obtenha os participantes via API ou adicione manualmente."
-                    },
-                    {
-                        "title": "Escolha as regras",
-                        "desc": "Defina vencedores, suplentes e preferências de inscrição."
-                    },
-                    {
-                        "title": "Sorteie os vencedores",
-                        "desc": "Determine o vencedor com uma seleção aleatória segura."
-                    },
-                    {
-                        "title": "Compartilhe os resultados",
-                        "desc": "Copie, baixe ou compartilhe com um clique."
                     }
                 ],
                 "faq": [
@@ -439,82 +392,43 @@
                 ]
             },
             "tiktok": {
-                "badge": "Sorteio de comentários do TikTok",
                 "heroTitle": "TikTok",
                 "heroHighlight": "Sorteio de comentários",
-                "heroSubtitle": "Cole o link de um vídeo e escolha vencedores entre os comentários. Sem login, sem senha.",
-                "urlPlaceholder": "tiktok.com/@usuario/video/…",
-                "fetchCta": "Buscar comentários",
-                "fetchCtaPaid": "{price} — buscar comentários",
-                "fetching": "Buscando…",
-                "urlHint": "Vídeos públicos. Você também pode colar comentários gratuitamente.",
-                "step1Url": "Link do vídeo do TikTok",
+                "heroSubtitle": "Cole os comentários e escolha os vencedores. Sem login, sem senha, totalmente grátis.",
                 "step1Manual": "Colar comentários",
                 "step3Title": "Defina o número de vencedores",
                 "step3Subtitle": "Pronto",
-                "step4Label": "Iniciar o sorteio",
-                "backToUrl": "← Voltar ao link",
-                "continueWith": "Continuar com {count} pessoas",
-                "switchManual": "Colar comentários em vez disso →",
-                "automatic": "Pelo link",
-                "manual": "Colar",
+                "backToUrl": "← Voltar aos comentários",
                 "selecting": "Selecionando…",
                 "winner": "Vencedor",
                 "backup": "Suplente",
                 "pngDownload": "PNG",
                 "add": "Adicionar",
-                "loadingWait": "Isso pode levar de 20 a 60 segundos",
                 "moreRules": "Mais regras",
                 "hideRules": "Ocultar regras",
                 "eligibleCta": "{count} pessoas participarão do sorteio",
-                "autoUnavailable": "A busca automática está indisponível no momento. Copie os comentários do TikTok e cole-os — o sorteio continua funcionando.",
-                "priceBadge": "Busca automática de comentários",
-                "priceCap": "até {count} comentários",
-                "priceHint": "Tocar no link abre uma janela de pagamento. Sem necessidade de conta.",
                 "followHint": "Exibido como um selo após o sorteio; não remove ninguém do sorteio.",
                 "previewImport": "Pré-visualizar",
                 "importPeople": "Importar {count} pessoas",
                 "featuresTitle": "Um sorteio de TikTok justo",
-                "featuresSubtitle": "Link ou comentários, regras, prova. Sem conta.",
                 "howTitle": "Como funciona",
-                "howSubtitle": "Três etapas. Você nunca precisará adivinhar no que clicar a seguir.",
-                "startCta": "Comece seu sorteio",
-                "faqTitle": "Perguntas frequentes",
                 "steps": {
-                    "paste": "Link",
+                    "paste": "Colar",
                     "load": "Comentários",
                     "rules": "Regras",
                     "draw": "Sorteio"
                 },
                 "trustBadges": [
                     "Sem login no TikTok",
-                    "Via manual alternativa",
+                    "Totalmente grátis",
                     "Filtro de um usuário",
                     "Vencedor suplente",
                     "Sem assinatura"
                 ],
-                "metrics": [
-                    {
-                        "value": "0",
-                        "label": "Cadastro"
-                    },
-                    {
-                        "value": "Justo",
-                        "label": "Sorteio"
-                    },
-                    {
-                        "value": "Prova",
-                        "label": "Resultado"
-                    },
-                    {
-                        "value": "Suplente",
-                        "label": "Vencedor"
-                    }
-                ],
                 "features": [
                     {
-                        "title": "Link ou colar",
-                        "desc": "Se a URL do vídeo não funcionar, copie os comentários e cole-os para continuar."
+                        "title": "Extensão ou colar",
+                        "desc": "Colete os comentários com a extensão do Chrome, ou copie e cole."
                     },
                     {
                         "title": "Uma pessoa, uma vez",
@@ -545,36 +459,10 @@
                         "desc": "Nunca pedimos sua conta do TikTok nem permissões do app."
                     }
                 ],
-                "howSteps": [
-                    {
-                        "title": "Cole o link",
-                        "desc": "Coloque a URL do vídeo do TikTok no campo. Você também pode colar os comentários você mesmo."
-                    },
-                    {
-                        "title": "Busque os comentários",
-                        "desc": "Confirme por e-mail. Nenhuma conta é criada."
-                    },
-                    {
-                        "title": "Faça o sorteio",
-                        "desc": "Escolha o vencedor, compartilhe a prova. Se os comentários não chegarem, você recebe um crédito de sorteio em vez de reembolso."
-                    }
-                ],
                 "faq": [
                     {
-                        "q": "Preciso fazer login no TikTok?",
-                        "a": "Não. Nunca pedimos uma senha. Um link de vídeo público ou comentários colados são suficientes."
-                    },
-                    {
-                        "q": "Quanto custa a busca automática?",
-                        "a": "200 TL por busca, até 1000 comentários. Sem conta — um e-mail é suficiente. Colar comentários é gratuito."
-                    },
-                    {
-                        "q": "Recebo reembolso se os comentários não carregarem?",
-                        "a": "Não. O sistema analisa a falha e não reembolsa imediatamente. Em vez disso, você recebe 1 crédito de sorteio por e-mail."
-                    },
-                    {
-                        "q": "O que acontece se a busca automática falhar?",
-                        "a": "Copie os comentários do vídeo e use a aba Colar. O sorteio continua da mesma forma."
+                        "q": "Como adiciono comentários?",
+                        "a": "Colete-os no seu próprio navegador com a extensão do Chrome, ou copie os comentários do vídeo e cole-os. Ambas as opções são gratuitas."
                     },
                     {
                         "q": "O vencedor é realmente aleatório?",
@@ -585,53 +473,12 @@
                         "a": "Não. O status de seguidor é exibido apenas como um selo após o sorteio. As regras de palavra-chave e participação única determinam quem é elegível."
                     }
                 ],
-                "errors": {
-                    "needLink": "Insira um link de vídeo do TikTok",
-                    "invalidLink": "Insira um link válido do TikTok (tiktok.com/@…/video/…)",
-                    "quota": "A cota de busca automática de comentários foi excedida. Cole os comentários para continuar.",
-                    "unavailable": "O serviço de comentários não está respondendo no momento. Você pode colar os comentários e continuar.",
-                    "empty": "Nenhum comentário encontrado neste vídeo. Tente colar manualmente.",
-                    "generic": "Não foi possível buscar os comentários. Verifique o link e se o vídeo é público.",
-                    "paymentTimeout": "A confirmação do pagamento está demorando mais que o esperado. Tente novamente em alguns minutos ou entre em contato conosco."
-                },
                 "toasts": {
                     "added": "@{name} adicionado",
                     "participantsAdded": "{count} participantes adicionados",
                     "copied": "Resultados copiados",
                     "cardDownloaded": "Card do vencedor baixado",
                     "noNewNames": "Nenhum nome novo para adicionar"
-                },
-                "loadingSteps": [
-                    "Conectando ao TikTok…",
-                    "Buscando comentários do vídeo…",
-                    "Verificando participantes…",
-                    "Preparando a lista…"
-                ],
-                "pay": {
-                    "openCta": "Buscar comentários",
-                    "title": "Confirmar o sorteio",
-                    "subtitle": "Os comentários são obtidos do vídeo. Nenhuma conta é criada.",
-                    "emailLabel": "E-mail",
-                    "emailPlaceholder": "voce@email.com",
-                    "emailHint": "A confirmação e qualquer crédito são enviados para este endereço.",
-                    "invalidEmail": "Insira um e-mail válido",
-                    "cta": "Confirmar e continuar",
-                    "processing": "Indo para o pagamento…",
-                    "noMembership": "Nenhuma conta necessária",
-                    "serviceName": "Busca de comentários",
-                    "feeLine": "Serviço único",
-                    "feeHint": "Taxa do serviço {price} · sem conta",
-                    "cap": "até {count} comentários",
-                    "noRefund": "Se os comentários não puderem ser buscados, não há reembolso; você recebe um crédito de sorteio.",
-                    "useCredit": "Continuar com seu crédito",
-                    "creditTitle": "Um crédito de sorteio foi adicionado",
-                    "creditBody": "O pagamento não foi reembolsado. A próxima busca automática usará esse crédito.",
-                    "creditEmail": "O crédito foi enviado para seu e-mail. Use o link para tentar novamente.",
-                    "creditSaved": "O crédito está salvo neste dispositivo. Busque os comentários novamente.",
-                    "paymentsDown": "Os pagamentos ainda não estão habilitados. Começarão assim que a aprovação do PayTR for concluída.",
-                    "cancelled": "Cancelado. Você pode tentar novamente.",
-                    "salesContractLink": "Ler o Contrato de Venda à Distância",
-                    "confirming": "Confirmando seu pagamento…"
                 },
                 "extensionBannerTitle": "Colete grátis com a extensão do Chrome",
                 "extensionBannerBadge": "Grátis",
@@ -1477,7 +1324,6 @@
         "contact": "Contato",
         "privacyPolicy": "Privacidade",
         "legalInfo": "Informações Legais",
-        "salesTerms": "Termos de Venda",
         "copyright": "© 2025 YulaSanta. Todos os direitos reservados.",
         "cookieDisclaimer": "Este site usa cookies para melhorar sua experiência.",
         "raffleTools": "Ferramentas de Sorteio",
@@ -1611,64 +1457,6 @@
             "q2": "Is my data safe?",
             "q3": "How many people can I include in a giveaway?"
         }
-    },
-    "howToPlay": {
-        "title": "Como jogar?",
-        "subtitle": "Organizar um sorteio de Amigo Secreto nunca foi tão fácil! Aqui estão os passos:",
-        "step1": "Adicione os nomes de todos os participantes à lista.",
-        "step2": "Selecione o modo de sorteio (Sorteio Secreto ou Correspondência Direta).",
-        "step3": "Clique no botão 'Iniciar Sorteio'.",
-        "step4": "Na página de resultados, cada um seleciona seu nome para ver para quem vai comprar um presente!"
-    },
-    "salesContract": {
-        "meta": {
-            "title": "Distance Sales Contract & Cancellation Policy | YulaSanta",
-            "description": "Distance sales contract, right of withdrawal, and cancellation/refund terms for YulaSanta's paid TikTok comment-fetch service."
-        },
-        "title": "Distance Sales Contract",
-        "subtitle": "Cancellation & Refund Policy",
-        "intro": "This page contains the distance sales contract and cancellation/refund terms for the paid \"TikTok Comment Fetch\" service offered on YulaSanta. Confirming the payment screen means you accept these terms.",
-        "lastUpdated": "Last updated: August 2026",
-        "sellerTitle": "1. Seller Information",
-        "seller": {
-            "name": "Name: Mehmet Şükrü Demirkök",
-            "type": "Business type: Individual (sole trader) seller",
-            "email": "Email: mehmetdemirkok@gmail.com",
-            "address": "Address: [seller address to be completed]"
-        },
-        "buyerTitle": "2. Buyer",
-        "buyerBody": "The individual purchasing the service, identified by the email address provided at checkout.",
-        "articles": [
-            {
-                "title": "3. Subject of the Contract",
-                "body": "This contract governs the rights and obligations of the parties regarding the sale and delivery of the \"TikTok Comment Fetch\" service purchased electronically by the Buyer on YulaSanta (yulasanta.com.tr)."
-            },
-            {
-                "title": "4. Key Features and Price",
-                "body": "The service consists of automatically fetching and listing up to 1000 comments from a publicly accessible TikTok video link specified by the Buyer. The service fee is 200 TL (VAT included), charged as a single payment via the PayTR payment infrastructure."
-            },
-            {
-                "title": "5. Method and Time of Performance",
-                "body": "Once payment is confirmed, the system automatically and immediately starts fetching the comments. This is a service performed instantly in electronic form; there is no physical delivery."
-            },
-            {
-                "title": "6. Right of Withdrawal",
-                "body": "Under Turkish consumer protection law (Law No. 6502 and the Distance Contracts Regulation, Art. 15/1-ğ), there is no right of withdrawal for services performed instantly in electronic form or for intangible goods delivered instantly to the consumer. As the service is performed immediately upon payment confirmation, the Buyer cannot exercise a right of withdrawal under this contract."
-            },
-            {
-                "title": "7. Cancellation and Refund Policy",
-                "body": "No refund is issued once the service has been successfully performed (comments fetched). If the service cannot be performed for technical reasons — a private or deleted video, the comment service being temporarily unavailable, or no comments found on the video — the fee is likewise not refunded; instead the Buyer is granted a retry credit of the same value, valid for 90 days, sent as a link to their registered email address. This policy is also stated on the payment screen."
-            },
-            {
-                "title": "8. Dispute Resolution",
-                "body": "Disputes arising from this contract are subject to Consumer Arbitration Committees up to the value announced by the Turkish Ministry of Trade, and Consumer Courts above that value. This contract is governed by the laws of the Republic of Turkey."
-            },
-            {
-                "title": "9. Effective Date",
-                "body": "By checking the confirmation box on the payment screen and completing payment, the Buyer is deemed to have read, understood, and accepted all terms of this contract."
-            }
-        ],
-        "contactNote": "Questions? Contact us at mehmetdemirkok@gmail.com"
     },
     "auth": {
         "login": {

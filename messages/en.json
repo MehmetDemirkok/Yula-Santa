@@ -25,7 +25,7 @@
             "q1": "What is YulaSanta?",
             "a1": "YulaSanta is a free platform for YouTube and TikTok comment giveaways, Secret Santa gift exchanges, name picking, and tools like dice, coin flip, random numbers, short straw, wheel of fortune, and team generator.",
             "q2": "Is YulaSanta free?",
-            "a2": "Yes. All core features are free — no registration or login required.",
+            "a2": "Yes. All features are free — no registration or login required.",
             "q3": "Which social platforms do you support?",
             "a3": "You can run comment giveaways from YouTube and TikTok videos.",
             "q4": "How does Secret Santa work?",
@@ -51,6 +51,11 @@
         "uploading": "Uploading...",
         "clearList": "Clear List",
         "startDraw": "Start a Giveaway",
+        "santaCta": "Start a Secret Santa",
+        "secretDrawDesc": "Each person secretly sees who to buy for",
+        "directMatchDesc": "Participants are matched up in pairs",
+        "readyLabel": "Ready",
+        "moreNeeded": "{count} more",
         "match": "Match",
         "happyNewYear": "🎄 Happy New Year!",
         "minPeople3": "Add at least 3 people",
@@ -68,7 +73,6 @@
         "directMatchMinError": "Matching requires at least 2 people!",
         "directMatchEvenError": "Direct matching requires an even number of people! Please add or remove someone.",
         "drawError": "An error occurred, please try again.",
-        "socialMediaGiveaways": "Comment Giveaways",
         "secure": "100% Secure",
         "fast": "Super Fast",
         "noPassword": "No Password",
@@ -160,7 +164,7 @@
             },
             "tiktok": {
                 "title": "TikTok Comment Giveaway — Free Picker | YulaSanta",
-                "description": "Pick winners from TikTok video comments. Paste a link or add comments by hand — no signup.",
+                "description": "Pick winners from TikTok video comments for free. Paste comments or collect them with the Chrome extension — no signup.",
                 "keywords": [
                     "tiktok giveaway",
                     "tiktok raffle",
@@ -187,17 +191,11 @@
         "countUserOnce": "Count User Once",
         "inputError": "Please enter a valid link!",
         "fetchError": "Could not fetch data.",
-        "apiLimitation": "Automatic fetching is currently unavailable due to platform limitations. Please use manual entry.",
-        "manualMode": "Manual Entry (Free)",
-        "autoMode": "Automatic Fetch",
-        "manualDesc": "Best for small giveaways (50-100 comments). Paste comments directly.",
-        "autoDesc": "Best for large giveaways and high volumes of comments.",
         "pasteComments": "Paste comments here (One per line)",
         "parse": "Parse Comments",
         "parsed": "{count} participants parsed",
         "participantLimitDetails": "To see more comments, please use manual entry mode.",
         "youtubeLimitNote": "Note: Automatic API fetch can load thousands of comments, up to a paging cap.",
-        "tiktokLimitNote": "Note: Automatic fetch is 200 TL per run and returns up to 1000 comments.",
         "channelUsername": "Username (Follower Check)",
         "channelUsernameHint": "Enter your username to check if winners follow you",
         "following": "Following",
@@ -255,7 +253,7 @@
                 ],
                 "howToTitle": "How to Run a TikTok Comment Giveaway",
                 "howToSteps": [
-                    "Paste your TikTok video link into YulaSanta or add participants manually.",
+                    "Collect comments with the Chrome extension, or copy and paste them into YulaSanta.",
                     "Set winner and backup counts and participation rules.",
                     "Start the giveaway — share results instantly."
                 ],
@@ -267,7 +265,7 @@
                     },
                     {
                         "q": "Do I need to log into TikTok?",
-                        "a": "No. Paste the video link or add comments manually — no password required."
+                        "a": "No. No password is required: just collect comments with the Chrome extension or paste them."
                     },
                     {
                         "q": "Can I pick backup winners?",
@@ -308,11 +306,6 @@
                 "add": "Add",
                 "loadingWait": "Usually takes 10–40 seconds",
                 "featuresTitle": "Everything you need for fair YouTube draws",
-                "featuresSubtitle": "Fast, transparent, and trustworthy—without asking for account passwords.",
-                "howTitle": "How it works",
-                "howSubtitle": "Five clear steps. No guessing what to click next.",
-                "startCta": "Start your giveaway",
-                "faqTitle": "Frequently asked questions",
                 "steps": {
                     "paste": "Paste URL",
                     "load": "Load",
@@ -325,24 +318,6 @@
                     "Duplicate Filter",
                     "Backup Winners",
                     "Free"
-                ],
-                "metrics": [
-                    {
-                        "value": "Free",
-                        "label": "No signup"
-                    },
-                    {
-                        "value": "Automatic",
-                        "label": "Comment fetch"
-                    },
-                    {
-                        "value": "100%",
-                        "label": "Random selection"
-                    },
-                    {
-                        "value": "0",
-                        "label": "Login required"
-                    }
                 ],
                 "features": [
                     {
@@ -376,28 +351,6 @@
                     {
                         "title": "Fast Processing",
                         "desc": "Clear guided flow from link to winners."
-                    }
-                ],
-                "howSteps": [
-                    {
-                        "title": "Paste YouTube Link",
-                        "desc": "Drop your video or Shorts URL into the hero input."
-                    },
-                    {
-                        "title": "Load Comments",
-                        "desc": "Fetch participants via API or add them manually."
-                    },
-                    {
-                        "title": "Choose Rules",
-                        "desc": "Set winners, backups, and subscription preferences."
-                    },
-                    {
-                        "title": "Draw Winners",
-                        "desc": "Select winners with a secure random shuffle."
-                    },
-                    {
-                        "title": "Share Results",
-                        "desc": "Copy, download, or share in one click."
                     }
                 ],
                 "faq": [
@@ -440,82 +393,43 @@
                 ]
             },
             "tiktok": {
-                "badge": "TikTok comment giveaway",
                 "heroTitle": "TikTok",
                 "heroHighlight": "Comment giveaway",
-                "heroSubtitle": "Paste a video link and pick winners from comments. No login, no password.",
-                "urlPlaceholder": "tiktok.com/@user/video/…",
-                "fetchCta": "Fetch comments",
-                "fetchCtaPaid": "{price} — fetch comments",
-                "fetching": "Fetching…",
-                "urlHint": "Public videos. You can also paste comments for free.",
-                "step1Url": "TikTok video link",
+                "heroSubtitle": "Paste comments and pick winners. No login, no password, completely free.",
                 "step1Manual": "Paste comments",
                 "step3Title": "Set winner count",
                 "step3Subtitle": "Ready",
-                "step4Label": "Start the draw",
-                "backToUrl": "← Back to link",
-                "continueWith": "Continue with {count} people",
-                "switchManual": "Paste comments instead →",
-                "automatic": "From link",
-                "manual": "Paste",
+                "backToUrl": "← Back to comments",
                 "selecting": "Selecting…",
                 "winner": "Winner",
                 "backup": "Backup",
                 "pngDownload": "PNG",
                 "add": "Add",
-                "loadingWait": "This can take 20–60 seconds",
                 "moreRules": "More rules",
                 "hideRules": "Hide rules",
                 "eligibleCta": "{count} people will enter the draw",
-                "autoUnavailable": "Automatic fetch is unavailable right now. Copy comments from TikTok and paste them — the draw still works.",
-                "priceBadge": "Automatic comment fetch",
-                "priceCap": "up to {count} comments",
-                "priceHint": "Tapping the link opens a payment window. No account.",
                 "followHint": "Shown as a badge after the draw; it does not remove people from the raffle.",
                 "previewImport": "Preview",
                 "importPeople": "Import {count} people",
                 "featuresTitle": "A fair TikTok giveaway",
-                "featuresSubtitle": "Link or comments, rules, proof. No account.",
                 "howTitle": "How it works",
-                "howSubtitle": "Three steps. You never have to guess what to click next.",
-                "startCta": "Start your giveaway",
-                "faqTitle": "Frequently asked questions",
                 "steps": {
-                    "paste": "Link",
+                    "paste": "Paste",
                     "load": "Comments",
                     "rules": "Rules",
                     "draw": "Draw"
                 },
                 "trustBadges": [
                     "No TikTok login",
-                    "Paste fallback",
+                    "Completely free",
                     "One-entry filter",
                     "Backup winners",
                     "No account"
                 ],
-                "metrics": [
-                    {
-                        "value": "0",
-                        "label": "Sign-up"
-                    },
-                    {
-                        "value": "Fair",
-                        "label": "Draw"
-                    },
-                    {
-                        "value": "Proof",
-                        "label": "Result"
-                    },
-                    {
-                        "value": "Backup",
-                        "label": "Winners"
-                    }
-                ],
                 "features": [
                     {
-                        "title": "Link or paste",
-                        "desc": "If the video URL fails, paste comments and keep going."
+                        "title": "Extension or paste",
+                        "desc": "Collect comments with the Chrome extension, or copy and paste them."
                     },
                     {
                         "title": "One person once",
@@ -546,36 +460,10 @@
                         "desc": "We never ask for TikTok login or app access."
                     }
                 ],
-                "howSteps": [
-                    {
-                        "title": "Paste the link",
-                        "desc": "Drop the TikTok video URL in the box. Or paste comments yourself."
-                    },
-                    {
-                        "title": "Fetch comments",
-                        "desc": "Confirm with your email. No account is created."
-                    },
-                    {
-                        "title": "Draw",
-                        "desc": "Pick a winner and share the proof. If comments don’t load, you get a credit instead of a refund."
-                    }
-                ],
                 "faq": [
                     {
-                        "q": "Do I need to log in to TikTok?",
-                        "a": "No. We never ask for a password. A public video link or pasted comments is enough."
-                    },
-                    {
-                        "q": "How much is automatic fetch?",
-                        "a": "200 TL per fetch, up to 1000 comments. No account — email is enough. Pasting comments is free."
-                    },
-                    {
-                        "q": "Do I get a refund if comments don’t load?",
-                        "a": "No. The system analyzes the failure and does not refund immediately. You receive 1 giveaway credit instead, via email."
-                    },
-                    {
-                        "q": "What if automatic fetch fails?",
-                        "a": "Copy comments from the video and use the Paste tab. The giveaway continues the same way."
+                        "q": "How do I add comments?",
+                        "a": "Collect them in your own browser with the Chrome extension, or copy the video's comments and paste them. Both are free."
                     },
                     {
                         "q": "Is the winner truly random?",
@@ -586,53 +474,12 @@
                         "a": "No. Follow status is a badge after the draw. Keyword and one-entry rules decide who is eligible."
                     }
                 ],
-                "errors": {
-                    "needLink": "Enter a TikTok video link",
-                    "invalidLink": "Enter a valid TikTok link (tiktok.com/@…/video/…)",
-                    "quota": "Automatic comment fetch is over quota. Paste comments to continue.",
-                    "unavailable": "The comment service is not responding. You can paste comments and continue.",
-                    "empty": "No comments found on this video. Try pasting them manually.",
-                    "generic": "Could not fetch comments. Check the link and that the video is public.",
-                    "paymentTimeout": "Payment confirmation is taking longer than expected. Try again in a few minutes or contact us."
-                },
                 "toasts": {
                     "added": "@{name} added",
                     "participantsAdded": "{count} participants added",
                     "copied": "Results copied",
                     "cardDownloaded": "Winner card downloaded",
                     "noNewNames": "No new names to add"
-                },
-                "loadingSteps": [
-                    "Connecting to TikTok…",
-                    "Fetching video comments…",
-                    "Validating participants…",
-                    "Preparing the list…"
-                ],
-                "pay": {
-                    "openCta": "Fetch comments",
-                    "title": "Confirm the draw",
-                    "subtitle": "Comments are taken from the video. No account is created.",
-                    "emailLabel": "Email",
-                    "emailPlaceholder": "you@email.com",
-                    "emailHint": "Confirmation and any credit go to this address.",
-                    "invalidEmail": "Enter a valid email",
-                    "cta": "Confirm and continue",
-                    "processing": "Going to payment…",
-                    "noMembership": "No account needed",
-                    "serviceName": "Comment fetch",
-                    "feeLine": "One-time service",
-                    "feeHint": "Service fee {price} · no account",
-                    "cap": "up to {count} comments",
-                    "noRefund": "If comments cannot be fetched there is no refund; you receive one draw credit.",
-                    "useCredit": "Continue with your credit",
-                    "creditTitle": "One draw credit added",
-                    "creditBody": "The payment was not refunded. The next automatic fetch uses this credit.",
-                    "creditEmail": "The credit was emailed to you. Use the link to retry.",
-                    "creditSaved": "The credit is saved on this device. Fetch comments again.",
-                    "paymentsDown": "Payments are not open yet. They start after PayTR onboarding is approved.",
-                    "cancelled": "Cancelled. You can try again.",
-                    "salesContractLink": "Read the Distance Sales Contract",
-                    "confirming": "Confirming your payment…"
                 },
                 "extensionBannerTitle": "Collect for free with the Chrome extension",
                 "extensionBannerBadge": "Free",
@@ -1478,7 +1325,6 @@
         "contact": "Contact",
         "privacyPolicy": "Privacy Policy",
         "legalInfo": "Legal Information",
-        "salesTerms": "Sales Terms",
         "copyright": "© 2025 YulaSanta. All rights reserved.",
         "cookieDisclaimer": "When you visit and interact with our website, services or tools, we or our service providers may use cookies for storing information to help provide you with a better, faster and safer experience and for marketing purposes.",
         "raffleTools": "Raffle Tools",
@@ -1612,64 +1458,6 @@
             "q2": "Is my data safe?",
             "q3": "How many people can I include in a giveaway?"
         }
-    },
-    "howToPlay": {
-        "title": "How to Play?",
-        "subtitle": "Setting up a Secret Santa draw has never been easier! Here are the steps:",
-        "step1": "Add the names of all participants to the list.",
-        "step2": "Select the draw mode (Secret Draw or Direct Match).",
-        "step3": "Click the 'Start Draw' button.",
-        "step4": "On the result page, everyone selects their name to see who they are buying a gift for!"
-    },
-    "salesContract": {
-        "meta": {
-            "title": "Distance Sales Contract & Cancellation Policy | YulaSanta",
-            "description": "Distance sales contract, right of withdrawal, and cancellation/refund terms for YulaSanta's paid TikTok comment-fetch service."
-        },
-        "title": "Distance Sales Contract",
-        "subtitle": "Cancellation & Refund Policy",
-        "intro": "This page contains the distance sales contract and cancellation/refund terms for the paid \"TikTok Comment Fetch\" service offered on YulaSanta. Confirming the payment screen means you accept these terms.",
-        "lastUpdated": "Last updated: August 2026",
-        "sellerTitle": "1. Seller Information",
-        "seller": {
-            "name": "Name: Mehmet Şükrü Demirkök",
-            "type": "Business type: Individual (sole trader) seller",
-            "email": "Email: mehmetdemirkok@gmail.com",
-            "address": "Address: [seller address to be completed]"
-        },
-        "buyerTitle": "2. Buyer",
-        "buyerBody": "The individual purchasing the service, identified by the email address provided at checkout.",
-        "articles": [
-            {
-                "title": "3. Subject of the Contract",
-                "body": "This contract governs the rights and obligations of the parties regarding the sale and delivery of the \"TikTok Comment Fetch\" service purchased electronically by the Buyer on YulaSanta (yulasanta.com.tr)."
-            },
-            {
-                "title": "4. Key Features and Price",
-                "body": "The service consists of automatically fetching and listing up to 1000 comments from a publicly accessible TikTok video link specified by the Buyer. The service fee is 200 TL (VAT included), charged as a single payment via the PayTR payment infrastructure."
-            },
-            {
-                "title": "5. Method and Time of Performance",
-                "body": "Once payment is confirmed, the system automatically and immediately starts fetching the comments. This is a service performed instantly in electronic form; there is no physical delivery."
-            },
-            {
-                "title": "6. Right of Withdrawal",
-                "body": "Under Turkish consumer protection law (Law No. 6502 and the Distance Contracts Regulation, Art. 15/1-ğ), there is no right of withdrawal for services performed instantly in electronic form or for intangible goods delivered instantly to the consumer. As the service is performed immediately upon payment confirmation, the Buyer cannot exercise a right of withdrawal under this contract."
-            },
-            {
-                "title": "7. Cancellation and Refund Policy",
-                "body": "No refund is issued once the service has been successfully performed (comments fetched). If the service cannot be performed for technical reasons — a private or deleted video, the comment service being temporarily unavailable, or no comments found on the video — the fee is likewise not refunded; instead the Buyer is granted a retry credit of the same value, valid for 90 days, sent as a link to their registered email address. This policy is also stated on the payment screen."
-            },
-            {
-                "title": "8. Dispute Resolution",
-                "body": "Disputes arising from this contract are subject to Consumer Arbitration Committees up to the value announced by the Turkish Ministry of Trade, and Consumer Courts above that value. This contract is governed by the laws of the Republic of Turkey."
-            },
-            {
-                "title": "9. Effective Date",
-                "body": "By checking the confirmation box on the payment screen and completing payment, the Buyer is deemed to have read, understood, and accepted all terms of this contract."
-            }
-        ],
-        "contactNote": "Questions? Contact us at mehmetdemirkok@gmail.com"
     },
     "auth": {
         "login": {

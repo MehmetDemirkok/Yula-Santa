@@ -26,7 +26,7 @@
             "q1": "YulaSanta nedir?",
             "a1": "YulaSanta; YouTube ve TikTok yorum çekilişi, gizli çekiliş (Secret Santa), isim çekilişi ve zar, yazı tura, rastgele sayı, kısa çöp, çarkıfelek, takım oluşturucu gibi ücretsiz araçlar sunan bir platformdur.",
             "q2": "YulaSanta ücretsiz mi?",
-            "a2": "Evet. Temel özelliklerin tamamı ücretsizdir; kayıt veya giriş gerekmez.",
+            "a2": "Evet. Tüm özellikler ücretsizdir; kayıt veya giriş gerekmez.",
             "q3": "Hangi sosyal medya çekilişlerini destekliyorsunuz?",
             "a3": "YouTube ve TikTok videolarından yorum çekilişi yapabilirsiniz.",
             "q4": "Gizli çekiliş (Secret Santa) nasıl çalışır?",
@@ -52,6 +52,11 @@
         "uploading": "Yükleniyor...",
         "clearList": "Listeyi Temizle",
         "startDraw": "Çekiliş Başlat",
+        "santaCta": "Yılbaşı Çekilişi Yap",
+        "secretDrawDesc": "Herkes kime hediye alacağını gizli görür",
+        "directMatchDesc": "Katılımcılar karşılıklı ikili eşleşir",
+        "readyLabel": "Hazır",
+        "moreNeeded": "{count} kişi daha",
         "match": "Eşleştir",
         "happyNewYear": "🎄 Mutlu Yıllar!",
         "minPeople3": "En az 3 kişi eklemelisiniz",
@@ -69,7 +74,6 @@
         "directMatchMinError": "Eşleştirme için en az 2 kişi gerekli!",
         "directMatchEvenError": "Direkt eşleştirme için kişi sayısı çift olmalıdır! Lütfen bir kişi ekleyin veya çıkarın.",
         "drawError": "Bir hata oluştu, lütfen tekrar deneyin.",
-        "socialMediaGiveaways": "Yorum Çekilişleri",
         "secure": "%100 Güvenli",
         "fast": "Süper Hızlı",
         "noPassword": "Şifresiz",
@@ -161,7 +165,7 @@
             },
             "tiktok": {
                 "title": "TikTok Yorum Çekilişi — Ücretsiz Çekiliş Aracı | YulaSanta",
-                "description": "TikTok videosundaki yorumlardan kazanan seçin. Link yapıştırın veya yorumları elle ekleyin — kayıt yok.",
+                "description": "TikTok videosundaki yorumlardan ücretsiz kazanan seçin. Yorumları yapıştırın veya Chrome eklentisiyle toplayın — kayıt yok.",
                 "keywords": [
                     "tiktok çekiliş",
                     "tiktok kura çek",
@@ -218,7 +222,7 @@
                 ],
                 "howToTitle": "TikTok Yorum Çekilişi Nasıl Yapılır?",
                 "howToSteps": [
-                    "TikTok video linkinizi YulaSanta'ya yapıştırın veya katılımcıları manuel ekleyin.",
+                    "Yorumları Chrome eklentisiyle toplayın ya da kopyalayıp YulaSanta'ya yapıştırın.",
                     "Kazanan ve yedek sayısını belirleyin, katılım kurallarını ayarlayın.",
                     "Çekilişi başlatın — sonuçları anında paylaşabilirsiniz."
                 ],
@@ -230,7 +234,7 @@
                     },
                     {
                         "q": "TikTok hesabıma giriş gerekir mi?",
-                        "a": "Hayır. Şifresiz çalışır; link yapıştırmanız veya yorum eklemeniz yeterlidir."
+                        "a": "Hayır. Şifresiz çalışır; yorumları Chrome eklentisiyle toplamanız veya yapıştırmanız yeterlidir."
                     },
                     {
                         "q": "Yedek kazanan seçebilir miyim?",
@@ -250,16 +254,10 @@
         "countUserOnce": "Her Kullanıcıyı 1 Kere Say",
         "inputError": "Lütfen geçerli bir link giriniz!",
         "fetchError": "Veriler çekilemedi.",
-        "apiLimitation": "Platform kısıtlamaları nedeniyle otomatik veri çekme şu anda kullanılamıyor. Lütfen manuel giriş yapınız.",
-        "manualMode": "Manuel Giriş (Ücretsiz)",
-        "autoMode": "Otomatik Çekim",
-        "manualDesc": "Küçük çekilişler (50-100 yorum) için ideal. Yorumları direkt yapıştırın.",
-        "autoDesc": "Büyük çekilişler ve çok sayıda yorum için ideal.",
         "pasteComments": "Yorumları buraya yapıştırın (Her satıra bir tane)",
         "parse": "Yorumları Ayrıştır",
         "parsed": "{count} kişi ayrıştırıldı",
         "youtubeLimitNote": "Not: API üzerinden otomatik olarak binlerce yoruma kadar çekilebilir; üst sınır vardır.",
-        "tiktokLimitNote": "Not: Otomatik çekim çekim başına 200 TL’dir; en fazla 1000 yorum alınır.",
         "participantLimitDetails": "Daha fazla yorum için lütfen manuel giriş modunu kullanın.",
         "channelUsername": "Kullanıcı Adı (Takip Kontrolü)",
         "channelUsernameHint": "Kazananların sizi takip edip etmediğini kontrol etmek için kullanıcı adınızı girin",
@@ -309,11 +307,6 @@
                 "add": "Ekle",
                 "loadingWait": "Genelde 10–40 saniye sürer",
                 "featuresTitle": "Adil YouTube çekilişleri için her şey",
-                "featuresSubtitle": "Hızlı, şeffaf ve güvenilir — hesap şifresi istemeden.",
-                "howTitle": "Nasıl çalışır?",
-                "howSubtitle": "Beş net adım. Ne tıklayacağınızı düşünmenize gerek yok.",
-                "startCta": "Çekilişe başla",
-                "faqTitle": "Sık sorulan sorular",
                 "steps": {
                     "paste": "Link yapıştır",
                     "load": "Yükle",
@@ -326,24 +319,6 @@
                     "Tekrar filtresi",
                     "Yedek kazanan",
                     "Ücretsiz"
-                ],
-                "metrics": [
-                    {
-                        "value": "Ücretsiz",
-                        "label": "Kayıt yok"
-                    },
-                    {
-                        "value": "Otomatik",
-                        "label": "Yorum çekme"
-                    },
-                    {
-                        "value": "%100",
-                        "label": "Rastgele seçim"
-                    },
-                    {
-                        "value": "0",
-                        "label": "Giriş gerekir"
-                    }
                 ],
                 "features": [
                     {
@@ -377,28 +352,6 @@
                     {
                         "title": "Hızlı işlem",
                         "desc": "Linkten kazananlara net, kısa akış."
-                    }
-                ],
-                "howSteps": [
-                    {
-                        "title": "YouTube linkini yapıştır",
-                        "desc": "Video veya Shorts URL’sini hero alana bırakın."
-                    },
-                    {
-                        "title": "Yorumları yükle",
-                        "desc": "Katılımcıları API ile getirin veya elle ekleyin."
-                    },
-                    {
-                        "title": "Kuralları seç",
-                        "desc": "Kazanan, yedek ve abone tercihlerini ayarlayın."
-                    },
-                    {
-                        "title": "Kazananları çek",
-                        "desc": "Güvenli rastgele seçimle kazanan belirleyin."
-                    },
-                    {
-                        "title": "Sonuçları paylaş",
-                        "desc": "Tek tıkla kopyala, indir veya paylaş."
                     }
                 ],
                 "faq": [
@@ -441,82 +394,43 @@
                 ]
             },
             "tiktok": {
-                "badge": "TikTok yorum çekilişi",
                 "heroTitle": "TikTok",
                 "heroHighlight": "Yorum çekilişi",
-                "heroSubtitle": "Video linkini yapıştırın, yorumlardan kazanan seçin. Giriş yok, şifre yok.",
-                "urlPlaceholder": "tiktok.com/@kullanici/video/…",
-                "fetchCta": "Yorumları çek",
-                "fetchCtaPaid": "{price} — yorumları çek",
-                "fetching": "Çekiliyor…",
-                "urlHint": "Herkese açık videolar. Dilerseniz yorumları ücretsiz yapıştırabilirsiniz.",
-                "step1Url": "TikTok video linki",
+                "heroSubtitle": "Yorumları yapıştırın, kazananı seçin. Giriş yok, şifre yok, tamamen ücretsiz.",
                 "step1Manual": "Yorumları yapıştır",
                 "step3Title": "Kazanan sayısını ayarla",
                 "step3Subtitle": "Hazır",
-                "step4Label": "Çekilişi başlat",
-                "backToUrl": "← Linke dön",
-                "continueWith": "{count} kişiyle devam et",
-                "switchManual": "Yorumları yapıştır →",
-                "automatic": "Link ile",
-                "manual": "Yapıştır",
+                "backToUrl": "← Yorumlara dön",
                 "selecting": "Seçiliyor…",
                 "winner": "Kazanan",
                 "backup": "Yedek",
                 "pngDownload": "PNG",
                 "add": "Ekle",
-                "loadingWait": "Bu işlem 20–60 saniye sürebilir",
                 "moreRules": "Daha fazla kural",
                 "hideRules": "Kuralları gizle",
                 "eligibleCta": "{count} kişi çekilişe girecek",
-                "autoUnavailable": "Otomatik çekim şu an kapalı. TikTok’tan yorumları kopyalayıp yapıştırın — çekiliş yine çalışır.",
-                "priceBadge": "Otomatik yorum çekimi",
-                "priceCap": "en fazla {count} yorum",
-                "priceHint": "Linke tıklayınca ödeme penceresi açılır. Üyelik yok.",
                 "followHint": "Çekiliş sonrası rozet olarak görünür; kazananı otomatik elemez.",
                 "previewImport": "Önizle",
                 "importPeople": "{count} kişiyi içe aktar",
                 "featuresTitle": "Adil bir TikTok çekilişi",
-                "featuresSubtitle": "Link veya yorum, kurallar, kanıtlı kura. Hesap açılmaz.",
                 "howTitle": "Nasıl çalışır?",
-                "howSubtitle": "Üç adım. Hangisine tıklayacağınızı düşünmenize gerek yok.",
-                "startCta": "Çekilişe başla",
-                "faqTitle": "Sık sorulan sorular",
                 "steps": {
-                    "paste": "Link",
+                    "paste": "Yapıştır",
                     "load": "Yorumlar",
                     "rules": "Kurallar",
                     "draw": "Kura"
                 },
                 "trustBadges": [
                     "TikTok girişi yok",
-                    "Manuel yedek yol",
+                    "Tamamen ücretsiz",
                     "Tek kullanıcı filtresi",
                     "Yedek kazanan",
                     "Üyelik yok"
                 ],
-                "metrics": [
-                    {
-                        "value": "0",
-                        "label": "Kayıt"
-                    },
-                    {
-                        "value": "Adil",
-                        "label": "Kura"
-                    },
-                    {
-                        "value": "Kanıt",
-                        "label": "Sonuç"
-                    },
-                    {
-                        "value": "Yedek",
-                        "label": "Kazanan"
-                    }
-                ],
                 "features": [
                     {
-                        "title": "Link veya yapıştır",
-                        "desc": "Video URL’si çalışmazsa yorumları kopyalayıp devam edin."
+                        "title": "Eklenti veya yapıştır",
+                        "desc": "Yorumları Chrome eklentisiyle toplayın ya da kopyalayıp yapıştırın."
                     },
                     {
                         "title": "Tek kişi bir kez",
@@ -547,36 +461,10 @@
                         "desc": "TikTok hesabı veya uygulama izni istemeyiz."
                     }
                 ],
-                "howSteps": [
-                    {
-                        "title": "Linki yapıştırın",
-                        "desc": "TikTok video URL’sini kutuya bırakın. İsterseniz yorumları kendiniz yapıştırın."
-                    },
-                    {
-                        "title": "Yorumları getirin",
-                        "desc": "E-posta ile onaylayın. Hesap açılmaz."
-                    },
-                    {
-                        "title": "Kurayı çekin",
-                        "desc": "Kazananı seçin, kanıtı paylaşın. Yorumlar gelmezse iade yerine bir çekiliş hakkı tanımlanır."
-                    }
-                ],
                 "faq": [
                     {
-                        "q": "TikTok’a giriş gerekir mi?",
-                        "a": "Hayır. Şifre istemeyiz. Herkese açık video linki veya kopyalanan yorumlar yeter."
-                    },
-                    {
-                        "q": "Otomatik çekim ne kadar?",
-                        "a": "Çekim başına 200 TL. En fazla 1000 yorum. Üyelik yok; e-posta yeter. Yapıştırmak ücretsizdir."
-                    },
-                    {
-                        "q": "Yorumlar gelmezse param iade edilir mi?",
-                        "a": "Hayır. Sistem durumu analiz eder ve hemen iade yapmaz. Bunun yerine 1 çekiliş hakkı tanımlanır; e-postanızdaki linkle tekrar deneyebilirsiniz."
-                    },
-                    {
-                        "q": "Otomatik çekim çalışmazsa ne yapayım?",
-                        "a": "Videodaki yorumları kopyalayıp Yapıştır sekmesine alın. Çekiliş aynı şekilde devam eder."
+                        "q": "Yorumları nasıl eklerim?",
+                        "a": "Chrome eklentisiyle kendi tarayıcınızda toplayın ya da videodaki yorumları kopyalayıp yapıştırın. İkisi de ücretsizdir."
                     },
                     {
                         "q": "Kazanan gerçekten rastgele mi?",
@@ -587,53 +475,12 @@
                         "a": "Hayır. Takip durumu çekiliş sonrası rozet olarak görünür. Kura’ya kimlerin girdiğini kelime ve tek-kullanıcı kuralları belirler."
                     }
                 ],
-                "errors": {
-                    "needLink": "TikTok video linki girin",
-                    "invalidLink": "Geçerli bir TikTok linki girin (tiktok.com/@…/video/…)",
-                    "quota": "Otomatik yorum çekme kotası doldu. Yorumları yapıştırarak devam edin.",
-                    "unavailable": "Yorum servisi şu an yanıt vermiyor. Yorumları yapıştırarak devam edebilirsiniz.",
-                    "empty": "Bu videoda çekilecek yorum bulunamadı. Manuel yapıştırmayı deneyin.",
-                    "generic": "Yorumlar çekilemedi. Linki ve videonun herkese açık olduğunu kontrol edin.",
-                    "paymentTimeout": "Ödeme onayı gecikti. Birkaç dakika sonra tekrar deneyin ya da bizimle iletişime geçin."
-                },
                 "toasts": {
                     "added": "@{name} eklendi",
                     "participantsAdded": "{count} katılımcı eklendi",
                     "copied": "Sonuçlar kopyalandı",
                     "cardDownloaded": "Kazanan kartı indirildi",
                     "noNewNames": "Eklenecek yeni isim yok"
-                },
-                "loadingSteps": [
-                    "TikTok’a bağlanılıyor…",
-                    "Video yorumları çekiliyor…",
-                    "Katılımcılar doğrulanıyor…",
-                    "Liste hazırlanıyor…"
-                ],
-                "pay": {
-                    "openCta": "Yorumları getir",
-                    "title": "Çekilişi onayla",
-                    "subtitle": "Yorumlar videodan alınır. Hesap açılmaz.",
-                    "emailLabel": "E-posta",
-                    "emailPlaceholder": "ornek@posta.com",
-                    "emailHint": "Onay ve çekiliş hakkı bu adrese gider.",
-                    "invalidEmail": "Geçerli bir e-posta girin",
-                    "cta": "Onayla ve devam et",
-                    "processing": "Ödemeye gidiliyor…",
-                    "noMembership": "Hesap gerekmez",
-                    "serviceName": "Yorum çekimi",
-                    "feeLine": "Tek seferlik hizmet",
-                    "feeHint": "Hizmet bedeli {price} · hesap açılmaz",
-                    "cap": "en fazla {count} yorum",
-                    "noRefund": "Yorumlar alınamazsa ücret iade edilmez; bir çekiliş hakkı tanımlanır.",
-                    "useCredit": "Kayıtlı hakkınla devam et",
-                    "creditTitle": "Bir çekiliş hakkı tanımlandı",
-                    "creditBody": "Ödeme iade edilmedi. Sonraki otomatik çekim bu hakla yapılır.",
-                    "creditEmail": "Hakkın e-postana kaydedildi. Linkle tekrar dene.",
-                    "creditSaved": "Hakkın bu cihazda kaydedildi. Tekrar yorumları getir.",
-                    "paymentsDown": "Ödeme henüz açılmadı. PayTR başvurusu onaylanınca çalışır.",
-                    "cancelled": "İşlem iptal edildi. İstersen tekrar dene.",
-                    "salesContractLink": "Mesafeli Satış Sözleşmesi'ni okudum",
-                    "confirming": "Ödemeniz onaylanıyor…"
                 },
                 "extensionBannerTitle": "Chrome Eklentisiyle ücretsiz toplayın",
                 "extensionBannerBadge": "Ücretsiz",
@@ -1478,7 +1325,6 @@
         "contact": "İletişim",
         "privacyPolicy": "Gizlilik Koşulları",
         "legalInfo": "Yasal Bilgiler",
-        "salesTerms": "Satış Sözleşmesi",
         "copyright": "© 2025 YulaSanta. Tüm hakları saklıdır.",
         "cookieDisclaimer": "Web sayfamımızı, hizmetlerimizi veya araçlarımızı ziyaret ettiğinizde ve bunlarla etkileşim kurduğunuzda, biz veya hizmet sağlayıcılarımız, size daha iyi, daha hızlı ve daha güvenli bir deneyim sunmaya yardımcı olmak ve pazarlama amaçlarıyla bilgi depolamak için çerezleri kullanabiliriz.",
         "raffleTools": "Çekiliş Araçları",
@@ -1612,64 +1458,6 @@
             "q2": "Verilerim güvende mi?",
             "q3": "Kaç kişi ile çekiliş yapabilirim?"
         }
-    },
-    "howToPlay": {
-        "title": "Nasıl Oynanır?",
-        "subtitle": "Yılbaşı çekilişi yapmak hiç bu kadar kolay olmamıştı! İşte adımlar:",
-        "step1": "Katılımcıların isimlerini listeye ekleyin.",
-        "step2": "Eşleşme türünü seçin (Gizli Çekiliş veya Eşleştirme).",
-        "step3": "'Çekilişi Başlat' butonuna tıklayın.",
-        "step4": "Sonuç sayfasında herkes kendi ismini seçerek kime hediye alacağını öğrensin!"
-    },
-    "salesContract": {
-        "meta": {
-            "title": "Mesafeli Satış Sözleşmesi ve İptal/İade Politikası | YulaSanta",
-            "description": "YulaSanta TikTok yorum çekimi ücretli hizmetine ilişkin mesafeli satış sözleşmesi, cayma hakkı ve iptal/iade şartları."
-        },
-        "title": "Mesafeli Satış Sözleşmesi",
-        "subtitle": "İptal ve İade Politikası",
-        "intro": "Bu sayfa, YulaSanta üzerinden sunulan ücretli \"TikTok Yorum Çekimi\" hizmetinin satışına ilişkin mesafeli satış sözleşmesini ve iptal/iade şartlarını içerir. Ödeme ekranını onaylayarak bu şartları kabul etmiş olursunuz.",
-        "lastUpdated": "Son güncelleme: Ağustos 2026",
-        "sellerTitle": "1. Satıcı Bilgileri",
-        "seller": {
-            "name": "Ad Soyad: Mehmet Şükrü Demirkök",
-            "type": "İşletme türü: Bireysel (şahıs) satıcı",
-            "email": "E-posta: mehmetdemirkok@gmail.com",
-            "address": "Adres: [Satıcı adresi tamamlanacak]"
-        },
-        "buyerTitle": "2. Alıcı",
-        "buyerBody": "Ödeme sırasında verilen e-posta adresiyle tanımlanan, hizmeti satın alan gerçek kişi.",
-        "articles": [
-            {
-                "title": "3. Sözleşmenin Konusu",
-                "body": "İşbu sözleşme, Alıcı'nın YulaSanta (yulasanta.com.tr) üzerinden elektronik ortamda satın aldığı \"TikTok Yorum Çekimi\" hizmetinin satışı ve ifasına ilişkin tarafların hak ve yükümlülüklerini düzenler."
-            },
-            {
-                "title": "4. Hizmetin Temel Nitelikleri ve Bedeli",
-                "body": "Hizmet, Alıcı tarafından belirtilen genel erişime açık bir TikTok video linkindeki en fazla 1000 yorumun otomatik olarak çekilip listelenmesinden ibarettir. Hizmet bedeli KDV dahil 200 TL olup, ödeme PayTR ödeme altyapısı üzerinden banka/kredi kartı ile tek seferde tahsil edilir."
-            },
-            {
-                "title": "5. İfa Şekli ve Zamanı",
-                "body": "Ödeme onaylandıktan sonra sistem, yorum çekme işlemini otomatik olarak ve anında başlatır. Hizmet, elektronik ortamda anında ifa edilen bir hizmettir; fiziksel bir teslimat söz konusu değildir."
-            },
-            {
-                "title": "6. Cayma Hakkı",
-                "body": "6502 sayılı Tüketicinin Korunması Hakkında Kanun ve Mesafeli Sözleşmeler Yönetmeliği'nin 15/1-ğ maddesi uyarınca, elektronik ortamda anında ifa edilen hizmetlere ve tüketiciye anında teslim edilen gayri maddi mallara ilişkin sözleşmelerde cayma hakkı bulunmamaktadır. Hizmet, ödemenin onaylanmasıyla birlikte anında ifa edildiğinden, Alıcı işbu sözleşme kapsamında cayma hakkını kullanamaz."
-            },
-            {
-                "title": "7. İptal ve İade Politikası",
-                "body": "Hizmet başarıyla ifa edildikten (yorumlar çekildikten) sonra ücret iadesi yapılmaz. Video gizli/silinmiş olması, yorum servisinin geçici olarak yanıt vermemesi, videoda yorum bulunamaması gibi teknik nedenlerle hizmetin ifa edilememesi durumunda da ödenen bedel iade edilmez; bunun yerine Alıcı'ya, kayıtlı e-posta adresine gönderilen bir bağlantı ile 90 gün geçerli, aynı bedelde yeniden deneme hakkı (kredi) tanımlanır. Bu politika ödeme ekranında da açıkça belirtilmektedir."
-            },
-            {
-                "title": "8. Uyuşmazlıkların Çözümü",
-                "body": "İşbu sözleşmeden doğan uyuşmazlıklarda, Ticaret Bakanlığınca ilan edilen değere kadar Tüketici Hakem Heyetleri, bu değerin üzerindeki uyuşmazlıklarda ise Tüketici Mahkemeleri yetkilidir. Sözleşmeye Türkiye Cumhuriyeti kanunları uygulanır."
-            },
-            {
-                "title": "9. Yürürlük",
-                "body": "Alıcı, ödeme ekranında yer alan onay kutucuğunu işaretleyip ödemeyi tamamladığında işbu sözleşmenin tüm hükümlerini okumuş, anlamış ve kabul etmiş sayılır."
-            }
-        ],
-        "contactNote": "Sorularınız için: mehmetdemirkok@gmail.com"
     },
     "auth": {
         "login": {

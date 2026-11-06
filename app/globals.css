@@ -602,6 +602,60 @@ html.ys-new-year.dark footer::before {
   background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 400 14' preserveAspectRatio='none'%3E%3Cpath fill='%23EEF3FB' d='M0 14V8C14 3 28 2 44 7C60 12 74 12 90 6C106 1 120 2 136 7C152 12 168 12 184 6C200 1 214 2 230 7C246 12 262 12 278 6C294 1 308 2 324 7C340 12 356 11 372 6C382 3 392 4 400 7V14Z'/%3E%3C/svg%3E");
 }
 
+/* Secret Santa: the main card looks like a wrapped gift */
+html.ys-new-year .ys-gift-card {
+  border-color: color-mix(in srgb, var(--gold) 45%, var(--card-border));
+  box-shadow:
+    0 18px 44px -20px rgba(182, 23, 34, 0.45),
+    0 0 0 3px color-mix(in srgb, var(--gold) 10%, transparent);
+}
+
+/* Secret Santa: participant avatars wear a little bauble cap */
+html.ys-new-year .ys-avatar-bauble::before {
+  content: "";
+  position: absolute;
+  top: -3px;
+  left: 50%;
+  width: 9px;
+  height: 5px;
+  transform: translateX(-50%);
+  border-radius: 2px 2px 0 0;
+  background: linear-gradient(180deg, #F2D27A, #B98A25);
+}
+
+/* Secret Santa: candy-cane stripes on the progress bar */
+html.ys-new-year .ys-candy-fill {
+  position: relative;
+  overflow: hidden;
+}
+html.ys-new-year .ys-candy-fill::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: repeating-linear-gradient(-45deg, rgba(255, 255, 255, 0.45) 0 5px, transparent 5px 10px);
+}
+
+/* Secret Santa: a soft gold sheen crosses the start button once it is enabled */
+@keyframes ysCtaSheen {
+  0%, 62% { transform: translateX(-130%) skewX(-18deg); }
+  100%    { transform: translateX(330%) skewX(-18deg); }
+}
+html.ys-new-year .ys-festive-cta {
+  position: relative;
+  overflow: hidden;
+  outline: 1px solid color-mix(in srgb, var(--gold) 55%, transparent);
+  outline-offset: -3px;
+}
+html.ys-new-year .ys-festive-cta:not(:disabled)::after {
+  content: "";
+  position: absolute;
+  inset: 0 auto 0 0;
+  width: 34%;
+  pointer-events: none;
+  background: linear-gradient(90deg, transparent, rgba(255, 224, 138, 0.5), transparent);
+  animation: ysCtaSheen 3.6s ease-in-out infinite;
+}
+
 html.ys-new-year ::selection {
   background: #B61722;
   color: #FFF1C2;
@@ -609,4 +663,5 @@ html.ys-new-year ::selection {
 
 @media (prefers-reduced-motion: reduce) {
   .ys-garland-bulb, .ys-bauble, .ys-yula-hop, .ys-midnight-pop, .ys-countdown-final { animation: none; }
+  html.ys-new-year .ys-festive-cta:not(:disabled)::after { animation: none; display: none; }
 }

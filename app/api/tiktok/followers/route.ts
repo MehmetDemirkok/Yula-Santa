@@ -1,7 +1,7 @@
 import { NextRequest, NextResponse } from 'next/server';
 import { ApifyClient } from 'apify-client';
 import { rateLimit } from '@/lib/rateLimit';
-import { createRequestId, logTikTokEvent } from '@/lib/tiktok/server';
+import { createRequestId, logTikTokEvent } from '@/lib/tiktok/logging';
 
 export const maxDuration = 60;
 

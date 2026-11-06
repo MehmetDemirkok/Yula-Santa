@@ -3,15 +3,13 @@
 import { useState, useRef, useEffect, useMemo } from "react";
 import { useLocale, useTranslations } from "next-intl";
 import { celebrate } from "@/lib/celebrate";
-import { useRouter, Link } from "@/i18n/navigation";
+import { Link } from "@/i18n/navigation";
 import {
-    MessageCircle,
     Plus,
     Minus,
     Users,
     AtSign,
     Play,
-    Home,
     Trash2,
     Loader2,
     Trophy,
@@ -23,12 +21,9 @@ import {
     Filter,
     Download,
     Share2,
-    Link2,
     ClipboardPaste,
     ArrowRight,
     BadgeCheck,
-    Shuffle,
-    UserMinus,
     Chrome,
 } from "lucide-react";
 import { Button } from "@/components/ui/Button";
@@ -45,7 +40,6 @@ import { TikTokFetchStats } from "@/components/giveaway/TikTokFetchStats";
 import { SITE_SHARE_SUFFIX } from "@/lib/constants";
 import { AdWrapper, InArticleAd } from "@/components/ads";
 import { AD_SLOTS } from "@/lib/ads/config";
-import { Reveal } from "@/components/Reveal";
 import { applyManualImportPreview, parseManualImport, type ManualImportPreview } from "@/lib/tiktok";
 
 type Phase = "input" | "configure" | "results";
@@ -58,7 +52,6 @@ interface Participant {
 
 const TT_CTA = "bg-santa-red hover:bg-santa-red-hover";
 
-const FEATURE_ICONS = [Link2, Filter, MessageCircle, Users, UserMinus, Shield, Download, BadgeCheck] as const;
 const TRUST_ICONS = [Shield, ClipboardPaste, Filter, Users, BadgeCheck] as const;
 
 const TikTokMark = ({ className }: { className?: string }) => (
@@ -73,7 +66,6 @@ function prefersReducedMotion() {
 }
 
 export default function TikTokGiveaway() {
-    const router = useRouter();
     const locale = useLocale();
     const { t } = useLanguage();
     const tl = useTranslations("giveaway.landing.tiktok");
@@ -110,7 +102,6 @@ export default function TikTokGiveaway() {
     const [copied, setCopied] = useState(false);
     const [showShareModal, setShowShareModal] = useState(false);
     const [importPreview, setImportPreview] = useState<ManualImportPreview | null>(null);
-    const [openFaq, setOpenFaq] = useState<number | null>(0);
 
     useEffect(() => {
         function handleClickOutside(event: MouseEvent) {
@@ -336,10 +327,6 @@ export default function TikTokGiveaway() {
     };
 
     const trustBadgeLabels = tl.raw("trustBadges") as string[];
-    const metrics = tl.raw("metrics") as Array<{ value: string; label: string }>;
-    const featuresData = tl.raw("features") as Array<{ title: string; desc: string }>;
-    const howSteps = tl.raw("howSteps") as Array<{ title: string; desc: string }>;
-    const faqItems = tl.raw("faq") as Array<{ q: string; a: string }>;
 
     const progressSteps = [
         { n: 1, label: tl("steps.paste") },
@@ -360,15 +347,15 @@ export default function TikTokGiveaway() {
     const canDraw = eligibleParticipants.length >= winnerCount + backupCount;
 
     return (
-        <main className="relative min-h-screen overflow-x-hidden bg-[#fafafa] text-[var(--text-primary)] dark:bg-[var(--background)]">
+        <main className="relative overflow-x-hidden bg-[#fafafa] text-[var(--text-primary)] dark:bg-[var(--background)]">
             <div className="pointer-events-none absolute inset-0 overflow-hidden" aria-hidden>
                 <div className="absolute -top-32 left-1/2 h-[480px] w-[820px] -translate-x-1/2 rounded-full bg-[radial-gradient(ellipse_at_center,rgba(182,23,34,0.08),transparent_70%)]" />
             </div>
 
-            <section ref={toolRef} className="relative z-10 mx-auto max-w-5xl px-4 pb-16 pt-24 sm:px-6 sm:pt-32 lg:pb-20">
+            <section ref={toolRef} className="relative z-10 mx-auto max-w-5xl scroll-mt-14 px-4 pb-6 pt-[56px] sm:scroll-mt-16 sm:px-6 lg:scroll-mt-20 lg:pb-10">
                 <div className="mx-auto max-w-xl text-center">
-                    <div className="mb-8 flex items-center justify-center gap-3">
-                        <div className="h-12 w-12 rounded-xl bg-gradient-to-br from-black to-gray-800 flex items-center justify-center shadow-lg">
+                    <div className="mb-3 flex items-center justify-center gap-3">
+                        <div className="h-10 w-10 rounded-xl bg-gradient-to-br from-black to-gray-800 flex items-center justify-center shadow-lg">
                             <TikTokMark className="h-6 w-6 text-white" />
                         </div>
                         <div className="text-left">
@@ -381,15 +368,15 @@ export default function TikTokGiveaway() {
                         </div>
                     </div>
 
-                    <h1 className="font-heading text-[2.35rem] font-extrabold leading-[1.05] tracking-[-0.03em] text-[var(--text-primary)] sm:text-[3.15rem]">
+                    <h1 className="font-heading text-[28px] font-extrabold leading-tight tracking-tight text-[var(--text-primary)] sm:text-4xl">
                         {tl("heroHighlight")}
                     </h1>
-                    <p className="mx-auto mt-4 max-w-md text-[15px] leading-relaxed text-[var(--text-secondary)] sm:text-base">
+                    <p className="mx-auto mt-2 max-w-md text-sm leading-relaxed text-[var(--text-secondary)] sm:text-base">
                         {tl("heroSubtitle")}
                     </p>
                 </div>
 
-                <nav aria-label={tl("howTitle")} className="mx-auto mt-10 max-w-lg px-2">
+                <nav aria-label={tl("howTitle")} className="mx-auto mt-5 max-w-lg px-2">
                     <ol className="flex">
                         {progressSteps.map((s, i) => {
                             const state =
@@ -439,7 +426,7 @@ export default function TikTokGiveaway() {
                     </ol>
                 </nav>
 
-                <div className="mx-auto mt-8 max-w-2xl">
+                <div className="mx-auto mt-5 max-w-2xl">
                     <div className="overflow-hidden rounded-[20px] border border-[var(--border-light)] bg-white shadow-[0_8px_40px_rgba(17,24,39,0.06)] dark:border-white/10 dark:bg-[var(--card-bg)]">
                         <div className="h-[3px] w-full bg-santa-red" aria-hidden />
 
@@ -587,7 +574,7 @@ export default function TikTokGiveaway() {
                         )}
 
                         {!isRolling && phase === "input" && (
-                            <div className="p-5 sm:p-7">
+                            <div className="p-4 sm:p-6">
                                 <Link
                                     href="/tiktok/extension"
                                     className="group relative mb-5 flex items-center gap-3.5 overflow-hidden rounded-2xl border border-indigo-accent/30 bg-indigo-accent/[0.07] px-4 py-3.5 shadow-[0_1px_0_rgba(79,70,229,0.06)] transition hover:border-indigo-accent/60 hover:bg-indigo-accent/[0.12] hover:shadow-[0_6px_20px_rgba(79,70,229,0.18)] sm:px-5"
@@ -629,7 +616,7 @@ export default function TikTokGiveaway() {
                                             setImportPreview(null);
                                         }}
                                         placeholder={`${t.giveaway.pasteComments}\n\n${tl("pastePlaceholderExample")}`}
-                                        className="h-44 w-full resize-none rounded-2xl border border-dashed border-[var(--border-medium)] bg-[var(--surface-2)] p-4 outline-none transition focus:border-santa-red focus:ring-4 focus:ring-santa-red/10"
+                                        className="h-32 w-full resize-none rounded-2xl border border-dashed border-[var(--border-medium)] bg-[var(--surface-2)] p-4 outline-none transition focus:border-santa-red focus:ring-4 focus:ring-santa-red/10"
                                     />
                                     <button
                                         type="button"
@@ -939,7 +926,7 @@ export default function TikTokGiveaway() {
                 </div>
 
                 {phase === "input" && (
-                    <ul className="mx-auto mt-8 flex max-w-2xl flex-wrap items-center justify-center gap-2">
+                    <ul className="mx-auto mt-4 flex max-w-2xl flex-wrap items-center justify-center gap-2">
                         {trustBadgeLabels.map((label, i) => {
                             const Icon = TRUST_ICONS[i] ?? BadgeCheck;
                             return (
@@ -956,120 +943,6 @@ export default function TikTokGiveaway() {
                 )}
             </section>
 
-            <section className="relative z-10 border-y border-[var(--border-light)] bg-white/80 py-12 dark:bg-white/[0.02]">
-                <div className="mx-auto grid max-w-5xl grid-cols-2 gap-6 px-4 sm:grid-cols-4 sm:px-6">
-                    {metrics.map((m) => (
-                        <Reveal key={m.label}>
-                            <div className="text-center">
-                                <p className="font-heading text-3xl font-bold tracking-tight text-[var(--text-primary)] sm:text-4xl">{m.value}</p>
-                                <p className="mt-2 text-sm text-[var(--text-muted)]">{m.label}</p>
-                            </div>
-                        </Reveal>
-                    ))}
-                </div>
-            </section>
-
-            <section className="relative z-10 mx-auto max-w-5xl px-4 py-16 sm:px-6">
-                <Reveal>
-                    <div className="mx-auto mb-10 max-w-2xl text-center">
-                        <h2 className="text-3xl font-bold tracking-tight sm:text-[2rem]">{tl("featuresTitle")}</h2>
-                        <p className="mt-3 text-base text-[var(--text-secondary)]">{tl("featuresSubtitle")}</p>
-                    </div>
-                </Reveal>
-                <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
-                    {featuresData.map((f, i) => {
-                        const Icon = FEATURE_ICONS[i] ?? MessageCircle;
-                        return (
-                            <Reveal key={f.title}>
-                                <article className="h-full rounded-[18px] border border-[var(--border-light)] bg-white p-5 dark:bg-[var(--card-bg)] dark:border-white/10">
-                                    <div className="mb-4 inline-flex rounded-xl bg-[var(--navy)] p-3 text-white">
-                                        <Icon className="h-5 w-5" strokeWidth={1.75} />
-                                    </div>
-                                    <h3 className="text-lg font-semibold tracking-tight">{f.title}</h3>
-                                    <p className="mt-2 text-sm leading-relaxed text-[var(--text-secondary)]">{f.desc}</p>
-                                </article>
-                            </Reveal>
-                        );
-                    })}
-                </div>
-            </section>
-
-            <section className="relative z-10 border-t border-[var(--border-light)] bg-white py-16 dark:bg-white/[0.02]">
-                <div className="mx-auto max-w-3xl px-4 sm:px-6">
-                    <Reveal>
-                        <div className="mb-10 text-center">
-                            <h2 className="text-3xl font-bold tracking-tight sm:text-[2rem]">{tl("howTitle")}</h2>
-                            <p className="mt-3 text-base text-[var(--text-secondary)]">{tl("howSubtitle")}</p>
-                        </div>
-                    </Reveal>
-                    <ol>
-                        {howSteps.map((s, i) => (
-                            <Reveal key={s.title} delay={i * 50}>
-                                <li className="relative flex gap-4 pb-8 last:pb-0">
-                                    {i < howSteps.length - 1 && (
-                                        <div className="absolute left-[19px] top-10 h-[calc(100%-2rem)] w-px bg-santa-red/30" aria-hidden />
-                                    )}
-                                    <div className={`relative z-10 flex h-10 w-10 shrink-0 items-center justify-center rounded-full text-sm font-bold text-white ${TT_CTA}`}>
-                                        {i + 1}
-                                    </div>
-                                    <div className="flex-1 rounded-2xl border border-[var(--border-light)] bg-[#f4f6f8] p-4 dark:bg-white/5">
-                                        <h3 className="text-lg font-semibold">{s.title}</h3>
-                                        <p className="mt-1 text-sm text-[var(--text-secondary)]">{s.desc}</p>
-                                    </div>
-                                </li>
-                            </Reveal>
-                        ))}
-                    </ol>
-                    <div className="mt-10 text-center">
-                        <button
-                            type="button"
-                            onClick={scrollToTool}
-                            className={`inline-flex min-h-[48px] items-center gap-2 rounded-2xl px-6 py-3 text-sm font-bold text-white ${TT_CTA}`}
-                        >
-                            <Shuffle className="h-4 w-4" /> {tl("startCta")}
-                        </button>
-                    </div>
-                </div>
-            </section>
-
-            <section className="relative z-10 mx-auto max-w-3xl px-4 py-16 sm:px-6">
-                <Reveal>
-                    <h2 className="mb-8 text-center text-3xl font-bold tracking-tight sm:text-[2rem]">{tl("faqTitle")}</h2>
-                </Reveal>
-                <div className="space-y-3">
-                    {faqItems.map((item, i) => {
-                        const open = openFaq === i;
-                        return (
-                            <Reveal key={item.q} delay={i * 40}>
-                                <div className="overflow-hidden rounded-[18px] border border-[var(--border-light)] bg-white dark:bg-[var(--card-bg)] dark:border-white/10">
-                                    <button
-                                        type="button"
-                                        aria-expanded={open}
-                                        onClick={() => setOpenFaq(open ? null : i)}
-                                        className="flex w-full min-h-[52px] items-center justify-between gap-4 px-5 py-4 text-left"
-                                    >
-                                        <span className="font-heading text-base font-semibold sm:text-lg">{item.q}</span>
-                                        <span className={`flex h-8 w-8 shrink-0 items-center justify-center rounded-full bg-[var(--surface-2)] text-[var(--text-muted)] transition ${open ? "rotate-180" : ""}`}>
-                                            <ChevronUp className="h-4 w-4" />
-                                        </span>
-                                    </button>
-                                    <div className={`grid transition-all duration-300 ${open ? "grid-rows-[1fr] opacity-100" : "grid-rows-[0fr] opacity-0"}`}>
-                                        <div className="overflow-hidden">
-                                            <p className="px-5 pb-5 text-sm leading-relaxed text-[var(--text-secondary)] sm:text-base">{item.a}</p>
-                                        </div>
-                                    </div>
-                                </div>
-                            </Reveal>
-                        );
-                    })}
-                </div>
-            </section>
-
-            <div className="relative z-10 pb-12 text-center">
-                <Button onClick={() => router.push("/")} variant="ghost" className="rounded-2xl text-[var(--text-muted)]">
-                    <Home className="mr-2 h-4 w-4" /> {t.result.backToHome}
-                </Button>
-            </div>
         </main>
     );
 }

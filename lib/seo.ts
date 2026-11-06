@@ -35,6 +35,7 @@ interface SEOProps {
     descriptionOverride?: string;
     keywordsOverride?: string[];
     noIndex?: boolean;
+    ogImage?: { path: string; width: number; height: number };
 }
 
 export async function getSEOMetadata({
@@ -44,7 +45,8 @@ export async function getSEOMetadata({
     titleOverride,
     descriptionOverride,
     keywordsOverride,
-    noIndex = false
+    noIndex = false,
+    ogImage = { path: '/opengraph-image.png', width: 1024, height: 1024 },
 }: SEOProps): Promise<Metadata> {
     // Dynamically import messages for the locale
     let messages;
@@ -120,9 +122,9 @@ export async function getSEOMetadata({
             type: 'website',
             images: [
                 {
-                    url: `${SITE_URL}/opengraph-image.png`,
-                    width: 1200,
-                    height: 630,
+                    url: `${SITE_URL}${ogImage.path}`,
+                    width: ogImage.width,
+                    height: ogImage.height,
                     alt: title,
                 },
             ],
@@ -131,7 +133,7 @@ export async function getSEOMetadata({
             card: 'summary_large_image',
             title,
             description,
-            images: [`${SITE_URL}/opengraph-image.png`],
+            images: [`${SITE_URL}${ogImage.path}`],
             creator: '@yulasanta',
         },
         verification: {

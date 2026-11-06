@@ -1,6 +1,6 @@
 # YulaSanta
 
-A family of draw and giveaway tools, localized into 12 languages. Most tools are free and run entirely in the browser; the TikTok comment fetch is a paid feature.
+A family of draw and giveaway tools, localized into 12 languages. All tools are free, and most run entirely in the browser.
 
 Live site: [www.yulasanta.com.tr](https://www.yulasanta.com.tr)
 
@@ -11,7 +11,7 @@ Live site: [www.yulasanta.com.tr](https://www.yulasanta.com.tr)
 - **Secret Santa**: random gift assignment, with participant import from Excel or PDF
 - **Raffle**: name draw with a shareable result
 - **YouTube giveaway**: pick winners from video comments
-- **TikTok giveaway**: pick winners from comments collected by the browser extension or fetched through the paid flow
+- **TikTok giveaway**: pick winners from comments that you paste or collect with the browser extension
 
 **Small tools**: coin flip, dice, wheel of fortune, team generator, short straw, random number, gift suggestions
 
@@ -59,9 +59,7 @@ Create a `.env.local` file for local development. It is gitignored. Everything e
 | Google sign-in | `AUTH_SECRET`, `GOOGLE_CLIENT_ID`, `GOOGLE_CLIENT_SECRET` |
 | Database (Neon Postgres) | `DATABASE_URL` |
 | YouTube giveaway | `YOUTUBE_API_KEY` |
-| TikTok fetch | `APIFY_API_TOKEN` |
-| TikTok payments (PayTR) | `PAYTR_MERCHANT_ID`, `PAYTR_MERCHANT_KEY`, `PAYTR_MERCHANT_SALT`, `PAYTR_TEST_MODE` |
-| TikTok credits (optional) | `TIKTOK_LEDGER_SECRET`, `RESEND_API_KEY`, `RESEND_FROM` or `EMAIL_FROM` |
+| TikTok follower check | `APIFY_API_TOKEN` |
 | Plaka Avcısı guest cookie (optional) | `PLAKA_SECRET` |
 | Translation script | `OPENAI_API_KEY` |
 | Ads and site verification | See [Google AdSense](#google-adsense) |
@@ -140,7 +138,7 @@ import { AD_SLOTS } from '@/lib/ads/config';
 ## Privacy
 
 - Client-only tools such as Secret Santa, raffle, and the small tools keep participant data in the browser.
-- Features that need a server use the Neon database or third-party APIs: TikTok giveaways, payments, and Plaka Avcısı scores.
+- Features that need a server use the Neon database or third-party APIs: extension-collected TikTok giveaways, the TikTok follower check, and Plaka Avcısı scores.
 - The site includes a cookie consent banner in all 12 languages and a privacy policy at `/privacy`.
 
 ## Tech stack
@@ -150,7 +148,7 @@ import { AD_SLOTS } from '@/lib/ads/config';
 - **Localization**: next-intl
 - **Auth**: Auth.js (NextAuth v5) with Google, using JWT sessions and no users table
 - **Database**: Neon Postgres
-- **Integrations**: Apify, PayTR, YouTube Data API, Resend
+- **Integrations**: Apify, YouTube Data API
 - **3D**: Three.js and cannon-es (coin flip and dice)
 - **Analytics and ads**: Vercel Analytics, Google AdSense
 - **Deployment**: Vercel

@@ -184,7 +184,7 @@ export function Navbar() {
                                     className="absolute -inset-1 rounded-2xl bg-gradient-to-br from-santa-red to-gold opacity-0 blur-md transition-opacity duration-300 group-hover:opacity-60"
                                 />
                                 <span className="relative flex p-1.5 bg-[var(--card-bg)] rounded-xl shadow-sm border border-[var(--card-border)] group-hover:scale-105 group-hover:-rotate-2 transition-transform duration-300">
-                                    <img src="/icon.png" alt="YulaSanta Logo" className="w-8 h-8 sm:w-9 sm:h-9 object-contain" />
+                                    <img src="/icon-192.png" alt="YulaSanta Logo" className="w-8 h-8 sm:w-9 sm:h-9 object-contain" />
                                 </span>
                             </span>
                             <span className="font-heading text-xl sm:text-2xl font-extrabold tracking-tight text-foreground">

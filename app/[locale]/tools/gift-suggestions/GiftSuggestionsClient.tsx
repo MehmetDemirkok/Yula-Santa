@@ -2,6 +2,7 @@
 
 import { useState } from 'react';
 import Link from 'next/link';
+import { localePath } from '@/lib/localePath';
 import { ArrowLeft, Gift, Sparkles, Wand2, RefreshCw, Loader2, PencilLine, AlertCircle } from 'lucide-react';
 import { useTranslations } from 'next-intl';
 import { useParams } from 'next/navigation';
@@ -24,6 +25,7 @@ interface GiftSuggestion {
 
 export default function GiftSuggestionsClient() {
     const t = useTranslations('tools.giftSuggestionsContent');
+    const tHome = useTranslations('home');
     const params = useParams();
     const locale = params.locale as string || 'tr';
 
@@ -102,6 +104,10 @@ export default function GiftSuggestionsClient() {
                             {t('title')}
                         </h1>
                         <p className="text-xs sm:text-sm text-[var(--text-muted)] dark:text-[var(--text-muted)] mt-1">{t('subtitle')}</p>
+                        <Link href={localePath(locale, '/secret-santa')} className="mt-1 inline-flex min-h-[44px] items-center gap-1.5 text-sm font-bold text-santa-red hover:underline">
+                            <Gift className="h-4 w-4" aria-hidden="true" />
+                            {tHome('santaCta')}
+                        </Link>
                     </div>
                 </div>
 

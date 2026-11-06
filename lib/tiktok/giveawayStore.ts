@@ -1,7 +1,5 @@
 /**
  * Persistence for the extension-collected TikTok giveaway flow.
- * Same Neon Postgres instance as lib/tiktok/ledger.ts, separate tables —
- * the paid Apify/PayTR flow never touches these and is unaffected.
  */
 import { neon, type NeonQueryFunction } from '@neondatabase/serverless';
 import { randomBytes, timingSafeEqual } from 'node:crypto';
