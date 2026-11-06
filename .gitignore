@@ -40,5 +40,5 @@ yarn-error.log*
 *.tsbuildinfo
 next-env.d.ts
 
-# Instagram session cache (otomatik oluşturulur, commit'leme)
-.ig-session-cache
+# Claude Code personal settings
+.claude/settings.local.json

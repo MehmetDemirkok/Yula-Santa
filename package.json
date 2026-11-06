@@ -16,7 +16,6 @@
   },
   "dependencies": {
     "@neondatabase/serverless": "^1.1.0",
-    "@types/three": "^0.182.0",
     "@vercel/analytics": "^1.6.1",
     "apify-client": "^2.21.0",
     "cannon-es": "^0.20.0",
@@ -37,9 +36,9 @@
     "@tailwindcss/postcss": "^4",
     "@types/canvas-confetti": "^1.9.0",
     "@types/node": "^20",
-    "@types/pdf-parse": "^1.1.5",
     "@types/react": "^19",
     "@types/react-dom": "^19",
+    "@types/three": "^0.182.0",
     "eslint": "^9",
     "eslint-config-next": "16.0.10",
     "tailwindcss": "^4",

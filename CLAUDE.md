@@ -6,7 +6,7 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 
 YulaSanta is a Next.js 16 (App Router) app offering a family of free draw/giveaway tools: Secret Santa, raffle, YouTube giveaway picker, TikTok comment-picker giveaway, a set of small standalone tools (coin flip, dice, wheel of fortune, team generator, short straw, random number, gift suggestions), and the Plaka Avcısı quiz game. The UI is localized into 12 languages. The TikTok giveaway tool is a paid product with its own credit ledger, Apify-based scraping, PayTR checkout, and a companion browser extension. The canonical site URL is `SITE_URL` in `lib/constants.ts` (`https://www.yulasanta.com.tr`).
 
-`README.md` predates locale routing and the paid TikTok product, so its project tree is stale; its AdSense setup steps are still the useful part. `AGENTS.md` is a condensed version of this file for other agents, so keep the two consistent.
+`README.md` is the short public overview: features, commands, env variables, and AdSense setup. `AGENTS.md` is a condensed version of this file for other agents, so keep the two consistent.
 
 ## Commands
 
@@ -96,7 +96,7 @@ The code also reads these optional variables, which are not currently in `.env.l
 - `PLAKA_SECRET`: guest cookie signing (`lib/plaka/player.ts`), with fallbacks
 - `OPENAI_API_KEY`: translation script only
 
-`GEMINI_API_KEY` and the `INSTAGRAM_*` values are in `.env.local`, but nothing in `app/`, `lib/`, `components/`, or `scripts/` reads them. `/api/suggest-gifts` serves a static list and makes no AI call.
+`/api/suggest-gifts` serves a static list and makes no AI call.
 
 ### Ads / SEO
 

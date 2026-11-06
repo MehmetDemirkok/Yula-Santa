@@ -20,7 +20,7 @@ Full architecture notes live in `CLAUDE.md`; design tokens in `design.md` — re
 - Locale routing: pages live under `app/[locale]/`. `tr` (default) has **no** URL prefix (`localePrefix: 'as-needed'`), others are `/en/...`. `middleware.ts` disables Accept-Language redirects. Build links with `lib/localePath.ts`, never hand-roll `/tr/...`.
 - i18n source of truth is `messages/tr.json`. Add keys there first, then run `i18n:check`.
 - Two i18n APIs coexist: new pages use next-intl `useTranslations()` directly; `lib/i18n/LanguageContext.tsx` is a legacy `useLanguage()` wrapper still used by `LanguageSelector`, `CookieConsent`, `RaffleBoard`, and the `result`/`raffle`/`youtube`/`tiktok` client pages. `lib/i18n/translations.ts` holds only locale constants/types, not strings.
-- `README.md` predates locale routing and the paid TikTok product — its project tree is stale (shows `app/privacy`/`app/result` at root, no `[locale]`, and points to `lib/i18n/` for translation strings, which live in `messages/`). Trust `CLAUDE.md` and the code over it.
+- `README.md` is the short public overview: features, commands, env variables, and AdSense setup. For architecture details, use `CLAUDE.md` and the code.
 - SEO pattern: each route folder = server `page.tsx` (metadata) + client `*Client.tsx`. Keep that split.
 - `@/*` path alias maps to the repo root.
 - Turkish-slug → English path redirects are hardcoded in `next.config.ts`.
@@ -41,6 +41,6 @@ Full architecture notes live in `CLAUDE.md`; design tokens in `design.md` — re
 ## Other
 
 - Auth (`auth.ts`): Auth.js v5 with Google only, JWT-only sessions — there is no users table.
-- Secrets live in `.env.local` (gitignored): Neon, Apify, PayTR, YouTube, Gemini, Google OAuth, Instagram. Never expose to client components.
+- Secrets live in `.env.local` (gitignored): Neon, Apify, PayTR, YouTube, Google OAuth. Never expose to client components.
 - AdSense is gated behind `NEXT_PUBLIC_ADSENSE_CLIENT_ID` / `NEXT_PUBLIC_AD_SLOT_*` env vars (`components/ads/`, `lib/ads/config.ts`); sitemap/robots via `app/sitemap.ts` / `app/robots.ts`.
 - `extensions/yulasanta-tiktok-extension-*/` is a standalone vanilla-JS browser extension, not built by the Next app.
