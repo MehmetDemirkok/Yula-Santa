@@ -8,6 +8,7 @@ import type {
     LeaderboardPeriod,
     LeaderboardResult,
     PlayerOverview,
+    ResumeResult,
     StartSessionResult,
 } from '@/lib/plaka/contracts';
 import type { PlakaLevel, PlakaMode } from '@/lib/plaka/game';
@@ -63,6 +64,13 @@ export const plakaApi = {
         return request('/api/plaka/session', {
             method: 'POST',
             body: JSON.stringify(input),
+        });
+    },
+
+    resume(sessionId: string): Promise<ResumeResult> {
+        return request('/api/plaka/resume', {
+            method: 'POST',
+            body: JSON.stringify({ sessionId }),
         });
     },
 

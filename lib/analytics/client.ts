@@ -8,6 +8,8 @@
 import type { ClientEvent, ConsentState, EventName, ToolName } from "./events";
 
 const CONSENT_KEY = "yulasanta_cookie_consent_v2";
+/** Fired on window whenever the visitor changes their cookie choice. */
+export const CONSENT_EVENT = "yulasanta:consent";
 const VISITOR_KEY = "yulasanta_vid";
 const ENDPOINT = "/api/analytics/collect";
 const FLUSH_DELAY_MS = 2000;
@@ -111,5 +113,6 @@ export function setConsent(value: "accepted" | "declined") {
     } catch {
         // Storage may be blocked; the visitor then counts as "unset".
     }
+    window.dispatchEvent(new Event(CONSENT_EVENT));
     pushNow(event("consent"));
 }

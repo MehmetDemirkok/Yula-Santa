@@ -1341,19 +1341,7 @@
         "meta": {
             "title": "Confidentialité | YulaSanta",
             "description": "Politique de confidentialité de YulaSanta."
-        },
-        "lastUpdated": "Dernière mise à jour : 6 novembre 2026",
-        "intro": "Chez YulaSanta, nous accordons une grande importance à votre vie privée.",
-        "dataTitle": "Collecte de Données",
-        "dataDesc": "YulaSanta stocke les noms uniquement localement dans votre navigateur.",
-        "cookiesTitle": "Cookies",
-        "cookiesDesc": "Nous utilisons Google AdSense pour afficher des publicités.",
-        "securityTitle": "Sécurité",
-        "securityDesc": "Vos données restent sur votre appareil.",
-        "thirdPartyTitle": "Services Tiers",
-        "thirdPartyDesc": "Nous utilisons Google Analytics et AdSense.",
-        "analyticsTitle": "Statistiques d'utilisation",
-        "analyticsDesc": "Pour améliorer le site, nous conservons des statistiques d'utilisation sur notre propre serveur : page consultée, outil utilisé, nombre de participants et de résultats, pays, langue, type d'appareil et de navigateur. Nous ne stockons pas votre adresse IP en clair. Les noms que vous saisissez, les gagnants et les associations Secret Santa ne font pas partie de ces statistiques. Si vous acceptez les cookies, un identifiant de visiteur anonyme est enregistré dans votre navigateur ; si vous vous êtes connecté avec Google, votre adresse e-mail est également associée à ces enregistrements. Si vous refusez les cookies, cet identifiant est supprimé et seul un comptage anonyme, renouvelé chaque jour, est effectué. Les enregistrements sont conservés 90 jours au maximum."
+        }
     },
     "legal": {
         "title": "Mentions Légales",

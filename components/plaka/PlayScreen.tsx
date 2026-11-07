@@ -1,6 +1,6 @@
 'use client';
 
-import { useEffect } from 'react';
+import { useEffect, useState } from 'react';
 import {
     ArrowRight,
     Check,
@@ -21,6 +21,7 @@ type Props = {
     durationSeconds: number | null;
     modeTitle: string;
     levelLabel: string;
+    daily: boolean;
     score: number;
     streak: number;
     bestStreak: number;
@@ -31,6 +32,8 @@ type Props = {
     submitting: boolean;
     finishing: boolean;
     error: string | null;
+    finishFailed: boolean;
+    onRetryFinish: () => void;
     onSelect: (optionIndex: number) => void;
     onNext: () => void;
     onQuit: () => void;
@@ -51,6 +54,7 @@ export default function PlayScreen({
     durationSeconds,
     modeTitle,
     levelLabel,
+    daily,
     score,
     streak,
     bestStreak,
@@ -61,12 +65,21 @@ export default function PlayScreen({
     submitting,
     finishing,
     error,
+    finishFailed,
+    onRetryFinish,
     onSelect,
     onNext,
     onQuit,
 }: Props) {
     const isTimed = secondsLeft !== null;
     const locked = feedback !== null || submitting || finishing;
+    const [confirmingQuit, setConfirmingQuit] = useState(false);
+    const nothingAnswered = questionNumber === 1 && feedback === null && !submitting;
+
+    const requestQuit = () => {
+        if (nothingAnswered) onQuit();
+        else setConfirmingQuit(true);
+    };
 
     useEffect(() => {
         function onKeyDown(event: KeyboardEvent) {
@@ -98,8 +111,9 @@ export default function PlayScreen({
                         <button
                             type="button"
                             className={styles.iconButton}
-                            onClick={onQuit}
-                            aria-label="Oyundan çık ve sonucu kaydet"
+                            onClick={requestQuit}
+                            disabled={finishing}
+                            aria-label="Oyundan çık"
                         >
                             <LogOut size={18} />
                         </button>
@@ -145,6 +159,33 @@ export default function PlayScreen({
                             )}
                         </div>
                     </div>
+
+                    {confirmingQuit ? (
+                        <div className={styles.quitBar} role="alertdialog" aria-label="Oyundan çık">
+                            <span>
+                                Tur burada bitsin mi? Puanın kaydedilir, kalan sorular sayılmaz.
+                                {daily ? ' Günlük hakkın da kullanılmış olur.' : ''}
+                            </span>
+                            <span className={styles.quitActions}>
+                                <button
+                                    type="button"
+                                    className={styles.ctaGhost}
+                                    onClick={() => setConfirmingQuit(false)}
+                                    autoFocus
+                                >
+                                    Oyuna dön
+                                </button>
+                                <button
+                                    type="button"
+                                    className={styles.ctaGhost}
+                                    onClick={onQuit}
+                                    disabled={finishing}
+                                >
+                                    {finishing ? 'Kaydediliyor…' : 'Turu bitir'}
+                                </button>
+                            </span>
+                        </div>
+                    ) : null}
 
                     {isTimed ? (
                         <div
@@ -319,6 +360,16 @@ export default function PlayScreen({
                         {error ? (
                             <div className={styles.errorBox} role="alert" style={{ marginTop: '0.8rem' }}>
                                 <span>{error}</span>
+                                {finishFailed ? (
+                                    <button
+                                        type="button"
+                                        className={styles.ctaGhost}
+                                        onClick={onRetryFinish}
+                                        disabled={finishing}
+                                    >
+                                        {finishing ? 'Kaydediliyor…' : 'Tekrar dene'}
+                                    </button>
+                                ) : null}
                             </div>
                         ) : null}
                     </div>

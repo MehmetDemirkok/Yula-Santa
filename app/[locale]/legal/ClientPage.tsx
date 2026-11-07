@@ -4,6 +4,7 @@ import { useTranslations } from 'next-intl';
 import { ArrowLeft, Scale, FileText, AlertTriangle, Copyright, HelpCircle } from 'lucide-react';
 import Link from 'next/link';
 import { useParams } from 'next/navigation';
+import { OperatorInfo } from '@/components/legal/OperatorInfo';
 
 export default function LegalClient() {
     const t = useTranslations('legal');
@@ -113,6 +114,25 @@ export default function LegalClient() {
                         </div>
                     ))}
                 </div>
+
+                <section
+                    className="mt-8 p-8 sm:p-10 bg-white/70 dark:bg-[var(--card-bg)] backdrop-blur-2xl rounded-[2.5rem] border border-white dark:border-[var(--border-medium)]"
+                    aria-labelledby="legal-provider-title"
+                >
+                    <h2
+                        id="legal-provider-title"
+                        className="text-2xl font-black text-[var(--text-primary)] dark:text-white mb-4 tracking-tight"
+                    >
+                        {locale === 'tr' ? 'Hizmet sağlayıcı' : 'Service provider'}
+                    </h2>
+                    <OperatorInfo
+                        labels={
+                            locale === 'tr'
+                                ? { name: 'Ad / Unvan', address: 'Adres', email: 'E-posta', website: 'Web sitesi' }
+                                : { name: 'Name', address: 'Address', email: 'Email', website: 'Website' }
+                        }
+                    />
+                </section>
             </div>
         </main>
     );

@@ -9,6 +9,7 @@
 import { createHmac, createHash, randomUUID, timingSafeEqual } from 'node:crypto';
 import { cookies } from 'next/headers';
 import { auth } from '@/auth';
+import { isOffensiveNickname } from './nickname';
 
 const GUEST_COOKIE = 'plaka_player';
 const GUEST_MAX_AGE = 60 * 60 * 24 * 365;
@@ -72,6 +73,7 @@ export function sanitizeNickname(value: unknown): string | null {
         .replace(/\s+/g, ' ')
         .trim();
     if (cleaned.length < 2 || cleaned.length > 20) return null;
+    if (isOffensiveNickname(cleaned)) return null;
     return cleaned;
 }
 

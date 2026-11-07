@@ -446,7 +446,7 @@
 
 @media (min-width: 720px) {
     .statGrid {
-        grid-template-columns: repeat(4, minmax(0, 1fr));
+        grid-template-columns: repeat(3, minmax(0, 1fr));
         gap: 0.9rem;
     }
 }
@@ -1783,4 +1783,179 @@
     .iconButton {
         display: none;
     }
+}
+
+
+/* ── Hero: current selection ──────────────────────────────────────── */
+
+.heroSelection {
+    margin: 0;
+    color: var(--pa-muted);
+    font-size: 0.76rem;
+    line-height: 1.45;
+    text-align: center;
+}
+
+/* Clears the fixed navbar when the hero's "Değiştir" link jumps here. */
+.modesAnchor {
+    scroll-margin-top: 96px;
+}
+
+/* ── Quit confirmation ────────────────────────────────────────────── */
+
+.quitBar {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: space-between;
+    gap: 0.6rem;
+    padding: 0.7rem 0.9rem;
+    margin-bottom: 0.9rem;
+    border-radius: 12px;
+    border: 1px solid var(--pa-record-border);
+    background: var(--pa-record-bg);
+    color: var(--pa-text);
+    font-size: 0.84rem;
+}
+
+.quitActions {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+}
+
+/* ── Result: wrong-answer review ──────────────────────────────────── */
+
+.reviewList {
+    display: grid;
+    gap: 0.4rem;
+    margin: 0;
+    padding: 0;
+    list-style: none;
+}
+
+.reviewRow {
+    display: grid;
+    grid-template-columns: 44px 1fr;
+    column-gap: 0.7rem;
+    align-items: center;
+    padding: 0.5rem 0.7rem;
+    border-radius: 10px;
+    border: 1px solid var(--pa-border);
+    background: var(--pa-surface);
+}
+
+.reviewPlate {
+    grid-row: span 2;
+    padding: 0.3rem 0;
+    border-radius: 7px;
+    border: 1px solid var(--pa-plate-border);
+    background: var(--pa-plate-bg);
+    color: var(--pa-plate-text);
+    font-weight: 800;
+    font-variant-numeric: tabular-nums;
+    text-align: center;
+}
+
+.reviewCity {
+    font-size: 0.9rem;
+    font-weight: 700;
+}
+
+.reviewChosen {
+    color: var(--pa-muted);
+    font-size: 0.76rem;
+}
+
+/* ── Plate report card ────────────────────────────────────────────── */
+
+.atlasDetails {
+    margin-top: 0.75rem;
+}
+
+.atlasSummary {
+    width: fit-content;
+    min-height: 44px;
+    display: flex;
+    align-items: center;
+    gap: 0.4rem;
+    color: var(--pa-neon);
+    font-size: 0.84rem;
+    font-weight: 700;
+    cursor: pointer;
+}
+
+.atlasGrid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(132px, 1fr));
+    gap: 0.35rem;
+    margin: 0;
+    padding: 0;
+    list-style: none;
+}
+
+.atlasTile {
+    display: flex;
+    align-items: center;
+    gap: 0.45rem;
+    min-width: 0;
+    padding: 0.35rem 0.5rem;
+    border-radius: 8px;
+    border: 1px solid var(--pa-border);
+    color: var(--pa-muted);
+    font-size: 0.78rem;
+}
+
+.atlasTileKnown {
+    border-color: var(--pa-success-border);
+    background: var(--pa-success-bg);
+    color: var(--pa-success-text);
+    font-weight: 700;
+}
+
+.atlasCode {
+    flex: none;
+    font-weight: 800;
+    font-variant-numeric: tabular-nums;
+}
+
+.atlasName {
+    min-width: 0;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+.atlasCheck {
+    flex: none;
+    margin-left: auto;
+}
+
+
+/* ── Resume an interrupted run ────────────────────────────────────── */
+
+.resumeCard {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: space-between;
+    gap: 0.8rem;
+    margin-top: 1rem;
+    padding: 1rem 1.1rem;
+    border-radius: var(--pa-radius);
+    border: 1px solid var(--pa-line-strong);
+    background: var(--pa-neon-dim);
+}
+
+.resumeTitle {
+    margin: 0 0 0.2rem;
+    color: var(--pa-text);
+    font-size: 1rem;
+    font-weight: 800;
+}
+
+.fieldError {
+    margin: 0.35rem 0 0;
+    color: var(--pa-danger-text);
+    font-size: 0.78rem;
 }

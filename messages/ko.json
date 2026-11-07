@@ -1341,19 +1341,7 @@
         "meta": {
             "title": "개인정보보호 | YulaSanta",
             "description": "YulaSanta의 개인정보 보호 정책입니다."
-        },
-        "lastUpdated": "최종 업데이트: 2026년 11월 6일",
-        "intro": "YulaSanta는 사용자의 개인정보를 소중히 여깁니다.",
-        "dataTitle": "데이터 수집",
-        "dataDesc": "YulaSanta는 브라우저의 로컬 스토리지(localStorage)에만 데이터를 저장합니다.",
-        "cookiesTitle": "쿠키",
-        "cookiesDesc": "Google AdSense를 사용하여 광고를 표시합니다.",
-        "securityTitle": "보안",
-        "securityDesc": "데이터는 사용자의 기기에 머물며 서버로 전송되지 않습니다.",
-        "thirdPartyTitle": "제3자 서비스",
-        "thirdPartyDesc": "Google Analytics 및 AdSense를 사용합니다.",
-        "analyticsTitle": "이용 통계",
-        "analyticsDesc": "사이트 개선을 위해 자체 서버에 이용 통계를 보관합니다. 조회한 페이지, 사용한 도구, 참가자 수와 결과 수, 국가, 언어, 기기 및 브라우저 유형이 포함됩니다. IP 주소는 원본 그대로 저장하지 않습니다. 입력한 이름, 당첨자, Secret Santa 매칭은 이 통계에 포함되지 않습니다. 쿠키에 동의하면 익명 방문자 ID가 브라우저에 저장되며, Google로 로그인한 경우 이메일 주소도 이 기록에 연결됩니다. 쿠키를 거부하면 이 ID는 삭제되고 매일 바뀌는 익명 집계만 이루어집니다. 기록은 최대 90일 동안 보관됩니다."
+        }
     },
     "legal": {
         "title": "법적 고지",

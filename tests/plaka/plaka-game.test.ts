@@ -10,11 +10,15 @@ import {
 import {
     BASE_POINTS,
     COMBO_BONUS_CAP,
+    DAILY_QUESTION_COUNT,
     MODE_CONFIG,
     PLAKA_MODES,
+    STANDARD_QUESTION_COUNT,
+    TIME_ATTACK_SECONDS,
     accuracy,
     isPlakaLevel,
     isPlakaMode,
+    isTimeAttackOver,
     scoreAnswer,
 } from '../../lib/plaka/game';
 import { buildDailyQuestionSet, buildQuestionSet } from '../../lib/plaka/questions';
@@ -154,7 +158,67 @@ test('daily challenge is deterministic for a date', () => {
         first.map((q) => q.cityCode),
         other.map((q) => q.cityCode)
     );
-    assert.equal(first.length, 10);
+    assert.equal(first.length, DAILY_QUESTION_COUNT);
+});
+
+test('a standard round asks 20 questions in every untimed mode', () => {
+    assert.equal(STANDARD_QUESTION_COUNT, 20);
+    assert.equal(DAILY_QUESTION_COUNT, 20);
+    for (const mode of ['plaka-sehir', 'sehir-plaka', 'ipucu'] as const) {
+        for (const level of ['kolay', 'orta', 'zor', 'karisik'] as const) {
+            const questions = buildQuestionSet({ mode, level, seed: `${mode}-${level}` });
+            assert.equal(questions.length, 20, `${mode}/${level}`);
+            assert.equal(new Set(questions.map((q) => q.cityCode)).size, 20, `${mode}/${level} repeats`);
+        }
+    }
+});
+
+test('a level uses every city of its tier before borrowing from another', () => {
+    for (const level of ['kolay', 'orta', 'zor'] as const) {
+        const tierSize = CITIES.filter((city) => city.difficulty === level).length;
+        for (const count of [20, 45]) {
+            for (let run = 0; run < 25; run++) {
+                const questions = buildQuestionSet({
+                    mode: 'plaka-sehir',
+                    level,
+                    seed: `${level}-${count}-${run}`,
+                    count,
+                });
+                const inTier = questions.filter((q) => q.difficulty === level).length;
+                assert.equal(inTier, Math.min(tierSize, count), `${level} with ${count} questions`);
+            }
+        }
+    }
+});
+
+test('borrowed cities come from the nearest tier and are not all at the end', () => {
+    const questions = buildQuestionSet({ mode: 'plaka-sehir', level: 'zor', seed: 'nearest' });
+    const borrowed = questions.filter((q) => q.difficulty !== 'zor');
+    assert.equal(borrowed.length, 2);
+    assert.ok(borrowed.every((q) => q.difficulty === 'orta'));
+
+    const anyBorrowedEarly = Array.from({ length: 20 }, (_, run) =>
+        buildQuestionSet({ mode: 'plaka-sehir', level: 'zor', seed: `early-${run}` })
+    ).some((set) => set.slice(0, 18).some((q) => q.difficulty !== 'zor'));
+    assert.ok(anyBorrowedEarly, 'filler questions should be spread through the run');
+});
+
+test('hints never name the city they describe', () => {
+    for (const city of CITIES) {
+        const name = city.name.toLocaleLowerCase('tr-TR');
+        for (const hint of city.hints) {
+            const words = hint.toLocaleLowerCase('tr-TR').split(/[^\p{L}]+/u);
+            assert.ok(!words.some((word) => word.startsWith(name)), `${city.name}: ${hint}`);
+        }
+    }
+});
+
+test('time attack closes after the countdown plus a small network allowance', () => {
+    const limit = TIME_ATTACK_SECONDS * 1000;
+    assert.equal(isTimeAttackOver('zamana-karsi', limit), false);
+    assert.equal(isTimeAttackOver('zamana-karsi', limit + 4_000), false);
+    assert.equal(isTimeAttackOver('zamana-karsi', limit + 6_000), true);
+    assert.equal(isTimeAttackOver('plaka-sehir', limit * 10), false);
 });
 
 test('achievement catalogue is complete and unique', () => {

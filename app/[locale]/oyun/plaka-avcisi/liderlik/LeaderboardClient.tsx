@@ -6,11 +6,18 @@ import AchievementList from '@/components/plaka/AchievementList';
 import LeaderboardPanel from '@/components/plaka/LeaderboardPanel';
 import styles from '@/components/plaka/PlakaAvcisi.module.css';
 import type { AchievementProgress } from '@/lib/plaka/achievements';
+import type { LeaderboardPeriod } from '@/lib/plaka/contracts';
 import { localePath } from '@/lib/localePath';
 import { useEffect, useState } from 'react';
 import { plakaApi } from '@/components/plaka/api';
 
-export default function LeaderboardClient({ locale }: { locale: string }) {
+export default function LeaderboardClient({
+    locale,
+    initialPeriod,
+}: {
+    locale: string;
+    initialPeriod: LeaderboardPeriod;
+}) {
     const [achievements, setAchievements] = useState<AchievementProgress[] | null>(null);
 
     useEffect(() => {
@@ -56,12 +63,12 @@ export default function LeaderboardClient({ locale }: { locale: string }) {
                         Liderlik <span style={{ color: 'var(--pa-neon)' }}>Tablosu</span>
                     </h1>
                     <p className={styles.tagline} style={{ marginTop: '0.4rem' }}>
-                        Günlük, haftalık ve tüm zamanların en iyi plaka avcıları. Her oyuncunun en yüksek
-                        tek tur skoru sıralamaya girer.
+                        Günün meydan okuması ile günlük, haftalık ve tüm zamanların en iyi plaka avcıları.
+                        Her oyuncunun en yüksek tek tur skoru sıralamaya girer.
                     </p>
                 </header>
 
-                <LeaderboardPanel initialPeriod="daily" title="Sıralama" />
+                <LeaderboardPanel initialPeriod={initialPeriod} title="Sıralama" />
 
                 <section className={styles.section}>
                     <div className={styles.panel}>

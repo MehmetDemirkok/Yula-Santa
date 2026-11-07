@@ -9,7 +9,7 @@ import { Metadata } from 'next';
 import { UserPlus } from 'lucide-react';
 import { locales } from '@/i18n/config';
 import { getSEOMetadata, viewport } from '@/lib/seo';
-import { RegisterForm } from '@/components/auth/RegisterForm';
+import { GoogleSignIn } from '@/components/auth/GoogleSignIn';
 
 export { viewport };
 
@@ -52,7 +52,7 @@ export default async function RegisterPage({ params }: Props) {
                 </div>
 
                 <div className="ys-card p-6 sm:p-8">
-                    <RegisterForm />
+                    <GoogleSignIn />
                 </div>
             </div>
         </main>

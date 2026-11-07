@@ -26,6 +26,7 @@ export type StartedSession = {
     startedAt: string;
     answeredCount: number;
     score: number;
+    correctCount: number;
     currentStreak: number;
     bestStreak: number;
     player: { displayName: string; avatar: string | null };
@@ -43,6 +44,8 @@ export type DailyDoneSession = {
 
 export type StartSessionResult = StartedSession | DailyDoneSession;
 
+export type ResumeResult = StartedSession | { status: 'none' };
+
 export type AnswerResult = {
     correct: boolean;
     correctIndex: number;
@@ -59,6 +62,14 @@ export type AnswerResult = {
     sessionComplete: boolean;
     cityName: string;
     cityCode: number;
+};
+
+/** A wrong answer, returned at the end of a run so the player can learn from it. */
+export type RunMistake = {
+    position: number;
+    cityCode: number;
+    cityName: string;
+    chosenLabel: string;
 };
 
 export type GameSummary = {
@@ -82,9 +93,11 @@ export type GameSummary = {
     newRecord: boolean;
     finishedAt: string;
     unlockedAchievements: AchievementProgress[];
+    mistakes: RunMistake[];
 };
 
-export type LeaderboardPeriod = 'daily' | 'weekly' | 'all';
+/** `challenge` ranks only today's shared daily challenge, where everyone gets the same questions. */
+export type LeaderboardPeriod = 'challenge' | 'daily' | 'weekly' | 'all';
 
 export type LeaderboardEntry = {
     rank: number;
@@ -126,6 +139,8 @@ export type PlayerOverview = {
         modeTitle: string;
     };
     achievements: AchievementProgress[];
+    /** Plate codes this player has answered correctly at least once. */
+    knownCodes: number[];
     playerKind?: 'user' | 'guest';
 };
 

@@ -4,6 +4,8 @@
  * renders what the API returns.
  */
 
+import { STANDARD_QUESTION_COUNT } from './game';
+
 export type AchievementId =
     | 'ilk-oyun'
     | 'seri-katil'
@@ -51,7 +53,7 @@ export const ACHIEVEMENTS: AchievementDef[] = [
     {
         id: 'kusursuz-tur',
         title: 'Kusursuz Tur',
-        description: '10 soruluk bir turu hatasız bitirdin.',
+        description: `${STANDARD_QUESTION_COUNT} soruluk bir turu hatasız bitirdin.`,
         icon: 'target',
         tone: 'cyan',
         requirement: 'Bir turda %100 isabet',

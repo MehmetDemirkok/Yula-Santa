@@ -1,6 +1,7 @@
 /**
  * Persistence for the extension-collected TikTok giveaway flow.
  */
+import { TIKTOK_COMMENT_RETENTION_DAYS } from './retention';
 import { neon, type NeonQueryFunction } from '@neondatabase/serverless';
 import { randomBytes, timingSafeEqual } from 'node:crypto';
 import { createGiveawayId } from './giveawayId';
@@ -67,6 +68,27 @@ function getSql() {
 
 export function isGiveawayStoreConfigured(): boolean {
     return Boolean(process.env.DATABASE_URL || process.env.POSTGRES_URL);
+}
+
+/**
+ * Comments are third parties' data, so they are kept only as long as a draw
+ * needs them. Drawn giveaways keep their result (the verification page reads
+ * only that); giveaways never drawn are removed entirely. Runs on create, the
+ * only path that adds new giveaways, so the cleanup scales with use.
+ */
+async function purgeExpiredGiveaways(): Promise<void> {
+    const db = getSql();
+    const days = TIKTOK_COMMENT_RETENTION_DAYS;
+    await db`
+        DELETE FROM tiktok_giveaway_comments c
+        USING tiktok_giveaways g
+        WHERE c.giveaway_id = g.id
+          AND g.created_at < now() - make_interval(days => ${days}::int)
+    `;
+    await db`
+        DELETE FROM tiktok_giveaways
+        WHERE status <> 'drawn' AND created_at < now() - make_interval(days => ${days}::int)
+    `;
 }
 
 async function ensureSchema() {
@@ -165,6 +187,8 @@ export async function createGiveaway(input: {
     await ensureSchema();
     const db = getSql();
     const ownerToken = createOwnerToken();
+    // Housekeeping must never block creating a giveaway.
+    await purgeExpiredGiveaways().catch((error) => console.error('[tiktok/purge]', error));
 
     let lastError: unknown;
     for (let attempt = 0; attempt < 5; attempt++) {

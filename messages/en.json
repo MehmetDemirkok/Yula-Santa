@@ -1343,19 +1343,7 @@
         "meta": {
             "title": "Privacy Policy | YulaSanta",
             "description": "Information about YulaSanta's privacy policy and data security."
-        },
-        "lastUpdated": "Last Updated: November 6, 2026",
-        "intro": "At YulaSanta, we care deeply about your privacy. This policy explains how your data is handled when you use our website.",
-        "dataTitle": "Data Collection",
-        "dataDesc": "YulaSanta only stores the names you enter for creating draws in your browser's local storage (localStorage). This data is not transmitted to our servers and remains only on your device.",
-        "cookiesTitle": "Cookies and Advertising",
-        "cookiesDesc": "Our site displays Google AdSense advertisements. Google and its advertising partners may use cookies to serve ads based on your interests.",
-        "securityTitle": "Data Security",
-        "securityDesc": "Since your data is only stored in your browser, all drawing information is deleted when you clear your browser history or data.",
-        "thirdPartyTitle": "Third Party Services",
-        "thirdPartyDesc": "We use world-class services such as Google Analytics and Google AdSense. These services have their own privacy policies.",
-        "analyticsTitle": "Usage Statistics",
-        "analyticsDesc": "To improve the site, we keep usage statistics on our own server: the page viewed, the tool used, the number of participants and results, country, language, device and browser type. We do not store your raw IP address. Names you enter, winners and Secret Santa matches are not part of these statistics. If you accept cookies, an anonymous visitor ID is stored in your browser, and if you signed in with Google, your email address is linked to these records. If you decline cookies, this ID is deleted and only an anonymous count that changes daily is made. Records are kept for at most 90 days."
+        }
     },
     "legal": {
         "title": "Legal Information",

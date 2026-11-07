@@ -8,7 +8,7 @@ import type { LeaderboardPeriod } from '@/lib/plaka/contracts';
 export const runtime = 'nodejs';
 export const dynamic = 'force-dynamic';
 
-const PERIODS: LeaderboardPeriod[] = ['daily', 'weekly', 'all'];
+const PERIODS: LeaderboardPeriod[] = ['challenge', 'daily', 'weekly', 'all'];
 
 export async function GET(request: Request) {
     const limit = rateLimit(request, 'plaka-leaderboard');

@@ -4,6 +4,8 @@
  * always matches visible content.
  */
 
+import { DAILY_QUESTION_COUNT, STANDARD_QUESTION_COUNT } from './game';
+
 export type PlakaFaqItem = { question: string; answer: string };
 
 export const PLAKA_FAQ: PlakaFaqItem[] = [
@@ -13,7 +15,7 @@ export const PLAKA_FAQ: PlakaFaqItem[] = [
     },
     {
         question: 'Hangi oyun modları var?',
-        answer: 'Dört mod bulunur: Plakadan Şehri Bul, Şehirden Plakayı Bul, 60 saniyelik Zamana Karşı ve İpuçlarından Şehri Bul. Her modda kolay, orta, zor veya karışık seviye seçebilirsin.',
+        answer: `Dört mod bulunur: Plakadan Şehri Bul, Şehirden Plakayı Bul, 60 saniyelik Zamana Karşı ve İpuçlarından Şehri Bul. Süresiz modlarda bir tur ${STANDARD_QUESTION_COUNT} sorudur; her modda kolay, orta, zor veya karışık seviye seçebilirsin.`,
     },
     {
         question: 'Puanlar nasıl hesaplanıyor?',
@@ -25,6 +27,6 @@ export const PLAKA_FAQ: PlakaFaqItem[] = [
     },
     {
         question: 'Günün meydan okuması nedir?',
-        answer: 'Her gün herkese aynı 10 plaka sorusu sorulur. Günde tek deneme yapılır ve skorun günlük liderlik tablosuna işlenir.',
+        answer: `Her gün herkese aynı ${DAILY_QUESTION_COUNT} plaka sorusu sorulur. Günde tek deneme yapılır ve skorun Meydan Okuma tablosuna işlenir.`,
     },
 ];

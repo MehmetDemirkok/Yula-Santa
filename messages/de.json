@@ -1340,19 +1340,7 @@
         "meta": {
             "title": "Datenschutz | YulaSanta",
             "description": "Erfahren Sie mehr über unsere Datenschutzrichtlinien."
-        },
-        "lastUpdated": "Zuletzt aktualisiert: 6. November 2026",
-        "intro": "Wir bei YulaSanta legen großen Wert auf den Schutz Ihrer Privatsphäre.",
-        "dataTitle": "Datenerhebung",
-        "dataDesc": "YulaSanta speichert die von Ihnen eingegebenen Namen nur im lokalen Speicher Ihres Browsers (localStorage).",
-        "cookiesTitle": "Cookies",
-        "cookiesDesc": "Wir verwenden Google AdSense. Google verwendet Cookies, um Anzeigen basierend auf Ihren Interessen anzuzeigen.",
-        "securityTitle": "Sicherheit",
-        "securityDesc": "Ihre Daten bleiben auf Ihrem Gerät und werden gelöscht, wenn Sie Ihre Browserdaten bereinigen.",
-        "thirdPartyTitle": "Drittanbieter",
-        "thirdPartyDesc": "Wir nutzen Dienste wie Google Analytics und Google AdSense.",
-        "analyticsTitle": "Nutzungsstatistiken",
-        "analyticsDesc": "Um die Website zu verbessern, führen wir auf unserem eigenen Server Nutzungsstatistiken: aufgerufene Seite, verwendetes Tool, Anzahl der Teilnehmer und Ergebnisse, Land, Sprache, Gerät und Browsertyp. Ihre IP-Adresse speichern wir nicht im Klartext. Von Ihnen eingegebene Namen, Gewinner und Secret-Santa-Zuordnungen sind nicht Teil dieser Statistiken. Wenn Sie Cookies akzeptieren, wird in Ihrem Browser eine anonyme Besucher-ID gespeichert; falls Sie sich mit Google angemeldet haben, wird auch Ihre E-Mail-Adresse mit diesen Einträgen verknüpft. Wenn Sie Cookies ablehnen, wird diese ID gelöscht und es erfolgt nur noch eine täglich wechselnde anonyme Zählung. Einträge werden höchstens 90 Tage aufbewahrt."
+        }
     },
     "legal": {
         "title": "Rechtliche Hinweise",

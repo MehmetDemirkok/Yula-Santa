@@ -7,6 +7,7 @@ import {
     ArrowLeft,
     CalendarDays,
     CreditCard,
+    Crosshair,
     Flame,
     Lightbulb,
     MapPin,
@@ -19,18 +20,23 @@ import {
     Trophy,
 } from 'lucide-react';
 import { localePath } from '@/lib/localePath';
+import { ACHIEVEMENTS } from '@/lib/plaka/achievements';
 import { PLAKA_FAQ } from '@/lib/plaka/faq';
 import {
+    DAILY_QUESTION_COUNT,
     DIFFICULTY_LABEL,
     MODE_CONFIG,
     PLAKA_MODES,
     PLAKA_LEVELS,
+    STANDARD_QUESTION_COUNT,
     type PlakaLevel,
     type PlakaMode,
 } from '@/lib/plaka/game';
 import type { PlayerOverview } from '@/lib/plaka/contracts';
+import { isOffensiveNickname, NICKNAME_REJECTED_MESSAGE } from '@/lib/plaka/nickname';
 import AchievementList from './AchievementList';
 import LeaderboardPanel from './LeaderboardPanel';
+import PlateAtlas from './PlateAtlas';
 import styles from './PlakaAvcisi.module.css';
 
 const MODE_ICONS = {
@@ -53,6 +59,9 @@ type Props = {
     onNicknameChange: (value: string) => void;
     leaderboardKey: number;
     onDismissNotice: () => void;
+    resumable: { title: string; answered: number; total: number; score: number } | null;
+    onResume: () => void;
+    onDiscardResume: () => void;
 };
 
 function formatNumber(value: number | null | undefined): string {
@@ -73,12 +82,20 @@ export default function HomeScreen({
     onNicknameChange,
     leaderboardKey,
     onDismissNotice,
+    resumable,
+    onResume,
+    onDiscardResume,
 }: Props) {
     const tTools = useTranslations('tools');
     const [mode, setMode] = useState<PlakaMode>('plaka-sehir');
     const [level, setLevel] = useState<PlakaLevel>('karisik');
 
     const selectedMode = MODE_CONFIG[mode];
+    const roundLength = selectedMode.durationSeconds
+        ? `${selectedMode.durationSeconds} saniye`
+        : `${selectedMode.questionCount} soru`;
+    const nicknameRejected = nickname.trim().length > 0 && isOffensiveNickname(nickname);
+    const unlockedCount = (profile?.achievements ?? []).filter((item) => item.unlocked).length;
     const stats = profile?.stats;
     const dailyDone = profile?.daily.done ?? false;
     const dailyDate = profile?.daily.key
@@ -103,6 +120,12 @@ export default function HomeScreen({
                 label: 'Sıralama',
                 value: stats?.globalRank ? `#${stats.globalRank}` : '—',
                 icon: Flame,
+            },
+            { label: 'En Uzun Seri', value: formatNumber(stats?.bestStreak), icon: Sparkles },
+            {
+                label: 'Başarı Oranı',
+                value: stats && stats.totalCorrect + stats.totalWrong > 0 ? `%${stats.accuracy}` : '—',
+                icon: Crosshair,
             },
         ],
         [stats]
@@ -146,13 +169,13 @@ export default function HomeScreen({
                             </p>
                             <div className={styles.heroMeta}>
                                 <span className={styles.chip}>
-                                    <Sparkles size={12} aria-hidden="true" /> Neon pist teması
+                                    <Sparkles size={12} aria-hidden="true" /> {STANDARD_QUESTION_COUNT} soruluk turlar
                                 </span>
                                 <span className={styles.chip}>
                                     <Target size={12} aria-hidden="true" /> Sunucu doğrulamalı puan
                                 </span>
                                 <span className={styles.chip}>
-                                    <Medal size={12} aria-hidden="true" /> 7 rozet
+                                    <Medal size={12} aria-hidden="true" /> {ACHIEVEMENTS.length} rozet
                                 </span>
                             </div>
                         </div>
@@ -175,6 +198,12 @@ export default function HomeScreen({
                                 <Trophy size={16} aria-hidden="true" />
                                 Liderlik Tablosu
                             </Link>
+                            <p className={styles.heroSelection}>
+                                {selectedMode.title} · {DIFFICULTY_LABEL[level]} · {roundLength}{' '}
+                                <a href="#plaka-modes-title" className={styles.linkInline}>
+                                    Değiştir
+                                </a>
+                            </p>
                         </div>
                     </div>
                 </header>
@@ -195,6 +224,28 @@ export default function HomeScreen({
                             Tamam
                         </button>
                     </div>
+                ) : null}
+
+                {resumable ? (
+                    <section className={styles.resumeCard} aria-labelledby="plaka-resume-title">
+                        <div>
+                            <h2 id="plaka-resume-title" className={styles.resumeTitle}>
+                                Yarım kalan turun var
+                            </h2>
+                            <p className={styles.panelHint} style={{ margin: 0 }}>
+                                {resumable.title} · {resumable.answered}/{resumable.total} soru · {resumable.score} puan
+                            </p>
+                        </div>
+                        <div className={styles.quitActions}>
+                            <button type="button" className={styles.cta} onClick={onResume} disabled={starting}>
+                                <Play size={16} aria-hidden="true" />
+                                Devam et
+                            </button>
+                            <button type="button" className={styles.ctaGhost} onClick={onDiscardResume}>
+                                Vazgeç
+                            </button>
+                        </div>
+                    </section>
                 ) : null}
 
                 {profileState === 'error' ? (
@@ -232,21 +283,21 @@ export default function HomeScreen({
                             Günün Meydan Okuması{dailyDate ? ` · ${dailyDate}` : ''}
                         </span>
                         <h2 id="plaka-daily-title" className={styles.dailyTitle}>
-                            {dailyDone ? 'Bugünkü tur tamamlandı' : 'Aynı 10 soru, herkese aynı pist'}
+                            {dailyDone ? 'Bugünkü tur tamamlandı' : `Aynı ${DAILY_QUESTION_COUNT} soru, herkese aynı pist`}
                         </h2>
                         <p className={styles.dailyDesc}>
                             {dailyDone
                                 ? `Bugünkü meydan okumayı ${formatNumber(profile?.daily.score)} puanla bitirdin. Yarın yeni sorular seni bekliyor.`
-                                : 'Her gün herkese aynı 10 plaka sorusu. Günde tek deneme — skorun günlük tabloya yazılır.'}
+                                : `Her gün herkese aynı ${DAILY_QUESTION_COUNT} plaka sorusu. Günde tek deneme — skorun Meydan Okuma tablosuna yazılır.`}
                         </p>
                     </div>
                     <div className={styles.dailyActions}>
                         {dailyDone ? (
                             <Link
-                                href={localePath(locale, '/oyun/plaka-avcisi/liderlik')}
+                                href={localePath(locale, '/oyun/plaka-avcisi/liderlik?tablo=meydan')}
                                 className={styles.ctaGhost}
                             >
-                                Günlük tabloyu gör
+                                Meydan okuma tablosu
                             </Link>
                         ) : (
                             <button
@@ -264,7 +315,7 @@ export default function HomeScreen({
 
                 <section className={`${styles.section} ${styles.panel}`} aria-labelledby="plaka-modes-title">
                     <div className={styles.panelHead}>
-                        <h2 id="plaka-modes-title" className={styles.panelTitle}>
+                        <h2 id="plaka-modes-title" className={`${styles.panelTitle} ${styles.modesAnchor}`}>
                             <Flame size={17} aria-hidden="true" />
                             Oyun Modları
                         </h2>
@@ -331,7 +382,14 @@ export default function HomeScreen({
                                 placeholder={profile?.name ?? 'Gizli Avcı'}
                                 onChange={(event) => onNicknameChange(event.target.value)}
                                 autoComplete="nickname"
+                                aria-invalid={nicknameRejected}
+                                aria-describedby={nicknameRejected ? 'plaka-nickname-error' : undefined}
                             />
+                            {nicknameRejected ? (
+                                <p id="plaka-nickname-error" className={styles.fieldError} role="alert">
+                                    {NICKNAME_REJECTED_MESSAGE}
+                                </p>
+                            ) : null}
                         </div>
                     </div>
 
@@ -347,10 +405,7 @@ export default function HomeScreen({
                     >
                         <p className={styles.panelHint} style={{ margin: 0, maxWidth: '46ch' }}>
                             {selectedMode.title} · {DIFFICULTY_LABEL[level]}
-                            {selectedMode.durationSeconds
-                                ? ` · ${selectedMode.durationSeconds} saniye`
-                                : ` · ${selectedMode.questionCount} soru`}
-                            . Misafir olarak oynayabilirsin; skorların anonim avcı kimliğinle
+                            {` · ${roundLength}`}. Misafir olarak oynayabilirsin; skorların anonim avcı kimliğinle
                             saklanır.
                         </p>
                         <button
@@ -367,15 +422,18 @@ export default function HomeScreen({
 
                 <div className={styles.section} style={{ display: 'grid', gap: '1rem' }}>
                     <LeaderboardPanel compact refreshKey={leaderboardKey} />
+                    <PlateAtlas knownCodes={profile?.knownCodes ?? null} />
                     <section className={styles.panel} aria-labelledby="plaka-badges-title">
                         <div className={styles.panelHead}>
                             <h2 id="plaka-badges-title" className={styles.panelTitle}>
                                 <Medal size={17} aria-hidden="true" />
                                 Başarımlar
                             </h2>
-                            <span className={styles.panelHint}>Koşullar sunucuda kontrol edilir</span>
+                            <span className={styles.panelHint}>
+                                {unlockedCount}/{ACHIEVEMENTS.length} kazanıldı
+                            </span>
                         </div>
-                        <AchievementList progress={profile?.achievements ?? null} limit={4} />
+                        <AchievementList progress={profile?.achievements ?? null} />
                     </section>
                 </div>
 

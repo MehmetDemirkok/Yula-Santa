@@ -8,6 +8,7 @@ import { plakaApi, PlakaClientError } from './api';
 import styles from './PlakaAvcisi.module.css';
 
 const PERIODS: { id: LeaderboardPeriod; label: string }[] = [
+    { id: 'challenge', label: 'Meydan Okuma' },
     { id: 'daily', label: 'Günlük' },
     { id: 'weekly', label: 'Haftalık' },
     { id: 'all', label: 'Tüm Zamanlar' },
@@ -42,7 +43,9 @@ export default function LeaderboardPanel({
     refreshKey = 0,
 }: Props) {
     const [period, setPeriod] = useState<LeaderboardPeriod>(initialPeriod);
-    const [mode, setMode] = useState<PlakaMode | 'all'>('all');
+    const [selectedMode, setMode] = useState<PlakaMode | 'all'>('all');
+    // Today's challenge has one format, so the mode filter doesn't apply to it.
+    const mode = period === 'challenge' ? 'all' : selectedMode;
     const [board, setBoard] = useState<LeaderboardResult | null>(null);
     const [state, setState] = useState<'loading' | 'ready' | 'error'>('loading');
     const [error, setError] = useState<string | null>(null);
@@ -124,22 +127,26 @@ export default function LeaderboardPanel({
                             </button>
                         ))}
                     </div>
-                    <label className={styles.srOnly} htmlFor="plaka-board-mode">
-                        Oyun modu
-                    </label>
-                    <select
-                        id="plaka-board-mode"
-                        className={styles.select}
-                        value={mode}
-                        onChange={(event) => setMode(event.target.value as PlakaMode | 'all')}
-                    >
-                        <option value="all">Tüm modlar</option>
-                        {PLAKA_MODES.map((item) => (
-                            <option key={item} value={item}>
-                                {MODE_CONFIG[item].title}
-                            </option>
-                        ))}
-                    </select>
+                    {period !== 'challenge' ? (
+                        <>
+                            <label className={styles.srOnly} htmlFor="plaka-board-mode">
+                                Oyun modu
+                            </label>
+                            <select
+                                id="plaka-board-mode"
+                                className={styles.select}
+                                value={selectedMode}
+                                onChange={(event) => setMode(event.target.value as PlakaMode | 'all')}
+                            >
+                                <option value="all">Tüm modlar</option>
+                                {PLAKA_MODES.map((item) => (
+                                    <option key={item} value={item}>
+                                        {MODE_CONFIG[item].title}
+                                    </option>
+                                ))}
+                            </select>
+                        </>
+                    ) : null}
                 </div>
             ) : null}
 
@@ -209,7 +216,10 @@ export default function LeaderboardPanel({
 
             {!compact && state === 'ready' ? (
                 <p className={styles.panelHint} style={{ marginTop: '0.75rem' }}>
-                    {board?.playerCount ?? 0} avcı sıralamada · Her oyuncunun en iyi turu sayılır.
+                    {board?.playerCount ?? 0} avcı sıralamada ·{' '}
+                    {period === 'challenge'
+                        ? 'Bugün herkes aynı soruları çözdü.'
+                        : 'Her oyuncunun en iyi turu sayılır.'}
                 </p>
             ) : null}
         </section>

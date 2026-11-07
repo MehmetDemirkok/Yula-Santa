@@ -1,8 +1,12 @@
 'use client';
 
 import Link from 'next/link';
-import { ArrowRight, Home, RotateCcw, Trophy, Zap } from 'lucide-react';
+import { useEffect, useRef, useState } from 'react';
+import { ArrowRight, BookOpen, Check, Home, RotateCcw, Share2, Trophy, Zap } from 'lucide-react';
 import { ACHIEVEMENT_BY_ID } from '@/lib/plaka/achievements';
+import { formatPlate } from '@/lib/plaka/cities';
+import { STANDARD_QUESTION_COUNT } from '@/lib/plaka/game';
+import { SITE_URL } from '@/lib/constants';
 import { localePath } from '@/lib/localePath';
 import type { GameSummary } from '@/lib/plaka/contracts';
 import styles from './PlakaAvcisi.module.css';
@@ -23,11 +27,43 @@ function formatDuration(ms: number): string {
 }
 
 export default function ResultScreen({ locale, summary, onReplay, onHome, replaying }: Props) {
+    const [shareState, setShareState] = useState<'idle' | 'copied' | 'failed'>('idle');
+    const celebratedRef = useRef(false);
+
+    // A first game beats a best of zero, which isn't a record worth announcing.
+    const beatRecord = summary.newRecord && summary.previousBest > 0;
+    const perfectRound =
+        summary.answered >= STANDARD_QUESTION_COUNT && summary.correct === summary.answered;
+
+    useEffect(() => {
+        if (celebratedRef.current || !(beatRecord || perfectRound)) return;
+        celebratedRef.current = true;
+        // Loaded on demand: most results never need the confetti library.
+        void import('@/lib/celebrate').then(({ celebrate }) => celebrate());
+    }, [beatRecord, perfectRound]);
+
+    const handleShare = async () => {
+        const url = `${SITE_URL}${localePath(locale, '/oyun/plaka-avcisi')}`;
+        const text = `Plaka Avcısı${summary.daily ? ' Günün Meydan Okuması' : ''}: ${summary.answered} soruda ${summary.correct} doğru, ${summary.score} puan. Sen kaç yaparsın?`;
+        try {
+            if (typeof navigator.share === 'function') {
+                await navigator.share({ title: 'Plaka Avcısı', text, url });
+                return;
+            }
+            await navigator.clipboard.writeText(`${text} ${url}`);
+            setShareState('copied');
+        } catch (error) {
+            // Closing the share sheet rejects with AbortError; that isn't a failure.
+            if (error instanceof DOMException && error.name === 'AbortError') return;
+            setShareState('failed');
+        }
+    };
+
     const unlocked = summary.unlockedAchievements
         .map((item) => ({ ...item, def: ACHIEVEMENT_BY_ID.get(item.id) }))
         .filter((item) => item.def);
 
-    const comparison = summary.newRecord ? (
+    const comparison = beatRecord ? (
         <>
             Yeni rekor! Önceki en iyi skorun <span className={styles.compareStrong}>{summary.previousBest}</span>{' '}
             puandı.
@@ -59,7 +95,7 @@ export default function ResultScreen({ locale, summary, onReplay, onHome, replay
                         <div className={styles.resultScore}>{summary.score}</div>
                         <div className={styles.resultScoreLabel}>Toplam puan</div>
 
-                        {summary.newRecord ? (
+                        {beatRecord ? (
                             <div className={styles.recordBadge}>
                                 <Trophy size={13} aria-hidden="true" /> Yeni kişisel rekor
                             </div>
@@ -134,6 +170,26 @@ export default function ResultScreen({ locale, summary, onReplay, onHome, replay
                         </section>
                     ) : null}
 
+                    {summary.mistakes.length > 0 ? (
+                        <section className={styles.panel} style={{ marginTop: '1rem' }} aria-labelledby="plaka-review-title">
+                            <div className={styles.panelHead}>
+                                <h2 id="plaka-review-title" className={styles.panelTitle}>
+                                    <BookOpen size={17} aria-hidden="true" /> Tekrar etmen gerekenler
+                                </h2>
+                                <span className={styles.panelHint}>{summary.mistakes.length} yanlış</span>
+                            </div>
+                            <ul className={styles.reviewList}>
+                                {summary.mistakes.map((item) => (
+                                    <li key={item.position} className={styles.reviewRow}>
+                                        <span className={styles.reviewPlate}>{formatPlate(item.cityCode)}</span>
+                                        <span className={styles.reviewCity}>{item.cityName}</span>
+                                        <span className={styles.reviewChosen}>Cevabın: {item.chosenLabel}</span>
+                                    </li>
+                                ))}
+                            </ul>
+                        </section>
+                    ) : null}
+
                     <div className={styles.resultActions}>
                         <button
                             type="button"
@@ -142,7 +198,23 @@ export default function ResultScreen({ locale, summary, onReplay, onHome, replay
                             disabled={replaying}
                         >
                             <RotateCcw size={17} aria-hidden="true" />
-                            {replaying ? 'Hazırlanıyor…' : 'Tekrar Oyna'}
+                            {replaying ? 'Hazırlanıyor…' : summary.daily ? 'Serbest Oyna' : 'Tekrar Oyna'}
+                        </button>
+                        <button
+                            type="button"
+                            className={styles.ctaGhost}
+                            onClick={() => void handleShare()}
+                        >
+                            {shareState === 'copied' ? (
+                                <Check size={16} aria-hidden="true" />
+                            ) : (
+                                <Share2 size={16} aria-hidden="true" />
+                            )}
+                            {shareState === 'copied'
+                                ? 'Kopyalandı'
+                                : shareState === 'failed'
+                                  ? 'Paylaşılamadı'
+                                  : 'Skoru Paylaş'}
                         </button>
                         <button type="button" className={styles.ctaGhost} onClick={onHome}>
                             <Home size={16} aria-hidden="true" />

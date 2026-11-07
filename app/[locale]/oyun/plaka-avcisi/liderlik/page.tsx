@@ -8,6 +8,7 @@ export { viewport };
 
 type Props = {
     params: Promise<{ locale: string }>;
+    searchParams: Promise<{ tablo?: string | string[] }>;
 };
 
 export function generateStaticParams() {
@@ -25,8 +26,14 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
     });
 }
 
-export default async function PlakaLeaderboardPage({ params }: Props) {
+export default async function PlakaLeaderboardPage({ params, searchParams }: Props) {
     const { locale } = await params;
+    const { tablo } = await searchParams;
     setRequestLocale(locale);
-    return <LeaderboardClient locale={locale} />;
+    return (
+        <LeaderboardClient
+            locale={locale}
+            initialPeriod={tablo === 'meydan' ? 'challenge' : 'daily'}
+        />
+    );
 }

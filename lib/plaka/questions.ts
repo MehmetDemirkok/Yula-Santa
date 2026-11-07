@@ -12,6 +12,8 @@ import {
     type PlakaDifficulty,
 } from './cities';
 import {
+    DAILY_MODE,
+    DAILY_QUESTION_COUNT,
     MODE_CONFIG,
     TIME_ATTACK_MAX_QUESTIONS,
     type PlakaLevel,
@@ -64,9 +66,19 @@ function shuffle<T>(rng: Rng, items: T[]): T[] {
     return copy;
 }
 
-function difficultyPool(level: PlakaLevel): PlakaCity[] {
-    if (level === 'karisik') return CITIES;
-    return CITIES.filter((city) => city.difficulty === level);
+/** Closest tiers first, used only when the chosen tier runs out of cities. */
+const FILL_ORDER: Record<PlakaDifficulty, PlakaDifficulty[]> = {
+    kolay: ['kolay', 'orta', 'zor'],
+    orta: ['orta', 'kolay', 'zor'],
+    zor: ['zor', 'orta', 'kolay'],
+};
+
+/** Every chosen-tier city comes before any other tier, so a level stays honest. */
+function citiesForLevel(level: PlakaLevel, rng: Rng): PlakaCity[] {
+    if (level === 'karisik') return shuffle(rng, CITIES);
+    return FILL_ORDER[level].flatMap((tier) =>
+        shuffle(rng, CITIES.filter((city) => city.difficulty === tier))
+    );
 }
 
 function sameRegionDistractors(city: PlakaCity, rng: Rng, count: number): PlakaCity[] {
@@ -142,10 +154,8 @@ export function buildQuestionSet({
         mode === 'zamana-karsi' ? TIME_ATTACK_MAX_QUESTIONS : CITIES.length
     );
 
-    const pool = difficultyPool(level);
-    const ordered = shuffle(rng, pool.length >= target ? pool : [...pool, ...shuffle(rng, CITIES)]);
-    const unique = ordered.filter((city, index, arr) => arr.findIndex((c) => c.code === city.code) === index);
-    const selected = unique.slice(0, target);
+    // Shuffled again so filler cities from another tier don't always come last.
+    const selected = shuffle(rng, citiesForLevel(level, rng).slice(0, target));
 
     return selected.map((city, index) => buildOne(city, questionKind(mode, rng), index, rng));
 }
@@ -153,8 +163,9 @@ export function buildQuestionSet({
 /** Shared daily challenge — same questions for every player that day. */
 export function buildDailyQuestionSet(dayKey: string): GeneratedQuestion[] {
     return buildQuestionSet({
-        mode: 'plaka-sehir',
+        mode: DAILY_MODE,
         level: 'karisik',
         seed: `plaka-avcisi:${dayKey}`,
+        count: DAILY_QUESTION_COUNT,
     });
 }

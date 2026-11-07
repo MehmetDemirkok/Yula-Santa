@@ -17,7 +17,7 @@ import { Inter, Plus_Jakarta_Sans, Geist_Mono } from "next/font/google";
 import { NextIntlClientProvider } from 'next-intl';
 import { getMessages, setRequestLocale } from 'next-intl/server';
 import { notFound } from 'next/navigation';
-import Script from "next/script";
+import { ConsentedAdSenseScript } from "@/components/ads/ConsentedAdSenseScript";
 import "../globals.css";
 import { locales, getDirection, type Locale } from '@/i18n/config';
 
@@ -252,13 +252,6 @@ export default async function LocaleLayout({
                 {/* Google AdSense Account Verification */}
                 <meta name="google-adsense-account" content={ADSENSE_CLIENT_ID} />
 
-                {/* Google AdSense Script */}
-                <Script
-                    async
-                    src={`https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=${ADSENSE_CLIENT_ID}`}
-                    crossOrigin="anonymous"
-                    strategy="afterInteractive"
-                />
             </head>
             <body
                 className={`${inter.variable} ${plusJakartaSans.variable} ${geistMono.variable} antialiased min-h-screen flex flex-col`}
@@ -269,6 +262,8 @@ export default async function LocaleLayout({
                         {children}
                     </ClientLayout>
                 </NextIntlClientProvider>
+                {/* AdSense loads only after cookie consent; see the component. */}
+                <ConsentedAdSenseScript clientId={ADSENSE_CLIENT_ID} />
             </body>
         </html>
     );

@@ -17,10 +17,17 @@ export type PlakaLevel = (typeof PLAKA_LEVELS)[number];
 export type QuestionKind = 'plaka-sehir' | 'sehir-plaka' | 'ipucu';
 
 export const TIME_ATTACK_SECONDS = 60;
-export const STANDARD_QUESTION_COUNT = 10;
-export const DAILY_QUESTION_COUNT = 10;
+export const STANDARD_QUESTION_COUNT = 20;
+export const DAILY_QUESTION_COUNT = 20;
 /** Hard cap for the 60-second mode — far more than anyone can answer. */
 export const TIME_ATTACK_MAX_QUESTIONS = 45;
+/** Network allowance before the server stops accepting timed answers. */
+export const TIME_ATTACK_GRACE_SECONDS = 5;
+
+/** True once the server must stop accepting answers for a timed run. */
+export function isTimeAttackOver(mode: string, elapsedMs: number): boolean {
+    return mode === 'zamana-karsi' && elapsedMs > (TIME_ATTACK_SECONDS + TIME_ATTACK_GRACE_SECONDS) * 1000;
+}
 
 export const BASE_POINTS: Record<PlakaDifficulty, number> = {
     kolay: 10,

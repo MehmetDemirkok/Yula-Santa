@@ -36,6 +36,7 @@ Full architecture notes live in `CLAUDE.md`; design tokens in `design.md` — re
 - Routes: `/oyun/plaka-avcisi` (+ `/liderlik`); tool card on `/tools`; sitemap entry; `/plaka-avcisi` redirects to the game.
 - Data/UI: `lib/plaka/cities.ts` (81 provinces), `lib/plaka/game.ts` (modes, scoring), `components/plaka/` (client screens). UI copy is Turkish by design.
 - Server-only: `lib/plaka/store.ts` (Neon tables `plaka_*`, scoring, leaderboard, achievements), `lib/plaka/player.ts` (Google hash / signed guest cookie), `lib/plaka/questions.ts`. Points and answers are validated server-side via `app/api/plaka/*`; add new API routes to the `MAX_REQUESTS` map in `lib/rateLimit.ts`.
+- Rounds: standard and daily rounds are 20 questions (`STANDARD_QUESTION_COUNT`, `DAILY_QUESTION_COUNT`). A level uses all of its own tier before borrowing from the nearest (`zor` has only 18 cities). Timed runs are enforced on the server.
 - Tests: `npx tsx --test tests/plaka/plaka-game.test.ts` (pure logic, no DB).
 
 ## Other

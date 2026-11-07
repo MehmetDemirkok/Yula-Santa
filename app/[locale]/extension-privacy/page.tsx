@@ -1,3 +1,5 @@
+import { OPERATOR } from '@/lib/legal/operator';
+import { TIKTOK_COMMENT_RETENTION_DAYS } from '@/lib/tiktok/retention';
 import { getSEOMetadata, viewport } from '@/lib/seo';
 import { locales } from '@/i18n/config';
 export { viewport };
@@ -68,6 +70,21 @@ export default function ExtensionPrivacyPage() {
                             yalnızca kendi tarayıcınızın <code>chrome.storage.local</code> alanında saklar. Bu
                             veriler YulaSanta&apos;ya gönderilene kadar tarayıcınızdan çıkmaz ve uzantı kaldırıldığında
                             veya elle temizlendiğinde silinir.
+                        </p>
+                    </section>
+
+                    <section>
+                        <h2 className="mb-2 font-semibold text-[var(--text-primary)]">Sunucuda ne kadar saklanır?</h2>
+                        <p>
+                            YulaSanta&apos;ya gönderilen yorumlar, çekilişin oluşturulmasından{' '}
+                            {TIKTOK_COMMENT_RETENTION_DAYS} gün sonra silinir. Çekiliş sonucu (kazanan ve yedek
+                            kullanıcı adları), doğrulama bağlantısının çalışmaya devam etmesi için saklanır;
+                            hiç çekilişi yapılmamış kayıtlar ise {TIKTOK_COMMENT_RETENTION_DAYS} gün sonra
+                            tamamen silinir. Silme talepleri için{' '}
+                            <a href={`mailto:${OPERATOR.email}`} className="text-indigo-accent hover:underline">
+                                {OPERATOR.email}
+                            </a>{' '}
+                            adresine yazabilirsiniz.
                         </p>
                     </section>
 

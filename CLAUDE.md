@@ -72,12 +72,13 @@ Read `lib/tiktok/` before touching it. The earlier paid flow (PayTR checkout, cr
 ### Plaka Avcısı (Turkey plate quiz game)
 
 - Pages: `app/[locale]/oyun/plaka-avcisi/` (server `page.tsx` for SEO/JSON-LD + `PlakaAvcisiClient.tsx`) and `/oyun/plaka-avcisi/liderlik` (noindex live rankings). UI copy is Turkish by design (`lang="tr"` on the game shell); translated strings in `messages/*.json` are limited to the tools card + page metadata (`tools.plakaAvcisi`, `plakaAvcisiShort`, `plakaAvcisiMeta`).
-- Static data: `lib/plaka/cities.ts` holds all 81 provinces (code, region, difficulty, two hints). `lib/plaka/questions.ts` builds question sets server-side; the daily challenge is deterministic from the UTC date seed.
+- Static data: `lib/plaka/cities.ts` holds all 81 provinces (code, region, difficulty, two hints). `lib/plaka/questions.ts` builds question sets server-side; the daily challenge is deterministic from the Europe/Istanbul date seed. Standard and daily rounds are 20 questions (`STANDARD_QUESTION_COUNT`, `DAILY_QUESTION_COUNT` in `game.ts`), and a level exhausts its own tier before borrowing from the nearest one, since `zor` has only 18 cities.
 - Client-safe modules: `cities.ts`, `game.ts` (modes/scoring/combo), `achievements.ts`, `contracts.ts` (API types). **Never** import `store.ts`, `player.ts` or `questions.ts` from a client component — they use Neon/Node and are imported by API routes only.
-- Server: `lib/plaka/store.ts` owns the Neon schema (`plaka_cities`, `plaka_game_modes`, `plaka_sessions`, `plaka_questions`, `plaka_answers`, `plaka_player_stats`, `plaka_achievements`, `plaka_player_achievements`, plus the `plaka_leaderboard` view), scoring and achievement evaluation. Correct answers never leave the server; the client submits `position` + `optionIndex` and receives only the verdict.
+- Server: `lib/plaka/store.ts` owns the Neon schema (`plaka_cities`, `plaka_game_modes`, `plaka_sessions`, `plaka_questions`, `plaka_answers`, `plaka_player_stats`, `plaka_achievements`, `plaka_player_achievements`), scoring and achievement evaluation. Local dev and production share one database: DDL runs only when the marker comment on `plaka_cities` is out of date (bump `SCHEMA_REVISION` when DDL changes), and new DDL must stay compatible with the deployed code. Nothing queries the old `plaka_leaderboard` view any more. Correct answers never leave the server; the client submits `position` + `optionIndex` and receives only the verdict.
+- Leaderboard names and avatars go through `publicName`/`publicAvatar` in `store.ts`: Google photos are never shown, and nicknames pass the client-safe filter in `lib/plaka/nickname.ts`. Untimed runs resume after a reload via `/api/plaka/resume` and the `plaka_avcisi_active_session` localStorage key.
 - `lib/plaka/player.ts` resolves identity: Google sessions are hashed to `user_<sha256>`, guests get an HMAC-signed httpOnly `plaka_player` cookie. Guest scores/leaderboard entries are anonymous but persistent.
-- API: `app/api/plaka/{session,answer,finish,leaderboard,stats}`; rate limits live in `lib/rateLimit.ts` (`plaka-session`, `plaka-answer`, `plaka-finish`, `plaka-leaderboard`, `plaka-stats`). Answering is guarded by `answered = false` in SQL, position must match `current_index`, and sessions expire after 45 minutes.
-- Tests: `tests/plaka/plaka-game.test.ts` covers dataset integrity (81 unique codes), scoring/combo math, question generation and daily determinism. It does not touch the DB.
+- API: `app/api/plaka/{session,resume,answer,finish,leaderboard,stats}`; rate limits live in `lib/rateLimit.ts` (`plaka-session`, `plaka-resume`, `plaka-answer`, `plaka-finish`, `plaka-leaderboard`, `plaka-stats`). Answering is guarded by `answered = false` in SQL, position must match `current_index`, sessions expire after 45 minutes, and timed runs stop accepting answers 5 seconds after the 60-second countdown.
+- Tests: `tests/plaka/plaka-game.test.ts` covers dataset integrity (81 unique codes), scoring/combo math, question generation and daily determinism. It also checks that no hint names its own city. It does not touch the DB.
 
 ### Admin panel and analytics
 
@@ -91,7 +92,7 @@ Read `lib/tiktok/` before touching it. The earlier paid flow (PayTR checkout, cr
 
 ### Auth
 
-- `auth.ts` configures Auth.js (NextAuth v5) with Google as the only provider and **JWT-only sessions — there is no users table / DB adapter yet**. Don't assume persisted user records exist anywhere in the app.
+- `auth.ts` configures Auth.js (NextAuth v5) with Google as the only provider (the login and register pages show only `components/auth/GoogleSignIn.tsx`) and **JWT-only sessions — there is no users table / DB adapter yet**. Don't assume persisted user records exist anywhere in the app.
 
 ### Env / secrets
 
@@ -105,6 +106,13 @@ The code also reads these optional variables; `PLAKA_SECRET` and `OPENAI_API_KEY
 - `ADMIN_DEV_BYPASS`: set to `1` to skip the admin check under `next dev`; ignored in production
 
 `/api/suggest-gifts` serves a static list and makes no AI call.
+
+### Legal / privacy
+
+- `/privacy` renders `lib/legal/privacyNotice.ts` (KVKK aydınlatma metni, Turkish governing plus English for every other locale), not `messages/*.json`. Its claims must match the code: update it whenever storage, retention, third parties or public display change.
+- `lib/legal/operator.ts` holds the operator's identity for `/privacy` and `/legal`; empty fields are hidden.
+- AdSense loads only after cookie consent (`components/ads/ConsentedAdSenseScript.tsx`, listening for `CONSENT_EVENT`). The `google-adsense-account` meta tag stays for site verification.
+- Extension-collected TikTok comments are purged after `TIKTOK_COMMENT_RETENTION_DAYS` (`lib/tiktok/retention.ts`) on each giveaway create; drawn results are kept for `/verify`.
 
 ### Ads / SEO
 

@@ -2,6 +2,7 @@ import { NextResponse } from 'next/server';
 import { rateLimit } from '@/lib/rateLimit';
 import { getPlayerIdentity, sanitizeNickname } from '@/lib/plaka/player';
 import { isPlakaLevel, isPlakaMode } from '@/lib/plaka/game';
+import { isOffensiveNickname, NICKNAME_REJECTED_MESSAGE } from '@/lib/plaka/nickname';
 import { PlakaStoreError, startSession } from '@/lib/plaka/store';
 
 export const runtime = 'nodejs';
@@ -30,12 +31,16 @@ export async function POST(request: Request) {
         return fail('invalid_input', 'Geçersiz oyun modu veya seviye.', 400);
     }
 
+    // Tell the player instead of silently dropping the name they typed.
+    if (typeof body.nickname === 'string' && isOffensiveNickname(body.nickname)) {
+        return fail('nickname_rejected', NICKNAME_REJECTED_MESSAGE, 400);
+    }
+
     try {
         const player = await getPlayerIdentity();
         const result = await startSession({
             playerId: player.playerId,
             displayName: sanitizeNickname(body.nickname),
-            avatar: player.avatar,
             mode,
             level,
             daily: body.daily === true,

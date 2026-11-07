@@ -16,14 +16,18 @@ import {
     type PlakaRegion,
 } from './cities';
 import {
+    DAILY_MODE,
     DIFFICULTY_LABEL,
     MODE_CONFIG,
     PLAKA_MODES,
+    STANDARD_QUESTION_COUNT,
+    TIME_ATTACK_GRACE_SECONDS,
     TIME_ATTACK_SECONDS,
     accuracy,
     dailyKey,
     isPlakaLevel,
     isPlakaMode,
+    isTimeAttackOver,
     modeLabel,
     scoreAnswer,
     type PlakaLevel,
@@ -38,10 +42,13 @@ import type {
     LeaderboardResult,
     PlayerOverview,
     PublicQuestion,
+    RunMistake,
+    StartedSession,
     StartSessionResult,
 } from './contracts';
 import { buildDailyQuestionSet, buildQuestionSet, type GeneratedQuestion } from './questions';
 import { defaultGuestAvatar, sanitizeNickname } from './player';
+import { isOffensiveNickname } from './nickname';
 
 export class PlakaStoreError extends Error {
     constructor(
@@ -79,11 +86,35 @@ const SESSION_TTL_MS = 45 * 60 * 1000;
 /** Anything faster than this per answer is not humanly possible. */
 const MIN_RESPONSE_MS = 250;
 
+/** Bump this whenever the DDL below changes. Reference data is hashed in automatically. */
+const SCHEMA_REVISION = 2;
+const SCHEMA_MARKER = `plaka-schema:${SCHEMA_REVISION}:${createHash('sha1')
+    .update(JSON.stringify([CITIES, ACHIEVEMENTS, MODE_CONFIG]))
+    .digest('hex')
+    .slice(0, 16)}`;
+/** Share of cold starts that also clear abandoned sessions. */
+const STALE_CLEANUP_CHANCE = 0.05;
+
+/**
+ * Local dev and production share one database, so this must stay safe for both
+ * and must not change objects an older deployment also manages. In particular,
+ * never add columns through CREATE OR REPLACE VIEW: the older deployment's
+ * statement then fails with "cannot drop columns from view".
+ */
 async function ensureSchema(): Promise<void> {
     if (schemaReady) return schemaReady;
     const db = getSql();
 
     schemaReady = (async () => {
+        // A cold start costs one query once the database is up to date, not dozens.
+        const marker = await db.query(
+            `SELECT obj_description(to_regclass('public.plaka_cities'), 'pg_class') AS marker`
+        );
+        if ((marker[0] as Row | undefined)?.marker === SCHEMA_MARKER) {
+            if (Math.random() < STALE_CLEANUP_CHANCE) await deleteStaleSessions(db);
+            return;
+        }
+
         await db`
             CREATE TABLE IF NOT EXISTS plaka_cities (
                 code SMALLINT PRIMARY KEY,
@@ -212,26 +243,24 @@ async function ensureSchema(): Promise<void> {
             )
         `;
 
-        // Abandoned runs are resumable for 45 minutes only; clear day-old leftovers
-        // so the table doesn't grow unbounded (answers/questions cascade).
-        await db`DELETE FROM plaka_sessions WHERE status = 'active' AND started_at < now() - interval '1 day'`;
-
-        // "Leaderboard" model: finished sessions with a score, indexed for ranking.
-        await db`
-            CREATE OR REPLACE VIEW plaka_leaderboard AS
-            SELECT s.id, s.player_id, s.mode, s.score, s.correct_count, s.wrong_count,
-                   s.best_streak, s.duration_ms, s.finished_at
-            FROM plaka_sessions s
-            WHERE s.status = 'finished'
-        `;
-
+        await deleteStaleSessions(db);
+        // Revision 2: Google profile photos are no longer shown publicly, so drop the stored URLs.
+        await db`UPDATE plaka_player_stats SET avatar = NULL WHERE avatar LIKE 'http%'`;
         await seedReferenceData(db);
+
+        // Written last, so a run that fails halfway is retried by the next cold start.
+        await db.query(`COMMENT ON TABLE plaka_cities IS '${SCHEMA_MARKER}'`);
     })().catch((error) => {
         schemaReady = null;
         throw error;
     });
 
     return schemaReady;
+}
+
+/** Abandoned runs are resumable for 45 minutes only; clear day-old leftovers (answers/questions cascade). */
+async function deleteStaleSessions(db: NeonQueryFunction<false, false>): Promise<void> {
+    await db`DELETE FROM plaka_sessions WHERE status = 'active' AND started_at < now() - interval '1 day'`;
 }
 
 async function seedReferenceData(db: NeonQueryFunction<false, false>): Promise<void> {
@@ -339,6 +368,22 @@ function fallbackName(playerId: string): string {
     return `Avcı ${num}`;
 }
 
+/** Name shown publicly: names stored before the filter existed are hidden too. */
+function publicName(playerId: string, stored: unknown): string {
+    const name = typeof stored === 'string' ? stored.trim() : '';
+    return name && !isOffensiveNickname(name) ? name : fallbackName(playerId);
+}
+
+/**
+ * Avatar shown publicly: always a vehicle emoji. Google profile photos are never
+ * published, including URLs stored before this rule.
+ */
+function publicAvatar(playerId: string, stored: unknown): string {
+    return typeof stored === 'string' && stored && !stored.startsWith('http')
+        ? stored
+        : defaultGuestAvatar(playerId);
+}
+
 /* ------------------------------------------------------------------ */
 /* Public shapes                                                      */
 /* ------------------------------------------------------------------ */
@@ -346,7 +391,6 @@ function fallbackName(playerId: string): string {
 export type StartSessionInput = {
     playerId: string;
     displayName?: string | null;
-    avatar?: string | null;
     mode: PlakaMode;
     level: PlakaLevel;
     daily?: boolean;
@@ -401,27 +445,31 @@ export async function startSession(input: StartSessionInput): Promise<StartSessi
     const db = getSql();
 
     const nickname = sanitizeNickname(input.displayName);
-    const existing = await db.query(
-        `SELECT display_name, avatar FROM plaka_player_stats WHERE player_id = $1`,
-        [input.playerId]
-    );
-    const existingRow = existing[0] as { display_name?: string; avatar?: string | null } | undefined;
-    const displayName = nickname ?? existingRow?.display_name ?? fallbackName(input.playerId);
-    const avatar = input.avatar ?? existingRow?.avatar ?? (input.playerId.startsWith('guest_')
-        ? defaultGuestAvatar(input.playerId)
-        : null);
-
     const isDaily = Boolean(input.daily);
     const dayKey = isDaily ? dailyKey() : null;
+    // The daily challenge has one fixed format, whatever the request claims.
+    const mode = isDaily ? DAILY_MODE : input.mode;
+    const level: PlakaLevel = isDaily ? 'karisik' : input.level;
+
+    const [existing, dailyRows] = await Promise.all([
+        db.query(`SELECT display_name, avatar FROM plaka_player_stats WHERE player_id = $1`, [
+            input.playerId,
+        ]),
+        isDaily
+            ? db.query(
+                  `SELECT public_id, score, correct_count, question_count, finished_at, status
+                   FROM plaka_sessions
+                   WHERE player_id = $1 AND is_daily = true AND daily_key = $2`,
+                  [input.playerId, dayKey]
+              )
+            : Promise.resolve([]),
+    ]);
+    const existingRow = existing[0] as { display_name?: string; avatar?: string | null } | undefined;
+    const displayName = nickname ?? publicName(input.playerId, existingRow?.display_name);
+    const avatar = publicAvatar(input.playerId, existingRow?.avatar);
 
     if (isDaily && dayKey) {
-        const done = await db.query(
-            `SELECT public_id, score, correct_count, question_count, finished_at, status
-             FROM plaka_sessions
-             WHERE player_id = $1 AND is_daily = true AND daily_key = $2`,
-            [input.playerId, dayKey]
-        );
-        const row = done[0] as Row | undefined;
+        const row = dailyRows[0] as Row | undefined;
         if (row && row.status === 'finished') {
             return {
                 status: 'daily_done',
@@ -433,29 +481,13 @@ export async function startSession(input: StartSessionInput): Promise<StartSessi
         }
         if (row && row.status === 'active') {
             const resumed = await loadActiveSession(db, String(row.public_id), input.playerId);
-            if (resumed) {
-                return {
-                    status: 'started',
-                    sessionId: String(row.public_id),
-                    mode: input.mode,
-                    level: input.level,
-                    daily: true,
-                    dailyKey: dayKey,
-                    durationSeconds: null,
-                    totalQuestions: resumed.totalQuestions,
-                    startedAt: resumed.startedAt,
-                    answeredCount: resumed.answeredCount,
-                    score: resumed.score,
-                    currentStreak: resumed.currentStreak,
-                    bestStreak: resumed.bestStreak,
-                    player: { displayName, avatar },
-                    questions: resumed.questions,
-                };
-            }
+            if (resumed) return { ...resumed, player: { displayName, avatar } };
+        }
+        if (row) {
             // Stale attempt: release the daily slot so a fresh run can start.
             await db.query(
                 `UPDATE plaka_sessions SET status = 'expired', daily_key = NULL
-                 WHERE public_id = $1 AND status = 'active'`,
+                 WHERE public_id = $1 AND status <> 'finished'`,
                 [String(row.public_id)]
             );
         }
@@ -463,51 +495,53 @@ export async function startSession(input: StartSessionInput): Promise<StartSessi
 
     const questions = isDaily
         ? buildDailyQuestionSet(dayKey ?? dailyKey())
-        : buildQuestionSet({ mode: input.mode, level: input.level });
+        : buildQuestionSet({ mode, level });
 
     const publicId = randomUUID();
     const inserted = await db.query(
         `INSERT INTO plaka_sessions (public_id, player_id, mode, level, is_daily, daily_key, question_count)
          VALUES ($1, $2, $3, $4, $5, $6, $7)
          RETURNING id, started_at`,
-        [publicId, input.playerId, input.mode, input.level, isDaily, dayKey, questions.length]
+        [publicId, input.playerId, mode, level, isDaily, dayKey, questions.length]
     );
     const sessionId = String((inserted[0] as Row).id);
 
-    await db.query(
-        `INSERT INTO plaka_questions
-            (session_id, position, kind, city_code, city_name, difficulty, prompt, options, correct_index)
-         SELECT $1::bigint, * FROM unnest(
-            $2::int[], $3::text[], $4::smallint[], $5::text[], $6::text[],
-            $7::text[], $8::jsonb[], $9::smallint[]
-         )`,
-        [
-            sessionId,
-            questions.map((q) => q.position),
-            questions.map((q) => q.kind),
-            questions.map((q) => q.cityCode),
-            questions.map((q) => q.cityName),
-            questions.map((q) => q.difficulty),
-            questions.map((q) => q.prompt),
-            questions.map((q) => JSON.stringify(q.options.map((o) => o.label))),
-            questions.map((q) => q.correctIndex),
-        ]
-    );
-
-    await ensurePlayerStats(db, input.playerId, displayName, avatar);
+    await Promise.all([
+        db.query(
+            `INSERT INTO plaka_questions
+                (session_id, position, kind, city_code, city_name, difficulty, prompt, options, correct_index)
+             SELECT $1::bigint, * FROM unnest(
+                $2::int[], $3::text[], $4::smallint[], $5::text[], $6::text[],
+                $7::text[], $8::jsonb[], $9::smallint[]
+             )`,
+            [
+                sessionId,
+                questions.map((q) => q.position),
+                questions.map((q) => q.kind),
+                questions.map((q) => q.cityCode),
+                questions.map((q) => q.cityName),
+                questions.map((q) => q.difficulty),
+                questions.map((q) => q.prompt),
+                questions.map((q) => JSON.stringify(q.options.map((o) => o.label))),
+                questions.map((q) => q.correctIndex),
+            ]
+        ),
+        ensurePlayerStats(db, input.playerId, displayName, avatar),
+    ]);
 
     return {
         status: 'started',
         sessionId: publicId,
-        mode: input.mode,
-        level: input.level,
+        mode,
+        level,
         daily: isDaily,
         dailyKey: dayKey,
-        durationSeconds: MODE_CONFIG[input.mode].durationSeconds,
+        durationSeconds: MODE_CONFIG[mode].durationSeconds,
         totalQuestions: questions.length,
         startedAt: iso(inserted[0].started_at) ?? new Date().toISOString(),
         answeredCount: 0,
         score: 0,
+        correctCount: 0,
         currentStreak: 0,
         bestStreak: 0,
         player: { displayName, avatar },
@@ -515,19 +549,15 @@ export async function startSession(input: StartSessionInput): Promise<StartSessi
     };
 }
 
+/**
+ * An unfinished untimed run, ready to continue. Timed runs are never resumed:
+ * their clock kept running while the page was gone.
+ */
 async function loadActiveSession(
     db: NeonQueryFunction<false, false>,
     publicId: string,
     playerId: string
-): Promise<{
-    startedAt: string;
-    totalQuestions: number;
-    answeredCount: number;
-    score: number;
-    currentStreak: number;
-    bestStreak: number;
-    questions: PublicQuestion[];
-} | null> {
+): Promise<Omit<StartedSession, 'player'> | null> {
     const sessionRows = await db.query(
         `SELECT * FROM plaka_sessions WHERE public_id = $1 AND player_id = $2`,
         [publicId, playerId]
@@ -535,6 +565,7 @@ async function loadActiveSession(
     const session = asSession(sessionRows[0]);
     if (!session) return null;
     if (session.status !== 'active') return null;
+    if (!isPlakaMode(session.mode) || MODE_CONFIG[session.mode].durationSeconds !== null) return null;
     if (Date.now() - new Date(String(session.started_at)).getTime() > SESSION_TTL_MS) return null;
 
     const rows = await db.query(
@@ -544,10 +575,18 @@ async function loadActiveSession(
     );
 
     return {
+        status: 'started',
+        sessionId: String(session.public_id),
+        mode: session.mode,
+        level: isPlakaLevel(session.level) ? session.level : 'karisik',
+        daily: Boolean(session.is_daily),
+        dailyKey: session.daily_key,
+        durationSeconds: null,
         startedAt: iso(session.started_at) ?? new Date().toISOString(),
         totalQuestions: Number(session.question_count),
         answeredCount: Number(session.current_index),
         score: Number(session.score),
+        correctCount: Number(session.correct_count),
         currentStreak: Number(session.current_streak),
         bestStreak: Number(session.best_streak),
         questions: (rows as Row[]).map((row) => ({
@@ -560,26 +599,52 @@ async function loadActiveSession(
     };
 }
 
+/** Continue an unfinished run after a page reload, or null when there is nothing to continue. */
+export async function resumeSession(playerId: string, publicId: string): Promise<StartedSession | null> {
+    if (!isPlakaStoreConfigured()) throw new PlakaStoreError('store_unavailable');
+    await ensureSchema();
+    const db = getSql();
+
+    const [resumed, statsRows] = await Promise.all([
+        loadActiveSession(db, publicId, playerId),
+        db.query(`SELECT display_name, avatar FROM plaka_player_stats WHERE player_id = $1`, [playerId]),
+    ]);
+    if (!resumed) return null;
+    const stats = statsRows[0] as Row | undefined;
+    return {
+        ...resumed,
+        player: {
+            displayName: publicName(playerId, stats?.display_name),
+            avatar: publicAvatar(playerId, stats?.avatar),
+        },
+    };
+}
+
 export async function submitAnswer(input: AnswerInput): Promise<AnswerResult> {
     if (!isPlakaStoreConfigured()) throw new PlakaStoreError('store_unavailable');
     await ensureSchema();
     const db = getSql();
 
-    const rows = await db.query(
-        `SELECT * FROM plaka_sessions WHERE public_id = $1 AND player_id = $2`,
-        [input.sessionId, input.playerId]
-    );
+    const [rows, questionRows] = await Promise.all([
+        db.query(`SELECT * FROM plaka_sessions WHERE public_id = $1 AND player_id = $2`, [
+            input.sessionId,
+            input.playerId,
+        ]),
+        db.query(
+            `SELECT q.* FROM plaka_questions q
+             JOIN plaka_sessions s ON s.id = q.session_id
+             WHERE s.public_id = $1 AND s.player_id = $2 AND q.position = $3`,
+            [input.sessionId, input.playerId, input.position]
+        ),
+    ]);
     const session = asSession(rows[0]);
     if (!session) throw new PlakaStoreError('not_found');
     if (session.status !== 'active') throw new PlakaStoreError('session_inactive');
-    if (Date.now() - new Date(String(session.started_at)).getTime() > SESSION_TTL_MS) {
-        await db.query(`UPDATE plaka_sessions SET status = 'expired' WHERE id = $1`, [session.id]);
+    // The session stays active so the client's follow-up finish call still records the run.
+    const elapsedMs = Date.now() - new Date(String(session.started_at)).getTime();
+    if (elapsedMs > SESSION_TTL_MS || isTimeAttackOver(session.mode, elapsedMs)) {
         throw new PlakaStoreError('session_expired');
     }
-    const questionRows = await db.query(
-        `SELECT * FROM plaka_questions WHERE session_id = $1 AND position = $2`,
-        [session.id, input.position]
-    );
     const question = questionRows[0] as Row | undefined;
     if (!question) throw new PlakaStoreError('not_found');
     if (question.answered === true) throw new PlakaStoreError('already_answered');
@@ -614,36 +679,38 @@ export async function submitAnswer(input: AnswerInput): Promise<AnswerResult> {
     );
     if (marked.length === 0) throw new PlakaStoreError('already_answered');
 
-    const updated = await db.query(
-        `UPDATE plaka_sessions
-         SET score = score + $2,
-             current_index = current_index + 1,
-             correct_count = correct_count + $3,
-             wrong_count = wrong_count + $4,
-             current_streak = $5,
-             best_streak = GREATEST(best_streak, $5)
-         WHERE id = $1 AND status = 'active'
-         RETURNING current_index, score, correct_count, current_streak, best_streak, question_count`,
-        [session.id, points.total, isCorrect ? 1 : 0, isCorrect ? 0 : 1, nextStreak]
-    );
+    // Both run only after the guard above, so they can't double-count.
+    const [updated] = await Promise.all([
+        db.query(
+            `UPDATE plaka_sessions
+             SET score = score + $2,
+                 current_index = current_index + 1,
+                 correct_count = correct_count + $3,
+                 wrong_count = wrong_count + $4,
+                 current_streak = $5,
+                 best_streak = GREATEST(best_streak, $5)
+             WHERE id = $1 AND status = 'active'
+             RETURNING current_index, score, correct_count, current_streak, best_streak, question_count`,
+            [session.id, points.total, isCorrect ? 1 : 0, isCorrect ? 0 : 1, nextStreak]
+        ),
+        db.query(
+            `INSERT INTO plaka_answers
+                (session_id, question_id, player_id, city_code, mode, chosen_index, is_correct, points, response_ms)
+             VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9)`,
+            [
+                session.id,
+                question.id,
+                input.playerId,
+                question.city_code,
+                session.mode,
+                chosenIndex,
+                isCorrect,
+                points.total,
+                responseMs,
+            ]
+        ),
+    ]);
     const after = updated[0] as Row;
-
-    await db.query(
-        `INSERT INTO plaka_answers
-            (session_id, question_id, player_id, city_code, mode, chosen_index, is_correct, points, response_ms)
-         VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9)`,
-        [
-            session.id,
-            question.id,
-            input.playerId,
-            question.city_code,
-            session.mode,
-            chosenIndex,
-            isCorrect,
-            points.total,
-            responseMs,
-        ]
-    );
 
     const answeredCount = Number(after.current_index);
     const totalQuestions = Number(after.question_count);
@@ -673,17 +740,18 @@ export async function finishSession(playerId: string, publicId: string): Promise
     await ensureSchema();
     const db = getSql();
 
-    const rows = await db.query(
-        `SELECT * FROM plaka_sessions WHERE public_id = $1 AND player_id = $2`,
-        [publicId, playerId]
-    );
+    const [rows, statsRows] = await Promise.all([
+        db.query(`SELECT * FROM plaka_sessions WHERE public_id = $1 AND player_id = $2`, [
+            publicId,
+            playerId,
+        ]),
+        db.query(`SELECT best_score, total_score, games_played FROM plaka_player_stats WHERE player_id = $1`, [
+            playerId,
+        ]),
+    ]);
     const session = asSession(rows[0]);
     if (!session) throw new PlakaStoreError('not_found');
 
-    const statsRows = await db.query(
-        `SELECT best_score, total_score, games_played FROM plaka_player_stats WHERE player_id = $1`,
-        [playerId]
-    );
     const statsBefore = statsRows[0] as Row | undefined;
     const previousBest = Number(statsBefore?.best_score ?? 0);
 
@@ -694,7 +762,7 @@ export async function finishSession(playerId: string, publicId: string): Promise
         const rawDuration = Math.max(0, elapsed);
         const durationMs =
             session.mode === 'zamana-karsi'
-                ? Math.min(rawDuration, (TIME_ATTACK_SECONDS + 5) * 1000)
+                ? Math.min(rawDuration, (TIME_ATTACK_SECONDS + TIME_ATTACK_GRACE_SECONDS) * 1000)
                 : rawDuration;
 
         const answered = Number(session.current_index);
@@ -730,7 +798,7 @@ export async function finishSession(playerId: string, publicId: string): Promise
                 [
                     playerId,
                     name,
-                    playerId.startsWith('guest_') ? defaultGuestAvatar(playerId) : null,
+                    defaultGuestAvatar(playerId),
                     Number(finished.score),
                     Number(finished.correct_count),
                     Number(finished.wrong_count),
@@ -743,12 +811,28 @@ export async function finishSession(playerId: string, publicId: string): Promise
         }
     }
 
-    const statsAfter = await db.query(
-        `SELECT total_score, games_played FROM plaka_player_stats WHERE player_id = $1`,
-        [playerId]
-    );
+    const [statsAfter, mistakeRows] = await Promise.all([
+        db.query(`SELECT total_score, games_played FROM plaka_player_stats WHERE player_id = $1`, [
+            playerId,
+        ]),
+        db.query(
+            `SELECT position, city_code, city_name, options, chosen_index
+             FROM plaka_questions
+             WHERE session_id = $1 AND answered = true AND is_correct = false
+             ORDER BY position ASC`,
+            [finished.id]
+        ),
+    ]);
     const afterRow = statsAfter[0] as Row | undefined;
     const totalQuestions = Number(finished.question_count) || Number(finished.current_index);
+    const answered = Number(finished.correct_count) + Number(finished.wrong_count);
+
+    const mistakes: RunMistake[] = (mistakeRows as Row[]).map((row) => ({
+        position: Number(row.position),
+        cityCode: Number(row.city_code),
+        cityName: String(row.city_name),
+        chosenLabel: ((row.options as string[]) ?? [])[Number(row.chosen_index)] ?? '',
+    }));
 
     return {
         sessionId: String(finished.public_id),
@@ -760,9 +844,10 @@ export async function finishSession(playerId: string, publicId: string): Promise
         score: Number(finished.score),
         correct: Number(finished.correct_count),
         wrong: Number(finished.wrong_count),
-        answered: Number(finished.correct_count) + Number(finished.wrong_count),
+        answered,
         totalQuestions,
-        accuracy: accuracy(Number(finished.correct_count), totalQuestions),
+        // Based on answered questions, so leaving a run early doesn't count skipped ones as wrong.
+        accuracy: accuracy(Number(finished.correct_count), answered),
         durationMs: Number(finished.duration_ms ?? 0),
         bestStreak: Number(finished.best_streak),
         previousBest,
@@ -771,6 +856,7 @@ export async function finishSession(playerId: string, publicId: string): Promise
         newRecord: Number(finished.score) > previousBest,
         finishedAt: iso(finished.finished_at) ?? new Date().toISOString(),
         unlockedAchievements: newlyUnlocked,
+        mistakes,
     };
 }
 
@@ -778,8 +864,14 @@ export async function finishSession(playerId: string, publicId: string): Promise
 /* Achievements                                                       */
 /* ------------------------------------------------------------------ */
 
-async function computeAchievementProgress(playerId: string): Promise<AchievementProgress[]> {
+async function computeAchievementProgress(
+    playerId: string
+): Promise<{ progress: AchievementProgress[]; knownCodes: number[] }> {
     const db = getSql();
+    const unlockedRowsQuery = db.query(
+        `SELECT achievement_id, unlocked_at FROM plaka_player_achievements WHERE player_id = $1`,
+        [playerId]
+    );
     const rows = await db.query(
         `SELECT
             (SELECT count(DISTINCT city_code) FROM plaka_answers WHERE player_id = $1 AND is_correct) AS distinct_all,
@@ -788,8 +880,8 @@ async function computeAchievementProgress(playerId: string): Promise<Achievement
             (SELECT count(*) FROM plaka_sessions WHERE player_id = $1 AND status = 'finished') AS games,
             (SELECT COALESCE(max(best_streak), 0) FROM plaka_sessions WHERE player_id = $1 AND status = 'finished') AS streak,
             (SELECT COALESCE(max(score), 0) FROM plaka_sessions WHERE player_id = $1 AND status = 'finished' AND mode = 'zamana-karsi') AS time_best,
-            (SELECT count(*) FROM plaka_sessions WHERE player_id = $1 AND status = 'finished' AND correct_count >= 10 AND correct_count = question_count) AS perfect_rounds`,
-        [playerId]
+            (SELECT count(*) FROM plaka_sessions WHERE player_id = $1 AND status = 'finished' AND correct_count >= $2 AND correct_count = question_count) AS perfect_rounds`,
+        [playerId, STANDARD_QUESTION_COUNT]
     );
     const data = (rows[0] ?? {}) as Row;
 
@@ -805,10 +897,7 @@ async function computeAchievementProgress(playerId: string): Promise<Achievement
     const timeBest = Number(data.time_best ?? 0);
     const perfectRounds = Number(data.perfect_rounds ?? 0);
 
-    const unlockedRows = await db.query(
-        `SELECT achievement_id, unlocked_at FROM plaka_player_achievements WHERE player_id = $1`,
-        [playerId]
-    );
+    const unlockedRows = await unlockedRowsQuery;
     const unlockedAt = new Map<string, string>();
     for (const row of unlockedRows as Row[]) {
         unlockedAt.set(String(row.achievement_id), iso(row.unlocked_at) ?? new Date().toISOString());
@@ -854,7 +943,7 @@ async function computeAchievementProgress(playerId: string): Promise<Achievement
         },
     };
 
-    return ACHIEVEMENTS.map((achievement) => {
+    const progress = ACHIEVEMENTS.map((achievement) => {
         const entry = state[achievement.id];
         return {
             id: achievement.id,
@@ -864,10 +953,11 @@ async function computeAchievementProgress(playerId: string): Promise<Achievement
             progressLabel: entry.label,
         };
     });
+    return { progress, knownCodes: codes };
 }
 
 async function syncAchievements(playerId: string): Promise<AchievementProgress[]> {
-    const state = await computeAchievementProgress(playerId);
+    const { progress: state } = await computeAchievementProgress(playerId);
     const unlocked = state.filter((item) => item.unlocked && item.unlockedAt === null);
     if (unlocked.length === 0) return [];
 
@@ -887,7 +977,7 @@ async function syncAchievements(playerId: string): Promise<AchievementProgress[]
 /* Leaderboard & profile                                              */
 /* ------------------------------------------------------------------ */
 
-const PERIOD_CONDITIONS: Record<LeaderboardPeriod, string> = {
+const PERIOD_CONDITIONS: Record<Exclude<LeaderboardPeriod, 'challenge'>, string> = {
     daily: `s.finished_at >= (date_trunc('day', now() AT TIME ZONE 'Europe/Istanbul') AT TIME ZONE 'Europe/Istanbul')`,
     weekly: `s.finished_at >= (date_trunc('week', now() AT TIME ZONE 'Europe/Istanbul') AT TIME ZONE 'Europe/Istanbul')`,
     all: 'true',
@@ -902,17 +992,22 @@ export async function getLeaderboard(options: {
     await ensureSchema();
     const db = getSql();
 
-    const period = (['daily', 'weekly', 'all'] as const).includes(options.period)
+    const period = (['challenge', 'daily', 'weekly', 'all'] as const).includes(options.period)
         ? options.period
         : 'daily';
     const mode = options.mode === 'all' || isPlakaMode(options.mode) ? options.mode : 'all';
     const modeCondition = mode === 'all' ? 'true' : `s.mode = '${mode}'`;
+    // dailyKey() only ever yields YYYY-MM-DD, so it is safe to inline.
+    const periodCondition =
+        period === 'challenge'
+            ? `s.is_daily = true AND s.daily_key = '${dailyKey()}'`
+            : PERIOD_CONDITIONS[period];
 
-    const page = await db.query(
+    const pageQuery = db.query(
         `WITH best AS (
             SELECT s.player_id, MAX(s.score) AS score, COUNT(*) AS games
-            FROM plaka_leaderboard s
-            WHERE ${PERIOD_CONDITIONS[period]} AND ${modeCondition}
+            FROM plaka_sessions s
+            WHERE s.status = 'finished' AND ${periodCondition} AND ${modeCondition}
             GROUP BY s.player_id
          ), ranked AS (
             SELECT b.player_id, b.score, b.games,
@@ -927,12 +1022,12 @@ export async function getLeaderboard(options: {
         []
     );
 
-    const me = options.playerId
-        ? await db.query(
+    const meQuery = options.playerId
+        ? db.query(
               `WITH best AS (
                   SELECT s.player_id, MAX(s.score) AS score, COUNT(*) AS games
-                  FROM plaka_leaderboard s
-                  WHERE ${PERIOD_CONDITIONS[period]} AND ${modeCondition}
+                  FROM plaka_sessions s
+                  WHERE s.status = 'finished' AND ${periodCondition} AND ${modeCondition}
                   GROUP BY s.player_id
                ), ranked AS (
                   SELECT b.player_id, b.score, b.games,
@@ -945,8 +1040,9 @@ export async function getLeaderboard(options: {
                SELECT rank, score, name, avatar FROM ranked WHERE player_id = $1`,
               [options.playerId]
           )
-        : [];
+        : Promise.resolve([]);
 
+    const [page, me] = await Promise.all([pageQuery, meQuery]);
     const rows = page as Row[];
     const meRow = (me[0] ?? null) as Row | null;
 
@@ -955,8 +1051,8 @@ export async function getLeaderboard(options: {
         mode,
         entries: rows.map((row) => ({
             rank: Number(row.rank),
-            name: String(row.name),
-            avatar: (row.avatar as string | null) ?? null,
+            name: publicName(String(row.player_id), row.name),
+            avatar: publicAvatar(String(row.player_id), row.avatar),
             score: Number(row.score),
             games: Number(row.games),
             isMe: options.playerId !== null && String(row.player_id) === options.playerId,
@@ -965,8 +1061,8 @@ export async function getLeaderboard(options: {
             ? {
                   rank: Number(meRow.rank),
                   score: Number(meRow.score),
-                  name: String(meRow.name),
-                  avatar: (meRow.avatar as string | null) ?? null,
+                  name: publicName(options.playerId as string, meRow.name),
+                  avatar: publicAvatar(options.playerId as string, meRow.avatar),
               }
             : null,
         playerCount: rows.length > 0 ? Number(rows[0].total_players ?? rows.length) : 0,
@@ -979,37 +1075,33 @@ export async function getPlayerOverview(playerId: string): Promise<PlayerOvervie
     await ensureSchema();
     const db = getSql();
 
-    const statsRows = await db.query(
-        `SELECT * FROM plaka_player_stats WHERE player_id = $1`,
-        [playerId]
-    );
-    const statsRow = (statsRows[0] ?? null) as Row | null;
-
-    const rankRows = await db.query(
-        `SELECT rank FROM (
-            SELECT player_id, ROW_NUMBER() OVER (ORDER BY best_score DESC, player_id ASC) AS rank
-            FROM plaka_player_stats WHERE best_score > 0
-         ) ranked WHERE player_id = $1`,
-        [playerId]
-    );
-
     const key = dailyKey();
-    const dailyRows = await db.query(
-        `SELECT score, status FROM plaka_sessions
-         WHERE player_id = $1 AND is_daily = true AND daily_key = $2 AND status = 'finished'`,
-        [playerId, key]
-    );
+    const [statsRows, rankRows, dailyRows, { progress: achievements, knownCodes }] = await Promise.all([
+        db.query(`SELECT * FROM plaka_player_stats WHERE player_id = $1`, [playerId]),
+        db.query(
+            `SELECT rank FROM (
+                SELECT player_id, ROW_NUMBER() OVER (ORDER BY best_score DESC, player_id ASC) AS rank
+                FROM plaka_player_stats WHERE best_score > 0
+             ) ranked WHERE player_id = $1`,
+            [playerId]
+        ),
+        db.query(
+            `SELECT score, status FROM plaka_sessions
+             WHERE player_id = $1 AND is_daily = true AND daily_key = $2 AND status = 'finished'`,
+            [playerId, key]
+        ),
+        computeAchievementProgress(playerId),
+    ]);
+    const statsRow = (statsRows[0] ?? null) as Row | null;
     const dailyRow = (dailyRows[0] ?? null) as Row | null;
-
-    const achievements = await computeAchievementProgress(playerId);
 
     const totalCorrect = Number(statsRow?.total_correct ?? 0);
     const totalWrong = Number(statsRow?.total_wrong ?? 0);
 
     return {
         playerId,
-        name: String(statsRow?.display_name ?? fallbackName(playerId)),
-        avatar: (statsRow?.avatar as string | null) ?? null,
+        name: publicName(playerId, statsRow?.display_name),
+        avatar: publicAvatar(playerId, statsRow?.avatar),
         stats: {
             totalScore: Number(statsRow?.total_score ?? 0),
             gamesPlayed: Number(statsRow?.games_played ?? 0),
@@ -1028,5 +1120,6 @@ export async function getPlayerOverview(playerId: string): Promise<PlayerOvervie
             modeTitle: MODE_CONFIG['plaka-sehir'].title,
         },
         achievements,
+        knownCodes,
     };
 }

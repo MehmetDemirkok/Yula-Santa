@@ -9,7 +9,7 @@ import { Metadata } from 'next';
 import { LogIn } from 'lucide-react';
 import { locales } from '@/i18n/config';
 import { getSEOMetadata, viewport } from '@/lib/seo';
-import { LoginForm } from '@/components/auth/LoginForm';
+import { GoogleSignIn } from '@/components/auth/GoogleSignIn';
 
 export { viewport };
 
@@ -52,7 +52,7 @@ export default async function LoginPage({ params }: Props) {
                 </div>
 
                 <div className="ys-card p-6 sm:p-8">
-                    <LoginForm />
+                    <GoogleSignIn />
                 </div>
             </div>
         </main>
