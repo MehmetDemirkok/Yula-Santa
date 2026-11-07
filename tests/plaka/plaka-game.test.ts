@@ -23,6 +23,7 @@ import {
 } from '../../lib/plaka/game';
 import { buildDailyQuestionSet, buildQuestionSet } from '../../lib/plaka/questions';
 import { ACHIEVEMENTS } from '../../lib/plaka/achievements';
+import { TURKEY_PROVINCES } from '../../lib/plaka/turkeyMap';
 
 test('plaka dataset covers all 81 provinces exactly once', () => {
     assert.equal(CITIES.length, 81);
@@ -106,6 +107,13 @@ test('question sets never repeat a city and hide no answers', () => {
         assert.equal(new Set(codes).size, codes.length, `${mode} repeats a city`);
 
         for (const question of questions) {
+            if (question.kind === 'harita') {
+                // Answered by tapping the map: no options, the key is the plate code.
+                assert.equal(question.options.length, 0);
+                assert.equal(question.correctIndex, question.cityCode);
+                assert.equal(question.prompt, question.cityName);
+                continue;
+            }
             assert.equal(question.options.length, 4);
             const labels = question.options.map((o) => o.label);
             assert.equal(new Set(labels).size, 4, 'options must be distinct');
@@ -227,4 +235,22 @@ test('achievement catalogue is complete and unique', () => {
     assert.ok(ids.includes('plaka-uzmani'));
     assert.ok(ids.includes('seri-katil'));
     assert.ok(ids.includes('hizli-sofor'));
+});
+
+test('the map has every province exactly once, inside the viewBox', () => {
+    const codes = TURKEY_PROVINCES.map((p) => p.code).sort((a, b) => a - b);
+    assert.deepEqual(codes, CITIES.map((c) => c.code).sort((a, b) => a - b));
+    for (const province of TURKEY_PROVINCES) {
+        assert.match(province.d, /^M[\d.]+ [\d.]+(L[\d.]+ [\d.]+)+Z/, `${province.code} path`);
+        assert.ok(province.x > 0 && province.x < 1000 && province.y > 0, `${province.code} marker`);
+    }
+});
+
+test('map mode asks 20 distinct provinces at every level', () => {
+    for (const level of ['kolay', 'orta', 'zor', 'karisik'] as const) {
+        const questions = buildQuestionSet({ mode: 'harita', level, seed: `map-${level}` });
+        assert.equal(questions.length, 20);
+        assert.ok(questions.every((q) => q.kind === 'harita' && q.options.length === 0));
+        assert.equal(new Set(questions.map((q) => q.cityCode)).size, 20);
+    }
 });

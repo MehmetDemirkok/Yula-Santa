@@ -45,7 +45,7 @@ function getJsonLd(locale: string) {
                 operatingSystem: 'Web',
                 inLanguage: 'tr-TR',
                 description:
-                    'Türkiye’nin 81 ilinin plaka kodlarını öğreten dört modlu bilgi yarışması: plakadan şehri bul, şehirden plakayı bul, zamana karşı ve ipuçlarından şehri bul.',
+                    'Türkiye’nin 81 ilinin plaka kodlarını ve haritadaki yerlerini öğreten beş modlu bilgi yarışması: plakadan şehri bul, şehirden plakayı bul, haritada bul, zamana karşı ve ipuçlarından şehri bul.',
                 offers: { '@type': 'Offer', price: '0', priceCurrency: 'TRY' },
                 isAccessibleForFree: true,
                 gamePlatform: 'Web',

@@ -106,6 +106,7 @@ function buildOptions(
 }
 
 function questionKind(mode: PlakaMode, rng: Rng): QuestionKind {
+    if (mode === 'harita') return 'harita';
     if (mode === 'ipucu') return 'ipucu';
     if (mode === 'sehir-plaka') return 'sehir-plaka';
     if (mode === 'plaka-sehir') return 'plaka-sehir';
@@ -115,12 +116,15 @@ function questionKind(mode: PlakaMode, rng: Rng): QuestionKind {
 
 function promptFor(city: PlakaCity, kind: QuestionKind): string {
     if (kind === 'plaka-sehir') return formatPlate(city.code);
-    if (kind === 'sehir-plaka') return city.name;
+    if (kind === 'sehir-plaka' || kind === 'harita') return city.name;
     return city.hints.join('\n');
 }
 
 function buildOne(city: PlakaCity, kind: QuestionKind, position: number, rng: Rng): GeneratedQuestion {
-    const { options, correctIndex } = buildOptions(city, kind, rng);
+    // Map questions have no options: the player taps a province, and the
+    // answer key is the plate code itself.
+    const { options, correctIndex } =
+        kind === 'harita' ? { options: [], correctIndex: city.code } : buildOptions(city, kind, rng);
     return {
         position,
         kind,

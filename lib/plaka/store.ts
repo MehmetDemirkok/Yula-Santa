@@ -12,6 +12,7 @@ import {
     CITIES,
     CITY_BY_CODE,
     PLATE_REGIONS,
+    formatPlate,
     type PlakaCity,
     type PlakaRegion,
 } from './cities';
@@ -655,7 +656,12 @@ export async function submitAnswer(input: AnswerInput): Promise<AnswerResult> {
     const correctIndex = Number(question.correct_index);
     const options = (question.options as string[]) ?? [];
     const chosenIndex = input.optionIndex;
-    if (!Number.isInteger(chosenIndex) || chosenIndex < 0 || chosenIndex >= options.length) {
+    // Map questions are answered with a plate code; the others with an option index.
+    const isMap = question.kind === 'harita';
+    const validChoice = isMap
+        ? CITY_BY_CODE.has(chosenIndex)
+        : Number.isInteger(chosenIndex) && chosenIndex >= 0 && chosenIndex < options.length;
+    if (!validChoice) {
         throw new PlakaStoreError('invalid_position', 'Geçersiz seçenek');
     }
 
@@ -719,7 +725,7 @@ export async function submitAnswer(input: AnswerInput): Promise<AnswerResult> {
     return {
         correct: isCorrect,
         correctIndex,
-        correctLabel: options[correctIndex] ?? '',
+        correctLabel: isMap ? formatPlate(correctIndex) : (options[correctIndex] ?? ''),
         chosenIndex,
         points: points.total,
         comboBonus: points.combo,
@@ -816,7 +822,7 @@ export async function finishSession(playerId: string, publicId: string): Promise
             playerId,
         ]),
         db.query(
-            `SELECT position, city_code, city_name, options, chosen_index
+            `SELECT position, kind, city_code, city_name, options, chosen_index
              FROM plaka_questions
              WHERE session_id = $1 AND answered = true AND is_correct = false
              ORDER BY position ASC`,
@@ -831,7 +837,10 @@ export async function finishSession(playerId: string, publicId: string): Promise
         position: Number(row.position),
         cityCode: Number(row.city_code),
         cityName: String(row.city_name),
-        chosenLabel: ((row.options as string[]) ?? [])[Number(row.chosen_index)] ?? '',
+        chosenLabel:
+            row.kind === 'harita'
+                ? (CITY_BY_CODE.get(Number(row.chosen_index))?.name ?? '')
+                : (((row.options as string[]) ?? [])[Number(row.chosen_index)] ?? ''),
     }));
 
     return {

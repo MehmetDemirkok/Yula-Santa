@@ -15,7 +15,7 @@ export const PLAKA_FAQ: PlakaFaqItem[] = [
     },
     {
         question: 'Hangi oyun modları var?',
-        answer: `Dört mod bulunur: Plakadan Şehri Bul, Şehirden Plakayı Bul, 60 saniyelik Zamana Karşı ve İpuçlarından Şehri Bul. Süresiz modlarda bir tur ${STANDARD_QUESTION_COUNT} sorudur; her modda kolay, orta, zor veya karışık seviye seçebilirsin.`,
+        answer: `Beş mod bulunur: Plakadan Şehri Bul, Şehirden Plakayı Bul, Türkiye haritasında ili işaretlediğin Haritada Bul, 60 saniyelik Zamana Karşı ve İpuçlarından Şehri Bul. Süresiz modlarda bir tur ${STANDARD_QUESTION_COUNT} sorudur; her modda kolay, orta, zor veya karışık seviye seçebilirsin.`,
     },
     {
         question: 'Puanlar nasıl hesaplanıyor?',

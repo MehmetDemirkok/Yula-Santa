@@ -4,7 +4,7 @@
  * so the client can never submit its own score.
  */
 
-export const PLAKA_MODES = ['plaka-sehir', 'sehir-plaka', 'zamana-karsi', 'ipucu'] as const;
+export const PLAKA_MODES = ['plaka-sehir', 'sehir-plaka', 'harita', 'zamana-karsi', 'ipucu'] as const;
 export type PlakaMode = (typeof PLAKA_MODES)[number];
 
 export const PLAKA_DIFFICULTIES = ['kolay', 'orta', 'zor'] as const;
@@ -14,7 +14,8 @@ export type PlakaDifficulty = (typeof PLAKA_DIFFICULTIES)[number];
 export const PLAKA_LEVELS = [...PLAKA_DIFFICULTIES, 'karisik'] as const;
 export type PlakaLevel = (typeof PLAKA_LEVELS)[number];
 
-export type QuestionKind = 'plaka-sehir' | 'sehir-plaka' | 'ipucu';
+/** `harita` is answered by tapping the map; its answer is a plate code, not an option index. */
+export type QuestionKind = 'plaka-sehir' | 'sehir-plaka' | 'ipucu' | 'harita';
 
 export const TIME_ATTACK_SECONDS = 60;
 export const STANDARD_QUESTION_COUNT = 20;
@@ -44,7 +45,7 @@ export type ModeConfig = {
     title: string;
     tagline: string;
     description: string;
-    icon: 'plate' | 'city' | 'timer' | 'hint';
+    icon: 'plate' | 'city' | 'map' | 'timer' | 'hint';
     accent: string;
     durationSeconds: number | null;
     questionCount: number;
@@ -73,6 +74,17 @@ export const MODE_CONFIG: Record<PlakaMode, ModeConfig> = {
         durationSeconds: null,
         questionCount: STANDARD_QUESTION_COUNT,
         kindLabel: 'Şehir → Plaka',
+    },
+    harita: {
+        id: 'harita',
+        title: 'Haritada Bul',
+        tagline: 'Konya → 🗺️',
+        description: 'Adı verilen ili Türkiye haritasında bul ve işaretle.',
+        icon: 'map',
+        accent: '#38bdf8',
+        durationSeconds: null,
+        questionCount: STANDARD_QUESTION_COUNT,
+        kindLabel: 'Harita',
     },
     'zamana-karsi': {
         id: 'zamana-karsi',

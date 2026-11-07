@@ -1952,3 +1952,99 @@
     color: var(--pa-danger-text);
     font-size: 0.78rem;
 }
+
+
+/* ── Map mode ─────────────────────────────────────────────────────── */
+
+.mapWrap {
+    position: relative;
+    margin-top: 0.4rem;
+}
+
+.mapZoom {
+    position: absolute;
+    top: 0.4rem;
+    right: 0.4rem;
+    z-index: 1;
+    display: flex;
+    gap: 0.35rem;
+}
+
+.mapScroll {
+    overflow: auto;
+    border-radius: 14px;
+    border: 1px solid var(--pa-border);
+    background: var(--pa-option-bg);
+    overscroll-behavior: contain;
+    -webkit-overflow-scrolling: touch;
+}
+
+.mapSvg {
+    display: block;
+    height: auto;
+    max-width: none;
+    touch-action: pan-x pan-y;
+}
+
+.mapProvince {
+    fill: var(--pa-panel-2);
+    stroke: var(--pa-line-strong);
+    stroke-width: 0.8;
+    cursor: pointer;
+    transition: fill 0.15s ease;
+    outline: none;
+}
+
+.mapProvince:hover,
+.mapProvince:focus-visible {
+    fill: var(--pa-option-hover);
+    stroke: var(--pa-neon);
+    stroke-width: 1.6;
+}
+
+.mapSelected,
+.mapSelected:hover {
+    fill: var(--pa-amber);
+    fill-opacity: 0.45;
+    stroke: var(--pa-amber);
+    stroke-width: 2.2;
+}
+
+.mapCorrect,
+.mapCorrect:hover {
+    fill: var(--pa-neon);
+    fill-opacity: 0.6;
+    stroke: var(--pa-neon);
+    stroke-width: 2.2;
+}
+
+.mapWrong,
+.mapWrong:hover {
+    fill: var(--pa-danger);
+    fill-opacity: 0.45;
+    stroke: var(--pa-danger);
+    stroke-width: 2.2;
+}
+
+.mapLabel {
+    pointer-events: none;
+}
+
+.mapLabel circle {
+    fill: var(--pa-text);
+}
+
+.mapLabel text {
+    fill: var(--pa-text);
+    font-size: 18px;
+    font-weight: 800;
+    paint-order: stroke;
+    stroke: var(--pa-bg);
+    stroke-width: 4px;
+}
+
+.mapActions {
+    display: flex;
+    justify-content: center;
+    margin-top: 0.8rem;
+}

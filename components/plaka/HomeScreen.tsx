@@ -10,6 +10,7 @@ import {
     Crosshair,
     Flame,
     Lightbulb,
+    Map as MapIcon,
     MapPin,
     Medal,
     Info,
@@ -42,6 +43,7 @@ import styles from './PlakaAvcisi.module.css';
 const MODE_ICONS = {
     plate: CreditCard,
     city: MapPin,
+    map: MapIcon,
     timer: Timer,
     hint: Lightbulb,
 } as const;
@@ -139,7 +141,7 @@ export default function HomeScreen({
                         <ArrowLeft size={16} aria-hidden="true" />
                         Araçlar
                     </Link>
-                    <span className={styles.topTag}>81 il · 4 mod</span>
+                    <span className={styles.topTag}>81 il · {PLAKA_MODES.length} mod</span>
                 </div>
 
                 <header className={styles.hero}>
@@ -446,7 +448,7 @@ export default function HomeScreen({
                             <Info size={17} aria-hidden="true" />
                             Sık Sorulan Sorular
                         </h2>
-                        <span className={styles.panelHint}>81 il · 4 mod · ücretsiz</span>
+                        <span className={styles.panelHint}>81 il · {PLAKA_MODES.length} mod · ücretsiz</span>
                     </div>
                     <div className={styles.faq}>
                         {PLAKA_FAQ.map((item) => (

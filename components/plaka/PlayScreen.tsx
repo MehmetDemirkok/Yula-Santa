@@ -1,6 +1,8 @@
 'use client';
 
 import { useEffect, useState } from 'react';
+import { formatPlate } from '@/lib/plaka/cities';
+import TurkeyMap from './TurkeyMap';
 import {
     ArrowRight,
     Check,
@@ -44,6 +46,7 @@ const OPTION_KEYS = ['1', '2', '3', '4'];
 function promptLabel(question: PublicQuestion): string {
     if (question.kind === 'plaka-sehir') return 'Bu plaka hangi ile ait?';
     if (question.kind === 'sehir-plaka') return 'Bu şehrin plaka kodu kaç?';
+    if (question.kind === 'harita') return 'Bu il haritada nerede? Dokun, sonra onayla.';
     return 'Bu ipuçları hangi ili anlatıyor?';
 }
 
@@ -74,6 +77,10 @@ export default function PlayScreen({
     const isTimed = secondsLeft !== null;
     const locked = feedback !== null || submitting || finishing;
     const [confirmingQuit, setConfirmingQuit] = useState(false);
+    const isMap = question.kind === 'harita';
+    // A map tap only marks a province; the player confirms before it is sent.
+    const [mapPick, setMapPick] = useState<{ position: number; code: number } | null>(null);
+    const pendingCode = mapPick && mapPick.position === question.position ? mapPick.code : null;
     const nothingAnswered = questionNumber === 1 && feedback === null && !submitting;
 
     const requestQuit = () => {
@@ -85,7 +92,7 @@ export default function PlayScreen({
         function onKeyDown(event: KeyboardEvent) {
             if (event.metaKey || event.ctrlKey || event.altKey) return;
             const digit = Number(event.key);
-            if (digit >= 1 && digit <= 4 && !locked) {
+            if (!isMap && digit >= 1 && digit <= 4 && !locked) {
                 event.preventDefault();
                 onSelect(digit - 1);
                 return;
@@ -98,7 +105,7 @@ export default function PlayScreen({
 
         window.addEventListener('keydown', onKeyDown);
         return () => window.removeEventListener('keydown', onKeyDown);
-    }, [feedback, finishing, locked, onNext, onSelect]);
+    }, [feedback, finishing, isMap, locked, onNext, onSelect]);
 
     const timedTotal = durationSeconds ?? 60;
     const timedProgress = isTimed ? Math.min(100, ((secondsLeft ?? 0) / timedTotal) * 100) : 0;
@@ -273,9 +280,43 @@ export default function PlayScreen({
                             </div>
                         ) : null}
 
+                        {question.kind === 'harita' ? (
+                            <div>
+                                <div className={styles.questionLabel}>İL</div>
+                                <h2 className={styles.promptCity}>{question.prompt}</h2>
+                            </div>
+                        ) : null}
+
                         <p className={styles.promptQuestion}>{promptLabel(question)}</p>
 
-                        <div className={styles.options}>
+                        {isMap ? (
+                            <div>
+                                <TurkeyMap
+                                    selected={pendingCode}
+                                    correct={feedback ? feedback.correctIndex : null}
+                                    wrong={feedback && !feedback.correct ? feedback.chosenIndex : null}
+                                    disabled={locked}
+                                    onPick={(code) => setMapPick({ position: question.position, code })}
+                                />
+                                {!feedback ? (
+                                    <div className={styles.mapActions}>
+                                        <button
+                                            type="button"
+                                            className={styles.cta}
+                                            onClick={() => {
+                                                if (pendingCode !== null) onSelect(pendingCode);
+                                            }}
+                                            disabled={locked || pendingCode === null}
+                                        >
+                                            <Check size={16} aria-hidden="true" />
+                                            {pendingCode === null ? 'Haritadan bir il seç' : 'Bu il'}
+                                        </button>
+                                    </div>
+                                ) : null}
+                            </div>
+                        ) : null}
+
+                        <div className={styles.options} hidden={isMap}>
                             {question.options.map((option, index) => {
                                 const isCorrect = feedback ? index === feedback.correctIndex : false;
                                 const isWrong =
@@ -319,6 +360,7 @@ export default function PlayScreen({
                                         {feedback.correct ? (
                                             <>
                                                 Doğru! <span className={styles.answerReveal}>{feedback.cityName}</span>
+                                                {isMap ? ` · ${formatPlate(feedback.cityCode)}` : null}
                                             </>
                                         ) : (
                                             <>
@@ -387,7 +429,9 @@ export default function PlayScreen({
                             <Sparkles size={12} style={{ display: 'inline', verticalAlign: '-1px' }} /> En uzun
                             seri: {Math.max(bestStreak, streak)}
                         </span>
-                        <span className={styles.panelHint}>Klavye: 1–4 ile seç, Enter ile devam et</span>
+                        <span className={styles.panelHint}>
+                            {isMap ? 'Tab ile iller arasında gez, Enter ile seç' : 'Klavye: 1–4 ile seç, Enter ile devam et'}
+                        </span>
                     </div>
                 </div>
             </div>
