@@ -19,7 +19,8 @@ export type GiftRequest = {
 // tier; pinned model names sometimes report zero free quota. Keys come from
 // https://aistudio.google.com/apikey and live in GEMINI_API_KEY.
 export const GEMINI_MODEL = 'gemini-flash-latest';
-export const GEMINI_TIMEOUT_MS = 15_000;
+/** Whole request, including the retry below. */
+export const GEMINI_TIMEOUT_MS = 25_000;
 
 const LANGUAGE_NAMES: Record<string, string> = {
     tr: 'Turkish', en: 'English', de: 'German', fr: 'French', es: 'Spanish', it: 'Italian',
@@ -65,10 +66,16 @@ Write the "title" and "description" fields in ${LANGUAGE_NAMES[input.locale]}.
 The description should be one warm, concise sentence explaining why it fits.`;
 }
 
-export function geminiRequestBody(prompt: string) {
+/**
+ * `fast` turns thinking off: the latest Flash models think before answering by
+ * default, which pushed a five-item gift list past the timeout. A model that
+ * rejects the setting is retried without it by the route.
+ */
+export function geminiRequestBody(prompt: string, fast = true) {
     return {
         contents: [{ parts: [{ text: prompt }] }],
         generationConfig: {
+            ...(fast ? { thinkingConfig: { thinkingBudget: 0 } } : {}),
             temperature: 0.9,
             responseMimeType: 'application/json',
             responseSchema: {

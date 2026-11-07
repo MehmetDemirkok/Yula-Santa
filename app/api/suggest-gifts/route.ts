@@ -45,17 +45,25 @@ export async function POST(request: Request) {
     const apiKey = process.env.GEMINI_API_KEY;
     if (!apiKey) return fallback(input.budget, 'no_api_key');
 
+    const prompt = buildGiftPrompt(input);
+    const signal = AbortSignal.timeout(GEMINI_TIMEOUT_MS);
+    const callGemini = (fast: boolean) =>
+        fetch(`https://generativelanguage.googleapis.com/v1beta/models/${GEMINI_MODEL}:generateContent`, {
+            method: 'POST',
+            // Header rather than ?key=, so the key never lands in URL logs.
+            headers: { 'Content-Type': 'application/json', 'x-goog-api-key': apiKey },
+            body: JSON.stringify(geminiRequestBody(prompt, fast)),
+            signal,
+        });
+
     try {
-        const response = await fetch(
-            `https://generativelanguage.googleapis.com/v1beta/models/${GEMINI_MODEL}:generateContent`,
-            {
-                method: 'POST',
-                // Header rather than ?key=, so the key never lands in URL logs.
-                headers: { 'Content-Type': 'application/json', 'x-goog-api-key': apiKey },
-                body: JSON.stringify(geminiRequestBody(buildGiftPrompt(input))),
-                signal: AbortSignal.timeout(GEMINI_TIMEOUT_MS),
-            }
-        );
+        const startedAt = Date.now();
+        let response = await callGemini(true);
+        if (response.status === 400) {
+            // The model may not accept the thinking setting; ask again without it.
+            console.error(`[suggest-gifts] Gemini 400 with thinking off: ${(await response.text().catch(() => '')).slice(0, 300)}`);
+            response = await callGemini(false);
+        }
 
         if (!response.ok) {
             const detail = (await response.text().catch(() => '')).slice(0, 300);
@@ -69,6 +77,7 @@ export async function POST(request: Request) {
             return fallback(input.budget, 'ai_error');
         }
 
+        console.info(`[suggest-gifts] Gemini answered in ${Date.now() - startedAt} ms`);
         return NextResponse.json(
             { suggestions, source: 'ai' },
             { headers: { 'Cache-Control': 'no-store' } }
