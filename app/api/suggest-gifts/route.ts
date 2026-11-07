@@ -1,12 +1,14 @@
 import { NextResponse } from 'next/server';
 import { rateLimit } from '@/lib/rateLimit';
 import {
-    GEMINI_MODEL,
+    GEMINI_MODELS,
+    GEMINI_PER_MODEL_TIMEOUT_MS,
     GEMINI_TIMEOUT_MS,
     buildGiftPrompt,
     geminiRequestBody,
     parseGeminiResponse,
     parseGiftRequest,
+    shouldTryNextModel,
     staticSuggestions,
     type Budget,
 } from '@/lib/gifts/suggest';
@@ -46,28 +48,49 @@ export async function POST(request: Request) {
     if (!apiKey) return fallback(input.budget, 'no_api_key');
 
     const prompt = buildGiftPrompt(input);
-    const signal = AbortSignal.timeout(GEMINI_TIMEOUT_MS);
-    const callGemini = (fast: boolean) =>
-        fetch(`https://generativelanguage.googleapis.com/v1beta/models/${GEMINI_MODEL}:generateContent`, {
+    const deadline = AbortSignal.timeout(GEMINI_TIMEOUT_MS);
+    const callGemini = (model: string, fast: boolean) =>
+        fetch(`https://generativelanguage.googleapis.com/v1beta/models/${model}:generateContent`, {
             method: 'POST',
             // Header rather than ?key=, so the key never lands in URL logs.
             headers: { 'Content-Type': 'application/json', 'x-goog-api-key': apiKey },
             body: JSON.stringify(geminiRequestBody(prompt, fast)),
-            signal,
+            signal: AbortSignal.any([deadline, AbortSignal.timeout(GEMINI_PER_MODEL_TIMEOUT_MS)]),
         });
+
+    /** One model, retried without the thinking setting if it rejects that with a 400. */
+    const askModel = async (model: string) => {
+        const response = await callGemini(model, true);
+        if (response.status !== 400) return response;
+        console.error(`[suggest-gifts] ${model} 400 with thinking off: ${(await response.text().catch(() => '')).slice(0, 300)}`);
+        return callGemini(model, false);
+    };
 
     try {
         const startedAt = Date.now();
-        let response = await callGemini(true);
-        if (response.status === 400) {
-            // The model may not accept the thinking setting; ask again without it.
-            console.error(`[suggest-gifts] Gemini 400 with thinking off: ${(await response.text().catch(() => '')).slice(0, 300)}`);
-            response = await callGemini(false);
+        let response: Response | null = null;
+        let usedModel: string = GEMINI_MODELS[0];
+        for (const model of GEMINI_MODELS) {
+            if (deadline.aborted) break;
+            usedModel = model;
+            try {
+                response = await askModel(model);
+            } catch (error) {
+                // This model timed out or the network failed; the next one may still answer.
+                console.error(`[suggest-gifts] ${model} failed:`, error instanceof Error ? error.name : error);
+                response = null;
+                continue;
+            }
+            if (response.ok || !shouldTryNextModel(response.status)) break;
+            console.error(`[suggest-gifts] ${model} ${response.status}: ${(await response.text().catch(() => '')).slice(0, 200)}`);
+            response = null;
         }
+
+        if (!response) return fallback(input.budget, 'ai_error');
 
         if (!response.ok) {
             const detail = (await response.text().catch(() => '')).slice(0, 300);
-            console.error(`[suggest-gifts] Gemini ${response.status}: ${detail}`);
+            console.error(`[suggest-gifts] ${usedModel} ${response.status}: ${detail}`);
             return fallback(input.budget, 'ai_error');
         }
 
@@ -77,7 +100,7 @@ export async function POST(request: Request) {
             return fallback(input.budget, 'ai_error');
         }
 
-        console.info(`[suggest-gifts] Gemini answered in ${Date.now() - startedAt} ms`);
+        console.info(`[suggest-gifts] ${usedModel} answered in ${Date.now() - startedAt} ms`);
         return NextResponse.json(
             { suggestions, source: 'ai' },
             { headers: { 'Cache-Control': 'no-store' } }

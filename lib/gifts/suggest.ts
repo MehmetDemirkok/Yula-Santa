@@ -19,8 +19,19 @@ export type GiftRequest = {
 // tier; pinned model names sometimes report zero free quota. Keys come from
 // https://aistudio.google.com/apikey and live in GEMINI_API_KEY.
 export const GEMINI_MODEL = 'gemini-flash-latest';
-/** Whole request, including the retry below. */
+/**
+ * Tried in order. On the free tier the main Flash model often answers 503
+ * "high demand" or stalls; the Lite model is lighter and usually free.
+ */
+export const GEMINI_MODELS = [GEMINI_MODEL, 'gemini-flash-lite-latest'] as const;
+/** Whole request across all models; each model gets at most PER_MODEL. */
 export const GEMINI_TIMEOUT_MS = 25_000;
+export const GEMINI_PER_MODEL_TIMEOUT_MS = 12_000;
+
+/** Errors worth trying the next model for: overload, quota, missing model, server faults. */
+export function shouldTryNextModel(status: number): boolean {
+    return status === 404 || status === 429 || status >= 500;
+}
 
 const LANGUAGE_NAMES: Record<string, string> = {
     tr: 'Turkish', en: 'English', de: 'German', fr: 'French', es: 'Spanish', it: 'Italian',
