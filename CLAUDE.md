@@ -102,10 +102,11 @@ The code also reads these optional variables; `PLAKA_SECRET` and `OPENAI_API_KEY
 
 - `PLAKA_SECRET`: guest cookie signing (`lib/plaka/player.ts`), with fallbacks
 - `OPENAI_API_KEY`: translation script only
+- `GEMINI_API_KEY`: AI gift suggestions; without it the static list is served
 - `ADMIN_EMAILS`: comma-separated admin allowlist; empty closes `/admin` for everyone
 - `ADMIN_DEV_BYPASS`: set to `1` to skip the admin check under `next dev`; ignored in production
 
-`/api/suggest-gifts` serves a static list and makes no AI call.
+`/api/suggest-gifts` asks Gemini (`GEMINI_API_KEY`, set in Vercel for production and preview, not in `.env.local`) for five ideas and falls back to a static list; logic and the prompt live in `lib/gifts/suggest.ts`. Both callers depend on its shape: the gift tool shows AI results only when `source === 'ai'`, and `/result` shows `suggestions` as-is, so every response must carry a list. It is rate limited (`suggest-gifts`).
 
 ### Legal / privacy
 

@@ -52,6 +52,7 @@ const tr: PrivacyNotice = {
                 'PDF’den isim aktardığınızda dosya, isimleri çıkarmak için sunucumuzda işlenir ve saklanmaz.',
                 'YouTube çekilişinde video bağlantısı sunucumuz üzerinden YouTube Data API’ye iletilir. Herkese açık yorumlar (kullanıcı adı ve yorum metni) çekiliş için işlenir, sunucumuzda saklanmaz.',
                 'TikTok çekilişinde yapıştırdığınız yorumlar yalnızca tarayıcınızda işlenir.',
+                'Hediye önerileri aracında seçtiğiniz gün, yakınlık, bütçe ve yazdığınız notlar, öneri üretmek için Google’ın Gemini yapay zeka hizmetine gönderilir. Bu bilgiler sunucumuzda saklanmaz; nota başkalarına ait kişisel bilgi yazmamanızı öneririz.',
                 `TikTok eklentisiyle gönderilen herkese açık yorumlar (kullanıcı adı, görünen ad, yorum metni ve zamanı) çekiliş yapılabilmesi için sunucumuzda saklanır ve çekilişin oluşturulmasından ${DAYS} gün sonra silinir. Çekiliş sonucu (kazanan ve yedek kullanıcı adları), doğrulama bağlantısının çalışmaya devam etmesi için saklanır. Hiç çekilişi yapılmamış kayıtlar da ${DAYS} gün sonra tamamen silinir.`,
                 'İsteğe bağlı takipçi kontrolünde kanal adı ve kazanan kullanıcı adları, kontrolün yapılması için Apify’a iletilir.',
                 'Paylaşılabilir sonuç/kanıt bağlantıları kazanan adlarını bağlantının içinde taşır; bağlantıyı paylaştığınız herkes bu adları görebilir.',
@@ -91,7 +92,7 @@ const tr: PrivacyNotice = {
             items: [
                 'Vercel Inc. (ABD): sitenin barındırılması ve teknik kayıtlar.',
                 'Neon (ABD, AWS us-east-1): Plaka Avcısı, TikTok eklentisi çekilişleri ve kullanım istatistikleri veritabanı.',
-                'Google LLC (ABD): Google ile giriş, YouTube Data API ve (onay verirseniz) Google AdSense.',
+                'Google LLC (ABD): Google ile giriş, YouTube Data API, hediye önerileri için Gemini API ve (onay verirseniz) Google AdSense.',
                 'Apify Technologies (Çekya): yalnızca takipçi kontrolünü kullandığınızda.',
             ],
         },
@@ -164,6 +165,7 @@ const en: PrivacyNotice = {
                 'When you import names from a PDF, the file is processed on our server to extract the names and is not stored.',
                 'For a YouTube giveaway, the video link is passed through our server to the YouTube Data API. Public comments (username and comment text) are processed for the draw and are not stored on our server.',
                 'Comments you paste into the TikTok giveaway are processed only in your browser.',
+                'In the gift suggestions tool, the occasion, relationship, budget and any notes you write are sent to Google’s Gemini AI service to generate ideas. We do not store them; please don’t put other people’s personal details in the notes.',
                 `Public comments sent by the TikTok extension (username, display name, comment text and time) are stored on our server so the draw can run, and are deleted ${DAYS} days after the giveaway is created. The result (winner and backup usernames) is kept so the verification link keeps working. Giveaways that were never drawn are deleted entirely after ${DAYS} days.`,
                 'For the optional follower check, the channel name and winner usernames are sent to Apify to run the check.',
                 'Shareable result and proof links carry the winners’ names inside the link, so anyone you share it with can see them.',
@@ -203,7 +205,7 @@ const en: PrivacyNotice = {
             items: [
                 'Vercel Inc. (USA): hosting and technical logs.',
                 'Neon (USA, AWS us-east-1): the database for Plaka Avcısı, TikTok extension giveaways and usage statistics.',
-                'Google LLC (USA): Google sign-in, the YouTube Data API and, with your consent, Google AdSense.',
+                'Google LLC (USA): Google sign-in, the YouTube Data API, the Gemini API for gift suggestions and, with your consent, Google AdSense.',
                 'Apify Technologies (Czech Republic): only when you use the follower check.',
             ],
         },

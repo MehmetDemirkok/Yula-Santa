@@ -62,6 +62,7 @@ Create a `.env.local` file for local development. It is gitignored. Everything e
 | Admin panel (`/admin`) | `ADMIN_EMAILS`, plus `DATABASE_URL` for analytics |
 | TikTok follower check | `APIFY_API_TOKEN` |
 | Plaka Avcısı guest cookie (optional) | `PLAKA_SECRET` |
+| AI gift suggestions (optional) | `GEMINI_API_KEY` |
 | Translation script | `OPENAI_API_KEY` |
 | Ads and site verification | See [Google AdSense](#google-adsense) |
 

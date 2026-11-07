@@ -14,6 +14,7 @@ const MAX_REQUESTS: Record<string, number> = {
     'tiktok-giveaway-import': 30,
     'plaka-session': 10,
     'plaka-resume': 20,
+    'suggest-gifts': 8,
     'plaka-answer': 80,
     'plaka-finish': 20,
     'plaka-leaderboard': 40,
