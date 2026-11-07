@@ -197,7 +197,8 @@
         linear-gradient(90deg, var(--pa-grid-line) 1px, transparent 1px);
     background-size: 64px 64px;
     mask-image: radial-gradient(circle at 50% 0%, black, transparent 78%);
-    animation: gridDrift 26s linear infinite;
+    /* Static on purpose: animating background-position on this page-tall masked
+       layer repainted it every frame and made scrolling stutter on phones. */
     pointer-events: none;
 }
 
@@ -1658,14 +1659,6 @@
 
 /* ── Animations ───────────────────────────────────────────────────── */
 
-@keyframes gridDrift {
-    from {
-        background-position: 0 0, 0 0;
-    }
-    to {
-        background-position: 64px 64px, 64px 64px;
-    }
-}
 
 @keyframes livePulse {
     0%,
