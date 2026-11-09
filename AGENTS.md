@@ -31,6 +31,10 @@ Full architecture notes live in `CLAUDE.md`; design tokens in `design.md` — re
 - Comments arrive by manual paste (browser only) or the Chrome extension (`giveawayStore.ts`, Neon). The paid PayTR/credit flow was removed; do not reintroduce pricing copy.
 - Apply `lib/rateLimit.ts` (in-memory, per-instance; limits in its `MAX_REQUESTS` map) in new API routes, like existing `app/api/tiktok/*`.
 
+## Secret Santa
+
+- `lib/secretSanta/` holds the draw (with "must not draw each other" rules), personal links and storage. Personal links are `/s#<token>`: the match is in the URL fragment, never sent to the server, not encrypted. Gift ideas send only the hint and budget, never names. Also: group rules, printable fold-over cards (5 per A4; print rules in `app/globals.css`), and the `/secret-santa/classroom` landing page (`lib/classroomSeoCopy.ts`). Keep `lib/secretSantaSeoCopy.ts`, `lib/classroomSeoCopy.ts` and `lib/legal/privacyNotice.ts` in line with this.
+
 ## Plaka Avcısı (plate quiz game)
 
 - Routes: `/oyun/plaka-avcisi` (+ `/liderlik`); tool card on `/tools`; sitemap entry; `/plaka-avcisi` redirects to the game.

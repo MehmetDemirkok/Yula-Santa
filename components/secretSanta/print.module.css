@@ -1,0 +1,144 @@
+/*
+ * Printable Secret Santa cards. Sizes are in container units of the card, so
+ * the on-screen preview scales to any width and the printout fills 190 mm.
+ * The page-level print rules (hide the site, @page) live in app/globals.css,
+ * because CSS modules only allow selectors with a local class.
+ */
+
+.sheet {
+    width: 100%;
+    max-width: 190mm;
+    margin: 0 auto;
+    color: #111;
+}
+
+.instructions {
+    font-size: 9pt;
+    line-height: 1.4;
+    color: #333;
+    margin-bottom: 4mm;
+    text-align: start;
+}
+
+.card {
+    container-type: inline-size;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    /* 48 mm tall + 2.5 mm gap: five cards and the instructions fit in A4's 277 mm. */
+    aspect-ratio: 190 / 48;
+    border: 1px dashed #8a8a8a;
+    background: #fff;
+    break-inside: avoid;
+    page-break-inside: avoid;
+    margin-bottom: 2.5mm;
+    position: relative;
+}
+
+.panel {
+    position: relative;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    padding: 2cqw;
+    gap: 0.6cqw;
+    min-width: 0;
+}
+
+.panel + .panel {
+    border-inline-start: 1px dotted #b0b0b0;
+}
+
+.foldMark {
+    position: absolute;
+    top: 0.6cqw;
+    inset-inline-start: 0.6cqw;
+    width: 2.2cqw;
+    height: 2.2cqw;
+    border-radius: 999px;
+    background: #fff;
+    border: 1px solid #b0b0b0;
+    font-size: 1.3cqw;
+    font-weight: 700;
+    line-height: 2cqw;
+    color: #555;
+    z-index: 1;
+}
+
+.brand {
+    font-size: 1.5cqw;
+    font-weight: 700;
+    color: #b61722;
+    letter-spacing: 0.02em;
+    max-width: 100%;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+.label {
+    font-size: 1.3cqw;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+    color: #666;
+}
+
+.name {
+    font-size: 3.4cqw;
+    font-weight: 800;
+    line-height: 1.1;
+    overflow-wrap: anywhere;
+    color: #111;
+}
+
+.small {
+    font-size: 1.25cqw;
+    line-height: 1.35;
+    color: #555;
+    overflow-wrap: anywhere;
+}
+
+.pattern {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+}
+
+.patternLabel {
+    position: relative;
+    font-size: 1.2cqw;
+    font-weight: 700;
+    color: #fff;
+    background: #333;
+    padding: 0.4cqw 1cqw;
+    border-radius: 999px;
+}
+
+/* The organizer previews the cards without reading every match. */
+@media screen {
+    .hidden .receiver {
+        filter: blur(1.4cqw);
+        user-select: none;
+    }
+}
+
+.printOnly {
+    display: none;
+}
+
+@media print {
+    .printOnly {
+        display: block;
+        padding: 0;
+    }
+
+    .card,
+    .pattern {
+        -webkit-print-color-adjust: exact;
+        print-color-adjust: exact;
+    }
+}

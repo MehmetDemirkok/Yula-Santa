@@ -60,6 +60,15 @@ Read `lib/tiktok/` before touching it. The earlier paid flow (PayTR checkout, cr
 - `lib/rateLimit.ts` is an in-memory (per-instance) rate limiter keyed by IP + route name; route-specific limits are defined in its `MAX_REQUESTS` map (e.g. `tiktok`, `tiktok-giveaway-create`, `tiktok-giveaway-import`, `youtube`). Apply it in new API routes the same way existing `app/api/tiktok/*` and `app/api/youtube/*` routes do.
 - `extensions/yulasanta-tiktok-extension-v1.0.1/` is a separate, non-Next.js browser extension (manifest + vanilla JS) that feeds comments into the extension-collected giveaway flow via `giveawayStore.ts`'s API; it is not built/bundled by the Next.js app.
 
+### Secret Santa
+
+- Logic lives in `lib/secretSanta/`: `draw.ts` (matching with "must not draw each other" rules, both directions; uniform rejection sampling first, capped backtracking as fallback, which also reports `impossible`), `link.ts` (personal links, `.ics`, `wa.me` URLs) and `storage.ts` (localStorage keys). Tests: `tests/secret-santa/`.
+- Personal links are `/s#<token>`: base64url JSON with the giver, receiver, the organizer's hint and event details. The token sits in the URL fragment so it never reaches the server, logs or analytics; it is not encrypted, and the organizer can open anyone's link (the UI says so). `/s` is static and noindex, so the WhatsApp preview is the same for everyone.
+- Rules: pairwise exclusions plus groups (`SantaGroup`; nobody draws someone in their own group, and `oversizedGroup` rejects a group bigger than everyone else combined).
+- `/result` offers "send everyone a link" (WhatsApp, e-mail via `mailto:`, SMS on touch devices, Web Share, copy), "show on this screen" (each name locks after one reveal) or "print cards". AI gift ideas send only the hint and budget text to `/api/suggest-gifts`, never names.
+- Printable cards (`components/secretSanta/PrintCards.tsx`) are three-panel fold-over strips, 5 per A4 page; a print-only copy is portalled into `<body>` and the `.ys-santa-print` rules in `app/globals.css` hide the rest of the site while printing. Keep the card height in `print.module.css` so five still fit.
+- `/secret-santa/classroom` is the SEO landing page for schools (copy in `lib/classroomSeoCopy.ts`, Turkish slugs such as `/sinif-yilbasi-cekilisi` redirect there). It is in the sitemap and in `npm run indexnow -- --secret-santa`.
+
 ### Wheel of fortune
 
 - `app/[locale]/tools/wheel-of-fortune/WheelClient.tsx` owns list, history and result state (saved to `localStorage` under `yulasanta_wheel_v1`). `components/wheel/WheelStage.tsx` is a 2D canvas engine with no WebGL, and `lib/wheel/wheelMath.ts` holds the pure, tested logic.

@@ -665,3 +665,11 @@ html.ys-new-year ::selection {
   .ys-garland-bulb, .ys-bauble, .ys-yula-hop, .ys-midnight-pop, .ys-countdown-final { animation: none; }
   html.ys-new-year .ys-festive-cta:not(:disabled)::after { animation: none; display: none; }
 }
+
+/* Secret Santa printable cards: while the card sheet is mounted, print only it
+   (components/secretSanta/PrintCards.tsx portals `.ys-santa-print` into body). */
+@media print {
+  body:has(> .ys-santa-print) { background: #fff !important; }
+  body:has(> .ys-santa-print) > :not(.ys-santa-print) { display: none !important; }
+}
+@page { size: A4 portrait; margin: 10mm; }

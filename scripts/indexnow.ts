@@ -9,7 +9,7 @@
  *
  * KULLANIM (deploy SONRASI çalıştır — anahtar dosyası canlıda olmalı):
  *   npm run indexnow                    # sitemap'teki tüm URL'ler
- *   npm run indexnow -- --secret-santa  # yalnızca /secret-santa (12 dil)
+ *   npm run indexnow -- --secret-santa  # yalnızca /secret-santa ve /secret-santa/classroom (12 dil)
  *   npm run indexnow -- --url /raffle   # tek/çok URL (göreli veya tam)
  *   npm run indexnow -- --dry-run       # istek atmadan payload'ı göster
  *
@@ -42,7 +42,9 @@ async function main() {
 
     if (args.includes('--secret-santa')) {
         for (const l of LOCALES) {
-            urls.push(l === 'tr' ? `${SITE_URL}/secret-santa` : `${SITE_URL}/${l}/secret-santa`);
+            for (const path of ['/secret-santa', '/secret-santa/classroom']) {
+                urls.push(l === 'tr' ? `${SITE_URL}${path}` : `${SITE_URL}/${l}${path}`);
+            }
         }
     }
 
