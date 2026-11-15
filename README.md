@@ -36,7 +36,8 @@ Open [http://localhost:3000](http://localhost:3000). Pages that only use client-
 
 | Command | Purpose |
 |---------|---------|
-| `npm run dev` | Start the dev server |
+| `npm run dev` | Start the dev server (localhost only) |
+| `npm run dev:lan` | Dev server reachable from other devices on the network |
 | `npm run build` | Production build, which also type-checks |
 | `npm start` | Run the production build |
 | `npm run lint` | Run ESLint |

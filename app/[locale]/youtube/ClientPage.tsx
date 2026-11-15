@@ -37,7 +37,7 @@ import ShareModal from "@/components/ShareModal";
 import { useToast } from "@/lib/ToastContext";
 import { downloadWinnerCard } from "@/lib/downloadWinnerCard";
 import { secureShuffle, secureRandomInt } from "@/lib/random";
-import { applyGiveawayFilters } from "@/lib/giveawayFilters";
+import { applyGiveawayFilters, requiredPool } from "@/lib/giveawayFilters";
 import { buildDrawProof, type DrawProof } from "@/lib/giveawayProof";
 import { FilterRulesPanel } from "@/components/giveaway/FilterRulesPanel";
 import { DrawProofPanel } from "@/components/giveaway/DrawProofPanel";
@@ -344,7 +344,7 @@ export default function YouTubeGiveaway() {
     };
 
     const startGiveaway = () => {
-        if (eligibleParticipants.length < winnerCount + backupCount) {
+        if (eligibleParticipants.length < requiredPool(winnerCount, backupCount)) {
             toast.warning(t.giveaway.notEnoughEligible || t.home.notEnoughPeople);
             return;
         }
@@ -1019,12 +1019,12 @@ export default function YouTubeGiveaway() {
                                     <button
                                         type="button"
                                         onClick={startGiveaway}
-                                        disabled={eligibleParticipants.length < winnerCount + backupCount}
+                                        disabled={eligibleParticipants.length < requiredPool(winnerCount, backupCount)}
                                         className={`inline-flex w-full min-h-[56px] items-center justify-center gap-2 rounded-2xl px-6 text-lg font-bold text-white shadow-[0_10px_30px_rgba(255,0,0,0.35)] transition hover:-translate-y-0.5 hover:shadow-[0_14px_36px_rgba(255,0,0,0.45)] disabled:pointer-events-none disabled:opacity-50 ${YT_PRIMARY}`}
                                     >
                                         <Play className="h-5 w-5 fill-current" /> {t.giveaway.startGiveaway}
                                     </button>
-                                    {eligibleParticipants.length < winnerCount + backupCount && (
+                                    {eligibleParticipants.length < requiredPool(winnerCount, backupCount) && (
                                         <p className="text-center text-sm font-medium text-red-500">{t.giveaway.notEnoughEligible || t.home.notEnoughPeople}</p>
                                     )}
                                 </div>

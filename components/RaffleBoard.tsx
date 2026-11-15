@@ -10,6 +10,7 @@
 
 "use client";
 
+import { requiredPool } from "@/lib/giveawayFilters";
 import { useState, useRef, useEffect, type ReactNode } from "react";
 import { trackDraw, trackShare } from "@/lib/analytics/client";
 import { Plus, Trash2, Trophy, RefreshCw, Copy, Check, Sparkles, Users, Crown, ListPlus, ChevronDown } from "lucide-react";
@@ -101,7 +102,7 @@ export default function RaffleBoard({
     const remove = (i: number) => setParticipants(participants.filter((_, idx) => idx !== i));
 
     const start = () => {
-        if (participants.length < winnerCount + backupCount) {
+        if (participants.length < requiredPool(winnerCount, backupCount)) {
             toast.warning(t.home.notEnoughPeople);
             return;
         }
@@ -273,7 +274,7 @@ export default function RaffleBoard({
                             {/* Start */}
                             <Button
                                 onClick={start}
-                                disabled={isRolling || participants.length < winnerCount + backupCount}
+                                disabled={isRolling || participants.length < requiredPool(winnerCount, backupCount)}
                                 className={`w-full text-lg py-6 text-white shadow-lg ${accentButton}`}
                             >
                                 {isRolling ? (

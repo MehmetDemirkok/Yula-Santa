@@ -21,6 +21,7 @@ export const TOOLS = [
     "coin_flip",
     "dice",
     "random_number",
+    "gift_suggestions",
 ] as const;
 export type ToolName = (typeof TOOLS)[number];
 

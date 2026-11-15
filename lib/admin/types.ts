@@ -15,6 +15,8 @@ export type NamedCount = { name: string; count: number };
 export type ToolRow = {
     name: string;
     draws: number;
+    /** Distinct visitors who drew. One person rolling dice 100 times counts once here. */
+    users: number;
     /** null when no draw of this tool reported a participant count. */
     avgParticipants: number | null;
     /** Percent change against the previous period; null when there is nothing to compare with. */

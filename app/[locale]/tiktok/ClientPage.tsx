@@ -33,7 +33,7 @@ import ShareModal from "@/components/ShareModal";
 import { useToast } from "@/lib/ToastContext";
 import { downloadWinnerCard } from "@/lib/downloadWinnerCard";
 import { secureShuffle, secureRandomInt } from "@/lib/random";
-import { applyGiveawayFilters } from "@/lib/giveawayFilters";
+import { applyGiveawayFilters, requiredPool } from "@/lib/giveawayFilters";
 import { buildDrawProof, type DrawProof } from "@/lib/giveawayProof";
 import { FilterRulesPanel } from "@/components/giveaway/FilterRulesPanel";
 import { DrawProofPanel } from "@/components/giveaway/DrawProofPanel";
@@ -282,7 +282,7 @@ export default function TikTokGiveaway() {
     };
 
     const startGiveaway = () => {
-        if (eligibleParticipants.length < winnerCount + backupCount) {
+        if (eligibleParticipants.length < requiredPool(winnerCount, backupCount)) {
             toast.warning(tg("notEnoughEligible") || t.home.notEnoughPeople);
             return;
         }
@@ -347,7 +347,7 @@ export default function TikTokGiveaway() {
                 ? 2
                 : 1;
 
-    const canDraw = eligibleParticipants.length >= winnerCount + backupCount;
+    const canDraw = eligibleParticipants.length >= requiredPool(winnerCount, backupCount);
 
     return (
         <main className="relative overflow-x-hidden bg-[#fafafa] text-[var(--text-primary)] dark:bg-[var(--background)]">
