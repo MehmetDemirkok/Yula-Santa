@@ -1321,6 +1321,12 @@
                 "geschenkgenerator",
                 "was kaufen"
             ]
+        },
+        "related": {
+            "title": "Weitere Tools",
+            "santaTitle": "Zeit fürs Wichteln",
+            "santaDesc": "Lose mit Freunden Namen aus und schicke jedem einen persönlichen Link. Niemand sieht, wer wen gezogen hat.",
+            "santaCta": "Wichteln starten"
         }
     },
     "footer": {

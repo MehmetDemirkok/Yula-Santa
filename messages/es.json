@@ -1323,6 +1323,12 @@
                 "generador de regalos",
                 "qué comprar"
             ]
+        },
+        "related": {
+            "title": "Más herramientas",
+            "santaTitle": "Es hora del amigo invisible",
+            "santaDesc": "Sortea nombres con tus amigos y envía a cada uno un enlace personal. Nadie ve quién sacó a quién.",
+            "santaCta": "Hacer el amigo invisible"
         }
     },
     "footer": {

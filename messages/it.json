@@ -1321,6 +1321,12 @@
                 "generatore regali",
                 "cosa comprare"
             ]
+        },
+        "related": {
+            "title": "Altri strumenti",
+            "santaTitle": "È tempo di Secret Santa",
+            "santaDesc": "Estrai i nomi con gli amici e invia a ognuno un link personale. Nessuno vede chi ha estratto chi.",
+            "santaCta": "Avvia il Secret Santa"
         }
     },
     "footer": {

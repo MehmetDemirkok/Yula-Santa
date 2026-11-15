@@ -11,7 +11,8 @@ YulaSanta is a Next.js 16 (App Router) app offering a family of free draw/giveaw
 ## Commands
 
 ```bash
-npm run dev              # start dev server (localhost:3000)
+npm run dev              # start dev server on 127.0.0.1:3000 only (keeps ADMIN_DEV_BYPASS off the network)
+npm run dev:lan          # dev server on all interfaces, for phone testing; turn ADMIN_DEV_BYPASS off first
 npm run build             # production build
 npm start                 # run production build
 npm run lint               # eslint
@@ -48,7 +49,8 @@ There is no test/build step that touches the real Neon DB or Apify; those are ex
 
 - Client-only tools (Secret Santa, raffle, coin flip, dice, wheel, team generator, short straw, random number) keep all participant data in the browser (no server persistence) — see `lib/random.ts`, `lib/celebrate.ts`, `lib/downloadWinnerCard.ts`, `components/RaffleBoard.tsx`, `components/Reveal.tsx`.
 - `lib/giveawayProof.ts` encodes a draw result into a URL-safe base64 token (no DB) so results can be shared/verified via `/proof?d=...` and `app/[locale]/verify/[id]/page.tsx`.
-- `lib/giveawayFilters.ts` contains shared filter logic (keyword requirement, exclude lists, one-entry-per-user) used across the giveaway pickers.
+- `lib/giveawayFilters.ts` contains shared filter logic (keyword requirement, exclude lists, one-entry-per-user) used across the giveaway pickers. Its `requiredPool()` sets how many eligible people a draw needs: every winner and backup, and never fewer than two.
+- `components/tools/RelatedTools.tsx`, rendered by `app/[locale]/tools/layout.tsx`, links every tool page to the others and, in the New Year season, leads with a Secret Santa card.
 
 ### TikTok giveaway (free)
 
@@ -96,7 +98,7 @@ Read `lib/tiktok/` before touching it. The earlier paid flow (PayTR checkout, cr
 - `requireAdmin()` in `lib/admin/guard.ts` must be the first call in anything under `/admin`. Anyone who is not the admin gets a plain 404. The rules live in `lib/admin/access.ts`: the Google e-mail must be verified, listed in `ADMIN_EMAILS`, and signed in within 12 hours. An empty list means nobody gets in. Next.js middleware does not cover `/api`, so never rely on it for admin checks.
 - `ADMIN_DEV_BYPASS=1` skips the check only under `next dev`.
 - Events go from `lib/analytics/client.ts` to `POST /api/analytics/collect`, a write-only endpoint, and into `analytics_events` through `lib/analytics/store.ts` (server-only). `lib/analytics/events.ts` is an allowlist with no free-text field. **Never send participant names, winners or matches**: the privacy page and Secret Santa copy promise they stay out of these records.
-- New tools must call `trackDraw(tool, counts)` when a draw finishes, and the tool name must be added to `TOOLS`.
+- New tools must call `trackDraw(tool, counts)` when a draw finishes, and the tool name must be added to `TOOLS`. Secret Santa sends one `trackShare` per draw (first link sent, or printing). The admin tool table ranks tools by distinct users, since one visitor can roll dice hundreds of times.
 - Raw IPs and user agents are not stored. Without consent, the visitor key changes daily. A persistent browser ID and the signed-in e-mail are used only after cookies are accepted (`yulasanta_cookie_consent_v2`).
 - Rows carry `env` (`VERCEL_ENV`, else `development`), so localhost traffic stays apart from production. Rows older than 90 days are purged by a 1% chance on each write, as there is no cron job.
 

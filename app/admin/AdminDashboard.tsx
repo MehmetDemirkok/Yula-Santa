@@ -71,8 +71,8 @@ function OverviewView({ data, deltaSuffix }: { data: RangeData; deltaSuffix: str
             </div>
 
             <div className="grid grid-cols-1 gap-4 lg:grid-cols-2">
-                <Card title="En çok kullanılan araçlar" subtitle="Yapılan çekiliş sayısı">
-                    <RankedBars rows={usedTools.map((tool) => ({ name: tool.name, count: tool.draws }))} total={totals.draws} />
+                <Card title="En çok kullanılan araçlar" subtitle="Çekiliş yapan kişi sayısı">
+                    <RankedBars rows={usedTools.map((tool) => ({ name: tool.name, count: tool.users }))} />
                 </Card>
                 <Card title="Ülkeler" subtitle="Ziyaretçi sayısı">
                     <RankedBars rows={data.countries} />
@@ -107,10 +107,11 @@ function DrawsView({ data, deltaSuffix }: { data: RangeData; deltaSuffix: string
 
             <Card title="Araçlara göre çekilişler">
                 <div className="-mx-2 overflow-x-auto">
-                    <table className="w-full min-w-[480px] text-left text-[14px]">
+                    <table className="w-full min-w-[540px] text-left text-[14px]">
                         <thead>
                             <tr className="text-[13px] text-[var(--text-muted)]">
                                 <th className="px-2 py-2 font-medium">Araç</th>
+                                <th className="px-2 py-2 text-right font-medium">Kişi</th>
                                 <th className="px-2 py-2 text-right font-medium">Çekiliş</th>
                                 <th className="px-2 py-2 text-right font-medium">Pay</th>
                                 <th className="px-2 py-2 text-right font-medium">Ort. katılımcı</th>
@@ -121,6 +122,7 @@ function DrawsView({ data, deltaSuffix }: { data: RangeData; deltaSuffix: string
                             {data.tools.map((tool) => (
                                 <tr key={tool.name} className="ys-zebra-row">
                                     <td className="px-2 py-2.5 font-medium text-[var(--text-primary)]">{tool.name}</td>
+                                    <td className="px-2 py-2.5 text-right tabular-nums font-semibold text-[var(--text-primary)]">{formatNumber(tool.users)}</td>
                                     <td className="px-2 py-2.5 text-right tabular-nums text-[var(--text-primary)]">{formatNumber(tool.draws)}</td>
                                     <td className="px-2 py-2.5 text-right tabular-nums text-[var(--text-muted)]">{formatShare(tool.draws, totals.draws)}</td>
                                     <td className="px-2 py-2.5 text-right tabular-nums text-[var(--text-secondary)]">

@@ -5,6 +5,7 @@ import { useRouter, useParams } from "next/navigation";
 import { useTranslations } from "next-intl";
 import { Gift, User, ArrowLeftRight, Home, Link2, MonitorSmartphone, Copy, Check, Share2, EyeOff, Eye, ShieldAlert, RotateCcw, Printer, Mail, MessageSquare } from "lucide-react";
 import { celebrate } from "@/lib/celebrate";
+import { trackShare } from "@/lib/analytics/client";
 import { Button } from "@/components/ui/Button";
 import { AdWrapper, InArticleAd } from "@/components/ads";
 import { AD_SLOTS } from "@/lib/ads/config";
@@ -109,6 +110,8 @@ export default function ResultPage() {
 
     const markSent = (giver: string) => {
         if (draw.sent.includes(giver)) return;
+        // One share event per draw, on the first link sent, so a group of 20 is not 20 shares.
+        if (draw.sent.length === 0) trackShare("secret_santa");
         persist({ ...draw, sent: [...draw.sent, giver] });
     };
 
@@ -345,7 +348,7 @@ export default function ResultPage() {
                             <p className="text-[var(--text-secondary)] text-body-md">{ts("printIntro")}</p>
                         </div>
                         <div className="flex flex-wrap gap-2 justify-center">
-                            <Button onClick={() => window.print()} className="flex-1 min-w-[160px]">
+                            <Button onClick={() => { trackShare("secret_santa"); window.print(); }} className="flex-1 min-w-[160px]">
                                 <Printer className="w-5 h-5 me-2" /> {ts("printButton")}
                             </Button>
                             <Button onClick={() => setPrintHidden((v) => !v)} variant="outline" className="flex-1 min-w-[160px]">

@@ -10,6 +10,7 @@ import { specialDays } from '@/lib/giftData';
 import { clsx } from 'clsx';
 import { twMerge } from 'tailwind-merge';
 import { Button } from '@/components/ui/Button';
+import { trackDraw } from '@/lib/analytics/client';
 
 export function cn(...inputs: (string | undefined | null | false)[]) {
     return twMerge(clsx(inputs));
@@ -66,6 +67,8 @@ export default function GiftSuggestionsClient() {
                 }),
             });
             const data = await response.json();
+            // Counts only that ideas were shown; the hint and budget never reach analytics.
+            trackDraw('gift_suggestions', { winners: Array.isArray(data.suggestions) ? data.suggestions.length : 0 });
 
             if (data.source === 'ai' && Array.isArray(data.suggestions) && data.suggestions.length > 0) {
                 setAiSuggestions(data.suggestions);

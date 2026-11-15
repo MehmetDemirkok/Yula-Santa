@@ -1322,6 +1322,12 @@
                 "gerador de presentes",
                 "o que comprar"
             ]
+        },
+        "related": {
+            "title": "Mais ferramentas",
+            "santaTitle": "Hora do amigo secreto",
+            "santaDesc": "Sorteie nomes com os amigos e envie a cada um um link pessoal. Ninguém vê quem tirou quem.",
+            "santaCta": "Fazer amigo secreto"
         }
     },
     "footer": {

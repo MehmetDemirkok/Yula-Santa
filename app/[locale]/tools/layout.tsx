@@ -1,6 +1,7 @@
 
 import { SITE_URL } from "@/lib/constants";
 import { viewport } from '@/lib/seo';
+import { RelatedTools } from '@/components/tools/RelatedTools';
 
 export { viewport };
 
@@ -103,6 +104,7 @@ export default async function ToolsLayout({
             />
             <div className="min-h-screen">
                 {children}
+                <RelatedTools />
             </div>
         </>
     );

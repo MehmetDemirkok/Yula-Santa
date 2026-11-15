@@ -94,3 +94,11 @@ export function applyGiveawayFilters<T extends GiveawayEntry>(
         },
     };
 }
+
+/** A draw with one name has no randomness, so every picker needs at least two people. */
+export const MIN_DRAW_POOL = 2;
+
+/** How many eligible people a draw needs: enough for every winner and backup, and never fewer than two. */
+export function requiredPool(winnerCount: number, backupCount = 0): number {
+    return Math.max(MIN_DRAW_POOL, winnerCount + backupCount);
+}

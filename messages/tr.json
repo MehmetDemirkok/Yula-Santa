@@ -1325,6 +1325,12 @@
                 "kura çekme",
                 "rastgele seçim"
             ]
+        },
+        "related": {
+            "title": "Diğer araçlar",
+            "santaTitle": "Yılbaşı çekilişi zamanı",
+            "santaDesc": "Arkadaşlarınla isim çek, herkese kişisel link gönder. Kimse kimin çektiğini görmez.",
+            "santaCta": "Yılbaşı çekilişi yap"
         }
     },
     "footer": {

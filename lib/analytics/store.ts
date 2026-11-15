@@ -183,6 +183,7 @@ const TOOL_LABELS: Record<ToolName, string> = {
     coin_flip: "Yazı tura",
     dice: "Zar",
     random_number: "Rastgele sayı",
+    gift_suggestions: "Hediye önerisi",
 };
 
 const countryNames = new Intl.DisplayNames("tr", { type: "region" });
@@ -330,6 +331,7 @@ export async function getAdminData(key: RangeKey, now = new Date()): Promise<Adm
             `SELECT tool,
                     count(*) FILTER (WHERE occurred_at >= $2::timestamptz AND occurred_at < $3::timestamptz) AS draws,
                     count(*) FILTER (WHERE occurred_at >= $4::timestamptz AND occurred_at < $2::timestamptz) AS previous,
+                    count(DISTINCT visitor_key) FILTER (WHERE occurred_at >= $2::timestamptz AND occurred_at < $3::timestamptz) AS users,
                     round(avg(participants) FILTER (WHERE occurred_at >= $2::timestamptz AND occurred_at < $3::timestamptz)) AS avg_participants
              FROM analytics_events
              WHERE env = $1 AND name = 'draw_completed' AND occurred_at >= $4::timestamptz AND occurred_at < $3::timestamptz AND tool IS NOT NULL
@@ -400,10 +402,11 @@ export async function getAdminData(key: RangeKey, now = new Date()): Promise<Adm
         return {
             name: TOOL_LABELS[tool],
             draws: num(row?.draws),
+            users: num(row?.users),
             avgParticipants: numOrNull(row?.avg_participants),
             delta: percentChange(num(row?.draws), num(row?.previous)),
         };
-    }).sort((a, b) => b.draws - a.draws);
+    }).sort((a, b) => b.users - a.users || b.draws - a.draws);
 
     const dimensionRows = (dim: string, label: (value: string | null) => string): NamedCount[] =>
         (dimensions as Record<string, unknown>[])

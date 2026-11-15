@@ -1322,6 +1322,12 @@
                 "générateur de cadeaux",
                 "quoi acheter"
             ]
+        },
+        "related": {
+            "title": "Autres outils",
+            "santaTitle": "C'est l'heure du Secret Santa",
+            "santaDesc": "Tirez au sort avec vos amis et envoyez à chacun un lien personnel. Personne ne voit qui a tiré qui.",
+            "santaCta": "Lancer le Secret Santa"
         }
     },
     "footer": {

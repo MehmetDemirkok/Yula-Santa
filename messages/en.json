@@ -1324,6 +1324,12 @@
                 "gift generator",
                 "what to buy"
             ]
+        },
+        "related": {
+            "title": "More tools",
+            "santaTitle": "Time for Secret Santa",
+            "santaDesc": "Draw names with friends and send everyone a personal link. Nobody sees who drew whom.",
+            "santaCta": "Start Secret Santa"
         }
     },
     "footer": {

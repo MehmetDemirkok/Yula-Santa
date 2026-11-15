@@ -2,7 +2,8 @@
 
 import { useState, useEffect } from 'react';
 import Link from 'next/link';
-import { X, Cookie } from 'lucide-react';
+import { Cookie } from 'lucide-react';
+import { localePath } from '@/lib/localePath';
 import { Button } from '@/components/ui/Button';
 import { getConsent, setConsent } from '@/lib/analytics/client';
 import { useLanguage } from '@/lib/i18n/LanguageContext';
@@ -129,35 +130,34 @@ export function CookieConsent() {
     if (!showBanner) return null;
 
     return (
-        <div className="fixed bottom-0 left-0 right-0 z-[70] p-2 sm:p-3 animate-in slide-in-from-bottom duration-300 pointer-events-none">
-            <div className="max-w-3xl mx-auto pointer-events-auto bg-white/95 dark:bg-gray-900/95 backdrop-blur-xl rounded-xl shadow-2xl border border-gray-100 dark:border-white/10 px-3 py-2.5 sm:px-4 sm:py-3">
-                <div className="flex items-center gap-3">
-                    <div className="bg-amber-50 dark:bg-amber-500/15 p-2 rounded-lg shrink-0 hidden sm:block">
-                        <Cookie className="w-5 h-5 text-amber-600 dark:text-amber-400" />
-                    </div>
-                    <div className="flex-1 min-w-0">
-                        <p className="text-gray-700 dark:text-gray-200 text-xs sm:text-sm leading-snug">
+        <div
+            role="dialog"
+            aria-live="polite"
+            aria-label={t.title}
+            className="fixed bottom-0 left-0 right-0 z-[70] p-2 sm:p-3 pb-[max(0.5rem,env(safe-area-inset-bottom))] animate-in slide-in-from-bottom duration-300 pointer-events-none"
+        >
+            <div className="max-w-3xl mx-auto pointer-events-auto bg-white/95 dark:bg-gray-900/95 backdrop-blur-xl rounded-xl shadow-2xl border border-gray-100 dark:border-white/10 px-3 py-3 sm:px-4">
+                <div className="flex flex-col sm:flex-row sm:items-center gap-3">
+                    <div className="flex items-start gap-3 flex-1 min-w-0">
+                        <div className="bg-amber-50 dark:bg-amber-500/15 p-2 rounded-lg shrink-0 hidden sm:block">
+                            <Cookie className="w-5 h-5 text-amber-600 dark:text-amber-400" />
+                        </div>
+                        <p className="text-gray-700 dark:text-gray-200 text-[13px] sm:text-sm leading-snug">
                             <span className="font-bold">{t.title}</span>{' '}
                             <span className="text-gray-500 dark:text-gray-400">{t.description}</span>{' '}
-                            <Link href="/privacy" className="text-santa-red hover:underline whitespace-nowrap">
+                            <Link href={localePath(locale, '/privacy')} className="text-santa-red hover:underline whitespace-nowrap">
                                 {t.learnMore}
                             </Link>
                         </p>
                     </div>
-                    <div className="flex items-center gap-2 shrink-0">
-                        <Button onClick={handleDecline} variant="outline" size="sm" className="hidden sm:inline-flex">
+                    {/* Both answers get the same size and weight, as KVKK and GDPR guidance expects. */}
+                    <div className="grid grid-cols-2 gap-2 shrink-0 sm:flex">
+                        <Button onClick={handleDecline} variant="outline" size="sm" className="h-[48px] sm:h-[40px] sm:px-5 text-sm">
                             {t.decline}
                         </Button>
-                        <Button onClick={handleAccept} size="sm" className="bg-santa-red hover:bg-red-700 text-white">
+                        <Button onClick={handleAccept} size="sm" className="text-sm h-[48px] sm:h-[40px] sm:px-5 bg-santa-red hover:bg-red-700 text-white">
                             {t.accept}
                         </Button>
-                        <button
-                            onClick={handleDecline}
-                            className="text-gray-400 hover:text-gray-600 dark:hover:text-gray-200 p-1 sm:hidden"
-                            aria-label="Close"
-                        >
-                            <X className="w-5 h-5" />
-                        </button>
                     </div>
                 </div>
             </div>
