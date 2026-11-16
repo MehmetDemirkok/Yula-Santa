@@ -72,6 +72,8 @@ export const SECRET_SANTA_SEO_COPY: Record<string, SecretSantaSeoCopy> = {
         relatedTitle: 'İlgili araçlar',
         related: [
             { path: CLASSROOM, label: 'Sınıf yılbaşı çekilişi (kart yazdır)' },
+            { path: '/secret-santa/office', label: 'Ofis yılbaşı çekilişi' },
+            { path: '/secret-santa/what-is', label: 'Secret Santa nedir?' },
             { path: GIFTS, label: 'Yılbaşı hediye önerileri' },
             { path: RAFFLE, label: 'İsim çekilişi yap' },
             { path: WHEEL, label: 'Çarkıfelek çevir' },
@@ -115,6 +117,8 @@ export const SECRET_SANTA_SEO_COPY: Record<string, SecretSantaSeoCopy> = {
         relatedTitle: 'Related tools',
         related: [
             { path: CLASSROOM, label: 'Classroom Secret Santa (printable cards)' },
+            { path: '/secret-santa/office', label: 'Office Secret Santa' },
+            { path: '/secret-santa/what-is', label: 'What is Secret Santa?' },
             { path: GIFTS, label: 'Gift suggestions' },
             { path: RAFFLE, label: 'Use the name picker' },
             { path: WHEEL, label: 'Spin the wheel' },

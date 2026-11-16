@@ -7,7 +7,7 @@
 "use client";
 
 import { useState, useEffect, useRef } from "react";
-import { trackDraw } from "@/lib/analytics/client";
+import { trackAction, trackDraw } from "@/lib/analytics/client";
 import { useRouter, useParams } from "next/navigation";
 import Link from "next/link";
 import { Trash2, Sparkles, FileUp, ClipboardPaste, Check, Gift, Lightbulb, AlertCircle, Info, Printer, Link2, Ban } from "lucide-react";
@@ -203,6 +203,7 @@ export default function Home() {
                 const added = combined.length - participants.length;
                 setParticipants(combined);
                 setNotice({ kind: "info", text: t('santa.namesAddedNotice', { count: added, total: combined.length }) });
+                trackAction("list_imported", "secret_santa");
             } else {
                 setNotice({ kind: "error", text: t('home.noNamesFound') });
             }

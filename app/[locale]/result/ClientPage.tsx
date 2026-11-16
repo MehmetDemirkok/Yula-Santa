@@ -1,11 +1,11 @@
 "use client";
 
-import { useEffect, useMemo, useState } from "react";
+import { useEffect, useMemo, useRef, useState } from "react";
 import { useRouter, useParams } from "next/navigation";
 import { useTranslations } from "next-intl";
 import { Gift, User, ArrowLeftRight, Home, Link2, MonitorSmartphone, Copy, Check, Share2, EyeOff, Eye, ShieldAlert, RotateCcw, Printer, Mail, MessageSquare } from "lucide-react";
 import { celebrate } from "@/lib/celebrate";
-import { trackShare } from "@/lib/analytics/client";
+import { trackAction, trackShare } from "@/lib/analytics/client";
 import { Button } from "@/components/ui/Button";
 import { AdWrapper, InArticleAd } from "@/components/ads";
 import { AD_SLOTS } from "@/lib/ads/config";
@@ -39,6 +39,7 @@ export default function ResultPage() {
     const [canSms, setCanSms] = useState(false);
     const [printHidden, setPrintHidden] = useState(true);
     const [copied, setCopied] = useState<string | null>(null);
+    const whatsappTracked = useRef(false);
 
     // Shared-screen state
     const [selectedUser, setSelectedUser] = useState("");
@@ -279,7 +280,12 @@ export default function ResultPage() {
                                                 href={whatsappUrl(messageFor(giver))}
                                                 target="_blank"
                                                 rel="noopener noreferrer"
-                                                onClick={() => markSent(giver)}
+                                                onClick={() => {
+                                                    // Once per page visit, so a group of 20 is not 20 events.
+                                                    if (!whatsappTracked.current) trackAction("whatsapp_share", "secret_santa");
+                                                    whatsappTracked.current = true;
+                                                    markSent(giver);
+                                                }}
                                                 aria-label={ts("sendWhatsappTo", { name: giver })}
                                                 className="h-[44px] flex-1 min-w-[120px] px-3 rounded-lg bg-[#25D366] text-white font-bold text-sm inline-flex items-center justify-center gap-1.5 hover:brightness-95"
                                             >
@@ -348,7 +354,7 @@ export default function ResultPage() {
                             <p className="text-[var(--text-secondary)] text-body-md">{ts("printIntro")}</p>
                         </div>
                         <div className="flex flex-wrap gap-2 justify-center">
-                            <Button onClick={() => { trackShare("secret_santa"); window.print(); }} className="flex-1 min-w-[160px]">
+                            <Button onClick={() => { trackShare("secret_santa"); trackAction("card_printed", "secret_santa"); window.print(); }} className="flex-1 min-w-[160px]">
                                 <Printer className="w-5 h-5 me-2" /> {ts("printButton")}
                             </Button>
                             <Button onClick={() => setPrintHidden((v) => !v)} variant="outline" className="flex-1 min-w-[160px]">

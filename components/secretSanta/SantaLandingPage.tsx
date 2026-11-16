@@ -5,6 +5,7 @@ import { SITE_URL } from '@/lib/constants';
 import { localePath } from '@/lib/localePath';
 import type { SantaLandingCopy } from '@/lib/santaLandingCopy';
 import JsonLd from '@/components/seo/JsonLd';
+import { TrackedLink } from '@/components/analytics/TrackedLink';
 import RelatedLinks from '@/components/seo/RelatedLinks';
 import printStyles from '@/components/secretSanta/print.module.css';
 
@@ -62,12 +63,13 @@ export default function SantaLandingPage({ locale, path, copy, badgeIcon: BadgeI
                     </span>
                     <h1 className="font-heading text-headline-lg-mobile sm:text-headline-lg text-[var(--text-primary)] tracking-tight">{copy.h1}</h1>
                     <p className="mx-auto max-w-2xl text-body-lg text-[var(--text-secondary)]">{copy.intro}</p>
-                    <Link
+                    <TrackedLink
+                        tool="secret_santa"
                         href={toolHref}
                         className="inline-flex h-[52px] items-center justify-center gap-2 rounded-full bg-santa-red px-7 text-base font-bold text-white shadow-lg shadow-red-200/50 dark:shadow-red-900/30 hover:brightness-110"
                     >
                         <Gift className="h-5 w-5" /> {copy.cta}
-                    </Link>
+                    </TrackedLink>
                 </header>
 
                 {s && (
@@ -128,9 +130,9 @@ export default function SantaLandingPage({ locale, path, copy, badgeIcon: BadgeI
                             </li>
                         ))}
                     </ol>
-                    <Link href={toolHref} className="inline-flex h-[48px] items-center justify-center rounded-full border-2 border-santa-red px-6 font-bold text-santa-red hover:bg-red-50 dark:hover:bg-red-500/10">
+                    <TrackedLink tool="secret_santa" href={toolHref} className="inline-flex h-[48px] items-center justify-center rounded-full border-2 border-santa-red px-6 font-bold text-santa-red hover:bg-red-50 dark:hover:bg-red-500/10">
                         {copy.cta} →
-                    </Link>
+                    </TrackedLink>
                 </section>
 
                 {copy.privacy && copy.privacy.length > 0 && (

@@ -9,7 +9,7 @@
  *
  * KULLANIM (deploy SONRASI çalıştır — anahtar dosyası canlıda olmalı):
  *   npm run indexnow                    # sitemap'teki tüm URL'ler
- *   npm run indexnow -- --secret-santa  # /secret-santa ve /secret-santa/classroom (12 dil), office ve university (tr, en)
+ *   npm run indexnow -- --secret-santa  # /secret-santa ve /secret-santa/classroom (12 dil), office, university ve what-is (tr, en)
  *   npm run indexnow -- --url /raffle   # tek/çok URL (göreli veya tam)
  *   npm run indexnow -- --dry-run       # istek atmadan payload'ı göster
  *
@@ -47,7 +47,7 @@ async function main() {
             }
         }
         // Office and university pages exist in Turkish and English only.
-        for (const path of ['/secret-santa/office', '/secret-santa/university']) {
+        for (const path of ['/secret-santa/office', '/secret-santa/university', '/secret-santa/what-is']) {
             urls.push(`${SITE_URL}${path}`, `${SITE_URL}/en${path}`);
         }
     }

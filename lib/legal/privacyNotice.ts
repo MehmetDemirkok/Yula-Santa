@@ -9,6 +9,9 @@
 
 import { TIKTOK_COMMENT_RETENTION_DAYS } from '@/lib/tiktok/retention';
 
+/** Google Analytics 4 is mentioned only when it is configured (see ConsentedGoogleAnalytics). */
+const GA_ENABLED = Boolean(process.env.NEXT_PUBLIC_GA_MEASUREMENT_ID);
+
 export type NoticeLink = { label: string; href: string };
 
 export type NoticeSection = {
@@ -82,6 +85,9 @@ const tr: PrivacyNotice = {
                 'Tercihe bağlı: anonim ziyaretçi kimliği (yulasanta_vid). Yalnızca çerezleri kabul ederseniz oluşturulur; reddederseniz silinir.',
                 'Reklam: Google AdSense betiği yalnızca çerezleri kabul ederseniz yüklenir. Kabul ederseniz Google ve reklam ortakları ilgi alanlarınıza göre reklam göstermek için çerez kullanabilir.',
                 'Vercel Web Analytics çerez kullanmaz; yalnızca toplu sayfa görüntüleme sayıları üretir.',
+                ...(GA_ENABLED
+                    ? ['Google Analytics 4 yalnızca çerezleri kabul ederseniz yüklenir; ziyaret istatistikleri için çerez kullanır ve IP adresi kısaltılarak işlenir. Katılımcı isimleri veya eşleşmeler Google Analytics\'e gönderilmez.']
+                    : []),
             ],
         },
         {
@@ -93,7 +99,7 @@ const tr: PrivacyNotice = {
             items: [
                 'Vercel Inc. (ABD): sitenin barındırılması ve teknik kayıtlar.',
                 'Neon (ABD, AWS us-east-1): Plaka Avcısı, TikTok eklentisi çekilişleri ve kullanım istatistikleri veritabanı.',
-                'Google LLC (ABD): Google ile giriş, YouTube Data API, hediye önerileri için Gemini API ve (onay verirseniz) Google AdSense.',
+                `Google LLC (ABD): Google ile giriş, YouTube Data API, hediye önerileri için Gemini API ve (onay verirseniz) Google AdSense${GA_ENABLED ? ' ile Google Analytics' : ''}.`,
                 'Apify Technologies (Çekya): yalnızca takipçi kontrolünü kullandığınızda.',
             ],
         },
@@ -196,6 +202,9 @@ const en: PrivacyNotice = {
                 'Optional: an anonymous visitor ID (yulasanta_vid), created only if you accept cookies and deleted if you decline.',
                 'Advertising: the Google AdSense script loads only if you accept cookies. If you do, Google and its partners may use cookies to show ads based on your interests.',
                 'Vercel Web Analytics uses no cookies and only produces aggregate page view counts.',
+                ...(GA_ENABLED
+                    ? ['Google Analytics 4 loads only if you accept cookies; it uses cookies for visit statistics and processes IP addresses in shortened form. Participant names and matches are never sent to Google Analytics.']
+                    : []),
             ],
         },
         {
@@ -207,7 +216,7 @@ const en: PrivacyNotice = {
             items: [
                 'Vercel Inc. (USA): hosting and technical logs.',
                 'Neon (USA, AWS us-east-1): the database for Plaka Avcısı, TikTok extension giveaways and usage statistics.',
-                'Google LLC (USA): Google sign-in, the YouTube Data API, the Gemini API for gift suggestions and, with your consent, Google AdSense.',
+                `Google LLC (USA): Google sign-in, the YouTube Data API, the Gemini API for gift suggestions and, with your consent, Google AdSense${GA_ENABLED ? ' and Google Analytics' : ''}.`,
                 'Apify Technologies (Czech Republic): only when you use the follower check.',
             ],
         },

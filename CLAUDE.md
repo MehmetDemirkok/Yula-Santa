@@ -69,7 +69,8 @@ Read `lib/tiktok/` before touching it. The earlier paid flow (PayTR checkout, cr
 - Rules: pairwise exclusions plus groups (`SantaGroup`; nobody draws someone in their own group, and `oversizedGroup` rejects a group bigger than everyone else combined).
 - `/result` offers "send everyone a link" (WhatsApp, e-mail via `mailto:`, SMS on touch devices, Web Share, copy), "show on this screen" (each name locks after one reveal) or "print cards". AI gift ideas send only the hint and budget text to `/api/suggest-gifts`, never names.
 - Printable cards (`components/secretSanta/PrintCards.tsx`) are three-panel fold-over strips, 5 per A4 page; a print-only copy is portalled into `<body>` and the `.ys-santa-print` rules in `app/globals.css` hide the rest of the site while printing. Keep the card height in `print.module.css` so five still fit.
-- `/secret-santa/classroom` is the SEO landing page for schools (copy in `lib/classroomSeoCopy.ts`, Turkish slugs such as `/sinif-yilbasi-cekilisi` redirect there). It is in the sitemap and in `npm run indexnow -- --secret-santa`.
+- Audience landing pages share `components/secretSanta/SantaLandingPage.tsx` (copy type in `lib/santaLandingCopy.ts`): `/secret-santa/classroom` for schools (12 locales, `lib/classroomSeoCopy.ts`), `/secret-santa/office` and `/secret-santa/university` (Turkish and English only, `lib/officeUniversitySeoCopy.ts`; `dynamicParams = false` makes other locales 404, and `getSEOMetadata`'s `alternateLocales` and the sitemap's `only` limit hreflang to those two). `/secret-santa/what-is` is an explainer article (tr, en; `lib/whatIsSecretSantaCopy.ts`). Turkish slugs (`/sinif-yilbasi-cekilisi`, `/ofis-yilbasi-cekilisi`, `/universite-yilbasi-cekilisi`, `/secret-santa-nedir`, ...) redirect in `next.config.ts`. All are in the sitemap and in `npm run indexnow -- --secret-santa`.
+- Under the tool, `/secret-santa` renders `components/secretSanta/SantaLandingSections.tsx` (steps, audiences, features, privacy; tr and en only). The hero H1/subtitle for Turkish come from `SECRET_SANTA_H1` and `SECRET_SANTA_SUBTITLE` in `lib/pageSeoCopy.ts`.
 
 ### Wheel of fortune
 
@@ -97,8 +98,10 @@ Read `lib/tiktok/` before touching it. The earlier paid flow (PayTR checkout, cr
 - `/admin` lives in `app/admin/`, outside `app/[locale]`, so it has no public navbar, ads or tracking. `middleware.ts` excludes it from locale routing. UI copy is Turkish only.
 - `requireAdmin()` in `lib/admin/guard.ts` must be the first call in anything under `/admin`. Anyone who is not the admin gets a plain 404. The rules live in `lib/admin/access.ts`: the Google e-mail must be verified, listed in `ADMIN_EMAILS`, and signed in within 12 hours. An empty list means nobody gets in. Next.js middleware does not cover `/api`, so never rely on it for admin checks.
 - `ADMIN_DEV_BYPASS=1` skips the check only under `next dev`.
+- `/admin/marketing` (`components/admin/marketing/`) is a campaign studio: four campaigns × Instagram story, Instagram post, A4 poster and A4 QR poster, drawn as SVG at full size with PNG/SVG download and A4 print. Copy and QR target URLs live in `lib/marketing/campaigns.ts`; QR codes use the `qrcode` package.
 - Events go from `lib/analytics/client.ts` to `POST /api/analytics/collect`, a write-only endpoint, and into `analytics_events` through `lib/analytics/store.ts` (server-only). `lib/analytics/events.ts` is an allowlist with no free-text field. **Never send participant names, winners or matches**: the privacy page and Secret Santa copy promise they stay out of these records.
-- New tools must call `trackDraw(tool, counts)` when a draw finishes, and the tool name must be added to `TOOLS`. Secret Santa sends one `trackShare` per draw (first link sent, or printing). The admin tool table ranks tools by distinct users, since one visitor can roll dice hundreds of times.
+- New tools must call `trackDraw(tool, counts)` when a draw finishes, and the tool name must be added to `TOOLS`. Funnel steps go through `trackAction` with an allowlisted name (`cta_click` via `components/analytics/TrackedLink.tsx`, `list_imported`, `card_printed`, `whatsapp_share` once per result-page visit, `qr_generated`); new names go into `EVENT_NAMES` and the labels in `lib/analytics/store.ts` and `AdminDashboard.tsx`.
+- Optional GA4: with `NEXT_PUBLIC_GA_MEASUREMENT_ID` set, `components/analytics/ConsentedGoogleAnalytics.tsx` loads gtag only after cookie consent, with automatic page views off; `lib/analytics/client.ts` mirrors our events and sends page views with the pathname only, because `/s#...` and `/proof?d=...` carry draw data. `lib/legal/privacyNotice.ts` mentions GA4 only while the variable is set. Secret Santa sends one `trackShare` per draw (first link sent, or printing). The admin tool table ranks tools by distinct users, since one visitor can roll dice hundreds of times.
 - Raw IPs and user agents are not stored. Without consent, the visitor key changes daily. A persistent browser ID and the signed-in e-mail are used only after cookies are accepted (`yulasanta_cookie_consent_v2`).
 - Rows carry `env` (`VERCEL_ENV`, else `development`), so localhost traffic stays apart from production. Rows older than 90 days are purged by a 1% chance on each write, as there is no cron job.
 
@@ -115,6 +118,7 @@ The code also reads these optional variables; `PLAKA_SECRET` and `OPENAI_API_KEY
 - `PLAKA_SECRET`: guest cookie signing (`lib/plaka/player.ts`), with fallbacks
 - `OPENAI_API_KEY`: translation script only
 - `GEMINI_API_KEY`: AI gift suggestions; without it the static list is served
+- `NEXT_PUBLIC_GA_MEASUREMENT_ID`: optional GA4 property (`G-...`); loads only after cookie consent
 - `ADMIN_EMAILS`: comma-separated admin allowlist; empty closes `/admin` for everyone
 - `ADMIN_DEV_BYPASS`: set to `1` to skip the admin check under `next dev`; ignored in production
 

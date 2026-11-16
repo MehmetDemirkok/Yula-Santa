@@ -281,6 +281,15 @@ function describeEvent(row: Record<string, unknown>): { title: string; detail: s
         return { title: "Çerez tercihi", detail: label };
     }
     if (name === "draw_shared") return { title: "Sonuç paylaşıldı", detail: toolLabel ?? String(row.path) };
+    const actions: Partial<Record<EventName, string>> = {
+        cta_click: "Çekiliş butonuna tıklandı",
+        list_imported: "Liste dosyadan yüklendi",
+        card_printed: "Kartlar yazdırıldı",
+        whatsapp_share: "WhatsApp ile gönderildi",
+        qr_generated: "QR kod oluşturuldu",
+    };
+    const action = actions[name];
+    if (action) return { title: action, detail: toolLabel ?? String(row.path) };
 
     const parts = [
         participants !== null ? `${participants.toLocaleString("tr-TR")} katılımcı` : null,
