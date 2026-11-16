@@ -143,7 +143,7 @@ export const RAFFLE_H1: Record<string, string> = {
 };
 
 export const SECRET_SANTA_H1: Record<string, string> = {
-    tr: 'Online Yılbaşı Hediye Çekilişi',
+    tr: 'Yılbaşı Hediye Çekilişini Dakikalar İçinde Yap! 🎅',
     en: 'Online Secret Santa',
     de: 'Online Wichteln',
     fr: 'Père Noël Secret',
@@ -155,4 +155,15 @@ export const SECRET_SANTA_H1: Record<string, string> = {
     ja: 'シークレットサンタ',
     ko: '시크릿 산타',
     zh: '秘密圣诞老人',
+};
+
+/** Hero subtitle on /secret-santa; locales without an entry use the shared `home.subtitle` string. */
+export const SECRET_SANTA_SUBTITLE: Record<string, string> = {
+    tr: 'Arkadaşlarınla, sınıfınla veya iş arkadaşlarınla ücretsiz Secret Santa çekilişi yap. İsimleri ekle, çekilişi başlat ve herkese özel hediye kartlarını dağıt.',
+};
+
+/** "How it works" anchor link under the /secret-santa hero; only shown where the landing sections exist. */
+export const SECRET_SANTA_HOW_LINK: Record<string, string> = {
+    tr: 'Nasıl çalışır?',
+    en: 'How does it work?',
 };

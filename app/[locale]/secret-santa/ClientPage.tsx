@@ -23,7 +23,7 @@ import { cleanExclusions, cleanGroups, dedupeNames, drawPairs, drawSecretSanta, 
 import { LIMITS, type SantaEvent } from "@/lib/secretSanta/link";
 import { loadMode, loadParticipants, loadSetup, saveDraw, saveMode, saveParticipants, saveSetup } from "@/lib/secretSanta/storage";
 import { SantaOptions } from "@/components/secretSanta/SantaOptions";
-import { SECRET_SANTA_H1 } from "@/lib/pageSeoCopy";
+import { SECRET_SANTA_H1, SECRET_SANTA_HOW_LINK, SECRET_SANTA_SUBTITLE } from "@/lib/pageSeoCopy";
 
 const AVATAR_TONES = [
     "from-red-500 to-rose-700",
@@ -290,9 +290,17 @@ export default function Home() {
                         </h1>
                         <div className={`flex items-center gap-2 flex-wrap ${seasonal ? "justify-start" : "justify-center"}`} suppressHydrationWarning>
                             <p className="text-[var(--text-secondary)] text-body-lg">
-                                {t('home.subtitle')}
+                                {SECRET_SANTA_SUBTITLE[locale] ?? t('home.subtitle')}
                             </p>
                         </div>
+                        {SECRET_SANTA_HOW_LINK[locale] && (
+                            <a
+                                href="#nasil-calisir"
+                                className="inline-flex min-h-[44px] items-center text-sm font-bold text-santa-red underline-offset-4 hover:underline"
+                            >
+                                {SECRET_SANTA_HOW_LINK[locale]} ↓
+                            </a>
+                        )}
                     </div>
                     {seasonal && (
                         <div className="relative aspect-square w-[108px] shrink-0 sm:w-[128px]">
@@ -314,7 +322,7 @@ export default function Home() {
                     ))}
                 </ul>
 
-                <div className={`ys-card backdrop-blur-xl p-4 sm:p-5 md:p-6 space-y-4 sm:space-y-5 md:space-y-6 ${seasonal ? "ys-gift-card relative overflow-hidden !pt-[38px]" : ""}`}>
+                <div id="cekilis" className={`scroll-mt-[96px] ys-card backdrop-blur-xl p-4 sm:p-5 md:p-6 space-y-4 sm:space-y-5 md:space-y-6 ${seasonal ? "ys-gift-card relative overflow-hidden !pt-[38px]" : ""}`}>
                     {seasonal && (
                         <>
                             <SnowCap />

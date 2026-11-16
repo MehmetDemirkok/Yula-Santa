@@ -5,7 +5,7 @@ Full architecture notes live in `CLAUDE.md`; design tokens in `design.md` — re
 
 ## Commands
 
-- `npm run dev` (127.0.0.1 only) / `npm run dev:lan` (all interfaces; unset `ADMIN_DEV_BYPASS` first) / `npm run build` / `npm start`
+- `npm run dev` (localhost only; `-H 127.0.0.1` makes the locale rewrite loop with a 307) / `npm run dev:lan` (all interfaces; unset `ADMIN_DEV_BYPASS` first) / `npm run build` / `npm start`
 - `npm run lint` — eslint flat config. No standalone typecheck; `next build` type-checks.
 - `npm test` — `tsx --test tests/**/*.test.ts`, using Node's built-in `node:test` + `node:assert` (not Jest/Vitest). Only `lib/tiktok` is tested; the free tools have no tests.
 - Single file: `npx tsx --test tests/tiktok/tiktok-module.test.ts`

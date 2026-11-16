@@ -101,6 +101,14 @@
     overflow-wrap: anywhere;
 }
 
+.siteMark {
+    font-size: 1.05cqw;
+    font-weight: 600;
+    color: #999;
+    letter-spacing: 0.03em;
+    margin-top: 0.4cqw;
+}
+
 .pattern {
     position: absolute;
     inset: 0;

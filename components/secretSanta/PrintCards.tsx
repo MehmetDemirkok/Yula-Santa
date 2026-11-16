@@ -61,6 +61,7 @@ function Sheet({ locale, givers, assignments, hints, event, idPrefix }: Omit<Pro
                             <span className={styles.brand}>🎁 {title}</span>
                             <span className={styles.name}>{giver}</span>
                             <span className={styles.small}>{t("printCardFor")}</span>
+                            <span className={styles.siteMark}>yulasanta.com.tr</span>
                         </div>
                         <div className={styles.panel}>
                             <span className={styles.foldMark}>2</span>

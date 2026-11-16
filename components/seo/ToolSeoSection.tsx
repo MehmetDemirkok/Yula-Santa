@@ -99,6 +99,7 @@ const RAFFLE_COPY_BY_KIND: Record<
 export default async function ToolSeoSection({ locale, kind }: { locale: string; kind: Kind }) {
     const tSeo = await getTranslations({ locale, namespace: 'home.seo' });
     const santa = kind === 'secretSanta' ? SECRET_SANTA_SEO_COPY[locale] || SECRET_SANTA_SEO_COPY.en : null;
+    const hasLandingSections = kind === 'secretSanta' && (locale === 'tr' || locale === 'en');
     const copy = santa || RAFFLE_COPY_BY_KIND.raffle[locale] || RAFFLE_COPY_BY_KIND.raffle.en;
     const pageUrl =
         locale === 'tr'
@@ -176,8 +177,9 @@ export default async function ToolSeoSection({ locale, kind }: { locale: string;
                 title={copy.title}
                 paragraphs={copy.paragraphs}
                 readMore={tSeo('readMore')}
-                featuresTitle={santa?.featuresTitle}
-                features={santa?.features}
+                /* Turkish and English show the audiences as visible cards (SantaLandingSections) instead. */
+                featuresTitle={hasLandingSections ? undefined : santa?.featuresTitle}
+                features={hasLandingSections ? undefined : santa?.features}
                 howToTitle={copy.howToTitle}
                 steps={copy.steps}
                 faqTitle={copy.faqTitle}

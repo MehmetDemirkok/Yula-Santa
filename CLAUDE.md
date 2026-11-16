@@ -11,7 +11,7 @@ YulaSanta is a Next.js 16 (App Router) app offering a family of free draw/giveaw
 ## Commands
 
 ```bash
-npm run dev              # start dev server on 127.0.0.1:3000 only (keeps ADMIN_DEV_BYPASS off the network)
+npm run dev              # dev server on localhost:3000 only (keeps ADMIN_DEV_BYPASS off the network). Do not use -H 127.0.0.1: next-intl's rewrite then goes to "localhost" and loops with a 307
 npm run dev:lan          # dev server on all interfaces, for phone testing; turn ADMIN_DEV_BYPASS off first
 npm run build             # production build
 npm start                 # run production build
