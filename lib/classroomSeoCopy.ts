@@ -4,23 +4,9 @@
  * "same group must not draw each other" rules, no student accounts or phones,
  * names stay in the teacher's browser (only PDF imports reach the server).
  */
-export type ClassroomCopy = {
-    metaTitle: string;
-    metaDescription: string;
-    keywords: string[];
-    h1: string;
-    intro: string;
-    cta: string;
-    sampleTitle: string;
-    sample: { brand: string; giver: string; cardFor: string; pattern: string; giftFor: string; receiver: string; hint: string };
-    whyTitle: string;
-    why: { title: string; desc: string }[];
-    howToTitle: string;
-    steps: string[];
-    faqTitle: string;
-    faq: { q: string; a: string }[];
-    breadcrumb: string;
-};
+import type { SantaLandingCopy, SantaLandingSample } from '@/lib/santaLandingCopy';
+
+export type ClassroomCopy = SantaLandingCopy & { sampleTitle: string; sample: SantaLandingSample };
 
 export const CLASSROOM_SEO_COPY: Record<string, ClassroomCopy> = {
     tr: {
@@ -39,9 +25,9 @@ export const CLASSROOM_SEO_COPY: Record<string, ClassroomCopy> = {
             'sınıfta yılbaşı hediyeleşmesi',
             'yılbaşı kura kartı',
         ],
-        h1: 'Sınıf yılbaşı çekilişi',
+        h1: 'Sınıfınızda Yılbaşı Heyecanı Başlasın!',
         intro:
-            'Sınıf listesini ekleyin, çekilişi yapın ve her öğrenci için katlanınca sonucu gizleyen bir kart yazdırın. Kartları kesip dağıtın; her öğrenci kendi kartını açınca kime hediye alacağını görür. Öğrencilerin telefona veya hesaba ihtiyacı yok.',
+            'Sınıf yılbaşı çekilişini birkaç dakikada yapın. Sınıf listesini ekleyin, çekilişi yapın ve her öğrenci için katlanınca sonucu gizleyen bir kart yazdırın. Kartları kesip dağıtın; her öğrenci kendi kartını açınca kime hediye alacağını görür. Öğrencilerin telefona veya hesaba ihtiyacı yok.',
         cta: 'Sınıf çekilişini başlat',
         sampleTitle: 'Kart böyle görünür',
         sample: {
@@ -79,6 +65,20 @@ export const CLASSROOM_SEO_COPY: Record<string, ClassroomCopy> = {
             { q: 'Kimse kendi adını çeker mi?', a: 'Hayır. Algoritma herkese başka bir öğrenci atar.' },
             { q: 'Öğrenci isimleri bir yere kaydediliyor mu?', a: 'Hayır. İsimler ve eşleşmeler yalnızca sizin tarayıcınızda tutulur. Yalnızca PDF listesi yüklerseniz dosya, isimleri çıkarmak için sunucuda işlenir ve kaydedilmez.' },
             { q: 'Ücretli mi?', a: 'Hayır. Sınıf çekilişi ve kart yazdırma tamamen ücretsizdir; kayıt da gerekmez.' },
+        ],
+        privacyTitle: 'Öğrenci bilgileri nasıl korunuyor?',
+        privacy: [
+            'Çekiliş için yalnızca isim yeterlidir. Soyad, numara, telefon veya e-posta istemiyoruz; karışıklık olmasın diye "Elif K." gibi kısaltmalar kullanabilirsiniz.',
+            'İsimler ve eşleşmeler sizin tarayıcınızda hesaplanır ve saklanır; sunucumuza gönderilmez. İşiniz bitince listeyi "Listeyi Temizle" butonuyla silebilirsiniz.',
+            'Excel ve CSV dosyaları tarayıcıda okunur. Yalnızca PDF yüklerseniz dosya, isimleri çıkarmak için sunucuda işlenir ve kaydedilmez.',
+            'Kullanım istatistiklerimiz yalnızca sayfa adresini ve katılımcı sayısını tutar; öğrenci isimleri veya eşleşmeler bu kayıtlara girmez.',
+        ],
+        relatedTitle: 'Diğer yılbaşı çekilişi sayfaları',
+        related: [
+            { path: '/secret-santa', label: 'Yılbaşı hediye çekilişi yap' },
+            { path: '/secret-santa/office', label: 'Ofis yılbaşı çekilişi' },
+            { path: '/secret-santa/university', label: 'Üniversite ve kulüp çekilişi' },
+            { path: '/tools/gift-suggestions', label: 'Hediye önerileri' },
         ],
         breadcrumb: 'Sınıf yılbaşı çekilişi',
     },
@@ -136,6 +136,20 @@ export const CLASSROOM_SEO_COPY: Record<string, ClassroomCopy> = {
             { q: 'Can anyone draw themselves?', a: 'No. Every student is assigned someone else.' },
             { q: 'Are student names stored anywhere?', a: 'No. Names and matches stay in your browser. Only if you upload a PDF list is the file processed on our server to read the names, and it is not saved.' },
             { q: 'Is it free?', a: 'Yes. The class draw and card printing are completely free, with no sign-up.' },
+        ],
+        privacyTitle: 'How student data is handled',
+        privacy: [
+            'A first name is all the draw needs. We never ask for surnames, student numbers, phone numbers or e-mail addresses; use short forms such as "Emma K." to tell students apart.',
+            'Names and matches are computed and stored in your browser and are not sent to our server. Use "Clear List" to delete the list when you are done.',
+            'Excel and CSV files are read in the browser. Only a PDF upload is processed on our server, to extract the names, and it is not saved.',
+            'Our usage statistics record only the page address and the number of participants, never student names or matches.',
+        ],
+        relatedTitle: 'More Secret Santa pages',
+        related: [
+            { path: '/secret-santa', label: 'Run a Secret Santa draw' },
+            { path: '/secret-santa/office', label: 'Office Secret Santa' },
+            { path: '/secret-santa/university', label: 'University and club Secret Santa' },
+            { path: '/tools/gift-suggestions', label: 'Gift ideas' },
         ],
         breadcrumb: 'Classroom Secret Santa',
     },

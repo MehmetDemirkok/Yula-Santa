@@ -4,6 +4,7 @@ import { locales } from '@/i18n/config';
 export { viewport };
 import ClientPage from './ClientPage';
 import ToolSeoSection from '@/components/seo/ToolSeoSection';
+import SantaLandingSections from '@/components/secretSanta/SantaLandingSections';
 import { getPageSeoCopy } from '@/lib/pageSeoCopy';
 import { getTargetYear } from '@/components/NewYearTheme/config';
 
@@ -49,6 +50,7 @@ export default async function Page({ params }: { params: Promise<{ locale: strin
     return (
         <>
             <ClientPage />
+            <SantaLandingSections locale={locale} />
             <ToolSeoSection locale={locale} kind="secretSanta" />
         </>
     );

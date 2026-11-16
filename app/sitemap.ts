@@ -26,9 +26,18 @@
 import { MetadataRoute } from 'next';
 import { locales, defaultLocale } from '@/i18n/config';
 import { SITE_URL } from '@/lib/constants';
+import { LANDING_LOCALES } from '@/lib/officeUniversitySeoCopy';
+
+type Route = {
+    path: string;
+    priority: number;
+    changeFrequency: 'weekly' | 'monthly' | 'yearly';
+    /** Locales the page exists in; every locale when omitted. */
+    only?: readonly string[];
+};
 
 // Main locale-based routes (under /[locale]/)
-const localeRoutes = [
+const localeRoutes: Route[] = [
     { path: '', priority: 1.0, changeFrequency: 'weekly' as const },
     { path: '/youtube', priority: 0.95, changeFrequency: 'weekly' as const },
     { path: '/tiktok', priority: 0.95, changeFrequency: 'weekly' as const },
@@ -36,6 +45,8 @@ const localeRoutes = [
     { path: '/raffle', priority: 0.95, changeFrequency: 'weekly' as const },
     { path: '/secret-santa', priority: 0.95, changeFrequency: 'weekly' as const },
     { path: '/secret-santa/classroom', priority: 0.85, changeFrequency: 'weekly' as const },
+    { path: '/secret-santa/office', priority: 0.85, changeFrequency: 'weekly' as const, only: LANDING_LOCALES },
+    { path: '/secret-santa/university', priority: 0.8, changeFrequency: 'weekly' as const, only: LANDING_LOCALES },
     { path: '/faq', priority: 0.7, changeFrequency: 'monthly' as const },
     { path: '/privacy', priority: 0.3, changeFrequency: 'yearly' as const },
     { path: '/legal', priority: 0.3, changeFrequency: 'yearly' as const },
@@ -58,13 +69,14 @@ export default function sitemap(): MetadataRoute.Sitemap {
 
     // Generate URLs for each locale route
     localeRoutes.forEach(route => {
-        locales.forEach(locale => {
+        const routeLocales = route.only ?? locales;
+        routeLocales.forEach(locale => {
             // Build alternates object for hreflang
             const alternates: { languages: Record<string, string> } = {
                 languages: {}
             };
 
-            locales.forEach(altLocale => {
+            routeLocales.forEach(altLocale => {
                 alternates.languages[altLocale] = altLocale === defaultLocale
                     ? `${SITE_URL}${route.path}`
                     : `${SITE_URL}/${altLocale}${route.path}`;

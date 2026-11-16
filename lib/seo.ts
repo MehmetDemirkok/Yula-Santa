@@ -36,6 +36,8 @@ interface SEOProps {
     keywordsOverride?: string[];
     noIndex?: boolean;
     ogImage?: { path: string; width: number; height: number };
+    /** Locales the page exists in, for hreflang. Defaults to every locale. */
+    alternateLocales?: readonly string[];
 }
 
 export async function getSEOMetadata({
@@ -47,6 +49,7 @@ export async function getSEOMetadata({
     keywordsOverride,
     noIndex = false,
     ogImage = { path: '/opengraph-image.png', width: 1024, height: 1024 },
+    alternateLocales = locales,
 }: SEOProps): Promise<Metadata> {
     // Dynamically import messages for the locale
     let messages;
@@ -82,7 +85,7 @@ export async function getSEOMetadata({
 
     // Construct alternates
     const languages: Record<string, string> = {};
-    locales.forEach((loc) => {
+    alternateLocales.forEach((loc) => {
         languages[loc] = loc === defaultLocale
             ? `${SITE_URL}${path}`
             : `${SITE_URL}/${loc}${path}`;
