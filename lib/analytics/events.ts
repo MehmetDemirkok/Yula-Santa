@@ -6,7 +6,18 @@
  * no free-text field, so participant names cannot reach the database.
  */
 
-export const EVENT_NAMES = ["page_view", "draw_completed", "draw_shared", "consent"] as const;
+export const EVENT_NAMES = [
+    "page_view",
+    "draw_completed",
+    "draw_shared",
+    "consent",
+    // Funnel steps. They carry a tool and a path only, never names.
+    "cta_click",
+    "list_imported",
+    "card_printed",
+    "whatsapp_share",
+    "qr_generated",
+] as const;
 export type EventName = (typeof EVENT_NAMES)[number];
 
 export const TOOLS = [

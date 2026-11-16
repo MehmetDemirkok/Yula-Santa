@@ -57,8 +57,33 @@ function flush() {
     if (queue.length > 0) flush();
 }
 
+type Gtag = (command: "event", name: string, params: Record<string, unknown>) => void;
+
+/**
+ * Mirrors an event to Google Analytics 4 when its script is on the page, which
+ * only happens after cookie consent (ConsentedGoogleAnalytics). Only the
+ * pathname is sent, never the query or fragment, which can hold draw results.
+ */
+function mirrorToGa(event: ClientEvent) {
+    const gtag = (window as unknown as { gtag?: Gtag }).gtag;
+    if (typeof gtag !== "function" || event.name === "consent") return;
+    try {
+        if (event.name === "page_view") {
+            gtag("event", "page_view", { page_location: window.location.origin + event.path, page_title: document.title });
+            return;
+        }
+        gtag("event", event.name, {
+            ...(event.tool ? { tool: event.tool } : {}),
+            ...(event.participants !== undefined ? { participants: event.participants } : {}),
+        });
+    } catch {
+        // GA is optional.
+    }
+}
+
 function push(event: ClientEvent) {
     if (typeof window === "undefined") return;
+    mirrorToGa(event);
     queue.push(event);
     if (!pageHideBound) {
         pageHideBound = true;
@@ -99,6 +124,12 @@ export function trackDraw(tool: ToolName, counts: { participants?: number; winne
 export function trackShare(tool?: ToolName) {
     if (typeof window === "undefined") return;
     pushNow(event("draw_shared", { tool }));
+}
+
+/** Funnel steps such as a landing-page CTA click or a list import. */
+export function trackAction(name: "cta_click" | "list_imported" | "card_printed" | "whatsapp_share" | "qr_generated", tool?: ToolName) {
+    if (typeof window === "undefined") return;
+    push(event(name, { tool }));
 }
 
 /** The visitor ID exists only while consent is accepted, and declining deletes it. */

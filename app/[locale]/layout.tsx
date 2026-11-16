@@ -18,6 +18,7 @@ import { NextIntlClientProvider } from 'next-intl';
 import { getMessages, setRequestLocale } from 'next-intl/server';
 import { notFound } from 'next/navigation';
 import { ConsentedAdSenseScript } from "@/components/ads/ConsentedAdSenseScript";
+import { ConsentedGoogleAnalytics } from "@/components/analytics/ConsentedGoogleAnalytics";
 import "../globals.css";
 import { locales, getDirection, type Locale } from '@/i18n/config';
 
@@ -40,6 +41,8 @@ const geistMono = Geist_Mono({
     variable: "--font-geist-mono",
     subsets: ["latin"],
 });
+/** Optional GA4 property; nothing loads without it (and without cookie consent). */
+const GA_MEASUREMENT_ID = process.env.NEXT_PUBLIC_GA_MEASUREMENT_ID;
 const ADSENSE_CLIENT_ID = process.env.NEXT_PUBLIC_ADSENSE_CLIENT_ID || "ca-pub-1407870205867199";
 
 // Generate static params for all locales
@@ -264,6 +267,7 @@ export default async function LocaleLayout({
                 </NextIntlClientProvider>
                 {/* AdSense loads only after cookie consent; see the component. */}
                 <ConsentedAdSenseScript clientId={ADSENSE_CLIENT_ID} />
+                {GA_MEASUREMENT_ID && <ConsentedGoogleAnalytics measurementId={GA_MEASUREMENT_ID} />}
             </body>
         </html>
     );

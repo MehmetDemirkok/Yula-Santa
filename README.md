@@ -91,6 +91,10 @@ See [CLAUDE.md](CLAUDE.md) for architecture notes and [design.md](design.md) for
 
 Add new keys to `messages/tr.json` first, then generate the other locales and run `npm run i18n:check`.
 
+## Google Analytics 4 (optional)
+
+Set `NEXT_PUBLIC_GA_MEASUREMENT_ID=G-XXXXXXXXXX` to load GA4. It loads only after the visitor accepts cookies, sends page paths without query strings or fragments, and receives the same name-free events as the built-in analytics (`draw_completed`, `draw_shared`, `cta_click`, `list_imported`, `card_printed`, `whatsapp_share`, `qr_generated`). The privacy notice mentions GA4 only while the variable is set. In the GA4 property, turn off enhanced measurement's "page changes based on browser history events".
+
 ## Google AdSense
 
 The ad components render only in production and need a publisher ID.

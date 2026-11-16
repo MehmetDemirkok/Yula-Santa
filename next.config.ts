@@ -45,12 +45,14 @@ const nextConfig: NextConfig = {
       { source: `/${locale}/sinif-cekilisi`, destination: '/:locale/secret-santa/classroom', permanent: true },
       { source: '/okullar-icin-yilbasi-cekilisi', destination: '/secret-santa/classroom', permanent: true },
       { source: `/${locale}/okullar-icin-yilbasi-cekilisi`, destination: '/:locale/secret-santa/classroom', permanent: true },
-      // The office and university pages exist in Turkish and English only.
+      // The office, university and what-is pages exist in Turkish and English only.
       { source: '/ofis-yilbasi-cekilisi', destination: '/secret-santa/office', permanent: true },
       { source: '/en/ofis-yilbasi-cekilisi', destination: '/en/secret-santa/office', permanent: true },
       { source: '/sirket-yilbasi-cekilisi', destination: '/secret-santa/office', permanent: true },
       { source: '/universite-yilbasi-cekilisi', destination: '/secret-santa/university', permanent: true },
       { source: '/en/universite-yilbasi-cekilisi', destination: '/en/secret-santa/university', permanent: true },
+      { source: '/secret-santa-nedir', destination: '/secret-santa/what-is', permanent: true },
+      { source: '/en/what-is-secret-santa', destination: '/en/secret-santa/what-is', permanent: true },
       { source: '/plaka-avcisi', destination: '/oyun/plaka-avcisi', permanent: true },
       { source: `/${locale}/plaka-avcisi`, destination: '/:locale/oyun/plaka-avcisi', permanent: true },
       { source: '/mesafeli-satis-sozlesmesi', destination: '/legal', permanent: true },

@@ -1,6 +1,7 @@
 "use client";
 
 import Image from "next/image";
+import Link from "next/link";
 import { useRouter } from "next/navigation";
 import { useEffect, useMemo, useState, useTransition } from "react";
 import {
@@ -16,6 +17,7 @@ import {
     ShieldCheck,
     Sun,
     Users,
+    Megaphone,
     type LucideIcon,
 } from "lucide-react";
 import { Card, Delta, EmptyState, Funnel, RankedBars, SegmentedBar, StatTile, TrendChart, formatNumber, formatShare } from "@/components/admin/charts";
@@ -196,6 +198,11 @@ const EVENT_LABEL: Record<EventType, string> = {
     draw_shared: "Paylaşım",
     page_view: "Sayfa",
     consent: "Çerez",
+    cta_click: "Adım",
+    list_imported: "Adım",
+    card_printed: "Adım",
+    whatsapp_share: "Adım",
+    qr_generated: "Adım",
 };
 
 function formatAgo(minutes: number): string {
@@ -389,6 +396,13 @@ export function AdminDashboard({ data, range, localBypass }: { data: AdminData |
                             </button>
                         );
                     })}
+                    <Link
+                        href="/admin/marketing"
+                        className="flex shrink-0 items-center gap-2.5 whitespace-nowrap rounded-lg px-3 py-2.5 text-left text-[14px] font-semibold text-[var(--text-secondary)] transition-colors hover:bg-[var(--admin-hover)]"
+                    >
+                        <Megaphone className="h-[18px] w-[18px]" aria-hidden />
+                        Tanıtım materyalleri
+                    </Link>
                 </nav>
             </aside>
 

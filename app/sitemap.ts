@@ -47,6 +47,7 @@ const localeRoutes: Route[] = [
     { path: '/secret-santa/classroom', priority: 0.85, changeFrequency: 'weekly' as const },
     { path: '/secret-santa/office', priority: 0.85, changeFrequency: 'weekly' as const, only: LANDING_LOCALES },
     { path: '/secret-santa/university', priority: 0.8, changeFrequency: 'weekly' as const, only: LANDING_LOCALES },
+    { path: '/secret-santa/what-is', priority: 0.7, changeFrequency: 'monthly' as const, only: LANDING_LOCALES },
     { path: '/faq', priority: 0.7, changeFrequency: 'monthly' as const },
     { path: '/privacy', priority: 0.3, changeFrequency: 'yearly' as const },
     { path: '/legal', priority: 0.3, changeFrequency: 'yearly' as const },

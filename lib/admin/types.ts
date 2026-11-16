@@ -57,7 +57,7 @@ export type RangeData = {
     consent: NamedCount[];
 };
 
-export type EventType = "page_view" | "draw_completed" | "draw_shared" | "consent";
+export type EventType = import("@/lib/analytics/events").EventName;
 
 export type LiveEvent = {
     id: string;
