@@ -103,7 +103,17 @@
         "youtubeGiveaway": "Sorteo de YouTube",
         "tiktokGiveaway": "Sorteo de TikTok",
         "namePickerDesc": "Elige ganadores justos de cualquier lista",
-        "description": "Elige ganadores justos de comentarios de YouTube y TikTok en segundos. Herramientas gratis — sin registro, sin contraseña."
+        "description": "Elige ganadores justos de comentarios de YouTube y TikTok en segundos. Herramientas gratis — sin registro, sin contraseña.",
+        "stats": {
+            "live": "Estadísticas en vivo",
+            "title": "<strong>{formatted}</strong> {count, plural, one {sorteo realizado} other {sorteos realizados}} hasta hoy",
+            "since": "Desde el {date}, datos reales",
+            "today": "{formatted} {count, plural, one {sorteo} other {sorteos}} hoy",
+            "youtube": "Sorteos de YouTube",
+            "tiktok": "Sorteos de TikTok",
+            "secretSanta": "Sorteos de amigo invisible",
+            "note": "Se cuentan los sorteos completados en el sitio; nunca se guardan nombres ni resultados."
+        }
     },
     "result": {
         "whoGetsGift": "¿A quién le voy a dar un regalo?",

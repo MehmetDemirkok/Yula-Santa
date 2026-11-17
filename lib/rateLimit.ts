@@ -20,6 +20,7 @@ const MAX_REQUESTS: Record<string, number> = {
     'plaka-leaderboard': 40,
     'plaka-stats': 40,
     'analytics-collect': 120,
+    'public-stats': 30,
     'admin-denied': 5,
 };
 

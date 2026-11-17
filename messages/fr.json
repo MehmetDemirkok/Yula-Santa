@@ -103,7 +103,17 @@
                 "12 language support"
             ]
         },
-        "description": "Sélectionnez des gagnants équitables parmi les commentaires YouTube et TikTok en quelques secondes. Outils gratuits — sans inscription, sans mot de passe."
+        "description": "Sélectionnez des gagnants équitables parmi les commentaires YouTube et TikTok en quelques secondes. Outils gratuits — sans inscription, sans mot de passe.",
+        "stats": {
+            "live": "Statistiques en direct",
+            "title": "<strong>{formatted}</strong> {count, plural, one {tirage réalisé} other {tirages réalisés}} à ce jour",
+            "since": "Depuis le {date}, données réelles",
+            "today": "{formatted} {count, plural, one {tirage} other {tirages}} aujourd’hui",
+            "youtube": "Tirages YouTube",
+            "tiktok": "Tirages TikTok",
+            "secretSanta": "Tirages Secret Santa",
+            "note": "Seuls les tirages terminés sur le site sont comptés ; les noms et résultats ne sont jamais enregistrés."
+        }
     },
     "result": {
         "whoGetsGift": "À qui vais-je offrir un cadeau ?",

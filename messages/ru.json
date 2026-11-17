@@ -102,6 +102,16 @@
                 "Dice, coin flip, wheel and more tools",
                 "12 language support"
             ]
+        },
+        "stats": {
+            "live": "Статистика в реальном времени",
+            "title": "Уже проведено <strong>{formatted}</strong> {count, plural, one {розыгрыш} few {розыгрыша} many {розыгрышей} other {розыгрыша}}",
+            "since": "С {date}, реальные данные",
+            "today": "Сегодня {formatted} {count, plural, one {розыгрыш} few {розыгрыша} many {розыгрышей} other {розыгрыша}}",
+            "youtube": "Розыгрыши на YouTube",
+            "tiktok": "Розыгрыши в TikTok",
+            "secretSanta": "Тайный Санта",
+            "note": "Учитываются завершённые на сайте розыгрыши; имена и результаты не сохраняются."
         }
     },
     "result": {

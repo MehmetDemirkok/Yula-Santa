@@ -8,6 +8,7 @@ import { neon, type NeonQueryFunction } from "@neondatabase/serverless";
 import { locales } from "@/i18n/config";
 import type { AccessRow, AdminData, LiveEvent, NamedCount, RangeKey, TrendPoint } from "@/lib/admin/types";
 import { TOOLS, type CleanPayload, type EventName, type ToolName } from "./events";
+import { PUBLIC_DRAW_TOOLS, PUBLIC_STATS_START, istanbulDay, summarizeDrawStats, type PublicDrawStats } from "./publicStats";
 
 const TIME_ZONE = "Europe/Istanbul";
 /** Turkey has been on fixed UTC+3 since 2016. */
@@ -76,6 +77,28 @@ async function ensureSchema() {
                 )
             `;
             await db`CREATE INDEX IF NOT EXISTS admin_audit_log_env_time ON admin_audit_log (env, occurred_at DESC)`;
+            // Aggregate counters for the public landing-page stats. No visitor data, so no retention limit.
+            await db`
+                CREATE TABLE IF NOT EXISTS draw_stats_daily (
+                    env TEXT NOT NULL,
+                    day DATE NOT NULL,
+                    tool TEXT NOT NULL,
+                    draws BIGINT NOT NULL DEFAULT 0,
+                    PRIMARY KEY (env, day, tool)
+                )
+            `;
+            // Rebuilds recent days from the raw events. Each counter increment follows its event insert,
+            // so the event count is never lower and GREATEST makes this safe to repeat on every cold start.
+            await db.query(
+                `INSERT INTO draw_stats_daily (env, day, tool, draws)
+                 SELECT env, (occurred_at AT TIME ZONE '${TIME_ZONE}')::date, tool, count(*)
+                 FROM analytics_events
+                 WHERE name = 'draw_completed' AND tool IS NOT NULL
+                   AND occurred_at >= GREATEST($1::date AT TIME ZONE '${TIME_ZONE}', now() - interval '3 days')
+                 GROUP BY 1, 2, 3
+                 ON CONFLICT (env, day, tool) DO UPDATE SET draws = GREATEST(draw_stats_daily.draws, EXCLUDED.draws)`,
+                [PUBLIC_STATS_START],
+            );
         })().catch((error) => {
             schemaReady = null;
             throw error;
@@ -140,6 +163,18 @@ export async function insertEvents(
         [JSON.stringify(rows)],
     );
 
+    const drawTools = payload.events.filter((event) => event.name === "draw_completed" && event.tool).map((event) => event.tool);
+    if (drawTools.length > 0) {
+        await db.query(
+            `INSERT INTO draw_stats_daily (env, day, tool, draws)
+             SELECT $1, (now() AT TIME ZONE '${TIME_ZONE}')::date, tool, count(*)
+             FROM jsonb_array_elements_text($2::jsonb) AS tool
+             GROUP BY tool
+             ON CONFLICT (env, day, tool) DO UPDATE SET draws = draw_stats_daily.draws + EXCLUDED.draws`,
+            [analyticsEnv(), JSON.stringify(drawTools)],
+        );
+    }
+
     // Vercel cron is not set up in this project, so writes also enforce retention now and then.
     if (Math.random() < 0.01) await purgeExpired();
 }
@@ -149,6 +184,20 @@ export async function purgeExpired() {
     const db = getSql();
     await db.query(`DELETE FROM analytics_events WHERE occurred_at < now() - make_interval(days => $1)`, [RETENTION_DAYS]);
     await db.query(`DELETE FROM admin_audit_log WHERE occurred_at < now() - make_interval(days => $1)`, [RETENTION_DAYS]);
+}
+
+/** Totals for the landing page. Reads only the aggregate table. */
+export async function getPublicDrawStats(now = new Date()): Promise<PublicDrawStats> {
+    await ensureSchema();
+    const rows = (await getSql().query(
+        `SELECT tool, to_char(day, 'YYYY-MM-DD') AS day, draws
+         FROM draw_stats_daily WHERE env = $1 AND day >= $2::date AND tool = ANY($3::text[])`,
+        [analyticsEnv(), PUBLIC_STATS_START, [...PUBLIC_DRAW_TOOLS]],
+    )) as Record<string, unknown>[];
+    return summarizeDrawStats(
+        rows.map((row) => ({ tool: String(row.tool), day: String(row.day), draws: num(row.draws) })),
+        istanbulDay(now),
+    );
 }
 
 export async function recordAdminAccess(entry: {

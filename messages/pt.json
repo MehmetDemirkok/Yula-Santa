@@ -102,7 +102,17 @@
         "heroSubtitle": "Pick fair winners from video comments in seconds — free, no signup, no password.",
         "youtubeGiveaway": "YouTube Giveaway",
         "tiktokGiveaway": "TikTok Giveaway",
-        "namePickerDesc": "Pick fair winners from any list"
+        "namePickerDesc": "Pick fair winners from any list",
+        "stats": {
+            "live": "Estatísticas ao vivo",
+            "title": "<strong>{formatted}</strong> {count, plural, one {sorteio realizado} other {sorteios realizados}} até agora",
+            "since": "Desde {date}, dados reais",
+            "today": "{formatted} {count, plural, one {sorteio} other {sorteios}} hoje",
+            "youtube": "Sorteios no YouTube",
+            "tiktok": "Sorteios no TikTok",
+            "secretSanta": "Sorteios de amigo secreto",
+            "note": "Contamos os sorteios concluídos no site; nomes e resultados nunca são guardados."
+        }
     },
     "result": {
         "whoGetsGift": "Para quem vou comprar um presente?",

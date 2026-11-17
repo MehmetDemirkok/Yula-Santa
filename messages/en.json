@@ -102,7 +102,17 @@
         "heroSubtitle": "Pick fair winners from video comments in seconds — free, no signup, no password.",
         "youtubeGiveaway": "YouTube Giveaway",
         "tiktokGiveaway": "TikTok Giveaway",
-        "namePickerDesc": "Pick fair winners from any list"
+        "namePickerDesc": "Pick fair winners from any list",
+        "stats": {
+            "live": "Live stats",
+            "title": "<strong>{formatted}</strong> {count, plural, one {draw} other {draws}} so far",
+            "since": "Since {date}, real data",
+            "today": "{formatted} {count, plural, one {draw} other {draws}} today",
+            "youtube": "YouTube giveaways",
+            "tiktok": "TikTok giveaways",
+            "secretSanta": "Secret Santa draws",
+            "note": "Counts draws completed on the site; names and results are never stored."
+        }
     },
     "result": {
         "whoGetsGift": "Who Do I Buy a Gift For?",

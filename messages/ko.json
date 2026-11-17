@@ -102,7 +102,17 @@
         "heroSubtitle": "Pick fair winners from video comments in seconds — free, no signup, no password.",
         "youtubeGiveaway": "YouTube Giveaway",
         "tiktokGiveaway": "TikTok Giveaway",
-        "namePickerDesc": "Pick fair winners from any list"
+        "namePickerDesc": "Pick fair winners from any list",
+        "stats": {
+            "live": "실시간 통계",
+            "title": "지금까지 <strong>{formatted}</strong>회 추첨",
+            "since": "{date}부터의 실제 데이터",
+            "today": "오늘 {formatted}회",
+            "youtube": "유튜브 추첨",
+            "tiktok": "틱톡 추첨",
+            "secretSanta": "시크릿 산타",
+            "note": "사이트에서 완료된 추첨만 집계하며, 이름과 결과는 저장하지 않습니다."
+        }
     },
     "result": {
         "whoGetsGift": "나는 누구에게 선물을 줄까요?",

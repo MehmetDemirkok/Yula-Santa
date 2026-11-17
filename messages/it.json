@@ -102,6 +102,16 @@
                 "Dice, coin flip, wheel and more tools",
                 "12 language support"
             ]
+        },
+        "stats": {
+            "live": "Statistiche in tempo reale",
+            "title": "<strong>{formatted}</strong> {count, plural, one {estrazione effettuata} other {estrazioni effettuate}} finora",
+            "since": "Dal {date}, dati reali",
+            "today": "{formatted} {count, plural, one {estrazione} other {estrazioni}} oggi",
+            "youtube": "Giveaway YouTube",
+            "tiktok": "Giveaway TikTok",
+            "secretSanta": "Estrazioni Secret Santa",
+            "note": "Contiamo le estrazioni completate sul sito; nomi e risultati non vengono mai salvati."
         }
     },
     "result": {

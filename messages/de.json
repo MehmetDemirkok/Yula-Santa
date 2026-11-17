@@ -103,7 +103,17 @@
                 "12 language support"
             ]
         },
-        "description": "Wählen Sie in Sekunden faire Gewinner aus YouTube- und TikTok-Kommentaren. Kostenlose Kommentar-Verlosungstools — keine Anmeldung, kein Passwort."
+        "description": "Wählen Sie in Sekunden faire Gewinner aus YouTube- und TikTok-Kommentaren. Kostenlose Kommentar-Verlosungstools — keine Anmeldung, kein Passwort.",
+        "stats": {
+            "live": "Live-Statistik",
+            "title": "Bisher <strong>{formatted}</strong> {count, plural, one {Auslosung} other {Auslosungen}}",
+            "since": "Seit {date}, echte Daten",
+            "today": "Heute {formatted} {count, plural, one {Auslosung} other {Auslosungen}}",
+            "youtube": "YouTube-Gewinnspiele",
+            "tiktok": "TikTok-Gewinnspiele",
+            "secretSanta": "Wichtel-Auslosungen",
+            "note": "Gezählt werden abgeschlossene Auslosungen; Namen und Ergebnisse werden nicht gespeichert."
+        }
     },
     "result": {
         "whoGetsGift": "Für wen kaufe ich ein Geschenk?",

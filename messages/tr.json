@@ -103,7 +103,17 @@
         "heroSubtitle": "Video yorumlarından saniyeler içinde adil kazanan seçin — ücretsiz, kayıtsız, şifresiz.",
         "youtubeGiveaway": "YouTube Çekilişi",
         "tiktokGiveaway": "TikTok Çekilişi",
-        "namePickerDesc": "Listeden adil kazanan seçin"
+        "namePickerDesc": "Listeden adil kazanan seçin",
+        "stats": {
+            "live": "Canlı istatistik",
+            "title": "Bugüne kadar <strong>{formatted}</strong> çekiliş yapıldı",
+            "since": "{date} tarihinden beri, gerçek veriler",
+            "today": "Bugün {formatted} çekiliş",
+            "youtube": "YouTube çekilişi",
+            "tiktok": "TikTok çekilişi",
+            "secretSanta": "Yılbaşı çekilişi",
+            "note": "Sitede tamamlanan çekilişler sayılır; isimler ve sonuçlar kaydedilmez."
+        }
     },
     "result": {
         "whoGetsGift": "Kime Hediye Alacağım?",
