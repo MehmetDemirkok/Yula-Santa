@@ -24,6 +24,7 @@ import { isNewYearThemeActive } from "@/components/NewYearTheme/config";
 import { FestiveMascot, GiftBow, HeroDecor, SnowCap } from "@/components/NewYearTheme/HomeDecor";
 import { FestiveTree } from "@/components/NewYearTheme/SantaDecor";
 import { localePath } from "@/lib/localePath";
+import DrawStats from "@/components/home/DrawStats";
 
 function TikTokIcon({ className }: { className?: string }) {
     return (
@@ -240,6 +241,8 @@ export default function HomeClientPage() {
                     </div>
                 </div>
             </section>
+
+            <DrawStats />
         </main>
     );
 }

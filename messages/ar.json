@@ -102,7 +102,17 @@
         "heroSubtitle": "Pick fair winners from video comments in seconds — free, no signup, no password.",
         "youtubeGiveaway": "YouTube Giveaway",
         "tiktokGiveaway": "TikTok Giveaway",
-        "namePickerDesc": "Pick fair winners from any list"
+        "namePickerDesc": "Pick fair winners from any list",
+        "stats": {
+            "live": "إحصاءات مباشرة",
+            "title": "تم إجراء <strong>{formatted}</strong> سحب حتى الآن",
+            "since": "منذ {date}، بيانات حقيقية",
+            "today": "{formatted} سحب اليوم",
+            "youtube": "سحوبات يوتيوب",
+            "tiktok": "سحوبات تيك توك",
+            "secretSanta": "سحوبات سانتا السري",
+            "note": "نحتسب السحوبات المكتملة على الموقع؛ لا يتم حفظ الأسماء أو النتائج أبدًا."
+        }
     },
     "result": {
         "whoGetsGift": "لمن سأشتري هدية؟",

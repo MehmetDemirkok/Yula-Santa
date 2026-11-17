@@ -102,6 +102,16 @@
                 "Dice, coin flip, wheel and more tools",
                 "12 language support"
             ]
+        },
+        "stats": {
+            "live": "实时统计",
+            "title": "迄今已完成 <strong>{formatted}</strong> 次抽奖",
+            "since": "自 {date} 起的真实数据",
+            "today": "今天 {formatted} 次",
+            "youtube": "YouTube 抽奖",
+            "tiktok": "TikTok 抽奖",
+            "secretSanta": "神秘圣诞老人",
+            "note": "仅统计在本站完成的抽奖；姓名和结果从不保存。"
         }
     },
     "result": {

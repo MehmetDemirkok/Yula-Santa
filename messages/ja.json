@@ -102,6 +102,16 @@
                 "Dice, coin flip, wheel and more tools",
                 "12 language support"
             ]
+        },
+        "stats": {
+            "live": "リアルタイム統計",
+            "title": "これまでに <strong>{formatted}</strong> 回の抽選",
+            "since": "{date}以降の実データ",
+            "today": "今日 {formatted} 回",
+            "youtube": "YouTube抽選",
+            "tiktok": "TikTok抽選",
+            "secretSanta": "シークレットサンタ",
+            "note": "サイトで完了した抽選を数えています。名前や結果は保存されません。"
         }
     },
     "result": {
