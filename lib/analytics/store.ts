@@ -336,6 +336,8 @@ function describeEvent(row: Record<string, unknown>): { title: string; detail: s
         card_printed: "Kartlar yazdırıldı",
         whatsapp_share: "WhatsApp ile gönderildi",
         qr_generated: "QR kod oluşturuldu",
+        santa_link_opened: "Kişisel Santa linki açıldı",
+        santa_link_invalid: "Kişisel Santa linki açılamadı",
     };
     const action = actions[name];
     if (action) return { title: action, detail: toolLabel ?? String(row.path) };
@@ -366,6 +368,8 @@ export async function getAdminData(key: RangeKey, now = new Date()): Promise<Adm
             count(*) FILTER (WHERE name = 'draw_completed') AS draws,
             count(DISTINCT visitor_key) FILTER (WHERE name = 'draw_completed') AS drawers,
             count(DISTINCT visitor_key) FILTER (WHERE name = 'draw_shared') AS sharers,
+            count(DISTINCT visitor_key) FILTER (WHERE name = 'santa_link_opened') AS santa_links_opened,
+            count(DISTINCT visitor_key) FILTER (WHERE name = 'santa_link_invalid') AS santa_links_invalid,
             count(DISTINCT visitor_key) FILTER (WHERE name = 'page_view' AND path ~ '${TOOL_PATH_REGEX}') AS tool_visitors,
             round(avg(participants) FILTER (WHERE name = 'draw_completed')) AS avg_participants
         FROM analytics_events WHERE ${scope}`;
@@ -514,6 +518,8 @@ export async function getAdminData(key: RangeKey, now = new Date()): Promise<Adm
                 avgParticipants: numOrNull(current.avg_participants),
                 plakaGames,
                 extensionGiveaways: extension,
+                santaLinksOpened: num(current.santa_links_opened),
+                santaLinksInvalid: num(current.santa_links_invalid),
             },
             deltas: {
                 visitors: percentChange(visitors, prevVisitors),
@@ -524,6 +530,8 @@ export async function getAdminData(key: RangeKey, now = new Date()): Promise<Adm
                 shareRate: percentChange(rate(sharers, drawers), rate(prevSharers, prevDrawers)),
                 plakaGames: percentChange(plakaGames, plakaPrev),
                 extensionGiveaways: percentChange(extension, extensionPrev),
+                santaLinksOpened: percentChange(num(current.santa_links_opened), num(previous.santa_links_opened)),
+                santaLinksInvalid: percentChange(num(current.santa_links_invalid), num(previous.santa_links_invalid)),
             },
             tools,
             funnel: [

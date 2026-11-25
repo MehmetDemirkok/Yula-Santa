@@ -1,10 +1,11 @@
 "use client";
 
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { useParams } from "next/navigation";
 import { useTranslations } from "next-intl";
 import Link from "next/link";
 import { CalendarPlus, Wallet, CalendarDays, StickyNote, Sparkles, Link2Off } from "lucide-react";
+import { trackAction } from "@/lib/analytics/client";
 import { celebrate } from "@/lib/celebrate";
 import { localePath } from "@/lib/localePath";
 import { buildIcs, daysUntil, decodeSantaLink, type SantaLinkPayload } from "@/lib/secretSanta/link";
@@ -32,11 +33,18 @@ export default function PersonalLinkPage() {
     const [state, setState] = useState<State>({ status: "loading" });
     const [stage, setStage] = useState<"intro" | "revealed">("intro");
     const [opening, setOpening] = useState(false);
+    const tracked = useRef(false);
 
     useEffect(() => {
         const read = () => {
             const data = decodeSantaLink(window.location.hash);
             setState(data ? { status: "ok", data } : { status: "invalid" });
+            // Analytics only sees "/s", never the fragment, so record whether the
+            // link actually opened. Once per visit; the token itself is never sent.
+            if (!tracked.current) {
+                tracked.current = true;
+                trackAction(data ? "santa_link_opened" : "santa_link_invalid", "secret_santa");
+            }
         };
         read();
         window.addEventListener("hashchange", read);
