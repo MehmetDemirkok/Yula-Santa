@@ -1,6 +1,7 @@
 /**
  * Winter snowfall — six-armed snowflake particles (SVG), theme-aware
- * (visible on both light and dark backgrounds), respects reduced motion.
+ * (visible on both light and dark backgrounds). Under reduced motion it
+ * shows fewer, slower flakes instead of hiding the effect.
  */
 
 "use client";
@@ -40,37 +41,44 @@ function SnowflakeIcon({ rotation }: { rotation: number }) {
     );
 }
 
+/**
+ * Windows'ta "Animasyon efektleri" kapalıyken (ya da Uzak Masaüstü / "en iyi
+ * performans" ayarında) Chrome `prefers-reduced-motion: reduce` bildirir.
+ * Bu ziyaretçilerden karı tamamen gizlemek yerine az, yavaş ve dönmeyen
+ * taneler gösteriyoruz; tercih sayfa açıkken değişirse liste yeniden kurulur.
+ */
+function buildFlakes(reduced: boolean): Snowflake[] {
+    const narrow = window.innerWidth < 640;
+    const count = reduced ? (narrow ? 8 : 12) : narrow ? 16 : 26;
+    return Array.from({ length: count }, (_, i) => {
+        // Çoğu ince kar; her dört taneden biri şekli seçilebilen büyük tane
+        const size = i % 4 === 0 ? Math.random() * 3 + 8 : Math.random() * 2.5 + 3;
+        const duration = reduced ? Math.random() * 15 + 35 : Math.random() * 12 + 14;
+        return {
+            id: i,
+            x: Math.random() * 100,
+            size,
+            duration,
+            delay: -Math.random() * duration,
+            opacity: Math.random() * 0.35 + 0.35,
+            drift: (Math.random() - 0.5) * (reduced ? 12 : 40),
+            rotation: Math.random() * 360,
+        };
+    });
+}
+
 export function Snowfall() {
     const [flakes, setFlakes] = useState<Snowflake[]>([]);
-    const [reducedMotion, setReducedMotion] = useState(false);
 
     useEffect(() => {
         const mq = window.matchMedia("(prefers-reduced-motion: reduce)");
-        setReducedMotion(mq.matches);
-        const onChange = () => setReducedMotion(mq.matches);
-        mq.addEventListener("change", onChange);
-
-        if (mq.matches) return () => mq.removeEventListener("change", onChange);
-
-        const count = window.innerWidth < 640 ? 16 : 26;
-        setFlakes(
-            Array.from({ length: count }, (_, i) => ({
-                id: i,
-                x: Math.random() * 100,
-                // Çoğu ince kar; her dört taneden biri şekli seçilebilen büyük tane
-                size: i % 4 === 0 ? Math.random() * 3 + 8 : Math.random() * 2.5 + 3,
-                duration: Math.random() * 12 + 14,
-                delay: Math.random() * -24,
-                opacity: Math.random() * 0.35 + 0.35,
-                drift: (Math.random() - 0.5) * 40,
-                rotation: Math.random() * 360,
-            }))
-        );
-
-        return () => mq.removeEventListener("change", onChange);
+        const sync = () => setFlakes(buildFlakes(mq.matches));
+        sync();
+        mq.addEventListener("change", sync);
+        return () => mq.removeEventListener("change", sync);
     }, []);
 
-    if (reducedMotion || flakes.length === 0) return null;
+    if (flakes.length === 0) return null;
 
     return (
         <div className="fixed inset-0 pointer-events-none z-10 overflow-hidden" aria-hidden>
