@@ -82,6 +82,10 @@ Read `lib/tiktok/` before touching it. The earlier paid flow (PayTR checkout, cr
 
 `app/globals.css` sets `html { font-size: 14px }` at 640px and below, so rem-based Tailwind sizes shrink 12.5% on phones (`h-11` renders at 38.5px). It also applies an unlayered `min-height: 44px` to buttons, which beats every `min-h-*` utility. Use pixel sizes such as `h-[56px]` for touch targets. The fixed navbar is 72px tall on phones, but `main` only reserves `pt-14` (49px), so a page must add its own top padding.
 
+### Navbar
+
+`components/Navbar.tsx` does not use a fixed breakpoint for the desktop links: label widths differ too much between locales. It measures two hidden copies of the links and picks `full` (icons and labels), `compact` (labels, tighter padding) or `menu` (hamburger), so a long translation falls back instead of pushing the language switcher off screen. Below `lg` it is always the hamburger. Keep the hidden copies in step with the visible links when adding one.
+
 ### Plaka Avcısı (Turkey plate quiz game)
 
 - Pages: `app/[locale]/oyun/plaka-avcisi/` (server `page.tsx` for SEO/JSON-LD + `PlakaAvcisiClient.tsx`) and `/oyun/plaka-avcisi/liderlik` (noindex live rankings). UI copy is Turkish by design (`lang="tr"` on the game shell); translated strings in `messages/*.json` are limited to the tools card + page metadata (`tools.plakaAvcisi`, `plakaAvcisiShort`, `plakaAvcisiMeta`).

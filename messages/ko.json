@@ -100,8 +100,8 @@
         },
         "heroTitle": "YouTube & TikTok Comment Giveaways",
         "heroSubtitle": "Pick fair winners from video comments in seconds — free, no signup, no password.",
-        "youtubeGiveaway": "YouTube Giveaway",
-        "tiktokGiveaway": "TikTok Giveaway",
+        "youtubeGiveaway": "YouTube 추첨",
+        "tiktokGiveaway": "TikTok 추첨",
         "namePickerDesc": "Pick fair winners from any list",
         "stats": {
             "live": "실시간 통계",
@@ -852,7 +852,7 @@
             "listMode": "목록 보기",
             "clear": "모두 지우기"
         },
-        "giftSuggestions": "Gift Suggestions",
+        "giftSuggestions": "선물 추천",
         "giftSuggestionsContent": {
             "title": "Gift Suggestions Generator",
             "subtitle": "Discover perfect gift ideas for every special occasion",

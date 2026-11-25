@@ -83,8 +83,8 @@
         "viewAll": "查看全部",
         "heroTitle": "YouTube & TikTok Comment Giveaways",
         "heroSubtitle": "Pick fair winners from video comments in seconds — free, no signup, no password.",
-        "youtubeGiveaway": "YouTube Giveaway",
-        "tiktokGiveaway": "TikTok Giveaway",
+        "youtubeGiveaway": "YouTube 抽奖",
+        "tiktokGiveaway": "TikTok 抽奖",
         "namePickerDesc": "Pick fair winners from any list",
         "seo": {
             "title": "Free YouTube, TikTok & Secret Santa Platform",
@@ -851,7 +851,7 @@
             "listMode": "列表视图",
             "clear": "全部清除"
         },
-        "giftSuggestions": "Gift Suggestions",
+        "giftSuggestions": "礼物推荐",
         "giftSuggestionsContent": {
             "title": "Gift Suggestions Generator",
             "subtitle": "Discover perfect gift ideas for every special occasion",

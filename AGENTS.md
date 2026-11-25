@@ -24,6 +24,7 @@ Full architecture notes live in `CLAUDE.md`; design tokens in `design.md` — re
 - SEO pattern: each route folder = server `page.tsx` (metadata) + client `*Client.tsx`. Keep that split.
 - `@/*` path alias maps to the repo root.
 - Turkish-slug → English path redirects are hardcoded in `next.config.ts`.
+- `components/Navbar.tsx` measures hidden copies of its desktop links and switches between full, compact (no icons) and hamburger layouts, because label widths vary by locale. Update the hidden copies when adding a link.
 
 ## TikTok subsystem (free)
 

@@ -83,8 +83,8 @@
         "viewAll": "すべて見る",
         "heroTitle": "YouTube & TikTok Comment Giveaways",
         "heroSubtitle": "Pick fair winners from video comments in seconds — free, no signup, no password.",
-        "youtubeGiveaway": "YouTube Giveaway",
-        "tiktokGiveaway": "TikTok Giveaway",
+        "youtubeGiveaway": "YouTube抽選",
+        "tiktokGiveaway": "TikTok抽選",
         "namePickerDesc": "Pick fair winners from any list",
         "seo": {
             "title": "Free YouTube, TikTok & Secret Santa Platform",
@@ -851,7 +851,7 @@
             "listMode": "リスト表示",
             "clear": "すべてクリア"
         },
-        "giftSuggestions": "Gift Suggestions",
+        "giftSuggestions": "ギフトのアイデア",
         "giftSuggestionsContent": {
             "title": "Gift Suggestions Generator",
             "subtitle": "Discover perfect gift ideas for every special occasion",

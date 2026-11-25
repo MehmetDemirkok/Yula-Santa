@@ -83,8 +83,8 @@
         "viewAll": "Vedi Tutti",
         "heroTitle": "YouTube & TikTok Comment Giveaways",
         "heroSubtitle": "Pick fair winners from video comments in seconds — free, no signup, no password.",
-        "youtubeGiveaway": "YouTube Giveaway",
-        "tiktokGiveaway": "TikTok Giveaway",
+        "youtubeGiveaway": "Estrazione YouTube",
+        "tiktokGiveaway": "Estrazione TikTok",
         "namePickerDesc": "Pick fair winners from any list",
         "seo": {
             "title": "Free YouTube, TikTok & Secret Santa Platform",
@@ -873,7 +873,7 @@
             "listMode": "Vista Elenco",
             "clear": "Cancella Tutto"
         },
-        "giftSuggestions": "Gift Suggestions",
+        "giftSuggestions": "Idee regalo",
         "giftSuggestionsContent": {
             "title": "Gift Suggestions Generator",
             "subtitle": "Discover perfect gift ideas for every special occasion",

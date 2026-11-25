@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, useEffect } from "react";
+import { useState, useEffect, useLayoutEffect, useRef } from "react";
 import { useRouter, useParams, usePathname } from "next/navigation";
 import {
     Youtube,
@@ -33,6 +33,27 @@ function TikTokIcon({ className }: { className?: string }) {
     );
 }
 
+/**
+ * How the desktop (lg+) navigation is shown. Label lengths differ a lot between
+ * locales (Russian and German are about twice as wide as Korean), so a fixed
+ * breakpoint cannot know whether the links fit. The navbar measures a hidden
+ * copy of the links in each layout and picks the first that fits:
+ * "full" (icons + labels), "compact" (labels only, tighter padding) or
+ * "menu" (hamburger).
+ */
+type NavMode = "full" | "compact" | "menu";
+
+/** Small cushion so the links never touch the controls on the right. */
+const NAV_FIT_MARGIN = 8;
+
+const navItemBase = "flex items-center py-2 text-[13px] xl:text-sm font-bold rounded-full whitespace-nowrap";
+const navItemClass = { full: `${navItemBase} gap-1.5 px-3.5`, compact: `${navItemBase} gap-1 px-2.5` };
+const navPillClass = "flex items-center gap-0.5 p-1 rounded-full border shrink-0";
+const navMeasureClass = `${navPillClass} pointer-events-none invisible absolute start-0 top-0 h-0 w-max overflow-hidden`;
+
+/** Drops a trailing emoji such as "🎄" or "🤫" from a label; the navbar has icons. */
+const stripEmoji = (label: string) => label.replace(/\s*\p{Extended_Pictographic}+\s*$/u, "");
+
 export function Navbar() {
     const router = useRouter();
     const params = useParams();
@@ -42,6 +63,50 @@ export function Navbar() {
 
     const [isMenuOpen, setIsMenuOpen] = useState(false);
     const [scrolled, setScrolled] = useState(false);
+    const [navMode, setNavMode] = useState<NavMode>("full");
+    const navRef = useRef<HTMLElement>(null);
+    const logoRef = useRef<HTMLButtonElement>(null);
+    const controlsRef = useRef<HTMLDivElement>(null);
+    const menuButtonRef = useRef<HTMLButtonElement>(null);
+    const measureFullRef = useRef<HTMLDivElement>(null);
+    const measureCompactRef = useRef<HTMLDivElement>(null);
+
+    // Runs before paint so the wrong layout is never shown after hydration.
+    useLayoutEffect(() => {
+        const nav = navRef.current;
+        const logo = logoRef.current;
+        const controls = controlsRef.current;
+        const menuButton = menuButtonRef.current;
+        const measureFull = measureFullRef.current;
+        const measureCompact = measureCompactRef.current;
+        if (!nav || !logo || !controls || !menuButton || !measureFull || !measureCompact) return;
+
+        const update = () => {
+            const navGap = parseFloat(getComputedStyle(nav).columnGap) || 0;
+            // The hamburger shows and hides with the mode, so leave it out to keep the result stable.
+            const menuVisible = menuButton.offsetParent !== null;
+            const controlsGap = parseFloat(getComputedStyle(controls).columnGap) || 0;
+            const controlsWidth = controls.offsetWidth - (menuVisible ? menuButton.offsetWidth + controlsGap : 0);
+            const available = nav.clientWidth - logo.offsetWidth - controlsWidth - navGap * 2 - NAV_FIT_MARGIN;
+
+            const mode: NavMode =
+                measureFull.offsetWidth <= available ? "full" : measureCompact.offsetWidth <= available ? "compact" : "menu";
+            setNavMode(mode);
+            // Widening a desktop window out of the hamburger layout closes the open menu.
+            // Below lg the hamburger is always used, so the menu is left alone there.
+            if (mode !== "menu" && window.matchMedia("(min-width: 1024px)").matches) setIsMenuOpen(false);
+        };
+
+        update();
+        const observer = new ResizeObserver(update);
+        observer.observe(nav);
+        observer.observe(controls);
+        observer.observe(measureFull);
+        observer.observe(measureCompact);
+        // Web fonts change label widths once they load.
+        document.fonts?.ready.then(update).catch(() => {});
+        return () => observer.disconnect();
+    }, [locale]);
 
     useEffect(() => {
         const handleScroll = () => setScrolled(window.scrollY > 20);
@@ -121,7 +186,7 @@ export function Navbar() {
             active: pathname?.includes("/tiktok"),
         },
         {
-            name: t("home.secretDraw").replace(" 🎄", ""),
+            name: stripEmoji(t("home.secretDraw")),
             href: localePath(locale, "/secret-santa"),
             icon: Gift,
             active: pathname?.includes("/secret-santa"),
@@ -172,9 +237,36 @@ export function Navbar() {
                     )}
                 />
 
-                <div className="relative max-w-[1320px] mx-auto px-4 sm:px-6 lg:px-8">
-                    <nav className="flex items-center justify-between gap-3">
+                <div className="relative max-w-[1440px] mx-auto px-4 sm:px-6 lg:px-8">
+                    {/* Hidden copies of the desktop links in both layouts, used only to measure whether they fit. */}
+                    <div ref={measureFullRef} aria-hidden inert className={navMeasureClass}>
+                        {primaryLinks.map((link) => (
+                            <span key={link.href} className={navItemClass.full}>
+                                <link.icon className="w-4 h-4 shrink-0" />
+                                {link.name}
+                            </span>
+                        ))}
+                        <span className={navItemClass.full}>
+                            <Gamepad2 className="w-4 h-4 shrink-0" />
+                            {t("tools.title")}
+                            <ChevronDown className="w-3.5 h-3.5" />
+                        </span>
+                    </div>
+                    <div ref={measureCompactRef} aria-hidden inert className={navMeasureClass}>
+                        {primaryLinks.map((link) => (
+                            <span key={link.href} className={navItemClass.compact}>
+                                {link.name}
+                            </span>
+                        ))}
+                        <span className={navItemClass.compact}>
+                            {t("tools.title")}
+                            <ChevronDown className="w-3.5 h-3.5" />
+                        </span>
+                    </div>
+
+                    <nav ref={navRef} className="flex items-center justify-between gap-3">
                         <button
+                            ref={logoRef}
                             onClick={() => router.push(localePath(locale))}
                             className="flex items-center gap-2.5 sm:gap-3 group relative z-10 shrink-0"
                         >
@@ -192,19 +284,26 @@ export function Navbar() {
                             </span>
                         </button>
 
-                        <div className="hidden lg:flex items-center gap-0.5 p-1 rounded-full bg-[var(--surface-2)]/70 border border-[var(--border-light)] dark:border-white/5 backdrop-blur-sm">
+                        <div
+                            className={cn(
+                                navPillClass,
+                                "hidden bg-[var(--surface-2)]/70 border-[var(--border-light)] dark:border-white/5 backdrop-blur-sm",
+                                navMode !== "menu" && "lg:flex"
+                            )}
+                        >
                             {primaryLinks.map((link) => (
                                 <button
                                     key={link.href}
                                     onClick={() => router.push(link.href)}
                                     className={cn(
-                                        "flex items-center gap-1.5 px-3.5 py-2 text-[13px] xl:text-sm font-bold rounded-full transition-all duration-200 whitespace-nowrap",
+                                        navMode === "compact" ? navItemClass.compact : navItemClass.full,
+                                        "transition-all duration-200",
                                         link.active
                                             ? "bg-santa-red text-white shadow-[0_3px_12px_rgba(182,23,34,0.35)]"
                                             : "text-[var(--text-secondary)] hover:text-foreground hover:bg-[var(--card-bg)]"
                                     )}
                                 >
-                                    <link.icon className="w-4 h-4 shrink-0" />
+                                    <link.icon className={cn("w-4 h-4 shrink-0", navMode === "compact" && "hidden")} />
                                     {link.name}
                                 </button>
                             ))}
@@ -212,13 +311,14 @@ export function Navbar() {
                             <div className="relative group/dropdown">
                                 <button
                                     className={cn(
-                                        "flex items-center gap-1.5 px-3.5 py-2 text-[13px] xl:text-sm font-bold rounded-full transition-all duration-200 whitespace-nowrap",
+                                        navMode === "compact" ? navItemClass.compact : navItemClass.full,
+                                        "transition-all duration-200",
                                         toolsActive
                                             ? "bg-santa-red text-white shadow-[0_3px_12px_rgba(182,23,34,0.35)]"
                                             : "text-[var(--text-secondary)] hover:text-foreground hover:bg-[var(--card-bg)] group-hover/dropdown:text-foreground group-hover/dropdown:bg-[var(--card-bg)]"
                                     )}
                                 >
-                                    <Gamepad2 className="w-4 h-4 shrink-0" />
+                                    <Gamepad2 className={cn("w-4 h-4 shrink-0", navMode === "compact" && "hidden")} />
                                     {t("tools.title")}
                                     <ChevronDown className="w-3.5 h-3.5 transition-transform duration-300 group-hover/dropdown:rotate-180" />
                                 </button>
@@ -261,7 +361,7 @@ export function Navbar() {
                             </div>
                         </div>
 
-                        <div className="flex items-center gap-2 sm:gap-3 shrink-0">
+                        <div ref={controlsRef} className="flex items-center gap-2 sm:gap-3 shrink-0">
                             <div className="hidden sm:block">
                                 <ThemeToggle variant="dropdown" />
                             </div>
@@ -269,8 +369,12 @@ export function Navbar() {
                                 <LanguageSwitcher />
                             </div>
                             <button
+                                ref={menuButtonRef}
                                 onClick={() => setIsMenuOpen(!isMenuOpen)}
-                                className="lg:hidden relative w-11 h-11 flex items-center justify-center rounded-xl bg-[var(--surface-2)] dark:bg-white/10 text-[var(--text-secondary)] hover:bg-[var(--border-medium)] dark:hover:bg-white/20 transition-colors border border-[var(--border-light)] dark:border-white/10"
+                                className={cn(
+                                    "relative w-11 h-11 flex items-center justify-center rounded-xl bg-[var(--surface-2)] dark:bg-white/10 text-[var(--text-secondary)] hover:bg-[var(--border-medium)] dark:hover:bg-white/20 transition-colors border border-[var(--border-light)] dark:border-white/10",
+                                    navMode !== "menu" && "lg:hidden"
+                                )}
                                 aria-label={isMenuOpen ? "Close menu" : "Open menu"}
                                 aria-expanded={isMenuOpen}
                             >
@@ -284,7 +388,8 @@ export function Navbar() {
 
             <div
                 className={cn(
-                    "fixed inset-0 top-0 pt-24 bg-[var(--background)] z-[90] lg:hidden transition-all duration-300 ease-in-out overflow-y-auto pb-20",
+                    "fixed inset-0 top-0 pt-24 bg-[var(--background)] z-[90] transition-all duration-300 ease-in-out overflow-y-auto pb-20",
+                    navMode !== "menu" && "lg:hidden",
                     isMenuOpen ? "translate-x-0 opacity-100" : "translate-x-full opacity-0 pointer-events-none"
                 )}
             >

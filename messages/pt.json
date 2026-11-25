@@ -100,8 +100,8 @@
         },
         "heroTitle": "YouTube & TikTok Comment Giveaways",
         "heroSubtitle": "Pick fair winners from video comments in seconds — free, no signup, no password.",
-        "youtubeGiveaway": "YouTube Giveaway",
-        "tiktokGiveaway": "TikTok Giveaway",
+        "youtubeGiveaway": "Sorteio do YouTube",
+        "tiktokGiveaway": "Sorteio do TikTok",
         "namePickerDesc": "Pick fair winners from any list",
         "stats": {
             "live": "Estatísticas ao vivo",
@@ -874,7 +874,7 @@
             "listMode": "Visualização de Lista",
             "clear": "Limpar Tudo"
         },
-        "giftSuggestions": "Gift Suggestions",
+        "giftSuggestions": "Ideias de presentes",
         "giftSuggestionsContent": {
             "title": "Gift Suggestions Generator",
             "subtitle": "Discover perfect gift ideas for every special occasion",

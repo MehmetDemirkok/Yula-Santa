@@ -100,8 +100,8 @@
         },
         "heroTitle": "YouTube & TikTok Comment Giveaways",
         "heroSubtitle": "Pick fair winners from video comments in seconds — free, no signup, no password.",
-        "youtubeGiveaway": "YouTube Giveaway",
-        "tiktokGiveaway": "TikTok Giveaway",
+        "youtubeGiveaway": "سحب يوتيوب",
+        "tiktokGiveaway": "سحب تيك توك",
         "namePickerDesc": "Pick fair winners from any list",
         "stats": {
             "live": "إحصاءات مباشرة",
@@ -873,7 +873,7 @@
                 "صانع الفرق"
             ]
         },
-        "giftSuggestions": "Gift Suggestions",
+        "giftSuggestions": "أفكار الهدايا",
         "giftSuggestionsContent": {
             "title": "Gift Suggestions Generator",
             "subtitle": "Discover perfect gift ideas for every special occasion",
