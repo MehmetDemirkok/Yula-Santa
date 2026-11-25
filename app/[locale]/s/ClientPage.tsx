@@ -3,9 +3,10 @@
 import { useEffect, useRef, useState } from "react";
 import { useParams } from "next/navigation";
 import { useTranslations } from "next-intl";
-import Link from "next/link";
 import { CalendarPlus, Wallet, CalendarDays, StickyNote, Sparkles, Link2Off } from "lucide-react";
 import { trackAction } from "@/lib/analytics/client";
+import { TrackedLink } from "@/components/analytics/TrackedLink";
+import { StartOwnDrawCard } from "@/components/secretSanta/StartOwnDrawCard";
 import { celebrate } from "@/lib/celebrate";
 import { localePath } from "@/lib/localePath";
 import { buildIcs, daysUntil, decodeSantaLink, type SantaLinkPayload } from "@/lib/secretSanta/link";
@@ -64,9 +65,9 @@ export default function PersonalLinkPage() {
                     </div>
                     <h1 className="font-heading text-headline-md text-[var(--text-primary)]">{t("invalidLink")}</h1>
                     <p className="text-[var(--text-secondary)]">{t("invalidLinkDesc")}</p>
-                    <Link href={localePath(locale, "/secret-santa")} className="inline-flex h-[48px] items-center justify-center rounded-full bg-santa-red px-6 font-bold text-white">
+                    <TrackedLink tool="secret_santa" href={localePath(locale, "/secret-santa")} className="inline-flex h-[48px] items-center justify-center rounded-full bg-santa-red px-6 font-bold text-white">
                         {t("createOwn")}
-                    </Link>
+                    </TrackedLink>
                 </div>
             </main>
         );
@@ -184,18 +185,22 @@ export default function PersonalLinkPage() {
                     )}
                 </div>
 
-                {stage === "revealed" && (
-                    <AdWrapper position="inline">
-                        <InArticleAd adSlot={AD_SLOTS.IN_ARTICLE} />
-                    </AdWrapper>
+                {stage === "revealed" ? (
+                    <>
+                        <StartOwnDrawCard locale={locale} />
+                        <AdWrapper position="inline">
+                            <InArticleAd adSlot={AD_SLOTS.IN_ARTICLE} />
+                        </AdWrapper>
+                    </>
+                ) : (
+                    <TrackedLink
+                        tool="secret_santa"
+                        href={localePath(locale, "/secret-santa")}
+                        className="inline-flex h-[44px] items-center justify-center text-sm font-semibold text-[var(--text-secondary)] hover:text-santa-red"
+                    >
+                        {t("createOwn")} →
+                    </TrackedLink>
                 )}
-
-                <Link
-                    href={localePath(locale, "/secret-santa")}
-                    className="inline-flex h-[44px] items-center justify-center text-sm font-semibold text-[var(--text-secondary)] hover:text-santa-red"
-                >
-                    {t("createOwn")} →
-                </Link>
             </div>
         </main>
     );

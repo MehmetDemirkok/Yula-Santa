@@ -16,6 +16,8 @@ const ISTANBUL_OFFSET_MS = 3 * 60 * 60 * 1000;
 const DAY_MS = 86_400_000;
 const RETENTION_DAYS = 90;
 const TOOL_PATH_REGEX = "^(/[a-z]{2})?/(secret-santa|raffle|youtube|tiktok|tools/[a-z-]+)(/|$)";
+/** A Secret Santa personal link page, /s or /<locale>/s. */
+const SANTA_LINK_PATH_REGEX = "^(/[a-z]{2})?/s$";
 
 let sql: NeonQueryFunction<false, false> | null = null;
 let schemaReady: Promise<void> | null = null;
@@ -338,6 +340,7 @@ function describeEvent(row: Record<string, unknown>): { title: string; detail: s
         qr_generated: "QR kod oluşturuldu",
         santa_link_opened: "Kişisel Santa linki açıldı",
         santa_link_invalid: "Kişisel Santa linki açılamadı",
+        santa_links_all_sent: "Tüm Santa linkleri gönderildi",
     };
     const action = actions[name];
     if (action) return { title: action, detail: toolLabel ?? String(row.path) };
@@ -370,6 +373,8 @@ export async function getAdminData(key: RangeKey, now = new Date()): Promise<Adm
             count(DISTINCT visitor_key) FILTER (WHERE name = 'draw_shared') AS sharers,
             count(DISTINCT visitor_key) FILTER (WHERE name = 'santa_link_opened') AS santa_links_opened,
             count(DISTINCT visitor_key) FILTER (WHERE name = 'santa_link_invalid') AS santa_links_invalid,
+            count(DISTINCT visitor_key) FILTER (WHERE name = 'cta_click' AND path ~ '${SANTA_LINK_PATH_REGEX}') AS santa_link_starters,
+            count(*) FILTER (WHERE name = 'santa_links_all_sent') AS santa_all_sent,
             count(DISTINCT visitor_key) FILTER (WHERE name = 'page_view' AND path ~ '${TOOL_PATH_REGEX}') AS tool_visitors,
             round(avg(participants) FILTER (WHERE name = 'draw_completed')) AS avg_participants
         FROM analytics_events WHERE ${scope}`;
@@ -520,6 +525,8 @@ export async function getAdminData(key: RangeKey, now = new Date()): Promise<Adm
                 extensionGiveaways: extension,
                 santaLinksOpened: num(current.santa_links_opened),
                 santaLinksInvalid: num(current.santa_links_invalid),
+                santaLinkStarters: num(current.santa_link_starters),
+                santaAllSent: num(current.santa_all_sent),
             },
             deltas: {
                 visitors: percentChange(visitors, prevVisitors),
@@ -532,6 +539,11 @@ export async function getAdminData(key: RangeKey, now = new Date()): Promise<Adm
                 extensionGiveaways: percentChange(extension, extensionPrev),
                 santaLinksOpened: percentChange(num(current.santa_links_opened), num(previous.santa_links_opened)),
                 santaLinksInvalid: percentChange(num(current.santa_links_invalid), num(previous.santa_links_invalid)),
+                santaAllSent: percentChange(num(current.santa_all_sent), num(previous.santa_all_sent)),
+                santaLinkStartRate: percentChange(
+                    rate(num(current.santa_link_starters), num(current.santa_links_opened)),
+                    rate(num(previous.santa_link_starters), num(previous.santa_links_opened)),
+                ),
             },
             tools,
             funnel: [

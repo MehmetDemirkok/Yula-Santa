@@ -8,7 +8,7 @@ export { viewport };
 const PATH = '/secret-santa/university';
 const WHY_ICONS = [Smartphone, Wallet, Ban, FileUp, Lightbulb, Gift];
 
-// Only Turkish and English copy exists; other locales 404 instead of showing English under /de/...
+// Only Turkish, English and Russian copy exists (LANDING_LOCALES); other locales 404 instead of showing English under /de/...
 export const dynamicParams = false;
 
 export function generateStaticParams() {

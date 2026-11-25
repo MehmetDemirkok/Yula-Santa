@@ -355,6 +355,13 @@ export const CLASSROOM_SEO_COPY: Record<string, ClassroomCopy> = {
             { q: 'Имена где-то сохраняются?', a: 'Нет. Имена и пары остаются в вашем браузере.' },
             { q: 'Это бесплатно?', a: 'Да, полностью бесплатно и без регистрации.' },
         ],
+        relatedTitle: 'Другие страницы о Тайном Санте',
+        related: [
+            { path: '/secret-santa', label: 'Провести жеребьёвку Тайного Санты' },
+            { path: '/secret-santa/office', label: 'Тайный Санта в офисе' },
+            { path: '/secret-santa/university', label: 'Тайный Санта в университете и клубе' },
+            { path: '/tools/gift-suggestions', label: 'Идеи подарков' },
+        ],
         breadcrumb: 'Тайный Санта в классе',
     },
     ar: {

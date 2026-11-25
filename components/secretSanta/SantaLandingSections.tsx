@@ -19,8 +19,8 @@ import { localePath } from '@/lib/localePath';
 
 /**
  * Server-rendered sections under the /secret-santa tool: how it works, who it is
- * for, verified features and how data is handled. Turkish and English only;
- * other locales render nothing. Every claim must match the tool (see the header
+ * for, verified features and how data is handled. Turkish, English and Russian
+ * only; other locales render nothing. Every claim must match the tool (see the header
  * of lib/secretSantaSeoCopy.ts).
  */
 type Copy = {
@@ -84,7 +84,7 @@ const COPY: Record<string, Copy> = {
             { q: 'Veriler nerede işleniyor?', a: 'İsimler ve eşleşmeler sizin tarayıcınızda hesaplanır ve saklanır; sunucumuza gönderilmez. Excel ve CSV dosyaları da tarayıcıda okunur. Yalnızca PDF yüklerseniz dosya, isimleri çıkarmak için sunucuda işlenir ve kaydedilmez.' },
             { q: 'Kayıt olmak gerekiyor mu?', a: 'Hayır. Çekilişi yapmak da sonucu görmek de hesap gerektirmez.' },
             { q: 'Kişisel linkler nasıl çalışır?', a: 'Eşleşme, linkin # işaretinden sonraki kısmında durur. Bu kısım sunucuya, kayıtlara veya istatistiklere gitmez. Şifreli değildir: linki açan herkes sonucu görür ve linkleri oluşturan organizatör de açabilir. Bu yüzden her linki yalnızca sahibine gönderin.' },
-            { q: 'İstatistik tutuyor musunuz?', a: 'Yalnızca sayfa adresini ve katılımcı sayısını sayarız. İsimler, eşleşmeler ve ipuçları bu kayıtlara girmez.' },
+            { q: 'İstatistik tutuyor musunuz?', a: 'Yalnızca sayfa adresini, katılımcı sayısını ve linkin açılıp açılmadığı gibi adımları sayarız. İsimler, eşleşmeler ve ipuçları bu kayıtlara girmez.' },
         ],
         privacyLink: 'Gizlilik politikasının tamamı →',
         finalTitle: 'Yılbaşı çekilişine hazır mısın?',
@@ -119,11 +119,46 @@ const COPY: Record<string, Copy> = {
             { q: 'Where is the data processed?', a: 'Names and matches are computed and stored in your browser and are not sent to our server. Excel and CSV files are read in the browser too. Only a PDF upload is processed on our server, to extract the names, and it is not saved.' },
             { q: 'Do I need to sign up?', a: 'No. Neither running the draw nor seeing a result needs an account.' },
             { q: 'How do personal links work?', a: "The match sits after the # in the link. That part never reaches our server, logs or statistics. It is not encrypted: anyone who opens the link sees the result, and the organizer who created the links could open them. So send each link only to its owner." },
-            { q: 'Do you collect statistics?', a: 'We count only the page address and the number of participants. Names, matches and hints never enter those records.' },
+            { q: 'Do you collect statistics?', a: 'We count only the page address, the number of participants and steps such as whether a link opened. Names, matches and hints never enter those records.' },
         ],
         privacyLink: 'Read the full privacy notice →',
         finalTitle: 'Ready for your gift exchange?',
         finalCta: 'Start a free draw',
+    },
+    ru: {
+        howTitle: 'Как это работает',
+        steps: [
+            { title: 'Добавьте участников', desc: 'Вводите имена по одному, вставьте список или загрузите файл Excel, CSV или PDF.' },
+            { title: 'Запустите жеребьёвку', desc: 'При желании выберите, кто не должен вытянуть друг друга, и укажите бюджет и дату. Никто не вытягивает сам себя.' },
+            { title: 'Каждый узнаёт свою пару', desc: 'Отправьте каждому личную ссылку, смотрите по очереди на одном экране или распечатайте складные карточки.' },
+        ],
+        audienceTitle: 'Для кого',
+        audiences: [
+            { key: 'school', title: 'Школы и классы', desc: 'Загрузите список класса и распечатайте для каждого ученика складную карточку, скрывающую результат. Телефоны не нужны.', cta: 'Для учителей' },
+            { key: 'university', title: 'Университеты и студенческие клубы', desc: 'Для клуба, факультета или общежития: каждый открывает свою ссылку на телефоне.', cta: 'Для студентов' },
+            { key: 'office', title: 'Компании и офисы', desc: 'Загрузите список сотрудников из Excel, объедините отделы в группы и разошлите ссылки по почте.', cta: 'Для офисов' },
+            { key: 'friends', title: 'Друзья и семьи', desc: 'Отправляйте ссылки в WhatsApp, даже если все живут в разных городах, и разводите тех, кто живёт вместе.', cta: 'Начать жеребьёвку' },
+        ],
+        featuresTitle: 'Возможности',
+        features: [
+            { key: 'import', title: 'Импорт из Excel и CSV', desc: 'Загрузите список из файла; повторяющиеся имена пропускаются.' },
+            { key: 'fair', title: 'Честный случайный подбор', desc: 'Пары составляются с помощью криптографического генератора случайных чисел браузера.' },
+            { key: 'rules', title: 'Правила для пар и родственников', desc: 'Выбранные пары и участники одной группы никогда не совпадают.' },
+            { key: 'links', title: 'Личные ссылки', desc: 'В сообщении не написано, кто кому достался; результат видит только тот, кто открыл ссылку.' },
+            { key: 'print', title: 'Карточки для печати', desc: 'На листе A4 помещается пять складных карточек.' },
+            { key: 'noSignup', title: 'Без регистрации', desc: 'Аккаунт не нужен ни организатору, ни участникам.' },
+            { key: 'free', title: 'Полностью бесплатно', desc: 'Никаких платежей и подписок.' },
+        ],
+        trustTitle: 'Конфиденциальность и доверие',
+        trust: [
+            { q: 'Где обрабатываются данные?', a: 'Имена и пары рассчитываются и хранятся в вашем браузере и не отправляются на наш сервер. Файлы Excel и CSV тоже читаются в браузере. Только загруженный PDF обрабатывается на нашем сервере, чтобы извлечь имена, и не сохраняется.' },
+            { q: 'Нужна ли регистрация?', a: 'Нет. Аккаунт не нужен ни для жеребьёвки, ни для просмотра результата.' },
+            { q: 'Как работают личные ссылки?', a: 'Пара записана после знака # в ссылке. Эта часть никогда не попадает на наш сервер, в журналы или статистику. Она не зашифрована: любой, кто откроет ссылку, увидит результат, и организатор, создавший ссылки, может их открыть. Поэтому отправляйте каждую ссылку только её владельцу.' },
+            { q: 'Вы собираете статистику?', a: 'Мы учитываем только адрес страницы, число участников и такие шаги, как то, открылась ли ссылка. Имена, пары и подсказки никогда не попадают в эти записи.' },
+        ],
+        privacyLink: 'Читать полную политику конфиденциальности →',
+        finalTitle: 'Готовы к обмену подарками?',
+        finalCta: 'Провести бесплатную жеребьёвку',
     },
 };
 

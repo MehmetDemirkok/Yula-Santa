@@ -30,8 +30,15 @@ interface ClientLayoutProps {
     children: ReactNode;
 }
 
+/**
+ * Pages where the "advertise here" invite is left out: the home page stays
+ * short, and on a Secret Santa result or personal link the invite would pull
+ * attention from the moment people came for. Real ads (ADS_ENABLED) still show.
+ */
+const NO_INVITE_PATHS = new Set(["/", "/s", "/result"]);
+
 export function ClientLayout({ children }: ClientLayoutProps) {
-    const isHome = usePathname() === "/";
+    const showInvite = !NO_INVITE_PATHS.has(usePathname());
 
     return (
         <ThemeProvider>
@@ -55,9 +62,9 @@ export function ClientLayout({ children }: ClientLayoutProps) {
                 </div>
 
                 {/* Site geneli reklam alanı - Footer'dan hemen önce, tüm sayfalarda görünür.
-                    Reklam ağı yapılandırılmadıysa yerine "reklam ver" daveti gösterilir;
-                    ana sayfa kısa kalsın diye bu davet orada gösterilmez. */}
-                {(ADS_ENABLED || !isHome) && (
+                    Reklam ağı yapılandırılmadıysa yerine "reklam ver" daveti gösterilir
+                    (NO_INVITE_PATHS'teki sayfalar hariç). */}
+                {(ADS_ENABLED || showInvite) && (
                     <div className="w-full px-4">
                         {ADS_ENABLED ? (
                             <AdWrapper position="bottom" className="max-w-4xl mx-auto">

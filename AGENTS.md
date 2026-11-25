@@ -24,6 +24,7 @@ Full architecture notes live in `CLAUDE.md`; design tokens in `design.md` — re
 - SEO pattern: each route folder = server `page.tsx` (metadata) + client `*Client.tsx`. Keep that split.
 - `@/*` path alias maps to the repo root.
 - Turkish-slug → English path redirects are hardcoded in `next.config.ts`.
+- `components/Navbar.tsx` measures hidden copies of its desktop links and switches between full, compact (no icons) and hamburger layouts, because label widths vary by locale. Update the hidden copies when adding a link.
 
 ## TikTok subsystem (free)
 
@@ -33,7 +34,7 @@ Full architecture notes live in `CLAUDE.md`; design tokens in `design.md` — re
 
 ## Secret Santa
 
-- `lib/secretSanta/` holds the draw (with "must not draw each other" rules), personal links and storage. Personal links are `/s#<token>`: the match is in the URL fragment, never sent to the server, not encrypted. Gift ideas send only the hint and budget, never names. Also: group rules, printable fold-over cards (5 per A4; print rules in `app/globals.css`), and audience landing pages rendered by `components/secretSanta/SantaLandingPage.tsx`: `/secret-santa/classroom` (12 locales, `lib/classroomSeoCopy.ts`) plus `/secret-santa/office` and `/secret-santa/university` (tr and en only, `lib/officeUniversitySeoCopy.ts`, `dynamicParams = false`). `/secret-santa/what-is` (tr, en; `lib/whatIsSecretSantaCopy.ts`) is an explainer. `components/secretSanta/SantaLandingSections.tsx` adds steps, audiences, features and privacy under the tool (tr, en). Turkish slugs such as `/ofis-yilbasi-cekilisi` redirect in `next.config.ts`. Keep `lib/secretSantaSeoCopy.ts`, these copy files and `lib/legal/privacyNotice.ts` in line with this.
+- `lib/secretSanta/` holds the draw (with "must not draw each other" rules), personal links and storage. Personal links are `/s#<token>`: the match is in the URL fragment, never sent to the server, not encrypted. Gift ideas send only the hint and budget, never names. Also: group rules, printable fold-over cards (5 per A4; print rules in `app/globals.css`), and audience landing pages rendered by `components/secretSanta/SantaLandingPage.tsx`: `/secret-santa/classroom` (12 locales, `lib/classroomSeoCopy.ts`) plus `/secret-santa/office` and `/secret-santa/university` (tr, en, ru, `lib/officeUniversitySeoCopy.ts`, `dynamicParams = false`). `/secret-santa/what-is` (tr, en, ru; `lib/whatIsSecretSantaCopy.ts`) is an explainer. Their locale list is `LANDING_LOCALES` in `lib/secretSanta/landingLocales.ts`. `components/secretSanta/SantaLandingSections.tsx` adds steps, audiences, features and privacy under the tool (tr, en, ru). After the reveal, `/s` shows `StartOwnDrawCard` (tracked `cta_click`). Turkish slugs such as `/ofis-yilbasi-cekilisi` redirect in `next.config.ts`. Keep `lib/secretSantaSeoCopy.ts`, these copy files and `lib/legal/privacyNotice.ts` in line with this.
 
 ## Plaka Avcısı (plate quiz game)
 
@@ -56,7 +57,7 @@ Full architecture notes live in `CLAUDE.md`; design tokens in `design.md` — re
 - `requireAdmin()` in `lib/admin/guard.ts` must be the first call in anything under `/admin`. Anyone who is not the admin gets a plain 404. The rules live in `lib/admin/access.ts`: the Google e-mail must be verified, listed in `ADMIN_EMAILS`, and signed in within 12 hours. An empty list means nobody gets in. Next.js middleware does not cover `/api`, so never rely on it for admin checks.
 - `ADMIN_DEV_BYPASS=1` skips the check only under `next dev`.
 - Events go from `lib/analytics/client.ts` to `POST /api/analytics/collect`, a write-only endpoint, and into `analytics_events` through `lib/analytics/store.ts` (server-only). `lib/analytics/events.ts` is an allowlist with no free-text field. **Never send participant names, winners or matches**: the privacy page and Secret Santa copy promise they stay out of these records.
-- New tools must call `trackDraw(tool, counts)` when a draw finishes, and the tool name must be added to `TOOLS`. Funnel steps use `trackAction` (`cta_click`, `list_imported`, `card_printed`, `whatsapp_share`, `qr_generated`, `santa_link_opened`, `santa_link_invalid`); add new names to `EVENT_NAMES` and the admin labels.
+- New tools must call `trackDraw(tool, counts)` when a draw finishes, and the tool name must be added to `TOOLS`. Funnel steps use `trackAction` (`cta_click`, `list_imported`, `card_printed`, `whatsapp_share`, `qr_generated`, `santa_link_opened`, `santa_link_invalid`, `santa_links_all_sent`); add new names to `EVENT_NAMES` and the admin labels.
 - Optional GA4: `NEXT_PUBLIC_GA_MEASUREMENT_ID` loads `components/analytics/ConsentedGoogleAnalytics.tsx` only after cookie consent; events are mirrored with the pathname only. The privacy notice mentions GA4 only while the variable is set.
 - `/admin/marketing` is an editable SVG studio (Instagram story/post, A4 poster, A4 QR poster) with PNG/SVG export; copy in `lib/marketing/campaigns.ts`, QR via the `qrcode` package.
 - Raw IPs and user agents are not stored. Without consent, the visitor key changes daily. A persistent browser ID and the signed-in e-mail are used only after cookies are accepted (`yulasanta_cookie_consent_v2`).

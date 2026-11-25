@@ -8,7 +8,7 @@ export { viewport };
 const PATH = '/secret-santa/office';
 const WHY_ICONS = [FileUp, Users, Link2, CalendarDays, Globe, Gift];
 
-// Only Turkish and English copy exists; other locales 404 instead of showing English under /de/...
+// Only Turkish, English and Russian copy exists (LANDING_LOCALES); other locales 404 instead of showing English under /de/...
 export const dynamicParams = false;
 
 export function generateStaticParams() {

@@ -12,7 +12,7 @@ export { viewport };
 
 const PATH = '/secret-santa/what-is';
 
-// Only Turkish and English copy exists.
+// Only Turkish, English and Russian copy exists (LANDING_LOCALES).
 export const dynamicParams = false;
 
 export function generateStaticParams() {

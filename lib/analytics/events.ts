@@ -20,6 +20,8 @@ export const EVENT_NAMES = [
     // Secret Santa personal link (/s#…): opened fine or failed to decode. Never the token.
     "santa_link_opened",
     "santa_link_invalid",
+    // The organizer has sent every personal link of a draw (once per draw).
+    "santa_links_all_sent",
 ] as const;
 export type EventName = (typeof EVENT_NAMES)[number];
 

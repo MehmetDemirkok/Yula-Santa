@@ -874,7 +874,7 @@
                 "générateur de groupe"
             ]
         },
-        "giftSuggestions": "Gift Suggestions",
+        "giftSuggestions": "Idées cadeaux",
         "giftSuggestionsContent": {
             "title": "Gift Suggestions Generator",
             "subtitle": "Discover perfect gift ideas for every special occasion",
@@ -1577,6 +1577,12 @@
         "organizerWarning": "Vous avez créé les liens : ouvrir celui de quelqu'un d'autre vous montrerait son résultat. Envoyez-les sans les ouvrir pour garder la surprise.",
         "sentCount": "{sent}/{total} envoyés",
         "sentMark": "Envoyé",
+        "recommended": "Recommandé",
+        "sendNext": "Envoyer au suivant : {name}",
+        "sendNextHint": "Chaque appui ouvre le message WhatsApp de la personne suivante.",
+        "allSentTitle": "Tous les liens sont envoyés 🎉",
+        "allSentDesc": "Chacun verra à qui offrir un cadeau en ouvrant son lien. Besoin d'idées ? Essayez notre outil de suggestions.",
+        "giftIdeasCta": "Voir des idées de cadeaux",
         "sendWhatsapp": "WhatsApp",
         "sendWhatsappTo": "Envoyer à {name} sur WhatsApp",
         "share": "Partager",
@@ -1597,6 +1603,11 @@
         "invalidLink": "Ce lien ne peut pas être ouvert",
         "invalidLinkDesc": "Il a peut-être été copié en partie. Ouvrez le lien complet depuis le message ou demandez à l'organisateur de le renvoyer.",
         "createOwn": "Créer votre propre tirage",
+        "growTitle": "Lancez votre propre tirage",
+        "growDesc": "Organisez un Père Noël Secret pour votre bureau, votre classe ou vos amis en une minute. Gratuit, sans inscription.",
+        "growOffice": "Bureau",
+        "growClassroom": "Classe",
+        "growFriends": "Amis",
         "calendarTitle": "Échange de cadeaux du Père Noël Secret",
         "linkHello": "Bonjour {name} ! 👋",
         "linkIntro": "Votre tirage du Père Noël Secret est prêt. Touchez la boîte pour voir à qui offrir un cadeau.",

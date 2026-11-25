@@ -295,6 +295,8 @@ export const SECRET_SANTA_SEO_COPY: Record<string, SecretSantaSeoCopy> = {
         relatedTitle: 'Похожие инструменты',
         related: [
             { path: CLASSROOM, label: 'Тайный Санта в классе (карточки для печати)' },
+            { path: '/secret-santa/office', label: 'Тайный Санта в офисе' },
+            { path: '/secret-santa/what-is', label: 'Что такое Тайный Санта?' },
             { path: GIFTS, label: 'Идеи подарков' },
             { path: RAFFLE, label: 'Розыгрыш имён' },
             { path: WHEEL, label: 'Крутить колесо фортуны' },
