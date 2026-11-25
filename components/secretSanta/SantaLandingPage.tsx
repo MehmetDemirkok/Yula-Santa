@@ -9,6 +9,22 @@ import { TrackedLink } from '@/components/analytics/TrackedLink';
 import RelatedLinks from '@/components/seo/RelatedLinks';
 import printStyles from '@/components/secretSanta/print.module.css';
 
+/** Link under the privacy block; the classroom page uses it in every locale. */
+const PRIVACY_LINK: Record<string, string> = {
+    tr: 'Gizlilik politikasını oku →',
+    en: 'Read the privacy notice →',
+    de: 'Datenschutzhinweis lesen →',
+    fr: 'Lire la politique de confidentialité →',
+    es: 'Leer el aviso de privacidad →',
+    it: "Leggi l'informativa sulla privacy →",
+    pt: 'Ler o aviso de privacidade →',
+    ru: 'Читать политику конфиденциальности →',
+    ar: 'اقرأ إشعار الخصوصية ←',
+    ja: 'プライバシーポリシーを読む →',
+    ko: '개인정보 처리방침 읽기 →',
+    zh: '阅读隐私声明 →',
+};
+
 type Props = {
     locale: string;
     /** Path of this page without the locale prefix, e.g. '/secret-santa/office'. */
@@ -149,7 +165,7 @@ export default function SantaLandingPage({ locale, path, copy, badgeIcon: BadgeI
                             ))}
                         </ul>
                         <Link href={localePath(locale, '/privacy')} className="inline-flex min-h-[44px] items-center text-sm font-bold text-santa-red hover:underline">
-                            {locale === 'tr' ? 'Gizlilik politikasını oku →' : 'Read the privacy notice →'}
+                            {PRIVACY_LINK[locale] ?? PRIVACY_LINK.en}
                         </Link>
                     </section>
                 )}

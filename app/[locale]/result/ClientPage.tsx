@@ -15,6 +15,7 @@ import { buildSantaLink, emailUrl, smsUrl, whatsappUrl } from "@/lib/secretSanta
 import { loadDraw, updateDraw, type SantaDraw } from "@/lib/secretSanta/storage";
 import { Avatar, GiftBox, GiftIdeas, WinnerCard, revealStyles as styles } from "@/components/secretSanta/SantaReveal";
 import { PrintCards } from "@/components/secretSanta/PrintCards";
+import { TrackedLink } from "@/components/analytics/TrackedLink";
 
 type View = "choose" | "links" | "screen" | "print";
 
@@ -113,7 +114,16 @@ export default function ResultPage() {
         if (draw.sent.includes(giver)) return;
         // One share event per draw, on the first link sent, so a group of 20 is not 20 shares.
         if (draw.sent.length === 0) trackShare("secret_santa");
-        persist({ ...draw, sent: [...draw.sent, giver] });
+        const sent = [...draw.sent, giver];
+        // `sent` only grows, so this fires once per draw, when the last link goes out.
+        if (sent.length === givers.length) trackAction("santa_links_all_sent", "secret_santa");
+        persist({ ...draw, sent });
+    };
+
+    const trackWhatsapp = () => {
+        // Once per page visit, so a group of 20 is not 20 events.
+        if (!whatsappTracked.current) trackAction("whatsapp_share", "secret_santa");
+        whatsappTracked.current = true;
     };
 
     const copyLink = async (giver: string) => {
@@ -159,6 +169,7 @@ export default function ResultPage() {
 
     const uniquePairs = Object.entries(draw.assignments).filter(([a, b]) => a.localeCompare(b) < 0);
     const unseen = givers.filter((g) => !draw.seen.includes(g));
+    const nextToSend = givers.find((g) => !draw.sent.includes(g));
 
     return (
         <main className="ys-page-shell flex flex-col items-center pt-24 sm:pt-32 px-3 relative overflow-x-hidden safe-area-inset-bottom transition-colors duration-300">
@@ -211,7 +222,10 @@ export default function ResultPage() {
                                     <Link2 className="w-5 h-5" />
                                 </span>
                                 <span>
-                                    <span className="block font-bold text-[var(--text-primary)]">{ts("tabLinks")}</span>
+                                    <span className="flex flex-wrap items-center gap-2 font-bold text-[var(--text-primary)]">
+                                        {ts("tabLinks")}
+                                        <span className="rounded-full bg-red-50 dark:bg-red-500/15 px-2 py-0.5 text-[11px] font-bold text-santa-red">{ts("recommended")}</span>
+                                    </span>
                                     <span className="block text-sm text-[var(--text-secondary)]">{ts("tabLinksDesc")}</span>
                                 </span>
                             </button>
@@ -258,6 +272,36 @@ export default function ResultPage() {
                             <ShieldAlert className="w-4 h-4 mt-0.5 shrink-0" />
                             <p>{ts("organizerWarning")}</p>
                         </div>
+                        {nextToSend ? (
+                            <div className="space-y-1.5">
+                                <a
+                                    href={whatsappUrl(messageFor(nextToSend))}
+                                    target="_blank"
+                                    rel="noopener noreferrer"
+                                    onClick={() => {
+                                        trackWhatsapp();
+                                        markSent(nextToSend);
+                                    }}
+                                    className="flex h-[56px] w-full items-center justify-center gap-2 rounded-xl bg-[#25D366] px-4 font-bold text-white hover:brightness-95"
+                                >
+                                    <WhatsAppIcon className="w-5 h-5 shrink-0" />
+                                    <span className="truncate">{ts("sendNext", { name: nextToSend })}</span>
+                                </a>
+                                <p className="text-xs text-[var(--text-muted)]">{ts("sendNextHint")}</p>
+                            </div>
+                        ) : (
+                            <div className="rounded-xl border border-green-200 dark:border-green-500/30 bg-green-50 dark:bg-green-500/10 p-4 text-start space-y-2" role="status">
+                                <p className="font-bold text-green-800 dark:text-green-300">{ts("allSentTitle")}</p>
+                                <p className="text-sm text-green-800/90 dark:text-green-300/90">{ts("allSentDesc")}</p>
+                                <TrackedLink
+                                    tool="gift_suggestions"
+                                    href={localePath(locale, "/tools/gift-suggestions")}
+                                    className="inline-flex min-h-[44px] items-center gap-1.5 text-sm font-bold text-santa-red hover:underline"
+                                >
+                                    <Gift className="w-4 h-4" /> {ts("giftIdeasCta")}
+                                </TrackedLink>
+                            </div>
+                        )}
                         <div className="ys-card p-3 sm:p-4 space-y-2">
                             <p className="text-xs font-bold text-[var(--text-muted)] text-end">
                                 {ts("sentCount", { sent: draw.sent.length, total: givers.length })}
@@ -281,9 +325,7 @@ export default function ResultPage() {
                                                 target="_blank"
                                                 rel="noopener noreferrer"
                                                 onClick={() => {
-                                                    // Once per page visit, so a group of 20 is not 20 events.
-                                                    if (!whatsappTracked.current) trackAction("whatsapp_share", "secret_santa");
-                                                    whatsappTracked.current = true;
+                                                    trackWhatsapp();
                                                     markSent(giver);
                                                 }}
                                                 aria-label={ts("sendWhatsappTo", { name: giver })}

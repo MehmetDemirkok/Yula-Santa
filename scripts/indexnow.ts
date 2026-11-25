@@ -9,12 +9,14 @@
  *
  * KULLANIM (deploy SONRASI çalıştır — anahtar dosyası canlıda olmalı):
  *   npm run indexnow                    # sitemap'teki tüm URL'ler
- *   npm run indexnow -- --secret-santa  # /secret-santa ve /secret-santa/classroom (12 dil), office, university ve what-is (tr, en)
+ *   npm run indexnow -- --secret-santa  # /secret-santa ve /secret-santa/classroom (12 dil), office, university ve what-is (tr, en, ru)
  *   npm run indexnow -- --url /raffle   # tek/çok URL (göreli veya tam)
  *   npm run indexnow -- --dry-run       # istek atmadan payload'ı göster
  *
  * ═══════════════════════════════════════════════════════════════════════════
  */
+
+import { LANDING_LOCALES } from '../lib/secretSanta/landingLocales';
 
 const SITE_URL = 'https://www.yulasanta.com.tr';
 const INDEXNOW_KEY = '72f2c3fbd5643c046db2e1380c1f90fa';
@@ -46,9 +48,11 @@ async function main() {
                 urls.push(l === 'tr' ? `${SITE_URL}${path}` : `${SITE_URL}/${l}${path}`);
             }
         }
-        // Office and university pages exist in Turkish and English only.
+        // Office, university and what-is exist in LANDING_LOCALES only (lib/secretSanta/landingLocales.ts).
         for (const path of ['/secret-santa/office', '/secret-santa/university', '/secret-santa/what-is']) {
-            urls.push(`${SITE_URL}${path}`, `${SITE_URL}/en${path}`);
+            for (const l of LANDING_LOCALES) {
+                urls.push(l === 'tr' ? `${SITE_URL}${path}` : `${SITE_URL}/${l}${path}`);
+            }
         }
     }
 
