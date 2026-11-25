@@ -127,7 +127,10 @@ export function trackShare(tool?: ToolName) {
 }
 
 /** Funnel steps such as a landing-page CTA click or a list import. */
-export function trackAction(name: "cta_click" | "list_imported" | "card_printed" | "whatsapp_share" | "qr_generated", tool?: ToolName) {
+export function trackAction(
+    name: "cta_click" | "list_imported" | "card_printed" | "whatsapp_share" | "qr_generated" | "santa_link_opened" | "santa_link_invalid",
+    tool?: ToolName,
+) {
     if (typeof window === "undefined") return;
     push(event(name, { tool }));
 }

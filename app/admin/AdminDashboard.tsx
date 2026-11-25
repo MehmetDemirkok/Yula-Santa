@@ -95,12 +95,14 @@ function DrawsView({ data, deltaSuffix }: { data: RangeData; deltaSuffix: string
 
     return (
         <div className="flex flex-col gap-4">
-            <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 xl:grid-cols-5">
+            <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 xl:grid-cols-4">
                 <StatTile label="Yapılan çekiliş" value={formatNumber(totals.draws)} delta={deltas.draws} deltaSuffix={deltaSuffix} trend={sparkOf(data.series, "draws")} />
                 <StatTile label="Çekiliş başına katılımcı" value={totals.avgParticipants === null ? "—" : formatNumber(totals.avgParticipants)} delta={deltas.avgParticipants} deltaSuffix={deltaSuffix} />
                 <StatTile label="Sonucu paylaşanlar" value={formatShare(totals.sharers, totals.drawers)} delta={deltas.shareRate} deltaSuffix={deltaSuffix} />
                 <StatTile label="Plaka Avcısı oyunu" value={formatNumber(totals.plakaGames)} delta={deltas.plakaGames} deltaSuffix={deltaSuffix} />
                 <StatTile label="TikTok eklenti çekilişi" value={formatNumber(totals.extensionGiveaways)} delta={deltas.extensionGiveaways} deltaSuffix={deltaSuffix} />
+                <StatTile label="Santa linkini açan" value={formatNumber(totals.santaLinksOpened)} delta={deltas.santaLinksOpened} deltaSuffix={deltaSuffix} />
+                <StatTile label="Açılamayan Santa linki" value={formatNumber(totals.santaLinksInvalid)} delta={deltas.santaLinksInvalid} deltaSuffix={deltaSuffix} />
             </div>
 
             <Card title="Yapılan çekilişler" subtitle="Zaman içindeki değişim">
@@ -203,6 +205,8 @@ const EVENT_LABEL: Record<EventType, string> = {
     card_printed: "Adım",
     whatsapp_share: "Adım",
     qr_generated: "Adım",
+    santa_link_opened: "Adım",
+    santa_link_invalid: "Adım",
 };
 
 function formatAgo(minutes: number): string {

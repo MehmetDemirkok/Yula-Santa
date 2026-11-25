@@ -35,7 +35,7 @@ describe("funnel events", () => {
     it("accepts the new event names with a tool and nothing else", () => {
         const payload = parseCollectPayload({
             consent: "unset",
-            events: ["cta_click", "list_imported", "card_printed", "whatsapp_share", "qr_generated"].map((name) => ({
+            events: ["cta_click", "list_imported", "card_printed", "whatsapp_share", "qr_generated", "santa_link_opened", "santa_link_invalid"].map((name) => ({
                 name,
                 path: "/secret-santa?d=secret",
                 tool: "secret_santa",
@@ -43,7 +43,7 @@ describe("funnel events", () => {
             })),
         });
         assert.ok(payload);
-        assert.equal(payload.events.length, 5);
+        assert.equal(payload.events.length, 7);
         for (const event of payload.events) {
             assert.equal(event.path, "/secret-santa");
             assert.equal(event.tool, "secret_santa");

@@ -17,6 +17,9 @@ export const EVENT_NAMES = [
     "card_printed",
     "whatsapp_share",
     "qr_generated",
+    // Secret Santa personal link (/s#…): opened fine or failed to decode. Never the token.
+    "santa_link_opened",
+    "santa_link_invalid",
 ] as const;
 export type EventName = (typeof EVENT_NAMES)[number];
 

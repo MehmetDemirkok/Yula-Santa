@@ -34,6 +34,10 @@ export type RangeData = {
         avgParticipants: number | null;
         plakaGames: number;
         extensionGiveaways: number;
+        /** Distinct visitors who opened a Secret Santa personal link (/s#…) that decoded. */
+        santaLinksOpened: number;
+        /** Distinct visitors who landed on /s with a missing or broken token. */
+        santaLinksInvalid: number;
     };
     deltas: {
         visitors: number | null;
@@ -44,6 +48,8 @@ export type RangeData = {
         shareRate: number | null;
         plakaGames: number | null;
         extensionGiveaways: number | null;
+        santaLinksOpened: number | null;
+        santaLinksInvalid: number | null;
     };
     tools: ToolRow[];
     funnel: NamedCount[];
