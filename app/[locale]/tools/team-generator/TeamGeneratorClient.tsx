@@ -9,6 +9,7 @@ import { ArrowLeft, Users, RefreshCw, Copy, Check, Plus, Edit3, X, List, Shuffle
 import { useRouter } from "next/navigation";
 import { secureShuffle } from "@/lib/random";
 import { celebrate } from "@/lib/celebrate";
+import { SaveDrawButton } from "@/components/drawHistory/SaveDrawButton";
 
 export function TeamGeneratorClient() {
     const t = useTranslations('tools.teamGeneratorContent');
@@ -25,6 +26,7 @@ export function TeamGeneratorClient() {
     // Generator State
     const [teamCount, setTeamCount] = useState(2);
     const [teams, setTeams] = useState<string[][]>([]);
+    const [drawnAt, setDrawnAt] = useState("");
     const [generated, setGenerated] = useState(false);
     const [copied, setCopied] = useState<number | null>(null);
 
@@ -74,6 +76,7 @@ export function TeamGeneratorClient() {
 
         setTeams(newTeams);
         setGenerated(true);
+        setDrawnAt(new Date().toISOString());
         celebrate();
         trackDraw("team_generator", { participants: namesList.length, winners: teamCount });
     };
@@ -233,6 +236,7 @@ export function TeamGeneratorClient() {
                     {/* Results Section */}
                     <div className="lg:col-span-8">
                         {generated ? (
+                            <div className="space-y-6">
                             <div className="grid grid-cols-1 md:grid-cols-2 gap-6 animate-in fade-in slide-in-from-bottom-8 duration-700">
                                 {teams.map((team, index) => (
                                     <div
@@ -265,6 +269,19 @@ export function TeamGeneratorClient() {
                                         </ul>
                                     </div>
                                 ))}
+                            </div>
+                            <SaveDrawButton
+                                className="mx-auto max-w-md"
+                                drawKey={drawnAt}
+                                getRecord={() => ({
+                                    tool: "team_generator",
+                                    participantCount: namesList.length,
+                                    participants: namesList,
+                                    winners: [],
+                                    backups: [],
+                                    teams,
+                                })}
+                            />
                             </div>
                         ) : (
                             <div className="h-full flex flex-col items-center justify-center text-center p-12 bg-[var(--surface-2)] rounded-xl border border-dashed border-[var(--border-medium)] text-[var(--text-muted)]">

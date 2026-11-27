@@ -23,6 +23,7 @@ import { Button } from "@/components/ui/Button";
 import { Input } from "@/components/ui/Input";
 import { Modal } from "@/components/ui/Modal";
 import { cn } from "@/lib/utils";
+import { SaveDrawButton } from "@/components/drawHistory/SaveDrawButton";
 
 type Phase = "ready" | "shuffling" | "revealed";
 
@@ -143,6 +144,7 @@ export default function ShortStrawPage() {
   const [phase, setPhase] = useState<Phase>("ready");
   const [straws, setStraws] = useState<StrawVisual[]>([]);
   const [history, setHistory] = useState<string[]>([]);
+  const [drawnAt, setDrawnAt] = useState("");
   const [copied, setCopied] = useState(false);
   const [showCryptoInfo, setShowCryptoInfo] = useState(false);
   const [sparks, setSparks] = useState<{ id: number; x: number; y: number; dx: number; dy: number }[]>([]);
@@ -261,6 +263,7 @@ export default function ShortStrawPage() {
         setLoser(finalLoser);
         setStraws(buildReveal(participants, finalLoser));
         setPhase("revealed");
+        setDrawnAt(new Date().toISOString());
         setHistory((prev) => [finalLoser, ...prev].slice(0, 12));
         trackDraw("short_straw", { participants: participants.length, winners: 1 });
         burstSparks();
@@ -614,6 +617,18 @@ export default function ShortStrawPage() {
                     {copied ? t("copied") : t("share")}
                   </button>
                 </div>
+                <SaveDrawButton
+                  tone="dark"
+                  className="mx-auto mt-3 max-w-xs"
+                  drawKey={drawnAt}
+                  getRecord={() => ({
+                    tool: "short_straw",
+                    participantCount: participants.length,
+                    participants,
+                    winners: [{ name: loser }],
+                    backups: [],
+                  })}
+                />
               </div>
             )}
 

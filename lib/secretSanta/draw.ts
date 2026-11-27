@@ -29,6 +29,25 @@ export function nameKey(name: string): string {
     return name.trim().replace(/\s+/g, " ").toLocaleLowerCase("tr");
 }
 
+/**
+ * Capitalizes each all-lowercase word ("ayşe nur" → "Ayşe Nur", "ismail" → "İsmail" in Turkish).
+ * Words that already contain a capital letter ("McKenzie", "DJ") are left as typed.
+ */
+export function formatName(name: string, locale = "tr"): string {
+    const lang = locale === "tr" ? "tr" : locale;
+    return name
+        .trim()
+        .replace(/\s+/g, " ")
+        .split(" ")
+        .map((word) =>
+            word
+                .split("-")
+                .map((part) => (part && part === part.toLocaleLowerCase(lang) ? part.charAt(0).toLocaleUpperCase(lang) + part.slice(1) : part))
+                .join("-"),
+        )
+        .join(" ");
+}
+
 /** Removes empty and duplicate names (by `nameKey`), keeping the first spelling. */
 export function dedupeNames(names: readonly string[]): string[] {
     const seen = new Set<string>();

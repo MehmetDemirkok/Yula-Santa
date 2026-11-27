@@ -23,6 +23,7 @@ import { AdWrapper, InArticleAd } from "@/components/ads";
 import { AD_SLOTS } from "@/lib/ads/config";
 import { cn } from "@/lib/utils";
 import { celebrate } from "@/lib/celebrate";
+import { SaveDrawButton } from "@/components/drawHistory/SaveDrawButton";
 
 interface RaffleBoardProps {
     title: string;
@@ -61,6 +62,7 @@ export default function RaffleBoard({
     const [backups, setBackups] = useState<string[]>([]);
     const [showResults, setShowResults] = useState(false);
     const [copied, setCopied] = useState(false);
+    const [drawnAt, setDrawnAt] = useState("");
 
     // Taslağı geri yükle / sakla
     useEffect(() => {
@@ -120,6 +122,7 @@ export default function RaffleBoard({
             setBackups(shuffled.slice(winnerCount, winnerCount + backupCount));
             setIsRolling(false);
             setShowResults(true);
+            setDrawnAt(new Date().toISOString());
             celebrate();
             trackDraw("raffle", { participants: participants.length, winners: winnerCount });
         }, 2600);
@@ -333,6 +336,18 @@ export default function RaffleBoard({
                                     </div>
                                 </div>
                             )}
+
+                            <SaveDrawButton
+                                drawKey={drawnAt}
+                                getRecord={() => ({
+                                    tool: "raffle",
+                                    title,
+                                    participantCount: participants.length,
+                                    participants,
+                                    winners: winners.map((name) => ({ name })),
+                                    backups: backups.map((name) => ({ name })),
+                                })}
+                            />
 
                             <AdWrapper position="inline">
                                 <InArticleAd adSlot={AD_SLOTS.IN_ARTICLE} />

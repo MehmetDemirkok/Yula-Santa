@@ -109,9 +109,10 @@ export function GiftPile({ className = "" }: { className?: string }) {
 export function WinterScene() {
     return (
         <div aria-hidden="true" className="pointer-events-none absolute inset-x-0 bottom-0 h-[110px] xl:h-full">
-            <FestiveTree className="bottom-[20px] left-[4%] h-[92px] w-auto sm:left-[10%] lg:h-[190px] xl:bottom-[30px] xl:left-[9%] xl:h-[340px]" />
-            <FestiveTree className="bottom-[26px] right-[22%] h-[58px] w-auto sm:right-[20%] lg:h-[120px] xl:bottom-[36px] xl:right-[21%] xl:h-[190px]" />
-            <GiftPile className="bottom-[14px] right-[3%] h-[44px] w-auto sm:right-[8%] lg:h-[78px] xl:bottom-[22px] xl:right-[8%] xl:h-[120px]" />
+            {/* lg+ puts the tool in a right-hand column, so the scene keeps to the outer edges. */}
+            <FestiveTree className="bottom-[20px] left-[4%] h-[92px] w-auto sm:left-[10%] lg:left-[2%] lg:h-[240px] xl:bottom-[30px] xl:left-[3%] xl:h-[300px] 2xl:left-[3%] 2xl:h-[340px]" />
+            <FestiveTree className="bottom-[26px] right-[22%] h-[58px] w-auto sm:right-[20%] lg:hidden" />
+            <GiftPile className="bottom-[14px] right-[3%] h-[44px] w-auto sm:right-[8%] lg:right-[1%] lg:h-[110px] xl:bottom-[22px] xl:right-[2%] xl:h-[140px] 2xl:right-[3%] 2xl:h-[160px]" />
             <svg viewBox="0 0 400 40" preserveAspectRatio="none" className="absolute inset-x-0 bottom-0 h-[40px] w-full">
                 <path
                     className="fill-[#E3EDF9] dark:fill-[#2A3140]"

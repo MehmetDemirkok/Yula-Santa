@@ -21,6 +21,7 @@ import {
 } from "lucide-react";
 import { LanguageSwitcher } from "./LanguageSwitcher";
 import { ThemeToggle } from "./ThemeToggle";
+import { AccountMenu, MobileAccountSection } from "./auth/AccountMenu";
 import { useTranslations } from "next-intl";
 import { cn } from "@/lib/utils";
 import { localePath } from "@/lib/localePath";
@@ -368,6 +369,7 @@ export function Navbar() {
                             <div className="hidden sm:block">
                                 <LanguageSwitcher />
                             </div>
+                            <AccountMenu />
                             <button
                                 ref={menuButtonRef}
                                 onClick={() => setIsMenuOpen(!isMenuOpen)}
@@ -375,7 +377,7 @@ export function Navbar() {
                                     "relative w-11 h-11 flex items-center justify-center rounded-xl bg-[var(--surface-2)] dark:bg-white/10 text-[var(--text-secondary)] hover:bg-[var(--border-medium)] dark:hover:bg-white/20 transition-colors border border-[var(--border-light)] dark:border-white/10",
                                     navMode !== "menu" && "lg:hidden"
                                 )}
-                                aria-label={isMenuOpen ? "Close menu" : "Open menu"}
+                                aria-label={isMenuOpen ? t("languageSwitcher.closeMenu") : t("languageSwitcher.openMenu")}
                                 aria-expanded={isMenuOpen}
                             >
                                 <Menu className={cn("w-6 h-6 absolute transition-all duration-300", isMenuOpen ? "opacity-0 rotate-90 scale-50" : "opacity-100 rotate-0 scale-100")} />
@@ -394,6 +396,8 @@ export function Navbar() {
                 )}
             >
                 <div className="p-5 space-y-8">
+                    <MobileAccountSection />
+
                     <div className="sm:hidden pb-6 border-b border-[var(--border-light)] dark:border-white/10 space-y-4">
                         <p className="text-[10px] font-black text-[var(--text-muted)] uppercase tracking-[0.2em] px-2">
                             {t("languageSwitcher.label")}

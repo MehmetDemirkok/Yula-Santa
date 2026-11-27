@@ -10,7 +10,7 @@ import { useState, useEffect, useRef } from "react";
 import { trackAction, trackDraw } from "@/lib/analytics/client";
 import { useRouter, useParams } from "next/navigation";
 import Link from "next/link";
-import { Trash2, Sparkles, FileUp, ClipboardPaste, Check, Gift, Lightbulb, AlertCircle, Info, Printer, Link2, Ban } from "lucide-react";
+import { Trash2, Sparkles, FileUp, ClipboardPaste, Check, Gift, Lightbulb, AlertCircle, Info, Printer, Link2, Ban, Wand2 } from "lucide-react";
 import { Button } from "@/components/ui/Button";
 import { Input } from "@/components/ui/Input";
 import { useTranslations } from 'next-intl';
@@ -19,10 +19,11 @@ import { isNewYearThemeActive } from "@/components/NewYearTheme/config";
 import { FestiveMascot, GiftBow, HeroDecor, SnowCap } from "@/components/NewYearTheme/HomeDecor";
 import { HollySprig, WinterScene } from "@/components/NewYearTheme/SantaDecor";
 import { localePath } from "@/lib/localePath";
-import { cleanExclusions, cleanGroups, dedupeNames, drawPairs, drawSecretSanta, groupExclusions, nameKey, oversizedGroup, splitNameList, type Exclusion, type SantaGroup } from "@/lib/secretSanta/draw";
+import { cleanExclusions, cleanGroups, dedupeNames, formatName, drawPairs, drawSecretSanta, groupExclusions, nameKey, oversizedGroup, splitNameList, type Exclusion, type SantaGroup } from "@/lib/secretSanta/draw";
 import { LIMITS, type SantaEvent } from "@/lib/secretSanta/link";
 import { loadMode, loadParticipants, loadSetup, saveDraw, saveMode, saveParticipants, saveSetup } from "@/lib/secretSanta/storage";
 import { SantaOptions } from "@/components/secretSanta/SantaOptions";
+import { SantaSocialProof } from "@/components/secretSanta/SantaSocialProof";
 import { SECRET_SANTA_H1, SECRET_SANTA_HOW_LINK, SECRET_SANTA_SUBTITLE } from "@/lib/pageSeoCopy";
 
 const AVATAR_TONES = [
@@ -72,6 +73,18 @@ export default function Home() {
     const [clearArmed, setClearArmed] = useState(false);
     const [loaded, setLoaded] = useState(false);
     const fileInputRef = useRef<HTMLInputElement>(null);
+    const drawButtonRef = useRef<HTMLButtonElement>(null);
+    const [drawButtonVisible, setDrawButtonVisible] = useState(true);
+
+    // Phones: once the list is long, the start button scrolls out of view. Track it so a
+    // bottom bar can offer the same action.
+    useEffect(() => {
+        const el = drawButtonRef.current;
+        if (!el || typeof IntersectionObserver === "undefined") return;
+        const observer = new IntersectionObserver(([entry]) => setDrawButtonVisible(entry.isIntersecting));
+        observer.observe(el);
+        return () => observer.disconnect();
+    }, []);
 
     useEffect(() => {
         setParticipants(loadParticipants());
@@ -105,7 +118,7 @@ export default function Home() {
 
     /** Adds several names at once (a pasted list); duplicates are skipped. */
     const addMany = (names: string[]) => {
-        const combined = dedupeNames([...participants, ...names.map((n) => n.slice(0, LIMITS.name))]);
+        const combined = dedupeNames([...participants, ...names.map((n) => formatName(n, locale).slice(0, LIMITS.name))]);
         const added = combined.length - participants.length;
         setParticipants(combined);
         setName("");
@@ -126,7 +139,7 @@ export default function Home() {
     const addParticipant = () => {
         const list = splitNameList(name);
         if (list.length > 1) return addMany(list);
-        const trimmed = name.trim().replace(/\s+/g, " ").slice(0, LIMITS.name);
+        const trimmed = formatName(name, locale).slice(0, LIMITS.name);
         if (!trimmed) return;
         if (participants.some(p => nameKey(p) === nameKey(trimmed))) {
             setNotice({ kind: "error", text: t('home.nameExists') });
@@ -197,7 +210,7 @@ export default function Home() {
                 return;
             }
 
-            const cleaned = newNames.map((n) => n.trim().slice(0, LIMITS.name));
+            const cleaned = newNames.map((n) => formatName(n, locale).slice(0, LIMITS.name));
             if (cleaned.length > 0) {
                 const combined = dedupeNames([...participants, ...cleaned]);
                 const added = combined.length - participants.length;
@@ -263,6 +276,7 @@ export default function Home() {
     const ready = participants.length >= minRequired;
     const progress = Math.min(100, Math.round((participants.length / minRequired) * 100));
     const seasonal = isNewYearThemeActive();
+    const showStickyStart = ready && !drawButtonVisible;
 
     return (
         <main className={`ys-page-shell !min-h-0 flex flex-col items-center px-3 relative overflow-hidden transition-colors duration-300 safe-area-inset-bottom ${seasonal ? "pt-[72px] !pb-[104px]" : "pt-[56px] pb-6"}`}>
@@ -277,7 +291,9 @@ export default function Home() {
                 </>
             )}
 
-            <div className="z-10 w-full max-w-md space-y-4 text-center">
+            {/* Phones: one column. lg+: copy on the left, the tool on the right. */}
+            <div className="z-10 w-full max-w-md space-y-4 text-center lg:grid lg:max-w-[1080px] lg:grid-cols-[minmax(0,1fr)_440px] lg:items-start lg:gap-x-12 lg:space-y-0 lg:pt-8 lg:text-start xl:gap-x-16">
+                <div className="space-y-3 sm:space-y-4 lg:space-y-5 lg:pt-4">
                 <div className={seasonal ? "grid grid-cols-[minmax(0,1fr)_auto] items-center gap-x-2 text-start" : ""}>
                     <div className="space-y-2">
                         {seasonal && (
@@ -286,31 +302,31 @@ export default function Home() {
                                 {t('home.happyNewYear')}
                             </div>
                         )}
-                        <h1 className="font-heading text-headline-lg-mobile sm:text-headline-lg text-[var(--text-primary)] tracking-tight">
+                        <h1 className="font-heading text-headline-lg-mobile sm:text-headline-lg lg:text-[44px] lg:leading-[1.1] text-[var(--text-primary)] tracking-tight">
                             {SECRET_SANTA_H1[locale] || SECRET_SANTA_H1.en}
                         </h1>
-                        <div className={`flex items-center gap-2 flex-wrap ${seasonal ? "justify-start" : "justify-center"}`} suppressHydrationWarning>
-                            <p className="text-[var(--text-secondary)] text-body-lg">
+                        <div className={`flex items-center gap-2 flex-wrap lg:justify-start ${seasonal ? "justify-start" : "justify-center"}`} suppressHydrationWarning>
+                            <p className="text-[var(--text-secondary)] text-[15px] leading-relaxed sm:text-body-lg lg:max-w-[34rem]">
                                 {SECRET_SANTA_SUBTITLE[locale] ?? t('home.subtitle')}
                             </p>
                         </div>
                         {SECRET_SANTA_HOW_LINK[locale] && (
                             <a
                                 href="#nasil-calisir"
-                                className="inline-flex min-h-[44px] items-center text-sm font-bold text-santa-red underline-offset-4 hover:underline"
+                                className="inline-flex min-h-[36px] items-center text-sm font-bold text-santa-red underline-offset-4 hover:underline sm:min-h-[44px]"
                             >
                                 {SECRET_SANTA_HOW_LINK[locale]} ↓
                             </a>
                         )}
                     </div>
                     {seasonal && (
-                        <div className="relative aspect-square w-[108px] shrink-0 sm:w-[128px]">
-                            <FestiveMascot sizes="(min-width: 640px) 128px, 108px" />
+                        <div className="relative aspect-square w-[84px] shrink-0 self-start sm:w-[128px] sm:self-center lg:w-[168px]">
+                            <FestiveMascot sizes="(min-width: 1024px) 168px, (min-width: 640px) 128px, 84px" />
                         </div>
                     )}
                 </div>
 
-                <ul className="flex flex-wrap justify-center gap-1.5" aria-label={t('santa.featuresLabel')}>
+                <ul className="hidden flex-wrap justify-center gap-1.5 sm:flex lg:justify-start" aria-label={t('santa.featuresLabel')}>
                     {[
                         { icon: <Link2 className="w-3.5 h-3.5" />, text: t('santa.featureLinks') },
                         { icon: <Ban className="w-3.5 h-3.5" />, text: t('santa.featureRules') },
@@ -323,6 +339,16 @@ export default function Home() {
                     ))}
                 </ul>
 
+                <SantaSocialProof />
+
+                {seasonal && (
+                    <div className="hidden lg:block">
+                        <CountdownBanner compact note={t('santa.countdownNudge')} />
+                    </div>
+                )}
+                </div>
+
+                <div className="space-y-4">
                 <div id="cekilis" className={`scroll-mt-[96px] ys-card backdrop-blur-xl p-4 sm:p-5 md:p-6 space-y-4 sm:space-y-5 md:space-y-6 ${seasonal ? "ys-gift-card relative overflow-hidden !pt-[38px]" : ""}`}>
                     {seasonal && (
                         <>
@@ -343,9 +369,9 @@ export default function Home() {
                                     <Check className="w-3 h-3" strokeWidth={3} />
                                 </span>
                             )}
-                            <div className="text-2xl sm:text-3xl mb-1">🎅</div>
+                            <div className="text-[22px] leading-none sm:text-3xl mb-1.5">🎅</div>
                             <div className="font-bold text-xs sm:text-sm">{t('home.secretDraw')}</div>
-                            <div className="text-[10px] sm:text-xs text-[var(--text-muted)] mt-1">
+                            <div className="text-[12px] leading-snug sm:text-xs text-[var(--text-muted)] mt-1">
                                 {t('home.secretDrawDesc')}
                             </div>
                         </button>
@@ -359,9 +385,9 @@ export default function Home() {
                                     <Check className="w-3 h-3" strokeWidth={3} />
                                 </span>
                             )}
-                            <div className="text-2xl sm:text-3xl mb-1">👥</div>
+                            <div className="text-[22px] leading-none sm:text-3xl mb-1.5">👥</div>
                             <div className="font-bold text-xs sm:text-sm">{t('home.directMatch')}</div>
-                            <div className="text-[10px] sm:text-xs text-[var(--text-muted)] mt-1">
+                            <div className="text-[12px] leading-snug sm:text-xs text-[var(--text-muted)] mt-1">
                                 {t('home.directMatchDesc')}
                             </div>
                         </button>
@@ -390,7 +416,8 @@ export default function Home() {
                         </button>
                     </div>
 
-                    <div className="space-y-2 max-h-[35vh] sm:max-h-[40vh] overflow-y-auto pr-1 sm:pr-2 custom-scrollbar">
+                    {/* Phones: the list grows with the page (no scroll inside a scroll); the bottom bar keeps "start" in reach. */}
+                    <div className="space-y-2 sm:max-h-[40vh] sm:overflow-y-auto sm:pr-2 custom-scrollbar">
                         {participants.length === 0 && (
                             <div className="text-center py-5 text-[var(--text-muted)] border-2 border-dashed border-[var(--border-medium)] rounded-xl sm:rounded-2xl bg-[var(--surface-2)]">
                                 <div className="mx-auto mb-2 w-10 h-10 rounded-full bg-red-50 dark:bg-red-500/10 flex items-center justify-center">
@@ -398,13 +425,21 @@ export default function Home() {
                                 </div>
                                 <p className="text-body-md">{t('home.noParticipants')}</p>
                                 <p className="mt-1 px-4 text-xs">{t('santa.pasteHint')}</p>
+                                <button
+                                    type="button"
+                                    onClick={() => addMany(splitNameList(t('santa.exampleNames')))}
+                                    className="mt-3 inline-flex h-[40px] items-center gap-1.5 rounded-full border border-[var(--border-medium)] bg-[var(--card-bg)] px-4 text-[13px] font-bold text-santa-red transition-colors hover:border-santa-red/50 hover:bg-red-50 dark:hover:bg-red-500/10"
+                                >
+                                    <Wand2 className="h-4 w-4" aria-hidden />
+                                    {t('santa.tryExample')}
+                                </button>
                             </div>
                         )}
                         {participants.map((p, i) => {
                             const hint = hints[nameKey(p)] ?? "";
                             const editing = hintOpen === nameKey(p);
                             return (
-                            <div key={p} className="ys-zebra-row group p-2.5 sm:p-3 ps-3 sm:ps-4 bg-[var(--card-bg)] rounded-lg sm:rounded-xl shadow-sm hover:shadow-md transition-all border border-[var(--border-light)] hover:border-red-100 dark:hover:border-red-900/30 animate-in slide-in-from-left-2 duration-300">
+                            <div key={p} className="ys-zebra-row group px-2.5 py-1 sm:p-3 ps-3 sm:ps-4 bg-[var(--card-bg)] rounded-lg sm:rounded-xl shadow-sm hover:shadow-md transition-all border border-[var(--border-light)] hover:border-red-100 dark:hover:border-red-900/30 animate-in slide-in-from-left-2 duration-300">
                                 <div className="flex items-center justify-between">
                                     <div className="flex items-center gap-2.5 min-w-0 flex-1">
                                         <span className="text-[10px] font-bold text-[var(--text-muted)] w-3 text-center flex-shrink-0">{i + 1}</span>
@@ -573,6 +608,7 @@ export default function Home() {
                         )}
 
                         <Button
+                            ref={drawButtonRef}
                             onClick={handleDraw}
                             className={`ys-festive-cta w-full text-lg py-6 shadow-lg transition-all ${drawMode === 'pairs' ? 'shadow-green-200/50 dark:shadow-green-900/20 hover:shadow-green-200/50 bg-christmas-green hover:bg-green-700' : 'shadow-red-200/50 dark:shadow-red-900/20'}`}
                             variant="default"
@@ -600,13 +636,31 @@ export default function Home() {
                     </div>
                 </div>
 
-                {/* 🎄 Yılbaşı Geri Sayım Banner */}
-                {isNewYearThemeActive() && (
-                    <div className="w-full text-start">
-                        <CountdownBanner compact />
+                {/* Countdown under the tool on phones; lg+ shows it in the left column. */}
+                {seasonal && (
+                    <div className="w-full text-start lg:hidden">
+                        <CountdownBanner compact note={t('santa.countdownNudge')} />
                     </div>
                 )}
+                </div>
 
+            </div>
+
+            {/* Phones only: the start action stays reachable while scrolling a long list. */}
+            <div
+                className={`fixed inset-x-0 bottom-0 z-[55] border-t border-[var(--border-light)] bg-[var(--card-bg)]/95 px-3 pt-2.5 pb-[max(10px,env(safe-area-inset-bottom))] backdrop-blur-md transition-transform duration-300 sm:hidden ${showStickyStart ? "translate-y-0" : "pointer-events-none translate-y-full"}`}
+                aria-hidden={!showStickyStart}
+            >
+                <button
+                    type="button"
+                    tabIndex={showStickyStart ? 0 : -1}
+                    onClick={handleDraw}
+                    className={`flex h-[52px] w-full items-center justify-center gap-2 rounded-xl text-[16px] font-bold text-white shadow-lg ${isPairs ? "bg-christmas-green" : "bg-santa-red"}`}
+                >
+                    <Sparkles className="h-5 w-5" aria-hidden />
+                    {isPairs ? t('home.match') : t('home.startDraw')}
+                    <span className="rounded-full bg-white/20 px-2 py-0.5 text-[13px] tabular-nums">{t('santa.peopleCount', { count: participants.length })}</span>
+                </button>
             </div>
         </main>
     );

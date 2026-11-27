@@ -1,13 +1,15 @@
 /**
  * Plaka Avcısı — player identity (server-only).
  *
- * Signed-in users are keyed by a hash of their Google account id/email.
+ * Signed-in users are keyed by a hash of their Google e-mail, or of their account id
+ * for e-mail + password accounts (their e-mail is unverified, see accountKey).
  * Guests get an httpOnly, HMAC-signed anonymous cookie — no account needed,
  * but their scores can still be tracked and ranked.
  */
 
 import { createHmac, createHash, randomUUID, timingSafeEqual } from 'node:crypto';
 import { cookies } from 'next/headers';
+import { accountKey } from '@/lib/auth/accountKey';
 import { auth } from '@/auth';
 import { isOffensiveNickname } from './nickname';
 
@@ -83,7 +85,7 @@ export function sanitizeNickname(value: unknown): string | null {
  */
 export async function getPlayerIdentity(): Promise<PlayerIdentity> {
     const session = await auth();
-    const accountId = session?.user?.email || session?.user?.name;
+    const accountId = accountKey(session);
 
     if (accountId) {
         const playerId = `user_${createHash('sha256').update(accountId).digest('hex').slice(0, 32)}`;
@@ -123,7 +125,7 @@ export async function getPlayerIdentity(): Promise<PlayerIdentity> {
 /** Read-only variant for routes that must not mutate cookies (GET/HEAD). */
 export async function peekPlayerIdentity(): Promise<PlayerIdentity | null> {
     const session = await auth();
-    const accountId = session?.user?.email || session?.user?.name;
+    const accountId = accountKey(session);
     if (accountId) {
         return {
             playerId: `user_${createHash('sha256').update(accountId).digest('hex').slice(0, 32)}`,

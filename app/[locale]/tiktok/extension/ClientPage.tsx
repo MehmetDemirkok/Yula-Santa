@@ -29,6 +29,7 @@ import { downloadWinnerCard } from "@/lib/downloadWinnerCard";
 import { useToast } from "@/lib/ToastContext";
 import { cn } from "@/lib/utils";
 import { TIKTOK_CHROME_EXTENSION_URL } from "@/lib/constants";
+import { SaveDrawButton } from "@/components/drawHistory/SaveDrawButton";
 
 type Step = "link" | "comments" | "rules" | "result";
 
@@ -657,6 +658,18 @@ export default function TikTokExtensionGiveaway() {
                             </Link>
                         </div>
                     </Card>
+
+                    <SaveDrawButton
+                        drawKey={result.seed}
+                        getRecord={() => ({
+                            tool: "tiktok_extension",
+                            participantCount: result.eligible,
+                            winners: result.winners.map((w) => ({ name: w.name, note: w.comment })),
+                            backups: result.backups.map((b) => ({ name: b.name })),
+                            proofPath: `/verify/${giveawayId}`,
+                            sourceUrl: videoUrl.trim() || undefined,
+                        })}
+                    />
 
                     <div className="flex items-center justify-between rounded-xl border border-[var(--border-light)] bg-[var(--surface-2)] px-4 py-3 text-sm">
                         <span className="flex items-center gap-2 text-[var(--text-secondary)]">

@@ -22,6 +22,8 @@ export const EVENT_NAMES = [
     "santa_link_invalid",
     // The organizer has sent every personal link of a draw (once per draw).
     "santa_links_all_sent",
+    // A signed-in user saved a result to their draw history. Tool only, never the result.
+    "draw_saved",
 ] as const;
 export type EventName = (typeof EVENT_NAMES)[number];
 

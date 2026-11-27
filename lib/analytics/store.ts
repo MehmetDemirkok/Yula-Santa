@@ -188,6 +188,12 @@ export async function purgeExpired() {
     await db.query(`DELETE FROM admin_audit_log WHERE occurred_at < now() - make_interval(days => $1)`, [RETENTION_DAYS]);
 }
 
+/** Account deletion: unlinks an e-mail from every usage event (the events stay, anonymous). */
+export async function forgetEmail(email: string): Promise<void> {
+    await ensureSchema();
+    await getSql().query(`UPDATE analytics_events SET user_email = NULL WHERE lower(user_email) = $1`, [email.toLowerCase()]);
+}
+
 /** Totals for the landing page. Reads only the aggregate table. */
 export async function getPublicDrawStats(now = new Date()): Promise<PublicDrawStats> {
     await ensureSchema();
@@ -341,6 +347,7 @@ function describeEvent(row: Record<string, unknown>): { title: string; detail: s
         santa_link_opened: "Kişisel Santa linki açıldı",
         santa_link_invalid: "Kişisel Santa linki açılamadı",
         santa_links_all_sent: "Tüm Santa linkleri gönderildi",
+        draw_saved: "Çekiliş geçmişe kaydedildi",
     };
     const action = actions[name];
     if (action) return { title: action, detail: toolLabel ?? String(row.path) };

@@ -210,6 +210,7 @@ const EVENT_LABEL: Record<EventType, string> = {
     santa_link_opened: "Adım",
     santa_link_invalid: "Adım",
     santa_links_all_sent: "Adım",
+    draw_saved: "Adım",
 };
 
 function formatAgo(minutes: number): string {

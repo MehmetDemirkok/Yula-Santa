@@ -8,12 +8,12 @@ import { GoogleButton } from "./GoogleButton";
  * Google is the only sign-in method that exists (see auth.ts), so the login and
  * register pages offer just this instead of email/password forms that did nothing.
  */
-export function GoogleSignIn() {
+export function GoogleSignIn({ redirectTo }: { redirectTo?: string }) {
     const t = useTranslations("auth");
 
     return (
         <div className="space-y-5">
-            <GoogleButton />
+            <GoogleButton redirectTo={redirectTo} />
             <p className="text-label-sm text-[var(--text-muted)] text-center leading-relaxed">
                 {t.rich("register.terms", {
                     privacy: (chunks) => (

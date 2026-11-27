@@ -22,6 +22,18 @@ const MAX_REQUESTS: Record<string, number> = {
     'analytics-collect': 120,
     'public-stats': 30,
     'admin-denied': 5,
+    'auth-register': 5,
+    'auth-login': 15,
+    'auth-login-email': 8,
+    'auth-password': 5,
+    'auth-account': 10,
+    'auth-forgot': 5,
+    'auth-forgot-email': 3,
+    'auth-token': 20,
+    'auth-verify-resend': 3,
+    'draws-list': 60,
+    'draws-save': 30,
+    'draws-delete': 30,
 };
 
 function getKey(ip: string, route: string): string {
@@ -64,4 +76,18 @@ export function rateLimit(
     }
 
     return { allowed: true, remaining: limit - entry.count, resetAt: entry.resetAt };
+}
+
+/** Same window and limits, keyed by something other than the IP (e.g. an e-mail being tried). */
+export function rateLimitKey(key: string, route: keyof typeof MAX_REQUESTS): boolean {
+    const now = Date.now();
+    const limit = MAX_REQUESTS[route] ?? MAX_REQUESTS.default;
+    const storeKey = `key:${route}:${key}`;
+    const entry = store.get(storeKey);
+    if (!entry || now > entry.resetAt) {
+        store.set(storeKey, { count: 1, resetAt: now + WINDOW_MS });
+        return true;
+    }
+    entry.count++;
+    return entry.count <= limit;
 }

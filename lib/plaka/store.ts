@@ -1079,6 +1079,20 @@ export async function getLeaderboard(options: {
     };
 }
 
+/**
+ * Account deletion: removes every game, answer, score and badge of one player.
+ * Questions and answers go with their sessions (ON DELETE CASCADE).
+ */
+export async function deletePlayerData(playerId: string): Promise<void> {
+    if (!isPlakaStoreConfigured()) return;
+    await ensureSchema();
+    const db = getSql();
+    await db.query(`DELETE FROM plaka_answers WHERE player_id = $1`, [playerId]);
+    await db.query(`DELETE FROM plaka_sessions WHERE player_id = $1`, [playerId]);
+    await db.query(`DELETE FROM plaka_player_achievements WHERE player_id = $1`, [playerId]);
+    await db.query(`DELETE FROM plaka_player_stats WHERE player_id = $1`, [playerId]);
+}
+
 export async function getPlayerOverview(playerId: string): Promise<PlayerOverview> {
     if (!isPlakaStoreConfigured()) throw new PlakaStoreError('store_unavailable');
     await ensureSchema();

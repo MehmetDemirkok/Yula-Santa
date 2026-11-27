@@ -16,6 +16,8 @@ import { loadDraw, updateDraw, type SantaDraw } from "@/lib/secretSanta/storage"
 import { Avatar, GiftBox, GiftIdeas, WinnerCard, revealStyles as styles } from "@/components/secretSanta/SantaReveal";
 import { PrintCards } from "@/components/secretSanta/PrintCards";
 import { TrackedLink } from "@/components/analytics/TrackedLink";
+import { SaveDrawButton } from "@/components/drawHistory/SaveDrawButton";
+import type { DrawRecord } from "@/lib/drawHistory/types";
 
 type View = "choose" | "links" | "screen" | "print";
 
@@ -171,6 +173,17 @@ export default function ResultPage() {
     const unseen = givers.filter((g) => !draw.seen.includes(g));
     const nextToSend = givers.find((g) => !draw.sent.includes(g));
 
+    // Saved only when the organizer presses "save"; the matches then live in their account.
+    const santaRecord = (): DrawRecord => ({
+        tool: "secret_santa",
+        title: draw.event?.name,
+        participantCount: givers.length,
+        participants: givers,
+        winners: [],
+        backups: [],
+        santa: { mode: draw.mode, assignments: draw.assignments, hints: draw.hints, event: draw.event },
+    });
+
     return (
         <main className="ys-page-shell flex flex-col items-center pt-24 sm:pt-32 px-3 relative overflow-x-hidden safe-area-inset-bottom transition-colors duration-300">
             <div className="absolute top-0 right-0 w-48 sm:w-72 md:w-96 h-48 sm:h-72 md:h-96 bg-red-100 dark:bg-red-500/20 rounded-full blur-[80px] sm:blur-[100px] md:blur-[120px] opacity-40 translate-x-1/3 -translate-y-1/3"></div>
@@ -198,6 +211,7 @@ export default function ResultPage() {
                                     <GiftIdeas locale={locale} compact />
                                 </div>
                             ))}
+                            <SaveDrawButton drawKey={draw.createdAt} getRecord={santaRecord} />
                             <AdWrapper position="inline">
                                 <InArticleAd adSlot={AD_SLOTS.IN_ARTICLE} />
                             </AdWrapper>
@@ -256,6 +270,7 @@ export default function ResultPage() {
                                 </span>
                             </button>
                         </div>
+                        <SaveDrawButton drawKey={draw.createdAt} getRecord={santaRecord} />
                         <Button onClick={goHome} variant="ghost" className="w-full text-[var(--text-muted)]">
                             <Home className="w-4 h-4 me-2" /> {t("backToHome")}
                         </Button>

@@ -46,7 +46,9 @@ export async function POST(request: Request) {
         const country = countryHeader && /^[A-Z]{2}$/.test(countryHeader) && countryHeader !== "XX" ? countryHeader : null;
 
         // The e-mail is linked only after consent. The session is not even read otherwise.
-        const email = parsed.consent === "accepted" ? ((await auth())?.user?.email ?? null) : null;
+        // Only a proven e-mail is linked (Google, or a password account that clicked our link).
+        const session = parsed.consent === "accepted" ? await auth() : null;
+        const email = session?.emailVerified || session?.emailProven ? (session.user?.email ?? null) : null;
 
         await insertEvents(parsed, {
             visitorKey: visitorKeyFor(parsed.visitorId, ip, userAgent),

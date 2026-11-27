@@ -7,7 +7,7 @@ import { useTranslations } from "next-intl";
 import { cn } from "@/lib/utils";
 import { localePath } from "@/lib/localePath";
 
-export function GoogleButton() {
+export function GoogleButton({ redirectTo }: { redirectTo?: string }) {
     const t = useTranslations("auth");
     const params = useParams();
     const locale = params.locale as string;
@@ -16,7 +16,7 @@ export function GoogleButton() {
     async function handleClick() {
         setLoading(true);
         try {
-            await signIn("google", { callbackUrl: localePath(locale, "/") });
+            await signIn("google", { redirectTo: redirectTo ?? localePath(locale, "/") });
         } catch {
             setLoading(false);
         }

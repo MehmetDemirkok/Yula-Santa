@@ -34,7 +34,8 @@ import { useToast } from "@/lib/ToastContext";
 import { downloadWinnerCard } from "@/lib/downloadWinnerCard";
 import { secureShuffle, secureRandomInt } from "@/lib/random";
 import { applyGiveawayFilters, requiredPool } from "@/lib/giveawayFilters";
-import { buildDrawProof, type DrawProof } from "@/lib/giveawayProof";
+import { buildDrawProof, encodeProofToken, proofPath, type DrawProof } from "@/lib/giveawayProof";
+import { SaveDrawButton } from "@/components/drawHistory/SaveDrawButton";
 import { FilterRulesPanel } from "@/components/giveaway/FilterRulesPanel";
 import { DrawProofPanel } from "@/components/giveaway/DrawProofPanel";
 import { TikTokFetchStats } from "@/components/giveaway/TikTokFetchStats";
@@ -525,6 +526,20 @@ export default function TikTokGiveaway() {
                                         buttonClass="bg-santa-red hover:bg-santa-red-hover"
                                         labels={proofLabels}
                                         onToast={(msg) => toast.success(msg)}
+                                    />
+                                )}
+
+                                {drawProof && (
+                                    <SaveDrawButton
+                                        drawKey={drawProof.seed}
+                                        getRecord={() => ({
+                                            tool: "tiktok",
+                                            title: giveawayName.trim() || undefined,
+                                            participantCount: filterStats.eligible,
+                                            winners: winners.map((w) => ({ name: w.name, note: w.comment })),
+                                            backups: backups.map((b) => ({ name: b.name })),
+                                            proofPath: proofPath(locale, encodeProofToken(drawProof)),
+                                        })}
                                     />
                                 )}
 
