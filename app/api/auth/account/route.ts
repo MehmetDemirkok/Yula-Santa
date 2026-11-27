@@ -10,10 +10,12 @@ import { peekPlayerIdentity } from "@/lib/plaka/player";
 import { deletePlayerData } from "@/lib/plaka/store";
 import { forgetEmail, isAnalyticsConfigured } from "@/lib/analytics/store";
 import { deleteAllDraws, drawOwner, isDrawHistoryConfigured } from "@/lib/drawHistory/store";
+import { forgetMember, isMemberStoreConfigured } from "@/lib/auth/memberStore";
 
 /**
  * Deletes the signed-in account: the password account (if any), every Plaka
- * Avcısı game, score and badge, every saved draw, and the e-mail link on usage events. The client
+ * Avcısı game, score and badge, every saved draw, the admin member-list row,
+ * and the e-mail link on usage events. The client
  * signs out afterwards.
  *
  * E-mail + password accounts must give their password; Google accounts must have
@@ -61,6 +63,12 @@ export async function DELETE(request: Request) {
         if (isPassword && session.accountId) await deleteUserById(session.accountId);
         if (!isPassword && email && isUserStoreConfigured()) await deleteVerifiedUserByEmail(email);
         if (emailTrusted && email && isAnalyticsConfigured()) await forgetEmail(email);
+        if (isMemberStoreConfigured()) {
+            await forgetMember(
+                { provider: session.provider ?? "google", email, accountId: session.accountId ?? null },
+                emailTrusted ? email : null,
+            );
+        }
 
         return NextResponse.json({ ok: true });
     } catch (error) {

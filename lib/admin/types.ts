@@ -96,4 +96,29 @@ export type AdminData = {
     range: RangeData;
     events: LiveEvent[];
     access: AccessRow[];
+    /** null when the member query failed; the rest of the panel still loads. */
+    members: MembersData | null;
 };
+
+/** One member (one sign-in method) in the admin member list. Dates are ISO strings. */
+export type MemberRow = {
+    key: string;
+    provider: "google" | "credentials";
+    name: string | null;
+    email: string | null;
+    /** Google, or a password account whose address was proven. */
+    emailVerified: boolean;
+    /** Earliest of sign-up, first recorded sign-in and first linked analytics event. */
+    joinedAt: string | null;
+    lastSeenAt: string | null;
+    /** Sign-ins counted since the member list existed. */
+    signIns: number;
+    /** Estimated time on site from linked analytics events (90 days); null when nothing is linked. */
+    seconds: number | null;
+    visits: number;
+    pageviews: number;
+    draws: number;
+    savedDraws: number;
+};
+
+export type MembersData = { members: MemberRow[] };
