@@ -359,7 +359,7 @@ function describeEvent(row: Record<string, unknown>): { title: string; detail: s
     return { title: toolLabel ?? "Çekiliş", detail: parts.join(", ") || "Tamamlandı" };
 }
 
-export async function getAdminData(key: RangeKey, now = new Date()): Promise<AdminData> {
+export async function getAdminData(key: RangeKey, now = new Date()): Promise<Omit<AdminData, "members">> {
     await ensureSchema();
     const db = getSql();
     const env = analyticsEnv();

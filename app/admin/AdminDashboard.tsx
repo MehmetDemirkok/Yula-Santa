@@ -18,18 +18,21 @@ import {
     Sun,
     Users,
     Megaphone,
+    UserRound,
     type LucideIcon,
 } from "lucide-react";
 import { Card, Delta, EmptyState, Funnel, RankedBars, SegmentedBar, StatTile, TrendChart, formatNumber, formatShare } from "@/components/admin/charts";
 import type { AccessRow, AdminData, EventType, LiveEvent, RangeData, RangeKey, TrendPoint } from "@/lib/admin/types";
 import { useTheme } from "@/lib/ThemeContext";
+import { MembersView } from "@/components/admin/MembersView";
 
-type ViewKey = "overview" | "draws" | "visitors" | "live" | "security";
+type ViewKey = "overview" | "draws" | "visitors" | "members" | "live" | "security";
 
 const VIEWS: { key: ViewKey; label: string; icon: LucideIcon; description: string }[] = [
     { key: "overview", label: "Genel bakış", icon: LayoutDashboard, description: "Sitenin seçili dönemdeki özeti" },
     { key: "draws", label: "Çekilişler", icon: Gift, description: "Hangi araç ne kadar kullanılıyor" },
     { key: "visitors", label: "Ziyaretçiler", icon: Users, description: "Kimler, nereden ve hangi cihazla geliyor" },
+    { key: "members", label: "Üyeler", icon: UserRound, description: "Üyeler, üyelik tarihleri ve sitede geçirdikleri süre" },
     { key: "live", label: "Canlı akış", icon: Activity, description: "Sitede son yapılan işlemler" },
     { key: "security", label: "Güvenlik", icon: ShieldCheck, description: "Panele erişim kayıtları ve korumalar" },
 ];
@@ -471,6 +474,7 @@ export function AdminDashboard({ data, range, localBypass }: { data: AdminData |
                             {view === "overview" && <OverviewView data={data.range} deltaSuffix={rangeInfo.deltaSuffix} />}
                             {view === "draws" && <DrawsView data={data.range} deltaSuffix={rangeInfo.deltaSuffix} />}
                             {view === "visitors" && <VisitorsView data={data.range} />}
+                            {view === "members" && <MembersView data={data.members} />}
                             {view === "live" && <LiveView events={data.events} />}
                             {view === "security" && <SecurityView access={data.access} />}
                         </div>

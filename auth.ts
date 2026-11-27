@@ -3,7 +3,9 @@
  * Auth.js (NextAuth v5) Configuration — Google and e-mail + password
  * ═══════════════════════════════════════════════════════════════════════════
  *
- * JWT sessions. Google sign-ins are not stored anywhere but the session cookie.
+ * JWT sessions. Google accounts have no password row; the session cookie holds
+ * them, and the admin member list (`auth_members`, lib/auth/memberStore.ts)
+ * records name, e-mail and sign-in dates for every sign-in method.
  * E-mail + password accounts live in `auth_users` (lib/auth/userStore.ts); their
  * e-mail is not verified, so `emailVerified` stays false and code that trusts an
  * e-mail (admin gate, analytics link, Plaka identity) must key them by `accountId`.
@@ -21,6 +23,7 @@ import Credentials from "next-auth/providers/credentials";
 import Google from "next-auth/providers/google";
 import { emailError, normalizeEmail, passwordError } from "@/lib/auth/credentials";
 import { isAdminSession } from "@/lib/admin/access";
+import { MEMBER_SEEN_REFRESH_SECONDS } from "@/lib/admin/memberFormat";
 
 declare module "next-auth" {
     interface Session {
@@ -111,6 +114,25 @@ export const { handlers, auth, signIn, signOut } = NextAuth({
                     token.emailProven = (user as { emailProven?: boolean } | undefined)?.emailProven === true;
                 } else if (profile) {
                     token.emailVerified = profile.email_verified === true;
+                }
+            }
+            // Admin member list: every sign-in, plus a "still here" refresh at most every few hours,
+            // which also picks up sessions that started before the list existed.
+            const nowSeconds = Math.floor(Date.now() / 1000);
+            const seenAt = typeof token.memberSeenAt === "number" ? token.memberSeenAt : 0;
+            if (account || nowSeconds - seenAt > MEMBER_SEEN_REFRESH_SECONDS) {
+                token.memberSeenAt = nowSeconds;
+                const { isMemberStoreConfigured, recordMember } = await import("@/lib/auth/memberStore");
+                if (isMemberStoreConfigured()) {
+                    await recordMember(
+                        {
+                            provider: typeof token.provider === "string" ? token.provider : "google",
+                            email: token.email,
+                            name: token.name,
+                            accountId: typeof token.accountId === "string" ? token.accountId : null,
+                        },
+                        Boolean(account),
+                    ).catch((error) => console.error("record member failed", error instanceof Error ? error.message : "unknown"));
                 }
             }
             return token;
