@@ -23,6 +23,7 @@ import { Button } from "@/components/ui/Button";
 import { Input } from "@/components/ui/Input";
 import { WheelStage, type WheelStageHandle } from "@/components/wheel/WheelStage";
 import { WinnerSheet } from "@/components/wheel/WinnerSheet";
+import { SaveDrawButton } from "@/components/drawHistory/SaveDrawButton";
 import { celebrate } from "@/lib/celebrate";
 import { secureRandomInt, secureShuffle } from "@/lib/random";
 import { useTheme } from "@/lib/ThemeContext";
@@ -726,6 +727,19 @@ export function WheelClient() {
                     onRemove={removeWinner}
                     onShare={shareResult}
                     onClose={closeSheet}
+                    footer={
+                        <SaveDrawButton
+                            tone="dark"
+                            drawKey={String(history[0]?.id ?? "")}
+                            getRecord={() => ({
+                                tool: "wheel",
+                                participantCount: segments.length,
+                                participants: segments,
+                                winners: [{ name: winner.name }],
+                                backups: [],
+                            })}
+                        />
+                    }
                 />
             )}
         </div>

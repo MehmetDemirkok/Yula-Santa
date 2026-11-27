@@ -5,7 +5,7 @@ import { useEffect, useRef, useState } from "react";
 import { signOut, useSession } from "next-auth/react";
 import { useLocale, useTranslations } from "next-intl";
 import { usePathname } from "next/navigation";
-import { Car, ChevronDown, HelpCircle, History, LayoutDashboard, LogIn, LogOut, UserPlus, UserRound } from "lucide-react";
+import { BookmarkCheck, Car, ChevronDown, HelpCircle, History, LayoutDashboard, LogIn, LogOut, UserPlus, UserRound } from "lucide-react";
 import { cn } from "@/lib/utils";
 import { localePath } from "@/lib/localePath";
 import { loginHref } from "@/lib/auth/redirect";
@@ -50,6 +50,7 @@ function useLoginHref() {
  */
 export function AccountMenu() {
     const t = useTranslations("auth");
+    const tHistory = useTranslations("drawHistory");
     const locale = useLocale();
     const { data: session, status } = useSession();
     const href = useLoginHref();
@@ -119,6 +120,7 @@ export function AccountMenu() {
                     <div className="border-t border-[var(--border-light)] p-2 dark:border-white/10">
                         {[
                             { href: accountHref, icon: UserRound, label: t("accountPage.title") },
+                            { href: localePath(locale, "/account/draws"), icon: BookmarkCheck, label: tHistory("title") },
                             { href: `${accountHref}#plaka`, icon: Car, label: t("accountPage.menuPlaka") },
                             { href: `${accountHref}#cihaz`, icon: History, label: t("accountPage.menuDraws") },
                             ...(session.isAdmin ? [{ href: "/admin", icon: LayoutDashboard, label: t("accountPage.adminTitle") }] : []),

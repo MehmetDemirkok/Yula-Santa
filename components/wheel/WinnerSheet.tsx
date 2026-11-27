@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useRef } from "react";
+import { useEffect, useRef, type ReactNode } from "react";
 import { Check, RefreshCw, Share2, Trash2, X } from "lucide-react";
 
 type WinnerSheetProps = {
@@ -18,6 +18,8 @@ type WinnerSheetProps = {
     onRemove: () => void;
     onShare: () => void;
     onClose: () => void;
+    /** Extra row under the actions, e.g. "save to my history". */
+    footer?: ReactNode;
 };
 
 function winnerFontClass(name: string) {
@@ -42,6 +44,7 @@ export function WinnerSheet({
     onRemove,
     onShare,
     onClose,
+    footer,
 }: WinnerSheetProps) {
     const primaryRef = useRef<HTMLButtonElement>(null);
     const dialogRef = useRef<HTMLDivElement>(null);
@@ -56,7 +59,7 @@ export function WinnerSheet({
                 return;
             }
             if (e.key !== "Tab" || !dialogRef.current) return;
-            const items = dialogRef.current.querySelectorAll<HTMLElement>("button");
+            const items = dialogRef.current.querySelectorAll<HTMLElement>("button, a[href]");
             if (items.length === 0) return;
             const first = items[0];
             const last = items[items.length - 1];
@@ -134,6 +137,7 @@ export function WinnerSheet({
                         <span aria-live="polite">{copied ? copiedLabel : shareLabel}</span>
                     </button>
                 </div>
+                {footer && <div className="mt-3">{footer}</div>}
             </div>
         </div>
     );

@@ -6,6 +6,7 @@ import { useLocale, useTranslations } from "next-intl";
 import { usePathname } from "next/navigation";
 import NextLink from "next/link";
 import {
+    BookmarkCheck,
     Car,
     CheckCircle2,
     ChevronRight,
@@ -31,6 +32,7 @@ import { localePath } from "@/lib/localePath";
 import { loginHref } from "@/lib/auth/redirect";
 import { NAME_MAX, passwordError, PASSWORD_MIN } from "@/lib/auth/credentials";
 import { readDeviceDraws, type DeviceDraw } from "@/lib/account/deviceDraws";
+import type { SavedDrawSummary } from "@/lib/drawHistory/types";
 import { UserAvatar } from "./AccountMenu";
 
 const inputClass =
@@ -197,6 +199,7 @@ function AccountSkeleton() {
 /** /account: profile, password, Plaka report card, this device's draws, admin link, help and account deletion. */
 export function AccountClient() {
     const t = useTranslations("auth");
+    const tHistory = useTranslations("drawHistory");
     const locale = useLocale();
     const pathname = usePathname();
     const { data: session, status } = useSession();
@@ -208,6 +211,7 @@ export function AccountClient() {
         { id: "profil", label: t("accountPage.tabProfile"), icon: <UserRound className="h-[18px] w-[18px]" aria-hidden /> },
         ...(hasSecurity ? [{ id: "guvenlik", label: t("accountPage.tabSecurity"), icon: <KeyRound className="h-[18px] w-[18px]" aria-hidden /> }] : []),
         { id: "plaka", label: t("accountPage.tabPlaka"), icon: <Car className="h-[18px] w-[18px]" aria-hidden /> },
+        { id: "gecmis", label: tHistory("tabHistory"), icon: <BookmarkCheck className="h-[18px] w-[18px]" aria-hidden /> },
         { id: "cihaz", label: t("accountPage.tabDraws"), icon: <History className="h-[18px] w-[18px]" aria-hidden /> },
         { id: "yardim", label: t("accountPage.tabHelp"), icon: <HelpCircle className="h-[18px] w-[18px]" aria-hidden /> },
     ];
@@ -240,6 +244,7 @@ export function AccountClient() {
                 {needsVerify && <VerifyEmailBanner />}
                 <SectionTabs items={nav} active={active} />
                 {isPassword ? <ChangePasswordSection /> : canSetPassword ? <SetPasswordSection email={session.user.email!} /> : null}
+                <SavedDrawsSection />
                 <PlakaSection />
                 <DeviceDrawsSection />
                 {session.isAdmin && (
@@ -569,6 +574,57 @@ function PlakaSection() {
                     <Trophy className="h-4 w-4" aria-hidden /> {t("accountPage.leaderboard")}
                 </NextLink>
             </div>
+        </Section>
+    );
+}
+
+/** The newest saved draws (from the account, every device) and a link to the full history. */
+function SavedDrawsSection() {
+    const t = useTranslations("drawHistory");
+    const locale = useLocale();
+    const [draws, setDraws] = useState<SavedDrawSummary[] | null>(null);
+    const [failed, setFailed] = useState(false);
+
+    useEffect(() => {
+        const controller = new AbortController();
+        fetch("/api/draws", { signal: controller.signal, cache: "no-store" })
+            .then((response) => (response.ok ? response.json() : Promise.reject()))
+            .then((json: { draws: SavedDrawSummary[] }) => setDraws(json.draws))
+            .catch(() => !controller.signal.aborted && setFailed(true));
+        return () => controller.abort();
+    }, []);
+
+    const historyHref = localePath(locale, "/account/draws");
+    const date = new Intl.DateTimeFormat(locale, { day: "numeric", month: "long" });
+
+    return (
+        <Section id="gecmis" tone="bg-indigo-50 dark:bg-indigo-500/15" icon={<BookmarkCheck className="h-5 w-5 text-indigo-600 dark:text-indigo-300" aria-hidden />} title={t("title")} hint={t("accountHint")}>
+            {failed ? (
+                <p className="text-sm text-[var(--text-muted)]">{t("loadError")}</p>
+            ) : !draws ? (
+                <div aria-hidden className="h-[84px] animate-pulse rounded-xl bg-[var(--surface-2)]" />
+            ) : draws.length === 0 ? (
+                <p className="rounded-xl border border-dashed border-[var(--border-medium)] p-4 text-center text-sm text-[var(--text-muted)]">{t("empty")}</p>
+            ) : (
+                <ul className="space-y-2">
+                    {draws.slice(0, 3).map((draw) => (
+                        <li key={draw.id}>
+                            <NextLink href={historyHref} className="flex items-center gap-3 rounded-xl border border-[var(--border-light)] p-3 transition-colors hover:bg-[var(--surface-2)]">
+                                <span className="min-w-0 flex-1">
+                                    <span className="block truncate text-sm font-bold text-foreground">{draw.title || t(`tools.${draw.tool}`)}</span>
+                                    <span className="block truncate text-xs text-[var(--text-muted)]">
+                                        {date.format(new Date(draw.createdAt))} · {t("participants", { count: draw.participantCount })}
+                                        {draw.winnerPreview.length > 0 && ` · 🏆 ${draw.winnerPreview.join(", ")}`}
+                                    </span>
+                                </span>
+                            </NextLink>
+                        </li>
+                    ))}
+                </ul>
+            )}
+            <NextLink href={historyHref} className="inline-flex h-[44px] items-center gap-1.5 rounded-xl bg-indigo-600 px-4 text-sm font-bold text-white hover:brightness-110">
+                <BookmarkCheck className="h-4 w-4" aria-hidden /> {draws && draws.length > 0 ? t("seeAll", { count: draws.length }) : t("openHistory")}
+            </NextLink>
         </Section>
     );
 }

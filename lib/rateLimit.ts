@@ -31,6 +31,9 @@ const MAX_REQUESTS: Record<string, number> = {
     'auth-forgot-email': 3,
     'auth-token': 20,
     'auth-verify-resend': 3,
+    'draws-list': 60,
+    'draws-save': 30,
+    'draws-delete': 30,
 };
 
 function getKey(ip: string, route: string): string {

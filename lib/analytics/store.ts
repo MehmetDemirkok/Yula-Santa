@@ -347,6 +347,7 @@ function describeEvent(row: Record<string, unknown>): { title: string; detail: s
         santa_link_opened: "Kişisel Santa linki açıldı",
         santa_link_invalid: "Kişisel Santa linki açılamadı",
         santa_links_all_sent: "Tüm Santa linkleri gönderildi",
+        draw_saved: "Çekiliş geçmişe kaydedildi",
     };
     const action = actions[name];
     if (action) return { title: action, detail: toolLabel ?? String(row.path) };
