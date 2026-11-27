@@ -4,6 +4,10 @@ import { useState, useEffect } from "react";
 import { useTranslations } from "next-intl";
 import { MessageCircle, X, Send, User, Mail, Phone, MessageSquare } from "lucide-react";
 import { Button } from "@/components/ui/Button";
+import { usePathname } from "@/i18n/navigation";
+
+/** Pages where, on phones, the button waits until the visitor scrolls past the tool. */
+const DEFER_ON_PHONE = new Set(["/secret-santa"]);
 
 export function SupportButton() {
     const t = useTranslations('support');
@@ -12,6 +16,21 @@ export function SupportButton() {
     const [email, setEmail] = useState("");
     const [phone, setPhone] = useState("");
     const [message, setMessage] = useState("");
+    const deferred = DEFER_ON_PHONE.has(usePathname());
+    const [scrolled, setScrolled] = useState(false);
+
+    useEffect(() => {
+        if (!deferred) return;
+        // Wait until the draw card (#cekilis) has scrolled away, so the bubble never covers the tool.
+        const onScroll = () => {
+            const card = document.getElementById("cekilis");
+            setScrolled(card ? card.getBoundingClientRect().bottom < 0 : window.scrollY > 900);
+        };
+        onScroll();
+        window.addEventListener("scroll", onScroll, { passive: true });
+        return () => window.removeEventListener("scroll", onScroll);
+    }, [deferred]);
+    const hiddenOnPhone = deferred && !scrolled;
 
     // Prevent scrolling when drawer is open
     useEffect(() => {
@@ -36,7 +55,7 @@ export function SupportButton() {
     return (
         <>
             {/* Floating Action Button */}
-            <div className="fixed bottom-6 right-6 z-[60]">
+            <div className={`fixed bottom-6 right-6 z-[60] transition-all duration-300 ${hiddenOnPhone ? "max-sm:pointer-events-none max-sm:translate-y-4 max-sm:opacity-0" : ""}`}>
                 <button
                     onClick={() => setIsOpen(true)}
                     className="group relative flex items-center justify-center w-14 h-14 bg-santa-red text-white rounded-full shadow-[0_8px_30px_rgb(239,68,68,0.4)] hover:shadow-[0_8px_30px_rgb(239,68,68,0.6)] transform hover:-translate-y-1 active:scale-95 transition-all duration-300 pointer-events-auto"

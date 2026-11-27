@@ -59,6 +59,7 @@
         "moreNeeded": "{count} kişi daha",
         "match": "Eşleştir",
         "happyNewYear": "🎄 Mutlu Yıllar!",
+        "mascotHint": "Bana dokun! 🎁",
         "minPeople3": "En az 3 kişi eklemelisiniz",
         "minPeople2": "En az 2 kişi eklemelisiniz",
         "evenNumber": "Kişi sayısı çift olmalıdır",
@@ -105,14 +106,14 @@
         "tiktokGiveaway": "TikTok Çekilişi",
         "namePickerDesc": "Listeden adil kazanan seçin",
         "stats": {
-            "live": "Canlı istatistik",
+            "live": "Canlı sayaç",
             "title": "Bugüne kadar <strong>{formatted}</strong> çekiliş yapıldı",
-            "since": "{date} tarihinden beri, gerçek veriler",
+            "since": "Sayaç {date} tarihinde başladı",
             "today": "Bugün {formatted} çekiliş",
             "youtube": "YouTube çekilişi",
             "tiktok": "TikTok çekilişi",
             "secretSanta": "Yılbaşı çekilişi",
-            "note": "Sitede tamamlanan çekilişler sayılır; isimler ve sonuçlar kaydedilmez."
+            "note": "Yalnızca kaç çekiliş yapıldığını sayıyoruz. İsimleri ve sonuçları saklamıyoruz."
         }
     },
     "result": {
@@ -1655,6 +1656,10 @@
         "featureLinks": "WhatsApp'tan link",
         "featureRules": "Eş ve kardeş kuralı",
         "featurePrint": "Kart yazdır",
+        "tryExample": "Örnek listeyle dene",
+        "exampleNames": "Ayşe, Mehmet, Zeynep, Can, Elif",
+        "countdownNudge": "Çekilişi erken yap, herkes hediyesini rahatça alsın.",
+        "socialProof": "{date} tarihinden bu yana <strong>{formatted}</strong> yılbaşı çekilişi yapıldı",
         "peopleCount": "{count} kişi",
         "pasteHint": "İsimleri tek tek yazabilir ya da WhatsApp veya Excel'den bir liste yapıştırabilirsin."
     }

@@ -58,6 +58,7 @@
         "moreNeeded": "{count} más",
         "match": "Emparejar",
         "happyNewYear": "🎄 ¡Feliz Año Nuevo!",
+        "mascotHint": "¡Tócame! 🎁",
         "minPeople3": "Añade al menos 3 personas",
         "minPeople2": "Añade al menos 2 personas",
         "evenNumber": "El número de personas debe ser par",
@@ -105,14 +106,14 @@
         "namePickerDesc": "Elige ganadores justos de cualquier lista",
         "description": "Elige ganadores justos de comentarios de YouTube y TikTok en segundos. Herramientas gratis — sin registro, sin contraseña.",
         "stats": {
-            "live": "Estadísticas en vivo",
+            "live": "Contador en vivo",
             "title": "<strong>{formatted}</strong> {count, plural, one {sorteo realizado} other {sorteos realizados}} hasta hoy",
-            "since": "Desde el {date}, datos reales",
+            "since": "Contando desde el {date}",
             "today": "{formatted} {count, plural, one {sorteo} other {sorteos}} hoy",
             "youtube": "Sorteos de YouTube",
             "tiktok": "Sorteos de TikTok",
             "secretSanta": "Sorteos de amigo invisible",
-            "note": "Se cuentan los sorteos completados en el sitio; nunca se guardan nombres ni resultados."
+            "note": "Solo contamos cuántos sorteos se hacen. No guardamos nombres ni resultados."
         }
     },
     "result": {
@@ -1653,6 +1654,10 @@
         "featureLinks": "Enlaces por WhatsApp",
         "featureRules": "Reglas de exclusión",
         "featurePrint": "Tarjetas imprimibles",
+        "tryExample": "Probar con una lista de ejemplo",
+        "exampleNames": "Lucía, Hugo, Martina, Pablo, Sofía",
+        "countdownNudge": "Haz el sorteo pronto para que todos tengan tiempo de buscar su regalo.",
+        "socialProof": "<strong>{formatted}</strong> {count, plural, one {sorteo de amigo invisible} other {sorteos de amigo invisible}} desde el {date}",
         "peopleCount": "{count, plural, one {# persona} other {# personas}}",
         "pasteHint": "Escribe los nombres uno a uno o pega una lista de WhatsApp o Excel."
     }

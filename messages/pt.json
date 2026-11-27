@@ -58,6 +58,7 @@
         "moreNeeded": "mais {count}",
         "match": "Combinar",
         "happyNewYear": "🎄 Feliz Ano Novo!",
+        "mascotHint": "Toque em mim! 🎁",
         "minPeople3": "Adicione pelo menos 3 pessoas",
         "minPeople2": "Adicione pelo menos 2 pessoas",
         "evenNumber": "O número de pessoas deve ser par",
@@ -104,14 +105,14 @@
         "tiktokGiveaway": "Sorteio do TikTok",
         "namePickerDesc": "Pick fair winners from any list",
         "stats": {
-            "live": "Estatísticas ao vivo",
+            "live": "Contador ao vivo",
             "title": "<strong>{formatted}</strong> {count, plural, one {sorteio realizado} other {sorteios realizados}} até agora",
-            "since": "Desde {date}, dados reais",
+            "since": "Contando desde {date}",
             "today": "{formatted} {count, plural, one {sorteio} other {sorteios}} hoje",
             "youtube": "Sorteios no YouTube",
             "tiktok": "Sorteios no TikTok",
             "secretSanta": "Sorteios de amigo secreto",
-            "note": "Contamos os sorteios concluídos no site; nomes e resultados nunca são guardados."
+            "note": "Contamos apenas quantos sorteios são feitos. Nomes e resultados não são guardados."
         }
     },
     "result": {
@@ -1652,6 +1653,10 @@
         "featureLinks": "Links pelo WhatsApp",
         "featureRules": "Regras de exclusão",
         "featurePrint": "Cartões para imprimir",
+        "tryExample": "Testar com uma lista de exemplo",
+        "exampleNames": "Ana, Pedro, Beatriz, Lucas, Sofia",
+        "countdownNudge": "Faça o sorteio cedo para todos terem tempo de comprar o presente.",
+        "socialProof": "<strong>{formatted}</strong> {count, plural, one {sorteio de amigo secreto} other {sorteios de amigo secreto}} desde {date}",
         "peopleCount": "{count, plural, one {# pessoa} other {# pessoas}}",
         "pasteHint": "Digite os nomes um a um ou cole uma lista do WhatsApp ou do Excel."
     }

@@ -58,6 +58,7 @@
         "moreNeeded": "还差 {count} 人",
         "match": "配对",
         "happyNewYear": "🎄 新年快乐！",
+        "mascotHint": "点我一下！🎁",
         "minPeople3": "请至少添加 3 人",
         "minPeople2": "请至少添加 2 人",
         "evenNumber": "人数必须为偶数",
@@ -104,14 +105,14 @@
             ]
         },
         "stats": {
-            "live": "实时统计",
+            "live": "实时计数",
             "title": "迄今已完成 <strong>{formatted}</strong> 次抽奖",
-            "since": "自 {date} 起的真实数据",
+            "since": "自 {date} 起统计",
             "today": "今天 {formatted} 次",
             "youtube": "YouTube 抽奖",
             "tiktok": "TikTok 抽奖",
             "secretSanta": "神秘圣诞老人",
-            "note": "仅统计在本站完成的抽奖；姓名和结果从不保存。"
+            "note": "我们只统计抽奖次数，不保存姓名和结果。"
         }
     },
     "result": {
@@ -1651,6 +1652,10 @@
         "featureLinks": "通过 WhatsApp 发送链接",
         "featureRules": "排除规则",
         "featurePrint": "打印卡片",
+        "tryExample": "用示例名单试试",
+        "exampleNames": "小明, 小红, 小刚, 小丽, 小军",
+        "countdownNudge": "早点抽签，大家都有时间挑礼物。",
+        "socialProof": "自 {date} 起已完成 <strong>{formatted}</strong> 次神秘圣诞老人抽签",
         "peopleCount": "{count} 人",
         "pasteHint": "可以逐个输入姓名,也可以粘贴来自 WhatsApp 或 Excel 的名单。"
     }

@@ -6,9 +6,11 @@ import Link from "next/link";
 import { useParams } from "next/navigation";
 import { localePath } from "@/lib/localePath";
 import { isNewYearThemeActive } from "@/components/NewYearTheme/config";
+import { usePathname } from "@/i18n/navigation";
 
 export function Footer() {
     const t = useTranslations("footer");
+    const pathname = usePathname();
     const tTools = useTranslations("tools");
     const tHome = useTranslations("home");
     const params = useParams();
@@ -105,6 +107,8 @@ export function Footer() {
                     </p>
                 </div>
 
+                {/* /secret-santa shows Yula above its final call to action instead. */}
+                {pathname !== "/secret-santa" && (
                 <div className="mt-6 flex justify-center">
                     <div className="relative overflow-hidden rounded-3xl border border-[var(--border-medium)] bg-gradient-to-br from-[var(--surface-2)] via-[var(--card-bg)] to-[var(--surface-2)] p-6 shadow-xl backdrop-blur-sm dark:border-white/5 dark:from-gray-900/80 dark:via-gray-950/90 dark:to-black/80 dark:shadow-none">
                         <div className="pointer-events-none absolute inset-0 bg-gradient-to-t from-santa-red/5 to-transparent" />
@@ -118,6 +122,7 @@ export function Footer() {
                         />
                     </div>
                 </div>
+                )}
             </div>
         </footer>
     );

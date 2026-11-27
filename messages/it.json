@@ -58,6 +58,7 @@
         "moreNeeded": "ancora {count}",
         "match": "Abbina",
         "happyNewYear": "🎄 Felice Anno Nuovo!",
+        "mascotHint": "Toccami! 🎁",
         "minPeople3": "Aggiungi almeno 3 persone",
         "minPeople2": "Aggiungi almeno 2 persone",
         "evenNumber": "Il numero di persone deve essere pari",
@@ -104,14 +105,14 @@
             ]
         },
         "stats": {
-            "live": "Statistiche in tempo reale",
+            "live": "Contatore in tempo reale",
             "title": "<strong>{formatted}</strong> {count, plural, one {estrazione effettuata} other {estrazioni effettuate}} finora",
-            "since": "Dal {date}, dati reali",
+            "since": "Dal {date}",
             "today": "{formatted} {count, plural, one {estrazione} other {estrazioni}} oggi",
             "youtube": "Giveaway YouTube",
             "tiktok": "Giveaway TikTok",
             "secretSanta": "Estrazioni Secret Santa",
-            "note": "Contiamo le estrazioni completate sul sito; nomi e risultati non vengono mai salvati."
+            "note": "Contiamo solo quante estrazioni vengono fatte. Nomi e risultati non vengono salvati."
         }
     },
     "result": {
@@ -1651,6 +1652,10 @@
         "featureLinks": "Link su WhatsApp",
         "featureRules": "Regole di esclusione",
         "featurePrint": "Biglietti da stampare",
+        "tryExample": "Prova con una lista di esempio",
+        "exampleNames": "Giulia, Marco, Sofia, Luca, Chiara",
+        "countdownNudge": "Fai l’estrazione presto, così tutti hanno tempo per il regalo.",
+        "socialProof": "<strong>{formatted}</strong> {count, plural, one {estrazione Secret Santa} other {estrazioni Secret Santa}} dal {date}",
         "peopleCount": "{count, plural, one {# persona} other {# persone}}",
         "pasteHint": "Scrivi i nomi uno alla volta o incolla un elenco da WhatsApp o Excel."
     }

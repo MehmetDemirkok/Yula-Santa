@@ -58,6 +58,7 @@
         "moreNeeded": "あと{count}人",
         "match": "マッチング",
         "happyNewYear": "🎄 ハッピーニューイヤー！",
+        "mascotHint": "タップしてね！🎁",
         "minPeople3": "3人以上追加してください",
         "minPeople2": "2人以上追加してください",
         "evenNumber": "人数は偶数である必要があります",
@@ -104,14 +105,14 @@
             ]
         },
         "stats": {
-            "live": "リアルタイム統計",
+            "live": "ライブカウンター",
             "title": "これまでに <strong>{formatted}</strong> 回の抽選",
-            "since": "{date}以降の実データ",
+            "since": "{date}からカウント",
             "today": "今日 {formatted} 回",
             "youtube": "YouTube抽選",
             "tiktok": "TikTok抽選",
             "secretSanta": "シークレットサンタ",
-            "note": "サイトで完了した抽選を数えています。名前や結果は保存されません。"
+            "note": "数えているのは抽選の回数だけです。名前や結果は保存しません。"
         }
     },
     "result": {
@@ -1651,6 +1652,10 @@
         "featureLinks": "WhatsAppでリンク送信",
         "featureRules": "組み合わせ除外ルール",
         "featurePrint": "カード印刷",
+        "tryExample": "サンプルで試す",
+        "exampleNames": "さくら, はると, ゆい, そうた, あおい",
+        "countdownNudge": "早めに抽選すれば、みんながゆっくりプレゼントを選べます。",
+        "socialProof": "{date}から <strong>{formatted}</strong> 回のシークレットサンタ",
         "peopleCount": "{count}人",
         "pasteHint": "名前を1人ずつ入力するか、WhatsAppやExcelのリストを貼り付けてください。"
     }

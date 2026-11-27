@@ -34,7 +34,8 @@ const STARS = [
     { className: "left-[38%] top-[13px] text-[7px] opacity-50 animate-pulse" },
 ];
 
-export function CountdownBanner({ compact = false }: { compact?: boolean }) {
+/** `note` adds a short line under the compact label (e.g. a nudge to start early). */
+export function CountdownBanner({ compact = false, note }: { compact?: boolean; note?: string }) {
     const locale = useLocale();
     const copy = COPY[locale] || COPY.en;
     const [timeLeft, setTimeLeft] = useState(getTimeUntilNewYear());
@@ -47,7 +48,7 @@ export function CountdownBanner({ compact = false }: { compact?: boolean }) {
     }, []);
 
     // Compact reserves its height, so the buttons below don't jump when it appears.
-    if (!mounted) return compact ? <div className="min-h-[93px] sm:min-h-[71px]" aria-hidden="true" /> : null;
+    if (!mounted) return compact ? <div className={note ? "min-h-[127px] sm:min-h-[83px]" : "min-h-[93px] sm:min-h-[71px]"} aria-hidden="true" /> : null;
 
     const untilLabel = copy.until.replace("{year}", String(timeLeft.targetYear));
 
@@ -89,10 +90,13 @@ export function CountdownBanner({ compact = false }: { compact?: boolean }) {
                     </p>
                 ) : (
                     <div className="relative flex flex-col items-center gap-x-4 gap-y-2 px-3 pb-3 pt-[18px] sm:flex-row sm:justify-between">
-                        <p className="flex items-center gap-1.5 text-center font-heading text-[13px] font-bold leading-tight text-[#FFF1C2]">
-                            <TreePine className="h-[18px] w-[18px] shrink-0 text-[#FFE08A]" aria-hidden="true" />
-                            {untilLabel}
-                        </p>
+                        <div className="min-w-0 text-center sm:text-start">
+                            <p className="flex items-center justify-center gap-1.5 font-heading text-[13px] font-bold leading-tight text-[#FFF1C2] sm:justify-start">
+                                <TreePine className="h-[18px] w-[18px] shrink-0 text-[#FFE08A]" aria-hidden="true" />
+                                {untilLabel}
+                            </p>
+                            {note && <p className="mt-1 text-[12px] font-medium leading-snug text-[#FFE7D6]">{note}</p>}
+                        </div>
                         <div role="timer" className="grid w-full grid-cols-4 gap-1.5 sm:w-auto">
                             {[
                                 [timeLeft.days, copy.days],

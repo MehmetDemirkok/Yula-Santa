@@ -58,6 +58,7 @@
         "moreNeeded": "{count}명 더",
         "match": "매칭",
         "happyNewYear": "🎄 새해 복 많이 받으세요!",
+        "mascotHint": "눌러 보세요! 🎁",
         "minPeople3": "최소 3명을 추가해주세요",
         "minPeople2": "최소 2명을 추가해주세요",
         "evenNumber": "인원수는 짝수여야 합니다",
@@ -104,14 +105,14 @@
         "tiktokGiveaway": "TikTok 추첨",
         "namePickerDesc": "Pick fair winners from any list",
         "stats": {
-            "live": "실시간 통계",
+            "live": "실시간 카운터",
             "title": "지금까지 <strong>{formatted}</strong>회 추첨",
-            "since": "{date}부터의 실제 데이터",
+            "since": "{date}부터 집계",
             "today": "오늘 {formatted}회",
             "youtube": "유튜브 추첨",
             "tiktok": "틱톡 추첨",
             "secretSanta": "시크릿 산타",
-            "note": "사이트에서 완료된 추첨만 집계하며, 이름과 결과는 저장하지 않습니다."
+            "note": "추첨 횟수만 셉니다. 이름과 결과는 저장하지 않아요."
         }
     },
     "result": {
@@ -1652,6 +1653,10 @@
         "featureLinks": "WhatsApp 링크 전송",
         "featureRules": "제외 규칙",
         "featurePrint": "카드 인쇄",
+        "tryExample": "예시 목록으로 해 보기",
+        "exampleNames": "민준, 서연, 지호, 하은, 도윤",
+        "countdownNudge": "일찍 추첨하면 모두 여유 있게 선물을 고를 수 있어요.",
+        "socialProof": "{date}부터 시크릿 산타 <strong>{formatted}</strong>회",
         "peopleCount": "{count}명",
         "pasteHint": "이름을 하나씩 입력하거나 WhatsApp 또는 Excel 목록을 붙여 넣으세요."
     }

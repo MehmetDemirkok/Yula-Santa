@@ -58,6 +58,7 @@
         "moreNeeded": "encore {count}",
         "match": "Matcher",
         "happyNewYear": "🎄 Bonne Année !",
+        "mascotHint": "Touche-moi ! 🎁",
         "minPeople3": "Ajoutez au moins 3 personnes",
         "minPeople2": "Ajoutez au moins 2 personnes",
         "evenNumber": "Le nombre de personnes doit être pair",
@@ -105,14 +106,14 @@
         },
         "description": "Sélectionnez des gagnants équitables parmi les commentaires YouTube et TikTok en quelques secondes. Outils gratuits — sans inscription, sans mot de passe.",
         "stats": {
-            "live": "Statistiques en direct",
+            "live": "Compteur en direct",
             "title": "<strong>{formatted}</strong> {count, plural, one {tirage réalisé} other {tirages réalisés}} à ce jour",
-            "since": "Depuis le {date}, données réelles",
+            "since": "Depuis le {date}",
             "today": "{formatted} {count, plural, one {tirage} other {tirages}} aujourd’hui",
             "youtube": "Tirages YouTube",
             "tiktok": "Tirages TikTok",
             "secretSanta": "Tirages Secret Santa",
-            "note": "Seuls les tirages terminés sur le site sont comptés ; les noms et résultats ne sont jamais enregistrés."
+            "note": "Nous comptons seulement le nombre de tirages. Les noms et les résultats ne sont pas enregistrés."
         }
     },
     "result": {
@@ -1652,6 +1653,10 @@
         "featureLinks": "Liens par WhatsApp",
         "featureRules": "Règles d'exclusion",
         "featurePrint": "Cartes à imprimer",
+        "tryExample": "Essayer avec une liste d’exemple",
+        "exampleNames": "Emma, Louis, Jade, Hugo, Léa",
+        "countdownNudge": "Faites le tirage tôt pour laisser à chacun le temps de trouver un cadeau.",
+        "socialProof": "<strong>{formatted}</strong> {count, plural, one {tirage Secret Santa} other {tirages Secret Santa}} depuis le {date}",
         "peopleCount": "{count, plural, one {# personne} other {# personnes}}",
         "pasteHint": "Saisissez les noms un par un ou collez une liste depuis WhatsApp ou Excel."
     }

@@ -121,7 +121,7 @@ export default function HomeClientPage() {
                         <div className="relative aspect-square w-[116px] sm:w-[170px] lg:w-[360px]">
                             <div className="absolute inset-0 scale-90 rounded-full bg-santa-red/5 blur-3xl" />
                             {seasonal ? (
-                                <FestiveMascot />
+                                <FestiveMascot hint />
                             ) : (
                                 <img
                                     alt="YulaSanta Mascot"

@@ -191,3 +191,14 @@ test("splitNameList: pasted lists with numbering and bullets", async () => {
     assert.deepEqual(splitNameList("Ayşe Yılmaz"), ["Ayşe Yılmaz"]);
     assert.deepEqual(splitNameList("10A Sınıfı"), ["10A Sınıfı"], "a leading number without a separator stays");
 });
+
+test("formatName capitalizes lowercase words and keeps typed capitals", async () => {
+    const { formatName } = await import("../../lib/secretSanta/draw");
+    assert.equal(formatName("mehmet"), "Mehmet");
+    assert.equal(formatName("  ayşe   nur "), "Ayşe Nur");
+    assert.equal(formatName("ismail"), "İsmail");
+    assert.equal(formatName("ismail", "en"), "Ismail");
+    assert.equal(formatName("ayşe-nur yılmaz"), "Ayşe-Nur Yılmaz");
+    assert.equal(formatName("McKenzie DJ"), "McKenzie DJ");
+    assert.equal(formatName("MEHMET"), "MEHMET");
+});

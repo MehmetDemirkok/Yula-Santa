@@ -570,12 +570,24 @@ html.ys-new-year .ys-page-shell {
   animation: ysBaubleSway 4.5s ease-in-out infinite;
 }
 
-@keyframes ysYulaHop {
-  0%, 100% { transform: translateY(0) rotate(0); }
-  35%      { transform: translateY(-16%) rotate(-5deg); }
-  70%      { transform: translateY(-4%) rotate(3deg); }
+/* Festive mascot "tap me" hint (components/NewYearTheme/HomeDecor.tsx); the hop itself runs through element.animate(). */
+@keyframes ysMascotHintIn {
+  from { opacity: 0; transform: translate(-50%, calc(-100% + 8px)) scale(0.85); }
+  to   { opacity: 1; transform: translate(-50%, -100%) scale(1); }
 }
-.ys-yula-hop { animation: ysYulaHop 0.55s ease-out; }
+@keyframes ysMascotHintBob {
+  0%, 100% { transform: translate(-50%, -100%); }
+  50%      { transform: translate(-50%, calc(-100% - 5px)); }
+}
+.ys-mascot-hint { animation: ysMascotHintIn 0.35s cubic-bezier(0.2, 0.9, 0.3, 1.2) both, ysMascotHintBob 1.8s ease-in-out 0.35s infinite; }
+@keyframes ysMascotNudge {
+  0%, 84%, 100% { transform: rotate(0deg); }
+  87% { transform: rotate(-6deg); }
+  90% { transform: rotate(5deg); }
+  93% { transform: rotate(-3deg); }
+  96% { transform: rotate(2deg); }
+}
+.ys-mascot-nudge { animation: ysMascotNudge 3.6s ease-in-out 1s infinite; transform-origin: 50% 85%; }
 
 @keyframes ysMidnightPop {
   from { transform: scale(0.7); opacity: 0; }
@@ -662,7 +674,7 @@ html.ys-new-year ::selection {
 }
 
 @media (prefers-reduced-motion: reduce) {
-  .ys-garland-bulb, .ys-bauble, .ys-yula-hop, .ys-midnight-pop, .ys-countdown-final { animation: none; }
+  .ys-garland-bulb, .ys-bauble, .ys-mascot-hint, .ys-mascot-nudge, .ys-midnight-pop, .ys-countdown-final { animation: none; }
   html.ys-new-year .ys-festive-cta:not(:disabled)::after { animation: none; display: none; }
 }
 

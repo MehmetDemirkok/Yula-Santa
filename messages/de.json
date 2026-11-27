@@ -58,6 +58,7 @@
         "moreNeeded": "noch {count}",
         "match": "Zuordnen",
         "happyNewYear": "🎄 Frohes neues Jahr!",
+        "mascotHint": "Tipp mich an! 🎁",
         "minPeople3": "Mindestens 3 Personen hinzufügen",
         "minPeople2": "Mindestens 2 Personen hinzufügen",
         "evenNumber": "Die Anzahl muss gerade sein",
@@ -105,14 +106,14 @@
         },
         "description": "Wählen Sie in Sekunden faire Gewinner aus YouTube- und TikTok-Kommentaren. Kostenlose Kommentar-Verlosungstools — keine Anmeldung, kein Passwort.",
         "stats": {
-            "live": "Live-Statistik",
+            "live": "Live-Zähler",
             "title": "Bisher <strong>{formatted}</strong> {count, plural, one {Auslosung} other {Auslosungen}}",
-            "since": "Seit {date}, echte Daten",
+            "since": "Gezählt seit {date}",
             "today": "Heute {formatted} {count, plural, one {Auslosung} other {Auslosungen}}",
             "youtube": "YouTube-Gewinnspiele",
             "tiktok": "TikTok-Gewinnspiele",
             "secretSanta": "Wichtel-Auslosungen",
-            "note": "Gezählt werden abgeschlossene Auslosungen; Namen und Ergebnisse werden nicht gespeichert."
+            "note": "Wir zählen nur, wie viele Auslosungen stattfinden. Namen und Ergebnisse speichern wir nicht."
         }
     },
     "result": {
@@ -1651,6 +1652,10 @@
         "featureLinks": "Links per WhatsApp",
         "featureRules": "Ausschlussregeln",
         "featurePrint": "Karten drucken",
+        "tryExample": "Mit Beispielliste testen",
+        "exampleNames": "Anna, Lukas, Mia, Paul, Lena",
+        "countdownNudge": "Lost früh aus, dann bleibt allen genug Zeit für das Geschenk.",
+        "socialProof": "<strong>{formatted}</strong> {count, plural, one {Wichtel-Auslosung} other {Wichtel-Auslosungen}} seit dem {date}",
         "peopleCount": "{count, plural, one {# Person} other {# Personen}}",
         "pasteHint": "Namen einzeln eingeben oder eine Liste aus WhatsApp oder Excel einfügen."
     }

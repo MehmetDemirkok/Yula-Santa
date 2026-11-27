@@ -58,6 +58,7 @@
         "moreNeeded": "ещё {count}",
         "match": "Сопоставить",
         "happyNewYear": "🎄 С Новым годом!",
+        "mascotHint": "Нажми на меня! 🎁",
         "minPeople3": "Добавьте минимум 3 человека",
         "minPeople2": "Добавьте минимум 2 человека",
         "evenNumber": "Количество людей должно быть четным",
@@ -104,14 +105,14 @@
             ]
         },
         "stats": {
-            "live": "Статистика в реальном времени",
+            "live": "Счётчик",
             "title": "Уже проведено <strong>{formatted}</strong> {count, plural, one {розыгрыш} few {розыгрыша} many {розыгрышей} other {розыгрыша}}",
-            "since": "С {date}, реальные данные",
+            "since": "Считаем с {date}",
             "today": "Сегодня {formatted} {count, plural, one {розыгрыш} few {розыгрыша} many {розыгрышей} other {розыгрыша}}",
             "youtube": "Розыгрыши на YouTube",
             "tiktok": "Розыгрыши в TikTok",
             "secretSanta": "Тайный Санта",
-            "note": "Учитываются завершённые на сайте розыгрыши; имена и результаты не сохраняются."
+            "note": "Мы считаем только количество розыгрышей. Имена и результаты не сохраняются."
         }
     },
     "result": {
@@ -1651,6 +1652,10 @@
         "featureLinks": "Ссылки в WhatsApp",
         "featureRules": "Правила исключений",
         "featurePrint": "Карточки для печати",
+        "tryExample": "Попробовать на примере",
+        "exampleNames": "Анна, Иван, Мария, Дмитрий, Ольга",
+        "countdownNudge": "Проведите жеребьёвку заранее, чтобы все успели выбрать подарок.",
+        "socialProof": "С {date} — <strong>{formatted}</strong> {count, plural, one {жеребьёвка} few {жеребьёвки} many {жеребьёвок} other {жеребьёвки}} Тайного Санты",
         "peopleCount": "Участников: {count}",
         "pasteHint": "Вводите имена по одному или вставьте список из WhatsApp или Excel."
     }

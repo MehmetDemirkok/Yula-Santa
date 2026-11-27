@@ -58,6 +58,7 @@
         "moreNeeded": "{count} more",
         "match": "Match",
         "happyNewYear": "🎄 Happy New Year!",
+        "mascotHint": "Tap me! 🎁",
         "minPeople3": "Add at least 3 people",
         "minPeople2": "Add at least 2 people",
         "evenNumber": "Number of people must be even",
@@ -104,14 +105,14 @@
         "tiktokGiveaway": "TikTok Giveaway",
         "namePickerDesc": "Pick fair winners from any list",
         "stats": {
-            "live": "Live stats",
+            "live": "Live counter",
             "title": "<strong>{formatted}</strong> {count, plural, one {draw} other {draws}} so far",
-            "since": "Since {date}, real data",
+            "since": "Counting since {date}",
             "today": "{formatted} {count, plural, one {draw} other {draws}} today",
             "youtube": "YouTube giveaways",
             "tiktok": "TikTok giveaways",
             "secretSanta": "Secret Santa draws",
-            "note": "Counts draws completed on the site; names and results are never stored."
+            "note": "We only count how many draws are done. Names and results are never saved."
         }
     },
     "result": {
@@ -1654,6 +1655,10 @@
         "featureLinks": "Links via WhatsApp",
         "featureRules": "Exclusion rules",
         "featurePrint": "Printable cards",
+        "tryExample": "Try with a sample list",
+        "exampleNames": "Emma, Liam, Olivia, Noah, Ava",
+        "countdownNudge": "Draw early so everyone has time to find a gift.",
+        "socialProof": "<strong>{formatted}</strong> Secret Santa {count, plural, one {draw} other {draws}} since {date}",
         "peopleCount": "{count, plural, one {# person} other {# people}}",
         "pasteHint": "Type names one by one or paste a list from WhatsApp or Excel."
     }
