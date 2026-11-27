@@ -552,7 +552,9 @@
     },
     "languageSwitcher": {
         "label": "اختر اللغة",
-        "current": "العربية"
+        "current": "العربية",
+        "openMenu": "فتح القائمة",
+        "closeMenu": "إغلاق القائمة"
     },
     "theme": {
         "light": "الوضع الفاتح",
@@ -1473,10 +1475,10 @@
         "login": {
             "meta": {
                 "title": "تسجيل الدخول | YulaSanta",
-                "description": "سجّل الدخول إلى حسابك في YulaSanta وتابع من حيث توقفت."
+                "description": "سجّل الدخول إلى YulaSanta بالبريد أو بـ Google."
             },
             "title": "مرحبًا بعودتك",
-            "subtitle": "سجّل الدخول للوصول إلى سحوباتك وأدواتك.",
+            "subtitle": "سجّل الدخول بالبريد وكلمة المرور أو بحساب Google.",
             "email": "البريد الإلكتروني",
             "emailPlaceholder": "email@example.com",
             "password": "كلمة المرور",
@@ -1492,22 +1494,22 @@
                 "emailRequired": "البريد الإلكتروني مطلوب",
                 "emailInvalid": "أدخل بريدًا إلكترونيًا صالحًا",
                 "passwordRequired": "كلمة المرور مطلوبة",
-                "passwordMin": "يجب أن تتكون كلمة المرور من 6 أحرف على الأقل"
+                "passwordMin": "يجب أن تتكون كلمة المرور من {min} أحرف على الأقل"
             }
         },
         "register": {
             "meta": {
                 "title": "إنشاء حساب | YulaSanta",
-                "description": "أنشئ حساب YulaSanta مجانًا وابدأ سحبك خلال ثوانٍ."
+                "description": "أنشئ حساب YulaSanta مجانيًا بالبريد أو بـ Google."
             },
             "title": "إنشاء حساب",
-            "subtitle": "أنشئ حسابك المجاني وابدأ سحبك على الفور.",
+            "subtitle": "أنشئ حسابًا مجانيًا بالبريد أو بحساب Google.",
             "name": "الاسم الكامل",
             "namePlaceholder": "مثال: أحمد يلماز",
             "email": "البريد الإلكتروني",
             "emailPlaceholder": "email@example.com",
             "password": "كلمة المرور",
-            "passwordPlaceholder": "6 أحرف على الأقل",
+            "passwordPlaceholder": "{min} أحرف على الأقل",
             "confirmPassword": "تأكيد كلمة المرور",
             "confirmPasswordPlaceholder": "أعد إدخال كلمة المرور",
             "terms": "لقد قرأت ووافقت على <privacy>سياسة الخصوصية</privacy> و<terms>شروط الاستخدام</terms>.",
@@ -1521,14 +1523,151 @@
                 "emailRequired": "البريد الإلكتروني مطلوب",
                 "emailInvalid": "أدخل بريدًا إلكترونيًا صالحًا",
                 "passwordRequired": "كلمة المرور مطلوبة",
-                "passwordMin": "يجب أن تتكون كلمة المرور من 6 أحرف على الأقل",
+                "passwordMin": "يجب أن تتكون كلمة المرور من {min} أحرف على الأقل",
                 "confirmMismatch": "كلمتا المرور غير متطابقتين",
                 "termsRequired": "يجب قبول الشروط للمتابعة"
             }
         },
         "showPassword": "إظهار كلمة المرور",
         "hidePassword": "إخفاء كلمة المرور",
-        "google": "المتابعة باستخدام Google"
+        "google": "المتابعة باستخدام Google",
+        "navLogin": "تسجيل الدخول",
+        "account": "حسابي",
+        "logout": "تسجيل الخروج",
+        "welcome": "مرحبًا، {name}",
+        "signedInAs": "سجّلت الدخول باسم {email}.",
+        "continue": "متابعة",
+        "error": "لم يكتمل تسجيل الدخول عبر Google. حاول مرة أخرى.",
+        "registerNote": "مع Google لا تحتاج إلى كلمة مرور منفصلة.",
+        "benefitTools": "جميع أدوات السحب تعمل دون تسجيل الدخول.",
+        "benefitPlaka": "عند تسجيل الدخول تُحفظ نقاطك وترتيبك في Plaka Avcısı في حسابك على أي جهاز.",
+        "or": "أو",
+        "invalidCredentials": "البريد الإلكتروني أو كلمة المرور غير صحيحة.",
+        "emailTaken": "يوجد حساب بهذا البريد بالفعل. جرّب تسجيل الدخول.",
+        "tooMany": "محاولات كثيرة. انتظر دقيقة ثم حاول مجددًا.",
+        "unavailable": "حدث خطأ. حاول مرة أخرى بعد قليل.",
+        "googleHint": "سجّلت عبر Google؟ سجّل الدخول بـ Google أولًا ثم عيّن كلمة مرور من صفحة حسابي. بعدها يمكنك الدخول أيضًا ببريد Gmail وكلمة المرور.",
+        "accountPage": {
+            "meta": {
+                "title": "حسابي | YulaSanta",
+                "description": "إعدادات حسابك في YulaSanta."
+            },
+            "title": "حسابي",
+            "viaGoogle": "تم الدخول عبر Google",
+            "viaEmail": "تم الدخول بالبريد وكلمة المرور",
+            "loginFirst": "سجّل الدخول لرؤية حسابك.",
+            "setPasswordTitle": "عيّن كلمة مرور للدخول بالبريد",
+            "setPasswordDesc": "بكلمة مرور يمكنك الدخول أيضًا بـ {email}. يبقى الدخول عبر Google كما هو.",
+            "newPassword": "كلمة مرور جديدة",
+            "save": "حفظ كلمة المرور",
+            "saved": "تم حفظ كلمة المرور. يمكنك الآن الدخول أيضًا بـ {email} وهذه الكلمة.",
+            "needGoogle": "لتعيين كلمة مرور أو تغييرها، سجّل الدخول عبر Google.",
+            "editName": "تعديل الاسم",
+            "nameFromGoogle": "اسمك وصورتك من حساب Google.",
+            "saveName": "حفظ",
+            "cancel": "إلغاء",
+            "nameSaved": "تم تحديث اسمك.",
+            "changePasswordTitle": "تغيير كلمة المرور",
+            "currentPassword": "كلمة المرور الحالية",
+            "wrongPassword": "كلمة المرور الحالية غير صحيحة.",
+            "passwordChanged": "تم تغيير كلمة المرور.",
+            "changePasswordButton": "تغيير كلمة المرور",
+            "plakaTitle": "نتائجي في Plaka Avcısı",
+            "plakaEmpty": "لم تلعب بعد. العب أول جولة وستظهر نتائجك هنا.",
+            "plakaError": "تعذّر تحميل نتائجك الآن.",
+            "bestScore": "أفضل نتيجة",
+            "rank": "الترتيب",
+            "games": "الجولات",
+            "badges": "الشارات",
+            "play": "العب",
+            "leaderboard": "عرض الترتيب",
+            "drawsTitle": "سحوباتي الأخيرة",
+            "drawsNote": "سحوبات محفوظة على هذا الجهاز. تبقى الأسماء في هذا المتصفح ولا تُرسل إلى خادمنا.",
+            "drawsEmpty": "لا توجد سحوبات محفوظة على هذا الجهاز.",
+            "santaResult": "نتيجة سانتا السري · {people} أشخاص",
+            "santaDraft": "قائمة سانتا السري غير مكتملة · {people} أشخاص",
+            "raffleDraft": "قائمة سحب الأسماء · {people} أسماء",
+            "wheel": "عجلة الحظ · {options} خيارات، {spins} دورات",
+            "open": "فتح",
+            "adminTitle": "لوحة الإدارة",
+            "adminDesc": "إحصاءات الموقع واستوديو الحملات.",
+            "helpTitle": "مساعدة",
+            "faq": "الأسئلة الشائعة",
+            "contact": "اتصل بنا",
+            "privacy": "سياسة الخصوصية",
+            "deleteTitle": "حذف الحساب",
+            "deleteDesc": "يُحذف حسابك وجولاتك ونقاطك وشاراتك في Plaka Avcısı نهائيًا، ويُفصل بريدك عن سجلات الاستخدام. لا يمكن التراجع. لا تتأثر قوائم السحب على هذا الجهاز.",
+            "deleteConfirmLabel": "اكتب {word} للتأكيد",
+            "deleteButton": "حذف حسابي نهائيًا",
+            "deleteReauth": "لأمانك، سجّل الدخول بـ Google مرة أخرى أولًا.",
+            "reauthButton": "التحقق عبر Google",
+            "menuPlaka": "نتائجي في Plaka",
+            "menuDraws": "سحوباتي الأخيرة",
+            "tabSecurity": "الأمان",
+            "tabPlaka": "Plaka",
+            "tabDraws": "السحوبات",
+            "tabHelp": "مساعدة",
+            "setPasswordHint": "لتتمكن من الدخول أيضًا ببريد Gmail وكلمة مرور",
+            "changePasswordHint": "أدخل كلمة المرور الحالية لاختيار كلمة جديدة",
+            "plakaHint": "نقاطك وترتيبك وشاراتك",
+            "tabProfile": "الملف الشخصي",
+            "verifiedBadge": "البريد مؤكد",
+            "unverifiedBadge": "البريد غير مؤكد",
+            "deleteWord": "حذف"
+        },
+        "emails": {
+            "forgotMeta": {
+                "title": "نسيت كلمة المرور | YulaSanta",
+                "description": "أعد تعيين كلمة مرور YulaSanta."
+            },
+            "resetMeta": {
+                "title": "كلمة مرور جديدة | YulaSanta",
+                "description": "اختر كلمة مرور جديدة لـ YulaSanta."
+            },
+            "verifyMeta": {
+                "title": "تأكيد البريد | YulaSanta",
+                "description": "أكّد بريدك في YulaSanta."
+            },
+            "forgotTitle": "نسيت كلمة المرور؟",
+            "forgotSubtitle": "اكتب بريدك وسنرسل لك رابطًا لإعادة التعيين.",
+            "sendLink": "إرسال الرابط",
+            "forgotSent": "أرسلنا رابط إعادة تعيين كلمة المرور إلى {email}. تحقق من البريد الوارد والرسائل غير المرغوبة.",
+            "forgotGoogle": "سجّلت عبر Google؟ لا تحتاج إلى كلمة مرور، سجّل الدخول بـ Google.",
+            "backToLogin": "العودة لتسجيل الدخول",
+            "resetTitle": "اختر كلمة مرور جديدة",
+            "resetDone": "تم تغيير كلمة المرور. يمكنك الدخول بالجديدة.",
+            "badLink": "هذا الرابط غير صالح أو منتهي. اطلب رابطًا جديدًا.",
+            "newLink": "طلب رابط جديد",
+            "verifyTitle": "تأكيد البريد",
+            "verifying": "جارٍ التأكيد",
+            "verified": "تم تأكيد بريدك.",
+            "badVerifyLink": "رابط التأكيد غير صالح أو منتهي. يمكنك طلب رابط جديد من حسابي.",
+            "unverifiedTitle": "أكّد بريدك الإلكتروني",
+            "unverifiedDesc": "أرسلنا لك رابط تأكيد عند التسجيل. بعد التأكيد تبقى نقاطك في Plaka Avcısı معك عند الدخول عبر Google بالبريد نفسه.",
+            "verifySent": "أعدنا إرسال رابط التأكيد.",
+            "resendVerify": "إعادة إرسال رابط التأكيد",
+            "noAccount": "لم نجد حسابًا لـ {email}.",
+            "noAccountHint": "إذا سجّلت عبر Google فلا تحتاج إلى كلمة مرور، سجّل الدخول بـ Google. ليس لديك حساب؟ أنشئ واحدًا الآن.",
+            "tryOtherEmail": "جرّب بريدًا آخر"
+        },
+        "mail": {
+            "reset": {
+                "subject": "أعد تعيين كلمة مرور YulaSanta",
+                "heading": "إعادة تعيين كلمة المرور",
+                "body": "تلقّينا طلبًا لإعادة تعيين كلمة مرور حسابك في YulaSanta. اضغط الزر أدناه لاختيار كلمة جديدة.",
+                "button": "اختر كلمة مرور جديدة",
+                "expiry": "الرابط صالح لمدة 30 دقيقة ولمرة واحدة.",
+                "ignore": "إذا لم تطلب ذلك فتجاهل هذه الرسالة؛ لن تتغير كلمة المرور."
+            },
+            "verify": {
+                "subject": "أكّد بريدك في YulaSanta",
+                "heading": "أكّد بريدك الإلكتروني",
+                "body": "شكرًا لإنشاء حساب في YulaSanta. اضغط الزر أدناه لتأكيد أن هذا العنوان لك.",
+                "button": "تأكيد بريدي",
+                "expiry": "الرابط صالح لمدة 24 ساعة.",
+                "ignore": "إذا لم تنشئ هذا الحساب فتجاهل هذه الرسالة."
+            }
+        }
     },
     "ads": {
         "advertiseTitle": "مساحة إعلانية",

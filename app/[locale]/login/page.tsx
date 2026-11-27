@@ -9,7 +9,7 @@ import { Metadata } from 'next';
 import { LogIn } from 'lucide-react';
 import { locales } from '@/i18n/config';
 import { getSEOMetadata, viewport } from '@/lib/seo';
-import { GoogleSignIn } from '@/components/auth/GoogleSignIn';
+import { AuthPanel } from '@/components/auth/AuthPanel';
 
 export { viewport };
 
@@ -51,9 +51,8 @@ export default async function LoginPage({ params }: Props) {
                     </p>
                 </div>
 
-                <div className="ys-card p-6 sm:p-8">
-                    <GoogleSignIn />
-                </div>
+                {/* Rendered in the static HTML: the query is read after hydration (useQueryParam). */}
+                <AuthPanel mode="login" />
             </div>
         </main>
     );

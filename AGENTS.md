@@ -46,7 +46,7 @@ Full architecture notes live in `CLAUDE.md`; design tokens in `design.md` — re
 
 ## Other
 
-- Auth (`auth.ts`): Auth.js v5 with Google only, JWT-only sessions — there is no users table.
+- Auth (`auth.ts`): Auth.js v5, JWT sessions, Google plus e-mail + password. Password accounts are in `auth_users` (`lib/auth/userStore.ts`); their e-mails are unverified, so admin, analytics and Plaka identity key them by `accountId` (`lib/auth/accountKey.ts`) unless a Google user set the password at `/account` (`emailProven`). E-mail verification and password reset go through Resend (`lib/email/`, `lib/auth/accountEmails.ts`, `RESEND_API_KEY`); a proven address sets `emailProven` but never admin. `/account` (`components/auth/AccountClient.tsx`) has profile, password, Plaka report card, this-device draws, admin link and self-serve deletion (`DELETE /api/auth/account`). The session is read client-side (`SessionProvider` in `ClientLayout`); the navbar's `components/auth/AccountMenu.tsx` shows log in / avatar, `/login` and `/register` use `components/auth/AuthPanel.tsx`, and return paths pass through `safeRedirect` (`lib/auth/redirect.ts`).
 - Secrets live in `.env.local` (gitignored): Neon, Apify (follower check only), YouTube, Google OAuth. Never expose to client components.
 - AdSense is gated behind `NEXT_PUBLIC_ADSENSE_CLIENT_ID` / `NEXT_PUBLIC_AD_SLOT_*` env vars (`components/ads/`, `lib/ads/config.ts`); sitemap/robots via `app/sitemap.ts` / `app/robots.ts`.
 - `extensions/yulasanta-tiktok-extension-*/` is a standalone vanilla-JS browser extension, not built by the Next app.

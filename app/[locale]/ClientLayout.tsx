@@ -12,6 +12,7 @@
 "use client";
 
 import { ReactNode } from "react";
+import { SessionProvider } from "next-auth/react";
 import { Analytics } from "@vercel/analytics/next";
 import { SiteTracker } from "@/components/analytics/SiteTracker";
 import { NewYearTheme } from "@/components/NewYearTheme";
@@ -41,6 +42,8 @@ export function ClientLayout({ children }: ClientLayoutProps) {
     const showInvite = !NO_INVITE_PATHS.has(usePathname());
 
     return (
+        // Session is read in the browser (/api/auth/session) so pages stay static.
+        <SessionProvider refetchOnWindowFocus={false}>
         <ThemeProvider>
         <ToastProvider>
             {/* Yılbaşı Teması — kar + altın twinkle; kutlama efektleri 1 Ocak'tan sonra */}
@@ -95,5 +98,6 @@ export function ClientLayout({ children }: ClientLayoutProps) {
             <ToastContainer />
         </ToastProvider>
         </ThemeProvider>
+        </SessionProvider>
     );
 }

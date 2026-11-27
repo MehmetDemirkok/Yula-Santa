@@ -552,7 +552,9 @@
     },
     "languageSwitcher": {
         "label": "Scegli Lingua",
-        "current": "Italiano"
+        "current": "Italiano",
+        "openMenu": "Apri menu",
+        "closeMenu": "Chiudi menu"
     },
     "theme": {
         "light": "Tema Chiaro",
@@ -1473,10 +1475,10 @@
         "login": {
             "meta": {
                 "title": "Accedi | YulaSanta",
-                "description": "Accedi al tuo account YulaSanta e riprendi da dove avevi lasciato."
+                "description": "Accedi a YulaSanta con e-mail o con Google."
             },
             "title": "Bentornato",
-            "subtitle": "Accedi per gestire i tuoi giveaway e strumenti.",
+            "subtitle": "Accedi con e-mail e password o con Google.",
             "email": "Indirizzo e-mail",
             "emailPlaceholder": "email@example.com",
             "password": "Password",
@@ -1492,22 +1494,22 @@
                 "emailRequired": "L'indirizzo e-mail è obbligatorio",
                 "emailInvalid": "Inserisci un indirizzo e-mail valido",
                 "passwordRequired": "La password è obbligatoria",
-                "passwordMin": "La password deve contenere almeno 6 caratteri"
+                "passwordMin": "La password deve contenere almeno {min} caratteri"
             }
         },
         "register": {
             "meta": {
                 "title": "Registrati | YulaSanta",
-                "description": "Crea un account YulaSanta gratuito e avvia il tuo giveaway in pochi secondi."
+                "description": "Crea un account YulaSanta gratuito con e-mail o con Google."
             },
             "title": "Crea il tuo account",
-            "subtitle": "Crea il tuo account gratuito e avvia subito il tuo giveaway.",
+            "subtitle": "Crea un account gratuito con la tua e-mail o con Google.",
             "name": "Nome completo",
             "namePlaceholder": "es. Mario Rossi",
             "email": "Indirizzo e-mail",
             "emailPlaceholder": "email@example.com",
             "password": "Password",
-            "passwordPlaceholder": "Almeno 6 caratteri",
+            "passwordPlaceholder": "Almeno {min} caratteri",
             "confirmPassword": "Conferma password",
             "confirmPasswordPlaceholder": "Reinserisci la password",
             "terms": "Ho letto e accetto la <privacy>Informativa sulla privacy</privacy> e i <terms>Termini di servizio</terms>.",
@@ -1521,14 +1523,151 @@
                 "emailRequired": "L'indirizzo e-mail è obbligatorio",
                 "emailInvalid": "Inserisci un indirizzo e-mail valido",
                 "passwordRequired": "La password è obbligatoria",
-                "passwordMin": "La password deve contenere almeno 6 caratteri",
+                "passwordMin": "La password deve contenere almeno {min} caratteri",
                 "confirmMismatch": "Le password non corrispondono",
                 "termsRequired": "Devi accettare i termini per continuare"
             }
         },
         "showPassword": "Mostra password",
         "hidePassword": "Nascondi password",
-        "google": "Continua con Google"
+        "google": "Continua con Google",
+        "navLogin": "Accedi",
+        "account": "Il mio account",
+        "logout": "Esci",
+        "welcome": "Ciao, {name}",
+        "signedInAs": "Accesso effettuato come {email}.",
+        "continue": "Continua",
+        "error": "L’accesso con Google non è stato completato. Riprova.",
+        "registerNote": "Con Google non serve una password separata.",
+        "benefitTools": "Tutti gli strumenti di estrazione funzionano anche senza accesso.",
+        "benefitPlaka": "Accedendo, punteggi e classifica di Plaka Avcısı restano sul tuo account, su ogni dispositivo.",
+        "or": "oppure",
+        "invalidCredentials": "E-mail o password errate.",
+        "emailTaken": "Esiste già un account con questa e-mail. Prova ad accedere.",
+        "tooMany": "Troppi tentativi. Attendi un minuto e riprova.",
+        "unavailable": "Qualcosa è andato storto. Riprova tra poco.",
+        "googleHint": "Ti sei registrato con Google? Accedi prima con Google, poi imposta una password in Il mio account. Dopo potrai accedere anche con il tuo Gmail e quella password.",
+        "accountPage": {
+            "meta": {
+                "title": "Il mio account | YulaSanta",
+                "description": "Le impostazioni del tuo account YulaSanta."
+            },
+            "title": "Il mio account",
+            "viaGoogle": "Accesso con Google",
+            "viaEmail": "Accesso con e-mail e password",
+            "loginFirst": "Accedi per vedere il tuo account.",
+            "setPasswordTitle": "Imposta una password per l’accesso via e-mail",
+            "setPasswordDesc": "Con una password potrai accedere anche con {email}. L’accesso con Google continua a funzionare.",
+            "newPassword": "Nuova password",
+            "save": "Salva password",
+            "saved": "Password salvata. Ora puoi accedere anche con {email} e questa password.",
+            "needGoogle": "Per impostare o cambiare la password, accedi con Google.",
+            "editName": "Modifica il nome",
+            "nameFromGoogle": "Nome e foto arrivano dal tuo account Google.",
+            "saveName": "Salva",
+            "cancel": "Annulla",
+            "nameSaved": "Nome aggiornato.",
+            "changePasswordTitle": "Cambia password",
+            "currentPassword": "Password attuale",
+            "wrongPassword": "La password attuale è errata.",
+            "passwordChanged": "Password cambiata.",
+            "changePasswordButton": "Cambia password",
+            "plakaTitle": "La mia pagella Plaka Avcısı",
+            "plakaEmpty": "Non hai ancora giocato. Fai la prima partita e i tuoi punteggi compariranno qui.",
+            "plakaError": "Non è stato possibile caricare la pagella ora.",
+            "bestScore": "Miglior punteggio",
+            "rank": "Posizione",
+            "games": "Partite",
+            "badges": "Badge",
+            "play": "Gioca",
+            "leaderboard": "Vedi la classifica",
+            "drawsTitle": "Le mie ultime estrazioni",
+            "drawsNote": "Estrazioni salvate su questo dispositivo. I nomi restano in questo browser e non arrivano mai al nostro server.",
+            "drawsEmpty": "Nessuna estrazione salvata su questo dispositivo.",
+            "santaResult": "Risultato Secret Santa · {people} persone",
+            "santaDraft": "Lista Secret Santa incompleta · {people} persone",
+            "raffleDraft": "Estrazione nomi · {people} nomi",
+            "wheel": "Ruota della fortuna · {options} opzioni, {spins} giri",
+            "open": "Apri",
+            "adminTitle": "Pannello admin",
+            "adminDesc": "Statistiche del sito e studio campagne.",
+            "helpTitle": "Aiuto",
+            "faq": "Domande frequenti",
+            "contact": "Contatti",
+            "privacy": "Privacy",
+            "deleteTitle": "Elimina account",
+            "deleteDesc": "Account, partite, punteggi e badge di Plaka Avcısı vengono eliminati per sempre e la tua e-mail viene scollegata dai dati di utilizzo. Non si può annullare. Le liste di estrazione su questo dispositivo restano.",
+            "deleteConfirmLabel": "Scrivi {word} per confermare",
+            "deleteButton": "Elimina il mio account per sempre",
+            "deleteReauth": "Per sicurezza, accedi di nuovo con Google.",
+            "reauthButton": "Verifica con Google",
+            "menuPlaka": "La mia pagella Plaka",
+            "menuDraws": "Le mie ultime estrazioni",
+            "tabSecurity": "Sicurezza",
+            "tabPlaka": "Plaka",
+            "tabDraws": "Estrazioni",
+            "tabHelp": "Aiuto",
+            "setPasswordHint": "Per accedere anche con Gmail e una password",
+            "changePasswordHint": "Inserisci la password attuale per sceglierne una nuova",
+            "plakaHint": "Punteggio, posizione e badge",
+            "tabProfile": "Profilo",
+            "verifiedBadge": "E-mail confermata",
+            "unverifiedBadge": "E-mail non confermata",
+            "deleteWord": "ELIMINA"
+        },
+        "emails": {
+            "forgotMeta": {
+                "title": "Password dimenticata | YulaSanta",
+                "description": "Reimposta la password di YulaSanta."
+            },
+            "resetMeta": {
+                "title": "Nuova password | YulaSanta",
+                "description": "Scegli una nuova password per YulaSanta."
+            },
+            "verifyMeta": {
+                "title": "Conferma e-mail | YulaSanta",
+                "description": "Conferma il tuo indirizzo e-mail YulaSanta."
+            },
+            "forgotTitle": "Password dimenticata?",
+            "forgotSubtitle": "Scrivi la tua e-mail e ti invieremo un link per reimpostarla.",
+            "sendLink": "Invia link",
+            "forgotSent": "Abbiamo inviato un link per reimpostare la password a {email}. Controlla la posta in arrivo e lo spam.",
+            "forgotGoogle": "Registrato con Google? Non serve una password, accedi con Google.",
+            "backToLogin": "Torna all’accesso",
+            "resetTitle": "Scegli una nuova password",
+            "resetDone": "Password cambiata. Ora puoi accedere con quella nuova.",
+            "badLink": "Questo link non è valido o è scaduto. Richiedine uno nuovo.",
+            "newLink": "Richiedi un nuovo link",
+            "verifyTitle": "Conferma e-mail",
+            "verifying": "Conferma in corso",
+            "verified": "Il tuo indirizzo e-mail è confermato.",
+            "badVerifyLink": "Questo link di conferma non è valido o è scaduto. Puoi richiederne uno nuovo in Il mio account.",
+            "unverifiedTitle": "Conferma il tuo indirizzo e-mail",
+            "unverifiedDesc": "All’iscrizione ti abbiamo inviato un link di conferma. Una volta confermato, i punteggi di Plaka Avcısı restano tuoi anche se accedi con Google con la stessa e-mail.",
+            "verifySent": "Ti abbiamo inviato di nuovo il link.",
+            "resendVerify": "Invia di nuovo il link di conferma",
+            "noAccount": "Non abbiamo trovato un account per {email}.",
+            "noAccountHint": "Se ti sei registrato con Google non serve una password, accedi con Google. Non hai un account? Crealo ora.",
+            "tryOtherEmail": "Prova un’altra e-mail"
+        },
+        "mail": {
+            "reset": {
+                "subject": "Reimposta la password di YulaSanta",
+                "heading": "Reimposta la password",
+                "body": "Abbiamo ricevuto una richiesta di reimpostazione della password del tuo account YulaSanta. Tocca il pulsante per sceglierne una nuova.",
+                "button": "Scegli una nuova password",
+                "expiry": "Il link vale 30 minuti e una sola volta.",
+                "ignore": "Se non l’hai richiesto, ignora questa e-mail; la password resta invariata."
+            },
+            "verify": {
+                "subject": "Conferma la tua e-mail YulaSanta",
+                "heading": "Conferma il tuo indirizzo e-mail",
+                "body": "Grazie per aver creato un account YulaSanta. Tocca il pulsante per confermare che questo indirizzo è tuo.",
+                "button": "Conferma la mia e-mail",
+                "expiry": "Il link vale 24 ore.",
+                "ignore": "Se non hai creato questo account, ignora questa e-mail."
+            }
+        }
     },
     "ads": {
         "advertiseTitle": "Spazio pubblicitario",

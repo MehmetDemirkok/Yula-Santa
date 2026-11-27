@@ -552,7 +552,9 @@
     },
     "languageSwitcher": {
         "label": "言語を選択",
-        "current": "日本語"
+        "current": "日本語",
+        "openMenu": "メニューを開く",
+        "closeMenu": "メニューを閉じる"
     },
     "theme": {
         "light": "ライトテーマ",
@@ -1473,10 +1475,10 @@
         "login": {
             "meta": {
                 "title": "ログイン | YulaSanta",
-                "description": "YulaSantaアカウントにログインして、続きから始めましょう。"
+                "description": "メールまたはGoogleでYulaSantaにログイン。"
             },
             "title": "おかえりなさい",
-            "subtitle": "ログインして抽選やツールにアクセスしましょう。",
+            "subtitle": "メールとパスワード、またはGoogleでログイン。",
             "email": "メールアドレス",
             "emailPlaceholder": "email@example.com",
             "password": "パスワード",
@@ -1492,22 +1494,22 @@
                 "emailRequired": "メールアドレスを入力してください",
                 "emailInvalid": "有効なメールアドレスを入力してください",
                 "passwordRequired": "パスワードを入力してください",
-                "passwordMin": "パスワードは6文字以上で入力してください"
+                "passwordMin": "パスワードは{min}文字以上で入力してください"
             }
         },
         "register": {
             "meta": {
                 "title": "新規登録 | YulaSanta",
-                "description": "無料のYulaSantaアカウントを作成し、数秒で抽選を開始しましょう。"
+                "description": "メールまたはGoogleで無料のYulaSantaアカウントを作成。"
             },
             "title": "アカウントを作成",
-            "subtitle": "無料アカウントを作成して、すぐに抽選を始めましょう。",
+            "subtitle": "メールまたはGoogleで無料アカウントを作成。",
             "name": "氏名",
             "namePlaceholder": "例：山田 太郎",
             "email": "メールアドレス",
             "emailPlaceholder": "email@example.com",
             "password": "パスワード",
-            "passwordPlaceholder": "6文字以上",
+            "passwordPlaceholder": "{min}文字以上",
             "confirmPassword": "パスワード（確認）",
             "confirmPasswordPlaceholder": "パスワードを再入力",
             "terms": "<privacy>プライバシーポリシー</privacy>と<terms>利用規約</terms>を読み、同意します。",
@@ -1521,14 +1523,151 @@
                 "emailRequired": "メールアドレスを入力してください",
                 "emailInvalid": "有効なメールアドレスを入力してください",
                 "passwordRequired": "パスワードを入力してください",
-                "passwordMin": "パスワードは6文字以上で入力してください",
+                "passwordMin": "パスワードは{min}文字以上で入力してください",
                 "confirmMismatch": "パスワードが一致しません",
                 "termsRequired": "続けるには規約に同意してください"
             }
         },
         "showPassword": "パスワードを表示",
         "hidePassword": "パスワードを非表示",
-        "google": "Googleで続ける"
+        "google": "Googleで続ける",
+        "navLogin": "ログイン",
+        "account": "アカウント",
+        "logout": "ログアウト",
+        "welcome": "ようこそ、{name}さん",
+        "signedInAs": "{email} でログイン中です。",
+        "continue": "続ける",
+        "error": "Googleでのログインが完了しませんでした。もう一度お試しください。",
+        "registerNote": "Googleで続ければ、別のパスワードは不要です。",
+        "benefitTools": "抽選ツールはすべてログインなしで使えます。",
+        "benefitPlaka": "ログインすると、Plaka Avcısıのスコアと順位がアカウントに保存され、どの端末でも続きから遊べます。",
+        "or": "または",
+        "invalidCredentials": "メールアドレスまたはパスワードが違います。",
+        "emailTaken": "このメールアドレスのアカウントは既にあります。ログインしてください。",
+        "tooMany": "試行回数が多すぎます。1分ほど待ってからお試しください。",
+        "unavailable": "問題が発生しました。少し後でもう一度お試しください。",
+        "googleHint": "Googleで登録した場合：まずGoogleでログインし、アカウントページでパスワードを設定してください。その後はGmailアドレスとパスワードでもログインできます。",
+        "accountPage": {
+            "meta": {
+                "title": "アカウント | YulaSanta",
+                "description": "YulaSantaのアカウント設定。"
+            },
+            "title": "アカウント",
+            "viaGoogle": "Googleでログイン中",
+            "viaEmail": "メールとパスワードでログイン中",
+            "loginFirst": "アカウントを見るにはログインしてください。",
+            "setPasswordTitle": "メールログイン用のパスワードを設定",
+            "setPasswordDesc": "パスワードを設定すると {email} でもログインできます。Googleログインはそのまま使えます。",
+            "newPassword": "新しいパスワード",
+            "save": "パスワードを保存",
+            "saved": "保存しました。{email} とこのパスワードでもログインできます。",
+            "needGoogle": "パスワードの設定・変更にはGoogleでのログインが必要です。",
+            "editName": "名前を編集",
+            "nameFromGoogle": "名前と写真はGoogleアカウントのものです。",
+            "saveName": "保存",
+            "cancel": "キャンセル",
+            "nameSaved": "名前を更新しました。",
+            "changePasswordTitle": "パスワードを変更",
+            "currentPassword": "現在のパスワード",
+            "wrongPassword": "現在のパスワードが違います。",
+            "passwordChanged": "パスワードを変更しました。",
+            "changePasswordButton": "パスワードを変更",
+            "plakaTitle": "Plaka Avcısı 成績",
+            "plakaEmpty": "まだプレイしていません。最初のゲームを遊ぶと、ここに成績が表示されます。",
+            "plakaError": "成績を読み込めませんでした。",
+            "bestScore": "ベストスコア",
+            "rank": "順位",
+            "games": "ゲーム数",
+            "badges": "バッジ",
+            "play": "プレイ",
+            "leaderboard": "ランキングを見る",
+            "drawsTitle": "最近の抽選",
+            "drawsNote": "この端末に保存された抽選です。名前はこのブラウザにだけ残り、サーバーには送られません。",
+            "drawsEmpty": "この端末に保存された抽選はありません。",
+            "santaResult": "シークレットサンタの結果 · {people}人",
+            "santaDraft": "作成途中のシークレットサンタ · {people}人",
+            "raffleDraft": "名前抽選のリスト · {people}件",
+            "wheel": "ルーレット · {options}項目、{spins}回",
+            "open": "開く",
+            "adminTitle": "管理画面",
+            "adminDesc": "サイト統計とキャンペーンスタジオ。",
+            "helpTitle": "ヘルプ",
+            "faq": "よくある質問",
+            "contact": "お問い合わせ",
+            "privacy": "プライバシーポリシー",
+            "deleteTitle": "アカウントを削除",
+            "deleteDesc": "アカウント、Plaka Avcısıのゲーム・スコア・バッジが完全に削除され、利用記録とのメールの紐付けも外されます。元に戻せません。この端末の抽選リストはそのままです。",
+            "deleteConfirmLabel": "確認のため {word} と入力",
+            "deleteButton": "アカウントを完全に削除",
+            "deleteReauth": "安全のため、もう一度Googleでログインしてください。",
+            "reauthButton": "Googleで確認",
+            "menuPlaka": "Plaka 成績",
+            "menuDraws": "最近の抽選",
+            "tabSecurity": "セキュリティ",
+            "tabPlaka": "Plaka",
+            "tabDraws": "抽選",
+            "tabHelp": "ヘルプ",
+            "setPasswordHint": "Gmailとパスワードでもログインできるように",
+            "changePasswordHint": "現在のパスワードを入力して新しいものを設定",
+            "plakaHint": "スコア・順位・バッジ",
+            "tabProfile": "プロフィール",
+            "verifiedBadge": "メール確認済み",
+            "unverifiedBadge": "メール未確認",
+            "deleteWord": "削除"
+        },
+        "emails": {
+            "forgotMeta": {
+                "title": "パスワードを忘れた | YulaSanta",
+                "description": "YulaSantaのパスワードを再設定。"
+            },
+            "resetMeta": {
+                "title": "新しいパスワード | YulaSanta",
+                "description": "YulaSantaの新しいパスワードを設定。"
+            },
+            "verifyMeta": {
+                "title": "メール確認 | YulaSanta",
+                "description": "YulaSantaのメールアドレスを確認。"
+            },
+            "forgotTitle": "パスワードをお忘れですか？",
+            "forgotSubtitle": "メールアドレスを入力すると、再設定リンクをお送りします。",
+            "sendLink": "リンクを送信",
+            "forgotSent": "{email} にパスワード再設定リンクを送りました。受信トレイと迷惑メールフォルダを確認してください。",
+            "forgotGoogle": "Googleで登録した場合はパスワード不要です。Googleでログインしてください。",
+            "backToLogin": "ログインに戻る",
+            "resetTitle": "新しいパスワードを設定",
+            "resetDone": "パスワードを変更しました。新しいパスワードでログインできます。",
+            "badLink": "このリンクは無効か期限切れです。新しいリンクを請求してください。",
+            "newLink": "新しいリンクを請求",
+            "verifyTitle": "メール確認",
+            "verifying": "確認中",
+            "verified": "メールアドレスを確認しました。",
+            "badVerifyLink": "この確認リンクは無効か期限切れです。アカウントページから再送できます。",
+            "unverifiedTitle": "メールアドレスを確認してください",
+            "unverifiedDesc": "登録時に確認リンクを送りました。確認すると、同じメールでGoogleログインしてもPlaka Avcısıのスコアが引き継がれます。",
+            "verifySent": "確認リンクを再送しました。",
+            "resendVerify": "確認リンクを再送",
+            "noAccount": "{email} のアカウントは見つかりませんでした。",
+            "noAccountHint": "Googleで登録した場合はパスワード不要です。Googleでログインしてください。アカウントがなければ今すぐ作成できます。",
+            "tryOtherEmail": "別のメールアドレスを試す"
+        },
+        "mail": {
+            "reset": {
+                "subject": "YulaSanta パスワードの再設定",
+                "heading": "パスワードを再設定",
+                "body": "YulaSanta アカウントのパスワード再設定のリクエストを受け付けました。下のボタンから新しいパスワードを設定してください。",
+                "button": "新しいパスワードを設定",
+                "expiry": "このリンクは30分間、1回だけ有効です。",
+                "ignore": "心当たりがない場合はこのメールを無視してください。パスワードは変わりません。"
+            },
+            "verify": {
+                "subject": "YulaSanta メールアドレスの確認",
+                "heading": "メールアドレスを確認",
+                "body": "YulaSanta アカウントの作成ありがとうございます。下のボタンからこのアドレスがあなたのものであることを確認してください。",
+                "button": "メールを確認",
+                "expiry": "このリンクは24時間有効です。",
+                "ignore": "このアカウントを作成していない場合は、このメールを無視してください。"
+            }
+        }
     },
     "ads": {
         "advertiseTitle": "広告スペース",

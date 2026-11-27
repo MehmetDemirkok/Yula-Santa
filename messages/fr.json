@@ -553,7 +553,9 @@
     },
     "languageSwitcher": {
         "label": "Choisir la langue",
-        "current": "Français"
+        "current": "Français",
+        "openMenu": "Ouvrir le menu",
+        "closeMenu": "Fermer le menu"
     },
     "theme": {
         "light": "Thème Clair",
@@ -1474,10 +1476,10 @@
         "login": {
             "meta": {
                 "title": "Connexion | YulaSanta",
-                "description": "Connecte-toi à ton compte YulaSanta et reprends là où tu t'étais arrêté."
+                "description": "Connectez-vous à YulaSanta par e-mail ou avec Google."
             },
             "title": "Content de te revoir",
-            "subtitle": "Connecte-toi pour accéder à tes tirages au sort et outils.",
+            "subtitle": "Connectez-vous avec votre e-mail et mot de passe ou avec Google.",
             "email": "Adresse e-mail",
             "emailPlaceholder": "email@example.com",
             "password": "Mot de passe",
@@ -1493,22 +1495,22 @@
                 "emailRequired": "L'adresse e-mail est requise",
                 "emailInvalid": "Saisis une adresse e-mail valide",
                 "passwordRequired": "Le mot de passe est requis",
-                "passwordMin": "Le mot de passe doit contenir au moins 6 caractères"
+                "passwordMin": "Le mot de passe doit contenir au moins {min} caractères"
             }
         },
         "register": {
             "meta": {
                 "title": "Inscription | YulaSanta",
-                "description": "Crée un compte YulaSanta gratuit et lance ton tirage au sort en quelques secondes."
+                "description": "Créez un compte YulaSanta gratuit par e-mail ou avec Google."
             },
             "title": "Créer un compte",
-            "subtitle": "Crée ton compte gratuit et lance ton tirage au sort immédiatement.",
+            "subtitle": "Créez un compte gratuit avec votre e-mail ou Google.",
             "name": "Nom complet",
             "namePlaceholder": "ex. Jean Dupont",
             "email": "Adresse e-mail",
             "emailPlaceholder": "email@example.com",
             "password": "Mot de passe",
-            "passwordPlaceholder": "6 caractères minimum",
+            "passwordPlaceholder": "{min} caractères minimum",
             "confirmPassword": "Confirmer le mot de passe",
             "confirmPasswordPlaceholder": "Ressaisis ton mot de passe",
             "terms": "J'ai lu et j'accepte la <privacy>politique de confidentialité</privacy> et les <terms>conditions d'utilisation</terms>.",
@@ -1522,14 +1524,151 @@
                 "emailRequired": "L'adresse e-mail est requise",
                 "emailInvalid": "Saisis une adresse e-mail valide",
                 "passwordRequired": "Le mot de passe est requis",
-                "passwordMin": "Le mot de passe doit contenir au moins 6 caractères",
+                "passwordMin": "Le mot de passe doit contenir au moins {min} caractères",
                 "confirmMismatch": "Les mots de passe ne correspondent pas",
                 "termsRequired": "Tu dois accepter les conditions pour continuer"
             }
         },
         "showPassword": "Afficher le mot de passe",
         "hidePassword": "Masquer le mot de passe",
-        "google": "Continuer avec Google"
+        "google": "Continuer avec Google",
+        "navLogin": "Se connecter",
+        "account": "Mon compte",
+        "logout": "Se déconnecter",
+        "welcome": "Bienvenue, {name}",
+        "signedInAs": "Connecté avec {email}.",
+        "continue": "Continuer",
+        "error": "La connexion avec Google n’a pas abouti. Réessayez.",
+        "registerNote": "Avec Google, pas besoin d’un mot de passe séparé.",
+        "benefitTools": "Tous les outils de tirage fonctionnent sans connexion.",
+        "benefitPlaka": "Connectez-vous pour garder vos scores et votre classement Plaka Avcısı sur tous vos appareils.",
+        "or": "ou",
+        "invalidCredentials": "E-mail ou mot de passe incorrect.",
+        "emailTaken": "Un compte existe déjà avec cet e-mail. Essayez de vous connecter.",
+        "tooMany": "Trop de tentatives. Patientez une minute puis réessayez.",
+        "unavailable": "Une erreur est survenue. Réessayez dans un instant.",
+        "googleHint": "Inscrit avec Google ? Connectez-vous d’abord avec Google, puis définissez un mot de passe dans Mon compte. Vous pourrez ensuite vous connecter avec votre adresse Gmail et ce mot de passe.",
+        "accountPage": {
+            "meta": {
+                "title": "Mon compte | YulaSanta",
+                "description": "Les réglages de votre compte YulaSanta."
+            },
+            "title": "Mon compte",
+            "viaGoogle": "Connecté avec Google",
+            "viaEmail": "Connecté avec e-mail et mot de passe",
+            "loginFirst": "Connectez-vous pour voir votre compte.",
+            "setPasswordTitle": "Définir un mot de passe pour la connexion par e-mail",
+            "setPasswordDesc": "Avec un mot de passe, vous pourrez aussi vous connecter avec {email}. La connexion Google continue de fonctionner.",
+            "newPassword": "Nouveau mot de passe",
+            "save": "Enregistrer le mot de passe",
+            "saved": "Mot de passe enregistré. Vous pouvez maintenant aussi vous connecter avec {email} et ce mot de passe.",
+            "needGoogle": "Pour définir ou changer un mot de passe, connectez-vous avec Google.",
+            "editName": "Modifier votre nom",
+            "nameFromGoogle": "Votre nom et votre photo viennent de votre compte Google.",
+            "saveName": "Enregistrer",
+            "cancel": "Annuler",
+            "nameSaved": "Votre nom a été mis à jour.",
+            "changePasswordTitle": "Changer le mot de passe",
+            "currentPassword": "Mot de passe actuel",
+            "wrongPassword": "Le mot de passe actuel est incorrect.",
+            "passwordChanged": "Votre mot de passe a été changé.",
+            "changePasswordButton": "Changer le mot de passe",
+            "plakaTitle": "Mon bulletin Plaka Avcısı",
+            "plakaEmpty": "Vous n’avez pas encore joué. Lancez une partie et vos scores apparaîtront ici.",
+            "plakaError": "Votre bulletin n’a pas pu être chargé pour le moment.",
+            "bestScore": "Meilleur score",
+            "rank": "Rang",
+            "games": "Parties",
+            "badges": "Badges",
+            "play": "Jouer",
+            "leaderboard": "Voir le classement",
+            "drawsTitle": "Mes derniers tirages",
+            "drawsNote": "Tirages enregistrés sur cet appareil. Les noms restent dans ce navigateur et ne sont jamais envoyés à notre serveur.",
+            "drawsEmpty": "Aucun tirage enregistré sur cet appareil.",
+            "santaResult": "Résultat Secret Santa · {people} personnes",
+            "santaDraft": "Liste Secret Santa inachevée · {people} personnes",
+            "raffleDraft": "Tirage de noms · {people} noms",
+            "wheel": "Roue de la fortune · {options} options, {spins} tours",
+            "open": "Ouvrir",
+            "adminTitle": "Panneau d’administration",
+            "adminDesc": "Statistiques du site et studio de campagnes.",
+            "helpTitle": "Aide",
+            "faq": "Questions fréquentes",
+            "contact": "Contact",
+            "privacy": "Politique de confidentialité",
+            "deleteTitle": "Supprimer le compte",
+            "deleteDesc": "Votre compte, vos parties, scores et badges Plaka Avcısı sont supprimés définitivement, et votre e-mail est dissocié des statistiques d’utilisation. C’est irréversible. Les listes de tirage sur cet appareil ne sont pas touchées.",
+            "deleteConfirmLabel": "Tapez {word} pour confirmer",
+            "deleteButton": "Supprimer définitivement mon compte",
+            "deleteReauth": "Par sécurité, reconnectez-vous d’abord avec Google.",
+            "reauthButton": "Vérifier avec Google",
+            "menuPlaka": "Mon bulletin Plaka",
+            "menuDraws": "Mes derniers tirages",
+            "tabSecurity": "Sécurité",
+            "tabPlaka": "Plaka",
+            "tabDraws": "Tirages",
+            "tabHelp": "Aide",
+            "setPasswordHint": "Pour vous connecter aussi avec Gmail et un mot de passe",
+            "changePasswordHint": "Saisissez votre mot de passe actuel pour en choisir un nouveau",
+            "plakaHint": "Votre score, rang et badges",
+            "tabProfile": "Profil",
+            "verifiedBadge": "E-mail confirmé",
+            "unverifiedBadge": "E-mail non confirmé",
+            "deleteWord": "SUPPRIMER"
+        },
+        "emails": {
+            "forgotMeta": {
+                "title": "Mot de passe oublié | YulaSanta",
+                "description": "Réinitialisez votre mot de passe YulaSanta."
+            },
+            "resetMeta": {
+                "title": "Nouveau mot de passe | YulaSanta",
+                "description": "Choisissez un nouveau mot de passe YulaSanta."
+            },
+            "verifyMeta": {
+                "title": "Confirmer l’e-mail | YulaSanta",
+                "description": "Confirmez votre adresse e-mail YulaSanta."
+            },
+            "forgotTitle": "Mot de passe oublié ?",
+            "forgotSubtitle": "Saisissez votre e-mail, nous vous enverrons un lien de réinitialisation.",
+            "sendLink": "Envoyer le lien",
+            "forgotSent": "Nous avons envoyé un lien de réinitialisation à {email}. Vérifiez votre boîte de réception et vos spams.",
+            "forgotGoogle": "Inscrit avec Google ? Pas besoin de mot de passe, connectez-vous avec Google.",
+            "backToLogin": "Retour à la connexion",
+            "resetTitle": "Choisir un nouveau mot de passe",
+            "resetDone": "Votre mot de passe a été changé. Vous pouvez vous connecter avec le nouveau.",
+            "badLink": "Ce lien est invalide ou a expiré. Demandez-en un nouveau.",
+            "newLink": "Demander un nouveau lien",
+            "verifyTitle": "Confirmer l’e-mail",
+            "verifying": "Confirmation",
+            "verified": "Votre adresse e-mail est confirmée.",
+            "badVerifyLink": "Ce lien de confirmation est invalide ou a expiré. Vous pouvez en demander un nouveau dans Mon compte.",
+            "unverifiedTitle": "Confirmez votre adresse e-mail",
+            "unverifiedDesc": "Nous vous avons envoyé un lien de confirmation à l’inscription. Une fois confirmée, vos scores Plaka Avcısı vous suivent aussi quand vous vous connectez avec Google sous la même adresse.",
+            "verifySent": "Nous avons renvoyé le lien de confirmation.",
+            "resendVerify": "Renvoyer le lien de confirmation",
+            "noAccount": "Aucun compte trouvé pour {email}.",
+            "noAccountHint": "Inscrit avec Google ? Pas besoin de mot de passe, connectez-vous avec Google. Pas encore de compte ? Créez-en un.",
+            "tryOtherEmail": "Essayer un autre e-mail"
+        },
+        "mail": {
+            "reset": {
+                "subject": "Réinitialisez votre mot de passe YulaSanta",
+                "heading": "Réinitialiser le mot de passe",
+                "body": "Nous avons reçu une demande de réinitialisation du mot de passe de votre compte YulaSanta. Touchez le bouton ci-dessous pour en choisir un nouveau.",
+                "button": "Choisir un nouveau mot de passe",
+                "expiry": "Ce lien est valable 30 minutes et une seule fois.",
+                "ignore": "Si vous n’êtes pas à l’origine de cette demande, ignorez cet e-mail ; votre mot de passe ne change pas."
+            },
+            "verify": {
+                "subject": "Confirmez votre adresse e-mail YulaSanta",
+                "heading": "Confirmez votre adresse e-mail",
+                "body": "Merci d’avoir créé un compte YulaSanta. Touchez le bouton ci-dessous pour confirmer que cette adresse est la vôtre.",
+                "button": "Confirmer mon e-mail",
+                "expiry": "Ce lien est valable 24 heures.",
+                "ignore": "Si vous n’avez pas créé ce compte, ignorez cet e-mail."
+            }
+        }
     },
     "ads": {
         "advertiseTitle": "Espace publicitaire",
